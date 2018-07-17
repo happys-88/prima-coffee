@@ -1,0 +1,21 @@
+<form method="POST" name="arra">
+    <h4>{{ labels.signUpEmailMsg }}</h4>
+    <div class="mz-signup-email">
+        <div class="checkbox">
+            <label><input type="checkbox" id="PSDeals" value="PSDeals" data-mz-prima-deals>{{ labels.primaDeals }}</label>
+        </div>
+        <div class="checkbox">
+            <label><input type="checkbox" id="PSNewsLetter" value="PSNewsLetter" data-mz-prima-newsletter>{{ labels.primaDigest }}</label>
+        </div>
+        <div class="checkbox">
+            <label><input type="checkbox" id="PSBlogs" value="PSBlogs" data-mz-prima-lc>{{ labels.primaLearningCenter }}</label>
+        </div>        
+            <input type="hidden" id="emailId" value="{{ model.fulfillmentInfo.fulfillmentContact.email }}">
+        <button type="button" class="mz-button" data-mz-action="subscribeDeals">{{ labels.save }}</button>
+    </div>
+    <div class="mz-look-email">
+        <span>{{ labels.saved }}</span>
+        <p>{{ labels.savedMsg }}</p>
+    </div>
+</form>
+

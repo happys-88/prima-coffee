@@ -1,0 +1,48 @@
+<section class="mz-facetingform">
+    <h2 class="mz-facets-dropdown">{{ labels.refineBy }}</h2>
+    {% if pageContext.search.facets %}
+        <div class="mz-clear-all">
+            <div>
+                <button class="mz-button mz-facetingform-clearall" data-mz-action="clearFacets" data-mz-url="{% make_url "facet" "clear" %}">{{ labels.clearAllFilters }}<i class="fa fa-times-circle"></i></button>
+            </div>
+            {% if model.hasValueFacets %}   
+                {% for facet in model.facets %}
+                    {% if facet.values and facet.facetType != "Hierarchy" %}
+                        {% for fval in facet.values %}
+                            {% if fval.isApplied %}
+                                <input type="checkbox" id="{{facet.field|slugify }}_{{ fval.value|slugify }}" class="mz-facetingform-value" {% if fval.isApplied %}checked="checked"{% endif %} data-mz-facet="{{ facet.field }}" data-mz-facet-value="{{ fval.value }}" data-mz-url="{% make_url "facet" fval %}">
+                                <label class="mz-facetingform-valuelabel" for="{{facet.field|slugify }}_{{ fval.value|slugify }}" {% if facet.label == 'Color' %}style="background: {{ fval.value }}"{% endif %} ><i class="fa fa-times-circle"></i>{{ fval.label }}</label>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                {% endfor %}
+             {% endif %}
+        </div>
+    {% endif %}
+    <div class="mz-faceting-section">
+        {% for facet in model.facets %}
+            {% if facet.values and facet.facetType == "Hierarchy" %}
+                {% if facet.values.length == 1 %}        
+                        {% include "modules/product/hierarchy-facets" with facet=facet facetValues=facet.values|first|prop("childrenFacetValues") %}
+                    {% else %}
+                        {% include "modules/product/hierarchy-facets" with facet=facet facetValues=facet.values %}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+        {% for facet in model.facets %}
+            {% if facet.values and facet.facetType != "Hierarchy" %}
+                <div class="mz-l-sidebaritem">
+                    <h4>{{ facet.label }}</h4>
+                    <ul class="mz-facetingform-facet mz-facetingform-facet-hierarchy {{ facet.label|slugify }} clearfix">
+                        {% for fval in facet.values %}
+                            <li {% if fval.isApplied %}class="checked"{% endif %}>
+                                <input type="checkbox" id="{{facet.field|slugify }}_{{ fval.value|slugify }}" class="mz-facetingform-value" {% if fval.isApplied %}checked="checked"{% endif %} data-mz-facet="{{ facet.field }}" data-mz-facet-value="{{ fval.value }}" data-mz-url="{% make_url "facet" fval %}">
+                                <label class="mz-facetingform-valuelabel" for="{{facet.field|slugify }}_{{ fval.value|slugify }}" {% if facet.label == 'Color' %}style="background: {{ fval.value }}"{% endif %} >{{ fval.label }}</label>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</section>

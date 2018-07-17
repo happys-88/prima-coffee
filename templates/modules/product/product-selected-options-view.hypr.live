@@ -1,0 +1,11 @@
+<div class="mz-productoptions option-selected ">
+    {% for option in model.options %}
+        <div class="mz-productoptions-optioncontainer">
+            {% for value in option.values %}
+                {% if value.isSelected and not value.bundledProduct %}
+                    {{ option.attributeDetail.name }} : {{value.stringValue|default(value.value)}}
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% endfor %}
+</div>

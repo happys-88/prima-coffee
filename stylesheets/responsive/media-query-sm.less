@@ -1,0 +1,97 @@
+/**** Site Changes for small screens ****/
+@media @mz-sm-media-query{
+	.container {
+	    width: 100%;
+	}
+	
+	#mz-home-slider{
+		.slider{
+			.mz-slide-details{ 
+				width: 100%;  
+				left: 0;
+			    right: 0;
+			    bottom: auto;
+			    top: 50%;
+			    transform: translate(0, -50%); 
+				h2{
+					font-size: 100px; 
+				} 
+			}		
+		}
+	} 
+	.mz-shop-by-category{
+		.mz-shop-by-categorylist{
+			.mz-shop-by-categorylist-item{
+				min-height: 150px;
+				margin-bottom: 20px;
+				.mz-category-image{
+					min-height: 80px;  
+				} 
+				&:first-child{
+					min-height: 320px;
+					.mz-category-image{
+						min-height: 250px; 
+					}	  
+				}
+				.mz-categorylisting-info{
+					h3{
+						width: 100%; 
+						font-size: 12px; 
+					} 
+				}			
+			}		
+		}
+	}
+	.mz-promo-banner{
+		margin-bottom: 25px; 
+	}
+
+	#mz-drop-zone-shop-now-widget{
+		.mz-cms-col-6-12{
+			width: 100% !important; 
+			margin: 15px 0;
+			.shop-now-widget{
+				margin: 0 !important;
+				.col-xs-12{
+					padding: 0; 
+				} 
+			}    
+		}
+	}
+
+	.mz-pagefooter{
+		.mz-footer-top{
+			.mz-newsletter, .mz-policy-section { 
+				margin-top: 25px; 
+			}
+			.mz-newsletter{
+				float: left;
+				width: 50%; 
+			}
+			.mz-social-icon{
+				float: right;
+				width: 40%;
+			}	 
+		}
+	}   
+	
+	/*** Directory Page ***/
+    .mz-category {
+		.mz-l-paginatedlist {
+			.mz-pagingcontrols {
+			    padding-right: 12px;
+			}
+		}
+	}
+	/***\ Directory Page ***/
+	
+	/*** My Account ***/
+	.mz-myaccount-panels {
+		.mz-accountaddressbook {
+			.mz-accountaddressbook-contact {
+			    width: 50%;
+			}
+		}
+	}
+	/***\ My Account ***/
+}

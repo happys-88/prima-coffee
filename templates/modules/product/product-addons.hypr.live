@@ -1,0 +1,38 @@
+{% if  model.addons %}
+<div class="row">
+    <div class="popular-addons">
+        <div id="addonslider">
+            {% for addon in model.addons %}
+                {% if addon.attributeDetail.inputType == "List" and addon.attributeDetail.dataType == "ProductCode" %}
+                    {% for value in addon.values %}
+                        <div class="addon">
+                            <label class="add-it">
+                                <input type="checkbox" class="mz-productoptions-option" data-mz-product-option="{{ addon.attributeFQN }}" {% if value.isSelected %}checked="checked"{% endif %} value="{{value.value}}"/> ADD IT
+                            </label>
+                            
+                            {% if value.imageData %}
+                                {% if value.imageFilePath %}
+                                    <img class="mz-itemlisting-thumb-img" src="{{ value.imageFilePath }}" {% if imageData.altText %}alt="{{ imageData.altText }}"{% endif %} onerror="this.src='http://cdn-sb.mozu.com/25166-m1/cms/files/9665e4c9-1d61-4c2a-b940-91db8316fed4'" />
+                                {% else %}
+                                    {% if value.imageData %}
+                                        <img class="mz-itemlisting-thumb-img" src="{{ value.imageData.imageUrl }}" {% if imageData.altText %}alt="{{ imageData.altText }}"{% endif %} />
+                                    {% else %}
+                                        <span class="noimage-placeholder"><span class="noimage-text">{{ labels.productImagePlaceholder }}</span></span>
+                                    {% endif %}
+                                {% endif %}
+                            {% else %}
+                                <span class="noimage-placeholder"><span class="noimage-text">{{ labels.productImagePlaceholder }}</span></span>
+                            {% endif %}
+
+                            <a class="mz-productlisting-title" href="{{ value.productUrl }}">{{value.stringValue|default(value.value)|truncatewords(2)}}</a>
+                            <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="mz-productdetail-price">
+                                <div class="mz-price">{% if value.deltaPrice and value.deltaPrice > 0 %}{{ value.deltaPrice|currency }}{% endif %}</div>
+                            </div >
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endif %}

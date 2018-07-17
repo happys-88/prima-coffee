@@ -1,0 +1,73 @@
+﻿<nav class="mz-utilitynav">
+    <ul class="mz-utilitynav-list">
+        {% comment %}
+        The below require_script tag does not render anything in the place it's actually inserted; it instead adds the script to a list of scripts  which are then included at the end of the page by RequireJS.
+        Use require_script to load AMD modules that are wrapped in define() or require() function calls.
+        {% endcomment %}
+
+        {% require_script "modules/login-links" %}
+
+        <li class="mz-utilitynav-item live-chat">
+            <a href="javascript:void(0);" class="mz-utilitynav-link" onclick="SnapEngage.startLink();"><i class="fa fa-comments"></i>Live Chat</a>    
+        </li>
+
+        <li class="mz-utilitynav-item login-link">
+            {% if not user.isAnonymous %} 
+                <div id="mz-logged-in-notice"> 
+                    <span class="login-icon mz-mobile" data-toggle="dropdown">  
+                        <i class="fa fa-user"></i><i class="fa fa-angle-down"></i>          
+                    </span>
+                    <span class="user-name mz-utilitynav-link" data-toggle="dropdown">My Account</span>  
+                    
+                    <!-- My Account Dropdown -->
+                    <div class="dropdown-menu">
+                        <div class="logged-user"></div>  
+                        <div class="my-account-details">
+                            <a href="/myaccount#settings">
+                                <h4>{{ labels.accountSettings }}</h4>
+                            </a> 
+                        </div>
+                        {% if siteContext.generalSettings.isWishlistCreationEnabled %}
+                            <div class="my-account-details">
+                                <a href="/myaccount#wishlist">
+                                    <h4>{{ labels.accountMyWishlist }}</h4>
+                                </a>
+                            </div>
+                        {% endif %}
+                        <div class="my-account-details">
+                            <a href="/myaccount#orderhistory">
+                                <h4>{{ labels.orderHistory }}</h4>
+                            </a>
+                        </div>
+                        <div class="my-account-details">
+                            <a href="/myaccount#paymentmethods">
+                                <h4>{{ labels.paymentMethods }}</h4>
+                            </a>
+                        </div>
+                        <div class="my-account-details">
+                            <a href="/myaccount#addressbook">
+                                <h4>{{ labels.addressBook }}</h4>
+                            </a>
+                        </div>
+                        <div class="my-account-details">
+                            <a href="/logout">
+                                <h4>{{ labels.logOut }}</h4>
+                            </a>
+                        </div>
+                    </div>
+                    <!--/ My Account Dropdown -->
+                </div> 
+                
+            {% else %}
+                <a href="javascript:void(0);" data-toggle="modal" data-target="#loginPopup" class="mz-utilitynav-link"><i class="fa fa-user"></i>{{ labels.logIn }}</a>
+            {% endif %}
+        </li>
+
+        {% block global-cart-container %}
+            {% include "modules/page-header/global-cart-container" %} 
+        {% endblock global-cart-container %}
+    </ul>
+</nav>
+
+{% require_script "modules/page-header/global-cart" %}
+{% require_script "modules/cart-monitor" %}

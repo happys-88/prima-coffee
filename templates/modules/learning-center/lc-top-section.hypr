@@ -1,0 +1,14 @@
+<div class="mz-sitenav-lcenter hidden-xs hidden-sm">   
+	{% include "modules/learning-center/lc-site-nav" %}	
+</div>
+
+<div class="mz-mobilenav-lcenter visible-xs visible-sm"> 
+	<button class="toggle-btn" data-toggle="collapse" data-target="#mz-mobilenav-containerLC" aria-expanded="false">Learn<i class="fa fa-angle-down"></i></button>   
+	{% include "modules/learning-center/lc-mobile-nav" %}    	  	
+</div>
+
+{% if themeSettings.showBreadcrumbs %} 
+	<div class="lc-breadcrumbs">
+    	{% include "modules/breadcrumbs" %} 
+	</div>
+{% endif %}   

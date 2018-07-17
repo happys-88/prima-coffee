@@ -1,0 +1,14 @@
+{% if model.properties and themeSettings.showProductDetailProperties %}
+    {% for property in model.properties %}
+        {% if property.attributeFQN == "tenant~field_overview" or property.attributeFQN == "tenant~field_features" or property.attributeFQN == "tenant~field_spec_text" or property.attributeFQN == "tenant~body" or property.attributeFQN == "tenant~field_promo_text" %}  
+            <div class="col-md-12 mz-productdetail-properties mz-l-stack-section">
+                <div class="mz-propertylist mz-propertylist-justified">
+                    <h2 class="heading-2"><span>{{property.attributeDetail.name}}</span></h2>
+                    {% for v in property.values %}
+                        <div>{% if v.stringValue %}{{v.stringValue|safe}}{% else %}{{v.value|safe}}{% endif %}</div>
+                    {% endfor %}
+                </div>
+            </div> 
+        {% endif %}
+    {% endfor %}
+{% endif %}

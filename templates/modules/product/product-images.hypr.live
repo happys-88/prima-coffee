@@ -1,0 +1,186 @@
+{% if model.content.productImages %}
+	<div class="hidden-xs">
+		<figure class="mz-productimages-main clearfix" id="mz-image-zoom">
+			<div class="col-md-10 col-md-offset-1 text-center">
+				 <img itemprop="image" class="mz-productimages-mainimage" data-mz-productimage-main src="{% make_url "image" model.mainImage with max=themeSettings.productImagesContainerWidth as_parameters %}" {% if model.mainImage.altText %}alt="{{ model.mainImage.altText }}"{% endif %}  data-zoom-image="{% make_url "image" model.mainImage with max=themeSettings.productImagesZoomContainerWidth as_parameters %}" />
+			 </div>
+		</figure>
+		{% if model.mainImage.sequence == 1 %}
+			{% if model.color == true %}
+				<figure class="mz-productimages-thumbs">
+					<div class="product-slider"> 
+						<div class="visible-md visible-lg">  
+						<div class="bxslider"> 
+								{% for image in model.content.productImages %}
+								{% if image.color == true %}   
+									{% if image.sequence|mod(10)==1 %}
+										<div class="start">    
+										{% endif %}  
+										<a class="mz-productimages-thumb {% if forloop.first %}active-thumb{% endif %}" data-mz-productimage-thumb="{{ image.sequence }}" href="{% make_url "image" image %}">
+											<img class="mz-productimages-thumbimage"  src="{% make_url "image" image with max=themeSettings.maxProductImageThumbnailSize as_parameters %}" {% if image.altText %}alt="{{ image.altText }}"{% endif %} data-zoom-image="{% make_url "image" image with  max=themeSettings.productImagesZoomContainerWidth as_parameters %}" />
+										</a>
+										{% if image.sequence|mod(10)==0 %}
+										</div>     
+									{% endif %} 
+								{% endif %}
+							         
+								{% endfor %} 
+							</div> 
+						</div>
+						</div> 
+						<div class="visible-sm">
+							<div class="bxslider "> 
+								{% for image in model.content.productImages %}
+									{% if image.color == true %}
+										{% if image.sequence|mod(8)==1 %}
+											<div>    
+											{% endif %}  
+												<a class="mz-productimages-thumb {% if forloop.first %}active-thumb{% endif %}" data-mz-productimage-thumb="{{ image.sequence }}" href="{% make_url "image" image %}">
+													<img class="mz-productimages-thumbimage"  src="{% make_url "image" image with max=themeSettings.maxProductImageThumbnailSize as_parameters %}" {% if image.altText %}alt="{{ image.altText }}"{% endif %} data-zoom-image="{% make_url "image" image with  max=themeSettings.productImagesZoomContainerWidth as_parameters %}" />
+												</a>
+											{% if image.sequence|mod(8)==0 %}
+											</div>     
+										{% endif %} 
+								{% endif %}
+								{% endfor %} 
+								</div>
+							</div>
+						</div>
+					</div>
+				</figure>
+			{% else %}
+				<figure class="mz-productimages-thumbs">
+						<div class="product-slider"> 
+							<div class="visible-md visible-lg">  
+							<div class="bxslider"> 
+									{% for image in model.content.productImages %}    
+										{% if image.sequence|mod(10)==1 %}
+											<div>    
+											{% endif %}  
+											<a class="mz-productimages-thumb {% if forloop.first %}active-thumb{% endif %}" data-mz-productimage-thumb="{{ image.sequence }}" href="{% make_url "image" image %}">
+												<img class="mz-productimages-thumbimage"  src="{% make_url "image" image with max=themeSettings.maxProductImageThumbnailSize as_parameters %}" {% if image.altText %}alt="{{ image.altText }}"{% endif %} data-zoom-image="{% make_url "image" image with  max=themeSettings.productImagesZoomContainerWidth as_parameters %}" />
+											</a>
+											{% if image.sequence|mod(10)==0  or forloop.last %}
+											</div>     
+										{% endif %} 
+									{% endfor %} 
+							</div>
+							</div> 
+							<div class="visible-sm">
+								<div class="bxslider "> 
+									{% for image in model.content.productImages %}   
+										{% if image.sequence|mod(8)==1 %}
+											<div>    
+											{% endif %}  
+												<a class="mz-productimages-thumb {% if forloop.first %}active-thumb{% endif %}" data-mz-productimage-thumb="{{ image.sequence }}" href="{% make_url "image" image %}">
+													<img class="mz-productimages-thumbimage"  src="{% make_url "image" image with max=themeSettings.maxProductImageThumbnailSize as_parameters %}" {% if image.altText %}alt="{{ image.altText }}"{% endif %} data-zoom-image="{% make_url "image" image with  max=themeSettings.productImagesZoomContainerWidth as_parameters %}" />
+												</a>
+											{% if image.sequence|mod(8)==0  or forloop.last %}
+											</div>     
+										{% endif %} 
+									{% endfor %} 
+								</div>
+							</div>
+						</div>
+				</figure>
+			{% endif %}
+
+		{% endif %}
+
+		{% if model.mainImage.sequence == 0 %}
+			{% if model.color == true %}
+				<figure class="mz-productimages-thumbs">
+					<div class="product-slider">  
+						<div class="visible-md visible-lg">  
+							<div class="bxslider"> 
+								{% for image in model.content.productImages %} 
+									{% if image.color == true %}  
+										{% if image.sequence|add(1)|mod(10)==1 %}
+											<div>    
+											{% endif %}  
+											<a class="mz-productimages-thumb {% if forloop.first %}active-thumb{% endif %}" data-mz-productimage-thumb="{{ image.sequence }}" href="{% make_url "image" image %}">
+												<img class="mz-productimages-thumbimage"  src="{% make_url "image" image with max=themeSettings.maxProductImageThumbnailSize as_parameters %}" {% if image.altText %}alt="{{ image.altText }}"{% endif %} data-zoom-image="{% make_url "image" image with  max=themeSettings.productImagesZoomContainerWidth as_parameters %}" />
+											</a>
+											{% if image.sequence|add(1)|mod(10)==0 %}
+											</div>     
+										{% endif %} 
+									{% endif %}
+								{% endfor %} 
+								</div>
+							</div> 
+						</div>
+						<div class="visible-sm">
+							<div class="bxslider"> 
+								{% for image in model.content.productImages %}
+									{% if image.color == true %}   
+										{% if image.sequence|add(1)|mod(8)==1 %}
+											<div>    
+											{% endif %}  
+											<a class="mz-productimages-thumb {% if forloop.first %}active-thumb{% endif %}" data-mz-productimage-thumb="{{ image.sequence }}" href="{% make_url "image" image %}">
+												<img class="mz-productimages-thumbimage"  src="{% make_url "image" image with max=themeSettings.maxProductImageThumbnailSize as_parameters %}" {% if image.altText %}alt="{{ image.altText }}"{% endif %} data-zoom-image="{% make_url "image" image with  max=themeSettings.productImagesZoomContainerWidth as_parameters %}" />
+											</a>
+											{% if image.sequence|add(1)|mod(8)==0 %}
+											</div>     
+										{% endif %} 
+									{% endif %}
+								{% endfor %} 
+								</div>
+							</div> 
+						</div>
+					</div>
+				</figure>
+			{% else %}
+				<figure class="mz-productimages-thumbs">
+						<div class="product-slider">  
+							<div class="visible-md visible-lg">  
+								<div class="bxslider"> 
+									{% for image in model.content.productImages %}   
+										{% if image.sequence|add(1)|mod(10)==1 %}
+											<div>    
+											{% endif %}  
+											<a class="mz-productimages-thumb {% if forloop.first %}active-thumb{% endif %}" data-mz-productimage-thumb="{{ image.sequence }}" href="{% make_url "image" image %}">
+												<img class="mz-productimages-thumbimage"  src="{% make_url "image" image with max=themeSettings.maxProductImageThumbnailSize as_parameters %}" {% if image.altText %}alt="{{ image.altText }}"{% endif %} data-zoom-image="{% make_url "image" image with  max=themeSettings.productImagesZoomContainerWidth as_parameters %}" />
+											</a>
+											{% if image.sequence|add(1)|mod(10)==0  or forloop.last %}
+											</div>     
+										{% endif %} 
+									{% endfor %} 
+								</div> 
+							</div>
+							<div class="visible-sm">
+								<div class="bxslider"> 
+									{% for image in model.content.productImages %}   
+										{% if image.sequence|add(1)|mod(8)==1 %}
+											<div>    
+											{% endif %}  
+											<a class="mz-productimages-thumb {% if forloop.first %}active-thumb{% endif %}" data-mz-productimage-thumb="{{ image.sequence }}" href="{% make_url "image" image %}">
+												<img class="mz-productimages-thumbimage"  src="{% make_url "image" image with max=themeSettings.maxProductImageThumbnailSize as_parameters %}" {% if image.altText %}alt="{{ image.altText }}"{% endif %} data-zoom-image="{% make_url "image" image with  max=themeSettings.productImagesZoomContainerWidth as_parameters %}" />
+											</a>
+											{% if image.sequence|add(1)|mod(8)==0  or forloop.last %}
+											</div>     
+										{% endif %} 
+									{% endfor %} 
+								</div> 
+							</div>
+						</div>
+				</figure>
+			{% endif %}
+	   {% endif %}
+	</div>
+
+	<figure class="mz-productimages-main clearfix visible-xs hidden-md hidden-sm">
+		<div class="col-md-10 col-md-offset-1 text-center">
+			<div class="product-slider">    
+				<div class="bxslider mobile"> 
+					{% for image in model.content.productImages %}                 
+						<div class="col-md-10 col-md-offset-1 text-center">
+							<img src="{% make_url "image" image with max=themeSettings.productImagesContainerWidth as_parameters %}" {% if image.altText %}alt="{{ image.altText }}"{% endif %}  />
+						</div>
+					{% endfor %}		
+				</div>    
+	        </div>
+		</div>
+	</figure>
+{% else %}
+	<span class="noimage-placeholder"><span class="noimage-text">{{ labels.productImagePlaceholder }}</span></span>
+{% endif %} 

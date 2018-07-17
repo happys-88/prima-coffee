@@ -1,0 +1,482 @@
+
+/**** Mobile and Tablet Common changes ****/
+
+@media @mz-mobile-tablet-common-media-query {
+	// Header
+	.mz-pageheader{ 
+		.mz-header-bottom{
+			padding: 25px 0 12px; 
+			.mz-storebranding{
+				width: 150px;  
+				margin-right: 30px;   
+				.mz-logo{
+					width: 100%;
+					height: 40px;   
+				}
+			}
+		}
+		.mz-searchbox{
+			position: static;
+			margin: 0;
+			.mz-searchbox-field{
+				height: 42px;  
+			}
+			.mz-searchbox-input{
+				width: 320px; 
+				height: 40px; 
+				padding: 5px 55px 5px 15px;   
+			}
+			.mz-searchbox-button{ 
+				width: 40px;
+				height: 40px; 
+			}
+			.tt-dropdown-menu {
+				width: 362px; 	
+			}  
+		}
+		.mz-utilitynav{
+			margin: 0;
+			.mz-utilitynav-item{
+				margin-left: 20px;
+				.login-icon{
+					padding: 0;  
+					.fa{ 
+						&.fa-angle-down{ 
+							display: block; 
+							font-size: 27px;   
+							margin-top: -8px;  
+						}
+					}
+				}   
+			}
+			#mz-logged-in-notice{
+				.welcome-text, .user-name{
+					display: none;
+					&.mz-mobile{
+						display: inline-block; 
+					}
+				}
+
+				.dropdown-menu { 
+					left: -170px; 
+					top: 40px;
+					&:after{
+						display: none;  
+					}    
+					.logged-user{
+						text-indent: inherit; 
+						.user-name{
+							display: inline-block;    
+						}	
+					}
+				}
+			}  
+		}
+	}
+	
+	/**** Navigation ****/
+	#mz-sitenav-container{
+		display: none;  
+	}
+	.mz-mobile-nav {
+		display: block; 
+		float: left;
+		margin: 1px 15px 0 0;
+		.mz-hamburger-icon {
+			display: block;
+			border: 0;
+			padding: 0;
+			position: relative;
+			cursor: pointer;
+			background: none;
+			font-size: 14px;
+			text-align: center;
+			font-weight: bold;
+			span {
+				display: block;
+				width: 22px;
+				background: #495363;
+				height: 3px;
+				margin: 8px 0 12px 6px;
+				&:before,
+				&:after {
+					position: absolute;
+					content: " ";
+					background: #495363;
+					width: 22px;
+					height: 3px;
+					top: 0;
+					left: 6px;
+				}
+				&:after {
+					top: 17px;
+				}
+			}
+		}
+	}
+
+	/**** Mobile Navigation ****/
+	#mz-mobilenav-container,
+	#mz-mobilenav-containerLC {  
+		display: none;
+		position: absolute;
+		top: 130px; 
+		z-index: 999999;
+		width: 50%;  
+	}
+	#mz-mobilenav-container.collapse.in,
+	#mz-mobilenav-containerLC.collapse.in {  
+		display: block;
+	}
+	.mz-sitenav {
+		.panel-group {
+			margin: 0;
+			.panel-body {
+				padding: 0;
+			}
+			.panel {
+				border-radius: 0px;
+				float: left;
+				width: 100%;
+				background-color: @textColor;
+				text-align: left;
+				position: relative;
+				max-width: 100%;
+				border: none;
+				box-shadow: none;
+				border-bottom: 1px solid @mobileNavBorderBtm;
+				.panel-heading {
+					float: left;
+					width: 100%;
+					padding: 0;
+					.panel-title {
+						a {
+							padding: 11px 15px;
+							color: #fff;
+							display: block;
+							&:visited,
+							&:hover,
+							&:focus {
+								text-decoration: none;
+							}
+							.glyphicon {
+								font-size: 14px;
+								color: #fff;
+								position: absolute;
+								right: 15px;
+								top: 12px;
+								font-weight: normal;
+							}
+							&[class="collapsed"] {
+								.glyphicon {
+									&:before {
+										content: "\002b";
+									}
+								}
+							}
+							&[class=""] {
+								.glyphicon {
+									&:before {
+										content: "\2212";
+									}
+								}
+							}
+						}
+					}
+				}
+				.panel-collapse {
+					float: left;
+					width: 100%;
+					background: @mobileNavSubMenuBg;
+					&.in {
+						.panel {
+							background: @mobileNavSubMenuBg;
+							.panel-heading {
+								.panel-title {
+									a {
+										font-size: 14px;
+										color: @textColor;
+										.glyphicon {
+											color: @textColor;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				.mz-sitenav-sub-container {
+					display: none;
+					position: static;
+				}
+				.mz-sitenav-item {
+					width: 100%;
+					max-width: 100%;
+					text-align: left;
+					.mz-sitenav-link {
+						display: block;
+						height: auto !important;
+						padding: 11px 15px;
+					}
+				}
+			}
+			.panel+.panel {
+				margin: 0;
+			}
+			/**** sub sub nav ****/
+			.mz-sitenav-sub-sub {
+				background: #fff;
+				.mz-sitenav-item {
+					.mz-sitenav-link {
+						color: @textColor;
+						.glyphicon {
+							color: @textColor;
+						}
+					}
+				}
+			}
+		}
+	}
+	.mz-close-nav {
+		background: #495363;
+		position: absolute;
+		left: 0;
+		top: -54px;
+		button {
+			display: block;
+			width: 54px;
+			height: 54px;
+			border: 0;
+			padding: 0;
+			position: relative;
+			cursor: pointer;
+			background: none;
+			text-align: center;
+			span {
+				display: inline-block;
+				width: 30px;
+				height: 30px;
+				&:before,
+				&:after {
+					position: absolute;
+					content: " ";
+					background: #fff;
+					width: 3px;
+					height: 30px;
+					left: 24px;
+					transform: rotate(45deg);
+					-moz-transform: rotate(45deg);
+					-webkit-transform: rotate(45deg);
+				}
+				&:after {
+					transform: rotate(-45deg);
+					-moz-transform: rotate(-45deg);
+					-webkit-transform: rotate(-45deg);
+				}
+			}
+		}
+	}
+	/**** Mobile Navigation Ends  ****/
+
+	/**** Home Page - Featured Products ****/ 
+	.mz-featured-products{ 
+		.heading-2{
+			margin-bottom: 0;  
+		}
+		.bx-wrapper{ 
+			padding: 0;
+			margin: 0 auto;
+			max-width: 690px !important;  
+			.mz-productlist-item{ 
+				padding: 10px;  
+				.mz-productlisting{
+					.mz-productlisting-image{
+						img{
+							width: 100%;  
+						} 		
+					}
+				}   
+			}
+			
+			.bx-pager{  
+				position: static;
+				padding: 0;   
+			} 
+		}	
+	}
+
+	/*** My Account ***/
+	.mz-myaccount {
+		.mz-myaccount-panels {
+			.mz-accountaddressbook {
+				.mz-old-accountaddressbook {
+					li {
+				        &.mz-accountaddressbook-contact {
+				        	width: 50%;
+						    border-left: 0;
+				            &.mz-accountaddressbook-form {
+				            	.mz-label {
+				            		width: 100%;
+								    text-align: left;
+								}
+								.col-sm-8 {
+									width: 100%;
+								}
+								.mz-addressform-address2 {
+									width: 100%;
+									.col-sm-8 {
+										margin-left: 0;
+									}
+								}
+								.mz-contacttypes {
+									div {
+										margin-left: 0;
+									}
+								}
+								.mz-account-contact-actions {
+									margin-left: 0;
+								}
+				            }
+				            &:nth-child(odd) {
+						    	border-right: 1px solid #e0e0e0;
+			    				border-left: 0;
+			    				padding-left: 15px;
+						    }
+				        }
+				        &:nth-child(odd) {
+					    	&.mz-accountaddressbook-contact {
+				           		&.mz-accountaddressbook-form {
+				           			padding-left: 0;
+				           		}
+				           	}
+					    }
+				    }
+				}
+			}
+		}
+	}
+	/***\ My Account ***/
+
+	/**** Mobile Nav Learning Center ****/
+	.mz-learning-center{
+		.lc-breadcrumbs{  
+			float: left;
+			width: 100%; 
+			margin: 20px 0 15px;   
+		}	
+	}
+	
+	.mz-mobilenav-lcenter{  
+		.toggle-btn{  
+			float: left; 
+		    width: 100%;
+		    text-align: left;
+		    background: #f3f3f3;
+		    font-size: 16px;
+		    color: #333;
+		    text-transform: uppercase;
+		    padding: 18px 25px 18px 15px;  
+		    border: none;
+		    border-bottom: 1px solid #e3e3e3; 
+		    .fa{  
+		    	float: right; 
+			    font-size: 30px;
+			    color: #1a3155;
+			    line-height: 18px;
+			    &:before {
+					content: "\f107";    
+				}
+			}
+			&.active{
+				.fa { 
+					&:before { 
+						content: "\f106";   
+					}
+				}
+			}
+			
+		}
+		#mz-mobilenav-containerLC{
+			width: 100%;
+			top: 56px; 
+			background: #f3f3f3;
+			padding-bottom: 20px;  
+		}
+		.mz-sitenav{
+			.mz-sitenav-item{
+				width: 100%; 
+				max-width: 100%;   
+			}
+			.panel-group{
+				.panel{
+					border-color: #e3e3e3; 
+					.panel-heading{
+						.panel-title{
+							a{
+								padding: 11px 25px 11px 15px;   
+								background: #f3f3f3; 
+								text-transform: uppercase;
+								color: #333;
+								.glyphicon{
+									color: #1a3155;
+									right: 25px;  	
+								}   
+							}
+						}		
+					}
+					.mz-sitenav-sub-sub{
+						padding-left: 15px; 
+					}		
+				}
+			}
+			.learning-center-search{
+				padding: 0 18px;
+				margin-top: 10px;   
+				.mz-searchbox{ 
+					.mz-searchbox-field{
+						width: 100%;
+						height: auto;  
+						background: #f3f3f3; 
+						border: none;
+						border-bottom: 1px solid #000;
+						.twitter-typeahead{
+							width: 100%;  
+						} 
+						.mz-searchbox-input{
+							background: #f3f3f3;
+							width: calc(~"100% - 46px"); 
+							height: 40px;
+							padding: 0 15px 0 0;     
+						}
+						.mz-searchbox-button{
+							background: #f3f3f3;
+							height: 40px;
+							.fa{ 
+								color: #1a3155; 
+							}
+						}
+					}
+				}	
+			}
+				
+		}
+	}
+	/**** Mobile Nav Learning Center End ****/
+
+	.mz-l-pagecontent{
+		margin-bottom: 0;  
+	}
+	.mz-l-paginatedlist {
+		.mz-pagenumbers {
+		    margin-left: 0;
+		}
+	}
+
+	.mz-productlisting{
+		.mz-productlisting-info{
+			.mz-button{
+				font-size: 14px;   
+			}		
+		}
+	}
+}

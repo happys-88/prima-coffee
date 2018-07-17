@@ -1,0 +1,180 @@
+﻿.mz-productlisting {
+    .mz-productlisting-image{
+        text-align: center; 
+        min-height: 160px;
+        img{
+            max-width: 160px;
+            max-height: 160px; 
+        } 
+    }
+    .mz-productlisting-info {
+        margin-top: 5px;
+        text-align: center;
+        .mz-button{
+            font-weight: 400;
+            line-height: 13px;
+            width: 100%;
+            max-width: 160px;
+        }
+        .mz-product-msg {
+            font-size: 12px;
+            float: left;
+            margin-top: 6px;
+            width: 100%;
+            min-height: 35px;  
+        }
+    }
+    .mz-productlisting-title {
+        font-size: @fontSizeLarge;
+        text-decoration: none;
+        display: inline-block;
+        min-height: 56px;
+    }
+    .mz-productlisting-shortdesc {
+        margin: @gutter/4 @gutter/2 @gutter/4 0;
+    }
+    .mz-productlisting-productcode {
+        font-size: @fontSizeLarge;
+    }
+
+    .mz-productlisting-imageplaceholder {
+        display: block;
+        height: @productListingThumbSize;
+        width: @productListingThumbSize;
+        background: #eee;
+        line-height: @productListingThumbSize;
+        text-align: center;
+        color: #aaa;
+        > * {
+            vertical-align: middle;
+        }
+
+        > .mz-productlisting-imageplaceholdertext {
+            vertical-align: top;
+        }
+    }
+
+    &.mz-productlisting-forlocation {
+        .mz-productlisting-image, .mz-productlisting-info {
+            float: left;
+            margin: @gutter/2;
+        }
+    }
+}
+
+.mz-productlisting-hide-price {
+    font-weight: 700;
+    float: left;
+    line-height: 30px;
+    min-height: 30px;
+    width: 100%;
+}
+
+/**** Product Listing Styling ****/ 
+.mz-productlist{ 
+    /*.mz-productlist-item {
+        width: 100%;
+        margin-bottom: @gutter; 
+        .mz-productlisting{
+            .mz-productlisting-image{
+                float: left;
+                width: 200px;
+                text-align: left; 
+            }
+            .mz-productlisting-info{
+                float: left;
+                width: calc(~"100% - 200px"); 
+                text-align: left; 
+            } 
+        } 
+    } */   
+    &.mz-productlist-tiled { 
+        .mz-productlist-item {
+            //width: 25%;
+            margin-bottom: 30px;
+            text-align: center;
+            .mz-productlisting {
+                .mz-productlisting-image{
+                    width: 100%; 
+                    text-align: center; 
+                }
+                .mz-productlisting-info{
+                    width: 100%;
+                    text-align: center; 
+                }
+                .mz-productlisting-title {
+                    color: #495363;
+                    font-size: 14px;
+                    width: 100%;
+                    min-height: 60px;
+                    text-decoration: none;
+                }
+                .mz-productlisting-productcode {
+                    display: none;
+                }
+            }
+            &:hover {
+                box-shadow: none;
+            }
+            .mz-price-in-cart {
+                float: left;
+                width: 100%;
+                min-height: 47px;
+                .orange-text {
+                    font-size: 12px;
+                    line-height: 14px;
+                    text-transform: capitalize;
+                }
+            }
+            .mz-pricestack {
+                float: left; 
+                min-height: 30px;
+                width: 100%;
+                .mz-price {
+                    font-size: 14px;
+                    color: #495363;
+                }
+                .mz-price-msrp{
+                    display: block;   
+                }
+            }
+            button {
+                &.add-to-cart { 
+                    background: #d15f2a;
+                    color: #fff;
+                    border: none;
+                    border-radius: 0;
+                    font-weight: 500;
+                    padding: 10px 20px;
+                    text-transform: uppercase;
+                    font-size: 14px;
+                    position: absolute;
+                    right: 0;
+                    bottom: 30px;
+                    left: 0;
+                    width: 150px;
+                    margin: 0 auto;
+                    &.is-disabled {
+                        opacity: 0.5;
+                    }
+                }
+                
+            }
+            .login-for-lowprice {  
+                background: #00adce;
+                border: none;
+                color: #fff;
+                line-height: 17px;
+                margin-top: 10px;
+            }
+        }
+    }
+}
+
+.mz-category {
+    .mz-productlist-tiled {
+        .mz-productlist-item {
+            min-height: 420px; 
+        }
+    }
+}

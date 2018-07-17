@@ -1,0 +1,47 @@
+<div class="isDisabled" id="indexreviews">
+    {% if reviews.bottomline.total_review && reviews.bottomline.average_score %}
+        <span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+            <span itemprop="ratingValue">{{reviews.bottomline.average_score}}</span> stars, based on
+            <span itemprop="reviewCount">{{reviews.bottomline.total_review}}</span> reviews
+        </span>
+    {% endif %} 
+
+    {% for review in reviews.reviews %}
+        <div class="row" itemprop="review" itemscope itemtype="https://schema.org/Review" data-review-id="">
+            <div class="span8">
+                <div class="pull-left">
+                    <p><small><span itemprop="author">{{review.user.display_name}}</span>
+                        {% if review.verified_buyer %}
+                            <span class="muted">Verified Buyer</span>
+                        {% endif %}
+                        {% if review.user.user_type == "AnonymousUser" %}
+                            <span class="muted"> </span>
+                        {% else %}
+                           <span class="muted">Verified Reviewer</span>
+                        {% endif %}</small>
+                    </p>
+                </div>
+                <div class="clearfix">
+                    <p><meta itemprop="datePublished" content="{{review.created_at}}">
+                    <small class="pull-right muted">{{review.created_at}}</small></p>
+                </div>
+                <div itemprop="reviewRating" itemscope itemtype=
+                "https://schema.org/Rating">
+                    <p><meta itemprop="worstRating" content="1">
+                    <span itemprop="ratingValue">{{ review.score }}</span> /
+                    <span itemprop="bestRating">5</span> stars</p>
+                </div>
+                <div>
+                    <p><span itemprop="name"><strong>{{ review.title }}</strong></span></p>
+                    <div itemprop="description">{{review.content}}</div>
+                </div>
+                <div class="pull-right muted" itemscope itemtype="https://schema.org/Comment">
+                    <p><small>Was this review helpful?
+                    <span itemprop="upvoteCount">{{review.votes_up}}</span>
+                    <span itemprop="downvoteCount">{{review.votes_down}}</span>
+                    </small></p>
+                </div>
+            </div>
+        </div>
+     {% endfor %}
+</div>

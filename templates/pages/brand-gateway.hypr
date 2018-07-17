@@ -1,0 +1,82 @@
+{% extends "page" %}  
+
+{% block title-tag-content %}{% firstof pageContext.metaTitle model.name %}  - {% parent %}{% endblock title-tag-content %}
+{% block body-tag-classes %} Brands {% endblock body-tag-classes %}
+
+{% block brand-gateway %} 
+  {% dropzone "Merchandise-drop-zone" scope="page" %}
+  {% dropzone "featured-brands" scope="page" %}
+
+<h2 class="heading-2"><span>All Brands</span></h2> 
+{% for brands in categories.all %}
+  {% if brands.content.name == "Brands" %}
+    <ul class="brand-header col-xs-12"> 
+      {% for subbrands in brands.childrenCategories|dictsort("name") %}
+        {% with subbrands.name|first as firstLetter %}
+          {% if forloop.counter0==0 %}
+            {% if firstLetter=="0" or  firstLetter=="1" or firstLetter=="2" or firstLetter=="3" or firstLetter=="4" or firstLetter=="5" or firstLetter=="6" or firstLetter=="7" or firstLetter=="8" or firstLetter=="9"  %}
+              <li class="brand-letter"><span><a href="javascript:void(0);" name="#{{firstLetter}}">0-9</a></span> </li>
+            {% else %}
+              <li class="brand-letter"><span><a href="javascript:void(0);" name="#{{firstLetter}}">{{ firstLetter|upper }}</a></span> </li>
+            {% endif %}
+          {% else %}
+            {% if firstLetter!=subbrand %}
+              {% if firstLetter=="0" or  firstLetter=="1" or firstLetter=="2" or firstLetter=="3" or firstLetter=="4" or firstLetter=="5" or firstLetter=="6" or firstLetter=="7" or firstLetter=="8" or firstLetter=="9"  %}
+            {% else %}
+              <li class="brand-letter"><span><a href="javascript:void(0);" name="#{{firstLetter}}">{{ firstLetter|upper }}</a></span> </li>
+            {% endif %}
+            {% endif %}
+          {% endif %}
+          {% set_var subbrand=firstLetter %}
+      
+      {% endwith %} 
+      {% endfor %}
+    </ul>
+    
+    {% for subbrands in brands.childrenCategories|dictsort("name") %}
+      {% with  subbrands.name|first as firstLetter %}
+        {% if forloop.counter0==0 %}
+          {% if firstLetter=="0" or  firstLetter=="1" or firstLetter=="2" or firstLetter=="3" or firstLetter=="4" or firstLetter=="5" or firstLetter=="6" or firstLetter=="7" or firstLetter=="8" or firstLetter=="9"  %}
+            <div class="brand-section" id="0-9">
+          {% else %}
+            <div class="brand-section" id="{{ firstLetter }}"> 
+          {% endif %}
+        {% else %}
+          {% if firstLetter != subbrand  %}
+            {% if firstLetter=="0" or  firstLetter=="1" or firstLetter=="2" or firstLetter=="3" or firstLetter=="4" or firstLetter=="5" or firstLetter=="6" or firstLetter=="7" or firstLetter=="8" or firstLetter=="9" %}
+            {% else %}
+              </div>
+              <div class="brand-section"  id="{{ firstLetter }}">
+            {% endif %}
+          {% endif %}
+        {% endif %}
+
+      {% if forloop.counter0==0 %}
+        {% if firstLetter=="0" or  firstLetter=="1" or firstLetter=="2" or firstLetter=="3" or firstLetter=="4" or firstLetter=="5" or firstLetter=="6" or firstLetter=="7" or firstLetter=="8" or firstLetter=="9"  %}
+          <div class="brand-letter col-xs-12">
+            <h3>0-9</h3>  
+          </div> 
+       {% else %}
+        <div class="brand-letter col-xs-12">
+          <h3>{{ firstLetter|upper }}</h3>
+        </div> 
+        {% endif %}
+       {% else %}
+       {% if firstLetter=="0" or  firstLetter=="1" or firstLetter=="2" or firstLetter=="3" or firstLetter=="4" or firstLetter=="5" or firstLetter=="6" or firstLetter=="7" or firstLetter=="8" or firstLetter=="9"  %}
+           {% else %}
+       {% if firstLetter!=subbrand %}
+        <div class="brand-letter col-xs-12">
+          <h3>{{ firstLetter|upper }}</h3> 
+        </div>   
+       {% endif %}   
+       {% endif %}
+       {% endif %}
+    {% set_var subbrand=firstLetter %}
+    <div class="brands col-sm-3 col-xs-6"><a href="{{subbrands.url}}">{{ subbrands.name }}</a></div>
+   
+{% endwith %}  
+{% endfor %}
+{% endif %}
+{% endfor %}
+</div>
+{% endblock brand-gateway %}

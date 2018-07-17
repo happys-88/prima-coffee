@@ -1,0 +1,11 @@
+{% with model|get_product_attribute("tenant~login-for-price") as loginForPrice %}
+
+    {% if loginForPrice.values|first|prop("value") === true %} 
+        {% if not user.isAnonymous %} 
+            {% include "modules/product/price-stack-two" %}
+        {% endif %}
+    {% else %}
+        {% include "modules/product/price-stack-two" %}
+    {% endif %}
+    
+{% endwith %}

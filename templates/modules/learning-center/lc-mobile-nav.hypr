@@ -1,0 +1,65 @@
+<nav class="mz-sitenav collapse" id="mz-mobilenav-containerLC">       
+    
+  <ul class="mz-sitenav-list"
+      data-mz-contextify='.mz-sitenav-link[href="{{ navigation.currentNode.url }}"]'
+      data-mz-contextify-attr='class'
+      data-mz-contextify-val='is-current'>
+        {% partial_cache %} 
+          {% for link in navigation.tree %} 
+          {% if link.name == "Learning Center" %}
+            <li class="mz-sitenav-item">
+              <a class="mz-sitenav-link hide" {% if link.openInNewWindow %}target='_blank'{% endif %} href="{{link.url}}">
+                {{link.name|replace("_", " ")|safe}} 
+              </a>
+
+              {% if link.items %}
+                <div class="panel-group" id="accordionLC" role="tablist" aria-multiselectable="true">
+                  {% for sublink in link.items %}
+                    <div class="panel">
+                      <div class="panel-heading" role="tab" id="sub-nav-heading-{{sublink.categoryCode}}">
+                        <h4 class="panel-title">
+                          <a role="button"{% if sublink.openInNewWindow %} target="_blank"{% endif %}                        
+                            {% if sublink.items %} 
+                              class="collapsed" data-toggle="collapse" data-parent="#accordionLC" data-target="#sub-nav-{{sublink.categoryCode}}" aria-expanded="false" aria-controls="sub-nav-{{sublink.categoryCode}}"
+                            {% endif %}
+                            {% if not sublink.items %} href="{{sublink.url}}"{% endif %}>
+                            {{sublink.name|replace("_", " ")|safe}} 
+                            {% if sublink.items %} 
+                              <span class="glyphicon glyphicon-plus-minus" aria-hidden="true"></span>    
+                            {% endif %}
+                              
+                            </a>  
+                        </h4>
+                      </div>
+                      {% if sublink.items %} 
+                      <div id="sub-nav-{{sublink.categoryCode}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="sub-nav-heading-{{sublink.categoryCode}}"> 
+                        <div class="panel-body">
+                          <ul class="mz-sitenav-sub-sub">
+                            {% for subsublink in sublink.items %} 
+                              <li class="mz-sitenav-item">
+                                <a class="mz-sitenav-link sub-sub-link" {% if link.openInNewWindow %}target='_blank'{% endif %} href="{{subsublink.url}}">{{ subsublink.name|replace("_", " ")|safe }}</a> 
+                              </li> 
+                            {% endfor %}  
+                          </ul>
+                        </div>
+                      </div>
+                    {% endif %}  
+                    </div>
+                   
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </li> 
+           
+          {% endif %} 
+          {% endfor %}
+        {% endpartial_cache %} 
+      
+      {% require_script "modules/contextify" %}
+  </ul>
+
+  <div class="learning-center-search">
+    {% include "modules/learning-center/search-box-lc" %}  
+  </div> 
+
+</nav>

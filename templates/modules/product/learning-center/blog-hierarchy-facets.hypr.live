@@ -1,0 +1,36 @@
+{% if facetValues and facetValues.length > 0 %}
+<div class="mz-facet-row">  
+    <h4>{{ facet.label|safe }}</h4>
+    <ul class="mz-facetingform-facet mz-facetingform-facet-hierarchy">
+        {% for fval in facetValues %}
+            {% if fval.isDisplayed %}
+                <li {% if fval.isApplied %}class="checked"{% endif %}>
+                    {% comment %}
+                    <a href="{% make_url "facet" fval  %}" class="mz-facetingform-link" data-mz-action="drillDown" data-mz-hierarchy-id="{{ fval.value }}" data-mz-facet-value="{{ fval.filterValue }}" data-mz-facet="{{ facet.field }}">{{ fval.label|replace(themeSettings.columnBreaker, "")|safe }}</a>
+                    {% endcomment %} 
+                    
+                    <input type="checkbox" id="{{facet.field|slugify }}_{{ fval.value|slugify }}" class="mz-facetingform-value" {% if fval.isApplied %}checked="checked"{% endif %} data-mz-facet="{{ facet.field }}" data-mz-facet-value="{{ fval.value }}" data-mz-url="{% make_url "facet" fval %}">
+                    <label class="mz-facetingform-valuelabel" for="{{facet.field|slugify }}_{{ fval.value|slugify }}" {% if facet.label == 'Color' %}style="background: {{ fval.value }}"{% endif %} >{{ fval.label }}</label>
+                            
+
+                    {% if themeSettings.showChildCategoriesInFaceting and fval.childrenFacetValues.length > 0 %}
+                        <ul class="mz-facetingform-facet mz-facetingform-facet-hierarchy">
+                            {% for child in fval.childrenFacetValues %}
+                                {% if child.isDisplayed and not child.isEmpty %}
+                                    <li {% if fval.isApplied %}class="checked"{% endif %}> 
+                                        {% comment %}
+                                        <a href="{% make_url "facet" child %}" class="mz-facetingform-link" data-mz-action="drillDown" data-mz-hierarchy-id="{{ child.value }}" data-mz-facet-value="{{ child.filterValue }}" data-mz-facet="{{ facet.field }}">{{ child.label|replace(themeSettings.columnBreaker, "")|safe }}</a>
+                                        {% endcomment %}
+                                        <input type="checkbox" id="{{facet.field|slugify }}_{{ fval.value|slugify }}" class="mz-facetingform-value" {% if fval.isApplied %}checked="checked"{% endif %} data-mz-facet="{{ facet.field }}" data-mz-facet-value="{{ fval.value }}" data-mz-url="{% make_url "facet" fval %}">
+                                        <label class="mz-facetingform-valuelabel" for="{{facet.field|slugify }}_{{ fval.value|slugify }}" {% if facet.label == 'Color' %}style="background: {{ fval.value }}"{% endif %} >{{ fval.label }}</label>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}

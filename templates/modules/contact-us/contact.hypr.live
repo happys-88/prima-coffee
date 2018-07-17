@@ -1,0 +1,49 @@
+                         <div class="col-md-6 col-xs-12 mz-contact-form">
+                            <form name="contactUsForm" method="post" id="contactUsForm" action="">     
+                                <div class="form-group">
+                                    <label class="col-sm-4 col-xs-12" for="{{ labels.firstName }}">{{ labels.firstName }}</label>
+                                    <div class="col-sm-8 col-xs-12">
+                                        <input type="text" name="firstname" data-mz-value="firstname" placeholder="{{ labels.firstName }}" maxlength="{{themeSettings.firstNameLength}}" class="form-control">
+                                        <span class="mz-validationmessage"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 col-xs-12" for="{{ labels.lastName }}">{{ labels.lastName }}</label>
+                                    <div class="col-sm-8 col-xs-12">
+                                        <input type="text" name="lastname" data-mz-value="lastname" placeholder="{{ labels.lastName }}" maxlength="{{themeSettings.lastNameLength}}" class="form-control">
+                                        <span class="mz-validationmessage"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 col-xs-12" for="{{ labels.email }}">{{ labels.email }}<span class="is-required"> *</span></label>
+                                    <div class="col-sm-8 col-xs-12">
+                                        <input type="email" class="form-control" id="{{ labels.email }}"  placeholder="{{ labels.email }}" name="" value="">
+                                        <span class="mz-validationmessage" data-mz-validationmessage-for="email"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 col-xs-12" for="{{ labels.subject }}">{{ labels.subject }}<span class="is-required"> *</span></label>
+                                    <div class="col-sm-8 col-xs-12">
+                                        <select class="form-control" id="{{ labels.subject }}">
+                                            <option value="">Coffee shop equipment list with price</option>
+                                            <option value="">Coffee shop equipment list with price</option>
+                                            <option value="">Coffee shop equipment list with price</option>
+                                            <option value="">Coffee shop equipment list with price</option>
+                                        </select>
+                                        <span class="mz-validationmessage" data-mz-validationmessage-for="selectedTopic"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 col-xs-12" for="{{ labels.message }}">{{ labels.message }}<span class="is-required"> *</span></label>
+                                    <div class="col-sm-8 col-xs-12">
+                                        <textarea rows="5" cols="50" id="message" name="message" data-mz-value="message" maxlength="{{ themeSettings.contactUsMessageLength }}" class="form-control"></textarea>
+                                    <span class="mz-validationmessage" data-mz-validationmessage-for="message"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-8 col-sm-offset-4 col-xs-12">
+                                        <button class="mz-button" type="button" data-mz-action="contactUsSubmit">{{ labels.submit }}</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>

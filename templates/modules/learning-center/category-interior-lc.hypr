@@ -1,0 +1,6 @@
+
+{% partial_cache model.categoryId pageContext.Sorting pageContext.Pagination pageContext.query.sortBy %}
+	{% include_products "modules/product/learning-center/faceted-articles" with includeFacets=themeSettings.showCategoryFacets and sortWithUrl=true and pageSize=themeSettings.defaultPageSizeDirectoryLC as_parameter %} 
+{% endpartial_cache %}
+
+{% dropzone "category-page-bottom" scope="page" %}         

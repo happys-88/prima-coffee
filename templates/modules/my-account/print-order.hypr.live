@@ -1,0 +1,149 @@
+<div class="container">   
+	<div class="row">
+		<div class="col-xs-12">
+			<h2 class="text-center">Order Invoice #{{ model.orderNumber }}</h2> 
+			<div class="address-col col-xs-6" id="shipping-address">
+				<p class="mz-heading">SHIP TO</p>  
+				<div class="shipping-address">
+					<p>{{ model.fulfillmentInfo.fulfillmentContact.firstName }} {{ model.fulfillmentInfo.fulfillmentContact.lastNameOrSurname }}</p>
+					<p>{{ model.fulfillmentInfo.fulfillmentContact.address.address1 }} </p>
+					<p>{{ model.fulfillmentInfo.fulfillmentContact.address.cityOrTown }} </p>
+					<p>{{ model.fulfillmentInfo.fulfillmentContact.address.stateOrProvince }} </p>
+					<p>{{ model.fulfillmentInfo.fulfillmentContact.address.postalOrZipCode }} </p>
+					<p>{{ model.fulfillmentInfo.fulfillmentContact.address.cityOrTown }} </p>
+				    <p class="mz-heading">Shipping Method</p>
+				    <p>{{ model.fulfillmentInfo.shippingMethodName }} </p>
+				</div>
+			</div>
+			<div class="address-col col-xs-6" id="billing-address">
+				<p class="mz-heading">BILL TO</p>  
+				<div class="billing-address"> 
+					<p>{{ model.billingInfo.billingContact.firstName }} {{ model.billingInfo.billingContact.lastNameOrSurname }}</p>
+					<p>{{ model.billingInfo.billingContact.address.address1 }} </p>
+					<p>{{ model.billingInfo.billingContact.address.cityOrTown }} </p>
+					<p>{{ model.billingInfo.billingContact.address.stateOrProvince }} </p>
+					<p>{{ model.billingInfo.billingContact.address.postalOrZipCode }} </p>
+					<p>{{ model.billingInfo.billingContact.address.cityOrTown }} </p>
+					<p>{{ model.billingInfo.billingContact.email }} </p>
+					<p class="mz-heading">Payment Method</p>   
+					<p>{{ model.billingInfo.paymentType }} for {{ model.total|currency }} </p>
+					{% if model.discount.lenght>0 or model.shippingDiscounts.length>0 or model.orderDiscounts.length>0  %} 
+					<strong>Coupon Code:</strong> <br>  
+					{% endif %}
+					{% for key, value  in model.discount %}
+						<p class="mz-discount"><span> {{ key }} </span>  for  <span>{{ value|currency }}</span></p>  
+					{% endfor %}
+					{% for shippingDiscount in model.shippingDiscounts %}
+						<p class="mz-discount"><span> {{ shippingDiscount.discount.couponCode }} </span>  for  <span>{{ shippingDiscount.discount.impact|currency }}</span></p>	 
+					{% endfor %}
+					{% for orderDiscount in model.orderDiscounts %}  
+						<p class="mz-discount"><span> {{ orderDiscount.couponCode }} </span>  for  <span>{{ orderDiscount.impact|currency }}</span></p>	  
+					{% endfor %} 
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12">
+			<div class="mz-print-list">
+				<div class="col-xs-12 mz-carttable-header">    
+					<div class="col-sm-6 mz-title item-col text-left">{{ labels.printOrderItem }}</div>    
+					<div class="col-sm-2 mz-title qty-col text-right">{{ labels.qty }}</div>
+					<div class="col-sm-2 mz-title price-each-col text-right no-padding">{{ labels.cartPriceEach }}</div>  
+					<div class="col-sm-2 mz-title price-col text-right">{{ labels.cartPrice }}</div>      
+				</div>
+				{% for item in model.items %} 
+					<div class="mz-itemlisting"> 
+						<div class="mz-itemlisting-details">
+							<div class="col-sm-6 mz-itemlisting-thumb-sku">
+								<div class="row">
+									<div class="mz-itemlisting-thumb col-sm-4"> 
+										<div class="mz-itemlisting-thumb-img">
+											{% if item.product.imageUrl %}  
+												<img src="{% make_url "image" item.product with max=150 as_parameters %}" {% if item.product.imageAlternateText %}alt="{{ items.product.imageAlternateText }}"{% endif %} />  
+											{% else %}
+												<span class="noimage-placeholder"><span class="noimage-text">{{ labels.productImagePlaceholder }}</span></span> 
+											{% endif %} 
+										</div>
+										<div class="mz-product-code">
+											<span>{{ item.product.variationProductCode|default(item.product.productCode) }}</span>
+										</div>
+									</div>
+									<div class="mz-product-info col-sm-8">    
+										<a class="mz-itemlisting-title" href="{{ item.product.url }}">{{ item.product.name }}</a>
+										<div class="mz-product-option">
+											{% for option in item.product.options %}
+												<div>{{ option.name }}: {{ option.value }}</div>
+											{% endfor %}
+										</div>
+										<div class="mz-product-status">
+											<span>Status: {{ model.status }}</span>    	
+										</div>
+									</div>
+								</div>
+							</div>						 	
+							<div class="col-sm-2 mz-itemlisting-quantity text-right"> 
+								<span>{{ item.quantity }}</span>
+							</div> 
+							<div class="col-sm-2 mz-itemlisting-price-each text-right no-padding">   
+								{% include "modules/common/item-price" %}
+							</div>
+							<div class="col-sm-2 mz-itemlisting-price text-right">
+								{% include "modules/common/item-total" %}     
+							</div>
+							<div class="col-sm-4 mz-carttable-item-discount text-right pull-right">     
+								
+								{% if item.productDiscounts.length > 0 %}
+									{% for productDiscount in item.productDiscounts %}
+										<div class="mz-discount-row"> 
+									  <span class="mz-item-discountname">{{ productDiscount.discount.name }}</span>
+									  {% if productDiscount.discount.freeShipping %}
+										<span class="mz-item-discountamt">{{ labels.freeShipping }}</span>
+									  {% else %}
+										<span class="mz-item-discountamt"> - {{ productDiscount.impact|currency }}</span>
+									  {% endif %}
+										</div>
+								  	{% endfor %}
+								  	<span class="mz-item-rowtotal {% if item.unitPrice.saleAmount %}is-saleprice{% endif %}">{{ item.discountedTotal|currency }}</span> 
+								{% endif %} 
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+		<div class="col-xs-12" >
+			<div class="merchandise-subtotal text-right"> 
+				<div><strong>{{ labels.merchandiseSubtotal }}:<span>{{ model.subtotal|currency }}</span></strong></div> 
+				{% for discount in model.orderDiscounts %}
+					{% if not discount.excluded %}
+						<div class="mz-ordersummary-discount">
+							<span class="mz-ordersummary-discountname">{{ discount.discount.name }}:</span>
+							<span class="mz-ordersummary-discountamt">-{{ discount.impact|currency }}</span>
+						</div>
+					{% endif %} 
+				{% endfor %}
+				
+				<div>Tax:<span>{{ model.taxTotal|currency }}</span></div>
+				<div>Shipping:<span> {{ model.shippingSubTotal|currency }}</span></div> 
+				{% for shippingDiscount in model.shippingDiscounts %}
+					<div class="mz-ordersummary-shippingdiscount">
+						<span class="mz-ordersummary-totalname">{{ shippingDiscount.discount.discount.name }}:</span>
+						<span class="mz-ordersummary-totalvalue">-{{ shippingDiscount.discount.impact|currency }}</span>
+					</div>
+				{% endfor %}  
+				{% if model.dutyAmount >= 0 %} 
+		            <div class="mz-ordersummary-duty">
+		                <span class="mz-ordersummary-totalname">{{ labels.labelOversized }}:</span>
+		                <span class="mz-ordersummary-totalvalue">{{ model.dutyAmount|currency }}</span>
+		            </div>
+		        {% endif %} 
+				<div class="mz-order-total"><strong>Total:<span>{{ model.total|currency }}</span></strong></div>  
+				<div><strong>{{ labels.youSaved }}:<span>{{ model.discountTotal|currency }}</span></strong></div>   
+			</div>
+		</div>
+		<div class="col-xs-12">
+			<a class="mz-button print-in-voice" href="javascript:void(0);" id="printInvoice">{{ labels.printInvoice }} </a>   
+		</div>
+	</div>
+</div>
+
+{% require_script "pages/print-order" %} 

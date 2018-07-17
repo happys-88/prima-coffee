@@ -1,0 +1,102 @@
+
+<div class="modal-dialog destroy" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">{{ labels.quickView }}</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="mz-product-quick-view">
+                 {% with model|get_product_attribute_values("tenant~new-arrival") as attribute %}
+                        {% if attribute== "true" %}
+                            <span class="mz-new-arrival-tag">{{ labels.new }}</span>
+                        {% endif %}
+                  {%  endwith %}
+                <div class="mz-product-image">
+                    <div class="product-slider">
+                        <div class="bxslider-Quickview" id="quick-slider">
+                            {% if model.dataurl %}
+                                <div class="product-image-slide">
+                                    <img src="{% make_url "image" model.dataurl %}" onerror="this.src='http://cdn-sb.mozu.com/25166-m1/cms/files/9665e4c9-1d61-4c2a-b940-91db8316fed4'" alt="{{ model.dataurl}}"
+                                    />
+                                </div>
+                            {% endif %}   
+                            
+                            {% if model.content.productImages.length > 0 %} 
+                                {% for image in model.content.productImages %}
+                                    <div class="product-image-slide">
+                                        <img src="{{ image.imageUrl }}" alt="{{ image.altText }}" />
+                                    </div>
+                                {% endfor %}
+                            {% else %}
+                                <span class="noimage-placeholder"><span class="noimage-text">{{ labels.productImagePlaceholder }}</span></span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="mz-product-info">
+                    <!-- Product name -->
+                    <h1 class="mz-pagetitle">
+                        <a href="{{ model.url }}">{{ model.content.productName }}</a>
+                    </h1>
+                    <!-- Product name -->
+
+                     <!-- Product code -->
+                    <div class="mz-product-code">
+                        <span>{{ labels.sku }}:</span> {{ model.variationProductCode|default(model.productCode) }}
+                    </div>
+                    <!--/ Product code -->
+
+                    <!-- Price -->
+                    <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="mz-productdetail-price">
+                        {% include "modules/product/price-show-stack" with hasStock=model.totalCount %}
+                    </div>
+                    <!--/ Price -->
+
+                    <!-- Product availability -->
+                    {% comment %}
+                    {% if model.inventoryInfo.onlineStockAvailable > 0 %}
+                        <div class="mz-stock-availability">
+                            <div class="mz-stock">
+                                <p>{{ labels.inStock }}: {{ model.inventoryInfo.onlineStockAvailable }}</p>
+                            </div>
+                        </div>
+                    {% endif %}
+                    {% endcomment %}
+                    <!--/ Product availability -->
+
+                    <!-- Short description -->
+                    <div id="productDescription">
+                        <p class="mz-product-description">{{ model.content.productShortDescription|safe}}</p>
+                    </div>
+                    <!--/ Short description -->
+
+                    <!-- Short options -->
+                    {% if model.options and model.options.length > 0 %}
+                        <div class="mz-productdetail-options mz-l-stack-section">
+                            {% include "modules/product/product-options" %}
+                        </div>
+                    {% endif %}
+                    <!--/ Short options -->
+
+                    <!-- Quantity Error --> 
+                    <span class="mz-validationmessage" data-mz-validationmessage-for="quantity">{{ model.addToCartErr }}</span>
+                    <!--/ Quantity -->
+                </div>
+
+                {% with model|get_product_attribute("tenant~login-for-price") as loginForPrice %}
+                 {% if loginForPrice.values|first|prop("value") === true %}
+                   {% if not user.isAnonymous %}
+                     {% include "modules/product/quickview-add-to-cart" %}
+                   {% else %}
+                     <a class="mz-button login-for-lowprice" href="javascript:void(0);" data-toggle="modal" data-target="#loginPopup" data-productcode="{{model.productCode}}">{{ labels.viewOnLogin }}</a>
+                     <a class="mz-full-product-details mz-left" href="{{model.url}}">{{ labels.fullProductDetails }}</a>
+                   {% endif %} 
+                   {% else %}
+                     {% include "modules/product/quickview-add-to-cart" %}
+                 {% endif %} 
+                {% endwith %} 
+            </div>
+        </div>
+    </div>
+</div>

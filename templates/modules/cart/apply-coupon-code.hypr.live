@@ -1,0 +1,17 @@
+<div class="mz-apply-coupon"> 
+	<div class="mz-l-formfieldgroup-cell">
+	  <label for="coupon-code">{{ labels.couponCode }}: </label>
+	</div>
+	<div class="mz-l-formfieldgroup-cell">
+	    <input type="text" id="coupon-code" name="coupon-code" value="{{ model.couponCode }}" data-mz-value="couponCode">
+	    <button type="button" id="cart-coupon-code" class="mz-button" data-mz-action="addCoupon" {% if not model.couponCode %} disabled="disabled" {% endif %}>{{ labels.apply }}</button>   
+	</div>
+</div>
+
+<span class="mz-validationmessage" data-mz-validationmessage-for="couponcode"></span>
+
+{% if model.tentativeCoupon %}
+	<span id="couponDisclaimer">{{labels.couponDisclaimer|string_format(model.tentativeCoupon)|safe}}</span> 
+{% endif %}
+
+{% include "modules/cart/coupon-detail" %}    

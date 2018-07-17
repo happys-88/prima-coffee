@@ -1,0 +1,184 @@
+﻿<div class="mz-ordersummary">  
+    <div class="mz-ordersummary-product-lists">
+        {% with model.attributes|findwhere("fullyQualifiedName", "tenant~trybeforebuy") as selectedTbybItem %}
+            {% with model.attributes|findwhere("fullyQualifiedName", "tenant~lift-gate") as liftGate %}
+                {% set liftGateMsgShow=liftGate.values %}
+                {% set selectedTbybItemVal=selectedTbybItem.values %}
+            {% endwith %}
+        {% endwith %}
+        {% for item in model.items %}
+            <div class="mz-ordersummary-lineitems">
+                <div class="mz-ordersummary-line mz-ordersummary-line-item {% if item.discountTotal > 0 %}is-discounted{% endif %} clearfix">
+                    <div class="mz-ordersummary-item-product">
+                        <div class="mz-order-product-image">
+                            {% if item.product.imageUrl %}
+                                <img src="{{ item.product.imageUrl }}" alt="{{ item.product.name }}" width="100" />
+                            {% else %}
+                                <span class="noimage-placeholder"><span class="noimage-text">{{ labels.productImagePlaceholder }}</span></span>
+                            {% endif %}  
+                        </div> 
+                        <div class="mz-order-product-info"> 
+                            <h3 class="mz-product-name">{{ item.product.name }}</h3>
+
+                            <div class="mz-product-options">
+                                {% for optionlist in item.product.options %}
+                                    <div><span>{{ optionlist.name }}:</span> {{ optionlist.value }}</div>
+                                {% endfor %}
+                             </div>
+
+                            {% if item.product.bundledProducts.length %}
+                                <div class="mz-propertylist">
+                                    {% for bundledProduct in item.product.bundledProducts %}
+                                        <div>{{ bundledProduct.productCode }}</div>&nbsp;
+                                        <span>{{ bundledProduct.name }} ({{ bundledProduct.quantity }})</span>
+                                    {% endfor %}
+                                </div>
+                            {% endif %} 
+
+                            {% with item.product.variationProductCode|default(item.product.productCode) as prodCode %}
+
+                                {% with labels.tbybProductCode|string_format(prodCode, item.id) as tbybItem %}
+                                    {% for property in item.product.properties %}
+                                        {% if property.name == 'Free Liftgate' %}
+                                            {% for v in property.values %}
+                                                {% if v.stringValue == true or v.value == true %}
+                                                    {% if liftGateMsgShow == 'True' %}
+                                                    <div class="lift-gate-msg"><i class="fa fa-exclamation-triangle"></i>{{ labels.liftGateMsg }}</div>
+                                                    {% endif %}
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% endif %}
+                                        {% if property.name == 'Try Before You Buy' %}
+                                            {% for v in property.values %}
+                                                {% if v.stringValue == true or v.value == true %}
+                                                    {% if selectedTbybItemVal == tbybItem %}
+                                                        <div class="tbyb-msg" id="tbyb_{{ item.product.variationProductCode|default(item.product.productCode) }}_{{item.id}}">
+                                                            {{ labels.tbybMsg }}
+                                                        </div>
+                                                    {% endif %}
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endwith %}
+                            {% endwith %}
+
+                        </div>
+                    </div>
+                    <div class="mz-order-product-qty">
+                        <div class="mz-ordersummary-header-qty">{{ labels.qty }}</div>
+                        <span>{{ item.quantity }}</span>
+                    </div>
+                    <div class="mz-order-product-each-price">
+                        <div class="mz-ordersummary-header-each">{{ labels.each }}</div>
+                        {% include "modules/common/item-price" %}
+                    </div>
+                    <div class="mz-order-product-save-price">
+                        <div class="mz-ordersummary-header-save">{{ labels.save }}</div>
+                        {% if item.product.price.salePrice %}
+                            {{ item.product.price.price|subtract(item.product.price.salePrice)|multiply(item.quantity)|currency }}
+                        {% else %}
+                            {{ 0.00|currency }}
+                        {% endif %}
+                    </div>
+                    <div class="mz-order-product-total-price">
+                        <div class="mz-ordersummary-header-total">{{ labels.total }}</div>
+                        {% include "modules/common/item-total" %}
+                    </div>
+                    {% if item.productDiscounts.length > 0 %}
+                        <div class="mz-carttable-item-discount col-xs-12 col-sm-4 pull-right">  
+                          {% for productDiscount in item.productDiscounts %}
+                            <div class="mz-discount-row"> 
+                              <span class="mz-item-discountname">{{ productDiscount.discount.name }}</span>
+                              {% if productDiscount.discount.freeShipping %}
+                                <span class="mz-item-discountamt">{{ labels.freeShipping }}</span>
+                              {% else %}
+                                <span class="mz-item-discountamt"> - {{ productDiscount.impact|currency }}</span>
+                              {% endif %}
+                            </div>
+                          {% endfor %}
+                          <span class="mz-item-rowtotal {% if item.unitPrice.saleAmount %}is-saleprice{% endif %}">{{ item.discountedTotal|currency }}</span>
+                        </div> 
+                    {% endif %} 
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <h3 class="mz-formstep-header mz-checkoutform-header">{{ labels.summaryOfCharges }}</h3>
+
+    <div class="mz-ordersummary-price-container">
+        <div class="mz-ordersummary-subtotal">
+            <span class="mz-ordersummary-totalname">{{ labels.subtotal }}:</span>
+            <span class="mz-ordersummary-totalvalue">{{ model.discountedSubtotal|currency }}</span>  
+        </div>
+
+        {% for discount in model.orderDiscounts %}
+            {% if not discount.excluded %}
+                <div class="mz-ordersummary-discount mz-discount-row">
+                    <span class="mz-ordersummary-discountname">{{ discount.discount.name }}:</span>
+                    <span class="mz-ordersummary-discountamt">-{{ discount.impact|currency }}</span>
+                </div>
+            {% endif %}
+        {% endfor %}
+
+        <div class="mz-ordersummary-shippingtotal">
+            <span class="mz-ordersummary-totalname">{{ labels.shipping }}:</span> 
+            <span class="mz-ordersummary-totalvalue">{{ model.shippingSubTotal|currency }}</span>
+        </div>
+
+        {% for shippingDiscount in model.shippingDiscounts %}
+            <div class="mz-ordersummary-shippingdiscount mz-discount-row"> 
+                <span class="mz-ordersummary-totalname">{{ shippingDiscount.discount.discount.name }}:</span>
+                <span class="mz-ordersummary-totalvalue">-{{ shippingDiscount.discount.impact|currency }}</span>
+            </div>
+        {% endfor %}  
+
+        {% if model.dutyAmount >= 0 %} 
+            <div class="mz-ordersummary-duty">
+                <span class="mz-ordersummary-totalname">{{ labels.labelOversized }}:</span>
+                <span class="mz-ordersummary-totalvalue">{{ model.dutyAmount|currency }}</span>
+            </div>
+        {% endif %}
+
+        {% if model.taxTotal >= 0 %}   
+            <div class="mz-ordersummary-tax">
+                <span class="mz-ordersummary-totalname">{{ labels.tax }}:</span>
+                <span class="mz-ordersummary-totalvalue">{{ model.taxTotal|currency }}</span>
+            </div>
+        {% endif %} 
+        
+        {% if model.handlingTotal %} 
+            <div class="mz-ordersummary-additionalhandling">
+                <span class="mz-ordersummary-totalname">{{ labels.additionalHandling }}
+                    {% if model.handlingAmount > model.handlingTotal %}
+                        <span class="is-crossedout" {% block crossedout-inline-style %}{% endblock crossedout-inline-style %}> ( {{ model.handlingAmount|currency }} )</span>
+                    {% endif %}
+                </span> 
+                <span class="mz-ordersummary-totalvalue">{{ model.handlingTotal|currency }}</span>
+            </div>
+        {% endif %}
+
+        <div class="mz-ordersummary-grandtotal">
+            <span class="mz-ordersummary-totalname">{{ labels.orderTotal }}:</span> 
+            <span class="mz-ordersummary-totalvalue">{{ model.total|currency }}</span>
+        </div>
+
+        {% if model.billingInfo and model.billingInfo.digitalCreditPaymentTotal %}
+            <div class="mz-ordersummary-digitalcreditpayment">
+                <span class="mz-ordersummary-totalname">{{ labels.digitalCreditTotal }}</span>
+                <span class="mz-ordersummary-totalvalue">{{ labels.digitalCreditSubtractFromOrderPrefix }}{{ model.billingInfo.digitalCreditPaymentTotal|currency }}{{ labels.digitalCreditSubtractFromOrderSuffix }}</span>
+            </div>
+            <div class="mz-ordersummary-grandtotal">
+                <span class="mz-ordersummary-totalname">{{ labels.remainingBalance }}:</span>
+                <span class="mz-ordersummary-totalvalue">{{ model.billingInfo.nonStoreCreditTotal|currency }}</span>
+            </div>
+        {% endif %}
+        <div class="mz-ordersummary-saved">
+            <span class="mz-ordersummary-totalname">{{ labels.youSaved }}:</span> 
+            <span class="mz-ordersummary-totalvalue">{{ model.discountTotal|currency }}</span> 
+        </div>
+    </div>
+</div>
+
+

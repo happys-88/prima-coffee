@@ -1,0 +1,108 @@
+/**** Site Changes for small screens ****/
+@media @mz-md-media-query{
+	.mz-pageheader{
+		.mz-header-bottom{ 
+
+		}	
+	}
+	
+	//Navigation
+	.mz-sitenav {
+		.mz-sitenav-item{
+			.mz-sitenav-link{
+				font-size: 13px;    
+				padding: 10px 10px;     
+			}	
+		}
+	}
+
+	/**** Home Page ****/
+	#mz-drop-zone-shop-now-widget{
+		.mz-cms-col-6-12{
+			.shop-now-widget{
+				.col-xs-12{
+					padding: 0; 
+				}
+				.mz-details-container{
+					.mz-hot-deal-title-one{
+						font-size: 18px;
+						line-height: 24px; 
+						padding: 0; 
+					}
+					.mz-hot-deal-title-two{
+						font-size: 26px;
+						line-height: 32px; 
+					}
+					.mz-hot-deal-title-three{
+						font-size: 16px;
+						line-height: 20px; 
+					}
+					.mz-btn{
+						margin-top: 13px; 
+					}		
+				}
+			}
+		}
+	}
+
+	//Back to top
+	#back-to-top{
+		bottom: 100px; 
+	}
+}
+
+// Media query for medium screens
+@media screen and (min-width: 1024px) and (max-width: 1279px){  
+	/**** Global Navigation ****/
+	.mz-sitenav{
+		.mz-sitenav-sub-container{
+			width: 100%;
+			.mz-sitenav-item{
+				margin-bottom: 5px;   
+			} 
+		}
+		.mz-category-heading{
+			padding: 0; 
+		}
+		.mz-sitenav-sub{
+			padding: 0;  
+		}
+		.mz-sitenav-top-categories{
+			padding: 0;
+			.mz-sitenav-item{
+				width: 20%;  
+			}
+			.mz-category-image{
+				margin-bottom: 0;  
+			}
+			.mz-category-name{
+				.mz-sitenav-link{
+					font-size: 13px;
+					font-weight: normal;  
+				}
+			}  
+		}
+		.mz-sitenav-all-categories{
+			padding: 15px 0;
+			.mz-sitenav-sub{
+				width: 20%; 
+			} 
+		} 
+	}
+
+	/**** Search Box ****/  
+	.mz-pageheader{
+		.mz-searchbox{ 
+			margin-left: 50px;  
+			@expandedSearchWidth: 450px; 
+			.mz-searchbox-input{
+				width: @expandedSearchWidth;
+				padding-left: 15px;
+				padding-right: 60px;    
+			} 
+			.tt-dropdown-menu{
+				width: @expandedSearchWidth + 2;  
+			}	
+		}
+	}
+}

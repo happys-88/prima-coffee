@@ -1,0 +1,29 @@
+{% if model.items.length > 0 %}
+	{% for modeldata in model.items %}
+		<li class="mz-recentproductlist-item" prod-code="{{ modeldata.productCode }}">
+			<div class="mz-product-image">
+				<a href='{% make_url "product" modeldata %}'>
+				{% if modeldata.content.productImages %}
+					{% with modeldata.content.productImages|first as prodImage %}
+						{% include "modules/product/product-image" with productImage=prodImage productMaxWidth="160" as_parameter %}
+					{% endwith %}
+				{% else %}
+			    	{% include "modules/product/product-image" with productImage=modeldata.mainImage productMaxWidth="160" as_parameter %}
+				{% endif %}
+				</a>
+			</div>
+			<div class="mz-product-details">
+				<a href="{% make_url "product" modeldata %}" class="mz-productlisting-title">{{ modeldata.content.productName }}</a>
+				<div class="mz-product-rating">
+					<img src="../../resources/images/product-rating.jpg" alt="product-rating">
+				</div>
+				<div class="mz-price-stack">
+					<span class="mz-price {% if modeldata.price.salePrice %} is-crossedout {% endif %}">{{ modeldata.price.price|currency }}</span>
+					{% if modeldata.price.salePrice %}
+						<span>{{ modeldata.price.salePrice|currency }}</span>
+					{% endif %}
+				</div>
+			</div>
+		</li>
+	{% endfor %}
+{% endif %}

@@ -1,0 +1,30 @@
+﻿{% extends "page" %}
+
+{% block title-tag-content %}{% firstof pageContext.metaTitle labels.logIn %} - {% parent %}{% endblock title-tag-content %}
+{% block body-tag-classes %} mz-loginpage {% endblock body-tag-classes %}
+{% block breadcrumbs %}{% endblock breadcrumbs %}
+{% block body-content %}
+<div class="mz-l-container">
+    <h1 class="mz-pagetitle">{{ labels.logIn2 }}</h1>
+    <form method="post" class="mz-login-page" name="mz-loginform">
+       <input type="hidden" name="returnUrl" value="{{ model.returnUrl }}" />
+        <h3 class="mz-pagetitle">{{ labels.logIn2 }}</h3>
+        <p>{{ labels.logInMsg }}.</p>
+        <div class="mz-l-formfieldgroup">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                <input name="email" value="{{model.email|default:user.email}}" type="email" data-mz-login-email placeholder="{{ labels.logInInput }}" />
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                <input name="password"  type="password" data-mz-login-password placeholder="{{ labels.password }}" />
+            </div>
+            <div class="input-group">
+                <a href="/user/forgotpassword" class="mz-forgot">{{ labels.forgotPasswordLink }}</a>
+            </div>
+            <section data-mz-role="popover-message" class="mz-popover-message"></section>
+            <button class="mz-button mz-button-large mz-login-button" data-mz-action="loginpage-submit">{{ labels.logIn }}</button>
+        </div>
+    </form>
+</div>
+{% endblock body-content %}

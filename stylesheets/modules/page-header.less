@@ -1,0 +1,80 @@
+﻿@headerHeight: 154px;
+@headerBaseline: 66px;
+@searchBoxHeight: 34px; 
+@utilityNavHeight: @headerBaseline - (@gutter / 2) - @searchBoxHeight;
+
+.mz-pageheader {
+    &.mz-pageheader-hasbanner {
+        background: #eee url('{{themeSettings.bannerImage}}') {{ themeSettings.bannerImageRepeat }};
+    }
+    padding: 0;
+    float: left;
+    width: 100%;
+    .container {
+        position: relative;
+    }
+    .mz-header-top {
+        float: left;
+        width: 100%;
+        background: #00adce;
+        text-align: left; 
+        padding: 6px 0;
+        font-size: 16px;
+        p {
+            font-size: 16px; 
+            margin: 0 ;
+            color: #fff; 
+        }
+        .live-chat {
+            display: inline-block;
+            margin-right: 47px; 
+            .mz-live-chat-link {
+                color: #fff;
+                .fa {
+                    font-size: 18px;
+                    margin-left: 8px;
+                }
+            }
+        }
+        .phone-no {
+            display: inline-block;
+            a {
+                color: #fff;
+            }
+        }
+    }
+    .mz-header-bottom {
+        float: left;
+        width: 100%;
+        padding: @gutter 0;
+        transition: all 0.5s ease-in-out; 
+        .mz-storebranding {
+            float: left;
+            .mz-logo {
+                display: block;
+                background: url("../resources/images/prima-supply-logo.png") left top no-repeat;
+                width: 250px;
+                height: 68px;
+                background-size: contain;
+                transition: all 0.5s ease-in-out; 
+            }
+            img {
+                display: block;
+                transition: width 0.5s ease-in-out;
+            }
+        }
+    }
+    &.mz-pageheader-hasbanner {
+        .mz-storebranding {
+            text-indent: -9999px;
+        }
+    }
+    .mz-utilitynav {
+        float: right;
+        margin-top: 12px;
+    }
+    .mz-searchbox {
+        float: left;
+        margin: 11px 0 0 75px;  
+    }
+} 

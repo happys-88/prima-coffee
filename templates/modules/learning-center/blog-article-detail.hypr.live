@@ -1,0 +1,73 @@
+
+{% comment %}
+{% if model.content.productShortDescription and themeSettings.showProductDetailShortDesc %}
+  <div class="mz-productdetail-shortdesc mz-l-stack-section">
+    <span itemscope="description">{{ model.content.productShortDescription|safe }}</span>
+  </div>
+{% endif %}
+{% endcomment %}
+
+<div class="mz-productdetail-fulldesc mz-l-stack-section">
+  {{ model.content.productFullDescription|safe }} 
+</div>
+
+<div class="featured-products">
+  {% dropzone "featured-products" scope="page" %}   
+</div>
+
+{% comment %}
+<div class="mz-blog-pagination">
+	<span class="prev-post">Previous</span>
+	<span class="seperator">|</span> 
+	<span class="next-post">Next <i class="fa fa-angle-right"></i></span>  
+</div>
+{% endcomment %} 
+<div class="mz-blog-pagination">  
+	<span class="prev-post"><a id="prev-url">{{ labels.previousPage }}</a></span>
+	<span class="seperator">|</span> 
+	<span class="next-post"><a id="next-url">{{ labels.nextPage }}</a><i class="fa fa-angle-right"></i></span>   
+</div>
+
+{% block disqus-section %}
+	<div id="disqus_thread"></div>
+
+<script>
+
+ 
+
+/**
+
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+
+
+var disqus_config = function () {
+	var canonicalVal = '{{pageContext.crawlerInfo.canonicalUrl}}';
+	this.page.url = canonicalVal ? canonicalVal : '';  // Replace PAGE_URL with your page's canonical URL variable
+	this.page.identifier = 'node/{{ model.productCode }}'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+
+	/* this.page.url = 'blog/a-beginners-guide-to-pour-over-coffee-brewing';
+	this.page.identifier = 'node/29106'; // Product Code is important */
+	
+};
+
+
+
+(function() { // DON'T EDIT BELOW THIS LINE
+
+	var d = document, s = d.createElement('script');
+	s.src = 'https://primasupply.disqus.com/embed.js';
+	// s.src = 'https://primacoffee.disqus.com/embed.js';
+	s.setAttribute('data-timestamp', +new Date());
+	(d.head || d.body).appendChild(s);
+})();
+
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+{% endblock disqus-section %}
+
+{% require_script "pages/product" %}  

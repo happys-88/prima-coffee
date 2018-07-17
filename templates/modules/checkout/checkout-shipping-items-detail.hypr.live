@@ -1,0 +1,102 @@
+<div class="clearfix">
+    {% if model.fulfillmentContact %}
+        <a href="javascript:;" class="mz-summary-edit">{{ labels.edit }}</a>
+        <div class="col-md-6 col-sm-12">
+            <div class="mz-formstep-summary mz-addresssummary">
+                <h3 class="mz-summary-header">{{ labels.shipTo }}</h3>
+                {% with model.fulfillmentContact as dataModel %}
+                    <span>{{ dataModel.firstName }} {{ dataModel.lastNameOrSurname }}</span>
+                    <span>{{ dataModel.address.address1 }}</span>
+                    {% if dataModel.address.address2 %}
+                        <span>{{ dataModel.address.address2 }}</span>
+                    {% endif %}
+                    {% if dataModel.address.address3 %}
+                        <span>{{ dataModel.address.address3 }}</span>
+                    {% endif %}
+                    <span>{{ dataModel.address.cityOrTown }}, {{ dataModel.address.stateOrProvince }} {{ dataModel.address.postalOrZipCode }}</span>
+                    <span>{{ dataModel.address.countryCode }}</span>
+                    {% if dataModel.phoneNumbers.home %}
+                        <span>{{ dataModel.phoneNumbers.home }}</span>
+                    {% endif %}
+                {% endwith %}
+            </div>
+        </div>
+    {% endif %}
+
+    {% if model.shippingMethodCode %}
+        <div class="col-md-6 col-sm-12">
+            <h3 class="mz-summary-header">{{ labels.shippingOptions }}</h3>
+            <span>{{ model.shippingMethodName }}</span>
+        </div>
+    {% endif %}
+
+    <div class="mz-ships-from col-xs-12">
+    	{% for itemArray in model.modelItems %}
+    		<div class="mz-ships-from-prima">
+        		{% if itemArray.primaShip.length > 0 %}
+        			<h4>{{ labels.shipsFromPrima }} </h4>
+        			{% for item in itemArray.primaShip %}
+                        <div class="mz-prima-product clearfix">
+            				<div class="col-md-6 col-sm-12">
+                				<h5 class="mz-product-name">{{ item.product.name }}</h5>
+            	                {% for optionlist in item.product.options %}
+            	                    <div>{{ optionlist.name }}: {{ optionlist.value }}</div>
+            	                {% endfor %}		
+        	                </div>	    	
+        	                <div class="col-md-6 col-sm-12">
+        	                	{% for property in item.product.properties %}
+        	                		{% if property.name === 'Availability' %}
+        	                			{% for v in property.values %}
+        	                				{{v.value}}
+        			                    {% endfor %}
+        	                		{% endif %}
+        	                		{% if property.name === 'Free Liftgate' %}
+        	                			{% for v in property.values %}
+        			                        {% if v.stringValue === true or v.value === true %}
+        				                      	{% if itemArray.liftGate === true %}
+        					                			{{ labels.liftGateServiceAdded }}
+        					                	{% endif %}
+        			                        {% endif %}
+        			                    {% endfor %}
+        			                {% endif %}	
+        		                {% endfor %}
+                                <div>Arrives within x-x business days.</div>
+        	                </div>
+                        </div>
+        			{% endfor %}
+        		{% endif %}
+            </div>
+
+            <div class="mz-ships-from-distributor">
+        		{% if itemArray.distShip.length > 0 %}
+        			<h4>{{ labels.shipsFromDistributor }}</h4>
+        			{% for item in itemArray.distShip %}
+                        <div class="mz-distributor-product clearfix">
+        					<div class="col-md-6 col-sm-12">
+        						<h5 class="mz-product-name">{{ item.product.name }}</h5>
+        		                {% for optionlist in item.product.options %}
+        		                    <div>{{ optionlist.name }}: {{ optionlist.value }}</div>
+        		                {% endfor %}
+        	            	</div>
+        	                <div class="col-md-6 col-sm-12">
+        	                	{% for property in item.product.properties %}
+        	                		{% if property.name === 'Free Liftgate' %}
+        	                			{% for v in property.values %}
+        	                				String valiue : {{ v.stringValue }}
+        			                        {% if v.stringValue === true or v.value === true %}
+        				                      	{% if itemArray.liftGate  === true %}
+        					                			{{ labels.liftGateServiceAdded }}
+        					                	{% endif %} 
+        			                        {% endif %}
+        			                    {% endfor %}
+        			                {% endif %}	
+        		                {% endfor %}
+                                <div>Arrives within x-x business days.</div>
+        	                </div>
+                        </div>
+        			{% endfor %}
+        		{% endif %}
+            </div>
+    	{% endfor %}
+    </div>
+</div>

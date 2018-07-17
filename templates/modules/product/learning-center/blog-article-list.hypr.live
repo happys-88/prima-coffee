@@ -1,0 +1,11 @@
+<div class="mz-productlist mz-blog-listing"> 
+	{% if model.items %}    
+	    <ul class="mz-productlist-list">
+	        {% for prod in model.items %}
+	            <li class="mz-productlist-item col-xs-12 col-sm-4" data-mz-product="{{ prod.productCode }}">
+	            	{% include "modules/product/learning-center/blog-article-listing" with model=prod %}
+	            </li>     
+	        {% endfor %}  
+	    </ul>
+    {% endif %}
+</div> 

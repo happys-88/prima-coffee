@@ -1,0 +1,31 @@
+<div class="mz-create-account-fields mz-checkoutform mz-checkoutform-active">
+    <div id="accountCreatedSignUp" style="display: none;">
+        <h3>{{ labels.accountCreated}}</h3>
+    </div>
+    <div id="createAccountSignUp">
+        <h3>{{ labels.setUpAccountHeader}}</h3>
+        <p>{{ labels.confirmationAccountSetupMessage1|safe }}</p>
+        <p>{{ labels.confirmationAccountSetupMessage2|safe }}</p>
+        <div class="mz-confirmation-signup-from">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                <input type="text" class="form-control" name="new-account-email" id="emailAddressSignup" data-mz-value="emailAddress" value="{{ model.emailAddress|default(model.billingInfo.billingContact.email) }}" />
+                <span class="mz-validationmessage" data-mz-validationmessage-for="emailAddress"></span>
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                <input type="password" class="form-control" name="new-account-password" id="passwordSignup" data-mz-value="password" value="{{ model.password }}" placeholder="{{ labels.password }}" />
+                <span class="mz-validationmessage" data-mz-validationmessage-for="password"></span>
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                <input type="password" class="form-control" name="new-account-confirm" id="confirmPasswordSignUp" data-mz-value="confirmPassword" value="{{ model.confirmPassword }}" placeholder="{{ labels.reEnterPassword }}"/>
+                <span class="mz-validationmessage" data-mz-validationmessage-for="confirmPassword"></span>
+            </div>
+            <section id="errorMessageSignUp" class="mz-popover-message"></section>
+            <button type="button" class="mz-button mz-button-large" data-mz-value="submitAccount">{{ labels.saveMyInfo }}</button>
+        </div>
+    </div>
+</div>
+
+{% require_script "modules/confirmation" %}

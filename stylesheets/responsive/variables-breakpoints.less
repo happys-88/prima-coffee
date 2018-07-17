@@ -1,0 +1,18 @@
+
+/********** Define Screen Widths **********/
+@mz-xs-minwidth: 320px; 
+@mz-sm-minwidth: 768px;
+@mz-md-minwidth: 1024px; 
+@mz-lg-minwidth: 1440px;  
+
+@mz-xs-maxwidth: (@mz-sm-minwidth - 1);
+@mz-sm-maxwidth: (@mz-md-minwidth - 1);
+@mz-md-maxwidth: (@mz-lg-minwidth - 1); 
+
+@mz-xs-media-query: ~"screen and (max-width: @{mz-xs-maxwidth})";
+@mz-mobile-landscape: ~"screen and (min-width: 568px) and (max-width: 767px)"; 
+@mz-sm-media-query: ~"screen and (min-width: @{mz-sm-minwidth}) and (max-width: @{mz-sm-maxwidth})"; 
+@mz-md-media-query: ~"screen and (min-width: @{mz-md-minwidth})";   
+@mz-lg-media-query: ~"screen and (min-width: @{mz-lg-minwidth})";
+@mz-mobile-tablet-common-media-query: ~"screen and (max-width: 1024px)";      
+

@@ -1,0 +1,75 @@
+<div class="modal-dialog modal-dialog-addons" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title" {% if model.addToCartErr %} style="color: red;" {% endif %}>
+                {% if model.addToCartErr %}
+                    {{ model.addToCartErr }}
+                {% else %}
+                    {{ labels.addToCartSuccess }}
+                {% endif %}
+            </h4>
+        </div>
+        <div class="modal-body">
+            {% if not model.addToCartErr %}
+                {% if model.addonsPopup %}
+                    <div class="mz-product-addons">
+                        <span class="mz-validationmessage">{{ model.addToCartErrr }}</span>
+                        <h4 class="mz-l-stack-sectiontitle"><a class="mz-productlisting-title" href="{% make_url "product" model %}">{{model.content.productName}}</a></h4>
+                        <div class="product-detail">
+                            <div class="mz-product-image">
+                                {% with model.mainImage as image %}
+                                    {% if image %}
+                                        <img class="mz-itemlisting-thumb-img" src="{% make_url "image" image with max=120 as_parameters %}" {% if image.altText %}alt="{{ image.altText }}"{% endif %} />
+                                    {% else %}
+                                         <span class="noimage-placeholder"><span class="noimage-text">{{ labels.productImagePlaceholder }}</span></span>
+                                    {% endif %}
+                                {% endwith %}
+                            </div>
+                            <div class="mz-product-info">
+                                {% include "modules/product/price-show-stack" with hasStock=model.options.length %}
+                            </div>
+                        </div>
+                        <div class="mz-productdetail-options mz-l-stack-section">
+                            <div class="mz-carttable-item-remove pull-left">
+                                <a href="javascript:;" data-mz-removeItem data-mz-cart-item="{{ model.cartItemId }}"><i class="fa fa-times"></i>{{ labels.removeFromPopup }}</a>
+                            </div>
+                            <div class="pull-right" id="cart">
+                                <a class="mz-utilitynav-link mz-utilitynav-link-cart mz-button mz-button-large" href="/cart">{{ labels.viewCartPopup }}</a>
+                            </div>
+                        </div>
+                        {% if model.hasAddon === true %}
+                            <div class="mz-productdetail-options add-on-popup">
+                                <h4 class="mz-l-stack-sectiontitle add-on-select">{{ labels.addOnsSelect }}</h4>
+                                {% include "modules/product/product-addons-for-popup" %}
+                            </div>
+                        {% endif %}
+                        
+                       
+                        <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="mz-productdetail-price">
+                            <div class="pull-left"><label>{{ labels.itemSubtotal }}:</label></div> 
+                            <div class="pull-left">{% include "modules/product/price-show-stack" with hasStock=model.options.length %}</div>
+                        </div>
+                        <div class="cart-cont-shop clearfix">
+                            <button type="button" class="pull-left continue-shopping mz-button mz-button-large " data-dismiss="modal">{{ labels.continueShopping }}</button>
+                            <span class="mz-validationmessage" data-mz-validationmessage-for="quantity"></span>
+                            {% if model.hasAddon === true %}
+                                <div class="mz-productdetail-conversion-buttons">
+                                    <button class="pull-right addtocartaddon mz-productdetail-addtocart mz-button mz-button-medium  {% if not model.inventoryInfo.onlineStockAvailable %} is-disabled {% endif %}" data-mz-productcode="{{model.variationProductCode|default(model.productCode) }}" {{ model.addToCartButton }}>
+                                        {{ labels.addToCart }}
+                                    </button>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% else %}
+                        <input id="qty-field" class="mz-productdetail-qty text-center mz-carttable-qty-field" type="text" data-mz-cart-item="{{ model.productTypeId }}" value="1" readonly="readonly"data-mz-value='quantity' title="Quantity" style="display: none;">
+                        <div class="mz-productdetail-conversion-buttons">
+                            <button class="addtocart mz-productdetail-addtocart mz-button mz-button-medium" disabled= "{% if not model.isPurchasable %} disabled {% endif %}" data-mz-productcode="{{model.variationProductCode|default(model.productCode) }}" style="display: none;">
+                            </button>
+                        </div>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+</div>

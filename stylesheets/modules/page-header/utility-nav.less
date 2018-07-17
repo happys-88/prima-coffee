@@ -1,0 +1,60 @@
+﻿.mz-utilitynav { 
+    color: @textColor;
+    font-size: @fontSizeSmall; 
+    .mz-utilitynav-item {
+        float: left;
+        margin-left: 47px;
+        text-align: right;
+        position: relative; 
+        &:last-child {
+            margin-right: 15px;
+            text-align: right;
+        }
+        &.live-chat{
+            display: none;
+        }
+    } 
+    .mz-utilitynav-link { 
+        color: @siteBaseColor; 
+        text-align: center;
+        font-weight: bold;
+        cursor: pointer; 
+        .fa{
+            display: block;
+            font-size: 35px;
+            color: @siteBaseColor;
+        }
+        &:hover {
+            text-decoration: none;
+        }
+    }
+    .mz-utilitynav-link-cart {
+        display: block;
+        height: 40px;
+        .mz-cartmonitor {
+            display: block;
+            background: @cartColor;
+            color: #fff;
+            width: 28px;
+            height: 28px;
+            font-size: 20px;
+            border-radius: 50%;
+            text-align: center;
+            position: absolute;
+            right: -14px;
+            top: -14px
+        }
+    }
+    .login-icon {
+        display: block; 
+        padding-right: 20px; 
+        cursor: pointer; 
+        .fa {
+            display: block; 
+            font-size: 35px;  
+        }
+        .fa-angle-down {
+            display: none; 
+        }
+    }
+}

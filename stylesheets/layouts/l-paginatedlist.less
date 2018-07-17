@@ -1,0 +1,96 @@
+﻿.mz-l-paginatedlist {
+    overflow: auto;
+    position: relative;
+    margin-top: 16px;
+    .mz-pagetitle {
+        color: @textColor;
+        border-bottom: 1px solid #e0e0e0;
+        font-size: 30px;
+        margin-top: 16px;
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+    }
+    .mz-sortby {
+        .mz-pagingcontrols-pagesort-label {
+            margin-bottom: 0;
+            .mz-paging-sorttitle {
+                font-size: 14px;
+                color: @textColor;
+                font-weight: 700;
+                margin-right: 15px;
+            }
+            select {
+                border: 1px solid @defaultBorderColor;
+                color: #3d3d3d;
+                font-weight: 400;
+                width: 203px;
+                height: 35px;
+                margin-bottom: 0;
+                padding: 4px 8px;
+            }
+        }
+    }
+    .col-md-offset-2 {
+        margin-left: 16.66666667%;
+        margin-top: 7px;
+    }
+    .mz-pagingcontrols {
+        float: right;
+        border-right: 1px solid #dbdbda;
+        margin-top: 5px;
+        padding-right: 25px;
+    } 
+    .mz-pagenumbers {
+        float: right;
+        margin-top: 5px;
+        margin-left: 14px;
+        .mz-pagenumbers-prev,
+        .mz-pagenumbers-next,
+        .mz-pagenumbers-number {
+            display: inline-block;
+            font-size: 14px;
+            padding: 2.5px 11px;
+            &.is-current {
+                background: #e4e5e3;
+                color: #d25e2b;
+                padding: 2.5px 21px;
+            }
+            .fa {
+                font-size: 17px;
+                font-weight: 700;
+            }
+            &:visited {
+                color: #d25e2b,
+            }
+        }
+    }
+    .mz-l-tiles {
+        clear: both;
+    }
+    .mz-l-paginatedlist-header {
+        .clearfix();
+        margin-bottom: 24px;
+        padding-top: 1px;
+        position: relative;
+    }
+    .mz-l-paginatedlist-footer {
+        .clearfix();
+        .mz-back-to-top {
+            display: none;
+            span {
+                background: #e4e5e3;
+                color: #415265;
+                display: inline-block;
+                font-size: 16px;
+                height: 41px;
+                line-height: 40px;
+                padding: 0 24px;
+                text-transform: uppercase;
+            }
+        }
+        margin-top: 21px; 
+    }
+    .mz-l-paginatedlist-list {
+        .clearfix();
+    }
+}

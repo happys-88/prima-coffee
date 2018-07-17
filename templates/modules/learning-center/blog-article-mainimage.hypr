@@ -1,0 +1,7 @@
+{% if model.content.productImages %}
+    <figure>  
+        <img src="{% make_url "image" model.mainImage with max=themeSettings.featuredPostImageSize as_parameters %}" {% if model.mainImage.altText %}alt="{{ model.mainImage.altText }}"{% endif %} />
+    </figure>
+{% else %}
+    <span class="mz-productimages-noimage">[{{ labels.noImages}}]</span> 
+{% endif %}

@@ -1,0 +1,95 @@
+.shop-now-widget {  
+    border: 9px solid #e0e0e0;
+    font-family: 'Lato', sans-serif;
+    float: left;
+    .col-sm-7,
+    .col-sm-5 {
+        padding: 0;
+    }
+    .col-sm-7 { 
+        .mz-image-container { 
+            img {
+                max-width: 100%;
+            }
+        }
+    }
+    .mz-details-container {
+        color: #415265;
+        font-size: 24px;
+        padding: 32px 15px 49px 15px;
+        text-align: center;
+        p {
+            margin: 0;
+            font-weight: 600;
+        }
+        .mz-hot-deal-title-one {
+            font-size: 24px;
+            line-height: 60px;
+            text-transform: uppercase;
+        }
+        .mz-hot-deal-title-two {
+            font-size: 44px;
+            line-height: 56px;
+            text-transform: uppercase;
+        }
+        .mz-hot-deal-title-three {
+            font-size: 20px;
+            line-height: 35px;
+            color: #495363;
+        }
+        .mz-btn {
+            background-color: #d15f2a;
+            color: #fff;
+            font-size: 18px;
+            display: inline-block;
+            line-height: 36px;
+            margin-top: 15px;
+            padding: 2px 32px;
+            text-transform: capitalize;
+        }
+    }
+}
+
+
+.mz-cms-col-6-12 {
+    &:nth-child(1) {
+        .shop-now-widget {
+            margin-right: 15px;
+        }
+    }
+    &:nth-child(2) {
+        .shop-now-widget {
+            margin-left: 15px;
+            background-image: url("../resources/images/shop-now-widget-bg.jpg"); 
+            .col-sm-7 { 
+                float: right;
+            }
+            .col-sm-5 {  
+                .mz-details-container {
+                    /*background-image: url("../resources/images/shop-now-widget-bg.jpg");*/  
+                    color: #fff;
+                    .mz-hot-deal-title-one {
+                        font-size: 24px;
+                        line-height: 32px;
+                        padding-top: 15px;
+                        text-transform: none;
+                    }
+                    .mz-hot-deal-title-two {
+                        font-size: 20px;
+                        line-height: 35px;
+                        text-transform: lowercase;
+                    }
+                    .mz-hot-deal-title-three {
+                        font-size: 44px;
+                        line-height: 54px;
+                        color: #fff;
+                        text-transform: uppercase;
+                    }
+                    .mz-btn {
+                        margin-top: 30px;
+                    }
+                }
+            }
+        }
+    }
+}

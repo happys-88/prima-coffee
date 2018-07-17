@@ -1,0 +1,45 @@
+﻿.mz-l-sidebar {
+	margin-top: 36px;
+	h2 {
+		color: @siteBaseColor; 
+		border-bottom: 1px solid #e0e0e0;
+		font-size: 24px;
+		margin-top: 16px;
+		margin-bottom: 10px;
+		padding-bottom: 15px;
+		position: relative;
+		text-transform: uppercase;
+		&.mz-facets-dropdown {
+			&:after {
+			    content: "\f067";
+			    background: #e4e5e3;
+			    color: #495363;
+			    font-size: 16px;
+			    font-family: "FontAwesome";
+			    font-weight: 900;
+			    width: 29px;
+			    height: 29px;
+			    line-height: 31px;
+			    position: absolute;
+			    top: 9px;
+			    right: 15px;
+			    text-align: center;
+			    display: none;
+			}
+			&.mz-facets-dropdown-open {
+				&:after {
+					content: "\f068";
+				}
+			}
+		}
+	}
+    @media (max-width: 600px) {
+        float: none;
+        padding-right: none;
+        padding: @gutter/2 0; 
+    }
+}
+
+.mz-l-sidebaritem {
+    margin: 0 0 @gutter;
+}

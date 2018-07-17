@@ -1,0 +1,63 @@
+{% if not pageContext.query.partial %}
+{% if pageContext.search.query != "" and pageContext.search.query != 'undefined' %}
+
+    <h1 class="mz-pagetitle">{{ labels.foundSearchResults|string_format(model.totalCount, pageContext.search.query) }}</h1>
+
+{% endif %}
+<script type="text/json" id="data-mz-preload-facetedproducts">
+{
+    "facets": {% json model.facets %}, 
+    "currentPage": {{ model.currentPage }},
+    "firstIndex": {{ model.firstIndex }},
+    "hasNextPage": {{ model.hasNextPage|lower }},
+    "hasPreviousPage": {{ model.hasPreviousPage|lower }},
+    "lastIndex": {{ model.lastIndex }},
+    "middlePageNumbers": {% json model.middlePageNumbers %},
+    "pageCount": {{ model.pageCount }},
+    "pageSize": {{ model.pageSize }},
+    "startIndex": {{ model.startIndex }},
+    "totalCount": {{ model.totalCount }},
+    "currentSort": "{{ model.currentSort }}"
+}
+</script>
+{% endif %}
+
+<div class="col-xs-12 faceted-articles">  
+    <div class="mz-l-paginatedlist"> 
+    <div class="mz-l-paginatedlist-header">
+        <h1 class="mz-pagetitle">{{ navigation.currentNode.name|safe }}</h1> 
+        
+        {% if model.facets %}
+            <div class="col-xs-12 no-padding">   
+                <div data-mz-facets class="mz-l-sidebar">
+                    {% include "modules/product/learning-center/blog-faceting-form" %} 
+                </div>
+            </div>              
+        {% endif %}
+        <div class="col-xs-12 col-sm-6 pull-right">
+            <div data-mz-pagenumbers class="mz-pagenumbers">
+                {% include "modules/common/page-numbers" %}
+            </div>
+            
+            <div data-mz-pagingcontrols class="mz-pagingcontrols">
+                {% include "modules/common/blog-paging-controls" %} 
+            </div>
+                            
+        </div>  
+        
+    </div>
+
+    <div data-mz-productlist class="mz-l-paginatedlist-list">
+        {% include "modules/product/learning-center/blog-article-list" %}    
+    </div>
+
+    <div class="mz-l-paginatedlist-footer">
+        <div data-mz-pagenumbers class="mz-pagenumbers">
+            {% include "modules/common/page-numbers" %}
+        </div>
+        <div data-mz-pagingcontrols class="mz-pagingcontrols">
+            {% include "modules/common/blog-paging-controls" %} 
+        </div> 
+    </div>
+    </div>
+</div>

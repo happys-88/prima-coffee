@@ -1,0 +1,36 @@
+<div class="col-xs-12 no-padding">   
+    <div class="mz-cart-buttons">
+        <button type="button" id="continueShoppingCartButton" class="mz-button continue-btn">{{ labels.continueShopping }}</button> 
+        {% if user.isAnonymous %} 
+            <button type="button" class="mz-button" data-toggle="modal" data-target="#loginPopup">{{ labels.saveCart }}</button>   
+        {% endif %}
+
+        {% if user.isAnonymous %}
+            <button id="cart-guest-checkout" type="button" class="mz-button"  data-toggle="modal" data-target="#loginCheckoutPopup">{{ labels.proceedToCheckout }}</button>
+        {% else %}
+           <button id="cart-checkout"  class="mz-button" {% if model.isEmpty %} disabled="disabled" {% endif %} data-mz-action="proceedToCheckout">{{ labels.proceedToCheckout }}</button>
+        {% endif %}  
+    </div>
+
+    {% if not model.isEmpty %}
+        {% with siteContext.checkoutSettings.externalPaymentWorkflowSettings|findwhere("isEnabled", true) as externalPaymentWorkflowsEnabled %}
+           {% if externalPaymentWorkflowsEnabled %}
+            <div class="mz-cart-buttons-thirdparty"> 
+              <p>{{ labels.orWith }}</p>
+              {% for externalPayment in siteContext.checkoutSettings.externalPaymentWorkflowSettings %}
+                  {% if externalPayment.isEnabled %}
+                  <div class="mz-carttable-thirdpartypayment" >
+                    {% if externalPayment.name == "VisaCheckout" %}
+                      <img alt="Visa Checkout" class="v-button" role="button" src="{{ pageContext.visaCheckoutButtonUrl }}"/>  
+                    {% endif %}
+                    {% if externalPayment.name == "PayPalExpress2" %}
+                      <img id="btn_xpressPaypal" class="p-button" alt="Check Out With PayPal" role="button" src="{% make_url "cdn" "/cms/files/paypal-btn.png" %}" /> 
+                    {%endif%}
+                  </div>
+                  {%endif%}
+              {%endfor%}
+            </div>
+          {% endif %}
+        {%endwith%}
+      {% endif %}
+</div>

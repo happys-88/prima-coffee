@@ -1,0 +1,30 @@
+<span class="mz-heading">{{ labels.estimateYourTaxShipping }}</span> 
+  <div class="mz-l-formfieldgroup-row">
+    <div class="mz-l-formfieldgroup-cell">
+        <label for="shippingTo">Shipping To</label>
+    </div>
+    <div class="mz-l-formfieldgroup-cell">
+      <select data-mz-value="usStates" id="usStates" class="mz-pagingcontrols-pagesize-dropdown" autocomplete="off">
+
+              {% block states-dropdown %}
+                {% for size in themeSettings.usStates %}
+                  <option {% if size.abbreviation == model.selectedState %}selected="selected"{% endif %} value="{{ size.abbreviation }}">{{size.name}}</option>
+                {% endfor %}
+              {% endblock states-dropdown %}
+           </select>
+    </div>
+  </div> 
+  <div class="mz-l-formfieldgroup-row">
+      <div class="mz-l-formfieldgroup-cell">
+          <label for="shippingTo">Shipping Method</label>
+      </div>
+      <div class="mz-l-formfieldgroup-cell">
+       <select data-mz-value="usShipping" id="shippingOption" class="mz-pagingcontrols-pagesize-dropdown" autocomplete="off">
+           {% block shipping-dropdown %}
+              {% for shipping in model.shippingDetail %}
+                <option {% if shipping.content.name == model.selectedShipping %}selected="selected"{% endif %} id="{{ shipping.content.name }}" value="{{ shipping.content.name }}" price="{{ shipping.amount }}" >{{ shipping.content.name }} ${{ shipping.amount }}</option>          
+              {% endfor %}
+            {% endblock shipping-dropdown %}
+         </select>
+      </div>
+  </div> 

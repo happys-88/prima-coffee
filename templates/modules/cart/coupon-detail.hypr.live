@@ -1,0 +1,10 @@
+
+{% with model.orderDiscounts|first as discountData %}
+	{% if model.orderDiscounts.length > 0 and discountData.couponCode %} 
+		<div class="mz-coupon-detail"> 
+			<p class="mz-coupon-success-msg text-success">Code Applied Successfully</p> 
+			<span class="mz-coupon-code" id="{{ discountData.couponCode }}">{{ discountData.couponCode }}</span>  
+			<span class="mz-remove-coupon" data-mz-action="removeCoupon">Remove</span>
+		</div> 
+	{% endif %} 
+{% endwith %}   

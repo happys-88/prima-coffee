@@ -1,0 +1,6 @@
+﻿<div class="mz-featured-products">
+	<h2 class="heading-2"><span>{{ Model.config.title }}</span></h2> 
+	{% include_products Model.config.template|default:"modules/product/product-list-tiled" with  productCodes=Model.config.productCodes as_parameter %}	
+</div>
+{% require_script "widgets/featured-products" %} 
+

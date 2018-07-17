@@ -1,0 +1,76 @@
+#mz-home-slider {
+    .bx-viewport {
+        min-height: 460px;
+        overflow: hidden;
+    }
+    .slider {
+        visibility: hidden;
+        .mz-slide {
+            display: block;
+            background-position: center center; 
+            background-size: cover;
+            min-height: 460px;
+        }
+        .mz-slide-details {
+            width: 40%;
+            margin: auto;
+            position: absolute;
+            bottom: 42px;
+            right: 18%;
+            text-align: center;
+            h2 {
+                color: #fff;
+                font-size: 120px;
+                text-transform: uppercase; 
+                font-weight: 900;
+                margin: 0 0 10px;
+            }
+            p {
+                color: #fff;
+                font-size: 20px;
+                margin: 0 0 @gutter;
+            }
+            button {
+                font-size: @fontSizeLarger;
+                color: #fff;
+                background: #d15f2a;
+                padding: 12px 14px;
+                font-weight: normal;
+                border: none;
+                text-transform: none;
+                margin: 0;
+            }
+        }
+    }
+    .bx-wrapper {
+        .bx-controls-direction {
+            width: 100%;
+            max-width: 1440px;
+            position: absolute;
+            margin: 0 auto;
+            top: 50%;
+            right: 0;
+            left: 0;
+            a {
+                margin-top: -21px;
+                &.bx-next {
+                    right: 15px;
+                }
+                &.bx-prev {
+                    left: 15px;
+                }
+            }
+        }
+        .bx-pager {
+            &.bx-default-pager {
+                a {
+                    width: 15px;
+                    height: 15px;
+                    -moz-border-radius: 50%;
+                    -webkit-border-radius: 50%;
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,40 @@
+{% extends "page" %} 
+
+{% block title-tag-content %}{% firstof pageContext.metaTitle model.name %}  - {% parent %}{% endblock title-tag-content %}
+{% block body-tag-classes %}mz-printorder{% endblock body-tag-classes %} 
+
+{% block breadcrumbs %} {% endblock breadcrumbs %}  
+
+{% block body-content %}
+	{% require_script "pages/print-order" %}
+
+	{% block utility-bar %} {% endblock %}
+	{% block page-header %} {% endblock %} 
+	{% block site-nav %} {% endblock %}
+	{% block mobile-nav %} {% endblock %}
+
+	<div class="mz-logo-header">   
+		<div class="mz-storebranding pull-left">
+			<a class="mz-logo" href="{{siteContext.siteSubdirectory}}/" title="{{ siteContext.generalSettings.websiteName }}">
+				<img src="{% make_url "cdn" "/cms/files/prima-supply-logo.png" %}" alt="Prima Supply">   
+			</a>
+		</div>
+		<div class="phone-no pull-right"> 
+	        <a href="tel:+(888)810-5043">(888) 810-5043</a>      
+	    </div>	 		
+	</div>    
+
+	<div id="print-order"></div>
+
+	{% block page-footer %} {% endblock %}  
+
+	<div class="mz-checkout-footer" style="display: none;">    
+        <div class="mz-pagefooter-copyright" id="copyright">
+            <span class="mz-pagefooter-copyrighttext">
+                {{ labels.copyRight }} {% now Y %} {{ siteContext.generalSettings.websiteName }}.
+            </span>
+        </div>      
+    </div>  
+
+{% endblock body-content %}    
+

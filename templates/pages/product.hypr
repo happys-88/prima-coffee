@@ -1,0 +1,85 @@
+{% extends "page" %}
+
+{% block title-tag-content %}{% firstof pageContext.metaTitle model.0.prodModel.content.productName|safe %}  - {% parent %}{% endblock title-tag-content %}
+
+{% block body-tag-classes %}mz-product{% endblock body-tag-classes %} 
+
+{% block body-content %}
+
+{% require_script "pages/product" %}
+
+<script type="text/javascript">
+    (function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/4X91rXasdFWFBX4Rnh5WEr4NnvMwpFpjxzNFLubD/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})(); 
+    $(document).ready(function () {
+        $('#indexreviews').hide();
+    });
+</script>
+
+{% if model.length==2 %}
+    {% for vals in model %}
+        {% if forloop.first %}
+            {% set_var prodMod=vals.prodModel %}
+        {% else %}
+            {% set_var reviews=vals.review %}
+        {% endif %}   
+    {% endfor %}
+    {% preload_json prodMod "product" %} 
+{% else %}
+    {% set_var prodMod=model %}
+    {% preload_json prodMod "product" %} 
+{% endif %}
+
+<div itemscope itemtype="http://schema.org/Product" class="mz-l-container">
+    <div class="row">
+        <div data-mz-productimages class="col-xs-12 col-sm-6 mz-productimages mz-l-sidebar">
+            {% include "modules/product/product-images" with model=prodMod %}
+        </div> 
+        <div class="col-xs-12 col-sm-6 mz-productdetail-wrap">
+            {% include "modules/common/message-bar" with model=prodMod %}   
+
+            <h1 class="mz-pagetitle" itemprop="name">{{ prodMod.content.productName }}</h1>   
+            <div class="yotpo-review-section-pdp">   
+              <!-- Yotpo Rating -->
+              {% block star-rating %}
+                <div class="yotpo bottomLine" data-product-id="{{prodMod.productCode}}" id="reviewLink"></div>  
+              {% endblock star-rating %} 
+
+              {% block question-answer %}
+                  <div class='yotpo QABottomLine' data-appkey='4X91rXasdFWFBX4Rnh5WEr4NnvMwpFpjxzNFLubD' data-product-id='{{ prodMod.productCode }}' id="askQuestionLink"></div> 
+              {% endblock question-answer %}
+              <!-- Yotpo Rating --> 
+            </div> 
+
+            <div id="product-detail" class="mz-productdetail mz-l-stack">
+                {% include "modules/product/product-detail" with model=prodMod %}
+            </div> 
+        </div>
+        <div class="col-xs-12 mz-product-prop">
+            {% include "modules/product/product-properties" with model=prodMod %} 
+        </div>
+
+        {% block yotpo-reviews-questions %} 
+            {% include "modules/product/yotpo-review-and-qa" with model=prodMod reviewData=reviews %}
+            {% require_script "pages/yotpo-review" %} 
+        {% endblock yotpo-reviews-questions %}  
+    </div>
+</div>
+
+{% dropzone "productDropzone" scope="page" %}
+
+<input type="hidden" id="customProductCode" value="{{ prodMod.productCode }}" /> 
+
+{% block you-may-also-like %}
+    <div id="product-crosssells"></div>
+{% endblock you-may-also-like %}
+
+{% block recently-viewed %}
+    {% include "modules/product/recent/recently-viewed-products" with model=prodMod %}
+{% endblock recently-viewed %}
+
+{% endblock body-content %}
+{% block body-below-content %}
+    {% dropzone "body-bottom" scope="page" %}   
+{% endblock body-below-content %}
+
+ 

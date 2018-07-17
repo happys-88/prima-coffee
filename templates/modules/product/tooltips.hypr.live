@@ -1,0 +1,80 @@
+
+{% for property in model.properties %} 
+  
+  {% if property.attributeFQN  == "tenant~nohassle_return" %}
+    {% for propValue in property.values %}
+      {% if propValue.value == true %}
+        {% for propertyForTooltip in model.properties %}
+          {% if propertyForTooltip.attributeFQN == "tenant~no-hasstle-return-tooltip" %} 
+            {% for propValueTooltip in propertyForTooltip.values %} 
+              {% if propValueTooltip.stringValue %}
+                <div class="mz-tooltip">   
+                  <img src="/resources/images/service-logos/no-hassle-return.png">
+                  <div class="mz-tooltip-text"> {{ propValueTooltip.stringValue|safe }}</div>    
+                </div>
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+  {% if property.attributeFQN  == "tenant~tb4b_enabled" %} 
+    {% for propValue in property.values %}
+      {% if propValue.value == true %}
+        {% for propertyForTooltip in model.properties %}
+          {% if propertyForTooltip.attributeFQN == "tenant~try-before-you-buy-tooltip" %} 
+            {% for propValueTooltip in propertyForTooltip.values %}
+              {% if propValueTooltip.stringValue %} 
+                <div class="mz-tooltip"> 
+                  <img src="/resources/images/service-logos/try-before-u-buy.png">
+                  <div class="mz-tooltip-text">{{ propValueTooltip.stringValue|safe }}</div>   
+                </div>
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}  
+    {% endfor %} 
+  {% endif %}
+
+  {% if property.attributeFQN  == "tenant~price_match_guarantee" %} 
+    {% for propValue in property.values %}
+      {% if propValue.value == true %}  
+        {% for propertyForTooltip in model.properties %}
+          {% if propertyForTooltip.attributeFQN == "tenant~price-match-guarantee-tooltip" %} 
+            {% for propValueTooltip in propertyForTooltip.values %}
+              {% if propValueTooltip.stringValue %}
+                <div class="mz-tooltip">  
+                  <img src="/resources/images/service-logos/price-match.png">
+                  <div class="mz-tooltip-text"> {{ propValueTooltip.stringValue|safe }}</div> 
+                </div>
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+  {% if property.attributeFQN  == "tenant~free-shipping" %} 
+    {% for propValue in property.values %}
+      {% if propValue.value == true %}   
+        {% for propertyForTooltip in model.properties %}
+          {% if propertyForTooltip.attributeFQN == "tenant~free-shipping-tooltip" %}  
+            {% for propValueTooltip in propertyForTooltip.values %}
+              {% if propValueTooltip.stringValue %}
+                <div class="mz-tooltip">  
+                  <img src="/resources/images/service-logos/free-shipping.png"> 
+                  <div class="mz-tooltip-text"> {{ propValueTooltip.stringValue|safe }}</div> 
+                </div>
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+{% endfor %} 

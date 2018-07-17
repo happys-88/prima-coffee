@@ -1,0 +1,54 @@
+<div class="mz-productoptions add-on">
+    {% if model.optionArr %}
+        {% for option in model.optionArr %}
+
+            {% if option.attributeDetail.inputType == "List" %}
+                {% if option.attributeDetail.dataType == "ProductCode" and option.stockCount > 0 %}
+                    <div class="mz-productoptions-optioncontainer">
+                        <div class="mz-productoptions-valuecontainer">
+                            <select {% if option.isMultiValue %}multiple{% endif %} class="mz-productoptions-option form-control" data-mz-product-option="{{ option.attributeFQN }}">
+                                {% if not option.isMultiValue %}<option>{{ labels.select }} {{ option.attributeDetail.name }}</option>{% endif %}
+                                {% for value in option.values %}
+                                    {% if value.bundledProduct.inventoryInfo.onlineStockAvailable > 0 %}
+                                        <option {% if not value.isEnabled %} class="is-disabled" {% endif %} {% if value.isSelected %}selected="true"{% endif %} value="{{value.value}}">{{value.stringValue|default(value.value)}}
+                                        {% if value.deltaPrice and value.deltaPrice > 0 %}
+                                            ( {{ value.deltaPrice|currency }} {{ labels.more }} )
+                                        {% endif %}
+                                        </option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endif %}
+        
+        {% endfor %}
+    {% else %}    
+        {% for option in model.options %}
+
+            {% if option.attributeDetail.inputType == "List" %}
+                {% if option.attributeDetail.dataType == "ProductCode" and option.stockCount > 0 %}
+                    <div class="mz-productoptions-optioncontainer">
+                        <div class="mz-productoptions-valuecontainer">
+                            <select {% if option.isMultiValue %}multiple{% endif %} class="mz-productoptions-option form-control" data-mz-product-option="{{ option.attributeFQN }}">
+                                {% if not option.isMultiValue %}<option>{{ labels.select }} {{ option.attributeDetail.name }}</option>{% endif %}
+                                {% for value in option.values %}
+                                    {% if value.bundledProduct.inventoryInfo.onlineStockAvailable > 0 %}
+                                        <option {% if not value.isEnabled %} class="is-disabled" {% endif %} {% if value.isSelected %}selected="true"{% endif %} value="{{value.value}}">{{value.stringValue|default(value.value)}}
+                                        {% if value.deltaPrice and value.deltaPrice > 0 %}
+                                            ( {{ value.deltaPrice|currency }} {{ labels.more }} )
+                                        {% endif %}
+                                        </option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endif %}
+        
+        {% endfor %}
+    {% endif %}
+    
+</div>

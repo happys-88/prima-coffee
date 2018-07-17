@@ -1,0 +1,26 @@
+{% extends "page" %}
+
+{% block title-tag-content %}{% firstof pageContext.metaTitle model.name %}  - {% parent %}{% endblock title-tag-content %}
+{% block body-tag-classes %}refund-exchange{% endblock body-tag-classes %}
+{% block breadcrumbs %}
+    {% include "modules/customer-service-breadcumb" %}
+{% endblock breadcrumbs %}
+{% block body-content %}
+<div class="mz-customer-service-page">
+    <div class="mz-l-container">
+        <div class="row"> 
+            <div class="col-sm-9 col-lg-10 mz-customer-service-panels pull-right">
+                <h3 class="mz-l-stack-sectiontitle">{{ labels.returnAndExchange }}</h3>
+                <div class="mz-dropzone">
+                    {% dropzone "returnAndExchange" scope="page" %}
+                </div>
+            </div>
+            <div class="col-sm-3 col-lg-2 mz-customer-service-nav">     
+                <div class="mz-l-sidebar">
+                    {% include "modules/customer-service/service-nav" %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body-content %}

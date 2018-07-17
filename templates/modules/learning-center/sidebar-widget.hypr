@@ -1,0 +1,32 @@
+{% if themeSettings.showYotpoGallery %} 
+<div class="mz-sidebar-content-widget"> 
+	<div class="yotpo-gallery">  
+        <h2 class="heading-2"><span>Prima Supply</span></h2>    
+        <div class="yotpo yotpo-pictures-gallery"
+            data-layout="full_page"
+            data-layout-scroll="0"
+            data-spacing="0"
+            data-source="instagram"
+            data-title="0"
+            data-hover-color="#ffffff"
+            data-hover-opacity="0.8"
+            data-hover-icon="true"
+            data-cta-text="Shop Now"
+            data-cta-color="#ff7a00">
+        </div>
+        <a href="{{ themeSettings.instagramFollowUsLink }}" target="_blank" class="mz-button">Follow Us</a>       
+    </div> 
+</div>
+{% endif %} 
+<div class="mz-sidebar-content-widget">
+	{% dropzone "featured-products" scope="page" %}	
+</div>
+<div class="mz-sidebar-content-widget mz-popular-articles">
+	<h2 class="heading-2"><span>Popular Articles</span></h2> 
+	<ul>
+		<li><a href="javascript:void(0);">A Beginners Guide to Pour Over Coffee Brewing</a></li>
+		<li><a href="javascript:void(0);">Video Vault: Baratza Forte Comparisons and Tutorials</a></li>
+		<li><a href="javascript:void(0);">Popular Article #3</a></li>
+	</ul>
+</div> 
+

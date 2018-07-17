@@ -1,0 +1,44 @@
+
+{% extends "page" %} 
+
+{% block title-tag-content %}
+	{% firstof pageContext.metaTitle|safe model.name|replace(themeSettings.columnBreaker, "")|safe %}  - {% parent %}
+{% endblock title-tag-content %}
+
+{% block body-tag-classes %}mz-learning-center gateway-page{% endblock body-tag-classes %}  
+
+{% block body-content %}
+	{% dropzone "blog-name" scope="page" %}
+	
+	<div data-mz-category="{{model.categoryId}}" class="mz-l-container">
+		<div class="lc-top-section"> 
+			{% include "modules/learning-center/lc-top-section" %} 	
+		</div> 
+	    <div class="mz-content-section">
+	       	<div class="col-xs-12 col-md-9 no-padding-left"> 
+				<div class="mz-gateway-subnav">   
+					{% include "modules/learning-center/gateway-subnav" %} 	 
+				</div>
+				<div class="mz-content-widget">
+					<div class="col-xs-12 col-sm-6"> 
+						{% dropzone "lc-image-dropzone" scope="page" %}	
+					</div>
+					<div class="col-xs-12 col-sm-6 mz-text-block">
+						<p class="mz-category-description">{{ model.content.description|safe }}</p> 
+					</div>
+				</div>
+				<div class="mz-content-widget"> 
+					{% dropzone "featured-posts" scope="page" %} 	
+				</div>
+			</div>    
+			<div class="col-xs-12 col-md-3 mz-sidebar"> 
+				{% include "modules/learning-center/sidebar-widget" %}
+			</div>	
+		    
+		</div>
+		
+	</div> 
+
+{% endblock body-content %}
+
+

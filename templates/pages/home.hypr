@@ -1,0 +1,49 @@
+﻿{% extends "page" %}
+
+{% block title-tag-content %}{% firstof pageContext.metaTitle model.name %} - {% parent %}{% endblock title-tag-content %}
+
+{% block body-tag-classes %} mz-homepage {% endblock body-tag-classes %}
+
+{% block body-content %}
+    
+    {% dropzone "home-slider" scope="page" %}
+
+    <div class="container">
+        {% dropzone "h1-statement" scope="page" %}  
+        
+        <div class="yotpo-gallery hidden"> 
+            <h2>Pictures Gallery</h2>
+            <div class="yotpo yotpo-pictures-gallery"
+                data-layout="full_page"
+                data-layout-scroll="0"
+                data-spacing="0"
+                data-source="instagram"
+                data-title="0"
+                data-hover-color="#ffffff"
+                data-hover-opacity="0.8"
+                data-hover-icon="true"
+                data-cta-text="Shop Now"
+                data-cta-color="#ff7a00">
+            </div>
+        </div> 
+
+        {% dropzone "shop-by-brand" scope="page" %}
+        
+        {% dropzone "shop-by-category" scope="page" %}
+        
+        {% dropzone "featured-products" scope="page" %}   
+        
+        {% dropzone "customer-logos" scope="page" %}
+        
+        {% dropzone "shop-now-widget" scope="page" %}    
+        
+    </div>
+    
+    {% require_script "pages/yotpo_review" %}
+{% endblock body-content %}
+
+{% block body-below-content %}
+
+{% endblock body-below-content %} 
+
+

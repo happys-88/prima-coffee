@@ -1,0 +1,54 @@
+<nav class="mz-sitenav-lc">
+    <div class="container">
+      <ul class="mz-sitenav-list"
+          data-mz-contextify='.mz-sitenav-link[href="{{ navigation.currentNode.url }}"]'
+          data-mz-contextify-attr='class'
+          data-mz-contextify-val='is-current'>
+
+          {% partial_cache %}
+          
+          {% for link in navigation.tree %} 
+            {% if link.name == "Learning Center" %}
+              
+                <li class="mz-sitenav-item">
+                  <a class="mz-sitenav-link hide" {% if link.openInNewWindow %}target='_blank'{% endif %} href="{{link.url}}">
+                      {{link.name|replace("_", " ")|safe}}
+                  </a>
+
+                  {% if link.items %}
+                    <ul class="mz-sitenav-sub">
+                      {% for sublink in link.items %}
+                        <li data-mz-role="sitemenu-item" class="mz-sitenav-item">
+                          <a class="mz-sitenav-link sub-link" {% if link.openInNewWindow %}target='_blank'{% endif %} href="{{sublink.url}}">{{ sublink.name|replace("_", " ")|safe }} <span class="top-arrow"></span></a>
+
+                          {% if sublink.items %}
+                            <ul class="mz-sitenav-sub-sub">
+                              {% for subsublink in sublink.items %}
+                                <li class="mz-sitenav-item">
+                                  <a class="mz-sitenav-link sub-sub-link" {% if link.openInNewWindow %}target='_blank'{% endif %} href="{{subsublink.url}}">{{ subsublink.name|replace("_", " ")|replace(themeSettings.columnBreaker, "")|safe }}</a>
+                                </li>
+                              {% endfor %}  
+                            </ul>
+                          {% endif %}
+                        </li>
+                       
+                      {% endfor %}
+                    </ul>
+                  {% endif %}
+                </li> 
+             
+            {% endif %} 
+            
+          {% endfor %}
+
+          
+          {% endpartial_cache %}
+          {% require_script "modules/contextify" %}
+      </ul>
+
+      <div class="learning-center-search"> 
+        {% include "modules/learning-center/search-box-lc" %}  
+      </div> 
+
+    </div>
+</nav>

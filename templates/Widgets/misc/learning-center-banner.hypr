@@ -1,0 +1,8 @@
+<div class="mz-banner">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+            <img src="{% make_url "image" model.config.lcBannerImage %}" alt="{{model.config.imageAltText}}">
+            <div class="banner-text">{{model.config.blogName}}</div> 
+        </div>
+     </div>
+</div> 

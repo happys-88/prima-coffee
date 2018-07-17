@@ -1,0 +1,84 @@
+@media print {
+	a[href]:after {
+    	content: none !important;
+  	}
+  	#printInvoice{
+  		display: none !important;  
+  	}
+  	.mz-logo-header{
+  		border-color: #000;    	
+  	}
+  	.mz-checkout-footer{
+  		margin-top: 10px;   
+  		padding: 15px;
+  		border-top: 1px solid #000;  
+  	} 
+  	#print-order{
+  		font-size: 14px;   
+  		#shipping-address{  
+  			border-color: #000 !important;
+  		} 
+  		.mz-print-list{
+  			.mz-carttable-header{ 
+	  			width: 100%;
+	  			border-color: #000;
+	  			margin: 20px 0 10px;   
+	  		}
+	  		.mz-itemlisting, .mz-itemlisting-thumb-img{ 
+  				border-color: #000 !important; 	 
+  			}
+  			.mz-itemlisting{
+  				padding-bottom: 10px; 
+  			}
+  		}
+  		.address-col{ 
+			p{
+				font-size: 14px;
+				line-height: 18px;  
+				margin: 3px 0;  
+			}
+		}
+  	} 
+  	
+  	.mz-title{
+  		float: left;
+  		padding: 0 10px; 
+      font-size: 14px;  
+  		&.item-col{
+  			width: 400px;             
+  		}
+  		&.qty-col, &.price-each-col, &.price-col{    
+  			width: 105px;            
+  		}
+  	}
+  	.mz-itemlisting{
+  		.mz-itemlisting-details{
+  			.mz-itemlisting-thumb-sku{
+				float: left; 
+				width: 400px;      
+				padding: 0;  
+				.mz-itemlisting-thumb{
+					float: left;
+					width: 120px !important; 
+					.mz-product-code {
+						width: 100% !important;
+						font-size: 12px !important;
+						text-align: center;
+						margin: 5px 0;      
+					} 
+				}
+				.mz-product-info{
+					float: left; 
+					width: 280px !important;        
+				} 	
+			}
+
+			.mz-itemlisting-quantity, .mz-itemlisting-price-each, .mz-itemlisting-price{   
+				float: left; 
+				width: 105px; 
+        text-align: right;           
+			}  
+  			
+  		}
+  	} 
+}

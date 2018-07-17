@@ -1,0 +1,15 @@
+﻿
+<div class="mz-productlist {% if clearbool %}mz-facets-active{% endif %} {% block module-classes %}{% endblock module-classes %}">
+    {% if model.items %} 
+    	<ul id="product-list-ul" class="mz-productlist-list {% block list-classes %}{% endblock list-classes %} clearfix" id="{% if pageContext.cmsContext.template.path == 'blog-article' %}productSliderMobile{% endif %}">   
+	        {% for prod in model.items %}
+	            <li class="mz-productlist-item col-lg-3 col-sm-4 col-xs-6" data-mz-product="{{ prod.productCode }}">{% include "modules/product/product-listing" with model=prod %}</li>
+	        {% endfor %}
+	    </ul> 
+	{% endif %} 
+</div> 
+
+<div class="modal fade" id="quickViewModal" tabindex="-1" role="dialog" aria-labelledby="qucikview"></div> 
+<div class="modal fade" id="optionModal" role="dialog"></div>
+<div class="modal fade" id="addonModal" role="dialog"></div>  
+

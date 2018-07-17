@@ -1,0 +1,29 @@
+
+<div class="mz-featured-categories">
+	
+	<ul class="mz-featured-categorylist">
+		{% for getCategoryId in model.config.featuredCategories %}
+			{% for categoryObject in categories.all %}
+				{% if categoryObject.categoryId == getCategoryId %}
+					
+						{% for catImage in categoryObject.content.categoryImages %}
+				   			<li class="col-xs-12 col-sm-6 mz-shop-by-categorylist-item">
+							    <div class="mz-category-image">
+						    		<a href="{{ categoryObject.url }}">
+						    			<img src="{{ catImage.imageUrl }}" alt="{{ catImage.altText }}">
+						    		</a>
+						    	</div>
+							    <div class="mz-categorylisting-info">
+							    	<h3><a href="{{ categoryObject.url }}">{{ categoryObject.content.name|safe }}</a></h3>
+							    	<p>{{ categoryObject.content.description|safe}}</p>	
+							    </div>
+							</li>
+				  		{% endfor %}	
+			  		
+				{% endif %}
+			{% endfor %}	
+		{% endfor %}
+	</ul>
+		
+</div>  
+

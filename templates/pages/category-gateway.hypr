@@ -1,0 +1,67 @@
+{% extends "page" %}
+
+{% block title-tag-content %}{% firstof pageContext.metaTitle model.name %}  - {% parent %}{% endblock title-tag-content %}
+{% block body-tag-classes %} category-gateway {% endblock body-tag-classes %} 
+
+{% block category-gateway %}
+<h1 class="heading-2"><span>{{ navigation.currentNode.name|upper }}</span></h1>
+<div class="row">
+    <div class="col-sm-6">
+        {% dropzone "m9" scope="page" %}
+    </div>
+    <div class="col-sm-6">  
+        {% dropzone "m8" scope="page" %}
+    </div>
+</div>        
+<div class="row">
+    <div class="col-sm-6 ">
+        <h2 class="heading-2"><span>Ice Bins and dispemsers</span></h2>   
+        <p>{{model.content.description|safe}}</p>
+        <div class="">
+            <button class="mz-button sub-category">Shop Ice Bins and dispemsers</button>
+        </div>
+        <div class="mz-category-images row">
+            {% for image in model.childrenCategories %} 
+                {% if forloop.counter0 < 4 and image.content.categoryImages.0.imageUrl %}
+                <div class="col-md-3 col-sm-6 col-xs-6">
+                    <div class="mz-sub-category">    
+                        <img src="{{image.content.categoryImages.0.imageUrl}}" alt="" height="100" width="100" >
+                        <span>{{image.content.name}}</span>
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    <div class="col-sm-6"> 
+        <div class=" mz-dropzone-empty">{% dropzone "m1" scope="page" %} Merchandise zone</div>
+    </div>
+</div>
+     
+<div class="row">
+    <div class="col-sm-6">  
+        <div class=" mz-dropzone-empty">{% dropzone "m2" scope="page" %} Merchandise zone</div>   
+    </div>
+    <div class="col-sm-6">    
+        <div class=" mz-dropzone-empty">{% dropzone "m3" scope="page" %} Merchandise zone</div> 
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-4"> 
+        <div class=" mz-dropzone-empty">{% dropzone "m4" scope="page" %} Merchandise zone</div>
+    </div>
+    <div class="col-sm-4">     
+        <div class=" mz-dropzone-empty">{% dropzone "m5" scope="page" %} Merchandise zone</div>
+    </div>
+    <div class="col-sm-4">    
+        <div class=" mz-dropzone-empty">{% dropzone "m6" scope="page" %} Merchandise zone</div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">   
+        <div class=" mz-dropzone-empty">{% dropzone "m7" scope="page" %} Merchandise zone</div>
+    </div>     
+</div>
+{% endblock category-gateway %}

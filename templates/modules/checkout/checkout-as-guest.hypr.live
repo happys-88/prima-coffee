@@ -1,0 +1,17 @@
+<h3 class="mz-pagetitle">{{ labels.newToPrimaSupply }}</h3>
+<p>{{ labels.newToPrimaSupplyMsg }}</p>
+<form action="" method=""> 
+   <div class="mz-l-formfieldgroup">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+            <input type="email" id="guestEmail" name="" placeholder="{{ labels.emailAddress }}" />
+            <span class="mz-validationmessage hide" id="guestEmailError" data-mz-validationmessage-for="{{ addresscontext }}lastNameOrSurname">{{ labels.emailMissing }}</span>
+        </div>
+        <div class="clearfix">
+            <button type="button" class="mz-close" data-dismiss="modal">{{ labels.cancel }}</button>
+            <button class="mz-button mz-button-large" type="button" data-mz-action="checkoutAsGuest" id="checkoutAsGuestBtn">{{ labels.guestCheckoutLink }}</button>
+        </div>
+    </div>
+</form>
+{% require_script "modules/guest-checkout" %}
+

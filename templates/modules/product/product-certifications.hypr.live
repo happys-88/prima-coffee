@@ -1,0 +1,38 @@
+<ul>     
+  {% if (model|get_product_attribute_value("tenant~field_pre_brands")) %} 
+    <li class="col-sm-4 col-xs-6 product-brand">  
+      {% for brandCat in model.categories %} 
+        {% if brandCat.content.name == model|get_product_attribute_value("tenant~field_pre_brands") %} 
+          {% with brandCat.content.categoryImages|first as brandImage %} 
+            <div class="brand-logo-img">
+              {% if brandImage.imageUrl %}
+                <a href="{{ brandCat.url }}">
+                  <img src="{{ brandImage.imageUrl }}" alt="{{ brandImage.altText }}">    
+                </a> 
+              {% else %} 
+                <a href="{{ brandCat.url }}"> 
+                  <span class="noimage-placeholder"><span class="noimage-text">{{ labels.productImagePlaceholder }}</span></span> 
+                </a>  
+              {% endif %}
+            </div> 
+          {% endwith %} 
+
+        {% endif %} 
+      {% endfor %}    
+    </li>     
+  {% endif %}   
+    
+  {% for property in model.properties %}
+    {% if property.attributeFQN == "tenant~field_certifications" %}  
+      <li class="col-sm-4 col-xs-6 product-certifications">
+        {% for propValue in property.values %}
+          <span><img src="/resources/images/product-certification-images/{{ propValue.value }}"></span>  
+        {% endfor %}
+      </li>  
+    {% endif %}
+  {% endfor %}  
+
+  <li class="col-sm-4 col-xs-12 service-tooltips">    
+    {% include "modules/product/tooltips" %}      
+  </li> 
+</ul>  

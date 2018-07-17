@@ -1,0 +1,29 @@
+<div class="mz-productlisting" data-mz-product="{{ model.productCode }}">    
+    <div class="mz-productlisting-image"> 
+        {% block product-image %}
+        <a href="{% make_url "product" model %}">
+            {% if model.mainImage.imageUrl %} 
+                <img src="{% make_url "image" model.mainImage with max=themeSettings.featuredPostImageSize as_parameter %}" {% if model.mainImage.altText %}alt="{{ model.mainImage.altText }}"{% endif %} />
+            {% else %}
+                <span class="mz-productlisting-imageplaceholder"><span class="mz-productlisting-imageplaceholdertext">{{ labels.productImagePlaceholder }}</span>
+            {% endif %}
+        </a>
+        {% endblock product-image %}
+    </div>
+    <div class="mz-productlisting-info"> 
+        <h4><a class="mz-productlisting-title" href="{% make_url "product" model %}">{{model.content.productName}}</a></h4>
+        <div class="mz-blog-metadata">
+            <span class="post-date">{{ model.createDate|date("M jS, Y" }}</span>
+            
+            {% for property in model.properties %}   
+                {% if property.attributeFQN == "tenant~author" %}
+                    {% for propValue in property.values %} 
+                        <span class="author-name">Written by {{ propValue.value }}</span>  
+                    {% endfor %}  
+                {% endif %}
+            {% endfor %} 
+        </div> 
+    </div> 
+
+</div>  
+

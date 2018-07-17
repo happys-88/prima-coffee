@@ -1,0 +1,57 @@
+<div id="mz-home-slider">
+  <div class="slider">
+    {% if model.config.slideImageOne %}
+      <div>
+        <a  class="mz-slide" style="background-image: url('{{ model.config.slideImageOne.imageUrl }}');" {% if model.config.slideLinkOne %}href="{{ model.config.slideLinkOne }}"{% endif %}>
+          <div class="mz-slide-details">
+            {% if model.config.slideTitleOne %}
+              <h2>{{ model.config.slideTitleOne }}</h2>
+            {% endif %}
+            {% if model.config.slideShortDescOne %}
+              <p>{{ model.config.slideShortDescOne }}</p>
+            {% endif %}
+            {% if model.config.slideButtonOne %}
+              <button class="mz-button" type="submit">{{ model.config.slideButtonOne }}</button>
+            {% endif %}
+          </div>
+        </a>
+      </div>
+    {% endif %}
+ 
+    {% if model.config.slideImageTwo %}
+      <div>
+        <a  class="mz-slide" style="background-image: url('{{ model.config.slideImageTwo.imageUrl }}');" {% if model.config.slideLinkTwo %}href="{{ model.config.slideLinkTwo }}"{% endif %}>
+          <div class="mz-slide-details">
+            {% if model.config.slideTitleTwo %}
+              <h2>{{ model.config.slideTitleTwo }}</h2>
+            {% endif %}
+            {% if model.config.slideShortDescTwo %}
+              <p>{{ model.config.slideShortDescTwo }}</p>
+            {% endif %}
+            {% if model.config.slideButtonTwo %}
+              <button class="mz-button" type="submit">{{ model.config.slideButtonTwo }}</button>
+            {% endif %}
+          </div>
+        </a>
+      </div>
+    {% endif %}
+ 
+    {% if model.config.slideImageThree %}
+      <div>
+        <a  class="mz-slide" style="background-image: url('{{ model.config.slideImageThree.imageUrl }}');" {% if model.config.slideLinkThree %}href="{{ model.config.slideLinkThree }}"{% endif %}>
+          <div class="mz-slide-details">
+            {% if model.config.slideTitleThree %}
+              <h2>{{ model.config.slideTitleThree }}</h2>
+            {% endif %}
+            {% if model.config.slideShortDescThree %}
+              <p>{{ model.config.slideShortDescThree }}</p>
+            {% endif %}
+            {% if model.config.slideButtonThree %}
+              <button class="mz-button" type="submit">{{ model.config.slideButtonThree }}</button>
+            {% endif %}
+          </div>
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</div>

@@ -1,0 +1,38 @@
+<nav class="mz-sitenav-lc">
+  <h2>{{ navigation.currentNode.name }}</h2>  
+  <ul class="mz-sitenav-list"
+      data-mz-contextify='.mz-sitenav-link[href="{{ navigation.currentNode.url }}"]'
+      data-mz-contextify-attr='class'
+      data-mz-contextify-val='is-current'> 
+
+      {% partial_cache %}
+
+      {% if navigation.currentNode %}
+        {% if navigation.currentNode.items %}
+          {% for link in navigation.currentNode.items %} 
+            <li class="mz-sitenav-item" data-mz-role="sitemenu-item">
+              <a class="mz-sitenav-link" {% if link.openInNewWindow %}target='_blank'{% endif %} href="{{link.url}}">
+                  {{link.name|replace("_", " ")|safe}}
+              </a>
+
+              {% if link.items %}
+              
+                <ul class="mz-sitenav-sub">
+                  {% for sublink in link.items %}
+                    <li class="mz-sitenav-item" data-mz-role="sitemenu-item"> 
+                      <a class="mz-sitenav-link sub-link" {% if link.openInNewWindow %}target='_blank'{% endif %} href="{{sublink.url}}">{{ sublink.name|replace("_", " ")|safe }}</a>
+                    </li> 
+                   
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </li>   
+          {% endfor %}  
+        {% endif %}   
+      {% endif %}
+     
+      {% endpartial_cache %}
+      {% require_script "modules/contextify" %}
+  </ul>
+    
+</nav>

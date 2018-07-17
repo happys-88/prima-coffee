@@ -1,0 +1,20 @@
+{% extends "page" %}
+
+{% block title-tag-content %}{% firstof pageContext.metaTitle model.name %}  - {% parent %}{% endblock title-tag-content %}
+{% block body-tag-classes %} refund-exchange{% endblock body-tag-classes %}
+{% block breadcrumbs %}
+{% include "modules/customer-service-breadcumb" %}
+{% endblock breadcrumbs %}
+{% block customer-service %}
+<div class="row">
+    <div class="col-sm-3">     
+        <div class="mz-l-sidebar mz-myaccount-nav">
+                {% include "modules/customer-service/service-nav" %}
+        </div>
+    </div>
+    <div class="col-sm-9 tab-content">
+        <div class=" mz-dropzone-empty"> Refund And Exchane {% dropzone "refundExchange" scope="page" %} </div>
+    </div>
+</div>
+
+{% endblock customer-service %}

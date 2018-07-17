@@ -1,0 +1,41 @@
+﻿<nav class="mz-scrollnav" id="account-nav" data-mz-scrollnav="{{ navtarget }}">
+    <ul class="mz-scrollnav-list nav">
+        <li class="mz-scrollnav-item active">
+            <a class="mz-scrollnav-link" data-toggle="tab" href="#settings">
+                {{ labels.myAccount }}
+            </a>
+        </li>
+        <li class="mz-scrollnav-item">
+            <a class="mz-scrollnav-link" data-toggle="tab" href="#myInformation">
+                {{ labels.myInformation }}
+            </a>
+        </li>
+        <li class="mz-scrollnav-item">
+            <a class="mz-scrollnav-link" data-toggle="tab" href="#addressbook">
+                {{ labels.addressBook }}
+            </a>
+        </li>
+        <li class="mz-scrollnav-item">
+            <a class="mz-scrollnav-link" data-toggle="tab" href="#orderhistory">
+                {{ labels.orderHistory }}
+            </a>
+        </li>
+        <li class="mz-scrollnav-item">
+            <a class="mz-scrollnav-link" data-toggle="tab" href="#paymentmethods">
+                {{ labels.paymentMethods }}
+            </a>
+        </li>
+        {% if siteContext.generalSettings.isWishlistCreationEnabled %}
+        <li class="mz-scrollnav-item">
+            <a class="mz-scrollnav-link" data-toggle="tab" href="#wishlist">
+                {{ labels.accountMyWishlist }}
+            </a>
+        </li>
+        {% endif %}
+        <li class="mz-scrollnav-item">
+            <a class="mz-scrollnav-link" href="/logout">
+                {{ labels.logOut }}
+            </a>
+        </li>
+    </ul>
+</nav>

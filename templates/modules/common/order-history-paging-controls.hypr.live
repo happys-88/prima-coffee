@@ -1,0 +1,26 @@
+
+{% if pageContext.isDesktop %}   
+  <label class="mz-pagingcontrols-pagesize-label"> 
+    <span data-mz-value="pageSize">
+      {% for size in themeSettings.pageSizeOptionsOrderHistory %}    
+        <a data-mz-url="{% make_url "paging" model with pageSize=size page=1 %}" {% if model.pageSize == size %}class="selected"{% endif %} value="{{ size }}">{{ size }}</a>   
+      {% endfor %} 
+    </span>
+  </label>
+{% endif %} 
+
+<span class="mz-pagingcontrols-pagestate-label">
+  {% if model.totalCount %}
+    {% if model.totalCount != 1 %}
+      <a class="view-all{% if model.pageSize == themeSettings.viewAllPageSize %} selected{% endif %}" data-mz-url="{% make_url "paging" model with pageSize=themeSettings.viewAllPageSize page=1 %}">
+        {{ labels.pageStatePlural|string_format(model.firstIndex,model.lastIndex,model.totalCount) }} 
+      </a>
+    {% else %}
+      <a class="view-all{% if model.pageSize == themeSettings.viewAllPageSize %} selected{% endif %}" data-mz-url="{% make_url "paging" model with pageSize=themeSettings.viewAllPageSize page=1 %}"> 
+        {{ labels.pageStateSingular }}
+      </a> 
+    {% endif %}
+  {% endif %}
+</span> 
+
+

@@ -1,0 +1,27 @@
+
+{% extends "page" %} 
+
+{% block title-tag-content %}
+	{% firstof pageContext.metaTitle|safe model.name|replace(themeSettings.columnBreaker, "")|safe %}  - {% parent %}
+{% endblock title-tag-content %}
+
+{% block body-tag-classes %}mz-learning-center directory-page{% endblock body-tag-classes %} 
+
+{% block body-content %}
+	
+	{% dropzone "blog-name" scope="page" %}  
+
+	<div data-mz-category="{{model.categoryId}}" class="mz-l-container" id="lcCategoryContent"> 
+	    <div class="lc-top-section"> 
+			{% include "modules/learning-center/lc-top-section" %} 	
+		</div> 
+
+	    <div class="mz-content-section">
+	       	{% include "modules/learning-center/category-interior-lc" %}	       
+		</div> 
+	    
+	</div>
+
+	{% require_script "category-lc" %}     
+
+{% endblock body-content %} 

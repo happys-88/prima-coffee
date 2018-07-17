@@ -1,0 +1,78 @@
+{% extends "page" %}
+
+{% block title-tag-content %}{% firstof pageContext.metaTitle labels.yourAccount %} - {% parent %}{% endblock title-tag-content %}
+{% block body-tag-classes %} mz-myaccount {% endblock body-tag-classes %}
+
+{% block breadcrumbs %}
+    <div class="mz-breadcrumbs">
+        <a href="{{siteContext.siteSubdirectory}}/" class="mz-breadcrumb-link">Home</a> <span class="mz-breadcrumb-separator">&#47;</span>
+        <a href="{{siteContext.siteSubdirectory}}/myaccount" class="mz-breadcrumb-link">{{ labels.myAccount }}</a>     
+    </div>
+{% endblock breadcrumbs %}
+
+{% block body-content %}
+    {% require_script "pages/myaccount" %}
+    {% preload_json model "customer" %}  
+
+    <div class="mz-l-container">
+        <div class="row"> 
+            <div class="col-sm-9 col-lg-10 mz-myaccount-panels pull-right">
+                {# <button class="mz-button" id="mz-print-content-confirmation">Print</button> #}   
+                <div id="accordion" class="tab-content">
+                    <div id="settings" class="tab-pane fade in active">
+                        <div class="mz-l-stack-section mz-accountsettings" id="account-settings">
+                            {% include "modules/my-account/my-account-settings" %}
+                        </div>    
+                        {% if model.orderHistory.items.0 %}
+                            <div class="mz-recent-order-product">
+                                {% include "modules/common/recent-order" with model=model.orderHistory.items.0 %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div id="myInformation" class="tab-pane fade">
+                        <div id="account-messages">
+                            {% include "modules/common/message-bar" with model=model.messages %}
+                        </div>
+                        <div class="mz-l-stack-section mz-accountsettings" id="my-account-information">
+                            {% include "modules/my-account/my-account-information" %}
+                        </div>
+                        <div class="mz-l-stack-section mz-passwordsection" id="password-section">
+                            {% include "modules/my-account/my-account-password" %}
+                        </div>
+                    </div>
+                    <div id="addressbook" class="tab-pane fade">
+                        <div class="mz-l-stack-section mz-accountaddressbook" id="account-addressbook">
+                            {% include "modules/my-account/my-account-addressbook" %}
+                        </div>
+                    </div>
+                    <div id="orderhistory" class="tab-pane fade">
+                        <div class="mz-l-stack-section mz-accountorderhistory" id="account-orderhistory">
+                            {% include "modules/my-account/my-account-orderhistory" with model=model.orderHistory showPaging=true %}  
+                        </div>
+                    </div>
+                    <div id="paymentmethods" class="tab-pane fade">
+                        <div class="mz-l-stack-section mz-accountpaymentmethods" id="account-paymentmethods">
+                            {% include "modules/my-account/my-account-paymentmethods" %}
+                        </div>
+                    </div>
+                    <div id="wishlist" class="tab-pane fade">
+                        {% if siteContext.generalSettings.isWishlistCreationEnabled %}
+                        <div class="mz-l-stack-section mz-accountwishlist" id="account-wishlist">
+                            {% include "modules/my-account/my-account-wishlist" with model=model.wishlist %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    {% include "modules/my-account/my-account-print-window" %}
+                </div>
+            </div>
+            <div class="col-sm-3 col-lg-2 mz-myaccount-nav">
+                <div class="mz-l-sidebar">
+                    {% include "modules/my-account/my-account-nav" with navtarget="body" %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock body-content %}
+
+{% block body-below-content %}{% endblock body-below-content %}

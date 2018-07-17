@@ -1,0 +1,29 @@
+
+{% block promoted-products %}
+<div id="trendingProducts" style="display: inline;">
+	{% for prod in model.products %}
+	<div style="display: inline;">
+		<div class="mz-productlisting-image">
+	     	<a href="{{ prod.url }}">
+	            <img src="{{ prod.image }}" alt="Orange">
+	        </a>        
+	    </div>
+
+	    <div class="mz-productlisting-info">
+	        <a class="mz-productlisting-title" href="{{ prod.url }}">{{ prod.name }}</a>
+	        <div id="bottomline-ratings"></div>
+	        
+	        <div class="mz-productlisting-productcode ratings" totalcount="{{ prod.average_score }}"> 
+	        	Rating : {{ prod.average_score }}
+	        	
+	        </div>
+	        	<div itemprop="priceSpecification" itemscope="" itemtype="http://schema.org/PriceSpecification" class="mz-pricestack">
+	    			<span class="mz-price is-saleprice">
+					     {{ prod.price }}
+					 </span>
+				</div>
+		</div>
+	</div>
+    {% endfor %}
+</div>
+{% endblock promoted-products %}

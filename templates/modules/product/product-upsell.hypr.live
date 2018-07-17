@@ -1,0 +1,29 @@
+{% if model.items %}
+<div class="mz-product-cross-sells">
+    <h2 class="heading-2"><span>Product upsell</span></h2>   
+    <div class="slider" id="UpSellSlider">            
+        {% for upsell in model.items %}                      
+        <li class="mz-recentproductlist-item">    
+            <div class="mz-product-image">
+                <a href="{% make_url "product" upsell.productCode %}" data-mz-productimage-thumb="{{ upsell.sequence }}">            
+                    <img src="{{ upsell.content.productImages[0].imageUrl }}" {% if upsell.altText %}alt="{{ image.altText }}"{% endif %} />
+                </a> 
+            </div>
+            <div class="mz-product-details">
+                <a href="{% make_url "product" upsell.productCode %}" class="mz-productlisting-title">{{ upsell.content.productName }} </br><span> {{upsell.variationProductCode|default(upsell.productCode)}}</span></a>
+                
+                <div class="mz-product-rating">
+                    <img src="../../resources/images/product-rating.jpg" alt="product-rating">
+                </div>
+                <div class="mz-price-stack">
+                    <span class="mz-price {% if upsell.price.salePrice %} is-crossedout {% endif %}">{{ upsell.price.price|currency }}</span>
+                    {% if upsell.price.salePrice %}
+                        <span>{{ upsell.price.salePrice|currency }}</span>
+                    {% endif %}
+                </div>
+            </div> 
+       </li>      
+      {% endfor %} 
+    </div>
+</div>
+{% endif %} 

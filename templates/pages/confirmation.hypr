@@ -1,0 +1,63 @@
+﻿{% extends "page" %}
+
+{% block title-tag-content %}{% firstof pageContext.metaTitle labels.orderConfirmation %} - {% parent %}{% endblock title-tag-content %}
+{% block body-tag-classes %} mz-confirmation {% endblock body-tag-classes %}
+{% block breadcrumbs %}{% endblock breadcrumbs %}
+{% block body-content %}
+    {% preload_json model "order" %}
+    {% set_var siteId=model.siteId %}
+    {% set_var email=model.fulfillmentinfo.fulfillmentContact.email %}
+    {% set_var name=model.fulfillmentinfo.fulfillmentContact.firstName %}
+    {% if model.fulfillmentinfo.fulfillmentContact.address.countryCode == "US" %}
+        {% set_var country="United States" %}
+    {% else %}
+        {% set_var country="" %}
+    {% endif %}
+    {% set_var state=model.fulfillmentinfo.fulfillmentContact.address.stateOrProvince %}
+    {% set_var orderid=model.orderNumber %}
+
+    {% block shopper-approved-script %}      
+        <script type="text/javascript"> var sa_values = { "site":{{siteId}}, "token":"8c74b", 'orderid':"{{orderid}}", 'name':"{{name}}", 'email':"{{email}}", 'country':"{{country}}", 'state':"{{state}}" }; function saLoadScript(src) { var js = window.document.createElement("script"); js.src = src; js.type = "text/javascript"; document.getElementsByTagName("head")[0].appendChild(js); } var d = new Date(); if (d.getTime() - 172800000 > 1477399567000) saLoadScript("//www.shopperapproved.com/thankyou/rate/{{siteId}}.js"); else saLoadScript("//direct.shopperapproved.com/thankyou/rate/{{siteId}}.js?d=" + d.getTime()); </script>
+    {% endblock shopper-approved-script %}     
+
+    <div class="mz-l-container">
+        <h1 class="mz-pagetitle">{{ labels.orderConfirmation }}</h1>
+        <div class="row">
+            <div class="mz-l-stack col-md-6">
+                <div class="mz-l-stack-section">
+                    <h3>{{ labels.confirmationText }}</h3>
+                    <p>{{ labels.yourOrderNumber|string_format(model.orderNumber)|safe }}</p>
+                    <p>{{ labels.yourOrderEmailText }} <span>{{ model.billingInfo.billingContact.email }}</span></p>
+                </div>
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="mz-signup-other-email" id="confirmationDeals">
+                            
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="mz-live-chat">
+                            <a href="javascript:void(0);" onclick="SnapEngage.startLink();"> 
+                                <img src="{% make_url "cdn" "/cms/files/live-chat-icon.png" alt="Live Chat Image" %}">  
+                                <span class="mz-live-chat-title">{{ labels.liveChat }}</span> 
+                                <p>{{ labels.questionconnectWithUs }}</p>  
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% if not user or user.isAnonymous %}
+                <div class="col-md-6" id="guestUserSignUp"></div>    
+            {% endif %}
+        </div>
+    </div>
+{% endblock body-content %}
+
+{% block trailing-scripts %}
+    {% require_script "modules/confirmation" %} 
+	{% parent %}
+	{% if siteContext.generalSettings.isGoogleAnalyticsEnabled and siteContext.generalSettings.isGoogleAnalyticsEcommerceEnabled %}
+	{% include "modules/analytics/google-analytics-ecommerce-tracking-code" %}
+	{% endif %}
+{% endblock trailing-scripts %}		

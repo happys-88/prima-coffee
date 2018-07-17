@@ -1,0 +1,63 @@
+﻿@fontFamily:            {{ themeSettings.primaryFont }}, sans-serif;
+@fontSize:              {{ themeSettings.fontSize }};
+@fontSizeSmall:         @fontSize - 2px;
+@fontSizeLarger:        @fontSize + 2px;
+@fontSizeLarge:         @fontSize + 6px;
+@storeBrandingFontSize: 36px;
+
+@textColor:             {{ themeSettings.textColor }};
+@linkColor:             #d15f2a;
+@linkHoverColor:        #666;
+@linkVisitedColor:      #3F3F3F;
+@errorText:             #b94a48;
+@errorBackground:       #f2dede;
+@warningText:           @textColor;
+@warningBackground:     #fcf8e3;
+@successText:           @textColor;
+@successBackground:     #dff0d8;
+
+@availableText:         #237e0e;
+@unavailableText:       #ae1231;
+
+@bodyBackgroundColor:   {{ themeSettings.bodyBackgroundColor }};
+@highlightColor:        #ffffe0;
+
+@errorBorder:           darken(spin(@errorBackground, -10), 3%);
+@successBorder:         darken(spin(@successBackground, -10), 3%);
+@warningBorder:         darken(spin(@warningBackground, -10), 3%);
+
+@errorIcon:				"../resources/images/error-exclamation.png";
+@columnWidth-2col:		435px;
+@gutter:				{{themeSettings.gutterWidth}};
+@inputBorder:			#495363;
+
+@defaultTileHeight:            250px;
+@defaultTileWidth:             250px;
+@productTileHeight:            360px;
+@productTileWidth:             @defaultTileWidth;
+@addressTileHeight:            240px;
+@addressTileWidth:             @defaultTileWidth;
+@productImagesContainerWidth:  {{ themeSettings.productImagesContainerWidth }}px;
+@orderDetailWidth:      200px;
+@itemListingThumbSize:  {{ themeSettings.itemListingThumbSize }}px;
+@productListingThumbSize: {{ themeSettings.listProductThumbSize }}px;
+@blogContentImageSize: {{ themeSettings.blogContentImageSize }}px; 
+
+/**** Custom Variables ****/
+@siteBaseColor: #495363;
+@siteBaseColorDark: #333a46;    
+@cartColor: #d05f2a; 
+@headingTwoFontSize: 24px;
+@headingTwoColor: #00adce; 
+@dropzoneMargin: 70px;
+@primaryColor: #002C50;
+@textColorWhite: #fff;
+@buttonBgColor: #d15f2a;
+@blueBgButton: #00adce; 
+@defaultBorderColor: #d4d4d4;
+@learningCenterTextColor: #666;
+@listItemColor: #00adce;
+@blogLinkColor: #00adce;  
+
+@mobileNavBorderBtm: #cbcbcb; 
+@mobileNavSubMenuBg: #f1f1f1; 

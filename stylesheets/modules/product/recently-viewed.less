@@ -1,0 +1,91 @@
+#rvi-container { 
+    position: relative;
+   // min-height: 150px;
+    .rvi-loading {
+        position: absolute;
+        left: 0;
+        top: 0;
+        margin: 0;
+        z-index: 1;
+        background: rgba(255,255,255,0.3) url(../resources/images/slider/bx_loader.gif) no-repeat center center;
+        bottom: 0;
+        right: 0;
+        display: none;
+    }
+}
+
+
+#rvi-container,
+.mz-product-cross-sells {
+    float: left;
+    width: 100%;  
+    .bx-wrapper {
+        .bx-controls-direction {
+            a {
+                background-size: cover;
+                margin-top: -11px;
+                width: 22px;
+                height: 35px;
+                &.bx-prev {
+                    left: 0;
+                }
+                &.bx-next {
+                    right: 0;
+                    background-position: -29px 0;
+                }
+            }
+        }
+    }
+}
+
+
+.recently-viewed-list,
+.mz-product-cross-sells {
+    li {
+        &.mz-recentproductlist-item {
+            text-align: center;
+            min-height: 290px;
+            .mz-product-image {
+                img {
+                    margin: 0 auto;
+                    max-width: 160px;
+                    max-height: 160px;
+                }
+            }
+            .mz-product-details {
+                max-width: 300px;
+                margin: 10px auto;
+                .mz-productlisting-title {
+                    color: #495363;
+                    display: block;
+                    font-size: 14px;
+                }
+                .mz-product-rating {
+                    position: absolute;
+                    right: 0;
+                    bottom: 33px;
+                    left: 0;
+                    img {
+                        max-width: 100px;
+                        margin: 0 auto;
+                    }
+                }
+                .mz-price-stack {
+                    position: absolute;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    span {
+                        color: #495363;
+                        font-size: 14px;
+                        font-weight: 700;
+                        &.is-crossedout {
+                            color: #9a9fa8;
+                            margin-right: 8px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,5 @@
+﻿{% if item.productDiscounts.length>0 and item.discountedTotal < item.subtotal %}    
+	<span class="mz-item-rowtotal">	{{ item.subtotal|currency }}</span>  
+{% else %} 
+	<span class="mz-item-rowtotal {% if item.unitPrice.saleAmount %}is-saleprice{% endif %}">{{ item.subtotal|currency }}</span>
+{% endif %}   

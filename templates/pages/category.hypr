@@ -1,0 +1,15 @@
+{% extends "page" %} 
+
+{% block title-tag-content %}
+	{% firstof pageContext.metaTitle|safe model.name|replace(themeSettings.columnBreaker, "")|safe %}  - {% parent %}
+{% endblock title-tag-content %}
+
+{% block body-tag-classes %}mz-category{% endblock body-tag-classes %}
+{% block body-content %}
+	{% require_script "pages/category" %}
+	{% require_script "options" %}
+	{% require_script "modules/quickview" %} 
+	<div data-mz-category="{{model.categoryId}}" class="mz-l-container">
+	    {% include "pages/category-interior" %}
+	</div>
+{% endblock body-content %}

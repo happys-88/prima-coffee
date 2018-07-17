@@ -1,0 +1,243 @@
+<h3 class="mz-formstep-header mz-checkoutform-header">
+    {{ labels.paymentInformation }}
+    {% if not model.isExternalCheckoutFlowComplete%}
+        <a href="javascript:void(0);" class="mz-formstep-edit" data-mz-action="edit">{{ labels.edit }}</a>
+    {% endif %}
+</h3>
+<div class="mz-formstep-body">
+    <div class="mz-formstep-summary mz-l-stack">
+        {% for payment in model.activePayments %}
+            {% if payment.billingInfo.paymentType == "StoreCredit" %}
+                <h4 class="mz-checkout-nopaymentrequired mz-checkoutform">{{ labels.noPaymentRequired|string_format(model.remainingTotal|currency) }}</h4>
+            {% endif %}
+            {% if payment.billingInfo.paymentType == "Check" and model.nonStoreCreditTotal > 0 %}
+                <div class="mz-l-stack-section mz-checkout-payment  mz-checkoutform">
+                    <div class="mz-l-stack-section mz-checkout-current-payment">{{ labels.checkByMail }}</div>
+                    <div>
+                        {{ labels.checkByMailAddress|safe }} 
+                    </div>
+                    <!--       
+                    <div class="mz-l-stack-section mz-checkout-current-payment mz-checkout-saved-billingaddress">
+                        <h4 class="mz-checkoutform-title">{{ labels.billingAddress }}</h4>
+                        <div class="mz-addresssummary">
+                            {% include "modules/common/address-summary" with model=model.billingContact %}
+                        </div>
+                    </div>
+                    -->
+                    {% if  model.couponDetails.length>0 %}
+                    <div>Coupon Code:</div>
+                    {% endif %}
+                    {% for orderlevel in model.couponDetails %}
+                        {% for orddisc in orderlevel.OrderDiscounts %}
+                        <div class="coupon-code"><p> {{orddisc.discount.name}} for {{orddisc.impact}}</p></div>
+                        {% endfor %} 
+                        {% for key, value  in orderlevel.itemDiscount %}
+                            <p class="mz-discount"><span> {{ key }} </span>  for  <span>{{ value|currency }}</span></p>  
+                        {% endfor %}
+                        {% for orderDiscount in orderlevel.shippingDiscount %}  
+                        <p class="mz-discount"><span> {{ orderDiscount.couponCode }} </span>  for  <span>{{ orderDiscount.impact|currency }}</span></p>	  
+                    {% endfor %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+            
+            {% if payment.billingInfo.paymentType == "CreditCard" and model.nonStoreCreditTotal > 0  %}
+                <div class="mz-l-stack-section mz-checkout-payment  mz-checkoutform">
+                    {% if payment.paymentWorkflow == "VisaCheckout" %}
+                        <div>
+                            <span><img alt="This Payment Using Visa Checkout" src="{{pageContext.visaCheckoutButtonUrl}}?size=154&amp;color=neutral&amp;cardBrands={{ payment.card.paymentOrCardType }}"/></span>
+                        </div>
+                    {% endif %}
+                    <div class="mz-l-stack-section mz-checkout-current-payment mz-checkout-saved-billingaddress pull-left">
+                            <div class="mz-addresssummary">
+                                {% include "modules/common/address-summary" with model=model.billingContact %}
+                            </div>
+                    </div>
+                    <div class="mz-l-stack-section mz-checkout-current-payment pull-right">
+                        <p>{{ model.card.paymentOrCardType }} {{ model.card.cardNumberPartOrMask }} 
+                        {% for payments in model.activePayments %}
+                            {% if payments.paymentType === 'CreditCard' %}
+                                {{ 'FOR'|lower }} {{ payments.amountRequested|currency }}
+                            {% endif %}
+                        {% endfor %}
+                        </p>
+                        {% if  model.couponDetails.length>0 %}
+                         <div>Coupon Code:</div>
+                        {% endif %}
+                       
+                        {% for orderlevel in model.couponDetails %}
+                            {% for orddisc in orderlevel.OrderDiscounts %}
+                            <div class="coupon-code"><p> {{orddisc.discount.name}} for {{orddisc.impact}}</p></div>
+                            {% endfor %} 
+                            {% for key, value  in orderlevel.itemDiscount %}
+                                <p class="mz-discount"><span> {{ key }} </span>  for  <span>{{ value|currency }}</span></p>  
+                            {% endfor %}
+                            {% for orderDiscount in orderlevel.shippingDiscount %}  
+                            <p class="mz-discount"><span> {{ orderDiscount.couponCode }} </span>  for  <span>{{ orderDiscount.impact|currency }}</span></p>	  
+                        {% endfor %}
+                        {% endfor %}
+                    </div>
+                    
+                </div>
+            {% endif %}
+
+            {% if payment.billingInfo.paymentType == "PurchaseOrder" and model.nonStoreCreditTotal > 0  %}
+                <div class="mz-l-stack-section mz-checkout-payment  mz-checkoutform">
+                    <div class="mz-l-stack-section mz-checkout-current-payment">
+                    <!--
+                        <div class="mz-l-formfieldgroup-row mz-payment-purchase-order-amount-row">
+                            <div class="mz-l-formfieldgroup-cell">
+                                <span>{{ labels.purchaseOrderAmount }}: </span> <span>{{ payment.amountRequested | currency }}</span>
+                            </div>
+                        </div>
+                        -->
+                        <div class="mz-l-formfieldgroup-row mz-payment-purchase-order-number-row">
+                            <div class="mz-l-formfieldgroup-cell">
+                                <span >{{ labels.purchaseOrderNumber }}: </span><span name="purchase-order-number" id="mz-payment-purchase-order-number">{{ payment.billingInfo.purchaseOrder.purchaseOrderNumber }}</span>
+                            </div>
+                        </div>
+                        <div class="mz-l-formfieldgroup-row mz-payment-purchase-order-payment-terms-row">
+                            <div class="mz-l-formfieldgroup-cell">
+                                <span>{{ labels.purchaseOrderPaymentTerms }}: </span><span id="mz-payment-purchase-order-payment-terms">{{ payment.billingInfo.purchaseOrder.paymentTerm.description }}</span>
+                            </div>
+                        </div>
+
+                        {% for field in payment.billingInfo.purchaseOrder.customFields %}
+                            <div class="mz-l-formfieldgroup-row mz-payment-purchase-order-custom-field-row">
+                                <div class="mz-l-formfieldgroup-cell">
+                                    <span>{{ field.label }}: </span><span id="mz-payment-purchase-order-custom-field-{{ field.code }}">{{ field.value }}</span>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        {% if  model.couponDetails.length>0 %}
+                        <div>Coupon Code:</div>
+                        {% endif %}
+                        {% for orderlevel in model.couponDetails %}
+                            {% for orddisc in orderlevel.OrderDiscounts %}
+                            <div class="coupon-code"><p> {{orddisc.discount.name}} for {{orddisc.impact}}</p></div>
+                            {% endfor %} 
+                            {% for key, value  in orderlevel.itemDiscount %}
+                                <p class="mz-discount"><span> {{ key }} </span>  for  <span>{{ value|currency }}</span></p>  
+                            {% endfor %}
+                            {% for orderDiscount in orderlevel.shippingDiscount %}  
+                            <p class="mz-discount"><span> {{ orderDiscount.couponCode }} </span>  for  <span>{{ orderDiscount.impact|currency }}</span></p>	  
+                        {% endfor %}
+                        {% endfor %}
+                    </div>
+                    <div class="mz-l-stack-section mz-checkout-current-payment mz-checkout-saved-billingaddress">
+                        <h4 class="mz-checkoutform-title">{{ labels.billingAddress }}</h4>
+                        <div class="mz-addresssummary">
+                            {% include "modules/common/address-summary" with model=model.billingContact %}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+
+            {% if payment.billingInfo.paymentType|lower == "paypalexpress2" %}
+                {% if model.nonStoreCreditTotal == 0 %}
+                    <h4 class="mz-checkout-nopaymentrequired">{{ labels.noPaymentRequired|string_format(model.remainingTotal|currency) }}</h4>
+                {% endif %}
+                {% if model.nonStoreCreditTotal > 0 %}
+                   {% if model.isExternalCheckoutFlowComplete %}
+                    <a class="mz-checkout-payment-change" href="javascript:;" data-mz-action="cancelExternalCheckout">{{ labels.removePayment }} </a>
+                   {% endif %}
+                   <div class="mz-l-stack-section">
+                        <div class="mz-l-formfieldgroup-cell">
+                            <img alt="PayPal" src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_100x26.png" align="left" width="100px" height="26px" style="margin-right:7px;">
+                        </div>
+
+                       {% if model.billingContact.firstName %}
+                        <div class="mz-addresssummary">
+                            {% include "modules/common/address-summary" with model=model.billingContact %}
+                        </div>
+                       {% endif %}
+
+                    </div>
+                {%endif%}
+
+            {% endif %}
+
+        {% endfor %}
+
+        <div class="mz-l-stack-section mz-paymentselector-separator mz-checkoutform">
+            <p>{{ labels.billingContact }}: <strong>{{ model.billingContact.email }}</strong></p>
+        </div>
+    </div>
+
+    <div class="mz-formstep-fields mz-l-stack">
+      
+        {% if model.nonStoreCreditTotal > 0 %}
+
+            {% if model.hasSavedCardPayment %}
+      
+                {% if editing.savedCard %}
+                    <div class="mz-l-stack-section mz-checkout-current-payment mz-checkout-saved-card-editing">
+                        {% include "modules/checkout/payment-selector" %}
+                    </div>
+                {% else %}
+                    <div class="mz-l-stack-section mz-checkout-current-payment mz-checkout-saved-card  mz-checkoutform">
+                        {% if model.visaCheckoutFlowComplete %}
+                            <span><img alt="This Payment Using Visa Checkout" src="{{pageContext.visaCheckoutButtonUrl}}?size=154&amp;color=neutral&amp;cardBrands={{ payment.card.paymentOrCardType }}"/></span>
+                            <a class="mz-checkout-payment-change" href="javascript:;" data-mz-action="beginEditingCard">{{ labels.removePayment }}</a>
+                        {% else %}
+                            <a class="mz-checkout-payment-change" href="javascript:;" data-mz-action="beginEditingCard">{{ labels.change }}</a>
+                        {% endif %}
+                            <p>{{ model.card.paymentOrCardType }} {{ model.card.cardNumberPartOrMask }}
+                            <br/>{{ labels.expires }} {{ model.card.expireMonth }}/{{ model.card.expireYear }}</p>
+                        {% if not themeSettings.isCvvSuppressed %}
+                            <div class="mz-l-formfieldgroup">
+                              <div class="mz-l-formfieldgroup-row mz-payment-credit-card-securitycode-row">
+                                <div class="mz-l-formfieldgroup-cell">
+                                    <label for="mz-payment-security-code">{{ labels.securityCode }}<span class="is-required"> *</span>:</label>
+                                </div>
+                                <div class="mz-l-formfieldgroup-cell">
+                                    <input type="tel" name="security-code" id="mz-payment-security-code" class="mz-l-formfieldgroup-halfsize" data-mz-value="card.cvv" value="{{ model.card.cvv }}" autocomplete="off"/>
+                                    <span class="mz-validationmessage" data-mz-validationmessage-for="card.cvv"></span>
+                                </div>
+                              </div>
+                            </div>
+                        {% endif %}
+                        <div class="mz-l-stack-section mz-checkout-current-payment mz-checkout-saved-billingaddress">
+                            <h4 class="mz-checkoutform-title">{{ labels.billingAddress }}</h4>
+                            <div class="mz-addresssummary">
+                                {% include "modules/common/address-summary" with model=model.billingContact %}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+            {% else %}
+
+                <div class="mz-l-stack-section">
+                    {% include "modules/checkout/payment-selector" %}
+                </div>
+            {% endif %}
+        {% else %}
+        
+            <h4 class="mz-checkout-nopaymentrequired mz-checkoutform">{{ labels.noPaymentRequired|string_format(model.remainingTotal|currency) }}</h4>
+
+        {% endif %}
+
+        <div class="mz-l-stack-section mz-paymentselector-separator mz-checkoutform mz-biiling-email-address">
+            <div class="form-group clearfix">
+                <div class="col-sm-4">
+                    <label for="billing-email">
+                        {{ labels.billingContact }}<span class="is-required"> *</span>:
+                    </label>
+                </div>
+                <div class="col-sm-8">
+                    <input type="text" id="billing-email" name="billing-email" data-mz-value="billingContact.email" value="{{ model.billingContact.email }}"/>
+                    <span class="mz-validationmessage" data-mz-validationmessage-for="billingContact.email"></span>
+                </div>
+            </div>
+            <div class="col-sm-8 col-sm-offset-4 mz-special-offers">
+                <label>
+                    <input type="checkbox" name="special-offers" {% if model.acceptsMarketing %}checked="checked" {% endif %}data-mz-value="acceptsMarketing" class="mz-checkout-optin" /> {{ labels.optIn|string_format(siteContext.generalSettings.websiteName) }}
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="mz-formstep-next">
+        <button class="mz-button" data-mz-action="next">{{ labels.next }}</button>  
+    </div>
+</div>

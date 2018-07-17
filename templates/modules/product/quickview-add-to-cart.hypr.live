@@ -1,0 +1,105 @@
+<!-- Add to cart button -->
+<div class="row"> 
+    <div class="mz-productdetail-conversion-controls col-sm-3">
+        <div class="qty-block clearfix {% if not model.inventoryInfo.onlineStockAvailable %}qty-disabled{% endif %}">
+                <span class="qty-counter" id="plus" data-mz-qty-plus role="button"><i class="mz-icon arrow-up" aria-hidden="true"></i></span>
+                <span class="qty-counter" id="minus" data-mz-qty-minus role="button"><i class="mz-icon arrow-down"  aria-hidden="true"></i></span>
+                <input id="qty-field" class="mz-productdetail-qty text-center mz-carttable-qty-field {% if not model.inventoryInfo.onlineStockAvailable %}qty-disabled{% endif %}" readonly type="text" data-mz-cart-item="{{ model.productTypeId }}" min="1" value="1" data-mz-value='quantity' title="Quantity">
+            
+        </div>
+    </div>
+    
+    <div class="mz-add-buttons col-sm-5">
+        <button class="addtocart mz-productdetail-addtocart mz-button mz-button-medium {% if not model.inventoryInfo.onlineStockAvailable %} is-disabled {% endif %}" {% if not model.inventoryInfo.onlineStockAvailable %} disabled="disabled" {% endif %}
+            data-mz-productcode="{{model.variationProductCode|default(model.productCode) }}">
+            {{ labels.addToCart }}
+        </button>
+        <a class="mz-full-product-details" href="{{model.url}}">{{ labels.fullProductDetails }}</a>
+    </div>
+    <div class="mz-availability col-sm-4">
+        <!-- Stock msg -->
+        <div class="mz-stock-availability">
+            <div class="mz-stock">
+                {% if model|get_product_attribute("tenant~field_display_oos1") and model.inventoryInfo.onlineStockAvailable and model.inventoryInfo.manageStock === true %} 
+                    {% if model|get_product_attribute_value("tenant~field_display_oos1") === 0 %}
+                          {% if model.inventoryInfo.onlineStockAvailable < 10 %}
+                                <dl>{{ labels.numberInStock|string_format(model.inventoryInfo.onlineStockAvailable) }}</dl>
+                          {% endif %}
+                          {% if model.inventoryInfo.onlineStockAvailable >= 10 %}
+                                <dl>{{ labels.distributorStock }}</dl>
+                          {% endif %} 
+                    {% endif %}
+                    {% if model|get_product_attribute_value("tenant~field_display_oos1") === 1 %}
+                                  {% if model.inventoryInfo.onlineStockAvailable === 0 %}
+                                     <p>{{ labels.outOfStock }}</p>
+                                    {% else %}
+                                        {% if model.inventoryInfo.onlineStockAvailable < 10 %}
+                                            {{ labels.numberInStock|string_format(model.inventoryInfo.onlineStockAvailable) }}
+                                        {% endif %}
+                                        {% if model.inventoryInfo.onlineStockAvailable >= 10 %}
+                                            {{labels.inStock}}
+                                        {% endif %}
+                                  {% endif %} 
+                    {% endif %}
+                    {% if model|get_product_attribute_value("tenant~field_display_oos1") === 2 %}
+                          {% if model.inventoryInfo.onlineStockAvailable < 10 %}
+                               <dl>{{ labels.numberInStock|string_format(model.inventoryInfo.onlineStockAvailable) }}</dl>
+                          {% endif %} 
+                          {% if model.inventoryInfo.onlineStockAvailable >= 10 %}
+                               <dl>{{ labels.preOrderOnly }}</dl>
+                          {% endif %}
+                    {% endif %}
+                    {% if model|get_product_attribute_value("tenant~field_display_oos1") === 3 %}
+                          {% if model.inventoryInfo.onlineStockAvailable < 10 %}
+                              <dl>{{ labels.numberInStock|string_format(model.inventoryInfo.onlineStockAvailable) }}</dl>
+                          {% endif %} 
+                          {% if model.inventoryInfo.onlineStockAvailable >= 10 %}
+                              <dl>{{ labels.builtToOrder }}</dl>
+                          {% endif %} 
+                    {% endif %}
+                    {% else %}
+                       {% if model.inventoryInfo.manageStock %}
+                         {% if model.inventoryInfo.onlineStockAvailable > 0  %}
+                          <p>{{ labels.inStock }} {{model.inventoryInfo.onlineStockAvailable}}</p>
+                          {% else %}
+                            {% if model.totalCount === 0 or model.inventoryInfo.onlineStockAvailable === 0 %}
+                                <p>{{ labels.outOfStock }} </p>
+                            {% else %}
+                                  {% if model|get_product_attribute_value("tenant~field_display_oos1") === 1 %}
+                                  {% if model.containsZero === true %}
+                                              {{labels.someOptionInStock}}
+                                  {% else %}
+                                  <p>{{ labels.inStock }} {{ model.totalCount }}</p>
+                                  {% endif %}
+                                {% else %}
+                                  <p>{{ labels.inStock }} {{ model.totalCount }}</p>
+                                {% endif %}
+                            {% endif %}
+                          {% endif %}
+                        {% else %}
+                        <p>{{ labels.outOfStock }} </p>
+                        {% endif %}
+                {% endif %}
+            </div>
+            <div class="mz-availability">
+                {% if model.inventoryInfo.manageStock %}
+                    {% if model.totalCount == 0 or model.inventoryInfo.onlineStockAvailable === 0 %}
+                      {% if model|get_product_attribute_value("tenant~expected_ship_date_message") %}
+                        <p>({{ model|get_product_attribute_value("tenant~expected_ship_date_message") }})</p>
+                        {% endif %}
+                    {% else %}
+                      {% for availability in model|get_product_attribute_values("tenant~availability") %}
+                        <p>({{ availability }})</p>
+                      {% endfor %}
+                    {% endif %}
+                  {% else %}
+                  {% if model|get_product_attribute_value("tenant~expected_ship_date_message") %}
+                        <p>({{ model|get_product_attribute_value("tenant~expected_ship_date_message") }})</p>
+                        {% endif %}
+                {% endif %}
+            </div>
+        </div>
+        <!--/ Stock msg -->
+    </div>      
+</div>
+<!--/ Add to cart button --> 

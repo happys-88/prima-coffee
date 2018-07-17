@@ -1,0 +1,7 @@
+<div class="mz-featured-posts">
+	<h2 class="heading-2"><span>Featured Articles</span></h2> 
+	{% include_products "modules/product/featured-post-list" with  productCodes=Model.config.productCodes as_parameter %} 	  
+</div> 
+
+
+

@@ -1,0 +1,71 @@
+{% extends "page" %}
+
+{% block title-tag-content %}{% firstof pageContext.metaTitle model.0.prodModel.content.productName %}  - {% parent %}{% endblock title-tag-content %}
+
+{% block body-tag-classes %} mz-learning-center mz-blog-article {% endblock body-tag-classes %} 
+
+{% block body-content %}
+
+{% require_script "pages/product" %} 
+
+{% preload_json model "product" %} 
+
+{% if model.length==2 %}
+    {% for vals in model %}
+        {% if forloop.first %}
+            {% set_var prodMod=vals.prodModel %}
+        {% else %}
+            {% set_var reviews=vals.review %}
+        {% endif %}   
+    {% endfor %}
+{% else %}
+    {% set_var prodMod=model %} 
+{% endif %} 
+
+<div class="lc-top-section">
+    {% dropzone "blog-name" scope="page" %}            
+    {% include "modules/learning-center/lc-top-section" with model=prodMod %}   
+</div>   
+
+<div itemscope itemtype="http://schema.org/Product" class="mz-l-container mz-blog-content"> 
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12"> 
+                <h1 class="mz-blog-title" itemprop="name">{{ prodMod.content.productName }}</h1>  
+                <div class="mz-blog-mainimage">
+                    {% include "modules/learning-center/blog-article-mainimage" with model=prodMod %}      
+                </div>
+
+                <div class="mz-blog-metadata"> 
+                    <span class="blog-date">{{ prodMod.createDate|date("M jS, Y" }}</span> 
+                    {% for property in prodMod.properties %}  
+                        {% if property.attributeFQN == "tenant~author" %}
+                            {% for propValue in property.values %} 
+                                <span class="author-name">Written by {{ propValue.value }}</span> 
+                            {% endfor %}  
+                        {% endif %}
+                    {% endfor %}
+                    
+                </div>
+
+                <div class="mz-blog-content-detail">
+                    {% include "modules/learning-center/blog-article-detail" with model=prodMod %}     
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock body-content %}
+
+{% block body-below-content %}
+    {% dropzone "body-bottom" scope="page" %}
+{% endblock body-below-content %}    
+
+
+
+
+
+
+ 
