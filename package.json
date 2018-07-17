@@ -1,10 +1,10 @@
 {
-  "name": "basetheme_primasupply",
+  "name": "burke.coffeetheme_v.1.0.0.release",
   "author": {
-    "name": "Happy",
-    "email": "hmasih@stegtechnologies.com"
+    "name": "singh-vsc",
+    "email": "vsingh@stegtechnologies.com"
   },
-  "description": "BaseTheme_PrimaSupply",
+  "description": "",
   "version": "0.1.0",
   "scripts": {
     "clean": "rm -rf compiled",
