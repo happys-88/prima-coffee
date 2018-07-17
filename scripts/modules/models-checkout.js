@@ -2048,6 +2048,14 @@
                     },
                     password: this.get('password')
                 }).then(function (customer) {
+                    var deals = $('#PCNewsLetter').is(':checked') ? "PCNewsLetter" : '';
+                    if(deals !== '') {
+                        api.request("POST", "/mailchimp", {'accountId':email, 'deals':deals}).then(function (response){
+                           console.log("Response : "+JSON.stringify(response));    
+                        }, function(err) {
+                            console.log("MailChimp");
+                        });
+                    }
                     self.customerCreated = true;
                     return customer;
                 }, function (error) {

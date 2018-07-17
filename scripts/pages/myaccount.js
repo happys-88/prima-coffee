@@ -64,9 +64,9 @@ define([
         },
         finishEdit: function() {
             var self = this;
-            var deals = $('#PrimaDeals').is(':checked') ? $('#PrimaDeals').val() : '';
-            deals = $('#PSNewsLetter').is(':checked') ? deals+","+$('#PSNewsLetter').val() : deals+","+'';
-            deals = $('#PSBlogs').is(':checked') ? deals+","+$('#PSBlogs').val() : deals+","+'';
+            var deals = $('#PCDeals').is(':checked') ? $('#PCDeals').val() : '';
+            deals = $('#PCNewsLetter').is(':checked') ? deals+","+$('#PCNewsLetter').val() : deals+","+'';
+            deals = $('#PCBlogs').is(':checked') ? deals+","+$('#PCBlogs').val() : deals+","+'';
             
             $('.mz-validationmessage').text('');
             if (!self.model.apiModel.data.firstName) {

@@ -59,7 +59,7 @@ define([
    				$("#errorEmail").hide();
    				$("#newsletterEmail").val('');
    				$("#thanksMsg").show().delay(2000).fadeOut();
-   				$.get("/mailchimp", {accountId:email, deals:"PSNewsLetter"},  function(res){ 
+   				$.get("/mailchimp", {accountId:email, deals:"PCNewsLetter"},  function(res){ 
                    console.log("Response : "+res);   
                 }).fail(function(err) {
                     console.log("Failure "+JSON.stringify(err));   

@@ -62,9 +62,9 @@ require(["modules/jquery-mozu", "underscore", 'modules/api', "hyprlive", "module
     var DealsView = Backbone.MozuView.extend({
             templateName: "modules/checkout/subscribe-deals",
             subscribeDeals: function(){
-                var deals = $('#PSDeals').is(':checked') ? $('#PSDeals').val() : '';
-                deals = $('#PSNewsLetter').is(':checked') ? deals+","+$('#PSNewsLetter').val() : deals+","+'';
-                deals = $('#PSBlogs').is(':checked') ? deals+","+$('#PSBlogs').val() : deals+","+'';
+                var deals = $('#PCDeals').is(':checked') ? $('#PCDeals').val() : '';
+                deals = $('#PCNewsLetter').is(':checked') ? deals+","+$('#PCNewsLetter').val() : deals+","+'';
+                deals = $('#PCBlogs').is(':checked') ? deals+","+$('#PCBlogs').val() : deals+","+'';
                 var email = $('#emailId').val();
                 if(deals !== '') {
                     api.request("POST", "/mailchimp", {'accountId':email, 'deals':deals}).then(function (response){
@@ -72,11 +72,6 @@ require(["modules/jquery-mozu", "underscore", 'modules/api', "hyprlive", "module
                     }, function(err) {
                         console.log("Failure : "+JSON.stringify(err));
                     });
-                    /*$.get("/mailchimp", {accountId:email, deals:deals},  function(res){ 
-                       console.log("Success!!");   
-                    }).fail(function(err) {
-                        console.log("Failure "+JSON.stringify(err));   
-                    });*/
                 }
             }
         });
