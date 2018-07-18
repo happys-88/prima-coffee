@@ -301,11 +301,12 @@ define(['shim!vendor/bootstrap/js/popover[shim!vendor/bootstrap/js/tooltip[modul
                 return api.action('customer', 'createStorefront', payload).then(function (resp) {
                     console.log("Resp : "+JSON.stringify(resp));
                     var email = resp.data.customerAccount.emailAddress;
+                    console.log("Email : "+email);
                     if(deals !== '') {
-                        $.get("/mailchimp", {accountId:email, deals:deals},  function(res){ 
-                           console.log("Response : "+res);   
-                        }).fail(function(err) {
-                            console.log("Failure "+JSON.stringify(err));   
+                        api.request("POST", "/mailchimp", {'accountId':email, 'deals':deals}).then(function (response){
+                           console.log("Response : "+JSON.stringify(response));    
+                        }, function(err) {
+                            console.log("MailChimp");
                         });
                     }
                     if (self.redirectTemplate) {

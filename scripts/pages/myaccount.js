@@ -90,11 +90,16 @@ define([
                 var email = resp.data.emailAddress;
                 
                 if(deals !== '') {
-                    $.get("/mailchimp", {accountId:email, deals:deals},  function(res){ 
+                    Api.request("POST", "/mailchimp", {'accountId':email, 'deals':deals}).then(function (response){
+                       console.log("Response : "+JSON.stringify(response));    
+                    }, function(err) {
+                        console.log("MailChimp");
+                    });
+                    /*$.get("/mailchimp", {accountId:email, deals:deals},  function(res){ 
                        console.log("Response : "+res);   
                     }).fail(function(err) {
                         console.log("Failure "+JSON.stringify(err));   
-                    });
+                    });*/
                 }
                 self.editing = false;
             }).otherwise(function() {
