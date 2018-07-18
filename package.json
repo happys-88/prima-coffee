@@ -1,10 +1,10 @@
 {
-  "name": "basetheme_primasupply",
+  "name": "prima-coffee",
   "author": {
-    "name": "Happy",
-    "email": "hmasih@stegtechnologies.com"
+    "name": "utsahpaikraySteg",
+    "email": "upaikray@stegtechnologies.com"
   },
-  "description": "BaseTheme_PrimaSupply",
+  "description": "prima-coffee",
   "version": "0.1.0",
   "scripts": {
     "clean": "rm -rf compiled",

@@ -1,16 +1,17 @@
 {
   "about": {
-    "author": "Happy",
+    "author": "utsahpaikraySteg",
     "defaultLanguage": "en-US",
     "extends": null,
     "isDesktop": true,
     "isMobile": true,
     "isTablet": true,
-    "name": "PrimaSupply Theme", 
+    "name": "prima-coffee",
     "allowProduction": true,
-    "baseTheme": "https://github.com/happys-88/BaseTheme_PrimaSupply",
+    "baseTheme": "https://github.com/happys-88/prima-coffee",
     "baseThemeVersion": {
-      "commit": "4cc35d3357bfb4d50ec61f93dfc378dc1bd3443b"
+      "commit": "HEAD",
+      "version": "HEAD"
     },
     "baseThemeChannel": "stable"
   },
