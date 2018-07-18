@@ -1,6 +1,6 @@
-<form class="mz-searchbox{% if themeSettings.useSearchAutocomplete %} mz-searchbox-expands{% endif %}" action="{% make_url "search" %}">
+<form id="lcsearchbox" class="mz-searchbox{% if themeSettings.useSearchAutocomplete %} mz-searchbox-expands{% endif %}" action="{% make_url "search" %}">
     <div class="mz-searchbox-field">
-        <input placeholder="{{ labels.searchLearningCenter }}" type="search" class="mz-searchbox-input learningCenterInput" autocomplete="off" data-mz-search-box="learningCenter" name="query" data-mz-role="searchquery" />
+        <input placeholder="{{ labels.searchLearningCenter }}" id="lcSearch" type="search" class="mz-searchbox-input learningCenterInput" autocomplete="off" data-mz-search-box="learningCenter" name="query" data-mz-role="searchquery" />
         <input type="hidden" class="mz-searchbox-input" name="searchPage" value="learningCenter" />
         <button class="mz-searchbox-button" type="submit"><i class="fa fa-search"></i></button> 
     </div> 

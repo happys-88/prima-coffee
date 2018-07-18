@@ -213,6 +213,16 @@
                 e.preventDefault();
             }
         });
+        $('#lcsearchbox').on('submit', function(e) {
+            var searchVal = $('#lcSearch').val().trim();
+            if (searchVal === "") {
+                window.alert(Hypr.getLabel('blankSearchResult'));
+                e.preventDefault();
+            } else if (searchVal.length < 3) {
+                window.alert("Your keyword or item number must be at least 3 characters long");
+                e.preventDefault();
+            }
+        });
     });
 
     return AutocompleteManager;
