@@ -1,12 +1,12 @@
 {
   "about": {
-    "author": "singh-vsc",
+    "author": "Happy",
     "defaultLanguage": "en-US",
     "extends": null,
     "isDesktop": true,
     "isMobile": true,
     "isTablet": true,
-    "name": "Burke.coffeetheme_v.1.0.0.Release",
+    "name": "Prima Coffee", 
     "allowProduction": true,
     "baseTheme": "https://github.com/happys-88/prima-coffee",
     "baseThemeVersion": {
