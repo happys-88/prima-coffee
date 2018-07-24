@@ -113,7 +113,7 @@ require(["modules/jquery-mozu", "underscore", "hyprlive", "modules/backbone-mozu
             var shippings = this.model.get('availableShippingMethods');
             var selectedShipping = localStorage.getItem('selectedShipping');
             console.log("value : "+selectedShipping);
-            if(selectedShipping && selectedShipping !== 'null') {
+            if(shippings && selectedShipping && selectedShipping !== 'null') {
                 var code = _.find(shippings, function(arr){
                     return arr.shippingMethodName === selectedShipping;
                 }).shippingMethodCode;

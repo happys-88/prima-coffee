@@ -1,7 +1,8 @@
 define([ 
 	"modules/jquery-mozu",
+	'modules/api',
 	"bxslider" 
-], function( $, bxslider) { 
+], function( $, api, bxslider) { 
 	
 	//home slider
 	$('#mz-home-slider .slider').bxSlider({
@@ -59,10 +60,10 @@ define([
    				$("#errorEmail").hide();
    				$("#newsletterEmail").val('');
    				$("#thanksMsg").show().delay(2000).fadeOut();
-   				$.get("/mailchimp", {accountId:email, deals:"PSNewsLetter"},  function(res){ 
-                   console.log("Response : "+res);   
-                }).fail(function(err) {
-                    console.log("Failure "+JSON.stringify(err));   
+   				api.request("POST", "/mailchimp", {'accountId':email, deals:"PCNewsLetter"}).then(function (response){
+                   console.log("Response 22 : "+JSON.stringify(response));    
+                }, function(err) {
+                    console.log("Failure : "+JSON.stringify(err));
                 });
    			} else {
    				$("#errorEmail").show();

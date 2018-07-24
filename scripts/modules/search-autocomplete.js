@@ -15,7 +15,7 @@
         },
         termsUrl = getApiUrl('terms'),
         productsUrl = getApiUrl('pages'),
-        categoriesUrl = getApiUrl('categories'),
+        categoriesUrl = getApiUrl('categories'), 
         ajaxConfig = {
             headers: api.getRequestHeaders()
         },
@@ -205,6 +205,16 @@
         });
         $('#searchbox').on('submit', function(e) {
             var searchVal = $('#globalSearch').val().trim();
+            if (searchVal === "") {
+                window.alert(Hypr.getLabel('blankSearchResult'));
+                e.preventDefault();
+            } else if (searchVal.length < 3) {
+                window.alert("Your keyword or item number must be at least 3 characters long"); 
+                e.preventDefault();
+            }
+        });
+        $('[data-mz-form="lcSearchBox"]').on('submit', function(e) { 
+            var searchVal = $('[data-mz-search-box="learningCenter"]').val().trim();  
             if (searchVal === "") {
                 window.alert(Hypr.getLabel('blankSearchResult'));
                 e.preventDefault();

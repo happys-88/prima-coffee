@@ -1,6 +1,6 @@
 {% if themeSettings.showYotpoGallery %} 
 <div class="mz-sidebar-content-widget"> 
-	<div class="yotpo-gallery">  
+    <div class="yotpo-gallery">  
         <h2 class="heading-2"><span>Prima Supply</span></h2>    
         <div class="yotpo yotpo-pictures-gallery"
             data-layout="full_page"
@@ -19,14 +19,16 @@
 </div>
 {% endif %} 
 <div class="mz-sidebar-content-widget">
-	{% dropzone "featured-products" scope="page" %}	
+    {% dropzone "featured-products" scope="page" %} 
 </div>
 <div class="mz-sidebar-content-widget mz-popular-articles">
-	<h2 class="heading-2"><span>Popular Articles</span></h2> 
-	<ul>
-		<li><a href="javascript:void(0);">A Beginners Guide to Pour Over Coffee Brewing</a></li>
-		<li><a href="javascript:void(0);">Video Vault: Baratza Forte Comparisons and Tutorials</a></li>
-		<li><a href="javascript:void(0);">Popular Article #3</a></li>
-	</ul>
-</div> 
+    <h2 class="heading-2"><span>Popular Articles</span></h2>  
+    <ul id="popular-articles">
+        
+    </ul>
+</div>
+
+<script type="text/javascript">
+    (function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/{{ themeSettings.yotpoApiKey }}/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})(); 
+</script>  
 

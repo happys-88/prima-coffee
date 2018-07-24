@@ -7,9 +7,9 @@
 
         {% require_script "modules/login-links" %}
 
-        <li class="mz-utilitynav-item live-chat">
+        {% comment %} <li class="mz-utilitynav-item live-chat">
             <a href="javascript:void(0);" class="mz-utilitynav-link" onclick="SnapEngage.startLink();"><i class="fa fa-comments"></i>Live Chat</a>    
-        </li>
+        </li> {% endcomment %}
 
         <li class="mz-utilitynav-item login-link">
             {% if not user.isAnonymous %} 
@@ -59,7 +59,7 @@
                 </div> 
                 
             {% else %}
-                <a href="javascript:void(0);" data-toggle="modal" data-target="#loginPopup" class="mz-utilitynav-link"><i class="fa fa-user"></i>{{ labels.logIn }}</a>
+<span>Welcome! Please </span><a href="javascript:void(0);" data-toggle="modal" data-target="#loginPopup" class="mz-utilitynav-link">{% comment %}<i class="fa fa-user"></i>{% endcomment %}{{ labels.logIn }} or Create Account</a>
             {% endif %}
         </li>
 

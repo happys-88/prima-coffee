@@ -1,7 +1,7 @@
 {% if model.items %}
 <div class="mz-product-cross-sells">
     <h2 class="heading-2"><span>You May Also Like</span></h2>   
-    <div class="slider" id="crossSellSlider">            
+    <ul class="slider" id="crossSellSlider">            
         {% for crosssell in model.items %}                      
         <li class="mz-recentproductlist-item">    
             <div class="mz-product-image">
@@ -23,7 +23,8 @@
             </div> 
        </li>      
       {% endfor %} 
-    </div>
+    </ul> 
 </div>
 {% endif %}
 
+ 

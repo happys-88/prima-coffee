@@ -74,13 +74,13 @@
             <div class="col-sm-8 col-sm-offset-4">  
                 <p>{{ labels.signUpEmailMsg }}</p>
                 <div class="checkbox">
-                    <label><input type="checkbox" id="PSDeals" value="PSDeals" data-mz-prima-deals>{{ labels.primaDeals }}</label>
+                    <label><input type="checkbox" id="PCDeals" value="PCDeals" data-mz-prima-deals>{{ labels.primaDeals }}</label>
                 </div>
                 <div class="checkbox">
-                    <label><input type="checkbox" id="PSNewsLetter" value="PSNewsLetter" data-mz-prima-newsletter>{{ labels.primaDigest }}</label>
+                    <label><input type="checkbox" id="PCNewsLetter" value="PCNewsLetter" data-mz-prima-newsletter>{{ labels.primaDigest }}</label>
                 </div>
                 <div class="checkbox">
-                    <label><input type="checkbox" id="PSBlogs" value="PSBlogs" data-mz-prima-lc>{{ labels.primaLearningCenter }}</label>
+                    <label><input type="checkbox" id="PCBlogs" value="PCBlogs" data-mz-prima-lc>{{ labels.primaLearningCenter }}</label>
                 </div>       
             </div>
         </div>

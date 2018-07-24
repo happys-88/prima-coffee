@@ -106,23 +106,25 @@
     {% endblock open-body-tag %}
 
         <div id="page-wrapper" class="mz-l-pagewrapper">
+            <div class="container">
+                {% block utility-bar %}
+                    {% include "modules/utility-bar/header" %}
+                {% endblock utility-bar %}
     
-            {% block utility-bar %}
-                {% include "modules/utility-bar/header" %}
-            {% endblock utility-bar %}
+                {% block utility-nav %}
+                    {% include "modules/page-header/utility-nav" %}
+                {% endblock utility-nav %}
+            </div> 
+          
 
             <div class="mz-sticky-header">
                 {% block page-header %}
                     {% include "modules/page-header" %}
-                {% endblock page-header %}
-                
-                {% block site-nav %} 
-                    {% include "modules/site-nav" %}  
-                {% endblock site-nav %}   
+                {% endblock page-header %}  
                 
                 {% block mobile-nav %} 
                     {% include "modules/mobile-nav" %}   
-                {% endblock mobile-nav %}       
+            {% endblock mobile-nav %}       
                
             </div>
 

@@ -64,9 +64,9 @@ define([
         },
         finishEdit: function() {
             var self = this;
-            var deals = $('#PrimaDeals').is(':checked') ? $('#PrimaDeals').val() : '';
-            deals = $('#PSNewsLetter').is(':checked') ? deals+","+$('#PSNewsLetter').val() : deals+","+'';
-            deals = $('#PSBlogs').is(':checked') ? deals+","+$('#PSBlogs').val() : deals+","+'';
+            var deals = $('#PCDeals').is(':checked') ? $('#PCDeals').val() : '';
+            deals = $('#PCNewsLetter').is(':checked') ? deals+","+$('#PCNewsLetter').val() : deals+","+'';
+            deals = $('#PCBlogs').is(':checked') ? deals+","+$('#PCBlogs').val() : deals+","+'';
             
             $('.mz-validationmessage').text('');
             if (!self.model.apiModel.data.firstName) {
@@ -90,11 +90,16 @@ define([
                 var email = resp.data.emailAddress;
                 
                 if(deals !== '') {
-                    $.get("/mailchimp", {accountId:email, deals:deals},  function(res){ 
+                    Api.request("POST", "/mailchimp", {'accountId':email, 'deals':deals}).then(function (response){
+                       console.log("Response : "+JSON.stringify(response));    
+                    }, function(err) {
+                        console.log("MailChimp");
+                    });
+                    /*$.get("/mailchimp", {accountId:email, deals:deals},  function(res){ 
                        console.log("Response : "+res);   
                     }).fail(function(err) {
                         console.log("Failure "+JSON.stringify(err));   
-                    });
+                    });*/
                 }
                 self.editing = false;
             }).otherwise(function() {

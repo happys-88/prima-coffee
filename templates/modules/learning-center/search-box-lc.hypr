@@ -1,11 +1,11 @@
-<form class="mz-searchbox{% if themeSettings.useSearchAutocomplete %} mz-searchbox-expands{% endif %}" action="{% make_url "search" %}">
+<form data-mz-form="lcSearchBox" class="mz-searchbox{% if themeSettings.useSearchAutocomplete %} mz-searchbox-expands{% endif %}" action="{% make_url "search" %}">
     <div class="mz-searchbox-field">
-        <input placeholder="{{ labels.searchLearningCenter }}" type="search" class="mz-searchbox-input learningCenterInput" autocomplete="off" data-mz-search-box="learningCenter" name="query" data-mz-role="searchquery" />
+        <input placeholder="{{ labels.searchLearningCenter }}" type="search" class="mz-searchbox-input learningCenterInput" autocomplete="off" data-mz-search-box="learningCenter" name="query" data-mz-role="searchquery" /> 
         <input type="hidden" class="mz-searchbox-input" name="searchPage" value="learningCenter" />
         <button class="mz-searchbox-button" type="submit"><i class="fa fa-search"></i></button> 
     </div> 
 	
     {% if themeSettings.useSearchAutocomplete %}
-        {% require_script "modules/search-autocomplete" %} 
+        {% require_script "modules/search-autocomplete" %}   
     {% endif %}
 </form>   

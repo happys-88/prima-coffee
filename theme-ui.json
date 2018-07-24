@@ -399,6 +399,48 @@
                     "name": "instagramFollowUsLink" 
                 }
             ]
+        },
+        {
+            "xtype": "panel",
+            "title": "Third Party key details",     
+            "collapsed": false,
+            "items": [
+                {
+                    "fieldLabel": "Popular Articles Pubid", 
+                    "xtype": "mz-input-text",
+                    "name": "addThisPubId"  
+                },
+                {
+                    "fieldLabel": "Learning Center Parent Category Code", 
+                    "xtype": "mz-input-text",
+                    "name": "blogParentCategoryCode"
+                },
+                {
+                    "fieldLabel": "Learning Center Categories Codes List(comma separated)", 
+                    "xtype": "mz-input-text",
+                    "name": "searchSuggestionFilter"
+                },
+                {
+                    "fieldLabel": "Avalara Token", 
+                    "xtype": "mz-input-text",
+                    "name": "avalaraToken"
+                },
+                {
+                    "fieldLabel": "Avalara Company Code", 
+                    "xtype": "mz-input-text",
+                    "name": "avalaraCompanyCode"
+                },
+                {
+                    "fieldLabel": "MailChimp API Key", 
+                    "xtype": "mz-input-text",
+                    "name": "mailChimpKey"
+                },
+                {
+                    "fieldLabel": "Disqus API Key", 
+                    "xtype": "mz-input-text",
+                    "name": "disqusKey"
+                }
+            ]
         }
     ]
 }

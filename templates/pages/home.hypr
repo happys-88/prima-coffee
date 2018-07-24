@@ -52,9 +52,7 @@
         
     </div>
     
-    {% comment %} {% require_script "pages/yotpo_review" %} {% endcomment %}
-    {% require_script "pages/yotpo-review" %}
-    {% require_script "modules/promoted-products" %}
+    {% require_script "pages/yotpo-review" %} 
 {% endblock body-content %}
 
 {% block body-below-content %}

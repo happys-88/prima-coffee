@@ -1,4 +1,4 @@
-﻿<footer class="mz-pagefooter">  
+<footer class="mz-pagefooter">  
     <div class="mz-footer-top">
         <div class="container">
             <div class="row">
@@ -13,13 +13,13 @@
                     </div>
                     <div class="col-sm-4 col-md-2 col-xs-12">  
                         <h4><a href="/customer-service">{{ labels.customerService }}</a></h4>
-                        <ul>
-                            {% if not user.isAnonymous %} 
+                         {% comment %} <ul>
+                           {% if not user.isAnonymous %} 
                                 <li><a href="/myaccount">{{ labels.myAccount }}</a></li>
                             {% else %}
                                 <li><a href="javascript:void(0);" data-toggle="modal" data-target="#loginPopup">{{ labels.myAccount }}</a></li>
                             {% endif %}
-                        </ul>
+                        </ul> {% endcomment %}
                         {% dropzone "footer-dropzone-3" scope="site" %}
                         {% block payment-options %}
                             {% include "modules/page-footer/payment-options" %}

@@ -1,57 +1,55 @@
 <div id="mz-home-slider">
-  <div class="slider">
-    {% if model.config.slideImageOne %}
-      <div>
-        <a  class="mz-slide" style="background-image: url('{{ model.config.slideImageOne.imageUrl }}');" {% if model.config.slideLinkOne %}href="{{ model.config.slideLinkOne }}"{% endif %}>
-          <div class="mz-slide-details">
-            {% if model.config.slideTitleOne %}
-              <h2>{{ model.config.slideTitleOne }}</h2>
-            {% endif %}
-            {% if model.config.slideShortDescOne %}
-              <p>{{ model.config.slideShortDescOne }}</p>
-            {% endif %}
-            {% if model.config.slideButtonOne %}
-              <button class="mz-button" type="submit">{{ model.config.slideButtonOne }}</button>
-            {% endif %}
-          </div>
-        </a>
-      </div>
-    {% endif %}
- 
-    {% if model.config.slideImageTwo %}
-      <div>
-        <a  class="mz-slide" style="background-image: url('{{ model.config.slideImageTwo.imageUrl }}');" {% if model.config.slideLinkTwo %}href="{{ model.config.slideLinkTwo }}"{% endif %}>
-          <div class="mz-slide-details">
-            {% if model.config.slideTitleTwo %}
-              <h2>{{ model.config.slideTitleTwo }}</h2>
-            {% endif %}
-            {% if model.config.slideShortDescTwo %}
-              <p>{{ model.config.slideShortDescTwo }}</p>
-            {% endif %}
-            {% if model.config.slideButtonTwo %}
-              <button class="mz-button" type="submit">{{ model.config.slideButtonTwo }}</button>
-            {% endif %}
-          </div>
-        </a>
-      </div>
-    {% endif %}
- 
-    {% if model.config.slideImageThree %}
-      <div>
-        <a  class="mz-slide" style="background-image: url('{{ model.config.slideImageThree.imageUrl }}');" {% if model.config.slideLinkThree %}href="{{ model.config.slideLinkThree }}"{% endif %}>
-          <div class="mz-slide-details">
-            {% if model.config.slideTitleThree %}
-              <h2>{{ model.config.slideTitleThree }}</h2>
-            {% endif %}
-            {% if model.config.slideShortDescThree %}
-              <p>{{ model.config.slideShortDescThree }}</p>
-            {% endif %}
-            {% if model.config.slideButtonThree %}
+    <div class="slider">
+      {% if model.config.slideImageOnedes %}
+        <div>
+          <a  class="mz-slide">
+              <span data-picture="" data-alt="">
+                  <span data-src={{ model.config.slideImageOnedes }} width="1600" height="582"></span>
+                  <span data-media="(max-width: 767px)" data-src="{{ model.config.slideImageOnemob }}" width="767" height="279"></span>
+                  <span data-media="(max-width: 767px) and (min-device-pixel-ratio: 2), (max-width: 767px) and (-o-min-device-pixel-ratio: 2), (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 767px) and (min-resolution: 2dppx)" data-src={{ model.config.slideImageOnemob }} width="767" height="279"></span>
+                  <span data-media="(max-width: 480px)" data-src="{{ model.config.slideImageOnemob }}" width="480" height="175"></span>
+                  <span data-media="(max-width: 480px) and (min-device-pixel-ratio: 2), (max-width: 480px) and (-o-min-device-pixel-ratio: 2), (max-width: 480px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 480px) and (min-resolution: 2dppx)" data-src={{ model.config.slideImageOnemob }} width="480" height="175"></span>
+                  <span data-media="(min-width: 768px) and (max-width: 979px)" data-src="{{ model.config.slideImageOnetab }}" width="979" height="356"></span>
+                  <span data-media="(min-width: 768px) and (max-width: 979px) and (min-device-pixel-ratio: 2), (min-width: 768px) and (max-width: 979px) and (-o-min-device-pixel-ratio: 2), (min-width: 768px) and (max-width: 979px) and (-webkit-min-device-pixel-ratio: 2), (min-width: 768px) and (max-width: 979px) and (min-resolution: 2dppx)" data-src={{ model.config.slideImageOnetab }} width="979" height="356"></span>
+                  <span data-media="(min-width: 980px) and (max-width: 1199px)" data-src="{{ model.config.slideImageOnedes }}" width="1199" height="436"></span>
+                  <span data-media="(min-width: 980px) and (max-width: 1199px) and (min-device-pixel-ratio: 2), (min-width: 980px) and (max-width: 1199px) and (-o-min-device-pixel-ratio: 2), (min-width: 980px) and (max-width: 1199px) and (-webkit-min-device-pixel-ratio: 2), (min-width: 980px) and (max-width: 1199px) and (min-resolution: 2dppx)" data-src={{ model.config.slideImageOnetab }} width="1199" height="436"></span>
+                  <span data-media="(min-width: 1200px) and (max-width: 1600px)" data-src="{{ model.config.slideImageOnedes }}" width="1600" height="582"></span>
+                  <span data-media="(min-width: 1200px) and (max-width: 1600px) and (min-device-pixel-ratio: 2), (min-width: 1200px) and (max-width: 1600px) and (-o-min-device-pixel-ratio: 2), (min-width: 1200px) and (max-width: 1600px) and (-webkit-min-device-pixel-ratio: 2), (min-width: 1200px) and (max-width: 1600px) and (min-resolution: 2dppx)" data-src={{ model.config.slideImageOnedes }} width="1600" height="582"></span>
+                  <span data-media="(min-width: 1600px)" data-src="https://static.prima-coffee.com/styles/slideshow_tv/EK43S-frontpage.jpg?itok=VlFuvCj6" width="2000" height="728"></span>
+                  <noscript><img src={{ model.config.slideImageOnedes }} width="1600" height="582" alt="" /></noscript>
+                  <img alt="" title="null" src={{ model.config.slideImageOnedes }} width="1600" height="582"></span>
+              <div class="mz-slide-details">
+                {% if model.config.slideButtonOne %}
+                <button class="mz-button" type="submit">{{ model.config.slideButtonOne }}</button>
+              {% endif %}
+             </div>
+          </a>
+             
+        </div>
+        {% endif %}
+        {% if model.config.slideImageTwodes %}
+        <div>
+          <a  class="mz-slide">
+              <span data-picture="" data-alt=""> <span data-src={{ model.config.slideImageTwodes }} width="1600" height="582"></span> <span data-media="(max-width: 767px)" data-src={{ model.config.slideImageTwomob }} width="767" height="279"></span> <span data-media="(max-width: 767px) and (min-device-pixel-ratio: 2), (max-width: 767px) and (-o-min-device-pixel-ratio: 2), (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 767px) and (min-resolution: 2dppx)" data-src={{ model.config.slideImageTwomob }} width="767" height="279"></span> <span data-media="(max-width: 480px)" data-src={{ model.config.slideImageTwomob }} width="480" height="175"></span> <span data-media="(max-width: 480px) and (min-device-pixel-ratio: 2), (max-width: 480px) and (-o-min-device-pixel-ratio: 2), (max-width: 480px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 480px) and (min-resolution: 2dppx)" data-src={{ model.config.slideImageTwomob }} width="480" height="175"></span> <span data-media="(min-width: 768px) and (max-width: 979px)" data-src={{ model.config.slideImageTwotab }} width="979" height="356"></span> <span data-media="(min-width: 768px) and (max-width: 979px) and (min-device-pixel-ratio: 2), (min-width: 768px) and (max-width: 979px) and (-o-min-device-pixel-ratio: 2), (min-width: 768px) and (max-width: 979px) and (-webkit-min-device-pixel-ratio: 2), (min-width: 768px) and (max-width: 979px) and (min-resolution: 2dppx)" data-src={{ model.config.slideImageTwotab }} width="979" height="356"></span> <span data-media="(min-width: 980px) and (max-width: 1199px)" data-src={{ model.config.slideImageTwotab }} width="1199" height="436"></span> <span data-media="(min-width: 980px) and (max-width: 1199px) and (min-device-pixel-ratio: 2), (min-width: 980px) and (max-width: 1199px) and (-o-min-device-pixel-ratio: 2), (min-width: 980px) and (max-width: 1199px) and (-webkit-min-device-pixel-ratio: 2), (min-width: 980px) and (max-width: 1199px) and (min-resolution: 2dppx)" data-src={{ model.config.slideImageTwotab }} width="1199" height="436"></span> <span data-media="(min-width: 1200px) and (max-width: 1600px)" data-src={{ model.config.slideImageTwodes }} width="1600" height="582"></span> <span data-media="(min-width: 1200px) and (max-width: 1600px) and (min-device-pixel-ratio: 2), (min-width: 1200px) and (max-width: 1600px) and (-o-min-device-pixel-ratio: 2), (min-width: 1200px) and (max-width: 1600px) and (-webkit-min-device-pixel-ratio: 2), (min-width: 1200px) and (max-width: 1600px) and (min-resolution: 2dppx)" data-src={{ model.config.slideImageTwodes }} width="1600" height="582"></span> <span data-media="(min-width: 1600px)" data-src={{ model.config.slideImageTwodes }} width="2000" height="728"></span> <noscript><img src={{ model.config.slideImageTwodes }} width="1600" height="582" alt="" /></noscript> <img alt="" title="null" src={{ model.config.slideImageTwodes }} width="1600" height="582"></span>
+              <div class="mz-slide-details">
+                {% if model.config.slideButtonTwo %}
+                <button class="mz-button" type="submit">{{ model.config.slideButtonTwo }}</button>
+              {% endif %}
+             </div>
+          </a>        
+        </div>
+        {% endif %}
+        {% if model.config.slideImageThreedes %}
+        <div>
+          <a  class="mz-slide" >
+              <span data-picture="" data-alt=""> <span data-src={{ model.config.slideImageThreedes }} width="1600" height="582"></span> <span data-media="(max-width: 767px)" data-src={{ model.config.slideImageThreemob }} width="767" height="279"></span> <span data-media="(max-width: 767px) and (min-device-pixel-ratio: 2), (max-width: 767px) and (-o-min-device-pixel-ratio: 2), (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 767px) and (min-resolution: 2dppx)" data-src={{ model.config.slideImageThreemob }} width="767" height="279"></span> <span data-media="(max-width: 480px)" data-src={{ model.config.slideImageThreemob }} width="480" height="175"></span> <span data-media="(max-width: 480px) and (min-device-pixel-ratio: 2), (max-width: 480px) and (-o-min-device-pixel-ratio: 2), (max-width: 480px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 480px) and (min-resolution: 2dppx)" data-src={{ model.config.slideImageThreemob }} width="480" height="175"></span> <span data-media="(min-width: 768px) and (max-width: 979px)" data-src={{ model.config.slideImageThreemob }} width="979" height="356"></span> <span data-media="(min-width: 768px) and (max-width: 979px) and (min-device-pixel-ratio: 2), (min-width: 768px) and (max-width: 979px) and (-o-min-device-pixel-ratio: 2), (min-width: 768px) and (max-width: 979px) and (-webkit-min-device-pixel-ratio: 2), (min-width: 768px) and (max-width: 979px) and (min-resolution: 2dppx)" data-src={{ model.config.slideImageThreetab }} width="979" height="356"></span> <span data-media="(min-width: 980px) and (max-width: 1199px)" data-src={{ model.config.slideImageThreetab }} width="1199" height="436"></span> <span data-media="(min-width: 980px) and (max-width: 1199px) and (min-device-pixel-ratio: 2), (min-width: 980px) and (max-width: 1199px) and (-o-min-device-pixel-ratio: 2), (min-width: 980px) and (max-width: 1199px) and (-webkit-min-device-pixel-ratio: 2), (min-width: 980px) and (max-width: 1199px) and (min-resolution: 2dppx)" data-src={{ model.config.slideImageThreeab }} width="1199" height="436"></span> <span data-media="(min-width: 1200px) and (max-width: 1600px)" data-src={{ model.config.slideImageThreedes }}width="1600" height="582"></span> <span data-media="(min-width: 1200px) and (max-width: 1600px) and (min-device-pixel-ratio: 2), (min-width: 1200px) and (max-width: 1600px) and (-o-min-device-pixel-ratio: 2), (min-width: 1200px) and (max-width: 1600px) and (-webkit-min-device-pixel-ratio: 2), (min-width: 1200px) and (max-width: 1600px) and (min-resolution: 2dppx)" data-src={{ model.config.slideImageThreedes }} width="1600" height="582"></span> <span data-media="(min-width: 1600px)" data-src={{ model.config.slideImageThreedes }} width="2000" height="728"></span> <noscript><img src={{ model.config.slideImageThreedes }} width="1600" height="582" alt="" /></noscript> <img alt="" title="null" src={{ model.config.slideImageThreedes }} width="1600" height="582"></span>
+              <div class="mz-slide-details">
+              {% if model.config.slideButtonThree %}
               <button class="mz-button" type="submit">{{ model.config.slideButtonThree }}</button>
             {% endif %}
-          </div>
-        </a>
-      </div>
-    {% endif %}
+           </div>
+          </a>        
+        </div>
+        {% endif %}
+    </div>
   </div>
-</div>

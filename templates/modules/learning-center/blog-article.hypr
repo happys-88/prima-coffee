@@ -27,7 +27,7 @@
     {% include "modules/learning-center/lc-top-section" with model=prodMod %}   
 </div>   
 
-<div itemscope itemtype="http://schema.org/Product" class="mz-l-container mz-blog-content"> 
+<div itemscope itemtype="http://schema.org/Article" class="mz-l-container mz-blog-content"> 
     <div class="container">
         <div class="row">
             <div class="col-xs-12"> 

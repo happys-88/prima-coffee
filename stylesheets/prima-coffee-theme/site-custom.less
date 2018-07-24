@@ -40,16 +40,70 @@
 body{
   background: @textColorWhite;
   font-family: @fontFamily;
+    background: #f3eded url(https://prima-coffee.com/sites/all/themes/pc/images/cream_dust.png) repeat 0 0;
+  .mz-l-pagewrapper{
+	  .mz-l-pagecontent{
+		  background: transparent;
+	  }
+	  #mz-drop-zone-home-slider{
+		  margin-top:-180px;
+	  }
+	  .container{
+		  max-width: 1440px;
+		  .mz-utilitynav{
+			  .mz-utilitynav-list{
+				float: right;
+			  }
+		  }
+		  .mz-sticky-header{
+			  .mz-pageheader{
+				padding: 0;
+				position: relative;
+				z-index: 99;
+			  }
+		  }
+	  }
+
+  }
 }
 
+
 .mz-pageheader{
+	position: relative;
+	z-index: 99;
 	.mz-header-bottom{
+		margin-top: -30px;
+		.container{
+			background: #1b1b1b;
+			border-radius: 50px;
+			padding: 15px;
+			background-image: linear-gradient(to bottom,#222222,#111111);
+			background-repeat: repeat-x;
+			.mz-sitenav {
+				background: transparent;
+			}
+			.mz-searchbox {
+				margin:0px;
+				.mz-searchbox-field{
+					border-radius: 50px;
+					font-weight: 500;
+						.mz-searchbox-input {
+								width: 100%;
+								border-radius:50px;
+								background-color:rgb(219, 213, 213);
+								&:focus{
+									background-color:#fefcff!important;
+								}
+					  }
+				}	
+		   }
+		}
 		.mz-storebranding{
 			.mz-logo{
-				background: url("../resources/images/prima-coffee-logo1.png") left top no-repeat;
+				background: url("../resources/images/prima-supply-logo.png") left top no-repeat;
 				background-size: contain;
-				width: 253px;
-				height: 80px; 
+				width: 190px;
+				height: 56px; 
 			}
 		}
 		.mz-utilitynav{
@@ -130,6 +184,13 @@ body{
 	}
 }
 #mz-home-slider{ 
+	text-align: -webkit-center;
+	margin-top: -18px;
+		.bx-wrapper {
+				img {
+					width: 100%!important; 
+			}
+	    }
 	.slider{
 		.mz-slide-details{
 			.mz-button{
@@ -282,4 +343,163 @@ body{
 			&:hover{.mzPrimaryBtn();} 
 		}
 	}
+}
+//feature Product
+.mz-featured-products{
+	.mz-productlist{
+			   .mz-productlist-item{
+					.mz-productlisting{
+						.mz-productlisting-image {
+							width: 100%;
+							text-align: center;
+							line-height: 250px;
+							text-align: center;
+							background: #fff;
+							margin-bottom: 15px;
+							outline: 1px solid #f3f3f3;
+						}
+						.mz-productlisting-info{
+							.mz-productlisting-title{
+								font-family: helvetica neue,Helvetica,Arial,sans-serif;
+								font-size: 16px;
+								color: #ff7a00;
+                                text-decoration: none;
+								min-height: auto;
+								text-align: left;
+							}
+							.short-description{
+								p{
+									font-family: helvetica neue,Helvetica,Arial,sans-serif;
+									font-size: 16px;
+									line-height: 28px;
+									color: #333;
+									background-color: #fff;
+									text-align: left;
+								}
+								span{
+									float: right;
+									text-align: right;
+									a{
+										color:#ff7a00;
+									}
+								}
+								
+							}
+						}
+						
+					}
+					
+				}
+	}
+}
+
+
+.heading-2 {
+    position: relative;
+    padding: 28px 0;
+    margin-top: 80px;
+    border-top: 1px solid #bbb;
+    -webkit-box-shadow: inset 0 1px #fff, inset 0 5px 7px -7px #000;
+    -moz-box-shadow: inset 0 1px #fff,inset 0 5px 7px -7px #000;
+    box-shadow: inset 0 1px #fff, inset 0 5px 7px -7px #000;
+    -webkit-box-shadow: inset 0 1px #fff, inset 0 5px 7px -7px #000;
+    -moz-box-shadow: inset 0 1px #fff,inset 0 5px 7px -7px #000;
+    box-shadow: inset 0 1px #fff, inset 0 5px 7px -7px #000;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+.heading-2 span {
+    background: #ff7a00;
+    color: #fff;
+    font-family: raleway,helvetica neue,Helvetica,Arial,sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 30px;
+    display: inline-block;
+    padding: .25em .75em;
+    position: absolute;
+    top: -31px;
+    left: 22px;
+    -webkit-border-top-left-radius: 4px;
+    -moz-border-radius-topleft: 4px;
+    border-top-left-radius: 4px;
+    -webkit-border-top-left-radius: 4px;
+    -moz-border-radius-topleft: 4px;
+    border-top-left-radius: 4px;
+    -webkit-box-shadow: inset 0 20px 20px -12px rgba(0,0,0,.1), inset -2px 0 orange;
+    -moz-box-shadow: inset 0 20px 20px -12px rgba(0,0,0,.1),inset -2px 0 orange;
+    box-shadow: inset 0 20px 20px -12px rgba(0,0,0,.1), inset -2px 0 orange;
+    -webkit-box-shadow: inset 0 20px 20px -12px rgba(0,0,0,.1), inset -2px 0 orange;
+    -moz-box-shadow: inset 0 20px 20px -12px rgba(0,0,0,.1),inset -2px 0 orange;
+    box-shadow: inset 0 20px 20px -12px rgba(0,0,0,.1), inset -2px 0 orange;
+    text-shadow: 0 1px rgba(0,0,0,.2);
+}
+.heading-2 span:after {
+    content: '';
+    position: absolute;
+    width: 7px;
+    height: 14px;
+    right: -7px;
+    top: 0;
+    border-top-right-radius: 12px;
+    border-top-left-radius: 12px;
+    background: #994900;
+    border-top: 2px solid orange;
+    border-left: 2px solid orange
+}
+#promotedProds {
+	.mz-productlisting-info {
+		div{
+			margin-bottom: 2px;
+		}
+	}
+    .mz-product-rating {
+        img {
+            width: 100px;
+        }
+	}
+	.bx-wrapper{
+		img {
+			margin: 0 auto;
+		}
+	} 
+}
+//detail page
+.mz-l-paginatedlist-list{
+	.mz-productlist{
+    .mz-productlist-list{
+        .mz-productlist-item{
+			padding:5px;
+            .mz-productlisting{
+				padding: 10px 0 10px 0;
+                border: 1px solid #d4cccc;
+				border-radius: 11px;
+				background: #fff;
+				.mz-productlisting-info{
+						.mz-button {
+							border-radius: 5px;
+						}
+				}
+				   .mz-productlisting-title {
+                        color: #ff7a00;
+                        font-size: 14px;
+                        width: 100%;
+                        text-decoration: none;
+                        font-family: helvetica neue,Helvetica,Arial,sans-serif;
+                        font-size: 16px;
+                        text-decoration: none;
+                        min-height: auto;
+                        text-align: center;
+                 }
+            }
+        }
+     } 
+  }
 }

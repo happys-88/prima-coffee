@@ -34,7 +34,7 @@
                 <div class="form-group">
                     <div class="col-sm-8 col-sm-offset-4">
                         <label>
-                            <input type="checkbox" name="create-new-account" > {{ labels.signUpForSpecialOffers }}
+                            <input type="checkbox" name="sign-up-offer" id="PCNewsLetter"> {{ labels.signUpForSpecialOffers }}
                         </label>
                     </div>
                 </div>
