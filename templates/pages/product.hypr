@@ -7,13 +7,9 @@
 {% block body-content %}
 
 {% require_script "pages/product" %}
-
 <script type="text/javascript">
-    (function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/4X91rXasdFWFBX4Rnh5WEr4NnvMwpFpjxzNFLubD/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})(); 
-    $(document).ready(function () {
-        $('#indexreviews').hide();
-    });
-</script>
+    (function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/{{ themeSettings.yotpoApiKey }}/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})(); 
+</script> 
 
 {% if model.length==2 %}
     {% for vals in model %}
@@ -45,7 +41,7 @@
               {% endblock star-rating %} 
 
               {% block question-answer %}
-                  <div class='yotpo QABottomLine' data-appkey='4X91rXasdFWFBX4Rnh5WEr4NnvMwpFpjxzNFLubD' data-product-id='{{ prodMod.productCode }}' id="askQuestionLink"></div> 
+                  <div class='yotpo QABottomLine' data-appkey='{{ themeSettings.yotpoApiKey }}' data-product-id='{{ prodMod.productCode }}' id="askQuestionLink"></div> 
               {% endblock question-answer %}
               <!-- Yotpo Rating --> 
             </div> 
@@ -74,7 +70,7 @@
 {% endblock you-may-also-like %}
 
 {% block recently-viewed %}
-    {% include "modules/product/recent/recently-viewed-products" with model=prodMod %}
+    {% include "modules/product/recent/recently-viewed-products" with model=prodMod %} 
 {% endblock recently-viewed %}
 
 {% endblock body-content %}

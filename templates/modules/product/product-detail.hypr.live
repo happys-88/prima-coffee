@@ -203,11 +203,9 @@
     <div class="row">
       <div class="col-md-12">
         <h4 class="mz-l-stack-sectiontitle">{{ labels.addons }}</h4>
-      </div>
-    </div>
-    <div class="col-md-12">
-      <div class="mz-productdetail-options mz-l-stack-section">
-        {% include "modules/product/product-addons" %}
+        <div class="mz-productdetail-options mz-l-stack-section">
+          {% include "modules/product/product-addons" %} 
+        </div>
       </div>
     </div>
   {% endif %}
@@ -235,7 +233,7 @@
     {{ prod.content.productName }}
   </dt>
   <dd>
-    {{ prod.content.productShortDescription|safe }}
+    {{ prod.content.productShortDescription|safe }} 
     </dd>
   {% endfor %}
   </dl>

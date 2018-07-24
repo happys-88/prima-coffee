@@ -1,4 +1,4 @@
-﻿<div class="mz-breadcrumbs">
+﻿<div class="mz-breadcrumbs hidden-xs">
     {% if navigation.breadcrumbs %}
         <a href="{{siteContext.siteSubdirectory}}/" class="mz-breadcrumb-link">Home</a> <span class="mz-breadcrumb-separator">&#47;</span>
     {% endif %}
@@ -13,3 +13,23 @@
         {% endif %}
     {% endfor %}
 </div>
+
+<div class="mz-breadcrumbs visible-xs"> 
+    {% set_var avail=false %}
+    {% for crumb in navigation.breadcrumbs %}
+       {% if not forloop.last %}  
+        {% set_var url=crumb.url %}
+        {% set_var name=crumb.name %} 
+        {% set_var avail=true %}     
+      {% endif %}
+    {% endfor %}
+    {% if navigation.breadcrumbs.length == 1 %}
+        <a href="{{siteContext.siteSubdirectory}}/" class="mz-breadcrumb-link">Home</a>
+    {% endif %}
+    {% if  avail == true %}
+        {% if not crumb.isHidden %}
+            <a href="{{url}}" class="mz-breadcrumb-link{% if forloop.first %} is-first{% endif %}"><i class="fa fa-angle-left"></i> {{name|replace(themeSettings.columnBreaker, "")|safe|lower }}</a>
+        {% endif %}
+    {% endif %}
+</div>
+

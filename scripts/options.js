@@ -57,68 +57,86 @@ define(["modules/jquery-mozu", "underscore", "hyprlive", "modules/backbone-mozu"
             "click .addtocartaddon":"addToCartUpdate"
         },
         initialize: function () {
-        // handle preset selects, etc
-        var me = this;
-        this.$('[data-mz-product-option]').each(function () {
-            var $this = $(this), isChecked, wasChecked;
-            if ($this.val()) {
-                switch ($this.attr('type')) {
-                    case "checkbox":
-                    case "radio":
-                        isChecked = $this.prop('checked');
-                        wasChecked = !!$this.attr('checked');
-                        if ((isChecked && !wasChecked) || (wasChecked && !isChecked)) {
+            // handle preset selects, etc
+            var me = this;
+            this.$('[data-mz-product-option]').each(function () {
+                var $this = $(this), isChecked, wasChecked;
+                if ($this.val()) {
+                    switch ($this.attr('type')) {
+                        case "checkbox":
+                        case "radio":
+                            isChecked = $this.prop('checked');
+                            wasChecked = !!$this.attr('checked');
+                            if ((isChecked && !wasChecked) || (wasChecked && !isChecked)) {
+                                me.configure($this);
+                            }
+                            break;
+                        default:
                             me.configure($this);
-                        }
-                        break;
-                    default:
-                        me.configure($this);
+                    }
                 }
+            });
+
+            if(typeof this.model.get('variations') !== "undefined" ) {
+                var variations = this.model.get('variations');
+                var sum = 0;
+                if(variations.length !== 0) { 
+                    var stockArray = [];
+                    for(var i=0; i<variations.length; i++) {
+                        stockArray.push(variations[i].inventoryInfo.onlineStockAvailable);
+                        sum += variations[i].inventoryInfo.onlineStockAvailable;
+                    }
+                    this.model.set({'totalCount': sum});
+                    var inStock =_.contains(stockArray, 0);
+                    this.model.set({'containsZero': inStock});
+                }                    
+            } else {
+                this.model.set({'totalCount': this.model.attributes.inventoryInfo.onlineStockAvailable});
             }
-        });
-
-        if(typeof this.model.get('variations') !== "undefined" ) {
-                   var variations = this.model.get('variations');
-                    var sum = 0;
-                    if(variations.length !== 0) { 
-                        var stockArray = [];
-                        for(var i=0; i<variations.length; i++) {
-                            stockArray.push(variations[i].inventoryInfo.onlineStockAvailable);
-                            sum += variations[i].inventoryInfo.onlineStockAvailable;
-                        }
-                        this.model.set({'totalCount': sum});
-                        var inStock =_.contains(stockArray, 0);
-                        this.model.set({'containsZero': inStock});
-                    }                    
-                } else {
-                    this.model.set({'totalCount': this.model.attributes.inventoryInfo.onlineStockAvailable});
-                }
-
         },
         render: function () {
+            this.refreshOptions();
             Backbone.MozuView.prototype.render.call(this);
         },
         refreshOptions: function() {
+            var selectedCount = 0;
+            selectedCount = parseInt(selectedCount, 10);
+
             var options = JSON.parse(JSON.stringify(this.model.get('options')));
+            var hasAddon = false;
 
             for (var i = 0; i < options.length; i++) {
-                var count = 0;
-                count = parseInt(count, 10);
+                var stockCount = 0;
+                stockCount = parseInt(stockCount, 10);
                 var option = options[i];
                 if(option.attributeDetail.dataType == 'ProductCode') {
                     var optionValues = option.values;
                     for (var j = 0; j < optionValues.length; j++) {
                         var optionValue = optionValues[j];
                         if (optionValue.bundledProduct.inventoryInfo.onlineStockAvailable > 0) {
-                            count++;
+                            if (!hasAddon) {
+                                hasAddon = true;
+                            }
+                            stockCount++;
+                            break;
+                        }
+                    }
+                    for (var k = 0; k < optionValues.length; k++) {
+                        if (optionValues[k].isSelected) {
+                            selectedCount++;
                             break;
                         }
                     }
                 }
-                option.stockCount = count;
-                options[i] = option;
+                var opt = this.model.get('options').get(option.attributeFQN);
+                opt.set('stockCount', stockCount);
             }
-            this.model.set('optionArr',options);
+            if(selectedCount === 0){
+                this.model.set('addToCartButton','disabled');
+            } else {
+                this.model.set('addToCartButton','');
+            }
+            this.model.set('hasAddon', hasAddon);  
         },
         onQuantityChange: _.debounce(function (e) {
             var $qField = $(e.currentTarget),
@@ -128,12 +146,8 @@ define(["modules/jquery-mozu", "underscore", "hyprlive", "modules/backbone-mozu"
             }
         },500),
         onOptionChange: function (e) {
-            
-            this.model.set('addToCartErr', '');
-            var $optionEl = $(e.currentTarget);
-            var productCode = $optionEl.val();
-            var attributeFQN = $optionEl.data('mz-product-option');
-            this.model.set('selected'+attributeFQN,productCode);
+            this.model.unset('addToCartErr');
+            this.model.unset('addToCartErrr');
             this.configure($(e.currentTarget));
         },
         configure: function ($optionEl) {
@@ -155,27 +169,6 @@ define(["modules/jquery-mozu", "underscore", "hyprlive", "modules/backbone-mozu"
                     }
                 }
             }
-            var selectedCount = 0;
-            selectedCount = parseInt(selectedCount, 10);
-            var options = JSON.parse(JSON.stringify(this.model.get('options')));
-            for (var i = 0; i < options.length; i++) {
-                var optionn = options[i];
-                var optionValues = optionn.values;
-                if(optionn.attributeDetail.dataType == 'ProductCode') {
-                    for (var j = 0; j < optionValues.length; j++) {
-                        var optionValue = optionValues[j];
-                        if (optionValue.isSelected === true) {
-                            selectedCount++;
-                        }
-                    }
-                }
-            }
-            if(selectedCount === 0){
-                this.model.set('addToCartButton','disabled');
-            } else {
-                this.model.set('addToCartButton','');
-            }
-            this.refreshOptions();
         },
         quantityMinus: function() {
             if(typeof this.model.get('productCode') !== 'undefined') {
@@ -267,21 +260,6 @@ define(["modules/jquery-mozu", "underscore", "hyprlive", "modules/backbone-mozu"
             totalQuant = parseInt(totalQuant, 10);
             newQuant = parseInt(newQuant, 10);
             var prevQuant = parseInt(totalQuant - newQuant, 10);
-            var options = JSON.parse(JSON.stringify(me.get('options')));
-            for (var i = 0; i < options.length; i++) {
-                var option = options[i];
-                if (option.attributeDetail.dataType == 'ProductCode') {
-                   var optionValues = option.values;
-                    for (var j = 0; j < optionValues.length; j++) {
-                        if (optionValues[j].isSelected === true) {
-                            if (optionValues[j].bundledProduct.inventoryInfo.onlineStockAvailable < newQuant ) {
-                                me.set('addToCartErr', Hypr.getLabel('outOfStockError'));
-                                return this.render();
-                            }
-                        }
-                    } 
-                }
-            }
             var method;
             var url;
             if(prevQuant > 0){
@@ -294,11 +272,7 @@ define(["modules/jquery-mozu", "underscore", "hyprlive", "modules/backbone-mozu"
 
             if(method) {
                api.request( method, url ).then(function () {
-                    me.set('addToCartErr', '');
                     me.addToCart();
-                    me.on('addedtocart', function (cartitem) {
-                        GlobalCart.update('redirect_to_cart');
-                    });
                 }); 
             }
         },
@@ -309,55 +283,61 @@ define(["modules/jquery-mozu", "underscore", "hyprlive", "modules/backbone-mozu"
             var optionModel = this.model;
             var me = this;
             this.model.on('addedtocart', function (cartitem) {
-                optionModel.set('addonsPopup', true);
-                optionModel.set('cartItemId',cartitem.data.id);
-                optionModel.set('totalQuant',cartitem.data.quantity);
-                optionModel.set('hasAddon', false);
-                optionModel.set('prodPrice', 'prodPrice');
-                var price = JSON.parse(JSON.stringify(optionModel.get('price')));
-                optionModel.set('oldPrice', price.price);
-                optionModel.set('oldSalePrice', price.salePrice);
-                var options = JSON.parse(JSON.stringify(optionModel.get('options')));
-
-                for (var i = 0; i < options.length; i++) {
-                    var count = 0;
-                    count = parseInt(count, 10);
-                    var option = options[i];
-                    if(option.attributeDetail.dataType == 'ProductCode') {
-                        if (optionModel.get('hasAddon') === false) {
-                            optionModel.set('hasAddon', true);
-                        }
-                        var optionValues = option.values;
-                        for (var j = 0; j < optionValues.length; j++) {
-                            var optionValue = optionValues[j];
-                            if (optionValue.bundledProduct.inventoryInfo.onlineStockAvailable > 0) {
-                                count++;
-                                break;
-                            }
+                if (optionModel.get('addonsPopup') === true) {
+                    GlobalCart.update('redirect_to_cart');
+                } else {
+                    optionModel.set('addonsPopup', true);
+                    optionModel.set('cartItemId',cartitem.data.id);
+                    optionModel.set('totalQuant',cartitem.data.quantity);
+                    var selectedOptions = optionModel.get('selectedOptions');
+                    if (selectedOptions && selectedOptions.length > 0) {
+                        for (var i = 0; i < selectedOptions.length; i++) {
+                            var selectedOption = selectedOptions[i];
+                            var option = optionModel.get('options').get(selectedOption.id);
+                            option.set('value', selectedOption.value);
                         }
                     }
-                    option.stockCount = count;
-                    options[i] = option;
-                }
-                optionModel.set('options',options);
-
-                optionModel.set('addToCartButton','disabled');
-                me.render();
-                if (cartitem && cartitem.prop('id')) {
-                    CartMonitor.addToCount(optionModel.get('quantity'));
-                    GlobalCart.update();
+                    me.render();
+                    if (cartitem && cartitem.prop('id')) {
+                        CartMonitor.addToCount(optionModel.get('quantity'));
+                        GlobalCart.update();
+                    }    
                 }
             });
             this.model.on('addedtocarterror', function (error) {
-                if (error.message.indexOf('Validation Error: The following items have limited quantity or are out of stock') > -1) {
-                    optionModel.set('addToCartErr', Hypr.getLabel('outOfStockError'));
+                if (optionModel.get('addonsPopup') === true) {
+                    var selectedOptions = [];
+                    var n = 0;
+                    n = parseInt(n, 10);
+                    var options = JSON.parse(JSON.stringify(optionModel.get('options')));
+                    for (var i = 0; i < options.length; i++) {
+                        var ooption = options[i];
+                        if (ooption.attributeDetail.dataType == 'ProductCode') {
+                            selectedOptions[n] = {id:ooption.attributeFQN, value:ooption.value};
+                            var option = optionModel.get('options').get(ooption.attributeFQN);
+                            option.set('value', null);
+                        }
+                    }
+                    optionModel.set('selectedOptions', selectedOptions);
+                    optionModel.set('addonsPopup', false);
+                    optionModel.addToCart();
+                    if (error.message.indexOf('Validation Error: The following items have limited quantity or are out of stock') > -1) {
+                        optionModel.set('addToCartErrr', Hypr.getLabel('outOfStockError'));
+                    } else {
+                        optionModel.set('addToCartErrr', error.message);
+                    }
                 } else {
-                    optionModel.set('addToCartErr', error.message);
+                    if (error.message.indexOf('Validation Error: The following items have limited quantity or are out of stock') > -1) {
+                        optionModel.set('addToCartErr', Hypr.getLabel('outOfStockError'));
+                    } else {
+                        optionModel.set('addToCartErr', error.message);
+                    }
+                    me.render();
                 }
-                me.render();
             });
         }
     });
+
     var AddonView = Backbone.MozuView.extend({
         templateName: 'modules/product/product-addons-popup',
         additionalEvents: {
@@ -392,29 +372,49 @@ define(["modules/jquery-mozu", "underscore", "hyprlive", "modules/backbone-mozu"
         });
         },
         render: function () {
+            this.refreshOptions();
             Backbone.MozuView.prototype.render.call(this);
         },
         refreshOptions: function() {
+
+            var selectedCount = 0;
+            selectedCount = parseInt(selectedCount, 10);
+
             var options = JSON.parse(JSON.stringify(this.model.get('options')));
+            var hasAddon = false;
 
             for (var i = 0; i < options.length; i++) {
-                var count = 0;
-                count = parseInt(count, 10);
+                var stockCount = 0;
+                stockCount = parseInt(stockCount, 10);
                 var option = options[i];
                 if(option.attributeDetail.dataType == 'ProductCode') {
                     var optionValues = option.values;
                     for (var j = 0; j < optionValues.length; j++) {
                         var optionValue = optionValues[j];
                         if (optionValue.bundledProduct.inventoryInfo.onlineStockAvailable > 0) {
-                            count++;
+                            if (!hasAddon) {
+                                hasAddon = true;
+                            }
+                            stockCount++;
+                            break;
+                        }
+                    }
+                    for (var k = 0; k < optionValues.length; k++) {
+                        if (optionValues[k].isSelected) {
+                            selectedCount++;
                             break;
                         }
                     }
                 }
-                option.stockCount = count;
-                options[i] = option;
+                var opt = this.model.get('options').get(option.attributeFQN);
+                opt.set('stockCount', stockCount);
             }
-            this.model.set('optionArr',options);
+            if(selectedCount === 0){
+                this.model.set('addToCartButton','disabled');
+            } else {
+                this.model.set('addToCartButton','');
+            }
+            this.model.set('hasAddon', hasAddon);
         },
         onQuantityChange: _.debounce(function (e) {
             var $qField = $(e.currentTarget),
@@ -424,6 +424,8 @@ define(["modules/jquery-mozu", "underscore", "hyprlive", "modules/backbone-mozu"
             }
         },500),
         onOptionChange: function (e) {
+            this.model.unset('addToCartErr');
+            this.model.unset('addToCartErrr');
             this.configure($(e.currentTarget));
         },
         configure: function ($optionEl) {
@@ -445,27 +447,6 @@ define(["modules/jquery-mozu", "underscore", "hyprlive", "modules/backbone-mozu"
                     }
                 }
             }
-            var selectedCount = 0;
-            selectedCount = parseInt(selectedCount, 10);
-            var options = JSON.parse(JSON.stringify(this.model.get('options')));
-            for (var i = 0; i < options.length; i++) {
-                var optionn = options[i];
-                var optionValues = optionn.values;
-                if(optionn.attributeDetail.dataType == 'ProductCode') {
-                    for (var j = 0; j < optionValues.length; j++) {
-                        var optionValue = optionValues[j];
-                        if (optionValue.isSelected === true) {
-                            selectedCount++;
-                        }
-                    }
-                }
-            }
-            if(selectedCount === 0){
-                this.model.set('addToCartButton','disabled');
-            } else {
-                this.model.set('addToCartButton','');
-            }
-            this.refreshOptions();
         },
         quantityMinus: function() {
             if(typeof this.model.get('productCode') !== 'undefined') {
@@ -557,21 +538,7 @@ define(["modules/jquery-mozu", "underscore", "hyprlive", "modules/backbone-mozu"
             totalQuant = parseInt(totalQuant, 10);
             newQuant = parseInt(newQuant, 10);
             var prevQuant = parseInt(totalQuant - newQuant, 10);
-            var options = JSON.parse(JSON.stringify(me.get('options')));
-            for (var i = 0; i < options.length; i++) {
-                var option = options[i];
-                if (option.attributeDetail.dataType == 'ProductCode') {
-                   var optionValues = option.values;
-                    for (var j = 0; j < optionValues.length; j++) {
-                        if (optionValues[j].isSelected === true) {
-                            if (optionValues[j].bundledProduct.inventoryInfo.onlineStockAvailable < newQuant ) {
-                                me.set('addToCartErrr', Hypr.getLabel('outOfStockError'));
-                                return this.render();
-                            }
-                        }
-                    } 
-                }
-            }
+            
             var method;
             var url;
             if(prevQuant > 0){
@@ -585,70 +552,67 @@ define(["modules/jquery-mozu", "underscore", "hyprlive", "modules/backbone-mozu"
             if(method) {
                api.request( method, url ).then(function () {
                     me.addToCart();
-                    me.on('addedtocart', function (cartitem) {
-                        GlobalCart.update('redirect_to_cart');
-                    });
                 }); 
             }
         },
         addToCart: function (event) {
-            
+
             this.model.addToCart();
-            this.model.set('addonsPopup', true);
             var optionModel = this.model;
             var me = this;
-            var selectedCount = 0;
-            selectedCount = parseInt(selectedCount, 10);
-            this.model.on('addedtocart', function (cartitem) {
-                optionModel.set('cartItemId',cartitem.data.id);
-                optionModel.set('totalQuant',cartitem.data.quantity);
-                optionModel.set('hasAddon', false);
-                optionModel.set('prodPrice', 'prodPrice');
-                var price = JSON.parse(JSON.stringify(optionModel.get('price')));
-                if (price.priceType == 'MAP') {
-                    optionModel.set('oldCatalogListPrice', price.catalogListPrice);
-                    optionModel.set('oldCatalogSalePrice', price.catalogSalePrice);
-                } else {
-                    optionModel.set('oldPrice', price.price);
-                    optionModel.set('oldSalePrice', price.salePrice);
-                }
-                var options = JSON.parse(JSON.stringify(optionModel.get('options')));
 
-                for (var i = 0; i < options.length; i++) {
-                    var count = 0;
-                    count = parseInt(count, 10);
-                    var option = options[i];
-                    if(option.attributeDetail.dataType == 'ProductCode') {
-                        if (optionModel.get('hasAddon') === false) {
-                            optionModel.set('hasAddon', true);
-                        }
-                        var optionValues = option.values;
-                        for (var j = 0; j < optionValues.length; j++) {
-                            var optionValue = optionValues[j];
-                            if (optionValue.bundledProduct.inventoryInfo.onlineStockAvailable > 0) {
-                                count++;
-                                break;
-                            }
+            this.model.on('addedtocart', function (cartitem) {
+                if (optionModel.get('addonsPopup') === true) {
+                    GlobalCart.update('redirect_to_cart');
+                } else {
+                    optionModel.set('addonsPopup', true);
+                    optionModel.set('cartItemId',cartitem.data.id);
+                    optionModel.set('totalQuant',cartitem.data.quantity);
+                    var selectedOptions = optionModel.get('selectedOptions');
+                    if (selectedOptions && selectedOptions.length > 0) {
+                        for (var i = 0; i < selectedOptions.length; i++) {
+                            var selectedOption = selectedOptions[i];
+                            var option = optionModel.get('options').get(selectedOption.id);
+                            option.set('value', selectedOption.value);
                         }
                     }
-                    option.stockCount = count;
-                    options[i] = option;
-                }
-                optionModel.set('options',options);
-                optionModel.set('addToCartButton','disabled');
-                me.render();
-                if (cartitem && cartitem.prop('id')) {
-                    CartMonitor.addToCount(optionModel.get('quantity'));
-                    GlobalCart.update();
+                    me.render();
+                    if (cartitem && cartitem.prop('id')) {
+                        CartMonitor.addToCount(optionModel.get('quantity')); 
+                        GlobalCart.update();
+                    }
                 }
             });
             this.model.on('addedtocarterror', function (error) {
-                if (error.message.indexOf('Validation Error: The following items have limited quantity or are out of stock') > -1) {
-                    optionModel.set('addToCartErr', Hypr.getLabel('outOfStockError'));
+                if (optionModel.get('addonsPopup') === true) {
+                    var selectedOptions = [];
+                    var n = 0;
+                    n = parseInt(n, 10);
+                    var options = JSON.parse(JSON.stringify(optionModel.get('options')));
+                    for (var i = 0; i < options.length; i++) {
+                        var ooption = options[i];
+                        if (ooption.attributeDetail.dataType == 'ProductCode') {
+                            selectedOptions[n] = {id:ooption.attributeFQN, value:ooption.value};
+                            var option = optionModel.get('options').get(ooption.attributeFQN);
+                            option.set('value', null);
+                        }
+                    }
+                    optionModel.set('selectedOptions', selectedOptions);
+                    optionModel.set('addonsPopup', false);
+                    optionModel.addToCart();
+                    if (error.message.indexOf('Validation Error: The following items have limited quantity or are out of stock') > -1) {
+                        optionModel.set('addToCartErrr', Hypr.getLabel('outOfStockError'));
+                    } else {
+                        optionModel.set('addToCartErrr', error.message);
+                    }
                 } else {
-                    optionModel.set('addToCartErr', error.message);
+                    if (error.message.indexOf('Validation Error: The following items have limited quantity or are out of stock') > -1) {
+                        optionModel.set('addToCartErr', Hypr.getLabel('outOfStockError'));
+                    } else {
+                        optionModel.set('addToCartErr', error.message);
+                    }
+                    me.render();
                 }
-                me.render();
             });
         }
     });

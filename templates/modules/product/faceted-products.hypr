@@ -2,30 +2,30 @@
 <script type="text/json" id="data-mz-preload-facetedproducts">
 {
     "items" : {% json model.items %},
-	"facets": {% json model.facets %}, 
-	"currentPage": {{ model.currentPage }},
-	"firstIndex": {{ model.firstIndex }},
-	"hasNextPage": {{ model.hasNextPage|lower }},
-	"hasPreviousPage": {{ model.hasPreviousPage|lower }},
-	"lastIndex": {{ model.lastIndex }},
-	"middlePageNumbers": {% json model.middlePageNumbers %},
-	"pageCount": {{ model.pageCount }},
-	"pageSize": {{ model.pageSize }},
-	"startIndex": {{ model.startIndex }},
-	"totalCount": {{ model.totalCount }},
-	"currentSort": "{{ model.currentSort }}"
+    "facets": {% json model.facets %}, 
+    "currentPage": {{ model.currentPage }},
+    "firstIndex": {{ model.firstIndex }},
+    "hasNextPage": {{ model.hasNextPage|lower }},
+    "hasPreviousPage": {{ model.hasPreviousPage|lower }},
+    "lastIndex": {{ model.lastIndex }},
+    "middlePageNumbers": {% json model.middlePageNumbers %},
+    "pageCount": {{ model.pageCount }},
+    "pageSize": {{ model.pageSize }},
+    "startIndex": {{ model.startIndex }},
+    "totalCount": {{ model.totalCount }},
+    "currentSort": "{{ model.currentSort }}"
 }
 </script>
 {% endif %}
 <div class="row">
     {% if model.facets %}
-	    <div class="col-sm-3 col-lg-2">
-	        <div data-mz-facets class="mz-l-sidebar">
-	            {% dropzone "sidebar-above-facets" scope="template" %}
-	            {% include "modules/product/faceting-form" %}
-	            {% dropzone "sidebar-below-facets" scope="template" %}
-	        </div>
-	    </div>              
+        <div class="col-sm-3 col-lg-2">
+            <div data-mz-facets class="mz-l-sidebar">
+                {% dropzone "sidebar-above-facets" scope="template" %}
+                {% include "modules/product/faceting-form" %}
+                {% dropzone "sidebar-below-facets" scope="template" %}
+            </div>
+        </div>              
     {% endif %}
 
     <div class="{% if model.facets %}col-sm-9 col-lg-10 {% else %}col-xs-12{% endif %}">
@@ -38,7 +38,7 @@
                             <h1 class="mz-pagetitle">{{ navigation.currentNode.name|upper|replace("~", "")|safe }}</h1>
                     {% endif %}
                 {% endif %}
-                <div class="col-xs-12 col-lg-4">
+                <div class="col-xs-12 col-md-4">
                     <div class="row">
                         <div data-mz-pagesort class="mz-sortby">
                             {% include "modules/common/page-sort" %}
@@ -46,7 +46,7 @@
                     </div>
                 </div>
              
-                <div class="col-xs-12 col-lg-8">
+                <div class="col-xs-12 col-md-8"> 
                     <div class="row">
                         <div data-mz-pagenumbers class="mz-pagenumbers">
                             {% include "modules/common/page-numbers" %}

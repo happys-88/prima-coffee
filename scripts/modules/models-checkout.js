@@ -806,8 +806,12 @@
               discountsArray.push({
                   shippingDiscount:  order.get('shippingDiscounts')
               });
-              
-              return discountsArray;
+              var orderDiscounts = order.get('orderDiscounts');
+              var shippingDiscounts = order.get('shippingDiscounts');
+              if((orderDiscounts && orderDiscounts.length > 0) || (discountarray && discountarray.length) || (shippingDiscounts && shippingDiscounts.length > 0)) {
+
+                return discountsArray;
+              }
           },
             acceptsMarketing: function () {
                 return this.getOrder().get('acceptsMarketing');
@@ -1669,7 +1673,7 @@
                 if (this.nonStoreCreditTotal() > 0) {
                     var payment = order.apiModel.getCurrentPayment();
                     order.messages.reset();
-                   return order.apiAddPayment().then(function(o) {
+                    return order.apiAddPayment().then(function(o) {
                         // console.log("Success : "+JSON.stringify(o));
                         var payment = order.apiModel.getCurrentPayment();
                         var modelCard, modelCvv;
@@ -2048,7 +2052,7 @@
                     },
                     password: this.get('password')
                 }).then(function (customer) {
-                    var deals = $('#PCNewsLetter').is(':checked') ? "PCNewsLetter" : '';                    
+                    var deals = $('#PSNewsLetter').is(':checked') ? "PSNewsLetter" : '';
                     if(deals !== '') {
                         api.request("POST", "/mailchimp", {'accountId':email, 'deals':deals}).then(function (response){
                            console.log("Response : "+JSON.stringify(response));    

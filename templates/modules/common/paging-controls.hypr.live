@@ -6,7 +6,7 @@
   </span>
 </label>
 
-<span class="mz-pagingcontrols-pagesize-label">  
+<span class="mz-pagingcontrols-pagesize-label" id="viewAllBtn">   
   <a class="btn view-all{% if model.pageSize == themeSettings.viewAllPageSize %} selected{% endif %}" data-mz-url="{% make_url "paging" model with pageSize=themeSettings.viewAllPageSize page=1 %}">{{ labels.viewAll }} ({{ model.totalCount }})</a> 
 </span>
 

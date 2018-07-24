@@ -1,5 +1,4 @@
-﻿
-<div class="mz-productlist {% if clearbool %}mz-facets-active{% endif %} {% block module-classes %}{% endblock module-classes %}">
+﻿<div class="mz-productlist {% if pageContext.search.facets %}mz-facets-active{% endif %} {% block module-classes %}{% endblock module-classes %}">
     {% if model.items %} 
     	<ul id="product-list-ul" class="mz-productlist-list {% block list-classes %}{% endblock list-classes %} clearfix" id="{% if pageContext.cmsContext.template.path == 'blog-article' %}productSliderMobile{% endif %}">   
 	        {% for prod in model.items %}
@@ -11,5 +10,5 @@
 
 <div class="modal fade" id="quickViewModal" tabindex="-1" role="dialog" aria-labelledby="qucikview"></div> 
 <div class="modal fade" id="optionModal" role="dialog"></div>
-<div class="modal fade" id="addonModal" role="dialog"></div>  
+<div class="modal fade" id="addonModal" role="dialog"></div>   
 

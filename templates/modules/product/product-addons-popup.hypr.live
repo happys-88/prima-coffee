@@ -2,7 +2,7 @@
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title" {% if model.addToCartErr %} style="color: red;" {% endif %}>
+            <h4 class="modal-title" {% if model.addToCartErr %} style="color: #b94a48;" {% endif %}>
                 {% if model.addToCartErr %}
                     {{ model.addToCartErr }}
                 {% else %}
@@ -14,7 +14,7 @@
             {% if not model.addToCartErr %}
                 {% if model.addonsPopup %}
                     <div class="mz-product-addons">
-                        <span class="mz-validationmessage">{{ model.addToCartErrr }}</span>
+                        
                         <h4 class="mz-l-stack-sectiontitle"><a class="mz-productlisting-title" href="{% make_url "product" model %}">{{model.content.productName}}</a></h4>
                         <div class="product-detail">
                             <div class="mz-product-image">
@@ -45,7 +45,7 @@
                             </div>
                         {% endif %}
                         
-                       
+                       <span class="mz-validationmessage">{{ model.addToCartErrr }}</span>
                         <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="mz-productdetail-price">
                             <div class="pull-left"><label>{{ labels.itemSubtotal }}:</label></div> 
                             <div class="pull-left">{% include "modules/product/price-show-stack" with hasStock=model.options.length %}</div>

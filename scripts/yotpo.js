@@ -24,27 +24,29 @@ function ($, Hypr, Backbone, HyprLiveContext, api) {
             var yotpoStars = '<span class="yotpo-icon rating-star yotpo-icon-empty-star"></span><span class="yotpo-icon rating-star yotpo-icon-empty-star"></span><span class="yotpo-icon rating-star yotpo-icon-empty-star"></span><span class="yotpo-icon rating-star yotpo-icon-empty-star"></span><span class="yotpo-icon rating-star yotpo-icon-empty-star"></span>' ;     
 
             $.get(ratingURL, function(data, status){ 
-                var ratingAverageScore = data.response.bottomline.average_score,
-                    ratingTotalCount = data.response.bottomline.total_reviews,
-                    starRating = ratingAverageScore.toString().split('.'), 
-                    decimalNumber = (ratingAverageScore - Math.floor(ratingAverageScore)) !== 0,
-                    fullStarsToShow = " ",
-                    halfStarsToShow = " " ; 
-                
-                $(ratingElement).html(yotpoStars);
+                if(data.status.code == 200){
+                    var ratingAverageScore = data.response.bottomline.average_score,
+                        ratingTotalCount = data.response.bottomline.total_reviews,
+                        starRating = ratingAverageScore.toString().split('.'), 
+                        decimalNumber = (ratingAverageScore - Math.floor(ratingAverageScore)) !== 0,
+                        fullStarsToShow = " ",
+                        halfStarsToShow = " " ; 
+                    
+                    $(ratingElement).html(yotpoStars);
 
-                if(decimalNumber){ 
-                    fullStarsToShow = starRating[0]; 
-                    halfStarsToShow = starRating[1]; 
-                    $(ratingElement).find('.yotpo-icon:lt('+fullStarsToShow+')').removeClass("yotpo-icon-empty-star").addClass("yotpo-icon-star");
-                    if(halfStarsToShow>=5 && halfStarsToShow<=9){ 
-                        $(ratingElement).find('.yotpo-icon:eq('+fullStarsToShow+')').removeClass("yotpo-icon-empty-star").addClass("yotpo-icon-half-star");    
-                    }   
-                 
-                } else{ 
-                    fullStarsToShow = ratingAverageScore;    
-                    $(ratingElement).find('.yotpo-icon:lt('+fullStarsToShow+')').removeClass("yotpo-icon-empty-star").addClass("yotpo-icon-star");       
-                }     
+                    if(decimalNumber){ 
+                        fullStarsToShow = starRating[0]; 
+                        halfStarsToShow = starRating[1]; 
+                        $(ratingElement).find('.yotpo-icon:lt('+fullStarsToShow+')').removeClass("yotpo-icon-empty-star").addClass("yotpo-icon-star");
+                        if(halfStarsToShow>=5 && halfStarsToShow<=9){ 
+                            $(ratingElement).find('.yotpo-icon:eq('+fullStarsToShow+')').removeClass("yotpo-icon-empty-star").addClass("yotpo-icon-half-star");    
+                        }   
+                     
+                    } else{ 
+                        fullStarsToShow = ratingAverageScore;    
+                        $(ratingElement).find('.yotpo-icon:lt('+fullStarsToShow+')').removeClass("yotpo-icon-empty-star").addClass("yotpo-icon-star");       
+                    } 
+                }    
 
             }).done(function() {  
           
