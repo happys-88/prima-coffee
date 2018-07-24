@@ -645,6 +645,6 @@
   "emailwrongpattern": "Email does not appear to be a valid e-mail address. Please use the format name@domain.xxx.",
   "sortByNewArrivals" : "New Arrivals",
   "addons"                                : "POPULAR ADD-ONS",
-  "viewAll":"View All" 
- 
+  "viewAll"                               : "View All", 
+  "disqusComments"                        : "There was trouble loading the comments." 
 }

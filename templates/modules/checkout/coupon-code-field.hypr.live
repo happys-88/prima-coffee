@@ -1,8 +1,8 @@
 ﻿<div class="form-group">
-	<div class="col-md-4 col-sm-12">
-        <label for="coupon-code">{{ labels.onlyCouponCode }}: </label>
+    <div class="col-md-4 col-xs-12">
+        <label for="coupon-code">{{ labels.onlyCouponCode }}: </label>  
     </div>
-    <div class="col-md-8 col-sm-12">
+    <div class="col-md-8 col-xs-12"> 
         <input type="text" id="coupon-code" name="coupon-code" value="{{ model.couponCode }}" data-mz-value="couponCode">
         <button class="mz-button" data-mz-action="addCoupon" {% if not model.couponCode %} disabled="disabled" {% endif %}>{{ labels.apply }}</button>
         {% with model.orderDiscounts|first as discountData %}

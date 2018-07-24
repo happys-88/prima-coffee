@@ -1,9 +1,9 @@
 
-<div class="modal-dialog modal-dialog-options" role="document">
+<div class="modal-dialog modal-dialog-options" role="document"> 
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title text-center">
+            <h4 class="modal-title">
                 {% if model.addonsPopup %}
                     {{ labels.addToCartSuccess }} 
                 {% else %} 

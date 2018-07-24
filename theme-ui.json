@@ -399,6 +399,23 @@
                     "name": "instagramFollowUsLink" 
                 }
             ]
+        },
+        {
+            "xtype": "panel",
+            "title": "Third Party Key Details",      
+            "collapsed": false,
+            "items": [
+                {
+                    "fieldLabel": "Profile Id for social sharing (blog)",   
+                    "xtype": "mz-input-text",
+                    "name": "addThisPubIdBlogSharing"     
+                },
+                {
+                    "fieldLabel": "Popular Articles Pubid", 
+                    "xtype": "mz-input-text",
+                    "name": "addThisPubId"  
+                }
+            ]
         }
     ]
 }

@@ -855,7 +855,9 @@
     "bottomline": "bottomline",
     "questions": "questions",
     "showYotpoGallery": true,
-    "instagramFollowUsLink": "https://www.instagram.com/prima.supply/?hl=en"
+    "instagramFollowUsLink": "https://www.instagram.com/prima.supply/?hl=en",
+    "addThisPubId": "ra-519bb90e58f9bf27",
+    "addThisPubIdBlogSharing": "ra-519bb90e58f9bf27" 
   },
   "layoutWidgets": [
     {

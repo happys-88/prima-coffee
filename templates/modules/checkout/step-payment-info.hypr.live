@@ -24,19 +24,19 @@
                         </div>
                     </div>
                     -->
-                    {% if  model.couponDetails.length>0 %}
-                    <div>Coupon Code:</div>
+                    {% if model.couponDetails %}
+                        <div>Coupon Code:</div>
                     {% endif %}
                     {% for orderlevel in model.couponDetails %}
                         {% for orddisc in orderlevel.OrderDiscounts %}
-                        <div class="coupon-code"><p> {{orddisc.discount.name}} for {{orddisc.impact}}</p></div>
+                        <div class="coupon-code"><p> {{orddisc.couponCode}} for {{orddisc.impact|currency}}</p></div> 
                         {% endfor %} 
                         {% for key, value  in orderlevel.itemDiscount %}
                             <p class="mz-discount"><span> {{ key }} </span>  for  <span>{{ value|currency }}</span></p>  
                         {% endfor %}
-                        {% for orderDiscount in orderlevel.shippingDiscount %}  
-                        <p class="mz-discount"><span> {{ orderDiscount.couponCode }} </span>  for  <span>{{ orderDiscount.impact|currency }}</span></p>	  
-                    {% endfor %}
+                        {% for shippingDiscount in orderlevel.shippingDiscount %}  
+                            <p class="mz-discount"><span> {{ shippingDiscount.couponCode }} </span>  for  <span>{{ shippingDiscount.impact|currency }}</span></p>     
+                        {% endfor %}
                     {% endfor %}
                 </div>
             {% endif %}
@@ -61,20 +61,19 @@
                             {% endif %}
                         {% endfor %}
                         </p>
-                        {% if  model.couponDetails.length>0 %}
-                         <div>Coupon Code:</div>
+                        {% if model.couponDetails %}
+                            <div>Coupon Code:</div>
                         {% endif %}
-                       
                         {% for orderlevel in model.couponDetails %}
                             {% for orddisc in orderlevel.OrderDiscounts %}
-                            <div class="coupon-code"><p> {{orddisc.discount.name}} for {{orddisc.impact}}</p></div>
+                            <div class="coupon-code"><p> {{orddisc.couponCode}} for {{orddisc.impact|currency}}</p></div> 
                             {% endfor %} 
                             {% for key, value  in orderlevel.itemDiscount %}
                                 <p class="mz-discount"><span> {{ key }} </span>  for  <span>{{ value|currency }}</span></p>  
                             {% endfor %}
-                            {% for orderDiscount in orderlevel.shippingDiscount %}  
-                            <p class="mz-discount"><span> {{ orderDiscount.couponCode }} </span>  for  <span>{{ orderDiscount.impact|currency }}</span></p>	  
-                        {% endfor %}
+                            {% for shippingDiscount in orderlevel.shippingDiscount %}  
+                                <p class="mz-discount"><span> {{ shippingDiscount.couponCode }} </span>  for  <span>{{ shippingDiscount.impact|currency }}</span></p>     
+                            {% endfor %}
                         {% endfor %}
                     </div>
                     
@@ -109,19 +108,19 @@
                                 </div>
                             </div>
                         {% endfor %}
-                        {% if  model.couponDetails.length>0 %}
-                        <div>Coupon Code:</div>
+                        {% if model.couponDetails %} 
+                            <div>Coupon Code:</div>
                         {% endif %}
                         {% for orderlevel in model.couponDetails %}
                             {% for orddisc in orderlevel.OrderDiscounts %}
-                            <div class="coupon-code"><p> {{orddisc.discount.name}} for {{orddisc.impact}}</p></div>
+                            <div class="coupon-code"><p> {{orddisc.couponCode}} for {{orddisc.impact|currency}}</p></div> 
                             {% endfor %} 
                             {% for key, value  in orderlevel.itemDiscount %}
                                 <p class="mz-discount"><span> {{ key }} </span>  for  <span>{{ value|currency }}</span></p>  
                             {% endfor %}
-                            {% for orderDiscount in orderlevel.shippingDiscount %}  
-                            <p class="mz-discount"><span> {{ orderDiscount.couponCode }} </span>  for  <span>{{ orderDiscount.impact|currency }}</span></p>	  
-                        {% endfor %}
+                            {% for shippingDiscount in orderlevel.shippingDiscount %}  
+                                <p class="mz-discount"><span> {{ shippingDiscount.couponCode }} </span>  for  <span>{{ shippingDiscount.impact|currency }}</span></p>     
+                            {% endfor %}
                         {% endfor %}
                     </div>
                     <div class="mz-l-stack-section mz-checkout-current-payment mz-checkout-saved-billingaddress">
@@ -209,7 +208,7 @@
             {% else %}
 
                 <div class="mz-l-stack-section">
-                    {% include "modules/checkout/payment-selector" %}
+                    {% include "modules/checkout/payment-selector" %} 
                 </div>
             {% endif %}
         {% else %}

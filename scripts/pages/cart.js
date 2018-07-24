@@ -73,7 +73,7 @@ define([
            // console.log("Shipping storage : "+shipping);
             if(typeof stateData !== 'undefined' || stateData !== null) {
                 this.model.set({'selectedState': stateData});
-                this.calculateTax(stateData);
+                this.calculateTax(stateData, false);
             }
             if(typeof shipping === 'undefined' || shipping === null) {
                 var url = "api/commerce/catalog/storefront/shipping/request-rates";
@@ -238,7 +238,7 @@ define([
             // this.render();
 
         },
-        calculateTax: function(stateSel){
+        calculateTax: function(stateSel, bool){
             $('[data-mz-validation-message="zipCode"]').hide();
             var cart = this.model;
             if(typeof stateSel !== 'undefined') {
@@ -273,14 +273,15 @@ define([
                     cart.set({'taxTotal':0});
                 }
             }, function(err) {
-                if(stateSel)
+                if(stateSel && bool)
                     $('[data-mz-validation-message="zipCode"]').show();
+
                 // console.log("Failure : "+JSON.stringify(err));
             });
         },
         populateTax: function(e){
             var stateSel = $('#usStates').val();
-            this.calculateTax(stateSel);
+            this.calculateTax(stateSel, true);
         },
         populateShipping: function(){
                 // console.log("Populate Shipping"+JSON.stringify(this.model));
@@ -370,25 +371,29 @@ define([
             }         
            
     },400),
-        onQuantityUpdateFailed: function(model, oldQuantity) {
-            var field = this.$('[data-mz-cart-item=' + model.get('id') + ']');
-            var errormsg = this.$('[data-mz-message]');
-            $('.mz-productdetail-wrap').find('.mz-errors').remove();
-            if (field) {
-                field.val(oldQuantity);
-                if(value>1){
-                    if(model.get('product').get('variationProductCode')){
-                        errormsg.text(model.get('product').get('variationProductCode') +" is limited in stock");        
-                    }
-                    else{
-                        errormsg.text(model.get('product').get('productCode') +" is limited in stock");                       
-                    }  
+    onQuantityUpdateFailed: function(model, oldQuantity) {
+        var field = this.$('[data-mz-cart-item=' + model.get('id') + ']');
+        var errormsg = this.$('[data-mz-message]');
+        var message = model.messages.models[0].attributes.message;
+        var prodCode; 
+        if (message.indexOf('Validation Error: The following items have limited quantity or are out of stock') > -1) {
+            prodCode = message.replace('Validation Error: The following items have limited quantity or are out of stock:','');      
+        }
+       
+      //  $('.mz-productdetail-wrap').find('.mz-errors').remove();
+        if (field) {
+            field.val(oldQuantity);
+            if(value>1){
+                if(prodCode) {
+                    errormsg.text(prodCode +" is limited in stock"); 
                 }
             }
-            else {
-                this.render();
-            }
-        },
+        }
+        else {
+            this.render();
+        }
+        $('.mz-productdetail-wrap').find('.mz-errors').remove();
+    },
         removeItem: function(e) {
             if(require.mozuData('pagecontext').isEditMode) {
                 // 65954
@@ -522,7 +527,7 @@ define([
             }
         });
     }
-    /* end visa checkout */
+    /* end visa checkout */ 
 
         /*var checkoutData = CheckoutModels.CheckoutPage;
         alert("CHECKOUT DATA : "+JSON.stringify(checkoutData));*/

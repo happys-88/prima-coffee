@@ -11,9 +11,9 @@
         {% endblock product-image %} 
     </div>
     <div class="mz-productlisting-info">
-        {% for getCategory in model.categories %}
-            <h3>{{ getCategory.content.name }}</h3> 
-        {% endfor %}
+        {% with model.categories|first as getCategory %}
+            <h3>{{ getCategory.content.name|safe }}</h3>  
+        {% endwith %} 
           
         <h4><a class="mz-productlisting-title" href="{% make_url "product" model %}">{{model.content.productName}}</a></h4>
         <span class="post-date">{{ model.createDate|date("M jS, Y" }}</span> 
@@ -25,20 +25,20 @@
             {% endif %}
         {% endfor %}
     </div> 
-   
-    <div class="mz-share-count-{{ forloop.counter }}"></div> 
+    
+    <div class="mz-share-count-{{ forloop.counter }}"></div>  
     <!-- AddThis Button BEGIN -->
     <div class="mz-product-social-sharing addthis_toolbox" addthis:url='http://t25166-s38224.sandbox.mozu.com{{ model.url }}'> 
-        <a class="addthis_button_youtube addthis_button_compact" ><i class="fa fa-youtube"></i></a>
         <a class="addthis_button_twitter"><i class="fa fa-twitter"></i></a>
         <a class="addthis_button_facebook addthis_button_compact"><i class="fa fa-facebook"></i></a>
         <a class="addthis_button_linkedin"><i class="fa fa-linkedin-square"></i></a>
     </div>
-    <script type="text/javascript" src="https://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-5b0d3a4f80720906"></script> 
-    
-    <!-- AddThis Button END -->
+      
+    <script type="text/javascript" src="https://s7.addthis.com/js/250/addthis_widget.js#pubid={{themeSettings.addThisPubIdBlogSharing}}"></script>    
+
+    <!-- AddThis Button END --> 
     <script>
-        addthis.sharecounters.getShareCounts({service: ['youtube','twitter','facebook','linkedin'], countUrl: 'http://t25166-s38224.sandbox.mozu.com{{ model.url }}'}, function(response) {  
+        addthis.sharecounters.getShareCounts({service: ['twitter','facebook','linkedin'], countUrl: 'http://t25166-s38224.sandbox.mozu.com{{ model.url }}'}, function(response) {  
             var count = 0;
             for(var i=0; i<response.length; i++){
                 if(response[i].error){
