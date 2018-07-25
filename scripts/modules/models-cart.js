@@ -42,6 +42,14 @@
             if (this.hasChanged("quantity")) {
                 this.apiUpdateQuantity(this.get("quantity"))
                     .then(null, function() {
+                        var message = self.messages.models[0].attributes.message;
+                        var prodCode; 
+                        if (message.indexOf('Validation Error:') > -1) {
+                            message = message.replace('Validation Error:','');      
+                        }
+                        self.trigger('error', {
+                            message: message
+                        });
                         // Quantity update failed, e.g. due to limited quantity or min. quantity not met. Roll back.
                         self.set("quantity", oldQuantity);
                         self.trigger("quantityupdatefailed", self, oldQuantity);
