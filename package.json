@@ -1,10 +1,10 @@
 {
-  "name": "burke.coffeetheme_v.1.0.0.release",
+  "name": "prima-coffee",
   "author": {
-    "name": "singh-vsc",
-    "email": "vsingh@stegtechnologies.com"
+    "name": "utsahpaikraySteg",
+    "email": "upaikray@stegtechnologies.com"
   },
-  "description": "",
+  "description": "prima-coffee",
   "version": "0.1.0",
   "scripts": {
     "clean": "rm -rf compiled",

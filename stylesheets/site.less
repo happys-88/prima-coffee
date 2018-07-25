@@ -59,40 +59,41 @@ img[data-mztp]{
   	h1 {
 		&.mz-pagetitle {
 		    color: #495363;
-		    border-bottom: 1px solid #e0e0e0;
+		    //border-bottom: 1px solid #e0e0e0;
 		    font-size: 30px;
 		    margin-top: 16px;
 		    margin-bottom: 40px;
 		    padding-bottom: 12px;
-		    text-transform: uppercase;
+			text-transform: capitalize;
+			font-weight: 700;
 		}
 	}
 }
 
-.heading-2{
-	font-size: @headingTwoFontSize;
-	color: @headingTwoColor;
-	line-height: @headingTwoFontSize+4;
-	text-transform: uppercase;
-	position: relative;
-	margin: @gutter 0;
-	span{
-		display: inline-block;
-		background: @textColorWhite; 
-		padding-right: @gutter;
-		position: relative;
-		z-index: 9;
-	}
-	&:after{
-		position: absolute;
-	    content: "";
-	    background: #e0e0e0;
-	    width: 100%;
-	    height: 1px;
-	    right: 0;
-	    top: 14px;
-	}
-}
+// .heading-2{
+// 	font-size: @headingTwoFontSize;
+// 	color: @headingTwoColor;
+// 	line-height: @headingTwoFontSize+4;
+// 	text-transform: uppercase;
+// 	position: relative;
+// 	margin: @gutter 0;
+// 	span{
+// 		display: inline-block;
+// 		background: @textColorWhite; 
+// 		padding-right: @gutter;
+// 		position: relative;
+// 		z-index: 9;
+// 	}
+// 	&:after{
+// 		position: absolute;
+// 	    content: "";
+// 	    background: #e0e0e0;
+// 	    width: 100%;
+// 	    height: 1px;
+// 	    right: 0;
+// 	    top: 14px;
+// 	}
+// }
 .heading-3{
 	font-size: 14px;
 	color: @textColorWhite;
@@ -793,18 +794,19 @@ img[data-mztp]{
 }
 .mz-new-arrival-tag {
 	background: #00adce;
-	border-left: 8px solid #fff;
-	border-top: 15px solid transparent;
-	border-bottom: 15px solid transparent;
-	line-height: 0px;
-	color: #fff;
-	font-size: 13px;
-	position: absolute;
-	top: 10px;
-	left: 7px;
-	padding: 0px 6px 0px 5px;
-	transform: rotate(-90deg);
-	text-transform: uppercase;
+    border-left: 8px solid #fff;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    line-height: 0px;
+    color: #fff;
+    font-size: 13px;
+    position: absolute;
+    top: 13px;
+    left: -1px;
+    padding: 0px 6px 0px 5px;
+    transform: rotate(-90deg);
+    text-transform: uppercase;
+    border-radius: 0 9px 0 0px;
 }
 
 //search result

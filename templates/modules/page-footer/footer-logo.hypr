@@ -2,7 +2,7 @@
     <div class="col-sm-6 col-xs-5"> 
         <div class="mz-footer-logo">
             <a href="{{siteContext.siteSubdirectory}}/">
-                <img src="../../resources/images/footer-images/footer-logo@2x.png" alt="Prima Supply"/>
+                <img src="../../resources/admin/widgets/primacofeelogo.png" alt="Prima Supply"/>
             </a>
         </div>
     </div>

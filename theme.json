@@ -1,6 +1,6 @@
 {
   "about": {
-    "author": "Happy",
+    "author": "utsahpaikraySteg",
     "defaultLanguage": "en-US",
     "extends": null,
     "isDesktop": true,
@@ -593,7 +593,6 @@
     "columnBreaker": "~",
     "liftGatePrice": 59,
     "snapengaeWidgetId": "d93fa82a-6087-44f8-bd79-3df50a1c3130",
-    "addThisPubId": "ra-51b87b7c4a40d8c0",
     "searchSuggestionFilter": "424,425,426,427,428,429,430,431,432",
     "blogParentCategoryCode": "424",
     "avalaraToken": "MjAwMDA4NDgwMzpFQUQyM0JBQzMzNzRBN0I3",
@@ -1462,9 +1461,33 @@
             },
             {
               "anchor": "50%",
-              "fieldLabel": "Add Image",
-              "name": "slideImageOne",
-              "xtype": "mz-input-image"
+              "fieldLabel": "Add Image Src desktop",
+              "name": "slideImageOnedes",
+              "xtype": "mz-input-text"
+            },
+            {
+              "anchor": "50%",
+              "fieldLabel": "Add Image Src tablet",
+              "name": "slideImageOnetab",
+              "xtype": "mz-input-text"
+            },
+            {
+              "anchor": "50%",
+              "fieldLabel": "Add Image Src mobile",
+              "name": "slideImageOnemob",
+              "xtype": "mz-input-text"
+            },
+            {
+              "anchor": "50%",
+              "fieldLabel": "Add Image Src tablet potrait mode",
+              "name": "slideImageOnetabpor",
+              "xtype": "mz-input-text"
+            },
+            {
+              "anchor": "50%",
+              "fieldLabel": "Add Image Src mobile potrait mode",
+              "name": "slideImageOnemobpor",
+              "xtype": "mz-input-text"
             },
             {
               "anchor": "50%",
@@ -1498,15 +1521,39 @@
             },
             {
               "anchor": "50%",
-              "fieldLabel": "Add Button Ttile",
-              "name": "slideButtonTwo",
+              "fieldLabel": "Add Image Src desktop",
+              "name": "slideImageTwodes",
               "xtype": "mz-input-text"
             },
             {
               "anchor": "50%",
-              "fieldLabel": "Add Image",
-              "name": "slideImageTwo",
-              "xtype": "mz-input-image"
+              "fieldLabel": "Add Image Src tablet",
+              "name": "slideImageTwotab",
+              "xtype": "mz-input-text"
+            },
+            {
+              "anchor": "50%",
+              "fieldLabel": "Add Image Src mobile",
+              "name": "slideImageTwomob",
+              "xtype": "mz-input-text"
+            },
+            {
+              "anchor": "50%",
+              "fieldLabel": "Add Image Src tablet potrait mode",
+              "name": "slideImageTwotabpor",
+              "xtype": "mz-input-text"
+            },
+            {
+              "anchor": "50%",
+              "fieldLabel": "Add Image Src mobile potrait mode",
+              "name": "slideImageTwomobpor",
+              "xtype": "mz-input-text"
+            },
+            {
+              "anchor": "50%",
+              "fieldLabel": "Add Button Ttile",
+              "name": "slideButtonTwo",
+              "xtype": "mz-input-text"
             }
           ]
         },
@@ -1534,9 +1581,33 @@
             },
             {
               "anchor": "50%",
-              "fieldLabel": "Add Image",
-              "name": "slideImageThree",
-              "xtype": "mz-input-image"
+              "fieldLabel": "Add Image Src desktop",
+              "name": "slideImageThreedes",
+              "xtype": "mz-input-text"
+            },
+            {
+              "anchor": "50%",
+              "fieldLabel": "Add Image Src tablet",
+              "name": "slideImageThreetab",
+              "xtype": "mz-input-text"
+            },
+            {
+              "anchor": "50%",
+              "fieldLabel": "Add Image Src mobile",
+              "name": "slideImageThreemob",
+              "xtype": "mz-input-text"
+            },
+            {
+              "anchor": "50%",
+              "fieldLabel": "Add Image Src tablet potrait mode",
+              "name": "slideImageThreetabpor",
+              "xtype": "mz-input-text"
+            },
+            {
+              "anchor": "50%",
+              "fieldLabel": "Add Image Src mobile potrait mode",
+              "name": "slideImageThreemobpor",
+              "xtype": "mz-input-text"
             },
             {
               "anchor": "50%",

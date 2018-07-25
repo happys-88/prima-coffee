@@ -1,29 +1,33 @@
 
 {% block promoted-products %}
-<div id="trendingProducts" style="display: inline;">
+	<h2 class="heading-2">
+		<span>Promoted Products</span>
+	</h2>
+	<ul class="slider" id="PromotedProductSlider">
 	{% for prod in model.products %}
-	<div style="display: inline;">
-		<div class="mz-productlisting-image">
+	<li class="mz-recentproductlist-item text-center">
+		<div class="mz-product-image">
 	     	<a href="{{ prod.url }}">
 	            <img src="{{ prod.image }}" alt="Orange">
 	        </a>        
-	    </div>
+		</div>
 
 	    <div class="mz-productlisting-info">
 	        <a class="mz-productlisting-title" href="{{ prod.url }}">{{ prod.name }}</a>
 	        <div id="bottomline-ratings"></div>
 	        
-	        <div class="mz-productlisting-productcode ratings" totalcount="{{ prod.average_score }}"> 
+	        {% comment %} <div class="mz-productlisting-productcode ratings" totalcount="{{ prod.average_score }}"> 
 	        	Rating : {{ prod.average_score }}
 	        	
-	        </div>
-	        	<div itemprop="priceSpecification" itemscope="" itemtype="http://schema.org/PriceSpecification" class="mz-pricestack">
-	    			<span class="mz-price is-saleprice">
-					     {{ prod.price }}
-					 </span>
-				</div>
+			</div> {% endcomment %}
+			<div class="mz-product-rating">
+				<img src="../../resources/images/product-rating.jpg" alt="product-rating">
+			</div>
+			<div class="mz-price-stack">
+				<span>{{ prod.price|currency }}</span>
+			</div>
 		</div>
-	</div>
-    {% endfor %}
-</div>
+	</li>
+	{% endfor %}
+	</ul>
 {% endblock promoted-products %}

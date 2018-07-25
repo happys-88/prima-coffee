@@ -1,4 +1,5 @@
-﻿{% if not pageContext.query.partial %}
+﻿
+{% if not pageContext.query.partial %}
 <script type="text/json" id="data-mz-preload-facetedproducts">
 {
     "items" : {% json model.items %},
@@ -27,15 +28,15 @@
             </div>
         </div>              
     {% endif %}
-
+    
     <div class="{% if model.facets %}col-sm-9 col-lg-10 {% else %}col-xs-12{% endif %}">
         <div class="mz-l-paginatedlist">
             <div class="mz-l-paginatedlist-header">
                 {% if not pageContext.query.partial %}
                     {% if pageContext.search.query != "" and pageContext.search.query != 'undefined' %}
                         <h1 class="mz-pagetitle">{{ labels.foundSearchResults|string_format(model.totalCount, pageContext.search.query) }}</h1>
-                        {% else %}
-                            <h1 class="mz-pagetitle">{{ navigation.currentNode.name|upper|replace("~", "")|safe }}</h1>
+                        {% comment %} {% else %}
+                            <h1 class="mz-pagetitle">{{ navigation.currentNode.name|upper|replace("~", "")|safe }}</h1> {% endcomment %}
                     {% endif %}
                 {% endif %}
                 <div class="col-xs-12 col-md-4">

@@ -9,6 +9,7 @@
 	{% require_script "pages/category" %}
 	{% require_script "options" %}
 	{% require_script "modules/quickview" %} 
+	{% require_script "pages/stock-message" %}
 	<div data-mz-category="{{model.categoryId}}" class="mz-l-container">
 	    {% include "pages/category-interior" %}
 	</div>

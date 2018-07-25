@@ -1,5 +1,20 @@
 {% dropzone "category-page-top" scope="page" %}
 
-{% partial_cache model.categoryId pageContext.Sorting pageContext.Pagination pageContext.query.sortBy %}
-	{% include_products "modules/product/faceted-products" with includeFacets=themeSettings.showCategoryFacets and pageWithUrl=true and sortWithUrl=true and pageSize=themeSettings.defaultPageSize as_parameter %}
+{% if not pageContext.query.partial %} 
+{% if pageContext.search.query != "" and pageContext.search.query != 'undefined' %}
+</h1>
+ {% else %}
+<h1 class="mz-pagetitle">{{ model.content.name }}</h1>
+<div>
+	<p>
+		{{ model.content.description|safe }}
+	</p>
+</div>
+{% endif %} 
+{% endif %}
+
+
+
+{% partial_cache model.categoryId pageContext.Sorting model.content pageContext.Pagination pageContext.query.sortBy %}
+	{% include_products "modules/product/faceted-products" with  includeFacets=themeSettings.showCategoryFacets   and pageWithUrl=true and sortWithUrl=true and pageSize=themeSettings.defaultPageSize as_parameter  %}
 {% endpartial_cache %}

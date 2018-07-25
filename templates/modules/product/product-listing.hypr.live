@@ -1,4 +1,4 @@
-﻿{% require_script "pages/stock-message" %}
+
 <div class="mz-productlisting {% block module-classes %}{% endblock module-classes %}" data-mz-product="{{ model.productCode }}">
     <div class="mz-productlisting-image">
         {% block product-image %}
@@ -11,21 +11,34 @@
         </a> 
         {% endblock product-image %}
     </div>
-    <div class="mz-productlisting-info">
-        {% if pageContext.isDesktop %}
-            <a class="mz-productlisting-title" href="{% make_url "product" model %}">{{model.content.productName}}</a>
-        {% else %}
-            <a class="mz-productlisting-title" href="{% make_url "product" model %}">{{model.content.productName}}</a>
-        {% endif %}
+    {% if pageContext.cmsContext.page.path == "home" %}
+        <div class="mz-productlisting-info">
+                {% if pageContext.isDesktop %}
+                    <a class="mz-productlisting-title" href="{% make_url "product" model %}">{{model.content.productName}}</a>
+                {% else %}
+                    <a class="mz-productlisting-title" href="{% make_url "product" model %}">{{model.content.productName}}</a>
+                {% endif %}
+                <div class="short-description">
+                    <p>
+                      {{ model.content.productShortDescription|safe }}
+                    </p>
+                    <span>
+                        <a href="{{ model.url}}">Read More</a>
+                    </span>     
+                </div>           
+        </div>
+    {% else %}
+    <div class="mz-productlisting-info">  
+    <a class="mz-productlisting-title" href="{% make_url "product" model %}">{{model.content.productName}}</a>
+     
         {% comment %}
         {% if model.content.productShortDescription and themeSettings.listProductShortDesc %}
             <p class="mz-productlisting-shortdesc">{{ model.content.productShortDescription|truncatewords(themeSettings.maxProductSummaryWords)|safe }}</p>
         {% endif %}
-        {% endcomment %}  
-
+        {% endcomment %}   
         {% block product-code %}
             {% if themeSettings.listProductCode %}
-                <div class="mz-productlisting-productcode">{{model.productCode}}</div> 
+                <div class="mz-productlisting-productcode">SKU:{{model.productCode}}</div> 
             {% endif %}
         {% endblock product-code %}
 
@@ -57,21 +70,6 @@
                 {% endif %}
             {% endif %}
         {% endblock product-extrainfo %}
-       
-        {% with model|get_product_attribute("tenant~login-for-price") as loginForPrice %}
-         {% if loginForPrice.values|first|prop("value") === true %}
-           {% if not user.isAnonymous %}
-             {% include "modules/product/product-add-to-cart" %}
-             <button class="mz-quick-view" data-mz-productcode-quickview="{{ model.productCode }}" data-toggle="modal" data-target="#quickViewModal">{{ labels.quickShop }}</button>
-           {% else %}
-             <a class="mz-button login-for-lowprice" href="javascript:void(0);" data-toggle="modal" data-target="#loginPopup" data-productcode="{{model.productCode}}">{{ labels.viewOnLogin }}</a>
-           {% endif %} 
-           {% else %}
-             {% include "modules/product/product-add-to-cart" %}
-             <button class="mz-quick-view" data-mz-productcode-quickview="{{ model.productCode }}" data-toggle="modal" data-target="#quickViewModal">{{ labels.quickShop }}</button>
-         {% endif %} 
-       {% endwith %}
-        
         <div class="mz-product-msg">
             <div class="stock-messages" id="stock-messages-{{ model.productCode }}">
                 {% if model.inventoryInfo.onlineStockAvailable < 10 and model.inventoryInfo.onlineStockAvailable > 0 %}
@@ -98,12 +96,24 @@
                 {% endfor %}
             </div>
         </div>
-
-        {% with model|get_product_attribute("tenant~new-arrival") as newArrival %}
+        {% with model|get_product_attribute("tenant~login-for-price") as loginForPrice %}
+         {% if loginForPrice.values|first|prop("value") === true %}
+           {% if not user.isAnonymous %}
+             {% include "modules/product/product-add-to-cart" %}
+             <button class="mz-quick-view" data-mz-productcode-quickview="{{ model.productCode }}" data-toggle="modal" data-target="#quickViewModal">{{ labels.quickShop }}</button>
+           {% else %}
+             <a class="mz-button login-for-lowprice" href="javascript:void(0);" data-toggle="modal" data-target="#loginPopup" data-productcode="{{model.productCode}}">{{ labels.viewOnLogin }}</a>
+           {% endif %} 
+           {% else %}
+             {% include "modules/product/product-add-to-cart" %}
+             <button class="mz-quick-view" data-mz-productcode-quickview="{{ model.productCode }}" data-toggle="modal" data-target="#quickViewModal">{{ labels.quickShop }}</button>
+         {% endif %} 
+       {% endwith %}
+    {% with model|get_product_attribute("tenant~new-arrival") as newArrival %}
             {% if newArrival.values|first|prop("value") == true %}
                 <span class="mz-new-arrival-tag">{{ labels.new }}</span>
             {% endif %} 
         {% endwith %}   
     </div>
+    {% endif %}
 </div>
-{% require_script "pages/stock-message" %}

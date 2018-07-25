@@ -7,12 +7,24 @@
 {% block body-content %}
     
     {% dropzone "home-slider" scope="page" %}
-
+<script type="text/javascript">
+    (function e() { var e = document.createElement("script"); e.type = "text/javascript"; e.async = true; e.src = "//staticw2.yotpo.com/4X91rXasdFWFBX4Rnh5WEr4NnvMwpFpjxzNFLubD/widget.js"; var t = document.getElementsByTagName("script")[0]; t.parentNode.insertBefore(e, t) })();
+</script>
     <div class="container">
-        {% dropzone "h1-statement" scope="page" %}  
+        {% dropzone "h1-statement" scope="page" %} 
         
-        <div class="yotpo-gallery hidden"> 
-            <h2>Pictures Gallery</h2>
+        <div class="yotpo yotpo-reviews-carousel" data-header-customisation-enabled="1" data-header-customisation-color="#56575f"
+            data-header-customisation-font-size="18" data-header-customisation-text="ABOUT PRIMA: Awesome PRIMA statement. People are talking!"
+            data-header-customisation-alignment="left" data-background-color-enabled="1" data-background-color="#f1f1f1" data-mode="manual"
+            data-review-ids="" data-show-bottomline="1" data-autoplay-enabled="0" data-min-slide="2" data-autoplay-speed="3000" data-show-navigation="1"
+            data-testimonials-page-enabled="1" data-testimonials-page-text="All Reviews" data-testimonials-page-link="">&nbsp;
+        </div>
+
+        
+        <div class="yotpo-gallery"> 
+            <h2 class="heading-2">
+                <span>Pictures Gallery</span>
+            </h2>
             <div class="yotpo yotpo-pictures-gallery"
                 data-layout="full_page"
                 data-layout-scroll="0"
@@ -26,6 +38,7 @@
                 data-cta-color="#ff7a00">
             </div>
         </div> 
+        <div id="promotedProds"></div>
 
         {% dropzone "shop-by-brand" scope="page" %}
         
