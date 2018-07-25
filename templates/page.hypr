@@ -81,6 +81,7 @@
             <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700,900">
             <link rel="stylesheet" href="{% make_url "stylesheet" "/stylesheets/slider/bxslider.css" %}" title="default" />
             <link rel="stylesheet" href="{% make_url "stylesheet" "/stylesheets/storefront.less" %}" title="default" />
+            <link rel="stylesheet" href="{% make_url "cdn" "/cms/files/override.css" %}" /> 
         {% endblock stylesheets %}
         
         {% block head-tag-scripts %}
