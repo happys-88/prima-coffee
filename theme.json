@@ -610,6 +610,8 @@
         "AncapNewsLetter":"c10e06d63a"
     },
     "disqusKey": "ji62aEaY2h92OZ9iOdQBePwvgJUllr1b58BMnRWW2ZwcV0ewPvZVwxeLMWDrUjK5",
+    "sendGridKey": "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",
+    "merchantEmail": "vsingh@stegtechnologies.com",
     "usStates": [
       {
         "abbreviation": "AL",
@@ -872,7 +874,6 @@
     "questions": "questions",
     "showYotpoGallery": true,
     "instagramFollowUsLink": "https://www.instagram.com/prima.supply/?hl=en",
-    "addThisPubId": "ra-519bb90e58f9bf27",
     "addThisPubIdBlogSharing": "ra-519bb90e58f9bf27" 
   },
   "layoutWidgets": [

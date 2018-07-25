@@ -646,5 +646,29 @@
   "sortByNewArrivals" : "New Arrivals",
   "addons"                                : "POPULAR ADD-ONS",
   "viewAll"                               : "View All", 
-  "disqusComments"                        : "There was trouble loading the comments." 
+  "disqusComments"                        : "There was trouble loading the comments.",
+  
+  // Footer Forms
+  "skuLabel"                              : "What is the product SKU or model number?",
+  "skuInfo"                               : "Please provide us with the products SKU (or model number).",
+  "priceLabel"                            : "What is the price?",
+  "priceInfo"                             : "Enter the price you would like us to match.",
+  "urlLabel"                              : "Where did you find a better price?",
+  "urlInfo"                               : "Either enter the url of the page where you saw a better price (example: www.google.com) or the business name and address if there is no online representation of the product.",
+  "zipCodeLabel"                          : "What is the delivery Zipcode?",
+  "zipCodeInfo"                           : "Please enter the Zipcode of the shipping address",
+  "nameLabel"                             : "What should we call you?",
+  "nameInfo"                              : "We need a name to ask for when we call, especially if we're calling your restaurant or office.",      
+  "contactLabel"                          : "How can we reach you?",
+  "contactInfo"                           : "Enter your phone number or email address.",
+  "fieldEmpty"                            : "Please fill the field",
+
+  // AboutUs Form
+  "auname"                               : "YOUR NAME",
+  "auemail"                              : "YOUR EMAIL ADDRESS",
+  "ausubject"                            : "SUBJECT",
+  "auorder"                              : "ORDER NUMBER",
+  "aumessage"                            : "MESSAGE",  
+  "emailMessage"                          : "We have received your request! We will get back with you shortly!"
+  
 }
