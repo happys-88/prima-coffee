@@ -481,6 +481,7 @@
     }
   ],
   "settings": {
+    "siteName": "primacoffee",
     "allProductsCategoryId": "",
     "sessionTimeout": "18000",
     "backofficeDateTimeFormat": "m/d/Y H:i:s O",

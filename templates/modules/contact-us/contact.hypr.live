@@ -1,36 +1,31 @@
                          <div class="col-md-6 col-xs-12 mz-contact-form">
                             <form name="contactUsForm" method="post" id="contactUsForm" action="">     
                                 <div class="form-group">
-                                    <label class="col-sm-4 col-xs-12" for="{{ labels.firstName }}">{{ labels.firstName }}</label>
+                                    <label class="col-sm-4 col-xs-12" for="{{ labels.auname }}">{{ labels.auname }}<span class="is-required"> *</span></label>
                                     <div class="col-sm-8 col-xs-12">
-                                        <input type="text" name="firstname" data-mz-value="firstname" placeholder="{{ labels.firstName }}" maxlength="{{themeSettings.firstNameLength}}" class="form-control">
-                                        <span class="mz-validationmessage"></span>
+                                        <input type="text" name="name" data-mz-value="name" maxlength="{{themeSettings.firstNameLength}}" class="form-control">
+                                        <span class="mz-validationmessage" data-mz-validationmessage-for="name"></span>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-4 col-xs-12" for="{{ labels.lastName }}">{{ labels.lastName }}</label>
+                                    <label class="col-sm-4 col-xs-12" for="{{ labels.auemail }}">{{ labels.auemail }}<span class="is-required"> *</span></label>
                                     <div class="col-sm-8 col-xs-12">
-                                        <input type="text" name="lastname" data-mz-value="lastname" placeholder="{{ labels.lastName }}" maxlength="{{themeSettings.lastNameLength}}" class="form-control">
-                                        <span class="mz-validationmessage"></span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-4 col-xs-12" for="{{ labels.email }}">{{ labels.email }}<span class="is-required"> *</span></label>
-                                    <div class="col-sm-8 col-xs-12">
-                                        <input type="email" class="form-control" id="{{ labels.email }}"  placeholder="{{ labels.email }}" name="" value="">
+                                        <input type="email" id="emailAddress" name="email" data-mz-value="email" maxlength="{{themeSettings.emailLength}}" class="form-control">
                                         <span class="mz-validationmessage" data-mz-validationmessage-for="email"></span>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-4 col-xs-12" for="{{ labels.subject }}">{{ labels.subject }}<span class="is-required"> *</span></label>
+                                    <label class="col-sm-4 col-xs-12" for="{{ labels.ausubject }}">{{ labels.ausubject }}<span class="is-required"> *</span></label>
                                     <div class="col-sm-8 col-xs-12">
-                                        <select class="form-control" id="{{ labels.subject }}">
-                                            <option value="">Coffee shop equipment list with price</option>
-                                            <option value="">Coffee shop equipment list with price</option>
-                                            <option value="">Coffee shop equipment list with price</option>
-                                            <option value="">Coffee shop equipment list with price</option>
-                                        </select>
-                                        <span class="mz-validationmessage" data-mz-validationmessage-for="selectedTopic"></span>
+                                        <input type="text" id="subject" name="subject" data-mz-value="subject" class="form-control">
+                                        <span class="mz-validationmessage" data-mz-validationmessage-for="subject"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 col-xs-12" for="{{ labels.auorder }}">{{ labels.auorder }}</label>
+                                    <div class="col-sm-8 col-xs-12">
+                                        <input type="text" id="order" name="order" data-mz-value="order" class="form-control"></input>
+                                    <span class="mz-validationmessage" data-mz-validationmessage-for="order"></span>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -40,10 +35,12 @@
                                     <span class="mz-validationmessage" data-mz-validationmessage-for="message"></span>
                                     </div>
                                 </div>
+                                <span id="submitMsg" hidden="true">{{labels.emailMessage}}</span>
                                 <div class="form-group">
                                     <div class="col-sm-8 col-sm-offset-4 col-xs-12">
                                         <button class="mz-button" type="button" data-mz-action="contactUsSubmit">{{ labels.submit }}</button>
                                     </div>
                                 </div>
                             </form>
+                            
                         </div>

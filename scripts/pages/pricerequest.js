@@ -69,28 +69,28 @@ define(['modules/api',
             'sku': {
                 required: true,
                 // msg: Hypr.getLabel('emailMissing')
-                msg: 'Sku missing'
+                msg: Hypr.getLabel("fieldEmpty")
             },
             'price': {
                 required: true,
-                msg: 'Price missing'
+                msg: Hypr.getLabel("fieldEmpty")
             },
             'url': {
                 required: true,
-                msg: "Url missing"
+                msg: Hypr.getLabel("fieldEmpty")
             },
             'zipcode': {
                 required: true,
-                msg: "zipcode missing"
+                msg: Hypr.getLabel("fieldEmpty")
             },
             'name': {
                 required: true,
-                msg: "Name missing"
+                msg: Hypr.getLabel("fieldEmpty")
             },
-            'contact': {
+            'contact': [{
                 required: true,
-                msg: "Contact missing"
-            }
+                msg: Hypr.getLabel("fieldEmpty")
+            }]
         };
         var Model = Backbone.MozuModel.extend({
             validation: validationfields

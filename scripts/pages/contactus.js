@@ -12,54 +12,73 @@ define(['modules/api',
         var ContactUsView = EditableView.extend({
             templateName: 'modules/contact-us/contact',
             autoUpdate: [
-                'firstname',
-                'lastname',
+                'name',
                 'email',
-                'message',
-                'selectedTopic'
+                'subject',
+                'order',
+                'message'
             ],
             setError: function(msg) {
                 this.model.set('isLoading', false);
                 this.trigger('error', { message: msg || 'Something went wrong!! Please try after sometime!' });
             },
             contactUsSubmit: function() {
+                $("#submitMsg").hide();
                 var self = this;
-                var firstName = self.model.get('firstname');
-                var lastName = self.model.get('lastname');
+                var name = self.model.get('name');
                 var email = self.model.get('email');
-                var selectedTopic = self.model.get('selectedTopic');
+                var subject = self.model.get('subject');
+                var ordernumber = self.model.get('order');
                 var message = self.model.get('message');
                 console.log(self.model);
                 if (!self.model.validate()) {
-                    var brontoUrl = HyprLiveContext.locals.themeSettings.brontoUrl;
-                    if (brontoUrl !== '') {
-                        //Call APIs
-                        $.ajax({
-                                "method": 'POST',
-                                "url": '/email/send',
-                                "data": {
-                                    "firstName": firstName,
-                                    "lastName": lastName,
-                                    "usageType": "1",
-                                    "email": email,
-                                    "topic": selectedTopic,
-                                    "message": message
-                                }
-                            })
-                            .success(function(response) {
-                                self.model.set('isLoading', false);
-                                self.trigger('success', { message: 'We have received your request! We will get back with you shortly!' });
-                                window.console.log(response);
-                                window.setTimeout(function() {
-                                    self.render();
-                                }, 5000);
-                            })
-                            .error(function(response) {
-                                self.setError();
-                            });
-                    } else {
+                    api.request("POST", "/commonRoute",
+                    {
+                        requestFor:'contactUsMail',
+                        name:name,
+                        ordernumber:ordernumber,
+                        email:email,
+                        subject: subject,
+                        message: message
+                    }).then(function (response){
+                        var labels = HyprLiveContext.locals.labels;
+                        var errorMessage =labels.emailMessage;
+                        if(response[0]) {
+                            if(response[0] !== 'one' && response[0].indexOf('ITEM_ALREADY_EXISTS') < 0) {
+                                console.log("Error : "+response[0]);
+                                errorMessage  = labels.contactUsError;
+                                $("#submitMsg").html(errorMessage);
+                                $("#submitMsg").show(); 
+                            } else if(response[1] !== 'two') {
+                                console.log("Error : "+response[1]);
+                                errorMessage  = labels.contactUsError;
+                                $("#submitMsg").html(errorMessage);
+                                $("#submitMsg").show();    
+                            } else if (response[2] === 'mailfailed') {
+                                $('#contactUsForm').each(function(){
+                                    this.reset();
+                                });
+                                errorMessage  = labels.mailError;
+                                $("#submitMsg").html(errorMessage);
+                                $("#submitMsg").show();
+                            } else {
+                                $("#submitMsg").html(errorMessage);
+                                $('#contactUsForm').each(function(){
+                                    this.reset();
+                                });
+                                $("#submitMsg").show().delay(4000).fadeOut();    
+                            }
+                        } else {
+                             console.log("Error : ");
+                             errorMessage  = "Invalid form submission";
+                             $("#submitMsg").html(errorMessage);
+                             $("#submitMsg").show();
+                        }
+                        
+                    }, function(err) {
+                        console.log("Failure : "+JSON.stringify(err));
                         self.setError();
-                    }
+                    });
                 } else {
                     self.setError("Invalid form submission");
                 }
@@ -71,18 +90,25 @@ define(['modules/api',
         });
 
         var validationfields = {
-            'email': {
+            'name': {
                 required: true,
+                msg: Hypr.getLabel('genericRequired')
+            },
+            'email': [{
+                required: true,
+                msg: Hypr.getLabel('genericRequired')
+            },
+            {
                 pattern: 'email',
                 msg: Hypr.getLabel('emailMissing')
-            },
-            'selectedTopic': {
+            }],
+            'subject': {
                 required: true,
-                msg: Hypr.getLabel('selectedMissing')
+                msg: Hypr.getLabel('genericRequired')
             },
             'message': {
                 required: true,
-                msg: Hypr.getLabel('contactUsMessageMissing')
+                msg: Hypr.getLabel('genericRequired')
             }
         };
         if (HyprLiveContext.locals.themeSettings.enableCaptcha) {
@@ -101,9 +127,7 @@ define(['modules/api',
         var $contactUsEl = $('.contact');
         var contactUsView = window.view = new ContactUsView({
             el: $contactUsEl,
-            model: new Model({
-                "selectTopic": require.mozuData('selectTopic')
-            })
+            model: new Model({})
         });
         contactUsView.render();
     });
