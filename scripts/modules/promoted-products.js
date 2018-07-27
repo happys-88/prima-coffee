@@ -1,18 +1,10 @@
 
 	define(['modules/jquery-mozu', 'underscore', 'modules/backbone-mozu', "modules/models-product"], function ($, _, Backbone, ProductModel) {
-	// var prdCode=$thisElem.attr("data-mz-productcode");
 	var url = "https://api.yotpo.com/v1/widget/4X91rXasdFWFBX4Rnh5WEr4NnvMwpFpjxzNFLubD/products/promoted_products";
+		var slider;
 		$.get(url, function(data, status){ 
-			         //console.log("Data Promoted Product: " + JSON.stringify(data) + "\nStatus: " + status);
-			
-		_.defer( function() {
-			// var data = response;
-			// prod_model.set({reviews: res});
-			// newMod.set({reviews: res});
-			//console.log("MODEL VAL : "+JSON.stringify(data.response));
-			
+		_.defer( function() {			
 			var product = new ProductModel.Product(data.response); 
-
 			var ReviewsView = Backbone.MozuView.extend({
 				templateName: "modules/product/promoted-products",
 				render: function () {
@@ -21,7 +13,6 @@
 					this.productCarousel();
 				},
 				productCarousel: function () {
-					//this.render();
 					var minSlides,
 						maxSlides,
 						slideWidth,
@@ -38,7 +29,7 @@
 						slideWidth = 333;
 						slideMargin = 15;
 					}
-					$("#PromotedProductSlider").bxSlider({
+					 slider=$("#PromotedProductSlider").bxSlider({
 						minSlides: minSlides,
 						maxSlides: maxSlides,
 						moveSlides: 1,
@@ -51,7 +42,8 @@
 						onSliderLoad: function() {
 						$(".slider").css("visibility", "visible");
 						}
-                   });
+				   });
+					window.slider = slider;
 				}
 				
 			});
@@ -62,11 +54,10 @@
             });
 			window.productView = productView;
 			productView.render();
-			//  productView.productCarousel();
 			$(window).resize(function () {
-				productView.render();
-			}); 
-			//view.render();
+				slider.destroySlider();
+				productView.productCarousel();
+			});
 		});
 	});
 });

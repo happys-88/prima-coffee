@@ -1,7 +1,7 @@
 <li class="mz-utilitynav-item global-cart">
 	<a class="mz-utilitynav-link mz-utilitynav-link-cart" href="{% make_url "cart" %}">
 	    {% comment %} <i class="fa fa-shopping-cart"></i>{% endcomment %}
-	    {{ labels.cart }}<span class="mz-cartmonitor" data-mz-role="cartcount">0</span>
+	    {{ labels.cart }}(<span class="mz-cartmonitor" data-mz-role="cartcount">0</span>)
 	    
 	</a>
 	<div id="global-cart" {% if pageContext.isEditMode and pageContext.cmsContext.template.path=="" %} style="display:block;"{% endif %}> 

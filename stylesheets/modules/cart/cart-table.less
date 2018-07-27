@@ -21,6 +21,11 @@
         padding: 20px 15px;
         border-top: 1px solid #dbdbda;
         color: @textColor;
+        font-size: 16px;
+        .mz-item-price,.mz-item-rowtotal{
+            color: #555;
+            font-weight: 700;
+        }
         &:first-child{
             border-top: none;
         }
@@ -40,15 +45,19 @@
             padding: 0 15px;
             text-align: left;
             .mz-carttable-item-title{
-                color: @textColor;    
+               // color: @textColor; 
+                color: #555;
+                font-weight: 700;
+                line-height: 2em;   
             }
         }
         .mz-carttable-item-code{
             display: block;
-            font-size: 10px;
+            font-size: 12px;
             line-height: 18px;
             text-transform: uppercase;
             text-align: center;
+            color:#555;
         }
         .mz-carttable-qty-field{
             padding: 8px;   

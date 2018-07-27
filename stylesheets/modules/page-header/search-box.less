@@ -1,13 +1,13 @@
 ﻿.mz-searchbox {
 
-    @expandedSearchWidth: 550px;
+    @expandedSearchWidth: 1140px;
 
     .mz-searchbox-field {
         display: inline-block;
         position: relative;
         border: 1px solid @inputBorder;
         background: white;
-        height: 46px;
+        height: 38px;
     }
 
     &.mz-searchbox-expands .mz-searchbox-input {
@@ -33,7 +33,7 @@
         display: block;
         box-sizing: border-box;
         width: @expandedSearchWidth;
-        height: 44px;
+        height: 38px;
         margin: 0;
         padding-right: @gutter*2+22;
         padding-left: @gutter+1; 
@@ -61,6 +61,7 @@
         border-width: 0;
         border-radius: 0;
         padding: 0;
+        display:none;
     }
 
     .mz-searchbox-categories {
@@ -75,14 +76,18 @@
         width: @expandedSearchWidth + 2;
         background: white;
         padding: 0;
-        left: -1px !important;
+        left: auto!important;
+        right: 0!important;
+        margin-top: 20px;
     }
 
    
 
     /*Left Colum*/
+   
     .tt-dataset-terms,
     .tt-dataset-categories {
+        //display: none;
         float: left;
         width: 25%;
         padding: 20px 30px;
@@ -105,6 +110,7 @@
                     strong {
                         font-weight: 400;
                         line-height: 18px;
+                        color: #495363;
                     }
                 }
             }
@@ -113,25 +119,48 @@
 
     /*Right Colum*/
     .tt-dataset-pages {
-        float: right;
-        border-left: 1px solid #495363;
+        float: left;
+        border-left: none;
         width: 75%;
         padding: 20px 30px 0; 
         .tt-suggestions {
             .tt-suggestion {
+                a{
+                    float: left;
+                    width: 100%;
+                    display: block;
+                    .mz-itemlisting-thumb {
+                         border: 1px solid #e0e0e0;
+                         float: left;
+                         width: 30%;
+                         margin-right: 20px;
+                    }
+                    .mz-itemlisting-title {
+                            font-size: 15px;
+                            font-weight: 400;
+                            color: #ff7a00;
+                            float: left;
+                            width: 64%;
+                            strong {
+                                font-size: 15px;
+                                font-weight: 600;
+                                color: #495363;
+                            }
+                        }
+                }
                 float: left;
                 margin-bottom: 17px;
-                width: 28%;
+                width: 50%;
                 .mz-itemlisting {
                     padding-top: 0;
                     .mz-itemlisting-thumb {
-                        border: 1px solid #e0e0e0;
-                        float: none;
-                        margin-right: 0;
-                        width: 100%;
+                         border: 1px solid #e0e0e0;
+                         float: left;
+                         width: 30%;
+                         margin-right: 20px;
                         .mz-itemlisting-thumb-img {
-                            width: 80%;
-                            margin: 10% auto;
+                            width: 100%;
+                           // margin: 10% auto;
                             display: block;
                         }
                     }
@@ -144,18 +173,20 @@
                         .mz-itemlisting-title {
                             font-size: 12px;
                             font-weight: 400;
-                            color: #495363;
+                            color: #ff7a00;
+                            float: left;
+                            width: 64%;
                             strong {
                                 font-size: 12px;
-                                font-weight: 400;
+                                font-weight: 600;
                                 color: #495363;
                             }
                         }
                     }
                 }
                 &:nth-of-type(3n+2) {
-                    margin-right: 8%;
-                    margin-left: 8%;
+                    margin-right: 0;
+                    margin-left: 0;
                 }
             }
         } 

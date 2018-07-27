@@ -27,13 +27,12 @@
 
 <div itemscope itemtype="http://schema.org/Product" class="mz-l-container">
     <div class="row">
+        <h1 class="mz-pagetitle" itemprop="name">{{ prodMod.content.productName }}</h1>
         <div data-mz-productimages class="col-xs-12 col-sm-6 mz-productimages mz-l-sidebar">
             {% include "modules/product/product-images" with model=prodMod %}
         </div> 
         <div class="col-xs-12 col-sm-6 mz-productdetail-wrap">
-            {% include "modules/common/message-bar" with model=prodMod %}   
-
-            <h1 class="mz-pagetitle" itemprop="name">{{ prodMod.content.productName }}</h1>   
+            {% include "modules/common/message-bar" with model=prodMod %}    
             <div class="yotpo-review-section-pdp">   
               <!-- Yotpo Rating -->
               {% block star-rating %}

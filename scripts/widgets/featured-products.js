@@ -1,9 +1,8 @@
-require([
+define([
     'modules/jquery-mozu',
     'bxslider'
 ],
 function ($, bxSlider) { 
-    $(document).ready(function(){
         var eachSlide = $(".mz-featured-products .mz-productlist-list").find(".mz-productlist-item"), 
             minSlides,
             slideWidth, 
@@ -17,13 +16,13 @@ function ($, bxSlider) {
                 slideWidth = 170; 
             }
             else{
-                minSlides = 6;
+                minSlides = 4;
                 slideWidth = 275;     
             } 
             
         }
         
-        if(eachSlide.length > 6){  
+        if(eachSlide.length > 4){  
             $(".mz-featured-products .mz-productlist-list").bxSlider({
                 auto: false,
                 speed: 600,  
@@ -33,14 +32,12 @@ function ($, bxSlider) {
                 moveSlides: 1,
                 slideMargin: 0,
                 infiniteLoop: false,
-                controls: false,
-                pager: true,
+                controls: true,
+                pager: false,
                 touchEnabled: true,
                 onSliderLoad: function() {
                     $(".slider").css("visibility", "visible"); 
                 }
             });       
         }
-       
-    });
 });
