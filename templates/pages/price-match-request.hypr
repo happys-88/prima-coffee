@@ -7,6 +7,7 @@
 {% endblock breadcrumbs %}
 {% block body-content %}
 {% require_script "pages/pricerequest" %}
+{% require_script "pages/commercial-services" %}
 <div class="mz-customer-service-page">
     <div class="mz-l-container">
         <div class="row"> 
@@ -16,7 +17,10 @@
                     {% dropzone "price-request" scope="page" %}
                 </div>
                 <div id="requestForm">
-                    {% include "modules/common/price-guarantee-form" %}
+                    {% include "modules/page-footer/footer-forms/price-guarantee-form" %}
+                </div>
+                <div id="commercialForm">
+                    {% include "modules/page-footer/footer-forms/commercial-service-form" %}
                 </div>
             </div>
             <div class="col-sm-3 col-lg-2 mz-customer-service-nav">     

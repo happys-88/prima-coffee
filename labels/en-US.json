@@ -662,6 +662,9 @@
   "contactLabel"                          : "How can we reach you?",
   "contactInfo"                           : "Enter your phone number or email address.",
   "fieldEmpty"                            : "Please fill the field",
+  "nameph"                                : "What is your Name?*",
+  "emailph"                               : "What is your email?*",
+
 
   // AboutUs Form
   "auname"                               : "YOUR NAME",
