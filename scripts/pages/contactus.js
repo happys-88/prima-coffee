@@ -77,12 +77,19 @@ define(['modules/api',
                         
                     }, function(err) {
                         console.log("Failure : "+JSON.stringify(err));
+                         console.log("Error : ");
+                         var errorMessage  = err.message;
+                         $("#submitMsg").html(errorMessage);
+                         $("#submitMsg").show();
                         self.setError();
                     });
                 } else {
+                    var errorMessage  = "Invalid form submission";
+                    $("#submitMsg").html(errorMessage);
+                    $("#submitMsg").show();
                     self.setError("Invalid form submission");
                 }
-                self.model.set('isLoading', true);
+                // self.model.set('isLoading', true);
             },
             render: function() {
                 Backbone.MozuView.prototype.render.apply(this);
