@@ -14,9 +14,9 @@
         <li class="mz-utilitynav-item login-link">
             {% if not user.isAnonymous %} 
                 <div id="mz-logged-in-notice"> 
-                    <span class="login-icon mz-mobile" data-toggle="dropdown">  
+                    {% comment %} <span class="login-icon mz-mobile" data-toggle="dropdown">  
                         <i class="fa fa-user"></i><i class="fa fa-angle-down"></i>          
-                    </span>
+                    </span> {% endcomment %}
                     <span class="user-name mz-utilitynav-link" data-toggle="dropdown">My Account</span>  
                     
                     <!-- My Account Dropdown -->

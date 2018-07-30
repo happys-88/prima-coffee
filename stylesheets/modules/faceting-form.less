@@ -1,17 +1,23 @@
 ﻿.mz-facetingform {
     h4 {
-        font-size: 14px;
-        color: @siteBaseColor;
-        font-weight: bold;
-        line-height: 24px;
         text-transform: uppercase;
-        &:after {
-            content: "---";
-            display: block;
-            color: #808b98;
-            font-size: 16px;
-            line-height: 10px;
-        }
+        font-size: 16px;
+        background-color: #4b4b4b;
+        color: #fff;
+        font-weight: 400;
+        line-height: 22px;
+        padding: 0 0 .2em .4em;
+        position: relative;
+        border-radius: 4px 4px 4px 4px;
+        margin-bottom: 0;
+        padding-top: 3px;
+        // &:after {
+        //     content: "---";
+        //     display: block;
+        //     color: #808b98;
+        //     font-size: 16px;
+        //     line-height: 10px;
+        // }
     }
     .mz-clear-all {
         border-bottom: 1px solid #e0e0e0;
@@ -63,6 +69,7 @@
         }
         a {
             text-decoration: none;
+             //color: #ff7a00;
         }
         &.color {
             li {
@@ -123,6 +130,8 @@
     }
     .mz-facetingform-valuelabel {
         display: inline-block;
+         color: #ff7a00;
+         font-weight: 600;
     }
 
     .mz-facetingform-facet-hierarchy {
@@ -131,7 +140,8 @@
                 line-height: 22px;
                 margin: 0 0 0 10px;
                 a {
-                    color: #495363;
+                   color: #ff7a00;
+                   text-decoration: none;
                     &:hover {
                         text-decoration: underline;
                     }

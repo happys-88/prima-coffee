@@ -1,6 +1,4 @@
-﻿<nav class="mz-sitenav" id="mz-sitenav-container"> 
-    <div class="">
-      
+﻿<nav class="mz-sitenav" id="mz-sitenav-container">  
       <ul class="mz-sitenav-list" 
           data-mz-contextify='.mz-sitenav-link[href="{{ navigation.currentNode.url }}"]'
           data-mz-contextify-attr='class'
@@ -14,7 +12,7 @@
                 <a class="mz-sitenav-link main-link" {% if link.openInNewWindow %}target='_blank'{% endif %} href="{{link.url}}"> 
                   <span class="mz-sitenav-link-iiner"> 
                     {{link.name|replace("_", " ")|replace(themeSettings.columnBreaker, "")|safe}}
-                    <span class="seperator"></span><span class="top-arrow"></span>  
+                    <!-- <span class="seperator"></span><span class="top-arrow"></span>   -->
                   </span>
                   
                 </a>
@@ -25,7 +23,7 @@
                     {% comment %} Top Categories {% endcomment %}
                       <div class="mz-sitenav-top-categories">
                         <div class="mz-category-heading">
-                          <h3 class="heading-3">Top Categories</h3>  
+                          <h3 class="heading-2"><span>Top Categories</span></h3>  
                         </div>
                           
                         <ul class="mz-sitenav-sub"> 
@@ -64,7 +62,7 @@
                     {% comment %} All Categories {% endcomment %}
                     <div class="mz-sitenav-all-categories">
                       <div class="mz-category-heading">
-                        <h3 class="heading-3">All Categories</h3>  
+                        <h3 class="heading-2"><span>  All Categories</span></h3>  
                       </div>
                       <ul class="mz-sitenav-sub">
                         {% for sublink in link.items %}
@@ -102,7 +100,6 @@
           {% endpartial_cache %}
           {% require_script "modules/contextify" %}
       </ul>
-    </div>
 </nav>
 
 {% comment %}

@@ -66,6 +66,7 @@
     
     {% require_script "pages/yotpo-review" %}
     {% require_script "modules/promoted-products" %} 
+    {% require_script "widgets/featured-products" %}
 
 {% endblock body-content %}
 

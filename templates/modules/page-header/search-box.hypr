@@ -2,7 +2,7 @@
         <div class="mz-searchbox-field">
             <input placeholder="{{ labels.search }}" id="globalSearch" type="search" class="mz-searchbox-input" autocomplete="off" name="query" data-mz-role="searchquery" />
             <input type="hidden" class="mz-searchbox-input" name="searchPage" value="globalSearch" />
-            {% comment %} <button class="mz-searchbox-button" type="submit"><i class="fa fa-search"></i></button> {% endcomment %}
+             <button class="mz-searchbox-button" type="submit"><i class="fa fa-search"></i></button>
         </div>	
         {% require_script "modules/contextify" %}
         {% if themeSettings.useSearchAutocomplete %}

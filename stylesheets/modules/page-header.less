@@ -44,19 +44,27 @@
         }
     }
     .mz-header-bottom {
+        .col-md-2{
+            position: static;
+        }
+        .col-md-7{
+            position:static;
+        }
+
         float: left;
         width: 100%;
-        padding: @gutter 0;
+        padding: 12px 0;
         transition: all 0.5s ease-in-out; 
         .mz-storebranding {
             float: left;
             .mz-logo {
                 display: block;
                 background: url("../resources/images/prima-supply-logo.png") left top no-repeat;
-                width: 250px;
-                height: 68px;
+                width: 126px;
+                height: 40px;
                 background-size: contain;
-                transition: all 0.5s ease-in-out; 
+                transition: all 0.5s ease-in-out;
+                margin-top: 13px;
             }
             img {
                 display: block;
@@ -77,4 +85,5 @@
         float: left;
         margin: 11px 0 0 75px;  
     }
+    
 } 
