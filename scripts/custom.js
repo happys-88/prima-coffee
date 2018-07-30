@@ -52,7 +52,11 @@ define([
 	}
 	
 	$(document).ready(function(){ 
-
+		$("#newsletterEmail").keydown(function(e) {
+            if (e.which === 13) {
+                $("#newsletter").trigger("click");
+            }
+        });
 		$("#newsletter").click(function(e){
 			var email = $("#newsletterEmail").val();
 			var pattern =/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
