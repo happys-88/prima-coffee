@@ -7,6 +7,15 @@
             {% include "modules/common/price" with model=model.priceRange.upper %}
         </span>
     {% else %}
-    {% include "modules/common/price" with model=model.price %}
+        {% if model.mapPrice %}
+            <span class="mz-price is-crossedout">
+                {{model.mapPrice|currency}}
+            </span>
+            {% if hasStock > 0 %}
+                <span class="orange-text">{{ labels.mapPrice }}</span>
+            {% endif %}
+        {% else %}
+            {% include "modules/common/price" with model=model.price %}
+        {% endif %}
     {% endif %}
 </div>
