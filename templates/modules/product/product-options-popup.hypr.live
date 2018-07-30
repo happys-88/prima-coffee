@@ -52,6 +52,7 @@
                               {% if model.hasAddon === true %}
                               <div class="mz-productdetail-options mz-l-stack-section available-ad-on">
                                   <h4 class="mz-l-stack-sectiontitle add-on-select">{{ labels.addOnsSelect }}</h4>
+                                  <h6 class="orange-text">*{{ labels.addonSelectMsg }}</h6>
                                   {% include "modules/product/product-addons-for-popup" %}
                                 </div>
                               {% endif %}
