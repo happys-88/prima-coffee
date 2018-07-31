@@ -44,24 +44,24 @@ define(['modules/api',
                         var labels = HyprLiveContext.locals.labels;
                         var errorMessage =labels.emailMessage;
                         if(response[0]) {
-                            if(response[0] !== 'one' && response[0].indexOf('ITEM_ALREADY_EXISTS') < 0) {
+                            /*if(response[0] !== 'one' && response[0].indexOf('ITEM_ALREADY_EXISTS') < 0) {
                                 console.log("Error : "+response[0]);
                                 errorMessage  = labels.contactUsError;
                                 $("#submitMsg").html(errorMessage);
                                 $("#submitMsg").show(); 
-                            } else if(response[1] !== 'two') {
+                            } else*/ if(response[0] !== 'two') {
                                 console.log("Error : "+response[1]);
                                 errorMessage  = labels.contactUsError;
                                 $("#submitMsg").html(errorMessage);
                                 $("#submitMsg").show();    
-                            } else if (response[2] === 'mailfailed') {
+                            } /*else if (response[2] === 'mailfailed') {
                                 $('#contactUsForm').each(function(){
                                     this.reset();
                                 });
                                 errorMessage  = labels.mailError;
                                 $("#submitMsg").html(errorMessage);
                                 $("#submitMsg").show();
-                            } else {
+                            }*/ else {
                                 $("#submitMsg").html(errorMessage);
                                 $('#contactUsForm').each(function(){
                                     this.reset();

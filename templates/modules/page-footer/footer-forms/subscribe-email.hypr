@@ -1,0 +1,15 @@
+<div class="mz-newsletter">
+	<form id="subscribeEmailForm" onsubmit="return false;">
+		<div class="form-group">
+			<div class="input-group">					  	
+				<input type="email" class="form-control" placeholder="{{ labels.enterEmailAddress }}" id="subscribeEmail">
+				<span class="input-group-btn">
+					<button class="btn btn-default" id="subscribeEmailButton" type="button" >{{ labels.join }}</button>
+				</span>
+			</div>
+			<div class="input-group">   
+				<span id="errorMsg" hidden="true"></span>
+			</div>
+		</div>						
+	</form>
+</div>

@@ -115,6 +115,7 @@ module.exports = function (grunt) {
                 ],
                 'tasks': [
                     'newer:jshint:develop',
+                    'newer:mozutheme:quickcompile',
                     'newer:mozusync:upload'
                 ]
             },
@@ -128,6 +129,7 @@ module.exports = function (grunt) {
             },
             'sync': {
                 'files': [
+                'scripts/**/*.js',
                     'admin/**/*',
                     'resources/**/*',
                     'packageconfig.xml',
@@ -138,7 +140,11 @@ module.exports = function (grunt) {
                     '!*.orig',
                     '!.inherited'
                 ],
-                'tasks': ['newer:mozusync:upload']
+
+                'tasks': [
+                    'mozutheme:quickcompile',
+                    'newer:mozusync:upload'
+                ]
             }
         },
         mozusync: {

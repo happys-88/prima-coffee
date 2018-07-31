@@ -22,6 +22,9 @@
                 <div id="commercialForm">
                     {% include "modules/page-footer/footer-forms/commercial-service-form" %}
                 </div>
+                {% block subscription %}
+                    {% include "modules/page-footer/footer-forms/subscribe-email" %}
+                {% endblock subscription %}
             </div>
             <div class="col-sm-3 col-lg-2 mz-customer-service-nav">     
                 <div class="mz-l-sidebar">

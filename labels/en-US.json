@@ -664,6 +664,7 @@
   "fieldEmpty"                            : "Please fill the field",
   "nameph"                                : "What is your Name?*",
   "emailph"                               : "What is your email?*",
+  "subscribeMsg"                              : "Thanks for Subscribing!!",
 
 
   // AboutUs Form

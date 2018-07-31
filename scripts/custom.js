@@ -1,8 +1,9 @@
 define([ 
 	"modules/jquery-mozu",
 	'modules/api',
+	'hyprlivecontext',
 	"bxslider" 
-], function( $, api, bxslider) { 
+], function( $, api, HyprLiveContext, bxslider) { 
 	
 	//home slider
 	$('#mz-home-slider .slider').bxSlider({
@@ -52,6 +53,35 @@ define([
 	}
 	
 	$(document).ready(function(){ 
+		$("#subscribeEmail").keydown(function(e) {
+			if (e.which === 13) {
+				alert("Ok");
+                $("#subscribeEmailButton").trigger("click");
+            }
+        });
+        $("#subscribeEmailButton").click(function(e){
+			var email = $("#subscribeEmail").val();
+			console.log("Email : "+email);
+			var labels = HyprLiveContext.locals.labels;
+			var errorMessage = labels.subscribeMsg;
+			var pattern =/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+   			if(pattern.test(email)) {
+   				$("#errorMsg").hide();
+   				$("#subscribeEmail").val('');
+   				$("#errorMsg").html(errorMessage);
+   				$("#errorMsg").show().delay(2000).fadeOut();
+   				api.request("POST", "/mailchimp", {'accountId':email, deals:"PCNewsLetter"}).then(function (response){
+                   console.log("Response : "+JSON.stringify(response));    
+                }, function(err) {
+                    console.log("Failure : "+JSON.stringify(err));
+                });
+   			} else {
+   				errorMessage = labels.emailMissing;
+   				$("#errorMsg").html(errorMessage);
+   				$("#errorMsg").show();
+   			}
+		});
+
 		$("#newsletterEmail").keydown(function(e) {
             if (e.which === 13) {
                 $("#newsletter").trigger("click");
@@ -65,7 +95,7 @@ define([
    				$("#newsletterEmail").val('');
    				$("#thanksMsg").show().delay(2000).fadeOut();
    				api.request("POST", "/mailchimp", {'accountId':email, deals:"PCNewsLetter"}).then(function (response){
-                   console.log("Response 22 : "+JSON.stringify(response));    
+                   console.log("Response : "+JSON.stringify(response));    
                 }, function(err) {
                     console.log("Failure : "+JSON.stringify(err));
                 });

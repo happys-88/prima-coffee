@@ -1,7 +1,7 @@
         {% block commercial-form %}
 	           {% include "modules/common/message-bar" with model=model.messages %}
                 <div class="col-md-6 col-xs-12 mz-contact-form">
-                    <form name="commercialForm" method="" id="priceGuarranteeForm" action="">    
+                    <form name="commercialForm" method="" id="commercialForm" action="">    
                     	<div class="form-group">
                             <div class="col-sm-8 col-xs-12">
                                 <input type="text" placeholder="{{ labels.emailph }}" name="email" type="email" data-mz-value="email" required class="form-control">
