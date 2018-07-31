@@ -874,7 +874,12 @@
     "questions": "questions",
     "showYotpoGallery": true,
     "instagramFollowUsLink": "https://www.instagram.com/prima.supply/?hl=en",
-    "addThisPubIdBlogSharing": "ra-519bb90e58f9bf27" 
+    "addThisPubIdBlogSharing": "ra-519bb90e58f9bf27",
+    "showProductTooltip": true,
+    "noHasstleReturnTooltip": "",
+    "tryBeforeYouBuyTooltip": "",
+    "priceMatchGuaranteeTooltip": "",
+    "freeShippingTooltip": ""  
   },
   "layoutWidgets": [
     {

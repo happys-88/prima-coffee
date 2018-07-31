@@ -365,6 +365,38 @@
         },
         {
             "xtype": "panel",
+            "title": "Product Tooltips",       
+            "collapsed": false,
+            "items": [
+                {
+                    "fieldLabel": "Show Product Tooltips",  
+                    "xtype": "mz-input-checkbox",
+                    "name": "showProductTooltip"  
+                },
+                {
+                    "fieldLabel": "No Hasstle Return",  
+                    "xtype": "mz-input-textarea",
+                    "name": "noHasstleReturnTooltip"   
+                },
+                {
+                    "fieldLabel": "Try Before You Buy",   
+                    "xtype": "mz-input-textarea",
+                    "name": "tryBeforeYouBuyTooltip"  
+                },
+                {
+                    "fieldLabel": "Price Match Guarantee",   
+                    "xtype": "mz-input-textarea",
+                    "name": "priceMatchGuaranteeTooltip"    
+                },
+                {
+                    "fieldLabel": "Free Shipping Tooltip",    
+                    "xtype": "mz-input-textarea",
+                    "name": "freeShippingTooltip"    
+                }
+            ]
+        }, 
+        {
+            "xtype": "panel",
             "title": "Yotpo Reviews, Questions & Gallery",     
             "collapsed": false,
             "items": [
