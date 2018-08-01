@@ -6,11 +6,25 @@
         margin-bottom: 0;
         border: 1px solid #d4d4d4;
     }
-    .mz-price {
+    .mz-price { 
         color: @textColor;
         font-size: 30px;
         line-height: 24px;
+        &.is-crossedout{
+            color: #9a9fa8;   
+        }
+        &.is-saleprice{
+            font-weight: normal;   
+        } 
     }
+    .mz-price-discountname.orange-text{  
+        font-size: 14px;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-top: 10px;
+        .multiLineEllipsis(16px, 2);
+        padding: 0;     
+    } 
     .mz-price-msrp {
         display: block;
         font-size: @fontSizeSmall;

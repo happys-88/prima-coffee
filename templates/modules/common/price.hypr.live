@@ -1,10 +1,10 @@
 ﻿{% if model.onSale %}
     <span class="mz-price is-crossedout">
-        {{model.price|currency}} 
+        {{model.price|currency}}
     </span>
     <span class="mz-price is-saleprice" itemprop="price">  
         {% if model.priceType != "MAP" %}
-            <span type="hidden" content="{{model.salePrice}}"/></span> 
+            <span type="hidden" content="{{model.salePrice}}"></span> 
             <span type="hidden" itemprop="priceCurrency" content="USD" ></span>
             <span type="hidden" itemprop="price" content="{{ model.salePrice }}" ></span>
             {{model.salePrice|currency}}
@@ -12,7 +12,7 @@
             {% if hasStock > 0 %}
                 <span class="orange-text">{{ labels.mapPrice }}</span>
             {% endif %}
-            <span class="orange-text see-price-in-cart" style="display: none;">{{ labels.mapPrice }}</span>
+            <span class="orange-text see-price-in-cart" style="display: none;">{{ labels.mapPrice }}</span> 
         {% endif %}
     </span>
 {% else %}
