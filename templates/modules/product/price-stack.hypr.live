@@ -1,11 +1,16 @@
 ﻿<div itemprop="priceSpecification" itemscope itemtype="http://schema.org/PriceSpecification" class="mz-pricestack{% if model.priceRange %} mz-pricestack-range{% endif %}">
     {% if model.hasPriceRange %}
-        <span itemprop="minPrice" class="mz-pricestack-price-lower">
-            {% include "modules/common/price" with model=model.priceRange.lower %}
-        </span>
-        <span itemprop="maxPrice" class="mz-pricestack-price-upper">
-            {% include "modules/common/price" with model=model.priceRange.upper %}
-        </span>
+        {% if model.priceRange.lower.onSale or model.priceRange.upper.onSale %} 
+            {% include "modules/common/range-price" %}
+        {% else %}
+            <span itemprop="minPrice" class="mz-pricestack-price-lower">
+                {% include "modules/common/price" with model=model.priceRange.lower %}
+            </span>
+            <span itemprop="maxPrice" class="mz-pricestack-price-upper">
+                {% include "modules/common/price" with model=model.priceRange.upper %}
+            </span>
+        {% endif %}
+        <span class="mz-price-discountname orange-text">{{ model.priceRange.lower.discount.discount.name}} </span> 
     {% else %}
         {% if model.mapPrice %}
             <span class="mz-price is-crossedout">
@@ -17,5 +22,6 @@
         {% else %}
             {% include "modules/common/price" with model=model.price %}
         {% endif %}
+        <span class="mz-price-discountname orange-text">{{ model.price.discount.discount.name}} </span>   
     {% endif %}
-</div>
+</div> 
