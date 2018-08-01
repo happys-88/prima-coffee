@@ -1,0 +1,40 @@
+<span class="mz-price is-crossedout">
+    {% if model.priceRange.lower.onSale %}
+        <span class="mz-lower-price">{{model.priceRange.lower.price|currency}}</span> 
+    {% endif %}
+    {% if model.priceRange.upper.onSale %}
+        {% if model.priceRange.lower.onSale %}
+            <span class="mz-price-separator">-</span> 
+        {% endif %}
+        <span class="mz-upper-price">{{model.priceRange.upper.price|currency}}</span>  
+    {% endif %}
+</span>
+<span class="mz-price is-saleprice" itemprop="price"> 
+    {% if model.priceRange.lower.onSale %}
+        <span class="mz-lower-price">{{model.priceRange.lower.salePrice|currency}}</span> 
+        <span type="hidden" content="{{model.priceRange.lower.salePrice}}"></span> 
+        <span type="hidden" itemprop="priceCurrency" content="USD" ></span>
+        <span type="hidden" itemprop="price" content="{{ model.priceRange.lower.salePrice }}" ></span>
+    {% else %}
+        <span type="hidden" content="{{model.priceRange.lower.price}}"></span> 
+        <span type="hidden" itemprop="priceCurrency" content="USD" ></span>
+        <span type="hidden" itemprop="price" content="{{ model.priceRange.lower.price }}" ></span>
+        <span class="mz-lower-price">{{model.priceRange.lower.price|currency}}</span>   
+    {% endif %}
+    <span class="mz-price-separator"> - </span>  
+    {% if model.priceRange.upper.onSale %} 
+        <span class="mz-upper-price">{{model.priceRange.upper.salePrice|currency}}</span> 
+        <span type="hidden" content="{{model.priceRange.upper.salePrice}}"></span> 
+        <span type="hidden" itemprop="priceCurrency" content="USD" ></span>
+        <span type="hidden" itemprop="price" content="{{ model.priceRange.upper.salePrice }}" ></span>
+    {% else %}
+        <span type="hidden" content="{{model.priceRange.upper.price}}"></span> 
+        <span type="hidden" itemprop="priceCurrency" content="USD" ></span>
+        <span type="hidden" itemprop="price" content="{{ model.priceRange.upper.price }}" ></span>  
+        <span class="mz-upper-price">{{model.priceRange.upper.price|currency}}</span>  
+    {% endif %}
+</span>
+
+{% if themeSettings.showMSRP and model.msrp %}
+    <span class="mz-price-msrp">{{ labels.msrp}}: <span class="mz-price">{{ model.msrp|currency }}</span></span>
+{% endif %}  
