@@ -181,6 +181,7 @@ define(['shim!vendor/bootstrap/js/popover[shim!vendor/bootstrap/js/tooltip[modul
             this.$slideboxOuter.css('left', 0);
         },
         login: function () {
+            
             this.setLoading(true);
             api.action('customer', 'loginStorefront', {
                 email: this.$parent.find('[data-mz-login-email]').val(),
@@ -241,7 +242,11 @@ define(['shim!vendor/bootstrap/js/popover[shim!vendor/bootstrap/js/tooltip[modul
         },
         handleLoginComplete: function (returnUrl) {
             if ( returnUrl ){
-                window.location.href= returnUrl;
+                // window.location.href= returnUrl;
+                var url = HyprLiveContext.locals.pageContext.url;
+                var domain = url.split('?')[0];
+                url = domain + returnUrl;
+                window.location = url;
             }else{
                 window.location.reload();
             }
@@ -274,6 +279,7 @@ define(['shim!vendor/bootstrap/js/popover[shim!vendor/bootstrap/js/tooltip[modul
             return true;
         },
         signup: function () {
+            
             var deals = this.$parent.find('[data-mz-prima-deals]').is(':checked') ? this.$parent.find('[data-mz-prima-deals]').val() : '';
             deals = this.$parent.find('[data-mz-prima-newsletter]').is(':checked') ? deals+","+this.$parent.find('[data-mz-prima-newsletter]').val() : deals+","+'';
             deals = this.$parent.find('[data-mz-prima-lc]').is(':checked') ? deals+","+this.$parent.find('[data-mz-prima-lc]').val() : deals+","+'';
@@ -309,6 +315,7 @@ define(['shim!vendor/bootstrap/js/popover[shim!vendor/bootstrap/js/tooltip[modul
                             console.log("MailChimp");
                         });
                     }
+                    console.log("Self : "+JSON.stringify(self));
                     if (self.redirectTemplate) {
                         window.location.pathname = self.redirectTemplate;
                     }
@@ -366,6 +373,13 @@ define(['shim!vendor/bootstrap/js/popover[shim!vendor/bootstrap/js/tooltip[modul
             var loginPage = new SignupPopover();
             loginPage.formSelector = 'form[name="mz-loginform"]';
             loginPage.pageType = 'login';
+            loginPage.init(this);
+        });
+        $('[data-mz-action="loginCheckoutpage-submit"]').each(function(){
+            var loginPage = new SignupPopover();
+            loginPage.formSelector = 'form[name="mz-loginCheckoutform"]';
+            loginPage.pageType = 'login';
+            loginPage.redirectTemplate = 'checkout';
             loginPage.init(this);
         });
         $('[data-mz-action="anonymousorder-submit"]').each(function () {

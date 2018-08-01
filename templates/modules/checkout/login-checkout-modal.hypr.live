@@ -6,8 +6,8 @@
                 <div class="col-xs-12">
                     <h3 class="mz-pagetitle">{{ labels.signInCheckout }}</h3>
                     <p>{{ labels.signInCheckoutMsg }}</p>
-                    <form method="post" class="mz-loginform mz-loginform-page" name="mz-loginform" action="">
-                       <input type="hidden" name="returnUrl" value="{{ model.returnUrl }}" />
+                    <form method="post" class="mz-loginform mz-loginform-page" name="mz-loginCheckoutform" action="">
+                       <input type="hidden" name="returnUrl" value="/checkout" />
                        <div class="mz-l-formfieldgroup">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
@@ -22,7 +22,7 @@
                             </div>
                             <div class="clearfix">
                                 <button type="button" class="mz-close" data-dismiss="modal">{{ labels.cancel }}</button>
-                                <button class="mz-button mz-button-large mz-login-button" data-mz-action="loginpage-submit">{{ labels.signInCheckout }}</button>
+                                <button class="mz-button mz-button-large mz-login-button" data-mz-action="loginCheckoutpage-submit">{{ labels.signInCheckout }}</button>
                             </div>
 
                             <section data-mz-role="popover-message" class="mz-popover-message"></section>
