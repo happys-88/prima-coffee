@@ -1,10 +1,5 @@
-<div class="clearfix"></div> 
 {% if themeSettings.rviEnable %}
-<div id="rvi-container" >
-	
-	<div class="rvi-loading"></div>
-</div>
-{% endif %}
-{% require_script "modules/product/recently-viewed-products" %} 
-{% require_script "pages/product" %}
-{% require_script "modules/product/product-crosssells" %}  
+	<div id="rvi-container">
+		<div class="rvi-loading"></div>
+	</div>
+{% endif %} 

@@ -1,0 +1,28 @@
+<li class="mz-productlist-item-slider" data-mz-product="{{model.variationProductCode|default(model.productCode)}}">      
+    <div class="mz-product-image">
+        <a href="{% make_url "product" model.productCode %}" data-mz-productimage-thumb="{{ model.sequence }}">            
+            <img src="{{ model.content.productImages[0].imageUrl }}" {% if model.altText %}alt="{{ image.altText }}"{% endif %} />
+        </a> 
+    </div>
+    
+    <div class="mz-product-details">
+        <a href="{% make_url "product" model.productCode %}" class="mz-productlisting-title">{{ model.content.productName }}</br><span> {{model.variationProductCode|default(model.productCode)}}</span></a>
+        
+        {% block product-rating %}     
+            <div id="product-rating">
+                <div class="yotpo bottomline">
+                    <div class="yotpo-bottomline pull-left star-clickable">
+                        <span class="yotpo-stars"></span> 
+                    </div> 
+                </div> 
+            </div> 
+        {% endblock product-rating %}
+    
+        <div class="mz-price-stack">
+            <span class="mz-price {% if model.price.salePrice %} is-crossedout {% endif %}">{{ model.price.price|currency }}</span>
+            {% if model.price.salePrice %}
+                <span>{{ model.price.salePrice|currency }}</span>
+            {% endif %}
+        </div>
+    </div> 
+</li> 

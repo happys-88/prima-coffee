@@ -5,8 +5,9 @@ define([
     'modules/backbone-mozu',
     'hyprlivecontext',
     'bxslider',
-    'sdk'
-], function($, _, api, Backbone, HyprLiveContext, bxslider, sdk) {
+    'sdk',
+    'yotpo'
+], function($, _, api, Backbone, HyprLiveContext, bxslider, sdk, yotpo) { 
     var sitecontext = HyprLiveContext.locals.siteContext,
         cdn = sitecontext.cdnPrefix,
         siteID = cdn.substring(cdn.lastIndexOf('-') + 1),
@@ -162,7 +163,9 @@ define([
                     });    
                 }
             }
-        }
+
+            //yotpo.showYotpoRatingStars();   
+        } 
 
         function deleteProduct(product) {
             var isExist = false;

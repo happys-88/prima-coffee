@@ -7,29 +7,32 @@ define([
 	"modules/api",
 	"modules/models-product",
 	"pages/cart",
-	 "modules/models-cart"
-], function ($, _, Backbone, Hypr, bxslider, api, ProductModel, cart, cartModel) {
+	"modules/models-cart",
+	"yotpo"
+], function ($, _, Backbone, Hypr, bxslider, api, ProductModel, cart, cartModel, yotpo) { 
+	var slider;  
 	var productUpSellView = Backbone.MozuView.extend({
-	    templateName: 'modules/product/product-upsell',  
+	    templateName: 'modules/product/product-upsells',   
 	    productCarousel: function () {
-			this.render();
+			//this.render();
+			yotpo.showYotpoRatingStars(); 
 			var minSlides,
 			    maxSlides,
 			    slideWidth,
 			    slideMargin,
 				windowWidth=$( window ).width();
 			if(windowWidth<=767){
-				 minSlides=2;
-				 maxSlides=2;
-				 slideMargin= 10;
-				 slideWidth= 333;
+				minSlides=2;
+				maxSlides=2;
+				slideMargin= 10;
+				slideWidth= 333;
 			}else{
-				 minSlides=4;
-				 maxSlides=12;
+				minSlides=4;
+				maxSlides=12;
 				slideWidth= 333;
 				slideMargin=15;
 			}
-	        $('#UpSellSlider').bxSlider({ 
+	        slider = $('#UpSellSlider').bxSlider({ 
 				minSlides: minSlides,
                 maxSlides: maxSlides,
                 moveSlides: 1,
@@ -44,6 +47,7 @@ define([
 		            $(".slider").css("visibility", "visible");
 		        }  
 			});
+			window.slider = slider;  
 		}
 	});
 
@@ -69,63 +73,66 @@ define([
 	 
 		var prodCodeUpSell = [];
 		var variantion=[];
-			if(indexcartnewproduct!=-1){
-				$.each(sell.items[indexcartnewproduct].product.properties, function( index, value ) {
-					if(value.attributeFQN == "tenant~product-upsell"){
-						$.each(value.values, function( index, value ){
-			
-							prodCodeUpSell.push(value.value);
-							if(value.value.lastIndexOf("-")!=-1){
-								variantion.push(value.value.slice(0,value.value.lastIndexOf("-")));
-							}else{
-								variantion.push(value.value);
-							}
-						});
-					}
-				});
-		 	}
+		if(indexcartnewproduct!=-1){
+			$.each(sell.items[indexcartnewproduct].product.properties, function( index, value ) {
+				if(value.attributeFQN == "tenant~product-upsell"){
+					$.each(value.values, function( index, value ){
+						prodCodeUpSell.push(value.value);
+						if(value.value.lastIndexOf("-")!=-1){
+							variantion.push(value.value.slice(0,value.value.lastIndexOf("-")));
+						}else{
+							variantion.push(value.value);
+						}
+					});
+				}
+			});
+	 	}
  
-	   if(prodCodeUpSell.length>0){ 
-				var Upsellurl = "";
-				var upselgenerateURL = "";
-				var items=[];
-				var product = ProductModel.Product.fromCurrent();
-				$.each(prodCodeUpSell, function( index, value ) {
-					Upsellurl = "productCode eq "+ "'" + value + "'"+ " or ";
-					upselgenerateURL= upselgenerateURL + Upsellurl;
+	    if(prodCodeUpSell.length>0){ 
+			var Upsellurl = "";
+			var upselgenerateURL = "";
+			var items=[];
+			var product = ProductModel.Product.fromCurrent();
+			$.each(prodCodeUpSell, function( index, value ) {
+				Upsellurl = "productCode eq "+ "'" + value + "'"+ " or ";
+				upselgenerateURL= upselgenerateURL + Upsellurl;
+				if(variantion[index]!== value){
 					api.request("GET", "/api/commerce/catalog/storefront/products/"+variantion[index]+"?"+"variationProductCode="+value ).then(function(body){
 						items.push(body); 
 					});
+				}
+			});
+			
+			upselgenerateURL = upselgenerateURL.slice(0, -3);
+			
+			var upsellUrl= "/api/commerce/catalog/storefront/products/?filter=(" + upselgenerateURL + ")";
+			var Upsellview;
+			var upsell={
+				upsellcall:function(){
+					api.request("GET", upsellUrl ).then(function(body){
+						$.each(body.items, function( index, value ) {
+							items.push(value);
+						});					
+						product.set("items",items);
+					 Upsellview = new productUpSellView({
+						model:product,
+						el: $('#upsell')
+					});
+					
+					Upsellview.render();
+					Upsellview.productCarousel();
+
+					yotpo.showYotpoRatingStars(); 
 				});
-				
-				upselgenerateURL = upselgenerateURL.slice(0, -3);
-				
-				var upsellUrl= "/api/commerce/catalog/storefront/products/?filter=(" + upselgenerateURL + ")";
-				var Upsellview;
-				var upsell={
-					upsellcall:function(){
-							api.request("GET", upsellUrl ).then(function(body){
-								$.each(body.items, function( index, value ) {
-									items.push(value);
-								});					
-								product.set("items",items);
-							 Upsellview = new productUpSellView({
-								model:product,
-								el: $('#upsell')
-							});
-							
-							Upsellview.render();
-							Upsellview.productCarousel();
-						});
-					} 
-	   };
-	   upsell.upsellcall();
-	   $(window).resize(function(){
-		Upsellview.productCarousel();
-	});
-	 }
+				} 
+   			};
+	   
+		    upsell.upsellcall();
+		   	
+		   	$(window).resize(function(){
+				slider.destroySlider(); 
+				Upsellview.productCarousel();
+			});
+	 	}
 	}
-	
-  
-	
-});
+}); 

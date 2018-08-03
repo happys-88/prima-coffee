@@ -16,7 +16,7 @@
 
 
 #rvi-container,
-.mz-product-cross-sells {
+.mz-product-slider {
     float: left;
     width: 100%;  
     .bx-wrapper {
@@ -40,13 +40,11 @@
 
 
 .recently-viewed-list,
-.mz-product-cross-sells {
+.mz-product-slider {   
     li {
-        &.mz-recentproductlist-item {
+        &.mz-productlist-item-slider {
             text-align: center;
             min-height: 290px;
-            border: 1px solid #ccc;
-            padding: 11px;
             .mz-product-image {
                 img {
                     margin: 0 auto;
@@ -58,28 +56,19 @@
                 max-width: 300px;
                 margin: 10px auto;
                 .mz-productlisting-title {
-                    color: #ff7a00;
+                    color: #495363;
                     display: block;
                     font-size: 14px;
-                }
-                .mz-product-rating {
-                    position: absolute;
-                    right: 0;
-                    bottom: 33px;
-                    left: 0;
-                    img {
-                        max-width: 100px;
-                        margin: 0 auto;
-                    }
-                }
+                    .multiLineEllipsis(18px, 3); 
+                } 
                 .mz-price-stack {
                     position: absolute;
                     right: 0;
                     bottom: 0;
                     left: 0;
                     span {
-                        color: #333333;
-                        font-size: 16px;
+                        color: #495363;
+                        font-size: 14px;
                         font-weight: 700;
                         &.is-crossedout {
                             color: #9a9fa8;
