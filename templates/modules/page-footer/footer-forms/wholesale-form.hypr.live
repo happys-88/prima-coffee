@@ -1,0 +1,31 @@
+{% block wholesale-form %}
+	           {% include "modules/common/message-bar" with model=model.messages %}
+                <div class="col-md-6 col-xs-12 mz-contact-form">
+                    <form name="wholesaleForm" method="" id="commercialForm" action="">    
+                    	<div class="form-group">
+                            <div class="col-sm-8 col-xs-12">
+                                <input type="text" placeholder="{{ labels.nameph }}" name="name" data-mz-value="name" required class="form-control">
+                                <span class="mz-validationmessage" data-mz-validationmessage-for="name"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-8 col-xs-12">
+                                <input type="text" placeholder="{{ labels.emailph }}" name="email" type="email" data-mz-value="email" required class="form-control">
+                                <span class="mz-validationmessage" data-mz-validationmessage-for="email"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">                           
+                            <div class="col-sm-8 col-xs-12">
+                              <input type="text" placeholder="{{ labels.businessph }}" name="business"  data-mz-value="business" required class="form-control">
+                                <span class="mz-validationmessage" data-mz-validationmessage-for="business"></span>
+                            </div>
+                        </div>
+                        <span id="wholesaleFormError"></span>                              
+                        <div class="form-group">
+                            <div class="col-sm-8 col-sm-offset-4 col-xs-12">
+                                <button class="mz-button" type="button" data-mz-action="submitRequest">{{ labels.submit }}</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+    	{% endblock wholesale-form %}

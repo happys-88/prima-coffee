@@ -8,6 +8,7 @@
 {% block body-content %}
 {% require_script "pages/pricerequest" %}
 {% require_script "pages/commercial-services" %}
+{% require_script "pages/wholesale" %}
 <div class="mz-customer-service-page">
     <div class="mz-l-container">
         <div class="row"> 
@@ -25,6 +26,10 @@
                 {% block subscription %}
                     {% include "modules/page-footer/footer-forms/subscribe-email" %}
                 {% endblock subscription %}
+                <div id="wholesaleForm">
+                    {% include "modules/page-footer/footer-forms/wholesale-form" %}
+                </div>
+               
             </div>
             <div class="col-sm-3 col-lg-2 mz-customer-service-nav">     
                 <div class="mz-l-sidebar">

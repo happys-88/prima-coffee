@@ -664,7 +664,8 @@
   "fieldEmpty"                            : "Please fill the field",
   "nameph"                                : "What is your Name?*",
   "emailph"                               : "What is your email?*",
-  "subscribeMsg"                              : "Thanks for Subscribing!!",
+  "subscribeMsg"                          : "Thanks for Subscribing!!",
+  "businessph"                            : "Enter your business name here",
 
 
   // AboutUs Form
@@ -677,4 +678,5 @@
   "contactUsError"                       : "Some problem occured saving the data. Please submit the form again.",
   "mailError"                            : "The details are saved but you might not receive the mail due to some server error, Thanks",
   "addonSelectMsg"                        : "Press ctrl to select multiple addons"
+
 }
