@@ -160,6 +160,7 @@ function ($, Hypr, Backbone, HyprLiveContext, api) {
     } 
   };
 
+  YotPo.update();
   return YotPo;
 
 });
