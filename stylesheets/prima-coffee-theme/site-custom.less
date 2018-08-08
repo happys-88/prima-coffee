@@ -33,13 +33,19 @@
 	color: @tertiaryBtnColor; 
 } 
 
-
 /**** Button Styling ****/
+
+.share-count-text{
+	font-size: 20px;
+	color: #ff7a00;
+	font-family: Georgia,times new roman,Times,serif;
+	font-style: italic; 
+}
 
 /**** Custom Changes ****/
 body{
-  background: @textColorWhite;
-  font-family: @fontFamily;
+	background: @textColorWhite; 
+  	font-family: @fontFamily;
     background: #f3eded url(https://prima-coffee.com/sites/all/themes/pc/images/cream_dust.png) repeat 0 0;
   .mz-l-pagewrapper{
 	  .mz-l-pagecontent{
@@ -830,3 +836,30 @@ li{
 	}
 }
 
+/**** Social Sharing ****/
+.mz-social-sharing{
+	.addthis_toolbox{
+		float: left;
+		line-height: 20px;
+		margin: 10px 0; 
+		a{
+			margin-right: 15px;  
+			margin-bottom: 0;  
+		}
+		.share-counter-block{
+			color: #999;
+			#shareCount{
+				.share-count-text(); 	
+			} 
+		} 
+	}
+	.pc-customer-count{
+		float: right;
+		color: #999;
+		line-height: 20px; 
+		margin: 10px 0; 
+		#customer-counter{
+			.share-count-text();   
+		} 
+	}
+}

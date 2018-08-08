@@ -7,11 +7,30 @@
 {% block body-content %}
     
     {% dropzone "home-slider" scope="page" %}
+
+    <div class="mz-social-sharing"> 
+        <div class="addthis_toolbox" addthis:url='{{ pageContext.url }}{{ model.url }}'>      
+            <a class="addthis_button_facebook_like"></a> 
+            <a class="addthis_button_google_plusone"></a> 
+            <a class="addthis_button_tweet"></a>
+            <a class="addthis_button_reddit"></a>
+            <span class="addthis_separator">/</span> 
+            <span class="share-counter-block">
+                <span id="shareCount"></span>shares     
+            </span>
+        </div> 
+        <div class="pc-customer-count">
+            <span id="customer-counter">52,445</span> people brewing better with gear from <strong>Prima Coffee Equipment</strong>  
+        </div>
+    </div> 
+          
+    <script type="text/javascript" src="https://s7.addthis.com/js/300/addthis_widget.js#pubid={{themeSettings.addThisPubIdBlogSharing}}"></script>
+    
     <script type="text/javascript">
-        (function e() { var e = document.createElement("script"); e.type = "text/javascript"; e.async = true; e.src = "//staticw2.yotpo.com/4X91rXasdFWFBX4Rnh5WEr4NnvMwpFpjxzNFLubD/widget.js"; var t = document.getElementsByTagName("script")[0]; t.parentNode.insertBefore(e, t) })();
+        (function e() { var e = document.createElement("script"); e.type = "text/javascript"; e.async = true; e.src = "//staticw2.yotpo.com/{{ themeSettings.yotpoApiKey }}/widget.js"; var t = document.getElementsByTagName("script")[0]; t.parentNode.insertBefore(e, t) })();
     </script>
     <div class="container">
-        {% dropzone "h1-statement" scope="page" %} 
+        {% dropzone "h1-statement" scope="page" %}  
         
         <div class="yotpo yotpo-reviews-carousel"
             data-header-customisation-enabled="1"
@@ -49,6 +68,21 @@
     
     {% require_script "pages/yotpo-review" %}
     {% require_script "modules/promoted-products" %} 
+
+    <script>
+        addthis.sharecounters.getShareCounts({service: ['twitter','facebook','reddit'], countUrl: '{{ pageContext.url }}{{ model.url }}'}, function(response) {  
+            var count = 0;
+            for(var i=0; i<response.length; i++){ 
+                if(response[i].error){
+                    //console.log("error"); 
+                }else{
+                    count+=response[i].count;
+                }
+            }
+            var shareCount = count;  
+            document.getElementById("shareCount").innerHTML = shareCount;         
+        });
+    </script> 
     
 
 {% endblock body-content %}
