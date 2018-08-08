@@ -54,7 +54,7 @@
                         }*/
                     });
                     return result;
-                } else if($('#globalSearch').is(':focus') && name==='Pages') {
+                } else if($('.globalSearch').is(':focus') && name==='Pages') {
                     var valArrayGlobal = filterCatsArray();
                     var resultGlobal = _.filter(thisGroup.suggestions, function(someThing) {
                     var boolVal = false;
@@ -203,8 +203,8 @@
         $field.on('typeahead:selected', function (e, data, set) {
             if (data.suggestion.productCode) window.location = (HyprLiveContext.locals.siteContext.siteSubdirectory||'') + "/p/" + data.suggestion.productCode;
         });
-        $('#searchbox').on('submit', function(e) {
-            var searchVal = $('#globalSearch').val().trim();
+        $('.searchbox').on('submit', function(e) {
+            var searchVal = $('.globalSearch').val().trim();
             if (searchVal === "") {
                 window.alert(Hypr.getLabel('blankSearchResult'));
                 e.preventDefault();

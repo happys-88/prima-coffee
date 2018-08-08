@@ -16,10 +16,11 @@
 
 
 #rvi-container,
-.mz-product-slider {
+.mz-product-cross-sells {
     float: left;
     width: 100%;  
     .bx-wrapper {
+        background: none;
         .bx-controls-direction {
             a {
                 background-size: cover;
@@ -40,15 +41,18 @@
 
 
 .recently-viewed-list,
-.mz-product-slider {   
+.mz-product-cross-sells {
     li {
-        &.mz-productlist-item-slider {
+        &.mz-recentproductlist-item {
             text-align: center;
             min-height: 290px;
+            border: 1px solid #ccc;
+            padding: 11px;
+            background: #fff;
             .mz-product-image {
                 img {
                     margin: 0 auto;
-                    max-width: 160px;
+                    max-width: 140px;
                     max-height: 160px;
                 }
             }
@@ -56,19 +60,28 @@
                 max-width: 300px;
                 margin: 10px auto;
                 .mz-productlisting-title {
-                    color: #495363;
+                    color: #ff7a00;
                     display: block;
                     font-size: 14px;
-                    .multiLineEllipsis(18px, 3); 
-                } 
+                }
+                .mz-product-rating {
+                    position: absolute;
+                    right: 0;
+                    bottom: 33px;
+                    left: 0;
+                    img {
+                        max-width: 100px;
+                        margin: 0 auto;
+                    }
+                }
                 .mz-price-stack {
                     position: absolute;
                     right: 0;
                     bottom: 0;
                     left: 0;
                     span {
-                        color: #495363;
-                        font-size: 14px;
+                        color: #333333;
+                        font-size: 16px;
                         font-weight: 700;
                         &.is-crossedout {
                             color: #9a9fa8;
