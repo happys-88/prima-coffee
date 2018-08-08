@@ -143,6 +143,34 @@
                 {% block brand-gateway %}{% endblock brand-gateway %}
                 {% block category-gateway %}{% endblock category-gateway %}
 
+             {% block commonbody-content %}
+            <div class="container">
+                <script type="text/javascript">
+                    (function e() { var e = document.createElement("script"); e.type = "text/javascript"; e.async = true; e.src = "//staticw2.yotpo.com/4X91rXasdFWFBX4Rnh5WEr4NnvMwpFpjxzNFLubD/widget.js"; var t = document.getElementsByTagName("script")[0]; t.parentNode.insertBefore(e, t) })();
+                </script>
+                 {% require_script "widgets/featured-products" %}
+                 {% dropzone "feature-product" scope="site" %}
+                <div class="yotpo-gallery">
+                    <h2 class="heading-2">
+                        <span>Pictures Gallery</span>
+                    </h2>
+                     <div class="yotpo yotpo-pictures-gallery" 
+                          data-layout="full_page" 
+                          data-layout-scroll="0" 
+                          data-spacing="0" 
+                          data-source="instagram"
+                          data-title="0" 
+                          data-hover-color="#ffffff" 
+                          data-hover-opacity="0.8" 
+                          data-hover-icon="true" 
+                          data-cta-text="Shop Now" 
+                          data-cta-color="#ff7a00">
+                    </div>
+                </div>
+                 {% dropzone "popular-articles" scope="site" %}
+            </div>
+             {% endblock commonbody-content %}
+
                 {% block body-below-content %}
                     {% dropzone "body-bottom" scope="page" %} 
                 {% endblock body-below-content %}

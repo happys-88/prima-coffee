@@ -1,18 +1,18 @@
 ﻿<label class="mz-pagingcontrols-pagesort-label">
-  {% comment %}
-  {% for sort in model.sorts %}
-    <p>Text: {{ sort.text }} ---- Value: {{ sort.value }}</p>  
-  {% endfor %}
-  {% endcomment %} 
-
   <span class="mz-paging-sorttitle">{{ labels.sortBy }}:</span>
-  <!-- {{ model.currentSort }}-->
   <select data-mz-value="sortBy" class="mz-pagingcontrols-pagesort-dropdown" autocomplete="off">
       {% block sort-types %}
         {% for sort in model.sorts %} 
           {% with sort.value|default(themeSettings.defaultSort) as sortValue %}
-            <option data-mz-url="{% make_url "sorting" model with sortBy=sortValue %}" value="{{ sortValue }}"{% if model.currentSort == sortValue %} selected="selected"{% endif %}>{{ sort.text }}</option>
-          {% endwith %} 
+            {% if sort.text == 'Default' %}
+              <option data-mz-url="{% make_url "sorting" model with sortBy='createDate desc' %}" value='createDate desc' {% if model.currentSort == 'createDate desc' %} selected="selected"{% endif %}>{{ labels.newArrivals }}</option>  
+            {% else %}
+              {% if sort.text == 'Date Added: Most Recent First' or sort.text == 'Date Added: Most Recent Last' %}
+              {% else %}
+                <option data-mz-url="{% make_url "sorting" model with sortBy=sortValue %}" value="{{ sortValue }}"{% if model.currentSort == sortValue %} selected="selected"{% endif %}>{{ sort.text }}</option>
+              {% endif %}
+            {% endif %}
+          {% endwith %}  
         {% endfor %}
       {% endblock sort-types %}
   </select>

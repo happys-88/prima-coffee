@@ -9,18 +9,25 @@
 <div class="mz-l-container"> 
 	
     <div class="row"> 
-        <div class="col-xs-12 col-sm-9 pull-right">
+        <div class="col-xs-12 col-sm-12 pull-right">
 			<div class="mz-customer-service-section">
 				<h3 class="mz-l-stack-sectiontitle">{{ model.properties.title|safe }}</h3>   
                 {% dropzone "about-us-dropzone1" scope="page" %}
-                {% dropzone "about-us-dropzone2" scope="page" %}    
+                {% dropzone "about-us-dropzone2" scope="page" %}   
+                {% dropzone "about-us-dropzone3" scope="page" %}
+                {% dropzone "about-us-dropzone4" scope="page" %}
+                {% dropzone "about-us-dropzone5" scope="page" %}
             </div> 
         </div>
-		<div class="col-xs-12 col-sm-3 mz-content-left-nav">      
+		<!-- <div class="col-xs-12 col-sm-3 mz-content-left-nav">      
 			<div class="mz-l-sidebar">
 				{% include "pages/content-left-nav" %} 
 			</div>
-		</div>
+		</div> -->
     </div> 
 </div> 
+ {% require_script "widgets/featured-products" %}
+ <script type="text/javascript">
+    (function e() { var e = document.createElement("script"); e.type = "text/javascript"; e.async = true; e.src = "//staticw2.yotpo.com/4X91rXasdFWFBX4Rnh5WEr4NnvMwpFpjxzNFLubD/widget.js"; var t = document.getElementsByTagName("script")[0]; t.parentNode.insertBefore(e, t) })();
+</script>
 {% endblock body-content %} 

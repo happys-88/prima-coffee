@@ -438,7 +438,12 @@
             "collapsed": false,
             "items": [
                 {
-                    "fieldLabel": "Popular Articles Pubid", 
+                    "fieldLabel": "Profile Id for social sharing (blog)",   
+                    "xtype": "mz-input-text",
+                    "name": "addThisPubIdBlogSharing"     
+                },
+                {
+                    "fieldLabel": "Popular Articles Pubid",  
                     "xtype": "mz-input-text",
                     "name": "addThisPubId"  
                 },

@@ -1,10 +1,10 @@
 {% if model.items %}
-    <div class="mz-product-slider"> 
-        <h2 class="heading-2"><span>You May Also Like</span></h2>   
-        <ul id="crossSellSlider">              
+    <div class="mz-product-slider">
+        <h2 class="heading-2"><span>Product Upsells</span></h2>    
+        <ul id="UpSellSlider">               
             {% for productData in model.items %}
                 {% include "modules/product/product-list-slider" with model=productData %}        
             {% endfor %} 
         </ul> 
-    </div> 
-{% endif %} 
+    </div>
+{% endif %}  

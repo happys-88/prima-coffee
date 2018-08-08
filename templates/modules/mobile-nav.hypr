@@ -3,6 +3,16 @@
       <div class="mz-close-nav hidden">                         
         <button data-toggle="collapse" data-target="#mz-mobilenav-container" aria-expanded="false"><span></span></button>  
       </div>
+      <div>
+       {% block utility-nav %} 
+       {% include "modules/page-header/utility-nav" %} 
+       {% endblock utility-nav %}
+      <div>
+        {% block search-box %} 
+        {% include "modules/page-header/search-box" %} 
+        {% endblock search-box %}
+      </div>
+
       <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
         {% partial_cache %}
           {% for link in navigation.tree %}

@@ -7,11 +7,6 @@
 			var product = new ProductModel.Product(data.response); 
 			var ReviewsView = Backbone.MozuView.extend({
 				templateName: "modules/product/promoted-products",
-				render: function () {
-					var me = this;
-					Backbone.MozuView.prototype.render.apply(this);
-					this.productCarousel();
-				},
 				productCarousel: function () {
 					var minSlides,
 						maxSlides,
@@ -54,6 +49,7 @@
             });
 			window.productView = productView;
 			productView.render();
+			productView.productCarousel();
 			$(window).resize(function () {
 				slider.destroySlider();
 				productView.productCarousel();

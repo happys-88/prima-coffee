@@ -1,0 +1,5 @@
+
+<div class="well clearfix">
+   {{ model.config.Header|safe }}
+    <p>{{ model.config.Description|safe }}</p>
+</div>

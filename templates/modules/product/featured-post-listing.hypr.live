@@ -30,7 +30,7 @@
     <!-- AddThis Button BEGIN -->
     <div class="mz-product-social-sharing addthis_toolbox" addthis:url='http://t25166-s38224.sandbox.mozu.com{{ model.url }}'> 
         <a class="addthis_button_twitter"><i class="fa fa-twitter"></i></a>
-        <a class="addthis_button_facebook addthis_button_compact"><i class="fa fa-facebook"></i></a>
+        <a class="addthis_button_facebook"><i class="fa fa-facebook"></i></a> 
         <a class="addthis_button_linkedin"><i class="fa fa-linkedin-square"></i></a>
     </div>
       

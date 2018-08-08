@@ -7,6 +7,8 @@
 {% block body-content %}
 
 {% require_script "pages/product" %}
+{% require_script "modules/product/product-crosssells" %}
+{% require_script "modules/product/recently-viewed-products" %}
 <script type="text/javascript">
     (function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/{{ themeSettings.yotpoApiKey }}/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})(); 
 </script> 
