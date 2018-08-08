@@ -1,0 +1,10 @@
+{% extends "page" %}
+
+{% block body-content %}
+{% require_script "pages/commercial-services" %}
+
+        <div id="commercialForm">
+            {% include "modules/page-footer/footer-forms/commercial-service-form" %}
+        </div>
+
+{% endblock body-content %}

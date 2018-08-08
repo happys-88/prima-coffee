@@ -12,6 +12,7 @@
 {% block breadcrumbs %}
 {% endblock breadcrumbs %}
 {% block body-content %}
+{% require_script "pages/wholesale" %}
  <style>
  	/*Header*/
 	#bottom-navigation {
@@ -335,6 +336,8 @@
         <div class="content">
         </div>
     </div>
-    
+    <div id="wholesaleForm">
+        {% include "modules/page-footer/footer-forms/wholesale-form" %}
+    </div>
 
 {% endblock body-content %}
