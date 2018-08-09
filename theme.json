@@ -1865,6 +1865,35 @@
       ]
     },
     {
+      "displayName": "Commercial Equiupments",
+      "displayTemplate": "misc/commercialEquipments",
+      "editViewFields": [
+        {
+          "anchor": "100%",
+          "fieldLabel": "commercial Equipment Image",
+          "name": "commercialEquipmentImage",
+          "xtype": "mz-input-image"
+        },
+        {
+          "anchor": "100%",
+          "xtype": "mz-input-text",
+          "name": "input1",
+          "fieldLabel": "Enter name"
+        },
+        {
+          "anchor": "100%",
+          "xtype": "mz-input-text",
+          "name": "describe1",
+          "fieldLabel": "Enter description"
+        }
+      ],
+      "icon": "/resources/admin/widgets/01_photo_text.png",
+      "id": "commercial-equiupments",
+      "validPageTypes": [
+        "*"
+      ]
+    },
+    {
       "displayName": "Header Well",
       "displayTemplate": "misc/headerwell",
       "editViewFields": [

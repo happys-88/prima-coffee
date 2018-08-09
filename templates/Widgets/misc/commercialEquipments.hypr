@@ -1,5 +1,5 @@
  <div class="plain-thumbnail col-sm-4 col-xs-6">
-        <img src="{{ model.config.commercialEquipmentImageOne.imageUrl }}" alt="">
+        <img src="{{ model.config.commercialEquipmentImage.imageUrl }}" alt="">
                 <h5> {{ model.config.input1 }}</h5>
                  <p> {{ model.config.describe1 }}</p>
  </div>
