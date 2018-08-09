@@ -478,6 +478,15 @@
       "template": "order-status",
       "title": "Order Status",
       "userCreatable": false
+    },
+    {
+      "documentType": "web_page",
+      "editor": "landing-page",
+      "entityType": "webpage",
+      "id": "cofee-glossary",
+      "template": "coffee-glossary",
+      "title": "Coffee Gloassary",
+      "userCreatable": true
     }
   ],
   "settings": {

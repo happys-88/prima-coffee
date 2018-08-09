@@ -1,0 +1,1343 @@
+{% extends "page" %} 
+{% block title-tag-content %}
+{% firstof pageContext.metaTitle|safe model.name|safe %} - {% parent %}{% endblock title-tag-content %}
+{% block body-tag-classes %}mz-coffee-glossary{% endblock body-tag-classes %} 
+{% block body-content %}
+
+<div class="mz-l-container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 pull-right">
+            <div class="mz-customer-service-section">
+                <h3 class="mz-l-stack-sectiontitle">{{ model.properties.title|safe }}</h3>
+                <div class="field-item even">
+                    <ul class="nav nav-pills">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="https://prima-coffee.com/" id="drop1" role="button">Equipment
+                                <b class="caret"></b>
+                            </a>
+                            <ul aria-labelledby="drop4" class="dropdown-menu" id="menuEquipment" role="menu">
+                                <li class="dropdown-submenu" role="presentation">
+                                    <a href="#grinders" role="menuitem" tabindex="-1">Grinder Terms</a>
+                                    <ul class="dropdown-menu" id="menuGrinders" role="menu">
+                                        <li role="presentation">
+                                            <a href="#grinders" role="menuitem" tabindex="-1">Grinders</a>
+                                        </li>
+                                        <li class="divider" role="presentation"></li>
+                                        <li role="presentation" class="">
+                                            <a href="#GrindersBurrs" role="menuitem" tabindex="-1">Grinder Burr</a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a href="#GrindersFlatVsConical" role="menuitem" tabindex="-1">Flat vs. Conical</a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a href="#GrindersStepped" role="menuitem" tabindex="-1">Stepped Grinders</a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a href="#GrindersStepless" role="menuitem" tabindex="-1">Stepless Grinders</a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a href="#GrindersRetention" role="menuitem" tabindex="-1">Grinder Retention</a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a href="#GrindersRange" role="menuitem" tabindex="-1">Grinding Range</a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a href="#GrindersUniformity" role="menuitem" tabindex="-1">Grind Uniformity</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown-submenu" role="presentation">
+                                    <a href="#espressoMachines" role="menuitem" tabindex="-1">Espresso Machine Terms</a>
+                                    <ul class="dropdown-menu" id="menuEspressoMachines" role="menu">
+                                        <li role="presentation">
+                                            <a href="#espressoMachines" role="menuitem" tabindex="-1">Espresso Machines</a>
+                                        </li>
+                                        <li class="divider" role="presentation"></li>
+                                        <li role="presentation">
+                                            <a href="#EspressoMeta" role="menuitem" tabindex="-1">Espresso Definition</a>
+                                        </li>
+                                        <li class="dropdown-submenu" role="presentation">
+                                            <a href="#EspressoGrouphead" role="menuitem" tabindex="-1">Grouphead Terms</a>
+                                            <ul class="dropdown-menu" id="menuEspressoMachinesGrouphead" role="menu">
+                                                <li role="presentation">
+                                                    <a href="#EspressoGrouphead" role="menuitem" tabindex="-1">Grouphead Definition</a>
+                                                </li>
+                                                <li class="divider" role="presentation"></li>
+                                                <li role="presentation">
+                                                    <a href="#EspressoE61" role="menuitem" tabindex="-1">E61 Grouphead</a>
+                                                </li>
+                                                <li role="presentation">
+                                                    <a href="#EspressoSaturatedGroup" role="menuitem" tabindex="-1">Saturated Group</a>
+                                                </li>
+                                                <li role="presentation">
+                                                    <a href="#EspressoHeatedGroup" role="menuitem" tabindex="-1">Heated Group</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown-submenu" role="presentation">
+                                            <a href="#EspressoPortafilter" role="menuitem" tabindex="-1">Portafilters &amp; Baskets</a>
+                                            <ul class="dropdown-menu" id="menuEspressoMachinesPortafilterBaskets" role="menu">
+                                                <li role="presentation">
+                                                    <a href="#EspressoPortafilter" role="menuitem" tabindex="-1">Portafilter</a>
+                                                </li>
+                                                <li role="presentation">
+                                                    <a href="#EspressoBasket" role="menuitem" tabindex="-1">Filter Basket</a>
+                                                </li>
+                                                <li role="presentation">
+                                                    <a href="#EspressoRidgedVsRidgeless" role="menuitem" tabindex="-1">Ridged vs. Ridgeless Basket</a>
+                                                </li>
+                                                <li role="presentation">
+                                                    <a href="#EspressoDose" role="menuitem" tabindex="-1">Ideal Dose</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown-submenu" role="presentation">
+                                            <a href="#EspressoDistribution" role="menuitem" tabindex="-1">Preperation &amp; Tamping</a>
+                                            <ul class="dropdown-menu" id="menuEspressoMachinesPreperationTamping" role="menu">
+                                                <li role="presentation">
+                                                    <a href="#EspressoDistribution" role="menuitem" tabindex="-1">Distribution</a>
+                                                </li>
+                                                <li role="presentation">
+                                                    <a href="#EspressoGrooming" role="menuitem" tabindex="-1">Grooming</a>
+                                                </li>
+                                                <li role="presentation">
+                                                    <a href="#EspressoTamper" role="menuitem" tabindex="-1">Tamper</a>
+                                                </li>
+                                                <li role="presentation">
+                                                    <a href="#EspressoTamping" role="menuitem" tabindex="-1">Tamping</a>
+                                                </li>
+                                                <li role="presentation">
+                                                    <a href="#EspressoTampingPressure" role="menuitem" tabindex="-1">Tamping Pressure</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown-submenu" role="presentation">
+                                            <a href="#EspressoMachineTypes" role="menuitem" tabindex="-1">Machine Types</a>
+                                            <ul class="dropdown-menu" id="menuEspressoMachinesTypes" role="menu">
+                                                <li role="presentation">
+                                                    <a href="#espressoMachineTypes" role="menuitem" tabindex="-1">Espresso Machine Types</a>
+                                                </li>
+                                                <li class="divider" role="presentation"></li>
+                                                <li role="presentation">
+                                                    <a href="#EspressoMachineTypesManual" role="menuitem" tabindex="-1">Manual</a>
+                                                </li>
+                                                <li role="presentation">
+                                                    <a href="#EspressoMachineTypesSemiAuto" role="menuitem" tabindex="-1">Semi-Automatic</a>
+                                                </li>
+                                                <li role="presentation">
+                                                    <a href="#EspressoMachineTypesAutomatic" role="menuitem" tabindex="-1">Automatic</a>
+                                                </li>
+                                                <li role="presentation">
+                                                    <a href="#EspressoMachineTypesSuperAutomatic" role="menuitem" tabindex="-1">Super Automatic</a>
+                                                </li>
+                                                <li role="presentation">
+                                                    <a href="#EspressoMachineTypesSteam" role="menuitem" tabindex="-1">Steam-Powered</a>
+                                                </li>
+                                                <li role="presentation">
+                                                    <a href="#EspressoMachineTypesNonLeverManual" role="menuitem" tabindex="-1">Non-Lever Manual</a>
+                                                </li>
+                                                <li role="presentation">
+                                                    <a href="#EspressoMachineTypesNespresso" role="menuitem" tabindex="-1">Nespresso</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown-submenu" role="presentation">
+                                            <a href="#EspressoBoilerTypes" role="menuitem" tabindex="-1">Espresso Boiler Terms</a>
+                                            <ul class="dropdown-menu" id="menuEspressoMachinesTypes" role="menu">
+                                                <li role="presentation">
+                                                    <a href="#EspressoBoilerTypes" role="menuitem" tabindex="-1">Espresso Boiler Types</a>
+                                                </li>
+                                                <li class="divider" role="presentation"></li>
+                                                <li role="presentation">
+                                                    <a href="#EspressoOpenBoilers" role="menuitem" tabindex="-1">Open Boilers</a>
+                                                </li>
+                                                <li role="presentation">
+                                                    <a href="#EspressoClosedBoilers" role="menuitem" tabindex="-1">Closed Boilers</a>
+                                                </li>
+                                                <li role="presentation">
+                                                    <a href="#EspressoThermoblock" role="menuitem" tabindex="-1">Thermoblock</a>
+                                                </li>
+                                                <li role="presentation">
+                                                    <a href="#EspressoSingleBoilerDualUse" role="menuitem" tabindex="-1">Single Boiler Dual Use</a>
+                                                </li>
+                                                <li role="presentation">
+                                                    <a href="#EspressoBoilersHeatExchanger" role="menuitem" tabindex="-1">Heat Exchanger</a>
+                                                </li>
+                                                <li role="presentation">
+                                                    <a href="#EspressoBoilersDual" role="menuitem" tabindex="-1">Dual Boilers</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li role="presentation">
+                                            <a href="#EspressoMachinePumps" role="menuitem" tabindex="-1">Espresso Machine Pumps</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown-submenu" role="presentation">
+                                    <a href="#grinders" role="menuitem" tabindex="-1">Coffee Brewing Methods</a>
+                                    <ul class="dropdown-menu" id="menuOtherBrewingMethods" role="menu">
+                                        <li role="presentation" class="">
+                                            <a href="#OtherMethodsCupping" role="menuitem" tabindex="-1">Cupping</a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a href="#OtherMethodsAeropress" role="menuitem" tabindex="-1">Aeropress</a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a href="#OtherMethodsAutoDrip" role="menuitem" tabindex="-1">Auto Drip</a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a href="#OtherMethodsPourover" role="menuitem" tabindex="-1">Pour-Over/Manual Drip</a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a href="#OtherMethodsChemex" role="menuitem" tabindex="-1">Chemex</a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a href="#OtherMethodsV60" role="menuitem" tabindex="-1">V60</a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a href="#OtherMethodsClever" role="menuitem" tabindex="-1">Clever</a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a href="#OtherMethodsSiphon" role="menuitem" tabindex="-1">Siphon</a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a href="#OtherMethodsWalkure" role="menuitem" tabindex="-1">Walkure</a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a href="#OtherMethodsKalita" role="menuitem" tabindex="-1">Kalita</a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a href="#OtherMethodsFrenchPress" role="menuitem" tabindex="-1">French Press</a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a href="#OtherMethodsMoka" role="menuitem" tabindex="-1">Moka Pot</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="https://prima-coffee.com/" id="GrowingProcessing" role="button">Growing &amp; Processing
+                                <b class="caret"></b>
+                            </a>
+                            <ul aria-labelledby="GrowingProcessing" class="dropdown-menu" id="menuGrowingProcessing" role="menu">
+                                <li class="dropdown-submenu" role="presentation">
+                                    <a href="#GrowingCoffeePlant" role="menuitem" tabindex="-1">Plant Type Terms</a>
+                                    <ul class="dropdown-menu" id="menuGrinders" role="menu">
+                                        <li role="presentation">
+                                            <a href="#GrowingCoffeePlant" role="menuitem" tabindex="-1">Coffee Plant</a>
+                                        </li>
+                                        <li class="divider" role="presentation"></li>
+                                        <li role="presentation">
+                                            <a href="#GrowingArabica" role="menuitem" tabindex="-1">Arabica</a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a href="#GrowingRobusta" role="menuitem" tabindex="-1">Robusta</a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a href="#GrowingOtherSpecies" role="menuitem" tabindex="-1">Other Species</a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a href="#GrowingVariety" role="menuitem" tabindex="-1">Coffee Varieties</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li role="presentation">
+                                    <a href="#GrowingSpecialty" role="menuitem" tabindex="-1">Specialty Coffee</a>
+                                </li>
+                                <li role="presentation">
+                                    <a href="#GrowingBerryBorer" role="menuitem" tabindex="-1">Berry Borer</a>
+                                </li>
+                                <li role="presentation">
+                                    <a href="#GrowingLeafRust" role="menuitem" tabindex="-1">Leaf Rust</a>
+                                </li>
+                                <li role="presentation">
+                                    <a href="#GrowingHarvesting" role="menuitem" tabindex="-1">Harvesting</a>
+                                </li>
+                                <li class="dropdown-submenu" role="presentation">
+                                    <a href="#GrowingProcessing" role="menuitem" tabindex="-1">Processing Terms</a>
+                                    <ul class="dropdown-menu" id="menuGrowingProcessing" role="menu">
+                                        <li role="presentation">
+                                            <a href="#GrowingProcessing" role="menuitem" tabindex="-1">Processing Definition</a>
+                                        </li>
+                                        <li class="divider" role="presentation"></li>
+                                        <li role="presentation">
+                                            <a href="#GrowingWetProcessing" role="menuitem" tabindex="-1">Wet Process</a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a href="#GrowingPulpedNatural" role="menuitem" tabindex="-1">Pulped Process</a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a href="#GrowingNatural" role="menuitem" tabindex="-1">Natural Process</a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a href="#GrowingFermentation" role="menuitem" tabindex="-1">Fermentation</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li role="presentation">
+                                    <a href="#GrowingGrading" role="menuitem" tabindex="-1">Coffee Grading</a>
+                                </li>
+                                <li role="presentation">
+                                    <a href="#GrowingKopiLuwak" role="menuitem" tabindex="-1">Kopi Luwak</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="https://prima-coffee.com/" id="drop5" role="button">"Waves" of Coffee
+                                <b class="caret"></b>
+                            </a>
+                            <ul aria-labelledby="drop5" class="dropdown-menu" id="menuWavesCoffee" role="menu">
+                                <li role="presentation">
+                                    <a href="#WavesOfCoffee" role="menuitem" tabindex="-1">Waves of Coffee</a>
+                                </li>
+                                <li class="divider" role="presentation"></li>
+                                <li role="presentation">
+                                    <a href="#WavesFirst" role="menuitem" tabindex="-1">First Wave</a>
+                                </li>
+                                <li role="presentation">
+                                    <a href="#WavesSecond" role="menuitem" tabindex="-1">Second Wave</a>
+                                </li>
+                                <li role="presentation">
+                                    <a href="#WavesThird" role="menuitem" tabindex="-1">Third Wave</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <h2>Equipment</h2>
+                    <h3 id="grinders">Grinders</h3>
+                    <div id="GrindersBurrs">
+                        <p>
+                            <strong>Burrs</strong> – The cutting mechanism in a coffee grinder. Burrs are usually made from cast or machined metal,
+                            and ideally are sharp to the touch (they can easily cut skin when new). Burrs cut, rather than crush, your coffee
+                            beans and are more precise than a blade grinder (which does the opposite – it bashes the beans, does not cut
+                            them). Burrs are mounted so that one burr is fixed/stationary, and the other rotates using a motor or hand power.
+                            Some burrs are made from other materials, like reinforced ceramics. Ceramic burrs hold their edges longer than
+                            steel, but are also more brittle, and some ceramic burrs are cheaply made and have poor cutting surfaces.</p>
+                    </div>
+                    <div id="GrindersFlatVsConical">
+                        <p>
+                            <strong>Flat vs Conical Burrs</strong> – This refers to the shape of the burrs and their cutting surfaces.</p>
+                        <p>
+                            <strong>Flat burrs</strong> are shaped like flattened donuts, and they are mounted parallel to each other with the cutting
+                            edges facing each other. Coffee enters through the central hole of one burr, is pushed between the burrs and
+                            through the cutting surfaces, and exits at the outer circumference of the burrs. Flat burrs can be mounted in
+                            a variety of ways – horizontally and parallel to the counter, at an angle, or vertically.</p>
+                        <p>
+                            <strong>Conical burrs</strong> are named mainly for the inner burr, which is distinctly cone shaped. The outer burr usually
+                            looks like a thick ring, with a cone-shaped cavity inside it. Typically, the ring burr will be stationary, except
+                            in the case of the Baratza Sette, whose cone burr is fixed in place instead. Coffee moves through conical burrs
+                            from top to bottom – the tip of the cone will have the larger primary cutting faces, and the base of the cone
+                            will have the small finishing cutting faces. As such, conical burrs are essentially required to be mounted vertically
+                            so they may be gravity fed and their exit path will not clog.</p>
+                        <p>Sometimes you’ll find that people insist there are intrinsic benefits to conical or flat burrs, or that there are
+                            very distinct taste differences. Conical and flat burrs do have some different properties – conical burrs, for
+                            example, require less torque to grind and thus can use less expensive and lower powered motors, which is why
+                            they’re often found in lower end grinders. We can’t find much evidence to say that conical burrs always taste
+                            like X and flat burrs always taste like Y, and now that we’re learning more about the effect of burrs and grinder
+                            construction on grind uniformity, as the resulting effects on flavor, it seems like it’s harder to pin down whether
+                            flavor changes are due to burr shape or to the grind uniformity a specific grinder is producing.</p>
+                    </div>
+                    <div id="GrindersStepped">
+                        <p>
+                            <strong>Stepped Grind Adjustment</strong> – Stepped grinding refers to the means of adjusting the distance between the
+                            burrs, and thus the overall particle size of the ground coffee. Stepped grinders have discrete and finite settings
+                            (e.g. 0-40 or Fine-Medium-Coarse), and no in-between settings. There are some stepped grinders with so many settings
+                            that they may as well be stepless, as the gaps between settings are very small (like the Baratza Vario and Forte).</p>
+                    </div>
+                    <div id="GrindersStepless">
+                        <p>
+                            <strong>Stepless Grind Adjustment</strong> – As above, this refers to the means of adjusting the distance between the
+                            burrs and the resulting size of the coffee particles produced. Stepless grinders feature "infinite" grinding
+                            adjustment, with a smooth adjustment between all settings and theoretically as many in-between settings as you
+                            need. Often stepless grinders use a screw-style mechanism for adjustment, and sometimes incorporate a worm gear
+                            drive to make more precise changes. Mazzer grinders are stepless, with a thick, heavy screw collar for adjusting
+                            the grind. Anfim’s SCODY and CODY grinders are also stepless and also use a screw collar, but make adjustments
+                            with a knob on a worm gear for small and precise changes.</p>
+                    </div>
+                    <div id="GrindersRetention">
+                        <p>
+                            <strong>Retention</strong> – This term means different things to different people, but in the most general sense it refers
+                            to the leftover coffee grounds which remain stuck in the grinder after grinding. That is, if you start with a
+                            perfectly clean and empty grinder and grind a 30 gram dose, retention is how much coffee gets left behind, the
+                            delta between the input mass and the output mass. Coffee grounds will get lodged into the crevices of a grinder
+                            and the grinding path from the burrs to the exit chute, and less retention is always considered to be better.
+                            Retention is exacerbated when grinding very fine, as coffee has a tendency to stick to itself and clump, so espresso
+                            grinders generally have the highest retention.</p>
+                        <p>In some cases, the word "retention" is used to describe all coffee in a grinder which is no longer in its whole bean
+                            state. A grinder with a hopper full of beans may finish grinding a dose, and there will be residual grounds left
+                            in the crevices and exit path as before, as well as grounds retained within the burrs and partially broken beans
+                            just inside the burr openings. These grounds and partials have more exposed surface area for oxygen to affect
+                            their flavor, and thus may be considered to be waste or undesirable if left for a long enough time. This definition
+                            of retention usually includes much more coffee than the above, so the two usages may be confusing if not specifically
+                            defined in context.
+                        </p>
+                    </div>
+                    <div id="GrindersRange">
+                        <p>
+                            <strong>Grind Range</strong> – The overall effective range of grind sizes which a grinder can produce. Sometimes this
+                            is expressed vaguely, e.g. fine to coarse, or it may be expressed in terms of coffee brewing styles, e.g. Turkish,
+                            Espresso, Drip, Percolator, French Press. Expressing a grind range in an objective scale such as microns is still
+                            rare because it requires expensive equipment, and coffee doesn’t grind neatly into just one size (see
+                            <strong>Uniformity</strong>).</p>
+                        <p>Relatively few grinders perform well across a full grind range from Turkish coffee fine to very coarse, and most
+                            operate best within a small window of grind ranges. Espresso grinders tend to be designed around producing a
+                            good quality grind at the fine end of the spectrum, and adjusting to a very coarse range may not only be tedious,
+                            the grind adjustment mechanism may not even be capable of doing so. Some commercial grinders, like the EK43,
+                            can execute well over a full grind range, but require calibration to reach either end of the spectrum. If the
+                            EK43 is calibrated for espresso grinding at a 2 on its adjustment dial, then a 20 (the coarsest setting on the
+                            dial) will not be a coarse enough grind for french press. The grinder may be calibrated by shifting its entire
+                            accessible range more coarse, but it will lose access to espresso grinding in the process.</p>
+                    </div>
+                    <div id="GrindersUniformity">
+                        <p>
+                            <strong>Uniformity</strong> – Uniformity refers to how similarly sized the ground coffee particles are. Grind uniformity
+                            is a rather new field of exploration and it’s not entirely clear whether more uniformity is more desirable in
+                            all cases. This is seen as an important area of study stemming mainly from the trend of using large flat burr
+                            grinders for espresso and coffee brewing, as they seem to offer better flavor clarity, more sweetness, and less
+                            off-flavors when extracted more vs other more traditional grinders. Laser particle analysis (LPA) has been used
+                            to show that large flat burr grinders often yield a more unimodal (i.e. more uniform) grind size distribution.</p>
+                    </div>
+                    <h3 id="espressoMachines">Espresso Machines</h3>
+                    <div id="EspressoMeta">
+                        <p>
+                            <strong>Espresso</strong> – Espresso is both the name of the machine and brewing style, as well as the name of the beverage
+                            produced. Espresso is brewed by forcing hot water under high pressure (usually around 9 bars/130 psi) through
+                            very finely ground coffee. The brew time is often quite short, around 20-30 seconds, and the beverage volume
+                            is typically a "shot" size of around 1-2 fl oz or 30-60 mL. Due to its high brewing ratio (coffee mass : beverage
+                            mass), espresso is a very strong beverage with intense flavor. It is also heavily influenced by slight changes
+                            in production technique, so factors like grind size, dose mass, beverage mass, brewing temperature, and so on
+                            can seemingly be amplified in the cup. The process of tweaking an espresso recipe to control for all the brewing
+                            factors and achieve a desired result is called "Dialing In."</p>
+                    </div>
+                    <div id="EspressoGrouphead">
+                        <p>
+                            <strong>Group Head</strong> – The interface of the machine where hot water is added to the coffee under pressure. The
+                            group head features a locking mechanism for the portafilter, a gasket material to create a seal against the basket
+                            rim, and a dispersion/shower screen to distribute the water evenly across the coffee. Group head designs will
+                            vary, though some designs are historically notable.</p>
+                    </div>
+                    <div id="EspressoE61">
+                        <p>
+                            <strong>E-61 Group</strong> – Created by Faema in 1961, this is what’s known as a thermosyphon group. It is heated passively
+                            from the machine’s steam boiler, and maintains a somewhat steady temperature thanks to its large exposed surface
+                            area. It’s usually made in chromed brass, and features a mechanical three-way actuation – the down lever position
+                            opens the flush valve and shuts off the pump, the middle lever position opens the brew path and allows for line-pressure
+                            pre-infusion if available, and the up position engages the pump. E-61 groups are primarily found in heat exchanger
+                            style machines, but may be used in other applications as well.</p>
+                    </div>
+                    <div id="EspressoSaturatedGroup">
+                        <p>
+                            <strong>Saturated Group</strong> – Popularized mainly by La Marzocco, but heavily adopted today. Saturated groups feature
+                            a chamber above the actual group interface which is full of hot water and usually directly connected to the brew
+                            boiler. This helps to maintain thermal stability during use and limits heat loss of the brewing water on the
+                            brew path between the boiler and the coffee.</p>
+                    </div>
+                    <div id="EspressoHeatedGroup">
+                        <p>
+                            <strong>Actively Heated Group</strong> – Rather than relying on brew water to heat the group, some newer machines actually
+                            actively heat the group with its own dedicated heating element. This element may heat a chamber of water, similar
+                            to the saturated group design, or it may heat the metal parts of the group directly. Actively heated groups can
+                            be found on Nuova Simonelli T3 machines, as well as the Sanremo Opera, and almost always include a digital temperature
+                            controller (PID) interface for the user.</p>
+                    </div>
+                    <div id="EspressoPortafilter">
+                        <p>
+                            <strong>Portafilter</strong> – Usually refers to both the handle apparatus and the filter basket inside of it. This is
+                            the device which holds the filter basket, where coffee is packed in and held during brewing. Portafilters are
+                            usually heavy and sturdy, and made of metal like brass or steel. They may have a single or double spout, or they
+                            may be "bottomless," exposing the bottom of the filter basket. Portafilters come in a few different sizes, as
+                            there is no standard size, and different brands may have slightly different designs that make them incompatible
+                            with other machines
+                        </p>
+                    </div>
+                    <div id="EspressoBasket">
+                        <p>
+                            <strong>Filter basket</strong> – Espresso machines require coffee to be packed into a filter basket, which is usually
+                            an open-topped steel cylinder with an array of holes punched into the bottom. Filter baskets come in a variety
+                            of sizes, both in diameter (58 mm is very common for commercial use) and in depth. The depth of a basket has
+                            a lot to do with the intended use and dose size, so a single shot basket will be shorter than a double or triple
+                            shot basket. Some baskets have a fairly specific dose in mind, such as VST brand baskets which are intended for
+                            doses of 15 grams, 18 grams, 20 grams, etc.</p>
+                    </div>
+                    <div id="EspressoRidgedVsRidgeless">
+                        <p>
+                            <strong>Ridged vs Ridgeless Baskets</strong> – Some baskets are formed with a slight ridge in the basket wall just below
+                            the top rim. This is intended to catch a corresponding wire spring inside the portafilter, which will hold the
+                            basket firmly in place so it does not fall out or become dislodged when knocking out a puck, wiping the basket,
+                            during storage, etc. Ridgeless baskets have no such ridge, and are straight-walled from top to bottom. They may
+                            fall out easily, or become dislodged, but the slight advantage is that ridgeless baskets are generally more precisely
+                            made with tighter manufacturing tolerances.</p>
+                    </div>
+                    <div id="EspressoDose">
+                        <p>
+                            <strong>Ideal Dose</strong> – Every basket has a theoretical ideal dose size, which fills the basket adequately enough
+                            for the coffee to swell and fill all the void space when hot water is introduced, so as to promote even flow
+                            through the puck. An under-filled basket may cause the coffee to expand unevenly, to become overly disturbed
+                            by the water flow, and cause extraction problems. An overfilled basket may impact the dispersion screen, fail
+                            to lock in properly, cause leaks, slow flow, and so on.</p>
+                    </div>
+                    <div id="EspressoDistribution">
+                        <p>
+                            <strong>Distribution</strong> – Refers to the untamped grounds in the basket and how evenly they are spread as well as
+                            how evenly dense they are. Tamping an uneven bed of coffee will not resolve poor distribution, so focusing on
+                            good distribution practices is important to achieving good and consistent espresso extractions. There are many
+                            methods for coffee distribution, and a few tools which are purposefully designed for the task. One such method
+                            is the Weiss Distribution Technique, which involves stirring the ground in the basket with a thin probe, such
+                            as an unbent paperclip or a cake tester. Lynn Weber makes a tool called the Blind Shaker which also assists in
+                            distribution by shaking the grounds within a container before dropping them into your basket. Others have resorted
+                            to tapping the side of the portafilter with their palm to try to settle and distribute the grounds, or to using
+                            a jam funnel inserted into the basket to swirl the grounds around to more evenly push them around the basket.
+                            Note: it is important to distinguish Distribution, which focuses on evening the entire puck of coffee, and
+                            <strong>Grooming</strong> (below), which focuses mainly on the upper half of the puck.</p>
+                    </div>
+                    <div id="EspressoGrooming">
+                        <p>
+                            <strong>Grooming</strong> – A type of distribution which mainly focuses on the topmost layer of grounds. Grooming is
+                            performed for a multitude of reasons: some grinders deliver an even and fluffy mound of coffee with good evenness
+                            in the basket, and the coffee only needs a light touch to distribute the uppermost surface before tamping; sometimes
+                            grooming is performed after distribution by tapping, again to settle only the topmost layer of coffee; sometimes
+                            grooming is done purely for aesthetic reasons, to make the coffee appear more neat and tidy before tamping. Grooming
+                            may be done with a simple tool like a spoon, a finger, or with a dedicated tool such as the Pullman Chisel.</p>
+                    </div>
+                    <div id="EspressoTamper">
+                        <p>
+                            <strong>Tamper</strong> – A device used to compact the ground coffee into the basket, usually small and handheld. The
+                            tamper base or piston is most often a piece of metal, usually steel, and ideally is sized to fit the basket somewhat
+                            snugly. Tamper bases are usually flat-faced, but sometimes come in other varieties, such as convex, or with a
+                            rippled design carved into the metal. There’s not a lot of evidence to say that anything other than a flat face
+                            is necessary, but alternative designs are also not necessarily detrimental.</p>
+                    </div>
+                    <div id="EspressoTamping">
+                        <p>
+                            <strong>Tamping</strong> – Tamping is the act of compacting the coffee grounds within the filter basket, to remove the
+                            air, create an evenly dense coffee puck, and prepare the coffee for extraction. Forgoing tamping is usually detrimental,
+                            as the air voids in the coffee puck lead to uneven and poor extraction – however sometimes the act of locking
+                            the portafilter in will tamp the coffee against the dispersion screen, provided there is enough coffee in the
+                            basket to reach the screen.</p>
+                    </div>
+                    <div id="EspressoTampingPressure">
+                        <p>
+                            <strong>Tamping Force/Tamping Pressure</strong> – The amount of downward force applied to the tamper to compact the coffee
+                            in the basket. There are many varying opinions on how much force should be applied and how much it matters. Often
+                            values between 15-30 pounds of force are offered as ideal, and sometimes it may be suggested that varying the
+                            amount of force used will have discernible effects on shot pulling. Our findings are that somewhere around 20
+                            pounds will suffice, so long as the coffee bed is adequately compacted and all voids are removed. Using an electronic
+                            tamper, we found no notable difference in shots prepared using anything between 20 pounds and 60 pounds of tamping
+                            force.
+                        </p>
+                    </div>
+                    <div id="EspressoMachineTypes">
+                        <p>
+                            <strong>Machine Types: Manual, Semi-Automatic, Automatic, Superautomatic</strong> – Espresso machines have a long history
+                            stemming from the late 19th century, and as such have experienced vast changes in their construction and the
+                            technology which is incorporated into their design. Early espresso machines were powered only by steam pressure,
+                            but have since been designed around pistons or pumps supplying the brew pressure.</p>
+                        <ul>
+                            <li>
+                                <p id="EspressoMachineTypesManual">
+                                    <strong>Manual espresso machines</strong> typically use a lever action to drive a piston and force a column or
+                                    charge of hot water through the puck of ground coffee. These may be Direct Lever machines, where the
+                                    user supplies all the necessary force themselves, or Spring-assisted Lever machines, where the user cocks
+                                    the lever to compress a spring, which then supplies the brew pressure as it decompresses. Manual espresso
+                                    machines are somewhat unique in that they allow the brew pressure to be modulated either directly or
+                                    indirectly by the user, meaning that the espresso could be extracted higher or lower than 9 bars at any
+                                    point in the brew process. This does allow for some interesting experimentation if the user is experienced,
+                                    but also can be frustrating for the novice because they may be applying inconsistent pressure without
+                                    realizing it.</p>
+                            </li>
+                            <li>
+                                <p id="EspressoMachineTypesSemiAuto><strong>Semi-automatic machines</strong> are some of the most common on the market today. They use a pump to
+                			extract the espresso, and the user must both engage and disengage the pump manually, usually by pushing a button on
+                			the machine. Semi-auto machines range from extremely low budget to mid-high end, and can incorporate a whole host of
+                			other features depending on price level. The main defining characteristic is that they do not have settings for
+                			controlling the volume of a shot or the time for the shot to run.</p>
+                		</li>
+                		<li>
+                			<p id=" espressomachinetypesautomatic="">
+                                    <strong>Automatic/fully-automatic machines</strong> include dosing or time controls as well as semi-automatic
+                                    functionality. These machines will have extra buttons for single/double shots, and sometimes more, and
+                                    the machine will stop the shot when the button’s programmed cycle is complete. On commercial Italian-made
+                                    automatic machines for example, it’s not uncommon to have all of the following program buttons: single
+                                    short, double short, single normal, double normal, single long, double long, and continuous flow (semi-auto).
+                                    These program buttons can be customized to deliver a certain volume of water, run for a certain time,
+                                    or run a certain amount of meter cycles. Volumetric machines will use a flow meter, which is a small
+                                    water wheel with a magnetic sensor inside, to determine either the volume of water that has been pumped,
+                                    or how many rotations of the meter have occurred. Some newer machines use scales instead, to more precisely
+                                    determine how much beverage mass has been brewed.</p>
+                            </li>
+                            <li>
+                                <p id="EspressoMachineTypesSuperAutomatic">
+                                    <strong>Superautomatic machines</strong> are the do-it-all devices that you can find in Starbucks stores, offices,
+                                    some coffee shops, and so on. They use whole bean coffee, but they run the entire brew cycle without
+                                    assistance from the user. A user may simply push a button for “cappuccino” and the machine will dose
+                                    the beans, grind them, brew the espresso, and steam the milk, then run a quick cleaning cycle on itself
+                                    so it’s ready for the next drink. Most superautomatics only have a modicum of customizability, so the
+                                    user may only be able to tweak certain volumes used, maybe change the grind size of coffee and little
+                                    else. Others have robust controls with precise weights and measures, grind size and brew temperature
+                                    control; almost anything you’d want to adjust. In many cases, superautomatics are considered to be far
+                                    more convenient but lower quality than a semi-automatic alternative, as the machine does not know how
+                                    to adjust espresso the way a human user does, and thus won’t be able to react to flavor changes as quickly
+                                    or easily. Further, build quality and reliability are often issues for these machines.</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="EspressoOtherMachineTypes">
+                        <p>
+                            <strong>Other Machine Types</strong> – There are some less conventional machines available that are worth addressing:
+                        </p>
+                        <ul>
+                            <li>
+                                <p id="EspressoMachineTypesSteam">
+                                    <strong>Steam-powered “espresso” machines</strong> do not often meet the conventional criteria for espresso brewing,
+                                    namely the required pressure and beverage strength. Often these machines have large carafe included,
+                                    and generally function more like an electric moka pot than an espresso machine. The coffee is more dilute
+                                    than your typical espresso and takes a bit longer to brew, and overall tastes and functions more like
+                                    moka pot coffee.</p>
+                            </li>
+                            <li>
+                                <p id="EspressoMachineTypesNonLeverManual">
+                                    <strong>Non-lever manual machines</strong> – Other manual machines exist which do not use a lever group. We carry
+                                    the Nomad espresso maker, which uses a sort of air pump to push hot water through the coffee. There are
+                                    also other novel designs like the Espresso Forge, which is a direct-piston style machine where the user
+                                    pushes a long piston in a tall brewing chamber, or the Rossa espresso maker which pushes a piston with
+                                    a screw as the user turns a handle.
+                                </p>
+                            </li>
+                            <li>
+                                <p id="EspressoMachineTypesNespresso">
+                                    <strong>Nespresso</strong> – Nespresso is a proprietary coffee brewing system made by Nestle. Nespresso brewers
+                                    are functionally very similar to inexpensive home espresso machines, and brew using a self-contained
+                                    pod of coffee with a built-in filter rather than a portafilter and basket. Nespresso is not quite espresso
+                                    is the usual sense, but rather more like frothed moka pot coffee in terms of taste and brew strength.
+                                    These machines have a built in mechanism which froths the coffee after it is brewed by forcing the liquid
+                                    under pressure through a small aeration nozzle. This gives the appearance of crema, though it is essentially
+                                    just a coffee foam. Nespresso offers a wide variety of flavors and blends in their pods, but there are
+                                    few ways to adapt the machines for fresh ground coffee or custom brews.</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="EspressoBoilerTypes">
+                        <p>
+                            <strong>Boiler Types: Open/Closed, Thermoblock, Single Boiler, Heat Exchanger, Dual Boiler</strong> – An espresso machine
+                            is built around heating water for brewing, and they often use a boiler to do so. Boilers come in a variety of
+                            style when it comes to espresso, and each style has some advantages and disadvantages to consider.</p>
+                        <ul>
+                            <li>
+                                <p id="EspressoOpenBoilers">
+                                    <strong>Open boilers</strong> are rare today, but may still be found on some vintage lever espresso machines,
+                                    or more modern versions of the same. An open boiler is just as it sounds – it is an open-topped vessel
+                                    in which water is boiled, like a tall pot with its own heating element.</p>
+                            </li>
+                            <li>
+                                <p id="EspressoClosedBoilers">
+                                    <strong>Closed boilers</strong> are ubiquitous today, and are completely sealed except for their various ports
+                                    for water to come in and to exit, plus some safety vents if needed. Closed boilers are able to build
+                                    and contain steam pressure, which is important for the function of many espresso machine designs, as
+                                    well as for steaming milk.
+                                </p>
+                            </li>
+                            <li>
+                                <p id="EspressoThermoblock">
+                                    <strong>Thermoblocks</strong> are not boilers, but are instead more like a series of channels carved into a block
+                                    of metal. The channels are sealed from the outside, like a boiler, and run alongside some kind of heating
+                                    element. As water flows through the channels, it is heated by the element, and should exit at the desired
+                                    brewing temperature. Thermoblocks are inexpensive to make and are common with very-low budget espresso
+                                    machines. They are very susceptible to clogging from scale buildup, as well as failure due to poor construction.</p>
+                            </li>
+                            <li>
+                                <p id="EspressoSingleBoilerDualUse">
+                                    <strong>Single boiler/dual use (SBDU)</strong> machines contain a closed boiler which is used to heat water for
+                                    both espresso brewing as well as steaming. It can only be used for one function at a time, so the user
+                                    must work with the design to properly make their coffee and steam milk. These boilers often use two thermostats
+                                    – one for a lower temperature for espresso making, another for a higher temperature to create plenty
+                                    of pressurized steam. Brewing espresso while the boiler is still at steaming temperature would either
+                                    ruin the shot or be extremely challenging to dial in, so usually the user must either brew the shot first
+                                    and then steam milk, steam first and wait for the boiler to cool before brewing, or try to flush the
+                                    hotter water out of the boiler by running the pump. This means that making milk drinks with a SBDU machine
+                                    takes longer than with other machines and can be somewhat challenging to work with.</p>
+                            </li>
+                            <li>
+                                <p id="EspressoBoilersHeatExchanger">
+                                    <strong>Heat exchanger (HX)</strong> machines also have only one boiler, but instead it is used only for steam.
+                                    It is usually a larger boiler with a capacity of 1 liter or more, so it can provide a good deal of steam
+                                    and plenty of heat. The heat exchanger is a coiled tube which intersects the upper part of the steam
+                                    boiler, which connects the water line or reservoir to the group head. As water travels through the heat
+                                    exchanger coil, it is heated by the steam in the boiler. The coil is generally long enough that water
+                                    will be sufficiently heated as it travels from one end to the other, so these machines can usually keep
+                                    up with back-to-back shots without the brew water temperature falling too low. The water can, however,
+                                    be overheated if it sits idle in the coil for too long, so HX machine users often perform a cooling flush
+                                    to remove the overly hot water prior to pulling shots. These machines can brew and steam at the same
+                                    time, and are generally fairly robust, so they’re often considered to be higher end or “prosumer” machines
+                                    for the home, and some commercial machines also incorporate the design.</p>
+                            </li>
+                            <li>
+                                <p id="EspressoBoilersDual">
+                                    <strong>Dual boiler (DB)</strong> machines feature two boilers, one dedicated to coffee brewing and one dedicated
+                                    to steam. These are often the most expensive class of espresso machine because of the amount of materials
+                                    and resources which go into their construction, but they are also some of the most technically advanced.
+                                    Nearly all high end espresso machines for home or commercial use are dual boiler machines. DB machines
+                                    also frequently incorporate PID controllers to set the water temperatures for both the brew and steam
+                                    boilers, meaning the user can customize boiler temperatures independently to suit their needs. Some commercial
+                                    machines have individual brew boilers per group head, and each brew boiler can be independently set to
+                                    a different temperature. This adds a great deal of flexibility and precision to the machine. As above,
+                                    thanks to the dedicated boilers for each task, DB machines can brew and steam at the same time without
+                                    impacting performance.</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="EspressoMachinePumps">
+                        <p>
+                            <strong>Machine Pumps/Motors</strong> – Pumps fall into three main classes – vibratory, rotary, and gear. A vibratory
+                            pump is the least expensive option and is found in most home espresso machines. They take a few seconds to fully
+                            ramp up to pressure, but otherwise work just fine. A rotary pump is often seen as more desirable as it can have
+                            its rotation speed changed to increase or decrease the pressure (with water, flow rate is directly tied to pressure).
+                            This is not something you can easily change while brewing espresso, however. Gear pumps are somewhat more advanced
+                            and can have their flow rate adjusted electronically, meaning they can be changed during a shot if the machine
+                            allows it. Rotary and gear pumps often require the machine to be plumbed in so they are supplied with steady
+                            mains pressure in order to work properly.</p>
+                    </div>
+                    <h3 id="OtherMethods">Other Coffee Brewing Methods</h3>
+                    <div id="OtherMethodsCupping">
+                        <p>
+                            <strong>Cupping</strong> – A brewing style intended for evaluating multiple samples of coffee all at once. Cupping has
+                            a standard protocol which was developed for green coffee buyers to use while evaluating samples from lots, farms,
+                            mills, co-ops, etc., in as even-handed a way as possible so the coffees remain the only real variable. Cupping
+                            involves preparing 2-3 samples of each coffee in small glasses or bowls, evaluating the ground coffee aroma,
+                            adding hot water then evaluating the wet aroma, then allowing the coffee to steep, breaking the crust of coffee
+                            and evaluating the wet aroma again, then skimming the grounds off the cups and finally evaluating the samples
+                            by slurping the coffee out of a spoon. Slurping strongly allows the taster to spray their whole mouth almost
+                            simultaneously, which can improve taste perception. By sampling many coffees in rapid succession, a cupper can
+                            quickly evaluate the strengths and weaknesses of the coffees present. Cupping does require some skill to be done
+                            effectively, especially in a professional setting, but may be done casually to explore the differences between
+                            coffees. Cupping is also performed by roasters and retailers to evaluate samples, and may follow a customized
+                            cupping protocol to suit their individual needs.
+                        </p>
+                    </div>
+                    <div id="OtherMethodsAeropress">
+                        <p>
+                            <strong>Aeropress</strong> – A coffee maker invented by Alan Adler, the inventor of the Aerobie flying ring. Originally
+                            designed to produce just one cup of coffee in a short amount of time, the Aeropress has garnered a reputation
+                            for being a versatile and compact brewer, and thus far is one of the only coffee makers with its own dedicated
+                            worldwide competition circuit. The Aeropress isn’t quite like a french press, despite the name, and instead functions
+                            a bit more like a moka pot with a paper filter, using moderate pressure to force water through a small bed of
+                            coffee grounds. It can also be used inverted to allow longer steeping of the coffee, or used as a pour-over device
+                            with no plunging needed. While the creator used to claim the device makes espresso, due to the low brewing pressure
+                            and only somewhat stronger-than-normal brew strength, Aeropress coffee would be better related to moka pot coffee
+                            instead.
+                        </p>
+                    </div>
+                    <div id="OtherMethodsAutoDrip">
+                        <p>
+                            <strong>Automatic Drip</strong> – Automatic drip machines should be familiar to most coffee drinkers: they are brewers
+                            which spray or drip hot water over a bed of coffee grounds inside a cone-shaped filter basket, producing what
+                            most Americans know as coffee. Drip machines are quite common both commercially and domestically, with well-known
+                            brands like Bunn and Fetco, or Mr. Coffee and Bonavita. Auto drip machines in the home can have issues maintaining
+                            proper brewing temperature, mostly due to underpowered parts or oversimplified design. This is part of the reason
+                            that some would characterize drip coffee as sour or thin, though some of the blame certainly falls on the prevalence
+                            of brewing with and improper coffee ratio or grind size. In professional use, batch drip brewers can have robust
+                            control over temperature, water addition (e.g. control over pulse timing and water volume), and are capable of
+                            producing very excellent coffee in large quantities.</p>
+                    </div>
+                    <div id="OtherMethodsPourover">
+                        <p>
+                            <strong>Pour-over/Manual Drip</strong> – Pour-over brewing is essentially just brewing drip coffee by hand. Where an
+                            automatic drip coffee maker sprays or sprinkles water somewhat evenly over a bed of ground coffee, a pour-over
+                            brew features the human brewer adding coffee with a kettle by hand. This can be more effective than some automatic
+                            coffee makers in that the human can be more exacting and precise than the machine, but it can also be less effective
+                            if the human pays less attention to the brew process or brewing factors like temperature. While some pour-over
+                            recipes may vary based on preferred technique and flavor results, they generally follow the same overall recipes
+                            and ratios as their automatic alternatives.</p>
+                    </div>
+                    <div id="OtherMethodsChemex">
+                        <p>
+                            <strong>Chemex</strong> – A device invented by Dr. Peter Schlumbohm in the 1930s, inspired by the laboratory glassware
+                            he knew so well as a chemist. The distinctive hourglass shape of the Chemex is derived from the shape of an Erlenmeyer
+                            flask and a glass filtration funnel put together. The Chemex is a pour-over style dripper with a built-in carafe,
+                            making it very convenient for both brewing and serving coffee. The device is intended to be used with proprietary
+                            bonded paper filters, which are quite thick compared to other coffee filter materials, and are again inspired
+                            by the laboratory materials he was so familiar with. While the brewer itself is somewhat unique, it’s really
+                            the filters that contribute the most to its characteristically clean and clear taste, so using a Chemex filter
+                            in another cone-style brewer will yield almost identical coffee.</p>
+                    </div>
+                    <div id="OtherMethodsV60">
+                        <p>
+                            <strong>V60</strong> – Hario’s signature cone-shaped drip brewer, named for the 60 degree angle of the cone’s profile.
+                            V60 drippers come in a variety of materials and sizes, all with the same cone angle. They are known for being
+                            somewhat unforgiving brewers thanks to the large hole opening at the base, which can be challenging to brew with
+                            without practice. The brew bed will drain very quickly, so most V60 recipes call for a finer grind than other
+                            drip cones and careful pouring technique to prevent over-dilution if water bypasses the brew bed and drains through
+                            without extracting much. Despite the reputation, V60 drippers aren’t impossible to work with and can be used
+                            to brew some very delightful coffees, with plenty of room to tweak recipes or brewing style to dial in each new
+                            coffee.
+                        </p>
+                    </div>
+                    <div id="OtherMethodsClever">
+                        <p>
+                            <strong>Clever Dripper</strong> – The Clever Coffee Dripper is an intriguing device as it combines immersion-style brewing
+                            as well as percolation when draining. It’s considered a steep-and-release brewer, where coffee and water are
+                            immersed for part of the brew, and then a plug is released from the bottom to allow the coffee to drain while
+                            being filtered by paper. As a result of this design, Clever Dripper recipes often have shorter brew times than
+                            pure immersion brewing, and incorporate a finer grind as well. The Clever Dripper can yield coffee with medium
+                            to heavy body, but clean flavors thanks to the paper filter.</p>
+                    </div>
+                    <div id="OtherMethodsSiphon">
+                        <p>
+                            <strong>Vacuum Pot/Siphon</strong> – The vacuum pot is a classic method of brewing, with history dating back into the
+                            late 18th century. Modern vacuum pots have two chambers: a lower globe where water is heated, often by a flame,
+                            and an upper chamber where the coffee grounds and water will be mixed. Connected to the upper chamber is a siphon
+                            tube, which extends almost to the bottom of the globe when assembled. A rubber stopper creates a seal around
+                            the tube and the opening to the globe to ensure the steam and vapor pressure is contained. The main working principle
+                            of a vacuum brewer is that the final stage of the brewing process, called the draw down, utilizes a partial vacuum
+                            created by the lower brewing chamber to “suck” the brewed coffee down through a filter. A siphon brew begins
+                            by heating a volume of water in the lower globe, which is then sealed once the upper chamber is set into place.
+                            When the seal is created, vapor pressure will begin to build as the air inside the globe is heated, and once
+                            steam is produced the pressure inside the globe builds more. Once the pressure is sufficient, the water will
+                            begin to be forced up the siphon tube and into the upper bowl, where the coffee grounds will be mixed in and
+                            allowed to steep anywhere from 1-5 minutes. During the brewing process, the globe is left on the heat to maintain
+                            a positive vapor pressure and bubble gas up the siphon tube. Once the globe is removed from the heat, it will
+                            begin to cool and the pressure will drop. At some point, the globe’s internal pressure will fall lower than the
+                            atmospheric pressure around it, and thus the brewed coffee will be “sucked” down through the filter at the opening
+                            of the siphon tube and back into the lower globe. Like the Clever Dripper, vacuum pot brewing starts as immersion
+                            and ends with a bit of percolation at the end, allowing for somewhat quicker brews than pure immersion styles.</p>
+                    </div>
+                    <div id="OtherMethodsWalkure">
+                        <p>
+                            <strong>Walkure</strong> – A German-made porcelain pour-over drip brewer with a very unique design element: it features
+                            a permanent porcelain filter grid, instead of using disposable paper filters. The Walkure brewers brew in a cylindrical
+                            column where the ground coffee is added directly to the brew chamber on top of the filter. It is important to
+                            select a proper coffee grind which won’t fall through the holes in the filter, though the grounds should have
+                            an easy enough time sticking together and staying in the chamber. The user will pour water over a distribution
+                            plate, whose flat surface directs the water gently to six holes around its perimeter, where water will trickle
+                            steadily onto the grounds below. Walkure brews tend to have heavy body and some sediment, though should be fairly
+                            free of loose grounds if brewed correctly. The gentle shower of water limits how much agitation happens in the
+                            coffee bed, and thus limits how many fine particles traverse the brew bed and fall into the carafe below. Walkure
+                            brewers also take advantage of cake filtration, where the bed of coffee compacts somewhat during brewing and
+                            acts as its own filter.</p>
+                    </div>
+                    <div id="OtherMethodsKalita">
+                        <p>
+                            <strong>Kalita Wave</strong> – Kalita Wave brewers are basket-style, or truncated cone drippers which feature sloped
+                            walls and a flat bottom. They have three holes in the bottom of the dripper and use scalloped or wave-shaped
+                            paper filters, which allow even airflow all through the dripper to mitigate stalling during the drain phase.
+                            Those three holes also impose a soft limit on the maximum flow rate of water through the dripper, meaning the
+                            brew tends to steep a bit as you pour. This also means technique isn’t quite as critical with the Wave as it
+                            is with V60s or similarly fast-flowing drippers. Kalita Wave brews often accentuate sweetness and slightly mutes
+                            acidity, but produce nonetheless bright and clean coffees.</p>
+                    </div>
+                    <div id="OtherMethodsFrenchPress">
+                        <p>
+                            <strong>French Press</strong> – The french press, or cafetiere, is another classic brewing method with a rich history.
+                            Often, it is the stepping stone a home brewer might first take from an automatic coffee maker into the world
+                            of manual brewing. French presses are common and easy to find, and similarly easy to use, only requiring a 4-5
+                            minute steep of hot water and grounds and a plunge of the filter to press the grounds to the bottom of the device
+                            before serving. As an older and somewhat unrefined brewing method there are some areas of concern, such as the
+                            fact that even after pressing, the coffee grounds will continue to extract and alter the flavor of the coffee.
+                            Further, most press pots use a metal mesh filter which allows a good deal of mud or silt into the brewed coffee,
+                            which can cause off-flavors or poor mouthfeel. Newer revisions of the device include modernized filters with
+                            smaller hole sizes, or even dual filters to further restrict continued extraction and sediment.</p>
+                    </div>
+                    <div id="OtherMethodsMoka">
+                        <p>
+                            <strong>Moka Pot</strong>– The original stovetop “espresso” machine. Moka pots function very similarly to vacuum pots,
+                            and produce a strong brewed coffee that’s somewhere between drip and espresso. A lower reservoir holds water
+                            during brewing, a basket of coffee is inserted into the middle with a siphon tube extending into the lower part
+                            of the reservoir, and an upper chamber is used to collect the brewed coffee. During brewing, the water is heated
+                            and thus builds vapor pressure in the bottom chamber. This forces hot water up through the coffee grounds, which
+                            are lightly packed and ground fairly fine to offer some resistance to the water and allow a quick extraction.
+                            The brewed coffee continues to be forced upward until it exits into the upper collection chamber. Once most of
+                            the water has been forced up, the moka pot will begin to spit bubbles of gas instead of liquid coffee, and it
+                            can be removed from the heat.</p>
+                        <p>In its early days, espresso was brewed in much the same manner, mostly through steam power rather than by the pumps
+                            or pistons we use today. At that time, a moka pot essentially was an espresso maker, given the similar brewing
+                            process and resulting coffee. However, today espresso has advanced beyond what a moka pot can produce, so despite
+                            historically being called an “espresso maker,” the moka pot is more of its own category of brewer today. It falls
+                            somewhere between drip coffee and espresso in terms of concentration, flavor, and mouthfeel.</p>
+                    </div>
+                    <h2>Brewing Terminology</h2>
+                    <div id="TermsPercolation">
+                        <p>
+                            <strong>Percolation</strong> – One of the two primary means of coffee extraction. Percolation refers to the act of moving
+                            a liquid (water, in this case) through a bed of soluble material. Many of the most common styles of brewing are
+                            considered to be percolation: this includes all drip coffee including pour-over, batch brewing, the Aeropress
+                            brewer, moka pots, even espresso. Functionally, percolation is distinct in that new, fresh solvent is constantly
+                            added during brewing, meaning extraction can happen more quickly and also may be a little less forgiving.</p>
+                    </div>
+                    <div id="TermsImmersion">
+                        <p>
+                            <strong>Immersion</strong> – Immersion brewing is the second primary means of coffee extraction. As the name implies,
+                            it refers to the immersion of the coffee grounds within the liquid solvent (again, typically water). As an immersion
+                            brew progresses, the solvent becomes increasingly saturated with dissolved material, which means that extraction
+                            will slow as the brew progresses unless something intervenes. Common immersion brewing styles include french
+                            press, cold brew, some Aeropress recipes, and cupping. Interestingly, nearly all immersion methods incorporate
+                            a bit of percolation when it comes to separating the liquid from the ground coffee. A french press introduces
+                            percolation as the plunger forces the coffee grounds to the bottom, forcing liquid up through a cake of coffee
+                            grounds in the process.</p>
+                    </div>
+                    <div id="TermsExtraction">
+                        <p>
+                            <strong>Extraction</strong> – The act of dissolving chemical compounds out of the coffee grounds and into a solvent,
+                            usually water. In coffee, extraction is often interpreted as having “stages,” because it contains diverse chemical
+                            compounds with different molecular weights. Chemicals with lower molecular weights tend to be more polar and
+                            extract most readily – these include acids and some sugars, as well as caffeine. As the brew progresses, more
+                            “heavy” compounds enter the mix and shift the flavor balance. Heavier compounds include more complex sugars,
+                            other organic acids, and compounds like phenols and other bitter-tasting alkaloids. So, as extraction progresses,
+                            the flavor balance typically shifts from sour, to sweeter and more balanced, to more bitter, to very bitter and
+                            astringent.
+                        </p>
+                        <ul>
+                            <li>
+                                <p>
+                                    <strong>“Good” extraction</strong> – When the flavor balance in the coffee is pleasant, sweet, not too sour or
+                                    too bitter, and is easy to drink plain (assuming you enjoy black coffee).</p>
+                            </li>
+                            <li>
+                                <p>
+                                    <strong>Over-extraction</strong> – When the flavor balance in a coffee brew has gone from sweet and/or balanced
+                                    to bitter, astringent, dry, chalky, oily, woody.</p>
+                            </li>
+                            <li>
+                                <p>
+                                    <strong>Under-extraction</strong> – The flavor balance has not achieved enough sweetness or bitterness and tastes
+                                    primarily sour, grassy, bean-like, vegetal, sometimes salty.</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="TermsRatio">
+                        <p>
+                            <strong>Brewing Ratio</strong> – Expressed as a ratio of ground coffee mass to brew water mass (for brewed coffee), or
+                            ground coffee mass to beverage mass (for espresso). Ratios are generally expressed in nonspecific terms, like
+                            1:16 instead of the equivalent 45:720, as they are intended to be scalable. Ratios are always expressed in mass,
+                            usually in grams. They cannot reasonably be converted to volume, because the density of ground coffee is usually
+                            unknown. The water component is always the larger number, the denominator. Common brew ratios include 1:15 –
+                            1:17 for brewed coffee, 1:5 – 1:10 for cold brew (which is often brewed strong and intended to be diluted for
+                            serving), and 1:1 – 1:2.5 for espresso. For the purposes of coffee brewing, lower values for water/beverage represent
+                            “higher” ratios – i.e. the 1:2 ratio often found in espresso brewing is a high ratio and represents a very strong
+                            coffee beverage.</p>
+                    </div>
+                    <div id="TermsBloom">
+                        <p>
+                            <strong>Bloom</strong> – An initial stage of coffee brewing where a small amount of water is poured onto the grounds
+                            to allow them to fully saturate and degas. Fresh coffee, up to about three weeks after roasting, contains CO2
+                            and some other gases trapped within the cellulose structure of the beans. Once saturated with water, these gases
+                            release more freely and can cause unevenness in extraction. A bloom phase allows the gas to escape before getting
+                            more of the extraction underway. It also helps relieve the gas buildup that might cause the brew bed to overflow
+                            as more water is added.</p>
+                    </div>
+                    <div id="TermsSlurry">
+                        <p>
+                            <strong>Slurry</strong> – The mixture of coffee grounds and water created during brewing. Not typically used to refer
+                            to brewing methods where the coffee is more or less held in place, as in espresso brewing, moka pots, or American
+                            Press.
+                        </p>
+                    </div>
+                    <div id="TermsSlurryTemp">
+                        <p>
+                            <strong>Slurry Temperature</strong> – The overall temperature of the coffee and water mixture at a given point in time.
+                            Slurry temperatures are not usually static, even when the brewing device is insulated, as temperature loss is
+                            a natural aspect of coffee brewing. There is some disagreement on what constitutes a proper slurry temperature,
+                            however as with most aspects of coffee brewing there is flexibility and most rules are simply rules of thumb.
+                            In contemporary specialty coffee culture, it is suggested that the slurry temperature be maintained within 195-205
+                            F – however, this is sometimes a mis-attribution in reference to the Specialty Coffee Association of America’s
+                            Golden Cup standards. Those standards actually suggest a water temperature between 195-205 F at the moment of
+                            contact with the coffee grounds, and do not reference slurry temperature at all. Indeed, given that water temperature,
+                            the slurry temperature would likely be 10-15 degrees cooler throughout the brew thanks to heat lost to the coffee
+                            grounds, the brewing device, and to the air. Still, there is no wrong method of approaching coffee extraction,
+                            so theoretically the contemporary interpretation is just as valid as the SCAA’s standards.</p>
+                    </div>
+                    <div id="TermsPID">
+                        <p>
+                            <strong>PID</strong> – A digital controller typically used for setting a desired temperature in a kettle or water boiler.
+                            Stands for Proportional, Integral, Derivative, the logical functions used by the controller to set and hold the
+                            desired temperature based on feedback from a thermocouple or RTD sensor.</p>
+                    </div>
+                    <h2>Beverages</h2>
+                    <div id="BeveragesEspresso">
+                        <p>
+                            <strong>Espresso</strong> – A short, strong serving of coffee brewed under pressure. Espresso is characterized by its
+                            high brew strength, viscous mouthfeel, and its signature layer of foam on top, known as “crema.” Crema can be
+                            a fairly good indicator of the quality of an espresso, because its formation relies on proper extraction pressure,
+                            good coffee freshness, and it provides some visual indication of flaws like channeling and over-extraction. Espresso
+                            is typically served in volumes of 1-3 fl oz, depending on the style of preparation and the number of “shots”
+                            being prepared.
+                        </p>
+                    </div>
+                    <div id="BeveragesRistretto">
+                        <p>
+                            <strong>Ristretto</strong> – A ristretto espresso is one pulled intentionally short to intensify the flavor. Sometimes
+                            this is done so the coffee flavor is more pronounced in a milk drink or mixed drink, but it is also considered
+                            desirable for certain coffee blends to intensify the sweetness and concentration of the shot. In terms of brewing
+                            ratio, a ristretto is commonly defined as a shot pulled at 1:1 - 1:1.5 (grounds mass:beverage mass).</p>
+                    </div>
+                    <div id="BeveragesNormale">
+                        <p>
+                            <strong>Normale</strong> – As the name implies, a normale espresso is essentially normal, the standard version of a shot.
+                            In Italy the rules of thumb for a normale are 7 grams of ground coffee for a single and 14 grams for a double,
+                            pulled to around 25-30 mL for a single and 50-60 mL for a double. In more modern terms, a normale has a brew
+                            ratio around 1:2 (ground coffee mass:beverage mass). A normale shot is meant to be fairly well-balanced, with
+                            good mouthfeel, aroma, and sweetness. This may not be a term which is encountered all that often, even within
+                            Italy where it originated.</p>
+                    </div>
+                    <div id="BeveragesLungo">
+                        <p>
+                            <strong>Lungo</strong> – A lungo espresso is a shot pulled longer than normal. A longer extraction will increase the
+                            volume of the shot, and may also subdue some of the flavors to make for a more sippable espresso. In terms of
+                            ratio, a lungo is generally pulled at around 1:3 or more (grounds mass:beverage mass).</p>
+                    </div>
+                    <div id="BeveragesMacchiato">
+                        <p>
+                            <strong>Macchiato</strong> – Means “marked” or “spotted” in Italian. This is a shot of espresso with a small amount of
+                            steamed milk added to help round out the flavor of the shot and add slight sweetness. In some interpretations,
+                            the shot is marked with only a spoonful of foam, while in others the demitasse is topped up with steamed milk
+                            and may have a small latte art design on top. In all cases, this is a very small beverage, between 1.5-3 fl oz.
+                            Some modern cafes offer a macchiato as a “one and one”: an espresso pull split into two demitasses, one served
+                            plain and one served with steamed milk so the customer may enjoy the espresso both ways.</p>
+                    </div>
+                    <div id="BeveragesEspressoAndMilk">
+                        <p>
+                            <strong>Espresso + Milk</strong> – Many variations of espresso and steamed milk exist across the world, and many similar
+                            beverages go by different names. It is difficult to find complete agreement on any given recipe, and in fact
+                            some cafe owners have decided to omit drink names entirely and simply offer menu items as “Espresso with milk”
+                            in a few different sizes. The differences between some drinks are very subtle, relying on the texture of the
+                            steamed milk, overall volume of the espresso shot, or even the type of cup the drink is served in to create distinction.
+                            As such, the definitions included below for espresso and milk drinks should be considered to be loose and flexible.</p>
+                    </div>
+                    <div id="BeveragesCortado">
+                        <p>
+                            <strong>Cortado/Gibraltar/Piccolo Latte</strong> – A very small drink made with espresso and steamed milk, with a light
+                            layer of foam on top. Not every cafe will consider these three drinks to be the same, but they are often prepared
+                            quite similarly and just as often are indistinct from each other. The Gibraltar is named specifically for the
+                            glass it is served in: a small rocks glass from Libbey’s Gibraltar series of glassware. Usually the overall volume
+                            of these drinks is between 5-6 fl oz, and they are often made with a double shot of espresso for a strong coffee
+                            flavor. Often these drinks are served in small rocks glasses, but may be served in ceramic as well.</p>
+                    </div>
+                    <div id="BeveragesCappuccino">
+                        <p>
+                            <strong>Cappuccino</strong> – A small drink made with espresso and steamed milk, characterized by its cap of dense foam.
+                            A common rule of thumb for cappuccinos is that they should be a drink of thirds: one third espresso, one third
+                            steamed milk, and one third dense foam, by volume. For a 2 fl oz shot of espresso, this makes for a 6 fl oz beverage
+                            total. Interpretations of the cappuccino vary, and especially with the popularity of microfoam in milk beverages
+                            some cappuccinos will have thinner but dense foam caps, while others prepare theirs with airy, fluffy foam piled
+                            high. Some countries also prepare their cappuccinos by adding chocolate powder to the espresso before adding
+                            the milk.</p>
+                    </div>
+                    <div id="BeveragesFlatWhite">
+                        <p>
+                            <strong>Flat White</strong> – A small drink made with espresso and steamed milk. The actual definition of a flat white
+                            is somewhat contentious, and even in Australia and New Zealand where the drink originates there is enough variation
+                            to be confusing (a trait shared among many espresso and milk drinks). Commonly offered characteristics for the
+                            flat white include the use of a ristretto shot or single shot, a total of 5-6 fl oz for the beverage, and only
+                            the slightest layer of milk foam being present. In some countries, there isn’t much of a difference between this
+                            and a cortado, or even a cappuccino, but it may be found on menus all over the world regardless.</p>
+                    </div>
+                    <div id="BeveragesLatte">
+                        <p>
+                            <strong>Latte</strong> – A larger drink made with espresso and steamed milk, properly a “caffe latte” in Italian. With
+                            no strict definition for the ratio between espresso and steamed milk, this is a highly variable beverage whose
+                            chief characteristic is the overall milky flavor. It also features less foam than a cappuccino with a thinner
+                            overall texture. Flavored lattes are also quite popular, with syrups, spices, or other flavorings being mixed
+                            into the espresso or milk when assembling the drink. In some countries, a latte is specifically served in a tall
+                            glass rather than ceramic.</p>
+                    </div>
+                    <h2>Roasting</h2>
+                    <div id="RoastingGreenCoffee">
+                        <p>
+                            <strong>Green coffee</strong> – Unroasted coffee, the seed of the coffee berry which has been processed and dried to
+                            prepare it for roasting.</p>
+                    </div>
+                    <div id="RoastingChaff">
+                        <p>
+                            <strong>Chaff</strong> – Chaff is a product of roasting, comprised of the silverskin or epidermis of the coffee seeds.
+                            During roasting, this thin, papery layer of cellulose loses its moisture and begins to flake or peel off the
+                            coffee beans. Coffee roasters will often have means of catching or diverting the chaff away from the beans, as
+                            it can be prone to catching fire if heated sufficiently. Some chaff may remain attached to the beans after roasting
+                            is completed. While chaff is entirely flavorless and will not affect coffee brewing, it may be considered troublesome
+                            as it has a tendency to fly away from the coffee grounds and stick to items thanks to static.</p>
+                    </div>
+                    <div id="RoastingDrum">
+                        <p>
+                            <strong>Drum roaster</strong> – A roasting device which uses a large, rotating drum set horizontally to continuously
+                            agitate the beans. Drum roasters apply heat in a variety of ways, some using gas burners to heat the drum material,
+                            some heating the air which is forced through the drum, some combining both. Others might use electric heating
+                            elements rather than gas burners. The agitation of the beans helps to ensure a more even roast of the coffee
+                            beans, as they do not sit still long enough to receive too much heat, or have an uneven exposure to the heat
+                            relative to other beans in the batch. Drum roasters are the most common style of roaster used today, though their
+                            other technical attributes will vary by manufacturer and model, sometimes in significant ways.</p>
+                    </div>
+                    <div id="RoastingFluidBed">
+                        <p>
+                            <strong>Fluid bed (air) roaster</strong> – A fluid bed roaster uses a hot column of air to both roast and agitate the
+                            beans. Fluid bed roasters are not all that common in commercial use, but are popular with home hobby roasters
+                            as they can be found in the form of an inexpensive home appliance: the hot air popcorn maker. Fluid bed roasts
+                            tend to take far less time than other roasting methods, as the air has a good deal of access to the surface area
+                            of the beans, and must be kept at significantly high temperatures to prevent “baking” the beans and progress
+                            the chemical reactions which are part of roasting. Roasting in this manner has some drawbacks, such as that it
+                            often yields coffees which are more acidic at a given roast level than another roaster might produce. They are
+                            also somewhat more difficult to control for roast profiling, again because they progress more quickly given the
+                            temperatures required for adequate roasting.
+                        </p>
+                    </div>
+                    <div id="RoastingDegree">
+                        <p>
+                            <strong>Degree of roasting (lightness or darkness)</strong> – Roasting degree describes the stopping point of the roast,
+                            which has some impact on the flavor of the brewed coffee. Often described on a scale from light to dark, there
+                            are many stopping points on the scale which have their own given names, such as “Cinnamon roast,” “full city,”
+                            or “French roast.” Not all roast degree descriptions have agreed-upon criteria, and some degrees have multiple
+                            accepted names. Further, the degree of roast is only part of what factors into coffee flavor, and the roast profile
+                            also matters some.</p>
+                    </div>
+                    <div id="RoastingProfiling">
+                        <p>
+                            <strong>Roast profiling</strong> – A roast profile is comprised of the cumulative effects of how heat and airflow are
+                            controlled during the roasting process, which influence how quickly the beans are heated and progress through
+                            the stages of roasting. The roast profile is arguably the defining factor for how roasting contributes to the
+                            coffee’s flavor, as it determines how the chemical changes take place in the coffee, for how long, as well as
+                            when the roasting process is fully stopped. Profiles are typically data-driven, using the thermal information
+                            from inside the roaster as well as the data from the roasting controls such as gas, airflow, drum temperature,
+                            etc. A profile is usually a complex system of data which encompasses as much information about the coffee’s transition
+                            from green to roasted as possible, such that it may be replicated in future roasts, or tweaked based on feedback
+                            from the cupping table.</p>
+                    </div>
+                    <h2 id="GrowingProcessing">Coffee Growing and Processing</h2>
+                    <div id="GrowingCoffeePlant">
+                        <p>
+                            <strong>Coffee plant</strong> – The coffee plant is a member of the Rubiaceae family, related to cinchona and some types
+                            of gardenia. It is a tropical flowering shrub or tree, which produces fruits called “cherries” or “berries” (botanically,
+                            they are neither). Coffee plants have a woody trunk, long slender branches with many wide and flat waxy leaves.
+                            Leaf size and shape depends on species and variety, but they are often football-shaped and sometimes slightly
+                            pointed. Coffee plants produce groups of white blossoms, which are highly fragrant and smell somewhat similar
+                            to jasmine. The fruits are small, about the size of grapes, and can take 6-10 months to fully ripen. They are
+                            edible and fleshy but contain little pulp, and contain two seeds. Those seeds are what we commonly call “beans,”
+                            which are removed from the ripe fruit, then processed and dried into what we call green coffee. The plants grow
+                            best within the Tropics, which we affectionately call the Bean Belt. Coffee can grow in a range of conditions,
+                            from low-altitude islands to high in the mountains of Peru. Generally, the higher the altitude in which the coffee
+                            is grown, the denser the seeds are, and the more potent the acidity and flavor (not always desirable).</p>
+                    </div>
+                    <div id="GrowingArabica">
+                        <p>
+                            <strong>Arabica</strong> –
+                            <em>Coffea arabica</em>. The primary species of coffee grown for specialty coffee, considered to have the most desirable
+                            flavor of coffee species. Arabica plants take about 3-5 years to fully mature and start producing fruit, and
+                            some varieties are quite delicate and susceptible to disease, environmental conditions, and pests.</p>
+                    </div>
+                    <div id="GrowingRobusta">
+                        <p>
+                            <strong>Robusta</strong> –
+                            <em>Coffea canephora</em>. Seen as inferior in flavor to arabica, often described as overly bitter, tasting of petroleum
+                            or rubber. Robusta has a naturally higher caffeine content than arabica, and is also a hardier and more productive
+                            plant. Because the flavor quality is poor, it is usually used only as a small component in blended coffees and
+                            is rarely drank on its own (though some cultures do enjoy its potent and strong flavor).
+                        </p>
+                    </div>
+                    <div id="GrowingOtherSpecies">
+                        <p>
+                            <strong>Other species</strong> – Other coffee species are far less common, but some interest in cultivating them has
+                            increased in the past few decades in order to obtain more genetic diversity in coffee crops. These include but
+                            are not limited to
+                            <em>coffea liberica</em>,
+                            <em>coffea charrieriana</em> (which is naturally caffeine-free), and
+                            <em>coffea magnistipula</em>.</p>
+                    </div>
+                    <div id="GrowingVariety">
+                        <p>
+                            <strong>Variety/cultivar</strong> – A variety is a recognized type of coffee, a taxonomic subset within a species (think
+                            of how a cherry tomato and a plum tomato are the same species, but different in size, shape and flavor). In coffee,
+                            there are naturally occurring, selected, and genetically hybridized varieties. A cultivar, or “cultivated variety,”
+                            is similar to a variety, but specifically refers to selected varieties where human intervention created or honed
+                            a variety. Note: “Varietal” is sometimes erroneously used instead of variety – for reference, varietal is an
+                            adjective, variety is a noun. “Varietal” may be used as a noun in shorthand, in reference to a “varietal coffee,”
+                            or a coffee which is comprised of only one specific variety, similar to how the term is used in the wine world.</p>
+                    </div>
+                    <div id="GrowingSpecialty">
+                        <p>
+                            <strong>Specialty coffee</strong> – “Specialty” is an industry-defined term for green coffees graded at 80 points or
+                            above (out of 100), which is currently the highest categorical grade of coffee achievable. Specialty coffees
+                            must have zero Category 1 defects (such as rotten beans, fungus damage, etc) and fewer than five Category 2 defects
+                            (such as partially black, partially sour, broken beans, or insect damage) per 350 gram sample. In terms of market
+                            share, specialty coffees comprise under 10% of coffee grown annually, but represent over 50% of the US market
+                            consumption of coffee. The term “specialty” does not account for what happens after the grading of green coffee,
+                            so it technically applies to any use of said coffee afterward, whether roasted light or dark, or served black
+                            or as part of a blended beverage. “Specialty coffee” is also, confusingly, used as a marketing term to refer
+                            to fancy or gourmet coffee beverages served at coffee shops.</p>
+                    </div>
+                    <div id="GrowingBerryBorer">
+                        <p>
+                            <strong>Coffee berry borer</strong> – The coffee berry borer is a pest beetle native to Africa which can cause massive
+                            devastation to coffee crops. The small insect chews holes throughout the fruit and seed to lay its eggs, causing
+                            rot to occur prematurely, as well as introducing foreign bacteria into the young coffee seed. This inevitably
+                            leads to taste defects and can reduce a promising coffee to a much lower grade. Pesticides are only effective
+                            if used on the berries prior to the female beetle tunneling inside.</p>
+                    </div>
+                    <div id="GrowingLeafRust">
+                        <p>
+                            <strong>Coffee leaf rust</strong> – Coffee rust, or “roya” in Spanish, is a critical problem for many farmers in South
+                            and Central America. It is a fungus which infests the leaves of the coffee plant and causes defoliation, the
+                            loss of leaves as the plant tries to save itself from the disease. Because leaves are how plants respire and
+                            create nutrients through photosynthesis, defoliation is a critical problem for the plants and for the farmers,
+                            as a coffee plant will not produce fruit if it needs to regenerate itself after being affected by leaf rust.
+                            Leaf rust is resistant to some types of fungicide, and many arabica plants are highly susceptible to the disease
+                            because they lack the genetic defense against it taking hold.</p>
+                    </div>
+                    <div id="GrowingHarvesting">
+                        <p>
+                            <strong>Harvesting</strong> – Most coffee is harvested entirely by hand, which is optimal as the coffee cherries do not
+                            ripen uniformly and coffee tastes best when picked at peak ripeness. Manual harvesting is labor-intensive and
+                            grueling as farms are often located on steep mountainsides and in rainforests, and many workers are paid by the
+                            pound rather than for their time. Some larger plantations and commodity-grade operations do use mechanical harvesting
+                            methods, which incorporate the use of large machines which drive up and down the rows of coffee plants, shaking
+                            the trees and collecting whatever falls off – generally including a mix of under-ripe, ripe, and over-ripe fruit,
+                            which tends to contribute to the lower grade of their produce.</p>
+                    </div>
+                    <div id="GrowingProcessing">
+                        <p>
+                            <strong>Processing</strong> – After harvesting, the coffee cherries must be processed to remove the seeds from within.
+                            There are multiple methods of processing fruit into dry seeds, with multiple steps including depulpling, fermentation,
+                            drying, de-husking, secondary drying, and finally collection, packaging, and grading. The fruit is sometimes
+                            discarded, sometimes it is retained for compost and fertilizer, and rarely it is processed and dried separately
+                            for a tea-like drink call cascara or qishir.</p>
+                    </div>
+                    <ul>
+                        <li>
+                            <div id="GrowingWetProcessing">
+                                <p>
+                                    <strong>Wet/washed processing</strong> – Wet or washed processing involves the use of water through many steps
+                                    of the coffee processing, and is considered to produce some of the highest quality coffees thanks to
+                                    the clarity of flavors with few defects. It is also more resource-intensive and sometimes impractical
+                                    or too expensive for a farm, processor, mill, or cooperative to perform. This begins by running the whole
+                                    coffee cherries through troughs of water to separate the desirable (sinking) cherries from the undesirable
+                                    (floating) cherries, as well as from sticks and leaves that have been mixed in with the cherries. Those
+                                    ripe cherries are then sent for de-pulping, which is often done mechanically using a device which squeezes
+                                    the fruit to break the fruit’s skin and pop out the seeds within through a screen with holes just big
+                                    enough for the seeds to get through. The sticky mucilage is still attached to the seeds at this point,
+                                    though some will be washed off with water. The seeds are then fermented in tanks for about a day, where
+                                    bacteria and yeasts will break down the sugars in the mucilage and may influence the flavor of the coffee.
+                                    After fermentation, the seeds may be washed again, and are then taken to dry. Drying may be done on large
+                                    concrete patios, in full sun or under canopies, it may also be done on raised screen beds, inside climate-controlled
+                                    greenhouses, or in large tumbling chambers to be dried by forced hot air. Once the coffee is sufficiently
+                                    dried (to about 10-15% moisture content), it is de-hulled. The coffee seeds have up until now resided
+                                    in parchment (pergamino in Spanish), a stiff outer coating like a sunflower seed’s shell. The shell is
+                                    cracked off mechanically to extrude the green coffee seeds inside. Those seeds are then packaged in large
+                                    sacks, and will be graded following the Specialty Coffee Association protocol to determine their market
+                                    value prepare them for sale.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div id="GrowingPulpedNatural">
+                                <p>
+                                    <strong>Semi-washed, pulped natural, honey process</strong> – These terms often refer to the same style of processing,
+                                    where the first stages of the above are followed up until the cherries are pulped. Then, instead of fermenting
+                                    the coffee in tanks, it is sent to be dried while the mucilage is still intact and stuck to the seeds.
+                                    As the seeds dry, the mucilage loses a good deal of moisture but can contribute a greater degree of sweetness
+                                    to the seeds (perhaps because less fermentation is taking place, meaning fewer sugars are being consumed
+                                    by microorganisms). Once dried, the seeds may be washed to remove the stuck on pulp, or simply proceed
+                                    to de-hulling. The green coffee seeds may also be dried again to reach the desired moisture content,
+                                    as drying coffee in this state can take longer than the washed process. This process can also introduce
+                                    complications that lead to flavor degradation, including mold growth, rot, and pests which are attracted
+                                    to the sweet-tasting mucilage as it dries in the open air. These coffees must be carefully attended to
+                                    during drying to properly maintain their flavor.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div id="GrowingNatural">
+                                <p>
+                                    <strong>Natural/dry processing</strong> – In natural processing, rather than washing and de-pulping the cherries,
+                                    instead the whole fruit is slowly dried with the seeds inside. This is a long process which can lead
+                                    to many undesirable flavors and defects, but when done right can yield unmistakably sweet and fruity
+                                    flavors like blueberry, strawberry, and raspberry, as well as a slightly vinegary flavor due to acetic
+                                    acid production by bacteria during drying. Once the fruit is dried, it is pulped (not always with water
+                                    present) and de-hulled at the same time. Sometimes seeds may be further dried afterward. As this processing
+                                    method is least resource-intensive, it is often preferred by smaller farm or poorer producing countries,
+                                    such as Ethiopia and Yemen.</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <div id="GrowingFermentation">
+                        <p>
+                            <strong>Fermentation</strong> – Fermentation in coffee is a part of the processing of the coffee seeds, where microorganisms
+                            and enzymes are allowed to break down and process parts of the coffee seeds. Typically fermentation is used to
+                            break down the mucilage, a sticky part of the coffee fruit which coats the coffee seeds. Bacteria and yeasts
+                            may digest the carbohydrates in the mucilage, producing gas and acids as byproducts, while also breaking the
+                            mucilage down for easier removal. In more recent years, careful examination and experimentation with the fermentation
+                            process has revealed that it can have strong influences on coffee flavor, though not always in a desirable way.</p>
+                    </div>
+                    <div id="GrowingGrading">
+                        <p>
+                            <strong>Q Grading</strong> – Once processed into its dry green state, coffee may be analyzed by certified Q graders,
+                            professionals whose job it is to evaluate coffee and determine its market value. Q graders are employed in a
+                            variety of ways, sometimes by importing companies, sometimes by local governments, authorities, or auction houses,
+                            sometimes by coffee roasters with direct relationships with the farmers they purchase from. The purpose of Q
+                            grading is to evaluate, in as standardized a fashion as possible, the quality of the coffee present. Q graders
+                            use standardized cupping practices and protocols, standard evaluation forms and criteria, in order to make conclusions
+                            about the coffee quality. Coffee is scored on the presence of defects such as insect damage, fungus, over- or
+                            under-ripeness, undeveloped seeds called quakers, and so on. It is also scored on flavor by roasting to a standard
+                            specification and noting the presence and balance of the acidity, sweetness, bitterness, the quality of the aroma,
+                            the finish, the aftertaste, the body, etc. Points are assigned or deducted based on these findings, and a particular
+                            coffee is usually cupped and scored multiple times before settling on an adjusted score. Specialty coffees are
+                            those graded at 80 points or above (out of 100), with 0-5 total defects per 350 gram sample. After grading, coffees
+                            may be sent to special auctions, sold directly to green coffee buyers or to central distribution warehouses in
+                            the country of origin.</p>
+                    </div>
+                    <div id="GrowingKopiLuwak">
+                        <p>
+                            <strong>Kopi Luwak</strong> – Coffee eaten and excreted by the Asian Palm Civet, which partially digests the beans and
+                            theoretically has some kind of positive effect on flavor. Given the rarity of finding civet droppings in the
+                            wild and the need to collect them by hand, kopi luwak originally garnered an exceptionally high price due to
+                            labor and the draw of a smoother tasting cup. Today, however, the industry has turned more to caging the animals
+                            and feeding them only coffee berries (not typical of their natural diet). Many animal rights watchdogs consider
+                            this to be abusive of the animals, so there’s been backlash against the coffee and the industry which provides
+                            it. For practical purposes, it is probably best to seek out those producers which can ensure the safety and quality
+                            of life of their animals, but even then, it is likely far overpriced for its quality and other high quality coffees
+                            from other origins can be had for much less. There is also some work being done to replicate the enzymatic activity
+                            from the civet’s gut in a lab environment to create an animal-free alternative with the same sort of flavor.</p>
+                    </div>
+                    <h2 id="WavesOfCoffee">"Waves" of Coffee</h2>
+                    <p>It’s commonly accepted that we are currently seeing the “third wave” of coffee throughout the world, an approach to coffee
+                        preparation, presentation, and service which is distinct from the two previous waves. The defining factors are a
+                        little fuzzy, as a few people are attributed to having coining the term and defining the waves. One source for definitions
+                        which is commonly cited is a piece by industry veteran Trish Rothgeb in The Flamekeeper, a trade magazine for the
+                        Roasters Guild of America.</p>
+                    <div id="WavesFirst">
+                        <p>
+                            <strong>First wave coffee</strong> is loosely defined as coffee without focus. Prior to the latter half of the 20th century
+                            coffee was often treated solely as a beverage to drink with breakfast, after dinner, perhaps on a late night
+                            of work. It could be good or bad, but it didn’t receive the same sort of care and attention it does today. This
+                            is the historical idea of coffee, a beverage with tradition imbued into it and regional styles and techniques,
+                            even its own culture which draws from its relevance as a trade good over centuries. First wave coffee could be
+                            summarized as diner or restaurant coffee, or by brands like Folgers.</p>
+                    </div>
+                    <div id="WavesSecond">
+                        <p>
+                            <strong>Second wave coffee</strong> is where we began to see the rise of the modern coffee shops. Many cultures already
+                            had coffee shops prior to the second wave, but they were “old world,” much like a pub but focused on coffee and
+                            lighter fare instead. The modern second wave cafe is more akin to the Central Perk cafe from Friends: a shop
+                            dedicated to coffee and tea beverages, including richly flavored lattes, frothy cappuccinos, and so on. Often
+                            these are places with space built out for lingering over a book or a laptop, sometimes they act as venues for
+                            music or poetry. The coffee quality is perhaps not the best, but the atmosphere is inviting and casual. The concept
+                            of the “third place,” a place outside of the home and work where a person might spend much of their time, heavily
+                            influenced the rise of the second wave coffee shop. Second wave coffee could be summarized by shops like Starbucks
+                            and Peet’s (though they are not limited solely to second wave).</p>
+                    </div>
+                    <div id="WavesThird">
+                        <p>
+                            <strong>Third wave coffee</strong> is where coffee is meant to be elevated to the culinary level of appreciation, like
+                            fine wine or beer. It recognizes that coffee is a complex beverage which requires care and attention to execute
+                            on a high level, and can provide a rich and complex experience beyond adding flavored syrups or mix-ins (not
+                            that those are eschewed, however). Third wave coffee is concerned with specialty coffee only, and extends its
+                            focus to the entire process from the farm to the cup. Farm and farmers are sometimes highlighted for transparency
+                            purposes, as well as to shed light on the importance of proper growing, picking, processing, etc. on the results
+                            in the final cup. Third wave roasters often roast and develop their coffees rather lightly, with the intention
+                            of putting acidity, sweetness, florality, fruitiness, and the innate complexity of the coffee at the forefront,
+                            rather than flavors created by the roasting process.</p>
+                    </div>
+                </div>
+                {% dropzone "about-us-dropzone1" scope="page" %} 
+                {% dropzone "about-us-dropzone2" scope="page" %} 
+                {% dropzone "about-us-dropzone3" scope="page" %} 
+                {% dropzone "about-us-dropzone4" scope="page" %} 
+                {% dropzone "about-us-dropzone5" scope="page" %}
+            </div>
+        </div>
+        
+    </div>
+</div>
+{% endblock body-content %}

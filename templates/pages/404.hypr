@@ -7,7 +7,7 @@
 {% block body-content %}
 <div class="mz-l-container">
     <h1 class="mz-pagetitle">{{ labels.pageNotFound }}</h1>
-    <img src="https://previews.123rf.com/images/amisb/amisb1702/amisb170200205/73266369-page-not-found-error-404-.jpg" alt="">
+    {% comment %} <img src="https://previews.123rf.com/images/amisb/amisb1702/amisb170200205/73266369-page-not-found-error-404-.jpg" alt=""> {% endcomment %}
      
     {% dropzone "notfound" scope="template" %}
 </div>
