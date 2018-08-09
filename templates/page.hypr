@@ -107,18 +107,22 @@
     {% endblock open-body-tag %}
 
         <div id="page-wrapper" class="mz-l-pagewrapper">
-            <div class="container">
+             {% comment %} <div class="container">
+               
                 {% block utility-bar %}
                     {% include "modules/utility-bar/header" %}
                 {% endblock utility-bar %}
-    
-                {% block utility-nav %}
-                    {% include "modules/page-header/utility-nav" %}
-                {% endblock utility-nav %}
-            </div> 
+               
+            </div>  {% endcomment %}
           
 
             <div class="mz-sticky-header">
+                <div class="container"> 
+                    {% block utility-nav %}
+                        {% include "modules/page-header/utility-nav" %} 
+                    {% endblock utility-nav %}
+                </div>
+
                 {% block page-header %}
                     {% include "modules/page-header" %}
                 {% endblock page-header %}  
@@ -167,9 +171,17 @@
                           data-cta-color="#ff7a00">
                     </div>
                 </div>
-                 {% dropzone "popular-articles" scope="site" %}
+                <div class="row">
+                    <div class="col-md-6 col-xs-12">
+                        {% dropzone "popular-articles" scope="site" %}
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                        {% dropzone "promoted-products" scope="site" %}
+                    </div>
+                </div>
+                 
             </div>
-             {% endblock commonbody-content %}
+            {% endblock commonbody-content %}
 
                 {% block body-below-content %}
                     {% dropzone "body-bottom" scope="page" %} 

@@ -30,7 +30,7 @@
         (function e() { var e = document.createElement("script"); e.type = "text/javascript"; e.async = true; e.src = "//staticw2.yotpo.com/{{ themeSettings.yotpoApiKey }}/widget.js"; var t = document.getElementsByTagName("script")[0]; t.parentNode.insertBefore(e, t) })();
     </script>
     <div class="container">
-        {% dropzone "h1-statement" scope="page" %}  
+         {% comment %} {% dropzone "h1-statement" scope="page" %}  {% endcomment %}
         
         <div class="yotpo yotpo-reviews-carousel"
             data-header-customisation-enabled="1"

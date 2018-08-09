@@ -1865,6 +1865,29 @@
       ]
     },
     {
+      "displayName": "Header Well",
+      "displayTemplate": "misc/headerwell",
+      "editViewFields": [
+        {
+          "anchor": "100%",
+          "xtype": "mz-input-text",
+          "name": "Heading",
+          "fieldLabel": "Enter Header Descrption"
+        },
+        {
+          "anchor": "100%",
+          "xtype": "mz-input-text",
+          "name": "wellDescrption",
+          "fieldLabel": "Enter Description"
+        }
+      ],
+      "icon": "/resources/admin/widgets/01_photo_text.png",
+      "id": "header-well",
+      "validPageTypes": [
+        "*"
+      ]
+    },
+    {
       "displayName": "Featured Categories",
       "displayTemplate": "misc/featured-categories",
       "editViewFields": [
