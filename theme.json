@@ -483,11 +483,30 @@
       "documentType": "web_page",
       "editor": "landing-page",
       "entityType": "webpage",
-      "id": "cofee-glossary",
+      "id": "coffee-glossary",
       "template": "coffee-glossary",
       "title": "Coffee Gloassary",
       "userCreatable": true
+    },
+    {
+      "documentType": "web_page",
+      "editor": "landing-page",
+      "entityType": "webpage",
+      "id": "Wholesale-program",
+      "template": "wholesale-program",
+      "title": "wholesale program",
+      "userCreatable": true
+    },
+    {
+      "documentType": "web_page",
+      "editor": "landing-page",
+      "entityType": "webpage",
+      "id": "commercial service",
+      "template": "commercial-service",
+      "title": "commercial service",
+      "userCreatable": true
     }
+
   ],
   "settings": {
     "siteName": "primacoffee",

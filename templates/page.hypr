@@ -129,7 +129,7 @@
                 
                 {% block mobile-nav %} 
                     {% include "modules/mobile-nav" %}   
-            {% endblock mobile-nav %}       
+                {% endblock mobile-nav %}       
                
             </div>
 
