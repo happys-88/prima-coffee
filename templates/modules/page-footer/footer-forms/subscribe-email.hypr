@@ -1,15 +1,26 @@
 <div class="mz-newsletter">
+	<div class="well well-large col-xs-6">
+	<h3>Contact and Connect</h3>
+	
+	<p>If you have any questions or have a product you’d like to see us carry, e-mail us at
+		<a href="sendto:sales@primacoffee.com">sales@primacoffee.com</a> or give us a call at
+		<a href="tel:18888377892">1-888-837-7892</a>.
+	</p>
 	<form id="subscribeEmailForm" onsubmit="return false;">
 		<div class="form-group">
-			<div class="input-group">					  	
-				<input type="email" class="form-control" placeholder="{{ labels.enterEmailAddress }}" id="subscribeEmail">
-				<span class="input-group-btn">
-					<button class="btn btn-default" id="subscribeEmailButton" type="button" >{{ labels.join }}</button>
-				</span>
+			<h3>Sign up for our newsletter</h3>
+			<div class="row">
+				<div class="col-sm-6 col-xs-9">
+					<input type="email" class="form-control" placeholder="{{ labels.enterEmailAddress }}" id="subscribeEmail">
+				</div>
+				<div class="col-sm-3 col-xs-3">
+					<button class="btn btn-default mz-button" id="subscribeEmailButton" type="button" >Subscribe</button>	
+				</div>
 			</div>
 			<div class="input-group">   
 				<span id="errorMsg" hidden="true"></span>
 			</div>
 		</div>						
 	</form>
+	</div>
 </div>

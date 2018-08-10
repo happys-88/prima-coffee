@@ -505,6 +505,15 @@
       "template": "commercial-service",
       "title": "commercial service",
       "userCreatable": true
+    },
+    {
+      "documentType": "web_page",
+      "editor": "landing-page",
+      "entityType": "webpage",
+      "id": "aboutPrimaCoffee",
+      "template": "about-prima-coffee",
+      "title": "About Prima Coffee",
+      "userCreatable": true
     }
 
   ],

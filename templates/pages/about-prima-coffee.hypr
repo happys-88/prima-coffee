@@ -1,0 +1,60 @@
+{% extends "page" %} 
+{% block body-tag-classes %}about-prima{% endblock body-tag-classes %}
+ 
+{% block body-content %}
+<div class="mz-l-container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 pull-right">
+            <div class="mz-customer-service-section">
+                {% dropzone "about-us-dropzone1" scope="page" %} 
+                {% dropzone "about-us-dropzone2" scope="page" %} 
+                {% block subscription %}
+                    <div class="col-xs-12">
+                        {% include "modules/page-footer/footer-forms/subscribe-email" %}
+                    </div>
+                {% endblock subscription %}
+                
+                <div class="mz-social-section">
+                    <h3 class="text-center">Follow Us</h3>
+                    <div class="col-sm-6 col-xs-12">
+                        <div id="fb-root"></div>
+                        <script>(function (d, s, id) {
+                                var js, fjs = d.getElementsByTagName(s)[0];
+                                if (d.getElementById(id)) return;
+                                js = d.createElement(s); js.id = id;
+                                js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.1';
+                                fjs.parentNode.insertBefore(js, fjs);
+                            }(document, 'script', 'facebook-jssdk'));
+                        </script>
+                        
+                        <div class="well">
+                            <div class="fb-page" data-href="https://www.facebook.com/primacoffee/" data-tabs="timeline" data-width="350" data-height="500"
+                                data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                                <blockquote cite="https://www.facebook.com/primacoffee/" class="fb-xfbml-parse-ignore">
+                                    <a href="https://www.facebook.com/primacoffee/">Facebook</a>
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <div class="well">
+                            <script src="https://apis.google.com/js/platform.js" async defer></script>
+                            <div class="g-page" data-href="https://plus.google.com/106284085717608477868" data-rel="publisher"></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <h2>Instagram</h2>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <h2>Twiter</h2>
+                    </div>
+                </div>
+                {% dropzone "about-us-dropzone3"scope="page" %}
+                {% dropzone "about-us-dropzone4" scope="page" %} 
+                {% dropzone "about-us-dropzone5" scope="page" %}
+                
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body-content %} 

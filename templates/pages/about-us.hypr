@@ -19,11 +19,7 @@
                 {% dropzone "about-us-dropzone5" scope="page" %}
             </div> 
         </div>
-        {% block subscription %}
-        <div>
-            {% include "modules/page-footer/footer-forms/subscribe-email" %}            
-        </div>
-        {% endblock subscription %}
+        
 		<!-- <div class="col-xs-12 col-sm-3 mz-content-left-nav">      
 			<div class="mz-l-sidebar">
 				{% include "pages/content-left-nav" %} 
