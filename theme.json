@@ -520,7 +520,7 @@
   "settings": {
     "siteName": "primacoffee",
     "allProductsCategoryId": "",
-    "sessionTimeout": "18000",
+    "sessionTimeout": "1800",
     "backofficeDateTimeFormat": "m/d/Y H:i:s O",
     "extendedPropertiesEnabled": false,
     "extendedPropertyParameters": "",
@@ -592,7 +592,8 @@
     "maxTopLevelNavLabelLength": 20,
     "pageSizeOptions": [
       32,
-      64
+      64,
+      100
     ],
     "viewAllPageSize": 48,
     "productInfinitySize": 48,

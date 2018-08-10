@@ -1,8 +1,6 @@
 ﻿/**
  * Unidirectional dispatch-driven collection views, for your pleasure.
  */
-
-
 define([
     'backbone',
     'modules/jquery-mozu',
@@ -26,9 +24,9 @@ define([
             _$body.html(response.body); 
             if (url) _dispatcher.replace(url);
             _$body.removeClass('mz-loading');
-            if ($(".view-all.selected").length) {
+            /*if ($(".view-all.selected").length) {
                 InfiniteScroller.update();
-            }
+            }*/ 
             blockUiLoader.unblockUi();  
             yotpo.update();
         } 
@@ -97,9 +95,9 @@ define([
         _dispatcher.onChange(function(url) {
             getPartialView(url, conf.template).then(updateUi, showError); 
         });
-        if ($(".view-all.selected").length) {
-            InfiniteScroller.update();
-        }
+        // if ($(".view-all.selected").length) {
+        //     InfiniteScroller.update();
+        // }
 
     }
 
