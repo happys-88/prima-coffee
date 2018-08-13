@@ -1,10 +1,10 @@
 {
-  "name": "PrimaCoffee_MasterTheme",
+  "name": "MasterTheme_PrimaCoffee",
   "author": {
     "name": "Happy",
-    "email": "hmasih@stegtechnologies.com" 
+    "email": "hmasih@stegtechnologies.com"
   },
-  "description": "PrimaCoffee_MasterTheme",
+  "description": "MasterTheme_PrimaCoffee", 
   "version": "0.1.0",
   "scripts": {
     "clean": "rm -rf compiled",
