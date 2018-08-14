@@ -6,11 +6,11 @@
     "isDesktop": true,
     "isMobile": true,
     "isTablet": true,
-    "name": "MasterTheme_PrimaCoffee",  
+    "name": "MasterTheme_PrimaCoffee",
     "allowProduction": true,
     "baseTheme": "https://github.com/happys-88/prima-coffee",
     "baseThemeVersion": {
-      "commit": "c3a26176c98443a62d393a5e7a4a542fc0efb111"
+      "commit": "49ac1d521d8560ee225a46c527b29da1e00b8347"
     },
     "baseThemeChannel": "stable"
   },

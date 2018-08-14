@@ -7,8 +7,8 @@
           {% partial_cache %}
 
           {% for link in navigation.tree %} 
-            {% if not link.isHidden and not link.isEmpty and link.nodeType != "page" and forloop.counter0 <= themeSettings.maxTopLevelNavItems %}    
-            <li class="mz-sitenav-item">
+            {% if not link.isHidden and not link.isEmpty and forloop.counter0 <= themeSettings.maxTopLevelNavItems %}    
+            <li class="mz-sitenav-item {% if link.name=='Home' %}hidden{% endif %}"> 
                 <a class="mz-sitenav-link main-link" {% if link.openInNewWindow %}target='_blank'{% endif %} href="{{link.url}}"> 
                   <span class="mz-sitenav-link-iiner"> 
                     {{link.name|replace("_", " ")|replace(themeSettings.columnBreaker, "")|safe}}
