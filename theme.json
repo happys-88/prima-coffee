@@ -6,7 +6,7 @@
     "isDesktop": true,
     "isMobile": true,
     "isTablet": true,
-    "name": "PrimaCoffee_MasterTheme", 
+    "name": "PrimaCoffee_MasterTheme",
     "allowProduction": true,
     "baseTheme": "https://github.com/happys-88/prima-coffee",
     "baseThemeVersion": {
@@ -514,8 +514,15 @@
       "template": "about-prima-coffee",
       "title": "About Prima Coffee",
       "userCreatable": true
+    },
+    {
+      "documentType": "web_page",
+      "entityType": "webpage",
+      "id": "priceMatchForm",
+      "template": "price-match-request",
+      "title": "Price Match Request Form",
+      "userCreatable": true
     }
-
   ],
   "settings": {
     "siteName": "primacoffee",
@@ -637,15 +644,14 @@
     "avalaraToken": "MjAwMDA4NDgwMzpFQUQyM0JBQzMzNzRBN0I3",
     "avalaraCompanyCode": "PRIMALLC",
     "mailChimpKey": "1afe25343b7a71ed977589911f618df7-us7",
-    "mailchimpDeals":
-    {
-        "PSDeals":"88b2cc28b8", 
-        "PSNewsLetter":"0d98f9240b",
-        "PSBlogs":"116cb2b7b8", 
-        "PCDeals":"88b2cc28b8", 
-        "PCNewsLetter":"3b44fc04cf", 
-        "PCBlogs":"e767709c3f", 
-        "AncapNewsLetter":"c10e06d63a"
+    "mailchimpDeals": {
+      "PSDeals": "88b2cc28b8",
+      "PSNewsLetter": "0d98f9240b",
+      "PSBlogs": "116cb2b7b8",
+      "PCDeals": "88b2cc28b8",
+      "PCNewsLetter": "3b44fc04cf",
+      "PCBlogs": "e767709c3f",
+      "AncapNewsLetter": "c10e06d63a"
     },
     "disqusKey": "ji62aEaY2h92OZ9iOdQBePwvgJUllr1b58BMnRWW2ZwcV0ewPvZVwxeLMWDrUjK5",
     "sendGridKey": "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",
@@ -912,7 +918,7 @@
     "questions": "questions",
     "showYotpoGallery": true,
     "instagramFollowUsLink": "https://www.instagram.com/prima.supply/?hl=en",
-    "addThisPubIdBlogSharing": "ra-519bb90e58f9bf27" 
+    "addThisPubIdBlogSharing": "ra-519bb90e58f9bf27"
   },
   "layoutWidgets": [
     {
