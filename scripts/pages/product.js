@@ -38,11 +38,11 @@
                 controls,
                 windowWidth = $(window).width(),
                 minSlideItems; 
-            if(windowWidth<=767){ 
+            if(windowWidth <= 991){  
                 minSlides = 2;
                 maxSlides = 2;
-                slideMargin = 5;
-                slideWidth = 333;
+                slideMargin = 20;
+                slideWidth = 300; 
                 page = true;
                 controls = false;
                 minSlideItems = $("#addonslider .addon-product").length; 
