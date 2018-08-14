@@ -6,7 +6,7 @@
     "isDesktop": true,
     "isMobile": true,
     "isTablet": true,
-    "name": "PrimaCoffee_MasterTheme",
+    "name": "MasterTheme_PrimaCoffee",  
     "allowProduction": true,
     "baseTheme": "https://github.com/happys-88/prima-coffee",
     "baseThemeVersion": {
