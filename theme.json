@@ -918,11 +918,7 @@
     "questions": "questions",
     "showYotpoGallery": true,
     "instagramFollowUsLink": "https://www.instagram.com/prima.supply/?hl=en",
-<<<<<<< HEAD
-    "addThisPubIdBlogSharing": "ra-51b87b7c4a40d8c0" 
-=======
-    "addThisPubIdBlogSharing": "ra-519bb90e58f9bf27"
->>>>>>> 5116ceb17e8e73d932a980e6d139298b87c29dfc
+    "addThisPubId": "ra-51b87b7c4a40d8c0" 
   },
   "layoutWidgets": [
     {
