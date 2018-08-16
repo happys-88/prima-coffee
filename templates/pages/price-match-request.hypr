@@ -7,12 +7,14 @@
 {% endblock breadcrumbs %}
 {% block body-content %}
 {% require_script "pages/pricerequest" %}
+{% comment %}
 {% require_script "pages/commercial-services" %}
 {% require_script "pages/wholesale" %}
+ {% endcomment %}
 <div class="mz-customer-service-page">
     <div class="mz-l-container">
         <div class="row"> 
-            <div class="col-sm-9 col-lg-10 mz-customer-service-panels pull-right">
+            <div class="col-sm-9 col-lg-10 mz-customer-service-panels">
                 <h3 class="mz-l-stack-sectiontitle">{{ labels.priceMatchRequest }}</h3>
                 <div class="mz-dropzone">
                     {% dropzone "price-request" scope="page" %}

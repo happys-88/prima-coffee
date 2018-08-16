@@ -9,15 +9,15 @@ function ($, bxSlider) {
             windowWidth = $( window ).width();  
         if(windowWidth <= 767){
             minSlides = 2;
-            slideWidth = 150;  
+            slideWidth = 333;  
         }else{
             if(windowWidth >=768 && windowWidth <=1024 ){
                 minSlides = 4;
-                slideWidth = 170; 
+                slideWidth = 333; 
             }
             else{
                 minSlides = 4;
-                slideWidth = 275;     
+                slideWidth = 333;     
             } 
             
         }

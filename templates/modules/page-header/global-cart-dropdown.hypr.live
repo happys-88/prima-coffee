@@ -49,13 +49,13 @@
                         {% if item.product.options and themeSettings.showCartItemOptions %}
                           <dl class="mz-propertylist">
                             {% for option in item.product.options %}
-                              <dt>{{ option.name }}</dt>&nbsp;
+                              <dt>{{ option.name }}</dt> 
                               <dd>
-                                {% if option.value %}
-                                    {{ option.value }}
+                                {% if option.stringValue %}
+                                  {{ option.stringValue }}
                                 {% else %}
-                                    {{ option.shopperEnteredValue }}
-                                {% endif %}
+                                  {{ option.value|default(option.shopperEnteredValue) }}
+                                {% endif %} 
                               </dd>
                             {% endfor %}
                           </dl>

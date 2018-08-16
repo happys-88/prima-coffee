@@ -11,7 +11,6 @@
         </a> 
         {% endblock product-image %}
     </div>
-    {% if pageContext.pageType == "category" %}
      <div class="mz-productlisting-info">  
         <a class="mz-productlisting-title" href="{% make_url "product" model %}">{{model.content.productName}}</a>
          
@@ -99,10 +98,7 @@
                 {% endif %} 
             {% endwith %}   
         </div>
-
-
-    {% else %}
-        <div class="mz-productlisting-info">
+        <div class="mz-feature-product">
                     {% if pageContext.isDesktop %}
                         <a class="mz-productlisting-title" href="{% make_url "product" model %}">{{model.content.productName}}</a>
                     {% else %}
@@ -117,6 +113,4 @@
                         </span>     
                     </div>           
             </div>
-   
-    {% endif %}
 </div>

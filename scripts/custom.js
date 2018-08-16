@@ -304,7 +304,20 @@ define([
 		// Global Cart Continue btn
 		// $(document).on('click','#continueShoppingGlobalCart', function(){   
 		//     window.history.back();    
-	    // });    
+		// });  
+	
+			$('input[type="checkbox"]').click(function () {
+				console.log("working");
+				$(".mz-certificate-upload").toggle();
+			});  
+			var singleImgContainer = $(".yotpo-single-image-container");
+			//var size_li = $(singleImgContainer).size();
+			var galleryThumbnails = 8;
+			$(".yotpo-single-image-container").addClass("hidden-thumbnails");
+			$('.yotpo-single-image-container:lt(' + galleryThumbnails + ')').removeClass("hidden-thumbnails");
+			$('.yotpo-load-more-button').click(function () {
+				$(".yotpo-single-image-container").removeClass("hidden-thumbnails");
+			});
 
 	});
 }); 

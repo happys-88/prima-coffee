@@ -1,0 +1,75 @@
+{% extends "page" %} 
+{% block body-tag-classes %}about-prima{% endblock body-tag-classes %}
+ 
+{% block body-content %}
+<div class="mz-l-container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 pull-right">
+            <div class="mz-customer-service-section">
+                {% dropzone "about-us-dropzone1" scope="page" %} 
+                {% dropzone "about-us-dropzone2" scope="page" %} 
+                {% block subscription %}
+                    <div class="col-xs-12">
+                        {% include "modules/page-footer/footer-forms/subscribe-email" %}
+                    </div>
+                {% endblock subscription %}
+                
+                <div class="mz-social-section">
+                    <h3 class="text-center">Follow Us</h3>
+                    <div class="col-sm-6 col-xs-12">
+                        <!-- Facebook -->
+                        <div id="fb-root"></div>
+                        <script>(function (d, s, id) {
+                                var js, fjs = d.getElementsByTagName(s)[0];
+                                if (d.getElementById(id)) return;
+                                js = d.createElement(s); js.id = id;
+                                js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.1';
+                                fjs.parentNode.insertBefore(js, fjs);
+                            }(document, 'script', 'facebook-jssdk'));
+                        </script>
+                        
+                        <div class="well">
+                            <div class="fb-page" data-href="https://www.facebook.com/primacoffee/" data-tabs="timeline" data-width="350" data-height="500"
+                                data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                                <blockquote cite="https://www.facebook.com/primacoffee/" class="fb-xfbml-parse-ignore">
+                                    <a href="https://www.facebook.com/primacoffee/">Facebook</a>
+                                </blockquote>
+                            </div>
+                        </div>
+                        <!--/ Facebook -->
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                      <div class="well">
+                            <!-- Twitter -->
+                            <a width="350" height="496" class="twitter-timeline" href="https://twitter.com/primacoffee?ref_src=twsrc%5Etfw">Tweets by Prima Coffee</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                            <!-- Twitter -->
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <div class="well">
+                            <!-- Instagram -->
+                            <a href="https://instawidget.net/v/user/primacoffee" id="link-79a0931173532f7bf23aa3379f4cd826fe7d0b57f376db747ea4a73f3ca21fa4">@primacoffee</a>
+                            <script src="https://instawidget.net/js/instawidget.js?u=79a0931173532f7bf23aa3379f4cd826fe7d0b57f376db747ea4a73f3ca21fa4&width=305px"></script>
+                            <!--/ Instagram -->
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <div class="well">
+                            <!-- Google Plus -->
+                            <!-- Place this tag in your head or just before your close body tag. -->
+                            <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+                            <!-- Place this tag where you want the widget to render. -->
+                            <div class="g-page" data-width="305" data-href="https://plus.google.com/106284085717608477868" data-rel="publisher"></div>
+                            <!--/ Google Plus -->
+                        </div>
+                    </div>
+                </div>
+                {% dropzone "about-us-dropzone3"scope="page" %}
+                {% dropzone "about-us-dropzone4" scope="page" %} 
+                {% dropzone "about-us-dropzone5" scope="page" %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body-content %}

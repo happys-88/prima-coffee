@@ -33,8 +33,8 @@
 	color: @tertiaryBtnColor; 
 } 
 
-/**** Button Styling ****/
 
+/**** Button Styling ****/
 .share-count-text{
 	font-size: 20px;
 	color: #ff7a00;
@@ -44,23 +44,23 @@
 
 /**** Custom Changes ****/
 body{
-	background: @textColorWhite; 
-  	font-family: @fontFamily;
+  background: @textColorWhite;
+  font-family: @fontFamily;
     background: #f3eded url(https://prima-coffee.com/sites/all/themes/pc/images/cream_dust.png) repeat 0 0;
   .mz-l-pagewrapper{
 	  .mz-l-pagecontent{
 		  background: transparent;
 		  .mz-l-container{
 			.category-description{
-				line-height: 20px;
+				line-height: 24px;
+				font-size: 16px;
+				font-weight: 500;
 			}
 		}
 	  }
-	  #mz-drop-zone-home-slider{
-		  margin-top:-143px;
-	  }
+	  
 	  .container{
-		  max-width: 1440px;
+		  max-width: 1170px;
 		  .mz-utilitynav{
 			  .mz-utilitynav-list{
 				float: right;
@@ -79,6 +79,14 @@ body{
   }
 }
 
+.mz-homepage  {
+	.mz-sticky-header {
+		position: absolute;
+		width: 100%;
+		top: 1px;
+		z-index: 1;
+	}
+}
 
 .mz-pageheader{
 	position: relative;
@@ -96,11 +104,16 @@ body{
 				background: transparent;
 			}
 			.mz-searchbox {
-				margin: 13px 0 0;
+				//margin: 13px 0 0;
+				margin-top: 13px;
+				width: 100%;
 				.mz-searchbox-field{
 					border-radius: 50px;
 					font-weight: 500;
-
+					width: 100%;
+						.twitter-typeahead{
+							width:100%;
+						}
 						.mz-searchbox-input {
 								width: 100%;
 								border-radius:50px;
@@ -114,7 +127,7 @@ body{
 		}
 		.mz-storebranding{
 			.mz-logo{
-				background: url("../resources/images/prima-supply-logo.png") left top no-repeat;
+				background: url("../resources/images/logo.png") left top no-repeat;
 				background-size: contain;
 				// width: 190px;
 				// height: 56px; 
@@ -156,7 +169,8 @@ body{
 .mz-sitenav{
 	.mz-sitenav-item{
 		.mz-sitenav-link {
-				padding: 25px 20px;
+				padding: 23px 20px;
+                height: auto!important;
 		    }
 		&:hover{
 			>.mz-sitenav-link{ 
@@ -370,7 +384,7 @@ body{
 		
 			   .mz-productlist-item{
 					.mz-productlisting{
-						background: #fff;
+						//background: #fff;
 						.mz-productlisting-image {
 							width: 100%;
 							text-align: center;
@@ -385,6 +399,9 @@ body{
 							}
 						}
 						.mz-productlisting-info{
+							display: none;
+						}
+						.mz-feature-product{
 							.mz-productlisting-title{
 								//font-family: helvetica neue,Helvetica,Arial,sans-serif;
 								font-size: 16px;
@@ -575,15 +592,9 @@ body{
 			line-height: 42px;
 			color: inherit;
 			background-color: #eee;
-			-webkit-border-radius: 6px;
-			-moz-border-radius: 6px;
 			border-radius: 6px;
-			-webkit-border-radius: 6px;
-			-moz-border-radius: 6px;
-			border-radius: 6px;
-			-webkit-border-radius: 6px;
-			-moz-border-radius: 6px;
-			border-radius: 6px;
+		
+		
 	}
 			.spacer-line {
 			margin-top: 28px;
@@ -725,15 +736,6 @@ body{
 		-webkit-border-radius: 4px;
 		-moz-border-radius: 4px;
 		border-radius: 4px;
-		-webkit-border-radius: 4px;
-		-moz-border-radius: 4px;
-		border-radius: 4px;
-		-webkit-border-radius: 4px;
-		-moz-border-radius: 4px;
-		border-radius: 4px;
-		-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
-		-moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
-		box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
 		-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
 		-moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
 		box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
@@ -834,7 +836,7 @@ li{
 			text-align: center;
 		}
 	}
-}
+} 
 
 /**** Social Sharing ****/
 .mz-social-sharing{
@@ -863,3 +865,118 @@ li{
 		} 
 	}
 }
+.mz-coffee-glossary{
+	.mz-l-stack-sectiontitle{
+		font-weight: 700;
+		font-size: 36px;
+	   }
+	.field-item{
+		p{
+			line-height: 27px;
+				strong {
+                     font-weight: 700;
+				}
+			}
+		}
+}
+.commercial-service{
+	.mz-cms-block { 
+        min-height: auto;   
+   }
+	 p{
+			line-height: 1.5em;
+			font-size: 16px;
+			color: #333;
+	}
+   .plain-thumbnail{
+			p{
+				line-height: 1.5em;
+				font-size: 16px;
+				color: #333;
+			}
+			img {
+				display: block;
+				height: 173px;
+				margin: 0 auto;
+		   }
+		h5 {
+			font-size: 20px;
+			font-weight: 600;
+		}
+		p {
+			line-height: 24px;
+		}
+   }
+   #commercialForm{
+	   .form-control {
+			height: 44px;
+		}
+   }
+}
+.about-prima{
+	.about-prima-coffee-image{
+		img {
+			margin-left: 30px;
+		}
+		.img1 {
+				width: 370px;
+			}
+		.img2 {
+			width: 170px;
+			height: 227px;
+		}
+		.img3 {
+			height: 164px;
+			width: 170px;
+		}
+		p {
+		line-height: 28px;
+		font-size: 16px;
+	 }
+	}
+	.mz-newsletter{
+		.mz-button{
+			padding: 4px 25px;
+			margin-top: 0;
+
+		}
+	}
+}
+
+.mz-social-section {
+	h3{
+		font-size: 28px;
+		font-weight: 700;
+	}
+	max-width: 750px;
+    margin: 0 auto;
+}
+//promoted producta and popular articles
+#mz-drop-zone-popular-articles, #mz-drop-zone-promoted-products{
+  a{
+    img{
+      border-radius: 4px;
+    }
+  }
+  p{
+    margin: 12.5px 0;
+    font-size: 16px;
+    line-height: 28px;
+    color: #333;
+  }
+
+}
+.price-request {
+	.mz-customer-service-page{
+			label {
+			text-align: left;
+		}
+	}
+
+}
+.mz-category{
+		.mz-feature-product {
+		display: none;
+	}
+}
+

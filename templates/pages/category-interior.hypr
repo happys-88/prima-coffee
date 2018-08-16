@@ -6,7 +6,7 @@
  {% else %}
 <h1 class="mz-pagetitle">{{ model.content.name }}</h1>
 <div class="category-description">
-	<p>{{ model.content.description|safe }}</p>
+	<div class="col-xs-12">{{ model.content.description|safe }}</div>
 </div>
 {% endif %} 
 {% endif %}

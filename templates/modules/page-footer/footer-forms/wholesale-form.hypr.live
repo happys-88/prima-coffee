@@ -1,31 +1,58 @@
 {% block wholesale-form %}
-	           {% include "modules/common/message-bar" with model=model.messages %}
-                <div class="col-md-6 col-xs-12 mz-contact-form">
-                    <form name="wholesaleForm" method="" id="commercialForm" action="">    
-                    	<div class="form-group">
-                            <div class="col-sm-8 col-xs-12">
-                                <input type="text" placeholder="{{ labels.nameph }}" name="name" data-mz-value="name" required class="form-control">
-                                <span class="mz-validationmessage" data-mz-validationmessage-for="name"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-8 col-xs-12">
-                                <input type="text" placeholder="{{ labels.emailph }}" name="email" type="email" data-mz-value="email" required class="form-control">
-                                <span class="mz-validationmessage" data-mz-validationmessage-for="email"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">                           
-                            <div class="col-sm-8 col-xs-12">
-                              <input type="text" placeholder="{{ labels.businessph }}" name="business"  data-mz-value="business" required class="form-control">
-                                <span class="mz-validationmessage" data-mz-validationmessage-for="business"></span>
-                            </div>
-                        </div>
-                        <span id="wholesaleFormError"></span>                              
-                        <div class="form-group">
-                            <div class="col-sm-8 col-sm-offset-4 col-xs-12">
-                                <button class="mz-button" type="button" data-mz-action="submitRequest">{{ labels.submit }}</button>
-                            </div>
-                        </div>
-                    </form>
+<div class="container">
+    {% include "modules/common/message-bar" with model=model.messages %}
+    <div class="mz-contact-form clearfix">
+        <form name="wholesaleForm" method="" id="commercialForm" action="">    
+        	<div class="form-group clearfix">
+                <label class="col-xs-12" for="sku">Name <span class="is-required"> *</span></label>
+                <div class="col-xs-12">
+                    <input type="text" placeholder="{{ labels.nameph }}" name="name" data-mz-value="name" required class="form-control">
+                    <span class="mz-validationmessage" data-mz-validationmessage-for="name"></span>
                 </div>
-    	{% endblock wholesale-form %}
+            </div>
+            <div class="form-group clearfix">
+                <label class="col-xs-12" for="sku">Email <span class="is-required"> *</span></label>
+                <div class="col-xs-12">
+                    <input type="text" placeholder="{{ labels.emailph }}" name="email" type="email" data-mz-value="email" required class="form-control">
+                    <span class="mz-validationmessage" data-mz-validationmessage-for="email"></span>
+                </div>
+            </div>
+            <div class="form-group clearfix"> 
+                <label class="col-xs-12" for="sku">Business Name <span class="is-required"> *</span></label>
+                <div class="col-xs-12">
+                  <input type="text" placeholder="{{ labels.businessph }}" name="business"  data-mz-value="business" required class="form-control">
+                    <span class="mz-validationmessage" data-mz-validationmessage-for="business"></span>
+                </div>
+            </div>
+            <div class="form-group clearfix">
+                <div class="col-xs-12 resale-certificate">
+                    <label>Do you have a Resale Certificate?</label>
+                    <input type="checkbox" id="submitted-resale-certificate" name="" value="" class="form-checkbox">
+                    <label for="submitted-resale-certificate"> Yes </label> 
+                </div>
+            </div>
+
+             <div class="form-group mz-certificate-upload clearfix"> 
+                <label class="col-xs-12" for="Certificate">Upload Resale Certificate</label>
+                <div class="col-xs-8">
+                    <input type="file" placeholder="{{ labels.businessph }}" name="business"      data-mz-value="business" id="Certificate">
+                </div>
+                <div class="col-xs-4">
+                    <button class="mz-button" type="button">Upload</button>
+                </div>
+                <div class="col-xs-12 mz-file-description">
+                    <p>Files must be less than <strong>6 MB</strong>.</p>
+                    <p>Allowed file types: <strong>gif jpg png pdf doc docx</strong>.</p>
+                </div>
+            </div>
+         
+            <span id="wholesaleFormError"></span>                              
+            <div class="form-group clearfix">
+                <div class="col-xs-12">
+                    <button class="mz-button" type="button" data-mz-action="submitRequest">{{ labels.submit }}</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock wholesale-form %}

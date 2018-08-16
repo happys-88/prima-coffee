@@ -126,7 +126,8 @@ define([
                                 el:$('.recently-viewed-list')
                             });
                            
-                                var renderedView = view.render();
+                            var renderedView = view.render();
+                            yotpo.showYotpoRatingStars(); 
                         
                             if(orderedProductList.length > 1){
                                 var minSlides,
@@ -163,8 +164,7 @@ define([
                     });    
                 }
             }
-
-            //yotpo.showYotpoRatingStars();   
+            
         } 
 
         function deleteProduct(product) {

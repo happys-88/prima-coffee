@@ -42,28 +42,30 @@
               
               {% if item.product.options and themeSettings.showCartItemOptions %}
                 <dl class="mz-propertylist">
-                {% for option in item.product.options %}
-                <dt>{% if option.name == "OTHER" %}
-                      OPTION
+                  {% for option in item.product.options %}
+                    <dt>
+                      {% if option.name == "OTHER" %}
+                        OPTION
                       {% else %}
-                      {{ option.name }}
-                      {% endif %}</dt>&nbsp;
-                <dd>
-                  {% if option.stringValue == 'CHR(38)' %}
-                  &amp;
-                  {% else %}
-                    {% if option.stringValue == 'CHR(64)' %}
-                    @
-                    {% else %}
-                      {% if option.stringValue %}
-                          {{ option.stringValue }}
-                      {% else %}
-                          {{ option.value|default(option.shopperEnteredValue) }}
+                        {{ option.name }} 
                       {% endif %}
-                    {% endif %}
-                  {% endif %}
-                </dd>
-                {% endfor %}
+                    </dt>
+                    <dd>
+                      {% if option.stringValue == 'CHR(38)' %}
+                        &amp;
+                      {% else %}
+                        {% if option.stringValue == 'CHR(64)' %}
+                          @
+                        {% else %}
+                          {% if option.stringValue %}
+                            {{ option.stringValue }}
+                          {% else %}
+                            {{ option.value|default(option.shopperEnteredValue) }}
+                          {% endif %}
+                        {% endif %}
+                      {% endif %}
+                    </dd>
+                  {% endfor %}
                 </dl>
               {% endif %}
               {% if item.product.productUsage == 'Bundle' %}

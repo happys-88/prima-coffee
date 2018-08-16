@@ -11,14 +11,14 @@ define([
 function ($, _, Hypr, Backbone, HyprLiveContext, ProductModel, api, yotpo) {  
 
 	$(document).ready(function(){
-		var singleImgContainer = $(".yotpo-single-image-container");
-	    var size_li = $(singleImgContainer).size();
-	    var galleryThumbnails = 8;
-	    $(".yotpo-single-image-container").addClass("hidden-thumbnails");
-	    $('.yotpo-single-image-container:lt('+galleryThumbnails+')').removeClass("hidden-thumbnails"); 
-	    $('.yotpo-load-more-button').click(function () {
-	    	$(".yotpo-single-image-container").removeClass("hidden-thumbnails");
-	   	});
+		// var singleImgContainer = $(".yotpo-single-image-container");
+	    // var size_li = $(singleImgContainer).size();
+	    // var galleryThumbnails = 8;
+	    // $(".yotpo-single-image-container").addClass("hidden-thumbnails");
+	    // $('.yotpo-single-image-container:lt('+galleryThumbnails+')').removeClass("hidden-thumbnails"); 
+	    // $('.yotpo-load-more-button').click(function () {
+	    // 	$(".yotpo-single-image-container").removeClass("hidden-thumbnails");
+	   	// });
 
 	    var product = ProductModel.Product.fromCurrent();
 	    var prodType = product.attributes.productType;

@@ -1,10 +1,32 @@
 {% extends "page" %}
-
+{% block body-tag-classes %}commercial-service{% endblock body-tag-classes %}
+{% block utility-nav %} {% endblock utility-nav %}
+{% block page-header %}{% endblock page-header %} 
+{% block mobile-nav %} {% endblock mobile-nav %}
+ {% block breadcrumbs %} {% endblock breadcrumbs %}
 {% block body-content %}
 {% require_script "pages/commercial-services" %}
+    <div class="mz-l-container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 pull-right">
+                <div class="mz-customer-service-section">
+                    
+                    {% dropzone "about-us-dropzone1" scope="page" %} 
+                    {% dropzone "about-us-dropzone2" scope="page" %}
+                    {% dropzone "about-us-dropzone3" scope="page" %}
+                    {% dropzone "about-us-dropzone4" scope="page" %} 
+                    {% dropzone "about-us-dropzone5" scope="page" %}
+                    <div id="commercialForm">
+                        {% include "modules/page-footer/footer-forms/commercial-service-form" %}
+                    </div>
 
-        <div id="commercialForm">
-            {% include "modules/page-footer/footer-forms/commercial-service-form" %}
+                </div>
+            </div>
         </div>
+    </div>
 
 {% endblock body-content %}
+ {% block commonbody-content %} {% endblock commonbody-content %}
+
+
+

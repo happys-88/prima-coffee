@@ -1,8 +1,8 @@
 <ul>     
-  {% if (model|get_product_attribute_value("tenant~field_pre_brands")) %} 
+  {% if (model|get_product_attribute_value("tenant~brand")) %} 
     <li class="col-sm-4 col-xs-6 product-brand">  
       {% for brandCat in model.categories %} 
-        {% if brandCat.content.name == model|get_product_attribute_value("tenant~field_pre_brands") %} 
+        {% if brandCat.content.name == model|get_product_attribute_value("tenant~brand") %} 
           {% with brandCat.content.categoryImages|first as brandImage %} 
             <div class="brand-logo-img">
               {% if brandImage.imageUrl %}
@@ -16,8 +16,9 @@
               {% endif %}
             </div> 
           {% endwith %} 
-
-        {% endif %} 
+        {% else %}
+        
+        {% endif %}  
       {% endfor %}    
     </li>     
   {% endif %}   

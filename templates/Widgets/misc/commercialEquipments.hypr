@@ -1,0 +1,5 @@
+ <div class="plain-thumbnail col-xs-12">
+        <img src="{{ model.config.commercialEquipmentImage.imageUrl }}" alt="">
+                <h5> {{ model.config.input1 }}</h5>
+                 <p> {{ model.config.describe1|safe }}</p>
+ </div>

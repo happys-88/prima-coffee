@@ -29,44 +29,51 @@
                 $(dp).dateinput().css('color', Hypr.getThemeSetting('textColor')).on('change  blur', _.bind(me.onOptionChange, me));
             });
         },
-        productCarousel: function () {
+        productCarousel: function () { 
             var minSlides, 
                 maxSlides,
                 slideWidth,
                 slideMargin,
                 page,
                 controls,
-                windowWidth=$( window ).width();
-            if(windowWidth<=767){ 
-                 minSlides = 2;
-                 maxSlides = 2;
-                 slideMargin = 5;
-                 slideWidth = 333;
-                 page = true;
-                 controls = false;
+                windowWidth = $(window).width(),
+                minSlideItems; 
+            if(windowWidth <= 991){  
+                minSlides = 2;
+                maxSlides = 2;
+                slideMargin = 20;
+                slideWidth = 300; 
+                page = true;
+                controls = false;
+                minSlideItems = $("#addonslider .addon-product").length; 
             }else{
-                 minSlides = 4;
-                 maxSlides = 12;
-                 slideWidth = 100; 
-                 slideMargin = 50;   
-                 page = false;
-                 controls = true; 
+                minSlides = 4;
+                maxSlides = 12;
+                slideWidth = 333;  
+                slideMargin = 25;      
+                page = false;
+                controls = true;
+                minSlideItems = $("#addonslider .addon-product").length;   
             }
-            $('#addonslider').bxSlider({  
-                minSlides: minSlides,
-                maxSlides: maxSlides,
-                moveSlides: 1,
-                slideWidth: slideWidth,
-                slideMargin: slideMargin,
-                responsive: true,
-                pager: page,
-                controls:controls,
-                speed: 1000,
-                infiniteLoop: false,
-                onSliderLoad: function() {
-                    $(".slider").css("visibility", "visible");
-                }  
-            });
+            
+            if((minSlides==2 && minSlideItems>2) || (minSlides==4 && minSlideItems>4)){ 
+                $('#addonslider').bxSlider({  
+                    minSlides: minSlides,
+                    maxSlides: maxSlides,
+                    moveSlides: 1,
+                    slideWidth: slideWidth,
+                    slideMargin: slideMargin,
+                    responsive: true,
+                    pager: page,
+                    controls:controls,
+                    speed: 1000,
+                    infiniteLoop: false,
+                    onSliderLoad: function() {
+                        $(".slider").css("visibility", "visible");
+                    }  
+                });
+            } 
+            
         },
         onOptionChange: function (e) {
             return this.configure($(e.currentTarget));

@@ -1,21 +1,21 @@
         {% block commercial-form %}
 	           {% include "modules/common/message-bar" with model=model.messages %}
-                <div class="col-md-6 col-xs-12 mz-contact-form">
+                <div class="col-xs-12 mz-contact-form">
                     <form name="commercialForm" method="" id="commercialForm" action="">    
                     	<div class="form-group">
-                            <div class="col-sm-8 col-xs-12">
+                            <div class="col-xs-12 col-md-6">
                                 <input type="text" placeholder="{{ labels.emailph }}" name="email" type="email" data-mz-value="email" required class="form-control">
                                 <span class="mz-validationmessage" data-mz-validationmessage-for="email"></span>
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-sm-8 col-xs-12">
+                            <div class="col-xs-12 col-md-6">
                                 <input type="text" placeholder="{{ labels.nameph }}" name="name" data-mz-value="name" required class="form-control">
                                 <span class="mz-validationmessage" data-mz-validationmessage-for="name"></span>
                             </div>
                         </div>
                         <div class="form-group">                           
-                            <div class="col-sm-8 col-xs-12">
+                            <div class="col-xs-12">
                                <textarea cols="60" rows="3" placeholder="{{ labels.comments }}" name="comment" data-mz-value="comment" class="form-control">
                                     {{ lables.comments }}
                                 </textarea>
@@ -24,8 +24,8 @@
                         </div>
                         <span id="commerceialFormError"></span>                              
                         <div class="form-group">
-                            <div class="col-sm-8 col-sm-offset-4 col-xs-12">
-                                <button class="mz-button" type="button" data-mz-action="submitRequest">{{ labels.submit }}</button>
+                            <div class="col-sm-8  col-xs-12">
+                                <button class="mz-button" type="button" data-mz-action="submitRequest">Send Me More Information</button>
                             </div>
                         </div>
                     </form>

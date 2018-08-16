@@ -6,11 +6,11 @@
     "isDesktop": true,
     "isMobile": true,
     "isTablet": true,
-    "name": "PrimaCoffee_MasterTheme", 
+    "name": "MasterTheme_PrimaCoffee",
     "allowProduction": true,
     "baseTheme": "https://github.com/happys-88/prima-coffee",
     "baseThemeVersion": {
-      "commit": "c3a26176c98443a62d393a5e7a4a542fc0efb111"
+      "commit": "49ac1d521d8560ee225a46c527b29da1e00b8347"
     },
     "baseThemeChannel": "stable"
   },
@@ -478,12 +478,56 @@
       "template": "order-status",
       "title": "Order Status",
       "userCreatable": false
+    },
+    {
+      "documentType": "web_page",
+      "editor": "landing-page",
+      "entityType": "webpage",
+      "id": "coffee-glossary",
+      "template": "coffee-glossary",
+      "title": "Coffee Gloassary",
+      "userCreatable": true
+    },
+    {
+      "documentType": "web_page",
+      "editor": "landing-page",
+      "entityType": "webpage",
+      "id": "Wholesale-program",
+      "template": "wholesale-program",
+      "title": "wholesale program",
+      "userCreatable": true
+    },
+    {
+      "documentType": "web_page",
+      "editor": "landing-page",
+      "entityType": "webpage",
+      "id": "commercial service",
+      "template": "commercial-service",
+      "title": "commercial service",
+      "userCreatable": true
+    },
+    {
+      "documentType": "web_page",
+      "editor": "landing-page",
+      "entityType": "webpage",
+      "id": "aboutPrimaCoffee",
+      "template": "about-prima-coffee",
+      "title": "About Prima Coffee",
+      "userCreatable": true
+    },
+    {
+      "documentType": "web_page",
+      "entityType": "webpage",
+      "id": "priceMatchForm",
+      "template": "price-match-request",
+      "title": "Price Match Request Form",
+      "userCreatable": true
     }
   ],
   "settings": {
     "siteName": "primacoffee",
     "allProductsCategoryId": "",
-    "sessionTimeout": "18000",
+    "sessionTimeout": "1800",
     "backofficeDateTimeFormat": "m/d/Y H:i:s O",
     "extendedPropertiesEnabled": false,
     "extendedPropertyParameters": "",
@@ -555,7 +599,8 @@
     "maxTopLevelNavLabelLength": 20,
     "pageSizeOptions": [
       32,
-      64
+      64,
+      100
     ],
     "viewAllPageSize": 48,
     "productInfinitySize": 48,
@@ -599,15 +644,14 @@
     "avalaraToken": "MjAwMDA4NDgwMzpFQUQyM0JBQzMzNzRBN0I3",
     "avalaraCompanyCode": "PRIMALLC",
     "mailChimpKey": "1afe25343b7a71ed977589911f618df7-us7",
-    "mailchimpDeals":
-    {
-        "PSDeals":"88b2cc28b8", 
-        "PSNewsLetter":"0d98f9240b",
-        "PSBlogs":"116cb2b7b8", 
-        "PCDeals":"88b2cc28b8", 
-        "PCNewsLetter":"3b44fc04cf", 
-        "PCBlogs":"e767709c3f", 
-        "AncapNewsLetter":"c10e06d63a"
+    "mailchimpDeals": {
+      "PSDeals": "88b2cc28b8",
+      "PSNewsLetter": "0d98f9240b",
+      "PSBlogs": "116cb2b7b8",
+      "PCDeals": "88b2cc28b8",
+      "PCNewsLetter": "3b44fc04cf",
+      "PCBlogs": "e767709c3f",
+      "AncapNewsLetter": "c10e06d63a"
     },
     "disqusKey": "ji62aEaY2h92OZ9iOdQBePwvgJUllr1b58BMnRWW2ZwcV0ewPvZVwxeLMWDrUjK5",
     "sendGridKey": "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",
@@ -874,7 +918,11 @@
     "questions": "questions",
     "showYotpoGallery": true,
     "instagramFollowUsLink": "https://www.instagram.com/prima.supply/?hl=en",
+<<<<<<< HEAD
     "addThisPubIdBlogSharing": "ra-51b87b7c4a40d8c0" 
+=======
+    "addThisPubIdBlogSharing": "ra-519bb90e58f9bf27"
+>>>>>>> 5116ceb17e8e73d932a980e6d139298b87c29dfc
   },
   "layoutWidgets": [
     {
@@ -1860,6 +1908,58 @@
       ],
       "icon": "/resources/admin/widgets/01_photo_text.png",
       "id": "learning-center-banner",
+      "validPageTypes": [
+        "*"
+      ]
+    },
+    {
+      "displayName": "Commercial Equiupments",
+      "displayTemplate": "misc/commercialEquipments",
+      "editViewFields": [
+        {
+          "anchor": "100%",
+          "fieldLabel": "commercial Equipment Image",
+          "name": "commercialEquipmentImage",
+          "xtype": "mz-input-image"
+        },
+        {
+          "anchor": "100%",
+          "xtype": "mz-input-text",
+          "name": "input1",
+          "fieldLabel": "Enter name"
+        },
+        {
+          "anchor": "100%",
+          "xtype": "mz-input-text",
+          "name": "describe1",
+          "fieldLabel": "Enter description"
+        }
+      ],
+      "icon": "/resources/admin/widgets/01_photo_text.png",
+      "id": "commercial-equiupments",
+      "validPageTypes": [
+        "*"
+      ]
+    },
+    {
+      "displayName": "Header Well",
+      "displayTemplate": "misc/headerwell",
+      "editViewFields": [
+        {
+          "anchor": "100%",
+          "xtype": "mz-input-text",
+          "name": "Heading",
+          "fieldLabel": "Enter Header Descrption"
+        },
+        {
+          "anchor": "100%",
+          "xtype": "mz-input-text",
+          "name": "wellDescrption",
+          "fieldLabel": "Enter Description"
+        }
+      ],
+      "icon": "/resources/admin/widgets/01_photo_text.png",
+      "id": "header-well",
       "validPageTypes": [
         "*"
       ]
