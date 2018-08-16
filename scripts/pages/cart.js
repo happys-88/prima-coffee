@@ -22,7 +22,8 @@ define([
                 "click [data-mz-qty=minus]": "quantityMinus", 
                 "click [data-mz-qty=plus]": "quantityPlus",
                 "keyup [data-mz-value=quantity]":"updateQuantity",
-                "keyup  [data-mz-value='usStates']": "allowDigit"
+                "keyup  [data-mz-value='usStates']": "allowDigit",
+                "click [data-mz-value=callRoute]": "callCustomRoute"
         },
         initialize: function () {
             var me = this;
@@ -194,6 +195,21 @@ define([
             var id="#"+productcod;
             $(id).prependTo(".mz-carttable-items-global"); 
             $(id).addClass("recently-added");
+        },
+        callCustomRoute : function(e) {
+            console.log("called");
+            this.off();
+            api.request("POST", "/testschema").then(function (response){
+                console.log("Test Resp : "+JSON.stringify(response));
+                if(response.statusCode == 200) {
+
+                } else {
+
+                }
+            }, function(err) {
+                console.log("Failure : "+JSON.stringify(err));
+            });
+            
         },
         allowDigit: function(e) {
             e.target.value = e.target.value.replace(/[^\d]/g, '');

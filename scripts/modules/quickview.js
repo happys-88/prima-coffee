@@ -221,6 +221,7 @@ $(document).on('click', '.mz-quick-view', function (event) {
                 var quickviewModel = this.model;
                 this.model.on('addedtocart', function (cartitem) {
                     $('#quickViewModal').modal('hide');
+                     blockUiLoader.unblockUi();
                 });
                 var me = this;
                 this.model.on('addedtocarterror', function (error) {
