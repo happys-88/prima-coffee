@@ -17,7 +17,7 @@
                         <div class="bxslider-Quickview" id="quick-slider">
                             {% if model.dataurl %}
                                 <div class="product-image-slide">
-                                    <img src="{% make_url "image" model.dataurl %}" onerror="this.src='http://cdn-sb.mozu.com/25166-m1/cms/files/9665e4c9-1d61-4c2a-b940-91db8316fed4'" alt="{{ model.dataurl}}"
+                                    <img src="{% make_url "image" model.dataurl %}" onerror="this.src='/cms/files/no-image.jpg'" alt="{{ model.dataurl}}"
                                     />
                                 </div>
                             {% endif %}   
