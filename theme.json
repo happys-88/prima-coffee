@@ -574,7 +574,7 @@
         "tagName": "p"
       }
     ],
-    "defaultPageSize": 15,
+    "defaultPageSize": 32, 
     "defaultSort": "createDate asc",
     "enablePartialCaching": true,
     "loadGoogleFonts": [

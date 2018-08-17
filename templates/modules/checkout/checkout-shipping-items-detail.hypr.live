@@ -60,7 +60,19 @@
         			                    {% endfor %}
         			                {% endif %}	
         		                {% endfor %}
-                                <div>Arrives within x-x business days.</div>
+                                <div>
+                                    {% for item in model.modelItems %} 
+                                        {% for dist in item.distShip %}
+                                            {% for prop in dist.product.properties %}
+                                                {% if prop.attributeFQN == 'tenant~availability' %}
+                                                    {% for val in prop.values %}
+                                                        {{ val.stringValue }}
+                                                    {% endfor %}
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% endfor %}
+                                    {% endfor %}
+                                </div> 
         	                </div>
                         </div>
         			{% endfor %}

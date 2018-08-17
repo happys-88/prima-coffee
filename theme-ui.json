@@ -224,7 +224,8 @@
                     "forceSelection": true,
                     "store": [
                         32,
-                        64
+                        64,
+                        100
                     ]
                 },
                 {
