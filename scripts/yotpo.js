@@ -110,7 +110,7 @@ function ($, Hypr, Backbone, HyprLiveContext, api) {
         }
     },
     showYotpoRatingStars: function(listClassName){ 
-        if(listClassName === ".mz-productlist-item"){ 
+        if((listClassName === ".mz-productlist-item") || (listClassName === ".mz-product-quick-view")){  
             listClassName = listClassName; 
         }else{
             listClassName = ".mz-productlist-item-slider";          
