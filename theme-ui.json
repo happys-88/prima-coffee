@@ -224,7 +224,8 @@
                     "forceSelection": true,
                     "store": [
                         32,
-                        64
+                        64,
+                        100
                     ]
                 },
                 {
@@ -443,12 +444,7 @@
             "collapsed": false,
             "items": [
                 {
-                    "fieldLabel": "Profile Id for social sharing (blog)",   
-                    "xtype": "mz-input-text",
-                    "name": "addThisPubIdBlogSharing"     
-                },
-                {
-                    "fieldLabel": "Popular Articles Pubid",  
+                    "fieldLabel": "Add This Profile Id for Social Sharing & Popular Articles",   
                     "xtype": "mz-input-text",
                     "name": "addThisPubId"  
                 },
@@ -481,6 +477,10 @@
                     "fieldLabel": "Disqus API Key", 
                     "xtype": "mz-input-text",
                     "name": "disqusKey"
+                },{
+                    "fieldLabel": "MailChimp Deals", 
+                    "xtype": "mz-input-textarea",
+                    "name": "mailchimpDeals"
                 }
             ]
         }

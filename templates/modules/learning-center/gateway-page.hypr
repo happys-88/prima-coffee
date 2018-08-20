@@ -38,7 +38,7 @@
 		</div>
 		
 	</div> 
-
+{% require_script "pages/yotpo-review" %}
 {% endblock body-content %}
 
 

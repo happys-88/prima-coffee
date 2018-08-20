@@ -214,7 +214,7 @@
             }
         });
         $('[data-mz-form="lcSearchBox"]').on('submit', function(e) { 
-            var searchVal = $('[data-mz-search-box="learningCenter"]').val().trim();  
+            var searchVal = $('#learningCenter').val().trim();  
             if (searchVal === "") {
                 window.alert(Hypr.getLabel('blankSearchResult'));
                 e.preventDefault();

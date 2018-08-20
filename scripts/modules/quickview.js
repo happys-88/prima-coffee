@@ -11,9 +11,10 @@ define([
     "modules/page-header/global-cart",
     "modules/cart-monitor",
     "hyprlive",
-    "modules/block-ui"
+    "modules/block-ui",
+    "yotpo"
 
-], function($, _, api, Backbone, HyprLiveContext, ProductModels, bxslider, cart, cartModel, GlobalCart, CartMonitor, Hypr, blockUiLoader) { 
+], function($, _, api, Backbone, HyprLiveContext, ProductModels, bxslider, cart, cartModel, GlobalCart, CartMonitor, Hypr, blockUiLoader, yotpo) {  
 $(document).on('click', '.mz-quick-view', function (event) {
     var $Elem = $(event.currentTarget);
     var prdCode = $Elem.attr("data-mz-productcode-quickview");
@@ -221,6 +222,7 @@ $(document).on('click', '.mz-quick-view', function (event) {
                 var quickviewModel = this.model;
                 this.model.on('addedtocart', function (cartitem) {
                     $('#quickViewModal').modal('hide');
+                     blockUiLoader.unblockUi();
                 });
                 var me = this;
                 this.model.on('addedtocarterror', function (error) {
@@ -275,6 +277,7 @@ $(document).on('click', '.mz-quick-view', function (event) {
             el: $('#quickViewModal')
         });
         Quickview.render();
+        yotpo.showYotpoRatingStars(".mz-product-quick-view"); 
     
         product.on('addedtocart', function (cartitem) {
             GlobalCart.update();

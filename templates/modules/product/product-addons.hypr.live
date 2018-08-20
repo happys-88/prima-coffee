@@ -12,7 +12,7 @@
                             
                             {% if value.imageData %}
                                 {% if value.imageFilePath %}
-                                    <img class="mz-itemlisting-thumb-img" src="{{ value.imageFilePath }}" {% if imageData.altText %}alt="{{ imageData.altText }}"{% endif %} onerror="this.src='http://cdn-sb.mozu.com/25166-m1/cms/files/9665e4c9-1d61-4c2a-b940-91db8316fed4'" />
+                                    <img class="mz-itemlisting-thumb-img" src="{{ value.imageFilePath }}" {% if imageData.altText %}alt="{{ imageData.altText }}"{% endif %} onerror="this.src='/cms/files/no-image.jpg'" />
                                 {% else %}
                                     {% if value.imageData %}
                                         <img class="mz-itemlisting-thumb-img" src="{{ value.imageData.imageUrl }}" {% if imageData.altText %}alt="{{ imageData.altText }}"{% endif %} />

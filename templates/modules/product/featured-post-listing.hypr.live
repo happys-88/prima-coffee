@@ -28,17 +28,17 @@
     
     <div class="mz-share-count-{{ forloop.counter }}"></div>  
     <!-- AddThis Button BEGIN -->
-    <div class="mz-product-social-sharing addthis_toolbox" addthis:url='http://t25166-s38224.sandbox.mozu.com{{ model.url }}'> 
+    <div class="mz-product-social-sharing addthis_toolbox" addthis:url='{{ pageContext.url }}{{ model.url }}'> 
         <a class="addthis_button_twitter"><i class="fa fa-twitter"></i></a>
         <a class="addthis_button_facebook"><i class="fa fa-facebook"></i></a> 
         <a class="addthis_button_linkedin"><i class="fa fa-linkedin-square"></i></a>
     </div>
       
-    <script type="text/javascript" src="https://s7.addthis.com/js/250/addthis_widget.js#pubid={{themeSettings.addThisPubIdBlogSharing}}"></script>    
+    <script type="text/javascript" src="https://s7.addthis.com/js/250/addthis_widget.js#pubid={{themeSettings.addThisPubId}}"></script>      
 
     <!-- AddThis Button END --> 
     <script>
-        addthis.sharecounters.getShareCounts({service: ['twitter','facebook','linkedin'], countUrl: 'http://t25166-s38224.sandbox.mozu.com{{ model.url }}'}, function(response) {  
+        addthis.sharecounters.getShareCounts({service: ['twitter','facebook','linkedin'], countUrl: '{{ pageContext.url }}{{ model.url }}'}, function(response) {  
             var count = 0;
             for(var i=0; i<response.length; i++){
                 if(response[i].error){

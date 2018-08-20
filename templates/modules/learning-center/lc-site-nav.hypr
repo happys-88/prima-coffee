@@ -8,7 +8,7 @@
           {% partial_cache %}
           
           {% for link in navigation.tree %} 
-            {% if link.name == "Learning Center" %}
+            {% if link.name == "Learn" %}
               
                 <li class="mz-sitenav-item">
                   <a class="mz-sitenav-link hide" {% if link.openInNewWindow %}target='_blank'{% endif %} href="{{link.url}}">
