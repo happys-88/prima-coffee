@@ -11,8 +11,9 @@ define([
     'modules/facet-clear',
     'modules/block-ui',
     'yotpo',
-    'modules/category/infinite-scroller'
-], function(Backbone, $, _, UrlDispatcher, IntentEmitter, getPartialView, makeClearUrl, blockUiLoader, yotpo, InfiniteScroller) {   
+    'modules/category/infinite-scroller',
+    "lazyload"
+], function(Backbone, $, _, UrlDispatcher, IntentEmitter, getPartialView, makeClearUrl, blockUiLoader, yotpo, InfiniteScroller, lazyload) {   
 
     function factory(conf) {
         var _$body = conf.$body;
@@ -27,6 +28,7 @@ define([
             /*if ($(".view-all.selected").length) {
                 InfiniteScroller.update();
             }*/ 
+            $("img.lazy").lazyload();
             blockUiLoader.unblockUi();  
             yotpo.update();
         } 
@@ -80,7 +82,8 @@ define([
                 'click label[data-mz-facet-value]',
                 'change input[data-mz-facet-value]',
                 'change [data-mz-value="pageSize"]',
-                'change [data-mz-value="sortBy"]'
+                'change [data-mz-value="sortBy"]',
+                'click a[class="bx-next"]'
             ],
             intentToUrl
         );

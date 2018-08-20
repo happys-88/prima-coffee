@@ -4,7 +4,7 @@
         {% block product-image %}
         <a href="{% make_url "product" model %}">
             {% if model.mainImage.imageUrl %}
-                <img src="{% make_url "image" model.mainImage with max=themeSettings.listProductThumbSize as_parameter %}" {% if model.mainImage.altText %}alt="{{ model.mainImage.altText }}"{% endif %} />
+                <img class="lazy" data-original="{% make_url "image" model.mainImage with max=themeSettings.listProductThumbSize as_parameter %}" {% if model.mainImage.altText %}alt="{{ model.mainImage.altText }}"{% endif %} />
             {% else %}
                 <span class="noimage-placeholder"><span class="noimage-text">{{ labels.productImagePlaceholder }}</span></span> 
             {% endif %} 
