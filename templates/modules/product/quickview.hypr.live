@@ -6,7 +6,7 @@
             <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
-            <div class="mz-product-quick-view">
+            <div class="mz-product-quick-view" data-mz-product="{{ model.variationProductCode|default(model.productCode) }}">
                  {% with model|get_product_attribute_values("tenant~new-arrival") as attribute %}
                         {% if attribute== "true" %}
                             <span class="mz-new-arrival-tag">{{ labels.new }}</span>
@@ -41,7 +41,17 @@
                     </h1>
                     <!-- Product name -->
 
-                     <!-- Product code -->
+                    {% block product-rating %}     
+                        <div id="product-rating">
+                            <div class="yotpo bottomline">
+                                <div class="yotpo-bottomline pull-left star-clickable">
+                                    <span class="yotpo-stars"></span> 
+                                </div>
+                            </div> 
+                        </div>
+                    {% endblock product-rating %} 
+
+                    <!-- Product code -->
                     <div class="mz-product-code">
                         <span>{{ labels.sku }}:</span> {{ model.variationProductCode|default(model.productCode) }}
                     </div>

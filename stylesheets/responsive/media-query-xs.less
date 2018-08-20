@@ -20,13 +20,13 @@
 			padding-bottom: 0; 
 			padding: 0; 
 			.container{
-				padding: 0;
+				//padding: 0;
 				padding-top: 15px;
 				height: 68px;
 				border-radius: 0px; 
 			}
 			.mz-mobile-nav{
-				margin-left: 10px; 
+				margin-left: 0px; 
 				.mz-hamburger-icon {
 		         	margin-top: 9px;	
 		        }
@@ -60,20 +60,6 @@
 				width: auto;
 			}
 		}
-		.mz-utilitynav {
-			position: absolute;
-			right: 15px; 
-			top: 0; 
-			.mz-utilitynav-item {
-				margin-left: 15px;
-			} 
-			.mz-utilitynav-link, .login-icon {
-				.fa{
-					font-size: 24px;  	
-				}
-				
-			}
-		}
 	}
 
 	.mz-sticky-header{
@@ -82,6 +68,23 @@
 		z-index: 99;
 		background: #fff;  
 		width: 100%;
+		.mz-utilitynav {
+				position: absolute;
+				right: 15px;
+				top: 17px;
+				z-index: 100;
+				width: 140px;
+				text-align: right; 
+				.mz-utilitynav-item {
+					margin-left: 10px;
+				} 
+				.mz-utilitynav-link, .login-icon {
+					.fa{
+						font-size: 24px;  	
+					}
+					
+				}
+			}
 	}
 	.fixed{
 		.mz-header-top {
@@ -108,7 +111,7 @@
 
 	#page-content{
 		margin-top: 25px; 
-		padding: 25px 15px;
+		padding: 25px 0px;
 		.mz-pagetitle {
 			   margin-left: 20px;
 			   font-size: 26px;
@@ -191,7 +194,7 @@
 
 	/**** Common Styles for slider ****/
 	.bx-wrapper{
-		padding: 0;
+		//padding: 0;
 		margin: 0 auto;  
 		.bx-pager{ 
 			position: static;
@@ -222,7 +225,7 @@
 		}
 		.slider{
 			.mz-slide{
-				min-height: 420px;
+				min-height: 260px;
 				background-position: 66% top; 
 			}
 			.mz-slide-details{
@@ -243,6 +246,14 @@
 		.bx-controls-direction{
 			display: none;  
 		}
+		 .slider {
+			.mz-slide-details {
+					button {
+					font-size: 14px;
+					padding: 10px 6px;
+				}
+		   }
+		 }
 		
 	} 
 	#mz-drop-zone-shop-by-brand {
@@ -313,9 +324,9 @@
 	/**** Home Page - Featured Products ****/ 
 	.mz-featured-products{
 		.bx-wrapper{  
-			max-width: 300px !important;      
+			//max-width: 300px !important;      
 			.mz-productlist-item{
-				width: 150px !important;
+				//width: 150px !important;
 			} 
 		} 	
 	}
@@ -1150,6 +1161,9 @@
 					}
 				}
 				.bx-wrapper{ 
+					// .mz-productlist-item{ 
+					// 	padding: 10px 46px;
+					// }
 					padding: 0 10px;  
 					.bx-prev{
 						left: -5px;  
@@ -1736,4 +1750,18 @@
 	}
 	
 }
+	.why-prima {
+		ul {
+			li {
+			width: 100%;
+			margin-bottom: 30px;
+		}
+		}
+	}
+	.well {
+		h1 {
+		font-size: 30px;
+	  }
+	}
 }
+

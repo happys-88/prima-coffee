@@ -10,6 +10,7 @@
         blockui: "vendor/jquery.blockUI/jquery.blockUI.min",
         elevatezoom:"vendor/elevate-zoom/elevateZoom",
         bxslider: "vendor/jquery-bxslider/jquery.bxslider.min",
+        lazyload:"vendor/jquery-lazyload/jquery.lazyload",
         "session-management": "vendor/sessionManagement/sessionManagement"
     },
     dir: "compiled/scripts/",

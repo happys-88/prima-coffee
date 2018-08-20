@@ -154,7 +154,7 @@
                 </script>
                  {% require_script "widgets/featured-products" %}
                  {% dropzone "feature-product" scope="site" %}
-                <div class="yotpo-gallery">
+                <div class="yotpo-gallery clearfix">
                     <h2 class="heading-2">
                         <span>Pictures Gallery</span>
                     </h2>

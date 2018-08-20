@@ -12,7 +12,7 @@
                         {% dropzone "footer-dropzone-2" scope="site" %}
                     </div>
                     <div class="col-sm-4 col-md-2 col-xs-12">  
-                        <h4><a href="/customer-service">{{ labels.customerService }}</a></h4>
+                        <h4>{{ labels.customerService }}</h4>
                          {% comment %} <ul>
                            {% if not user.isAnonymous %} 
                                 <li><a href="/myaccount">{{ labels.myAccount }}</a></li>

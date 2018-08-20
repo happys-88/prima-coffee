@@ -16,6 +16,7 @@
         bxslider:"vendor/jquery-bxslider/jquery.bxslider.min",
         blockui:"vendor/jquery.blockUI/jquery.blockUI.min",
         elevatezoom: "vendor/elevate-zoom/elevateZoom",
+        lazyload: "vendor/jquery-lazyload/jquery.lazyload",
         "session-management":"vendor/sessionManagement/sessionManagement"
       }
   });

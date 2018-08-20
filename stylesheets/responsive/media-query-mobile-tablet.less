@@ -3,6 +3,22 @@
 
 @media @mz-mobile-tablet-common-media-query {
 	// Header
+	.mz-homepage {
+		#mz-home-slider{
+			margin-top: 61px;
+		}
+	}
+
+		.mz-sticky-header{
+			.mz-utilitynav {
+					position: absolute;
+					right: 15px;
+					top: 17px;
+					z-index: 100;
+					width: 440px;
+					text-align: right; 
+				}
+	}
 	.mz-pageheader{ 
 		.mz-header-bottom{
 				.col-md-2 {
@@ -45,44 +61,44 @@
 				width: 362px; 	
 			}  
 		}
-		.mz-utilitynav{
-			margin: 0;
-			.mz-utilitynav-item{
-				margin-left: 20px;
-				.login-icon{
-					padding: 0;  
-					.fa{ 
-						&.fa-angle-down{ 
-							display: block; 
-							font-size: 27px;   
-							margin-top: -8px;  
-						}
-					}
-				}   
-			}
-			#mz-logged-in-notice{
-				.welcome-text, .user-name{
-					display: none;
-					&.mz-mobile{
-						display: inline-block; 
-					}
-				}
+		// .mz-utilitynav{
+		// 	margin: 0;
+		// 	.mz-utilitynav-item{
+		// 		margin-left: 20px;
+		// 		.login-icon{
+		// 			padding: 0;  
+		// 			.fa{ 
+		// 				&.fa-angle-down{ 
+		// 					display: block; 
+		// 					font-size: 27px;   
+		// 					margin-top: -8px;  
+		// 				}
+		// 			}
+		// 		}   
+		// 	}
+		// 	#mz-logged-in-notice{
+		// 		.welcome-text, .user-name{
+		// 			display: none;
+		// 			&.mz-mobile{
+		// 				display: inline-block; 
+		// 			}
+		// 		}
 
-				.dropdown-menu { 
-					left: -170px; 
-					top: 40px;
-					&:after{
-						display: none;  
-					}    
-					.logged-user{
-						text-indent: inherit; 
-						.user-name{
-							display: inline-block;    
-						}	
-					}
-				}
-			}  
-		}
+		// 		.dropdown-menu { 
+		// 			left: -170px; 
+		// 			top: 40px;
+		// 			&:after{
+		// 				display: none;  
+		// 			}    
+		// 			.logged-user{
+		// 				text-indent: inherit; 
+		// 				.user-name{
+		// 					display: inline-block;    
+		// 				}	
+		// 			}
+		// 		}
+		// 	}  
+		// }
 	}
 	
 	/**** Navigation ****/
@@ -311,9 +327,9 @@
 			margin-bottom: 0;  
 		}
 		.bx-wrapper{ 
-			padding: 0;
+			//padding: 0;
 			margin: 0 auto;
-			max-width: 690px !important;  
+			//max-width: 690px !important;  
 			.mz-productlist-item{ 
 				padding: 10px;  
 				.mz-productlisting{
