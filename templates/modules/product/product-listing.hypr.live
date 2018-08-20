@@ -14,11 +14,10 @@
      <div class="mz-productlisting-info">  
         <a class="mz-productlisting-title" href="{% make_url "product" model %}">{{model.content.productName}}</a>
          
-            {% comment %}
             {% if model.content.productShortDescription and themeSettings.listProductShortDesc %}
                 <p class="mz-productlisting-shortdesc">{{ model.content.productShortDescription|truncatewords(themeSettings.maxProductSummaryWords)|safe }}</p>
-            {% endif %}
-            {% endcomment %}   
+            {% endif %} 
+            
             {% block product-code %}
                 {% if themeSettings.listProductCode %}
                     <div class="mz-productlisting-productcode">SKU:{{model.productCode}}</div> 

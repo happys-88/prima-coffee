@@ -322,12 +322,36 @@
 	}
 
 	/**** Home Page - Featured Products ****/ 
-	.mz-featured-products{
+	/*.mz-featured-products{
 		.bx-wrapper{  
 			//max-width: 300px !important;      
 			.mz-productlist-item{
 				//width: 150px !important;
 			} 
+		} 	
+	}*/  
+	.mz-featured-products{
+		.bx-wrapper{  
+			max-width: 300px !important;      
+			.mz-productlist-item{
+				width: 150px !important;
+			} 
+		}
+		.mz-productlist-tiled{
+			.mz-productlist-item{
+				max-width: inherit;
+				.mz-productlisting{
+					.mz-productlisting-image{
+						min-height: 115px;
+						img{
+							max-width: 100%; 
+						} 
+					}
+					.mz-productlisting-shortdesc{
+						.multiLineEllipsis(14px, 5);   
+					}
+				} 
+			}
 		} 	
 	}
 
