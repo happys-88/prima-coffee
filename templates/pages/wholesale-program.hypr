@@ -16,7 +16,7 @@
 	<div id="bottom-navigation">
         <div class="navbar navbar-inverse">
            	<a href="/" class="brand-logo pull-left">
-                <img src="https://prima-coffee.com/sites/all/themes/pc/images/logo.png" alt="">
+               <img class="lazy" data-original="https://prima-coffee.com/sites/all/themes/pc/images/logo.png" alt="">
             </a>
             <a href="#start" class="mz-signup pull-right">Sign up now</a>
         </div>
@@ -26,7 +26,7 @@
             <div class="field-items">
                 <div class="field-item even">
                     <div class="main-header">
-                        <div class="col-xs-8">
+                        <div class="col-xs-9">
                             <h1 class="header">Send the coffee shop experience
                                 <span class="blue">home.</span>
                             </h1>
@@ -58,23 +58,23 @@
             <div class="col-xs-12 why-prima">
                 <ul>
                     <li>
-                        <img src="https://static.prima-coffee.com/pages//checklist.png">
+                       <img class="lazy" data-original="https://static.prima-coffee.com/pages//checklist.png">
                         <h6 class="why-header">Easy Ordering</h6>
                     </li>
                     <li>
-                        <img src="https://static.prima-coffee.com/pages//cost.png">
+                       <img class="lazy" data-original="https://static.prima-coffee.com/pages//cost.png">
                         <h6 class="why-header">Competitive Pricing</h6>
                     </li>
                     <li>
-                        <img src="https://static.prima-coffee.com/pages//coffee_brain.png">
+                       <img class="lazy" data-original="https://static.prima-coffee.com/pages//coffee_brain.png">
                         <h6 class="why-header">Knowledgeable Staff</h6>
                     </li>
                     <li>
-                        <img src="https://static.prima-coffee.com/pages//pourover.png">
+                       <img class="lazy" data-original="https://static.prima-coffee.com/pages//pourover.png">
                         <h6 class="why-header">Expansive Lineup</h6>
                     </li>
                     <li>
-                        <img src="https://static.prima-coffee.com/pages//shipping2.png">
+                       <img class="lazy" data-original="https://static.prima-coffee.com/pages//shipping2.png">
                         <h6 class="why-header">Fast &amp; Accurate Shipping</h6>
                     </li>
                 </ul>

@@ -527,7 +527,7 @@
   "settings": {
     "siteName": "primacoffee",
     "allProductsCategoryId": "",
-    "sessionTimeout": "1800",
+    "sessionTimeout": "18000",
     "backofficeDateTimeFormat": "m/d/Y H:i:s O",
     "extendedPropertiesEnabled": false,
     "extendedPropertyParameters": "",

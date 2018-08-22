@@ -24,7 +24,7 @@
     <div class="mz-logo-header">      
         <div class="mz-storebranding pull-left">
             <a class="mz-logo" href="{{siteContext.siteSubdirectory}}/" title="{{ siteContext.generalSettings.websiteName }}">
-                <img src="{% make_url "cdn" "/cms/files/prima-supply-logo.png" %}" alt="Prima Supply">   
+                <img class="lazy" data-original="{% make_url "cdn" "/cms/files/prima-coffee-logo.png" %}" alt="Prima coffee">   
             </a>
         </div>
         <div class="phone-no pull-right"> 

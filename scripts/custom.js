@@ -8,7 +8,7 @@ define([
 	 $("img.lazy").lazyload({
 		  placeholder: "https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif"
 	 });
-	 $(document).on('click','a[class="bx-next"]', function(){ 
+	$(document).on('click','a[class="bx-next"]', function(){ 
 		 $("img.lazy").lazyload();
 	});
 	$(document).on('click','a[class="bx-prev"]', function(){ 

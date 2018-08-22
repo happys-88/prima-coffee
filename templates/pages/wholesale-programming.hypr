@@ -253,7 +253,7 @@
 	<div id="bottom-navigation">
         <div class="navbar navbar-inverse container">
            	<a href="/" class="brand-logo pull-left">
-                <img src="https://prima-coffee.com/sites/all/themes/pc/images/logo.png" alt="">
+               <img class="lazy" data-original="https://prima-coffee.com/sites/all/themes/pc/images/logo.png" alt="">
             </a>
             <a href="#start" class="mz-signup pull-right">Sign up now</a>
         </div>
@@ -295,23 +295,23 @@
             <div class="col-xs-12 why-prima">
                 <ul>
                     <li>
-                        <img src="https://static.prima-coffee.com/pages//checklist.png">
+                       <img class="lazy" data-original="https://static.prima-coffee.com/pages//checklist.png">
                         <h6>Easy Ordering</h6>
                     </li>
                     <li>
-                        <img src="https://static.prima-coffee.com/pages//cost.png">
+                       <img class="lazy" data-original="https://static.prima-coffee.com/pages//cost.png">
                         <h6>Competitive Pricing</h6>
                     </li>
                     <li>
-                        <img src="https://static.prima-coffee.com/pages//coffee_brain.png">
+                       <img class="lazy" data-original="https://static.prima-coffee.com/pages//coffee_brain.png">
                         <h6>Knowledgeable Staff</h6>
                     </li>
                     <li>
-                        <img src="https://static.prima-coffee.com/pages//pourover.png">
+                       <img class="lazy" data-original="https://static.prima-coffee.com/pages//pourover.png">
                         <h6>Expansive Lineup</h6>
                     </li>
                     <li>
-                        <img src="https://static.prima-coffee.com/pages//shipping2.png">
+                       <img class="lazy" data-original="https://static.prima-coffee.com/pages//shipping2.png">
                         <h6>Fast &amp; Accurate Shipping</h6>
                     </li>
                 </ul>

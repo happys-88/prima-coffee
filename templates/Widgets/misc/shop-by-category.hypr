@@ -9,7 +9,7 @@
 				   			<li class="mz-shop-by-categorylist-item">
 							    <a href="{{ categoryObject.url }}">
 							    	<div class="mz-category-image">
-							    		<img src="{{ catImage.imageUrl }}" alt="{{ catImage.altText }}">
+							    		<img class="lazy" data-original="{{ catImage.imageUrl }}" alt="{{ catImage.altText }}">
 							    	</div>
 							     	<div class="mz-categorylisting-info">
 							     		<h3>{{ categoryObject.content.name|safe }}</h3>

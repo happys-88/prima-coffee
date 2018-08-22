@@ -7,7 +7,7 @@
             <div class="brand-logo-img">
               {% if brandImage.imageUrl %}
                 <a href="{{ brandCat.url }}">
-                  <img src="{{ brandImage.imageUrl }}" alt="{{ brandImage.altText }}">    
+                  <img class="lazy" data-original="{{ brandImage.imageUrl }}" alt="{{ brandImage.altText }}">    
                 </a> 
               {% else %} 
                 <a href="{{ brandCat.url }}"> 

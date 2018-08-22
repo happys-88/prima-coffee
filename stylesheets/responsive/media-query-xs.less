@@ -71,7 +71,7 @@
 		.mz-utilitynav {
 				position: absolute;
 				right: 15px;
-				top: 17px;
+				top: 20px;
 				z-index: 100;
 				width: 140px;
 				text-align: right; 
@@ -111,9 +111,8 @@
 
 	#page-content{
 		margin-top: 25px; 
-		padding: 25px 0px;
+		//padding: 25px 15px;
 		.mz-pagetitle {
-			   margin-left: 20px;
 			   font-size: 26px;
         }
 		
@@ -127,7 +126,7 @@
 		}
 	}
 	#designstudio-button{
-		right: 0 !important; 
+		right: 20px !important; 
 	}
 	
 	/*** Common top page heading ***/ 
@@ -219,7 +218,9 @@
 	}
 	
 	/**** Home Slider ****/
-	#mz-home-slider{
+	.mz-homepage{
+		#mz-home-slider{
+		margin-top: 18px;
 		.bx-viewport{
 			min-height: inherit; 
 		}
@@ -256,6 +257,9 @@
 		 }
 		
 	} 
+
+	}
+	
 	#mz-drop-zone-shop-by-brand {
 		margin: 0 -15px; 
 	}
@@ -322,21 +326,7 @@
 	}
 
 	/**** Home Page - Featured Products ****/ 
-	/*.mz-featured-products{
-		.bx-wrapper{  
-			//max-width: 300px !important;      
-			.mz-productlist-item{
-				//width: 150px !important;
-			} 
-		} 	
-	}*/  
 	.mz-featured-products{
-		.bx-wrapper{  
-			max-width: 300px !important;      
-			.mz-productlist-item{
-				width: 150px !important;
-			} 
-		}
 		.mz-productlist-tiled{
 			.mz-productlist-item{
 				max-width: inherit;
@@ -352,7 +342,7 @@
 					}
 				} 
 			}
-		} 	
+		}
 	}
 
 	/**** Shop Now Widgets ****/
@@ -499,7 +489,7 @@
 				}
 			}
 			.mz-l-paginatedlist-list {
-			    margin-top: 48px;
+			    margin-top: 8px;
 			}
 			.mz-productlisting-image {
 				img {
@@ -513,12 +503,18 @@
 			}
 			.mz-productlist-tiled {
 				.mz-productlist-item {
+					.mz-productlisting {
+						.mz-productlisting-productcode {
+                            min-height: 42px;
+					  }
+					}
 					&.col-xs-6 {
 						width: 50%;
-						padding: 0 6px 0 12px;
+						//padding: 0 6px 0 12px;
+						padding:0;
 						min-height: 370px;   
 						&:nth-child(even){
-							padding: 0 12px 0 6px;      
+							padding: 0 0px 0 5px;      
 						}
 					}
 					button {
@@ -596,6 +592,7 @@
 	//Breadcrumbs
 	.mz-breadcrumbs {
 		line-height: 12px;
+		margin-top: 30px;
 	}
 	//Brand Gateway
 	.Brands {
@@ -716,10 +713,18 @@
 			}
 		}
 	}
+	.mz-product, .mz-cart {
+		#page-content{
+			.container{
+				padding-left: 0px;
+				padding-right: 0px;
+			}
+		}
+	}
 	.mz-product {
 		.mz-productimages {
 			.mz-productimages-main {
-				min-height: 275px;
+				min-height: 210px;
 			}
 		}
 		.popular-addons { 
@@ -730,6 +735,12 @@
 		}
 	}
    	.mz-productdetail-wrap {
+		   .yotpo-review-section-pdp {
+				position: static;
+				padding: 0 0 15px;
+				float: left;
+				width: 100%;
+			}
 		.mz-pagetitle {
 			font-size: 16px;
 		}
@@ -1032,8 +1043,8 @@
 		width: 45px;
 		height: 45px; 
 		font-size: 23px;
-		bottom: 70px; 
-		right: 15px;
+		bottom: 83px; 
+		right: 20px;
 	}
 
 	.mz-promo-banner{ 
@@ -1757,6 +1768,13 @@
 				width: 100%;
 				.tt-suggestions {
 					.tt-suggestion {
+						.mz-itemlisting-description{
+							a{
+								h3{
+                                   font-size: 16px;
+								}
+							}
+						}
 						float: none;
 						width: 100%;
 							a{
@@ -1787,5 +1805,64 @@
 		font-size: 30px;
 	  }
 	}
+	.mz-aboutus,.about-prima,.mz-coffee-glossary {
+		#page-content {
+			margin-top: 25px;
+			//padding: 25px 15px;
+		}
+			.about-prima-coffee-image {
+				img {
+				width: 100%!important;
+				float: none!important;
+				display: block;
+				margin: 0 auto 20px!important;
+				height: auto!important;
+				//padding: 15px;
+			}
+	 }
+  }
+  .policy_page_content{
+		img {
+         max-width: 154px;
+	  }
+  }
+ 
+  .wholesale-program{
+	  .field-items{
+		  .main-header{
+			  padding-top: 0;
+			  margin-top: -2em;
+			  height: 580px;
+			  margin-bottom: 0em;
+              margin-top: 0em;
+			  .header{
+					font-size: 2.76em;
+					line-height: 47px;
+				    margin-left: 0;
+			  }
+			  .title{
+				  margin-left: 0;
+			  }
+		  }
+		}
+		  .content_masthead_wrapper {
+				font-size: 2em;
+				margin-top: 1em;
+                margin-bottom: 1em;
+			}
+			.mz-blue-bg {
+				h6 {
+				font-size: 2em;
+				padding: 1.2em;
+			}
+		}
+		  .mz-wholesale-form {
+			     padding: 50px 0;
+				.mz-contact-form {
+					width: 100%;
+					padding: 20px 0px;
+				}
+		}
+   }
 }
 

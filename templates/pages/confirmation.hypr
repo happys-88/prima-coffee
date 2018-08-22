@@ -38,7 +38,7 @@
                     <div class="col-sm-3">
                         <div class="mz-live-chat">
                             <a href="javascript:void(0);" onclick="SnapEngage.startLink();"> 
-                                <img src="{% make_url "cdn" "/cms/files/live-chat-icon.png" alt="Live Chat Image" %}">  
+                                <img src="{% make_url 'cdn' '/cms/files/live-chat-icon.png' alt='Live Chat Image' %}">  
                                 <span class="mz-live-chat-title">{{ labels.liveChat }}</span> 
                                 <p>{{ labels.questionconnectWithUs }}</p>  
                             </a>
