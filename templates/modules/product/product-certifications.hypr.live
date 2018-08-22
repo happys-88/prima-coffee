@@ -24,7 +24,7 @@
   {% endif %}   
     
   {% for property in model.properties %}
-    {% if property.attributeFQN == "tenant~field_certifications" %}  
+    {% if property.attributeFQN == "tenant~certifications" %}  
       <li class="col-sm-4 col-xs-6 product-certifications">
         {% for propValue in property.values %}
           <span><img src="/resources/images/product-certification-images/{{ propValue.value }}"></span>  

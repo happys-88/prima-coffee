@@ -208,43 +208,43 @@
       "id": "category-gateway",
       "template": "category-gateway",
       "title": "Category Gateway",
-      "userCreatable": false
+      "userCreatable": true
     },
     {
       "entityType": "category",
       "id": "learning-center",
       "template": "modules/learning-center/landing-page",
       "title": "Learning Center LandingPage",
-      "userCreatable": false
+      "userCreatable": true
     },
     {
       "entityType": "category",
       "id": "learning-center-gateway",
       "template": "modules/learning-center/gateway-page",
       "title": "Learning Center GatewayPage",
-      "userCreatable": false
+      "userCreatable": true
     },
     {
       "entityType": "category",
       "id": "learning-center-directory",
       "template": "modules/learning-center/category-lc",
       "title": "Learning Center DirectoryPage",
-      "userCreatable": false
+      "userCreatable": true
     },
     {
       "entityType": "product",
       "id": "blog-article",
       "template": "modules/learning-center/blog-article",
       "title": "Blog Article",
-      "userCreatable": false,
+      "userCreatable": true,
       "customEditor": "productContent@mozu"
     },
     {
-      "entityType": "category",
+      "entityType": "webpage",
       "id": "Brands",
       "template": "brand-gateway",
       "title": "Brand Gateway",
-      "userCreatable": false
+      "userCreatable": true
     },
     {
       "documentType": "web_page",
