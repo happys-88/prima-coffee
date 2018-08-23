@@ -11,7 +11,7 @@
         <dt>Payment Method</dt>
                         {% if model.billingInfo.paymentType|lower == "paypalexpress2" %}
                             <dd>
-                                <img alt="PayPal" src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_100x26.png" align="left" width="100px" height="26px" style="margin-right:7px;">
+                                <img alt="PayPal" src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_100x26.png"  width="100px" height="26px" style="margin-right:7px;">
                             </dd>
                         {% else %}
             <div class="mz-l-stack-item">

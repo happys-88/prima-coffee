@@ -1,4 +1,15 @@
-define(["modules/jquery-mozu", "underscore", "hyprlive", "modules/backbone-mozu", "hyprlivecontext", "modules/api", "modules/models-product", "pages/cart", "modules/models-cart", "modules/cart-monitor","modules/page-header/global-cart"], function ($, _, Hypr, Backbone, HyprLiveContext, api, ProductModel, cart, cartModel, CartMonitor, GlobalCart) {  
+define([
+    "modules/jquery-mozu",
+     "underscore", "hyprlive", 
+     "modules/backbone-mozu", 
+     "hyprlivecontext",
+     "modules/api", 
+     "modules/models-product",
+     "pages/cart",
+     "modules/models-cart", 
+     "modules/cart-monitor", 
+     "modules/page-header/global-cart"], 
+     function ($, _, Hypr, Backbone, HyprLiveContext, api, ProductModel, cart, cartModel, CartMonitor, GlobalCart) {  
     $(document).on("click",".mz-option-add-to-cart", function (event) {
         var $thisElem = $(event.currentTarget);
         var productCode = $thisElem.attr("data-mz-productcode");

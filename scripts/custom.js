@@ -2,9 +2,8 @@ define([
 	"modules/jquery-mozu",
 	'modules/api',
 	'hyprlivecontext',
-	"bxslider",
-	"lazyload" 
-], function( $, api, HyprLiveContext, bxslider, lazyload) { 
+	"bxslider"
+], function( $, api, HyprLiveContext, bxslider) { 
 	
 	//home slider
 	$('#mz-home-slider .slider').bxSlider({
@@ -25,15 +24,6 @@ define([
 	});
 	//home slider ends
 	//lazy laod
-	$("img.lazy").lazyload({
-		placeholder: "https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif"
-	});
-	$(document).on('click', 'a[class="bx-next"]', function () {
-		$("img.lazy").lazyload();
-	});
-	$(document).on('click', 'a[class="bx-prev"]', function () {
-		$("img.lazy").lazyload();
-	});
 
 	// My Account Tabbing Redirection
 	if(window.location.pathname == "/myaccount"){

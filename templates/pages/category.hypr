@@ -14,3 +14,4 @@
 	    {% include "pages/category-interior" %}
 	</div>
 {% endblock body-content %}
+ {% block commonbody-content %} {% endblock commonbody-content %}

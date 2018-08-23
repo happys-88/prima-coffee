@@ -65,7 +65,7 @@
         {% dropzone "shop-now-widget" scope="page" %}    
         
     </div>
-    
+      
     {% require_script "pages/yotpo-review" %}
     {% require_script "modules/promoted-products" %} 
 
@@ -83,9 +83,11 @@
             document.getElementById("shareCount").innerHTML = shareCount;         
         });
     </script> 
+
     
 
 {% endblock body-content %}
+
 
 {% block body-below-content %}
 

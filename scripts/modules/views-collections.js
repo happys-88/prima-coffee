@@ -13,7 +13,17 @@ define([
     'yotpo',
     'modules/category/infinite-scroller',
     "lazyload"
-], function(Backbone, $, _, UrlDispatcher, IntentEmitter, getPartialView, makeClearUrl, blockUiLoader, yotpo, InfiniteScroller, lazyload) {   
+], function(Backbone, $, _, UrlDispatcher, IntentEmitter, getPartialView, makeClearUrl, blockUiLoader, yotpo, InfiniteScroller, lazyload) {  
+    //lazy load
+    $("img.lazy").lazyload({
+        placeholder: "https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif"
+    });
+    $(document).on('click', 'a[class="bx-next"]', function () {
+        $("img.lazy").lazyload();
+    });
+    $(document).on('click', 'a[class="bx-prev"]', function () {
+        $("img.lazy").lazyload();
+    }); 
 
     function factory(conf) {
         var _$body = conf.$body;
@@ -28,7 +38,9 @@ define([
             /*if ($(".view-all.selected").length) {
                 InfiniteScroller.update();
             }*/ 
-            $("img.lazy").lazyload();
+            $("img.lazy").lazyload({
+                placeholder: "https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif"
+            });
             blockUiLoader.unblockUi();  
             yotpo.update();
         } 

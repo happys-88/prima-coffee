@@ -1,34 +1,21 @@
 define([
     'modules/jquery-mozu',
-    'bxslider'
+    'bxslider',
+    'lazyload'
 ],
-function ($, bxSlider) { 
+function ($, bxSlider, lazyload) { 
+     $("img.lazy").lazyload({
+        placeholder: "https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif"
+    });
+    $(document).on('click', 'a[class="bx-next"]', function () {
+        $("img.lazy").lazyload();
+    });
+    $(document).on('click', 'a[class="bx-prev"]', function () {
+        $("img.lazy").lazyload();
+    }); 
     var slider;
     var slide= {
         productCarousel:function(){
-           // console.log("called");
-            // var eachSlide = $(".mz-featured-products .mz-productlist-list").find(".mz-productlist-item"),
-            //     minSlides,
-            //     slideWidth,
-            //     slideMargin,
-            //     windowWidth = $(window).width();
-            // if (windowWidth <= 767) {
-            //     minSlides = 2;
-            //     slideWidth = 333;
-            //     slideMargin = 10;
-            // } else {
-            //     if (windowWidth >= 768 && windowWidth <= 1024) {
-            //         minSlides = 4;
-            //         slideWidth = 333;
-            //         slideMargin = 15;
-            //     }
-            //     else {
-            //         minSlides = 4;
-            //         slideWidth = 333;
-            //         slideMargin = 15;
-            //     }
-
-            // }
             var minSlides,
                 maxSlides,
                 slideWidth,

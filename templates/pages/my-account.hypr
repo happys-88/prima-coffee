@@ -17,7 +17,10 @@
     <div class="mz-l-container">
         <div class="row"> 
             <div class="col-sm-9 col-lg-10 mz-myaccount-panels pull-right">
-                {# <button class="mz-button" id="mz-print-content-confirmation">Print</button> #}   
+                {# <button class="mz-button" id="mz-print-content-confirmation">Print</button> #} 
+                <div id="account-messages">
+                     {% include "modules/common/message-bar" with model=model.messages %}
+                </div>  
                 <div id="accordion" class="tab-content">
                     <div id="settings" class="tab-pane fade in active">
                         <div class="mz-l-stack-section mz-accountsettings" id="account-settings">
@@ -30,9 +33,7 @@
                         {% endif %}
                     </div>
                     <div id="myInformation" class="tab-pane fade">
-                        <div id="account-messages">
-                            {% include "modules/common/message-bar" with model=model.messages %}
-                        </div>
+                        
                         <div class="mz-l-stack-section mz-accountsettings" id="my-account-information">
                             {% include "modules/my-account/my-account-information" %}
                         </div>
@@ -74,5 +75,5 @@
         </div>
     </div>
 {% endblock body-content %}
-
+{% block commonbody-content %} {% endblock commonbody-content %}
 {% block body-below-content %}{% endblock body-below-content %}

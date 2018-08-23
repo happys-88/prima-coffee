@@ -75,8 +75,10 @@
 {% endblock recently-viewed %}
 
 {% endblock body-content %}
+{% block commonbody-content %} {% endblock commonbody-content %}
 {% block body-below-content %}
     {% dropzone "body-bottom" scope="page" %}   
 {% endblock body-below-content %}
+     
 
  

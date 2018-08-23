@@ -16,7 +16,7 @@
 	<div class="mz-logo-header">   
 		<div class="mz-storebranding pull-left">
 			<a class="mz-logo" href="{{siteContext.siteSubdirectory}}/" title="{{ siteContext.generalSettings.websiteName }}">
-				<img src="{% make_url "cdn" "/cms/files/prima-supply-logo.png" %}" alt="Prima Supply">   
+				<img src='{% make_url "cdn" "/cms/files/prima-supply-logo.png" %}' alt="Prima Supply">   
 			</a>
 		</div>
 		<div class="phone-no pull-right"> 
@@ -36,5 +36,6 @@
         </div>      
     </div>  
 
-{% endblock body-content %}    
+{% endblock body-content %}   
+{% block commonbody-content %} {% endblock commonbody-content %}
 
