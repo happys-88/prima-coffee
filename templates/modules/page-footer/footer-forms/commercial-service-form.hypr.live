@@ -2,32 +2,25 @@
 	           {% include "modules/common/message-bar" with model=model.messages %}
                 <div class="mz-contact-form">
                     <form name="commercialForm" method="" id="commercialForm" action="">    
-                    	<div class="form-group">
-                            <div class="col-xs-12 col-sm-3">
+                    	<div class="form-group col-xs-12 col-sm-3">     
                                 <input type="text" placeholder="{{ labels.emailph }}" name="email" type="email" data-mz-value="email" class="form-control">
-                                <span class="mz-validationmessage" data-mz-validationmessage-for="email"></span>
-                            </div>
+                                <span class="mz-validationmessage" data-mz-validationmessage-for="email"></span> 
                         </div>
-                        <div class="form-group">
-                            <div class="col-xs-12 col-sm-3">
+                        <div class="form-group col-xs-12 col-sm-3">      
                                 <input type="text" placeholder="{{ labels.nameph }}" name="name" data-mz-value="name" class="form-control">
-                                <span class="mz-validationmessage" data-mz-validationmessage-for="name"></span>
-                            </div>
+                                <span class="mz-validationmessage" data-mz-validationmessage-for="name"></span>      
                         </div>
-                        <div class="form-group">                           
-                            <div class="col-xs-12">
+                        <div class="form-group col-xs-12">                                 
                                <textarea cols="60" rows="3" placeholder="{{ labels.comments }}" name="comment" data-mz-value="comment" class="form-control">
                                     {{ lables.comments }}
                                 </textarea>
-                                <span class="mz-validationmessage" data-mz-validationmessage-for="comment"></span>
-                            </div>
+                                <span class="mz-validationmessage" data-mz-validationmessage-for="comment"></span> 
                         </div>
                         <span id="commerceialFormError"></span>                              
-                        <div class="form-group">
-                            <div class="col-sm-8  col-xs-12">
-                                <button class="mz-button" type="button" data-mz-action="submitRequest">Send Me More Information</button>
-                            </div>
+                        <div class="form-group col-sm-8  col-xs-12">
+                            <button class="mz-button" type="button" data-mz-action="submitRequest">Send Me More Information</button>
                         </div>
+                    
                     </form>
                 </div>
     	{% endblock commercial-form %}

@@ -1,0 +1,8 @@
+<div class="mz-deal-bundle">
+    {% if model.config.imagedeal %}
+          <a hrtef="" >
+                <img src="{{ model.config.imagedeal.imageUrl }}" alt="bundle deal">
+           </a>
+           <button class="mz-button" type="submit">{{ model.config.dealbutton }}</button>
+    {% endif %} 
+</div>

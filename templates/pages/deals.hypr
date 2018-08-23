@@ -1,0 +1,19 @@
+
+{% extends "page" %}
+
+{% block title-tag-content %}{% firstof pageContext.metaTitle model.name %}  - {% parent %}{% endblock title-tag-content %}
+{% block body-tag-classes %}deals{% endblock body-tag-classes %}
+{% block body-content %}
+    <div class="row">
+        {% dropzone "deals-home-image" scope="page" %}
+        
+        {% dropzone "deals-items" scope="page" %}
+         <div id="dealForm">
+             {% include "modules/page-footer/footer-forms/deals-form" %}
+         </div>
+        
+        {% dropzone "deals-footer-image" scope="page" %}   
+        
+        {% dropzone "buy-bundles" scope="page" %}
+    </div>  
+{% endblock body-content %}

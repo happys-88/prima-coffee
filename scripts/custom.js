@@ -5,15 +5,7 @@ define([
 	"bxslider",
 	"lazyload" 
 ], function( $, api, HyprLiveContext, bxslider, lazyload) { 
-	 $("img.lazy").lazyload({
-		  placeholder: "https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif"
-	 });
-	$(document).on('click','a[class="bx-next"]', function(){ 
-		 $("img.lazy").lazyload();
-	});
-	$(document).on('click','a[class="bx-prev"]', function(){ 
-		 $("img.lazy").lazyload();
-    });
+	
 	//home slider
 	$('#mz-home-slider .slider').bxSlider({
 		auto: true,
@@ -32,6 +24,16 @@ define([
 		}
 	});
 	//home slider ends
+	//lazy laod
+	$("img.lazy").lazyload({
+		placeholder: "https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif"
+	});
+	$(document).on('click', 'a[class="bx-next"]', function () {
+		$("img.lazy").lazyload();
+	});
+	$(document).on('click', 'a[class="bx-prev"]', function () {
+		$("img.lazy").lazyload();
+	});
 
 	// My Account Tabbing Redirection
 	if(window.location.pathname == "/myaccount"){
@@ -183,7 +185,9 @@ define([
 
 		// Back To Top
 		$(".mz-back-to-top-btn").click(function(){
-	        scrollToTop(); 
+			//scrollToTop(); 
+			 $("html, body").animate({ scrollTop: 0 }, 900);
+                  return false;
 	    });
 
 		// Refine By Toggle in Mobile

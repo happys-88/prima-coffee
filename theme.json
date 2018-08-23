@@ -510,6 +510,15 @@
       "documentType": "web_page",
       "editor": "landing-page",
       "entityType": "webpage",
+      "id": "deals",
+      "template": "deals",
+      "title": "deals",
+      "userCreatable": true
+    },
+    {
+      "documentType": "web_page",
+      "editor": "landing-page",
+      "entityType": "webpage",
       "id": "aboutPrimaCoffee",
       "template": "about-prima-coffee",
       "title": "About Prima Coffee",
@@ -915,7 +924,7 @@
     "noHasstleReturnTooltip": "",
     "tryBeforeYouBuyTooltip": "",
     "priceMatchGuaranteeTooltip": "",
-    "freeShippingTooltip": ""  
+    "freeShippingTooltip": ""
   },
   "layoutWidgets": [
     {
@@ -1987,6 +1996,35 @@
       ],
       "icon": "/resources/admin/widgets/03_heading_p.png",
       "id": "featured-posts",
+      "validPageTypes": [
+        "*"
+      ]
+    },
+    {
+      "id": "dealbundle",
+      "displayName": "Deal Bundle",
+      "displayTemplate": "catalog/deal-bundle-product",
+      "editViewFields": [
+        {
+          "xtype": "panel",
+          "title": "bundle",
+          "items": [
+            {
+              "anchor": "50%",
+              "fieldLabel": "Add Image for footer deal",
+              "name": "imagedeal",
+              "xtype": "mz-input-image"
+            },
+            {
+              "anchor": "50%",
+              "fieldLabel": "Add Button Ttile",
+              "name": "dealbutton",
+              "xtype": "mz-input-text"
+            }
+          ]
+        }
+      ],
+      "icon": "/resources/admin/widgets/28_deal_of_the_day.png",
       "validPageTypes": [
         "*"
       ]

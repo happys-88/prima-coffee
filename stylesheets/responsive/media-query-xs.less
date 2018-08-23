@@ -540,7 +540,9 @@
 			}
 			.mz-button {
 				font-size: 11px;
-				padding:9px;
+				padding: 9px;
+				width: 90%;
+				margin-top: 0 !important;
 			}
 			.mz-l-paginatedlist-footer {
 				min-height: 156px;
@@ -713,7 +715,7 @@
 			}
 		}
 	}
-	.mz-product, .mz-cart {
+	.mz-product, .mz-cart, .mz-category {
 		#page-content{
 			.container{
 				padding-left: 0px;
@@ -721,6 +723,12 @@
 			}
 		}
 	}
+	.mz-cart{
+		#page-content{
+             margin-top: 55px;
+		}
+	}
+	
 	.mz-product {
 		.mz-productimages {
 			.mz-productimages-main {
@@ -1862,6 +1870,15 @@
 					width: 100%;
 					padding: 20px 0px;
 				}
+		}
+   }
+
+
+   //price request form
+   .well {
+	   .btn {
+			padding: 10px 11px;
+			font-size: 14px;
 		}
    }
 }

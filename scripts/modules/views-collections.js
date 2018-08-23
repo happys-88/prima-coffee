@@ -82,8 +82,8 @@ define([
                 'click label[data-mz-facet-value]',
                 'change input[data-mz-facet-value]',
                 'change [data-mz-value="pageSize"]',
-                'change [data-mz-value="sortBy"]',
-                'click a[class="bx-next"]'
+                'change [data-mz-value="sortBy"]'
+                //'click a[class="bx-next"]'
             ],
             intentToUrl
         );
