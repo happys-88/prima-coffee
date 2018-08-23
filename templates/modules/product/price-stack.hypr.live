@@ -10,7 +10,9 @@
                 {% include "modules/common/price" with model=model.priceRange.upper %}
             </span>
         {% endif %}
-        <span class="mz-price-discountname orange-text">{{ model.priceRange.lower.discount.discount.name}} </span> 
+        {% if model.priceRange.lower.discount %}
+            <span class="mz-price-discountname orange-text">{{ model.priceRange.lower.discount.discount.name}} </span>
+        {% endif %} 
     {% else %}
         {% if model.mapPrice %}
             <span class="mz-price is-crossedout">
@@ -22,6 +24,8 @@
         {% else %}
             {% include "modules/common/price" with model=model.price %}
         {% endif %}
-        <span class="mz-price-discountname orange-text">{{ model.price.discount.discount.name}} </span>   
+        {% if model.price.discount %} 
+            <span class="mz-price-discountname orange-text">{{ model.price.discount.discount.name}} </span> 
+        {% endif %}   
     {% endif %}
 </div> 

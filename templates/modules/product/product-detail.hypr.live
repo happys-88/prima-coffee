@@ -195,9 +195,16 @@
       </div>
     </div> 
   {% endif %} 
-  <div class="col-md-4 mz-warranty">
-    <p>Warranty: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    <p>Warranty: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+  <div class="col-md-4 mz-warranty-text">
+    {% if (model|get_product_attribute_value("tenant~product_info_note")) %} 
+      <p>{{ model|get_product_attribute_value("tenant~product_info_note")|safe }}</p> 
+    {% endif %}
+    {% if (model|get_product_attribute_value("tenant~warranty_note")) %} 
+      <p>{{ model|get_product_attribute_value("tenant~warranty_note")|safe }}</p> 
+    {% endif %}
+    {% if (model|get_product_attribute_value("tenant~disclaimer")) %} 
+      <p>{{ model|get_product_attribute_value("tenant~disclaimer")|safe }}</p>  
+    {% endif %} 
   </div>
   {% if model.addons and model.addons.length > 0 %}
     <div class="row">
