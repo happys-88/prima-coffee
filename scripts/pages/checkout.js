@@ -11,6 +11,10 @@ require(["modules/jquery-mozu", "underscore", "hyprlive", "modules/backbone-mozu
             _.defer(function () {
                 me.model.next();
             });
+
+            var incomplete = $(".is-incomplete");
+            var offset = incomplete.offset();
+            $("html, body").animate({ scrollTop: offset.top }, 600); 
         },
         choose: function () {
             var me = this;

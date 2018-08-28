@@ -41,39 +41,77 @@
         {% include "modules/json-required-for-hyprlive" %}
 
         {% block meta-tags %}
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0, user-scalable=no"> 
-        <meta name="description" content="{{ PageContext.MetaDescription }}">
-        <meta name="keywords" content="{{ PageContext.MetaKeywords }}">
-        <meta name="correlationId" content="{{ pageContext.correlationId }}">
-        {% if not user.isAnonymous and not user.isAuthenticated and user.email !== "" %}
-        <meta http-equiv="refresh" content="0;url=/logout">
-       {% endif %}
+            
+            <meta charset="utf-8">  
+            <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0, user-scalable=no">
+            <meta name="twitter:card" content="summary">
+            {% if not user.isAnonymous and not user.isAuthenticated and user.email !== "" %}
+                <meta http-equiv="refresh" content="0; url=/logout">
+            {% endif %}
 
+            <title>{% block title-tag-content %}{{ siteContext.generalSettings.websiteName }}{% endblock title-tag-content %}</title> 
+            {% if PageContext.MetaKeywords %} 
+                <meta name="keywords" content='{{ PageContext.MetaKeywords|replace("'","&rsquo;")|replace('"','&rdquo;')|safe }}'> 
+            {% endif %}
+
+            {% if PageContext.MetaDescription %}
+                <meta name="description" content='{{ PageContext.MetaKeywords|replace("'","&rsquo;")|replace('"','&rdquo;')|safe }}'>
+            {% endif %}
+            {% if PageContext.correlationId %}
+                <meta name="correlationId" content="{{ PageContext.correlationId }}">
+            {% endif %}
+            
+            {% if model.content.productName %}
+                <meta property="og:title" content='{% firstof pageContext.metaTitle|replace("'","&rsquo;")|replace('"','&rdquo;')|safe model.content.productName|replace("'","&rsquo;")|replace('"','&rdquo;')|safe %} - {{ siteContext.generalSettings.websiteName }}'>
+            {% else %}
+                {% if location %}
+                    {% with location.name as locationName %}
+                        <meta property="og:title" content='{{ locationName|safe }}'>
+                    {% endwith %}
+                {% else %}
+                    {% if PageContext.metaTitle %}
+                        <meta property="og:title" content='{{ PageContext.metaTitle|replace("'","&rsquo;")|replace('"','&rdquo;')|safe }}'>
+                    {% endif %}
+                {% endif %}
+            {% endif %} 
+
+            {% if PageContext.MetaDescription %}
+                <meta property="og:description" content='{{ PageContext.MetaDescription|replace("'","&rsquo;")|replace('"','&rdquo;')|safe }}'> 
+            {% endif %}
+            {% if model.mainImage %}
+                <meta property="og:image" content='https:{% make_url "image" model.mainImage with maxWidth=350 as_parameters %}'>
+            {% else %}
+                <meta property="og:image" content='{% if themeSettings.defaultStoreImage %}{{themeSettings.defaultStoreImage}}{% endif %}'>    
+            {% endif %}
+            <meta property="og:image:width" content="350" />
+            <meta property="og:image:height" content="350" />  
+            <meta property="og:url" content="{{ PageContext.url }}">
+            <meta property="og:site_name" content="{{ siteContext.generalSettings.websiteName }}">
+            <meta property="og:type" content="website">
+            
         {% endblock meta-tags %}
 
         <title>
-            {% block title-tag-content %}
-                {{ siteContext.generalSettings.websiteName }}
-            {% endblock title-tag-content %}
+            {% block title-tag-content %}{{ siteContext.generalSettings.websiteName }}{% endblock title-tag-content %}
         </title>
-
 
         {% if PageContext.FeedUrl  %}
             <link rel="alternate" type="application/rss+xml" title="{{ PageContext.Title }}" href="{{ PageContext.FeedUrl }}" />
         {% endif %}
 
-		{% if PageContext.CrawlerInfo.CanonicalUrl  %}
+        {% if PageContext.CrawlerInfo.CanonicalUrl  %}
             <link rel="canonical" href="{{PageContext.CrawlerInfo.CanonicalUrl}}">
         {% endif %}
 
-		{% if PageContext.CrawlerInfo.PreviousUrl  %}
+        {% if PageContext.CrawlerInfo.PreviousUrl  %}
             <link rel="prev" href="{{PageContext.CrawlerInfo.PreviousUrl}}">
         {% endif %}
 
-		{% if PageContext.CrawlerInfo.NextUrl  %}
+        {% if PageContext.CrawlerInfo.NextUrl  %}
             <link rel="next" href="{{PageContext.CrawlerInfo.NextUrl}}">
         {% endif %}
+
+        {% include "modules/json-required-for-hyprlive" %}
 
         {% block stylesheets %}
             <link rel="stylesheet" href='{% make_url "stylesheet" "/stylesheets/bootstrap/bootstrap.min.css" %}' title="default" />
