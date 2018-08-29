@@ -54,6 +54,13 @@ define([
 	}
 	
 	$(document).ready(function(){ 
+
+		$('.mz-searchbox-button').click(function(e) {
+			var elm = e.currentTarget;
+			var searchType = elm.getAttribute('data-mz-searchType'); 	
+			localStorage.setItem("searchType", searchType);
+		});
+		
 		$("#subscribeEmail").keydown(function(e) {
 			if (e.which === 13) {
 				alert("Ok");

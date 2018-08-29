@@ -2,7 +2,7 @@
     <div class="mz-searchbox-field">
         <input placeholder="{{ labels.searchLearningCenter }}" type="search" class="mz-searchbox-input learningCenterInput" autocomplete="off" id="learningCenter" name="query" data-mz-role="searchquery" /> 
         <input type="hidden" class="mz-searchbox-input" name="searchPage" value="learningCenter" />
-        <button class="mz-searchbox-button" type="submit"><i class="fa fa-search"></i></button> 
+        <button class="mz-searchbox-button" data-mz-searchType="learningCenter" type="submit"><i class="fa fa-search"></i></button> 
     </div> 
 	
     {% if themeSettings.useSearchAutocomplete %}

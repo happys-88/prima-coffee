@@ -244,7 +244,12 @@ define(['shim!vendor/bootstrap/js/popover[shim!vendor/bootstrap/js/tooltip[modul
             if ( returnUrl ){
                 // window.location.href= returnUrl;
                 var url = HyprLiveContext.locals.pageContext.url;
-                var domain = url.split('?')[0];
+                var domain = "";
+                if (url.includes("/user/login")){
+                    domain = url.split('/user')[0];
+                }else {
+                    domain = url.split('?')[0];
+                }
                 url = domain + returnUrl;
                 window.location = url;
             }else{
