@@ -22,10 +22,21 @@
 
                             <div class="mz-product-options">
                                 {% for optionlist in item.product.options %}
-                                    <div><span>{{ optionlist.name }}:</span> {{ optionlist.value }}</div>
+                                    <div>
+                                        <span>{{ optionlist.name }}:</span>
+                                        {% if optionlist.stringValue %} 
+                                            {{ optionlist.stringValue }} 
+                                        {% else %} 
+                                            {% if optionlist.value %} 
+                                                {{ optionlist.value }} 
+                                            {% else %} 
+                                                {{ optionlist.shopperEnteredValue }} 
+                                            {% endif %} 
+                                        {% endif %} 
+                                    </div>
                                 {% endfor %}
                              </div>
-
+                            {% comment %}
                             {% if item.product.bundledProducts.length %}
                                 <div class="mz-propertylist">
                                     {% for bundledProduct in item.product.bundledProducts %}
@@ -34,7 +45,7 @@
                                     {% endfor %}
                                 </div>
                             {% endif %} 
-
+                            {% endcomment %}
                             {% with item.product.variationProductCode|default(item.product.productCode) as prodCode %}
 
                                 {% with labels.tbybProductCode|string_format(prodCode, item.id) as tbybItem %}

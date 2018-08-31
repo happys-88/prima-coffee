@@ -18,9 +18,7 @@
             <span class="mz-price is-crossedout">
                 {{model.mapPrice|currency}}
             </span>
-            {% if hasStock > 0 %}
-                <span class="orange-text">{{ labels.mapPrice }}</span>
-            {% endif %}
+            <span class="orange-text">{{ labels.mapPrice }}</span>
         {% else %}
             {% include "modules/common/price" with model=model.price %}
         {% endif %}

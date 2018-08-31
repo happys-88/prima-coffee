@@ -437,6 +437,7 @@
   "temporarilyOutOfStockMessage"          : "(Once Stock Arrives, Ships Out Next Business Day)",
   "stockThreshold"                        : "Hurry, only {0} more in stock",
   "blankSearchResult"                     : "Please enter a keyword or item number.",
+  "itemDiscontinued"                      : "This item is not available",
 // End:stock related labels
 
   "addToWishlist"                         : "Add To Wishlist",

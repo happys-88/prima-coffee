@@ -27,7 +27,7 @@
                                 {% endwith %}
                             </div>
                             <div class="mz-product-info">
-                                {% include "modules/product/price-show-stack" with hasStock=model.options.length %}
+                                {% include "modules/product/price-show-stack" %}
                             </div>
                         </div>
                         <div class="mz-productdetail-options mz-l-stack-section">
@@ -49,7 +49,7 @@
                        <span class="mz-validationmessage">{{ model.addToCartErrr }}</span>
                         <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="mz-productdetail-price">
                             <div class="pull-left"><label>{{ labels.itemSubtotal }}:</label></div> 
-                            <div class="pull-left">{% include "modules/product/price-show-stack" with hasStock=model.options.length %}</div>
+                            <div class="pull-left">{% include "modules/product/price-show-stack" %}</div>
                         </div>
                         <div class="cart-cont-shop clearfix">
                             <button type="button" class="pull-left continue-shopping mz-button mz-button-large " data-dismiss="modal">{{ labels.continueShopping }}</button>

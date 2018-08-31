@@ -41,7 +41,6 @@ define([
             $("img.lazy").lazyload({
                 placeholder: "https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif"
             });
-            blockUiLoader.unblockUi();  
             yotpo.update();
         } 
 
@@ -84,7 +83,6 @@ define([
                 parser.href = url;
                 url = window.location.pathname + parser.search;
             }
-            blockUiLoader.unblockUi(); 
             return url;
         }
 

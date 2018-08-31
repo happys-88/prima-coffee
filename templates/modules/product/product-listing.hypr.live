@@ -1,4 +1,3 @@
-
 <div class="mz-productlisting {% block module-classes %}{% endblock module-classes %}" data-mz-product="{{ model.productCode }}">
     <div class="mz-productlisting-image">
         {% block product-image %}
@@ -55,21 +54,9 @@
                 {% endif %}
             {% endblock product-extrainfo %}
             <div class="mz-product-msg">
-                <div class="stock-messages" id="stock-messages-{{ model.productCode }}">
-                    {% if model.inventoryInfo.onlineStockAvailable < 10 and model.inventoryInfo.onlineStockAvailable > 0 %}
-                        <div>{{ labels.itemInStock|string_format(model.inventoryInfo.onlineStockAvailable) }}</div>
-                    {% else %}
-                        {% if model.inventoryInfo.onlineStockAvailable > 10 %}
-                            <div>{{ labels.inStock }}</div>
-                        {% endif %}
-                    {% endif %} 
-                </div>
-
-                <div class="stock-threshold-message" id="{{ model.productCode }}"></div>
-
-                {% if not model.inventoryInfo.onlineStockAvailable and not model.variations %}
-                    <div class="mz-product-notpurchasable">{{ labels.outOfStock }}</div>
-                {% endif %}
+                <div class="stock-message"></div>
+                <div class="stock-threshold-message"></div>
+                <div class="out-of-stock-message"></div>
                 <div class="shipping-messages" style="display: none;">
                     {% for propShipping in model.properties %}
                         {% if propShipping.attributeFQN == "tenant~availability" %}

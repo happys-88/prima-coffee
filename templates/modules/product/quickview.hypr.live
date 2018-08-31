@@ -59,7 +59,7 @@
 
                     <!-- Price -->
                     <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="mz-productdetail-price">
-                        {% include "modules/product/price-show-stack" with hasStock=model.totalCount %}
+                        {% include "modules/product/price-show-stack" %}
                     </div>
                     <!--/ Price -->
 

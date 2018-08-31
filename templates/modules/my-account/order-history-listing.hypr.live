@@ -40,7 +40,7 @@
         <div class="mz-orderlisting-nonShipped">
         {% for item in model.getNonShippedItems %}
             {% if item.Type == "BundleItem" %}
-                {% include "modules/my-account/my-account-product-bundle" with model=item %}
+                
             {% else %}
                 {% include "modules/my-account/order-history-listing-item" with model=item %}
             {% endif %}

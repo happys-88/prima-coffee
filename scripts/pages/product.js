@@ -8,9 +8,10 @@
     "modules/product/recently-viewed-products", 
     "hyprlivecontext",
     "modules/api",
-    "modules/page-header/global-cart" 
-], function ($, _, Hypr, Backbone, CartMonitor, ProductModels, ProductImageViews, RVIModel, HyprLiveContext, api, GlobalCart) {
-
+    "modules/page-header/global-cart",
+    'modules/block-ui'  
+], function ($, _, Hypr, Backbone, CartMonitor, ProductModels, ProductImageViews, RVIModel, HyprLiveContext, api, GlobalCart, blockUiLoader) {
+    blockUiLoader.globalLoader();
     var ProductView = Backbone.MozuView.extend({
         templateName: 'modules/product/product-detail',
         additionalEvents: {
@@ -22,12 +23,153 @@
             "click [data-mz-qty=plus]": "quantityPlus"
         },
         render: function () {
+            this.refreshStock();
+            blockUiLoader.unblockUi();
             var me = this;
             Backbone.MozuView.prototype.render.apply(this);
             this.productCarousel();
             this.$('[data-mz-is-datepicker]').each(function (ix, dp) {
                 $(dp).dateinput().css('color', Hypr.getThemeSetting('textColor')).on('change  blur', _.bind(me.onOptionChange, me));
             });
+        },
+        refreshStock: function () {
+            var fieldDisplayOOSProp = this.model.get('fieldDisplayOOSProp');
+            var inventoryInfo = this.model.get('inventoryInfo');
+            var manageStock = inventoryInfo.manageStock;
+            var stockMessage;
+            var itemDiscontinued = false;
+            if (!manageStock) {
+                if (fieldDisplayOOSProp) {
+                    var fieldDisplayOOSPropValue = this.model.get('fieldDisplayOOSPropVal');
+                    var prValue = fieldDisplayOOSPropValue.values[0];
+                    if (prValue.value == '4') {
+                        stockMessage = Hypr.getLabel('itemDiscontinued');
+                        itemDiscontinued = true;
+                    } else {
+                        stockMessage = Hypr.getLabel('inStock');
+                    }
+                } else {
+                    stockMessage = Hypr.getLabel('inStock');
+                }
+            } else {
+                var productUsage = this.model.get('productUsage');
+                var outOfStockBehavior = inventoryInfo.outOfStockBehavior;
+                var onlineStockAvailable = inventoryInfo.onlineStockAvailable;
+                if (fieldDisplayOOSProp) {
+                    var fieldDisplayOOSPropVal = this.model.get('fieldDisplayOOSPropVal');
+                    var propValue = fieldDisplayOOSPropVal.values[0];
+                    
+                    if (propValue.value == '1') {
+                        if (productUsage == 'Configurable') {
+                           var someOptionsInStock = this.model.get('someOptionsInStock');
+                           if (onlineStockAvailable === undefined) {
+                                if (someOptionsInStock) {
+                                    stockMessage = Hypr.getLabel('someOptionInStock');
+                                } else {
+                                    onlineStockAvailable = this.model.get('variationTotalStock');
+                                    if (onlineStockAvailable < 10 && onlineStockAvailable > 0) {
+                                        stockMessage = Hypr.getLabel('stockThreshold').replace("{0}", onlineStockAvailable);
+                                    } else if (onlineStockAvailable >= 10) {
+                                        stockMessage = Hypr.getLabel('inStock');
+                                    } else {
+                                        if (outOfStockBehavior == 'AllowBackOrder') {
+                                            //If we need to show message in case of AllowBackOrder
+                                            // stockMessage = Hypr.getLabel('inStock');
+                                        } else {
+                                            stockMessage = Hypr.getLabel('outOfStock');
+                                        }
+                                    }
+                                }
+                           } else {
+                                if (onlineStockAvailable < 10 && onlineStockAvailable > 0) {
+                                    stockMessage = Hypr.getLabel('stockThreshold').replace("{0}", onlineStockAvailable);
+                                } else if (onlineStockAvailable >= 10) {
+                                    stockMessage = Hypr.getLabel('inStock');
+                                } else {
+                                    if (outOfStockBehavior == 'AllowBackOrder') {
+                                        //If we need to show message in case of AllowBackOrder
+                                        // stockMessage = Hypr.getLabel('inStock');
+                                    } else {
+                                        stockMessage = Hypr.getLabel('outOfStock');
+                                    }
+                                }
+                           }
+                        } else {
+                            if (onlineStockAvailable < 10 && onlineStockAvailable > 0) {
+                                stockMessage = Hypr.getLabel('stockThreshold').replace("{0}", onlineStockAvailable);
+                            } else if (onlineStockAvailable >= 10) {
+                                stockMessage = Hypr.getLabel('inStock');
+                            } else {
+                                if (outOfStockBehavior == 'AllowBackOrder') {
+                                    //If we need to show message in case of AllowBackOrder
+                                    // stockMessage = Hypr.getLabel('inStock');
+                                } else {
+                                    stockMessage = Hypr.getLabel('outOfStock');
+                                }
+                                
+                            }
+                        }
+                    } else if (propValue.value == '0' || propValue.value == '2' || propValue.value == '3') {
+                        if (productUsage == 'Configurable' && onlineStockAvailable === undefined) {
+                           onlineStockAvailable = this.model.get('variationTotalStock');
+                        }
+                        if (onlineStockAvailable < 10 && onlineStockAvailable > 0) {
+                            stockMessage = Hypr.getLabel('stockThreshold').replace("{0}", onlineStockAvailable);
+                        } else if (onlineStockAvailable >= 10) {
+                            if (propValue.value == '0') {
+                                stockMessage = Hypr.getLabel('distributorStock');
+                            } else {
+                                stockMessage = Hypr.getLabel('inStock');
+                            }
+                        } else {
+                            if (outOfStockBehavior == 'AllowBackOrder') {
+                                //If we need to show message in case of AllowBackOrder
+                                /*if (propValue.value == '0') {
+                                    stockMessage = Hypr.getLabel('distributorStock');
+                                } else {
+                                    stockMessage = Hypr.getLabel('inStock');
+                                }*/
+                            } else {
+                                if (propValue.value == '2') {
+                                    stockMessage = Hypr.getLabel('preOrderOnly');
+                                } else if (propValue.value == '3') {
+                                    stockMessage = Hypr.getLabel('builtToOrder');
+                                } else {
+                                    stockMessage = Hypr.getLabel('outOfStock');
+                                }
+                                
+                            }
+                        }
+                    } else if (propValue.value == '4') {
+                        stockMessage = Hypr.getLabel('itemDiscontinued');
+                        itemDiscontinued = true;
+                    }
+                } else {
+                    if (productUsage == 'Configurable' && onlineStockAvailable === undefined) {
+                       onlineStockAvailable = this.model.get('variationTotalStock');
+                    }
+                    if (onlineStockAvailable < 10 && onlineStockAvailable > 0) {
+                        stockMessage = Hypr.getLabel('stockThreshold').replace("{0}", onlineStockAvailable);
+                    } else if (onlineStockAvailable >= 10) {
+                        stockMessage = Hypr.getLabel('inStock');
+                    } else {
+                        if (outOfStockBehavior == 'AllowBackOrder') {
+                            //If we need to show message in case of AllowBackOrder
+                            // stockMessage = Hypr.getLabel('inStock');
+                        } else {
+                            stockMessage = Hypr.getLabel('outOfStock');
+                        }
+                    }
+                    
+                }
+            }
+            this.model.set('checkItem', false);
+            if (!itemDiscontinued) {
+                $('#add-to-cart').prop('disabled', false);
+                this.model.set('checkItem', true);
+            }
+
+            this.model.set('stockMessage', stockMessage);
         },
         productCarousel: function () { 
             var minSlides, 
@@ -86,6 +228,7 @@
             }
         },500),
         quantityMinus: _.debounce(function () {
+            if (this.model.get('checkItem') === false) { return; }
             var _qtyCountObj = $('.mz-productdetail-qty');
             var value = parseInt(_qtyCountObj.val(), 10);
             if (value == 1) {
@@ -96,6 +239,7 @@
             _qtyCountObj.val(value);
         },500),
         quantityPlus: _.debounce(function () {
+            if (this.model.get('checkItem') === false) { return; }
             var _qtyCountObj = $('.mz-productdetail-qty');
             var value = parseInt(_qtyCountObj.val(), 10);
             value++;
@@ -172,33 +316,25 @@
             }
             var options = JSON.parse(JSON.stringify(this.model.get('options')));
             var addons = this.model.get('addons');
-            for (var k = 0; k < options.length; k++) {
-                var addonValues = addons[k].values;
-                var optionValues = options[k].values;
-                for (var j = 0; j < optionValues.length; j++) {
-                    var addonValue = addonValues[j];
-                    var optionValue = optionValues[j];
-                    optionValue.productUrl = addonValue.productUrl;
-                    optionValue.imageFilePath = addonValue.imageFilePath;
-                    optionValue.imageData = addonValue.imageData;
-                    optionValues[j] = optionValue;
+            if (addons) {
+                for (var k = 0; k < options.length; k++) {
+                    var addonValues = addons[k].values;
+                    var optionValues = options[k].values;
+                    for (var j = 0; j < optionValues.length; j++) {
+                        var addonValue = addonValues[j];
+                        var optionValue = optionValues[j];
+                        optionValue.productUrl = addonValue.productUrl;
+                        optionValue.imageFilePath = addonValue.imageFilePath;
+                        optionValue.imageData = addonValue.imageData;
+                        optionValues[j] = optionValue;
+                    }
+                    options[k].values = optionValues;
                 }
-                options[k].values = optionValues;
+                this.model.set('addons', options);
             }
-            this.model.set('addons', options);
         },
         addToCart: function () {
             this.model.addToCart();
-            this.model.on('addedtocart', function (cartitem) {
-                $('.mz-errors').remove();
-            });
-            this.model.on('addedtocarterror', function (error) {
-                if (error.message.indexOf('Validation Error: The following items have limited quantity or are out of stock') > -1) {
-                    $('.mz-errors').find('.mz-message-item').html(Hypr.getLabel('outOfStockError'));
-                } else if(error.message.indexOf('Missing or invalid parameter: variationProductCode Product is configurable. Variation code must be specified') > -1) {
-                    $('.mz-errors').find('.mz-message-item').html(Hypr.getLabel('variationError'));
-                }
-            });
         },
         addToWishlist: function () {
             this.model.addToWishlist();
@@ -236,6 +372,68 @@
                     }
                 }
             });
+
+            var properties = this.model.get('properties');
+
+            var shippingMessage;
+            var availabilityMessage;
+            var expectedShipMessage;
+            var shippingProps = _.filter(properties, function(property){ return property.attributeFQN == "tenant~availability" || property.attributeFQN == "tenant~expected-ship-date-message"; });
+            if (shippingProps) {
+                for (var y = 0; y < shippingProps.length; y++) {
+                    var shippingProp = shippingProps[y];
+                    if (shippingProp.attributeFQN == "tenant~availability") {
+                        availabilityMessage = shippingProp.values[0].stringValue;
+                    } else if (shippingProp.attributeFQN == "tenant~expected-ship-date-message") {
+                        expectedShipMessage = shippingProp.values[0].stringValue;
+                    }
+                }
+            }
+
+            var prop = _.find(properties, function(property){ return property.attributeFQN == 'tenant~field_display_oos1'; });
+            if (prop) {
+                this.model.set('fieldDisplayOOSProp', true);
+                this.model.set('fieldDisplayOOSPropVal', prop);
+            } else {
+                this.model.set('fieldDisplayOOSProp', false);
+            }
+            var variationTotalStock = 0;
+            variationTotalStock = parseInt(variationTotalStock, 10);
+            var someOptionsInStock = false;
+            var productUsage = this.model.get('productUsage');
+            if (productUsage == 'Configurable') {
+                var variations = this.model.get('variations');
+                if (variations && variations.length > 0) {
+                    for (var x = 0; x < variations.length; x++) {
+                        var stockAvailable = variations[x].inventoryInfo.onlineStockAvailable;
+                        stockAvailable = parseInt(stockAvailable, 10);
+                        if (stockAvailable > 0) {
+                            variationTotalStock += stockAvailable;
+                        } else {
+                            if (!someOptionsInStock) {
+                                someOptionsInStock = true;
+                            }
+                        }
+                    }
+                }
+                if (variationTotalStock === 0) {
+                    someOptionsInStock = false;
+                }
+                this.model.set('variationTotalStock', variationTotalStock);
+                this.model.set('someOptionsInStock', someOptionsInStock);
+            }
+
+            var inventory = this.model.get('inventoryInfo');
+            if (variationTotalStock === 0 && inventory.onlineStockAvailable) {
+                variationTotalStock = inventory.onlineStockAvailable;
+            }
+            if (variationTotalStock === 0 && prop) {
+                shippingMessage = expectedShipMessage;
+            } else {
+                shippingMessage = availabilityMessage;
+            }
+            this.model.set('shippingMessage',shippingMessage);
+
             var prodPrice = this.model.get('price');
             if (prodPrice.attributes) {
                 var priceType = prodPrice.attributes.priceType;
@@ -459,6 +657,7 @@
        
         product.on('addedtocart', function (cartitem) {
             if (cartitem && cartitem.prop('id')) {
+                $('.mz-errors').remove();
                 //product.isLoading(true);
                 CartMonitor.addToCount(product.get('quantity'));
                 $('html,body').animate({
@@ -474,7 +673,14 @@
                 product.trigger("error", { message: Hypr.getLabel('unexpectedError') });
             }
         });
-
+        product.on('addedtocarterror', function (error) {
+            product.set('continueToCart', false);
+            if (error.message.indexOf('Validation Error: The following items have limited quantity or are out of stock') > -1) {
+                $('.mz-errors').find('.mz-message-item').html(Hypr.getLabel('outOfStockError'));
+            } else if(error.message.indexOf('Missing or invalid parameter: variationProductCode Product is configurable. Variation code must be specified') > -1) {
+                $('.mz-errors').find('.mz-message-item').html(Hypr.getLabel('variationError'));
+            }
+        });
         product.on('addedtowishlist', function (cartitem) {
             $('#add-to-wishlist').prop('disabled', 'disabled').text(Hypr.getLabel('addedToWishlist'));
         });

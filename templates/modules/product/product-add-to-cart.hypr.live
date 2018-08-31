@@ -1,1 +1,1 @@
-<button class="mz-button" disabled="disabled" data-mz-productcode="{{model.productCode}}" data-toggle="modal"> {{ labels.addToCart }} </button>
+<button class="mz-button" data-mz-productcode="{{model.productCode}}" data-toggle="modal" disabled="disabled"> {{ labels.addToCart }} </button>
