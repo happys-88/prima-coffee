@@ -2,16 +2,16 @@
 {% block item-details %}
     <div class="mz-itemlisting-description">
       {% for option in model.product.options %}
-      	<p><strong>{{ option.name }}:</strong> 
-        	{% if option.stringValue %} 
-            	{{ option.stringValue }} 
-          	{% else %} 
-	            {% if option.value %} 
-	              {{ option.value }} 
-	            {% else %} 
-	              {{ option.shopperEnteredValue }} 
-	            {% endif %}  
-          	{% endif %}
+        <p><strong>{{ option.name }}:</strong> 
+          {% if option.stringValue %} 
+            {{ option.stringValue }} 
+          {% else %} 
+            {% if option.value %} 
+              {{ option.value }} 
+            {% else %} 
+              {{ option.shopperEnteredValue }} 
+            {% endif %}  
+          {% endif %}
         </p> 
       {% endfor %}
       
