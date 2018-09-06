@@ -311,6 +311,10 @@ define([
 			}); 
 		}
 
+		if(!HyprLiveContext.locals.user.isAuthenticated){
+			localStorage.setItem("previousTime", null); 
+		}
+
 		// Global Cart Continue btn
 		// $(document).on('click','#continueShoppingGlobalCart', function(){   
 		//     window.history.back();    

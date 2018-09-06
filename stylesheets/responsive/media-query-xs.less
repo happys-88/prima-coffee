@@ -52,6 +52,39 @@
 			margin-top: 10px; 
 			.mz-searchbox-field {
 				width: 100%;
+				.twitter-typeahead{
+					position: static !important; 
+				}
+				.tt-dropdown-menu{
+					width: 100%;
+					height: calc(~'100% - 154px');  
+					position: fixed !important; 
+					top: 154px !important; 
+					overflow: auto; 
+					.tt-dataset-pages{
+						width: 100%;
+						padding: 10px 15px;
+						min-height: inherit;
+						.tt-suggestions .tt-suggestion,
+						.tt-suggestions .tt-suggestion:nth-of-type(3n+2){
+							width: 46%;
+							margin: 10px 2%;    
+						}
+						.mz-itemlisting{
+							.mz-itemlisting-thumb{
+								.mz-itemlisting-thumb-img{
+									max-width: 60px;
+									max-height: 60px; 
+								}		
+							}
+						}     
+					}
+					.tt-dataset-terms,
+					.tt-dataset-categories{
+						width: 100%;
+						padding: 0 15px;  
+					} 
+				}
 			}
 		}
 		.mz-searchbox-expands .mz-searchbox-input {

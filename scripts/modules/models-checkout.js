@@ -1592,7 +1592,20 @@
                 var currentPayment = order.apiModel.getCurrentPayment();
 
                 // the card needs to know if this is a saved card or not.
-                this.get('card').set('isSavedCard', order.get('billingInfo.usingSavedCard'));
+                this.get('card').set('isSavedCard', order.get('billingInfo.usingSavedCard')); 
+
+                // if ($("#mz-payment-security-code-0").val() === undefined || $("#mz-payment-security-code-0").val() === "" ){
+                //     var error1 = {"items":[]};
+                //     var errorItem1 = {};
+                //     errorItem1.name = "card.cvv";
+                //     errorItem1.message = "Please enter your CVV number";
+                //     error1.items.push(errorItem1);
+                //     if (error1.items.length > 0) {
+                //         order.onCheckoutError(error1);
+                //     } 
+                //     return false;
+                // }
+
                 // the card needs to know if this is Visa checkout (or Amazon? TBD)
                 if (currentPayment) {
                     this.get('card').set('isVisaCheckout', currentPayment.paymentWorkflow.toLowerCase() === 'visacheckout');
@@ -1646,17 +1659,11 @@
                 if(this.get('paymentType').toLowerCase() === "purchaseorder") {
                     this.get('purchaseOrder').inflateCustomFields();
                 }
-                // console.log("currentPayment : "+JSON.stringify(currentPayment));
-                /*if (radioVal === 'PayPalExpress2') {
-                    this.markComplete();
-                } else*/ if (!currentPayment) {
-                    // console.log("111");
+                if (!currentPayment) {
                     return this.applyPayment();
                 } else if (this.hasPaymentChanged(currentPayment)) {
-                    // console.log("222");
                     return order.apiVoidPayment(currentPayment.id).then(this.applyPayment);
                 } else if (card.get('cvv') && card.get('paymentServiceCardId')) {
-                    // console.log("333");
                     return card.apiSave().then(this.markComplete, order.onCheckoutError);
                 } else {
                    this.markComplete();
