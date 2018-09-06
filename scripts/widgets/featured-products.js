@@ -7,12 +7,9 @@ function ($, bxSlider, lazyload) {
      $("img.lazy").lazyload({
         placeholder: "https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif"
     });
-    $(document).on('click', 'a[class="bx-next"]', function () {
+    $(document).on('click touchstart', 'a[class="bx-next"]', function () {
         $("img.lazy").lazyload();
     });
-    $(document).on('click', 'a[class="bx-prev"]', function () {
-        $("img.lazy").lazyload();
-    }); 
     var slider;
     var slide= {
         productCarousel:function(){
@@ -51,6 +48,7 @@ function ($, bxSlider, lazyload) {
                     controls: true,
                     pager: false,
                     touchEnabled: true,
+                    preloadImages:"all",
                     onSliderLoad: function () {
                         $(".slider").css("visibility", "visible");
                     }
