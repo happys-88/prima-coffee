@@ -2,21 +2,22 @@
 	<h3 class="mz-formstep-header mz-checkoutform-header">{{ labels.tbybHeader }}<a href="javascript:;" class="mz-formstep-edit" data-mz-action="edit">{{ labels.edit }}</a></h3>
     <div class="mz-formstep-body mz-checkoutform mz-formstep-next" id="tybyRadio">
     	<div class="row">
-	       	<div class="col-sm-2 mz-msg-img">
+	       	<div class="col-sm-2 col-xs-3 mz-msg-img">
 	       		<img src="../../resources/images/email.png" alt="email">
 	       	</div>
-	       	<div class="col-sm-10 mz-tbyb-msg">
+	       	<div class="col-sm-10 col-xs-9 mz-tbyb-msg">
 	       		<p>{{ labels.tbybContent|safe }}</p>
 	       	</div>
 	    </div>
 	    <div class="step-tbyb-products-name">
 	    	<h5>{{ labels.selectProductEnroll }}</h5>
+
 	   		{% for prods in model.requireOrderModel %}
 		   		{% with prods.varCode|default(prods.prodCode) as pCode %}
 			   		{% with prods.prodId as pId %}
 				   		{% with prods.selCode as selectionCode %}
 				   			<label class="clearfix">
-					   			<input class="tbyb" type="radio" value="{{pCode}}_{{pId}}" data-mz-tbyb data-mz-tyby-name="{{prods.prodName}}" data-mz-tbyb-code="{{pCode}}_{{pId}}" {% if model.tbybSelectedProd !== 'NONE' && model.tbybSelectedProd === selectionCode %}checked="checked"{% endif %} /> {{ prods.prodFullName }}
+					   			<input class="tbyb" type="radio" value="{{ selectionCode }}" data-mz-tbyb data-mz-tyby-name="{{prods.prodName}}" data-mz-tbyb-code="{{ selectionCode }}" {% if model.tbybSelectedProd !== 'NONE' && model.tbybSelectedProd === selectionCode %}checked="checked"{% endif %} /> {{ prods.prodFullName }}
 					        </label>
 				        {% endwith %}
 		   		    {% endwith %}

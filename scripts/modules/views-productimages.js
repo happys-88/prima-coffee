@@ -1,5 +1,8 @@
-﻿define(['modules/jquery-mozu', 'underscore', "modules/backbone-mozu", 'hyprlive', "elevatezoom", "bxslider","modules/api", "modules/models-product" ], function ($, _, Backbone, Hypr, elevatezoom, bxslider, api, ProductModel) {
-
+﻿define(['modules/jquery-mozu', 'underscore', "modules/backbone-mozu", 'hyprlive', "elevatezoom", "bxslider", "modules/api", "modules/models-product", "hyprlivecontext"], function ($, _, Backbone, Hypr, elevatezoom, bxslider, api, ProductModel, HyprLiveContext) {
+    var sitecontext = HyprLiveContext.locals.siteContext;
+    var cdn = sitecontext.cdnPrefix;
+    var siteID = cdn.substring(cdn.lastIndexOf('-') + 1);
+    var noimgsrc = "https:"+cdn + '/cms/' + siteID + '/files/' +'no-image.jpg';
     var ProductPageImagesView = Backbone.MozuView.extend({
         templateName: 'modules/product/product-images',
         events: {
@@ -41,8 +44,8 @@
             zoomImage.data('zoom-image', src);
             zoomImage.elevateZoom(zoomConfig);
           },
-          productThumbSlider: function () {
-            if(this.model.get("mainImage")!==null){
+          productThumbSlider: function () { 
+            if (this.model.get("mainImage") !== null && this.model.get("content").get("productImages").length>1){
             $('.bxslider').bxSlider({ 
                 minSlides: 1,
                 maxSlides: 1,
@@ -87,7 +90,8 @@
                 }
                 
             }else{
-                this.$('[data-mz-productimage-main]').prop('src', "http://cdn-sb.mozu.com/25166-m1/cms/files/9665e4c9-1d61-4c2a-b940-91db8316fed4").prop('alt', "http://cdn-sb.mozu.com/25166-m1/cms/files/9665e4c9-1d61-4c2a-b940-91db8316fed4");
+               
+                this.$('[data-mz-productimage-main]').prop('src', noimgsrc).prop('alt', "no image");
             }
             
         },
