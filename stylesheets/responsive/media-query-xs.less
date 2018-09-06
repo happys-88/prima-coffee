@@ -774,7 +774,23 @@
 	.mz-product {
 		.mz-productimages {
 			.mz-productimages-main {
-				min-height: 210px;
+				min-height: 275px;
+				.bx-wrapper {
+					.bx-controls-direction {
+						a {
+						    width: 22px;
+						    height: 35px;
+						    background-size: cover;
+						    &.bx-next {
+							    right: -10px;
+							    background-position: -29px 0;
+							}
+							&.bx-prev {
+							    left: -10px;
+							}
+						}
+					}
+				}
 			}
 		}
 		.popular-addons { 
@@ -1107,6 +1123,11 @@
 		.mz-l-container{
 			margin-left: -15px;
 			margin-right: -15px; 
+		}
+		.lc-breadcrumbs {
+			.mz-breadcrumbs {
+			    padding: 0;
+			}
 		}
 		.mz-banner{
 			float: left;

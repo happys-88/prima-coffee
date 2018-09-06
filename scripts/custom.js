@@ -181,10 +181,8 @@ define([
 		});
 
 		// Back To Top
-		$(".mz-back-to-top-btn").click(function(){
-			//scrollToTop(); 
-			 $("html, body").animate({ scrollTop: 0 }, 900);
-                  return false;
+		$(document).on('click','.mz-back-to-top-btn', function(){
+	        scrollToTop(); 
 	    });
 
 		// Refine By Toggle in Mobile
