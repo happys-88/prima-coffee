@@ -303,16 +303,24 @@
 		.mz-shop-by-categorylist {
 			.mz-shop-by-categorylist-item {
 				width: 48% !important; 
-				min-height: inherit;
-				margin: 0 1% @gutter 0;  
+				min-height: 175px;
+				margin: 0 1% @gutter 0; 
+				img {
+					max-width: 100px;
+					max-height: 100px;
+				} 
 				.mz-category-image {
 					min-height: 100px; 
 				}
 				&:first-child {
 					margin: 0 1% @gutter 0;  
-					min-height: inherit;
+					min-height: 175px;
 					.mz-category-image {
 						min-height: 100px;
+						img {
+						    max-width: 100px;
+						    max-height: 100px; 
+						}
 					}
 				}
 				&:nth-child(even) { 
@@ -413,7 +421,8 @@
 	
 	
 	/**** Directory Page ****/
-	.mz-category {
+	.mz-category,
+	.mz-searchresults {
 		.mz-l-sidebar {
 			margin-top: 0;
 			padding: 0;

@@ -6,15 +6,18 @@
 				{% if categoryObject.content.name == "Brands" %} 
 					{% for brandSubCat in categoryObject.childrenCategories %}
 						{% if brandSubCat.categoryId == getBrandCategoryId %}
-							<li class="col-xs-6 col-sm-3 col-md-2"> 
-								<div class="brand-logo">
-									{% for brandLogoImage in brandSubCat.content.categoryImages %}
-						   			    <a href="{{ brandSubCat.url }}">
-									    	<img src="{{ brandLogoImage.imageUrl }}" alt="{{ brandLogoImage.altText }}">  
-										</a>
-						   			{% endfor %}	
-								</div>
-							</li>
+								<li class="col-xs-6 col-sm-3 col-md-2"> 
+									<div class="brand-logo">
+										{% for brandLogoImage in brandSubCat.content.categoryImages %}
+											{% if forloop.first %}
+								   			    <a href="{{ brandSubCat.url }}">
+											    	<img src="{{ brandLogoImage.imageUrl }}" alt="{{ brandLogoImage.altText }}">  
+												</a>
+											{% endif %}
+							   			{% endfor %}	
+									</div>
+								</li>
+						
 						{% endif %}
 					{% endfor %}
 				{% endif %}
