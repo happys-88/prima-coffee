@@ -8,7 +8,7 @@
             
         },
         //.mz-productimages-thumbimage
-        initialize: function () { 
+        initialize: function (event) { 
             this.productThumbSlider();
             $('.zoomContainer').remove();
             this.elevatezoom(event);   

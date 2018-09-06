@@ -11,25 +11,26 @@ define([
 function ($, _, Hypr, Backbone, HyprLiveContext, ProductModel, api, yotpo) {  
 
 	$(document).ready(function(){
-		// var singleImgContainer = $(".yotpo-single-image-container");
-	    // var size_li = $(singleImgContainer).size();
-	    // var galleryThumbnails = 8;
-	    // $(".yotpo-single-image-container").addClass("hidden-thumbnails");
-	    // $('.yotpo-single-image-container:lt('+galleryThumbnails+')').removeClass("hidden-thumbnails"); 
-	    // $('.yotpo-load-more-button').click(function () {
-	    // 	$(".yotpo-single-image-container").removeClass("hidden-thumbnails");
-	   	// });
+		var singleImgContainer = $(".yotpo-single-image-container");
+	    var size_li = $(singleImgContainer).size();
+	    var galleryThumbnails = 8;
+	    $(".yotpo-single-image-container").addClass("hidden-thumbnails");
+	    $('.yotpo-single-image-container:lt('+galleryThumbnails+')').removeClass("hidden-thumbnails"); 
+	    $('.yotpo-load-more-button').click(function () {
+	    	$(".yotpo-single-image-container").removeClass("hidden-thumbnails");
+	   	});
 
 	    var product = ProductModel.Product.fromCurrent();
 	    var prodType = product.attributes.productType;
-	    if(prodType === 'content') {
+	    if(typeof product.attributes.productType!=="undefined")
+	    if(typeof prodType !== 'undefined' && prodType.toUpperCase() === 'CONTENT') {
 		    // Popular Articles  
 		    api.request("POST", "/commonRoute",{"requestFor":"popularArticles", "pubId":HyprLiveContext.locals.themeSettings.addThisPubId}).then(function (response){
 	            var artContent = '';
 	            if(response.statusCode === 200) {   
 	            	if(response.body.length > 0) {         	
 		            	_.each(response.body, function(article) {
-		            		artContent = artContent +'<li><a href='+article.url+'>'+article.title+'</a></li>';	
+		            		artContent = '<h2 class="heading-2"><span>Popular Articles</span></h2>'+artContent +'<li><a href='+article.url+'>'+article.title+'</a></li>';	
 		            	});            	
 	            	} else {
 	            		artContent = "Articles not found";	
@@ -48,9 +49,9 @@ function ($, _, Hypr, Backbone, HyprLiveContext, ProductModel, api, yotpo) {
 	   	$(".yotpo-single-image-container").addClass("hidden-thumbnails");
 	    $('.yotpo-single-image-container:lt('+galleryThumbnailsLC+')').removeClass("hidden-thumbnails");
 
-	    if(prodType !== 'content') {
-	    	console.log("Product");
-		    // Show yotpo review & question count 
+	    if(typeof product.attributes.productType!=="undefined")
+	    if(typeof prodType !== 'undefined' && prodType.toUpperCase() !== 'CONTENT') { 
+	    	// Show yotpo review & question count  
 		    var getProductCode = $("#customProductCode").val(); 
 			var yotpoApiKey = HyprLiveContext.locals.themeSettings.yotpoApiKey;
 			var yotpoBaseUrl = HyprLiveContext.locals.themeSettings.yotpoBaseUrl;
@@ -70,7 +71,10 @@ function ($, _, Hypr, Backbone, HyprLiveContext, ProductModel, api, yotpo) {
 				if(data.status.code == 200 || (typeof data.response.questions !== 'undefined' && data.response.questions.length > 0)){
 					var totalReviewCount = data.response.total_questions; 
 					$(".yotpo-review-ques-ansr").find("#ques-count").text("("+totalReviewCount+")"); 
-				}  
+				} 
+				else if (data.response.total_questions === 0) {
+			    	$(".yotpo-review-ques-ansr").find("#ques-count").text("("+data.response.total_questions+")"); 
+			    }  
 		    });
 		}
 	    var headerHeight = $(".mz-sticky-header").height();
