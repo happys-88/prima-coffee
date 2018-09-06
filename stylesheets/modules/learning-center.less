@@ -63,7 +63,7 @@
 
 
 /**** Learning Center Navigation ****/
-.mz-sitenav-lcenter{
+.mz-sitenav-lcenter, .mz-mobilenav-lcenter{ 
 	background: #ebebeb;
 	text-align: center;
 	.mz-sitenav-list{
@@ -236,8 +236,11 @@
 			
 		}
 	}
-	
+
 }
+.mz-mobilenav-lcenter .learning-center-search:before{
+	content: "";  
+} 
 
 /**** Featured Categories ****/
 .mz-content-widget{
@@ -307,12 +310,13 @@
 /**** Featured Products ****/
 .mz-learning-center{
 	.mz-featured-products{
-		.mz-productlist, .mz-productlist-tiled{ 
+		.mz-productlist, .mz-productlist-tiled{  
 			.mz-productlist-item{
 				width: 50%;
 				padding: 0 15px;
 				min-height: 190px;
 				margin-bottom: 15px;
+				max-width: inherit; 
 				.orange-text, .items-inStock, .mz-product-notpurchasable, .mz-quick-view, .mz-new-arrival-tag, .mz-product-msg, .mz-productlisting-shortdesc{   
 					display: none; 
 				}
@@ -359,11 +363,13 @@
 	.mz-productlist-item{
 		margin-top: 45px;
 		padding-top: 45px;
+		padding-left: 0;
+		padding-right: 0;
 		border-top: 1px solid #dbdbda;
 		&:first-child{
 			border: none; 
-			padding: 0;
-			margin: 0;  
+			padding-top: 0;
+			margin-top: 0;  
 		}
 		&:hover{
 			box-shadow: none;
@@ -489,7 +495,7 @@
 			padding: 0;	
 		}
 		.mz-pagingcontrols{
-			display: none; 
+			display: none;   
 		}	
 	}
 
@@ -844,6 +850,35 @@
 	}
 }
 
-.mz-facetingform{
-	
+
+/**** Disqus No Script ****/ 
+#disqus-comments-noscript{ 
+	float: left;
+	width: 100%;
+	.comment{
+		&.approved{
+			background: #ddd;
+			padding: 15px;
+			margin: 15px; 
+			border-radius: 15px;
+			.submitted{
+				background: #333;
+				padding: 7px 10px; 
+				font-size: 10px;
+				color: #fff;
+				line-height: 14px; 
+				display: inline-block;
+				border-radius: 5px; 
+				margin-bottom: 10px;
+				border: 1px solid #222; 
+				a{
+					color: #ff7a00; 
+				}   
+			}  
+		}
+	}   
+}
+noscript{
+	float: left;
+	width: 100%; 
 }

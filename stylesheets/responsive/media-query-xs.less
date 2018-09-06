@@ -793,7 +793,12 @@
 				}
 			}
 		}
-		.popular-addons { 
+		.popular-addons {
+    		max-width: 300px;
+			margin: 0 auto;
+			.addon-product {
+				width: 140px;
+			}
 			.bx-wrapper { 
 				max-width: 300px !important;  
 				padding: 0;  
@@ -1121,8 +1126,7 @@
 	/**** Learning Center Starts ****/ 
 	.mz-learning-center{
 		.mz-l-container{
-			margin-left: -15px;
-			margin-right: -15px; 
+			
 		}
 		.lc-breadcrumbs {
 			.mz-breadcrumbs {
@@ -1132,7 +1136,10 @@
 		.mz-banner{
 			float: left;
 			width: 100%; 
-			margin-bottom: 12px;   
+			margin-bottom: 12px; 
+			.row {
+				margin: 0
+			}  
 			.col-xs-12{
 				padding: 0; 
 			}
@@ -1161,7 +1168,6 @@
 			} 
 		}
 		.mz-featured-posts{
-			padding: 0 15px;
 			.mz-productlist-item, .mz-productlist-item:first-child{ 
 				padding: 0 0 25px;
 				margin: 0 0 25px;  
@@ -1172,6 +1178,7 @@
 
 		/**** Sidebar ****/
 		.mz-sidebar{
+			padding: 0;
 			.yotpo-gallery{
 				.mz-button{
 					font-size: 18px;
@@ -1267,9 +1274,6 @@
 					}
 				}
 				.bx-wrapper{ 
-					// .mz-productlist-item{ 
-					// 	padding: 10px 46px;
-					// }
 					padding: 0 10px;  
 					.bx-prev{
 						left: -5px;  
@@ -1368,6 +1372,28 @@
 					display: block;
 				}
 			}
+		}
+	}
+	.mz-featured-categorylist {
+		.mz-shop-by-categorylist-item {
+			padding: 0;
+		}
+	}
+	.mz-mobilenav-lcenter{
+		.mz-sitenav{
+			.learning-center-search{
+				width: 100%;
+				.mz-searchbox{
+					.mz-searchbox-field{
+						.mz-searchbox-input{
+							width: calc(~"100% - 40px");  
+						}		
+					}
+					.tt-dropdown-menu{
+						padding: 10px 15px;  
+					}
+				}
+			}		
 		}
 	}
 	/**** Learning Center Ends ****/ 
