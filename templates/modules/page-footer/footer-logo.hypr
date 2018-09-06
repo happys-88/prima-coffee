@@ -2,7 +2,7 @@
     <div class="col-sm-6 col-xs-5"> 
         <div class="mz-footer-logo">
             <a href="{{siteContext.siteSubdirectory}}/">
-                <img src="../../resources/admin/widgets/primacofeelogo.png" alt="Prima Supply"/>
+                <img src="/cms/files/footer-logo@2x.png" alt="Prima Supply"/>
             </a>
         </div>
     </div>
@@ -10,17 +10,17 @@
         <ul>
             <li>
                 <a href="/free-shipping">
-                    <img src="../../resources/images/footer-images/free-shipping.png" alt="free-shipping">
+                    <img src="/cms/files/free-shipping.png" alt="free-shipping">
                 </a>
             </li>
             <li>
                 <a href="/price-match-guarantee">
-                    <img src="../../resources/images/footer-images/price-match.png" alt="price-match">
+                    <img src="/cms/files/price-match.png" alt="price-match">
                 </a>
             </li>
             <li>
-                <a href="/try-before-you-buy">
-                    <img src="../../resources/images/footer-images/try-before.png" alt="try-before">
+                <a href="/try-before-you-buy"> 
+                    <img src="/cms/files/try-before.png" alt="try-before">
                 </a>
             </li> 
         </ul>
