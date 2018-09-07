@@ -1599,6 +1599,21 @@
                 // the card needs to know if this is a saved card or not.
                 this.get('card').set('isSavedCard', order.get('billingInfo.usingSavedCard')); 
 
+<<<<<<< HEAD
+=======
+                // if ($("#mz-payment-security-code-0").val() === undefined || $("#mz-payment-security-code-0").val() === "" ){
+                //     var error1 = {"items":[]};
+                //     var errorItem1 = {};
+                //     errorItem1.name = "card.cvv";
+                //     errorItem1.message = "Please enter your CVV number";
+                //     error1.items.push(errorItem1);
+                //     if (error1.items.length > 0) {
+                //         order.onCheckoutError(error1);
+                //     } 
+                //     return false;
+                // }
+
+>>>>>>> 3da172336085d0e10a8f95badeee7c471da93217
                 // the card needs to know if this is Visa checkout (or Amazon? TBD)
                 if (currentPayment) {
                     this.get('card').set('isVisaCheckout', currentPayment.paymentWorkflow.toLowerCase() === 'visacheckout');

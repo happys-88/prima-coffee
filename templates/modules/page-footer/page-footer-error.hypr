@@ -1,29 +1,45 @@
-<footer class="mz-pagefooter">  
+<footer class="mz-pagefooter error-page">   
     <div class="mz-footer-top">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="col-sm-4 col-md-4 col-xs-12"> 
-                        {% block footer-logo %}
-                            {% comment %}
+                       {% block footer-logo %}
                             {% include "modules/page-footer/footer-logo" %}
-                            {% endcomment %}
-                            {% dropzone "footer-logos" scope="site" %}    
                         {% endblock footer-logo %} 
                     </div>
                     <div class="col-sm-4 col-md-2 col-xs-12">
-                        {% dropzone "footer-dropzone-2" scope="site" %}
+                        <h4><a href="/our-story">ABOUT PRIMA</a></h4>
+                        <ul>
+                            <li><a href="/our-story">Our Story</a></li>
+                            <li><a href="/why-buy-with-us">Why Buy With Us</a></li>
+                            <li><a href="/learn">Learning Center</a></li>
+                            <li><a href="/careers">Careers</a></li>
+                        </ul>
+                        <div class="mz-contact">
+                            <h4><a href="/contact-us">CONTACT US</a></h4>
+                            <address>
+                                Live Chat / Email<br>
+                                1 (888) 810-5043<br>
+                                8am - 7pm Eastern (M-F)
+                            </address>
+                        </div> 
                     </div>
                     <div class="col-sm-4 col-md-2 col-xs-12">  
-                        <h4>{{ labels.customerService }}</h4>
-                         {% comment %} <ul>
-                           {% if not user.isAnonymous %} 
+                        <h4><a href="/customer-service">{{ labels.customerService }}</a></h4>
+                        <ul>
+                            {% if not user.isAnonymous %} 
                                 <li><a href="/myaccount">{{ labels.myAccount }}</a></li>
                             {% else %}
                                 <li><a href="javascript:void(0);" data-toggle="modal" data-target="#loginPopup">{{ labels.myAccount }}</a></li>
                             {% endif %}
-                        </ul> {% endcomment %}
-                        {% dropzone "footer-dropzone-3" scope="site" %}
+                        </ul>
+                        <ul>
+                            <li><a href="/track-my-order">Track My Order</a></li>
+                            <li><a href="/shipping-info">Shipping Info</a></li>
+                            <li><a href="/returns-exchange">Returns &amp; Exchanges</a></li>
+                            <li><a href="/price-match-request">Price Match Request</a></li>
+                        </ul> 
                         {% block payment-options %}
                             {% include "modules/page-footer/payment-options" %}
                         {% endblock payment-options %}
@@ -37,7 +53,10 @@
                         {% endblock social-bar %}
                         <div class="mz-policy-section">
                             <div class="mz-policy">
-                                {% dropzone "footer-dropzone-4" scope="site" %}
+                                <ul>
+                                    <li><a href="/privacy-policy">Privacy Policy</a></li>
+                                    <li><a href="/terms-conditions">Terms &amp; Conditions</a></li>
+                                </ul> 
                             </div>
                             <div class="mz-pagefooter-copyright" id="copyright">
                                 <span class="mz-pagefooter-copyrighttext">

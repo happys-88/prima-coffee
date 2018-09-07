@@ -52,6 +52,39 @@
 			margin-top: 10px; 
 			.mz-searchbox-field {
 				width: 100%;
+				.twitter-typeahead{
+					position: static !important; 
+				}
+				.tt-dropdown-menu{
+					width: 100%;
+					height: calc(~'100% - 154px');  
+					position: fixed !important; 
+					top: 154px !important; 
+					overflow: auto; 
+					.tt-dataset-pages{
+						width: 100%;
+						padding: 10px 15px;
+						min-height: inherit;
+						.tt-suggestions .tt-suggestion,
+						.tt-suggestions .tt-suggestion:nth-of-type(3n+2){
+							width: 46%;
+							margin: 10px 2%;    
+						}
+						.mz-itemlisting{
+							.mz-itemlisting-thumb{
+								.mz-itemlisting-thumb-img{
+									max-width: 60px;
+									max-height: 60px; 
+								}		
+							}
+						}     
+					}
+					.tt-dataset-terms,
+					.tt-dataset-categories{
+						width: 100%;
+						padding: 0 15px;  
+					} 
+				}
 			}
 		}
 		.mz-searchbox-expands .mz-searchbox-input {
@@ -303,16 +336,24 @@
 		.mz-shop-by-categorylist {
 			.mz-shop-by-categorylist-item {
 				width: 48% !important; 
-				min-height: inherit;
-				margin: 0 1% @gutter 0;  
+				min-height: 175px;
+				margin: 0 1% @gutter 0; 
+				img {
+					max-width: 100px;
+					max-height: 100px;
+				} 
 				.mz-category-image {
 					min-height: 100px; 
 				}
 				&:first-child {
 					margin: 0 1% @gutter 0;  
-					min-height: inherit;
+					min-height: 175px;
 					.mz-category-image {
 						min-height: 100px;
+						img {
+						    max-width: 100px;
+						    max-height: 100px; 
+						}
 					}
 				}
 				&:nth-child(even) { 
@@ -413,7 +454,8 @@
 	
 	
 	/**** Directory Page ****/
-	.mz-category {
+	.mz-category,
+	.mz-searchresults {
 		.mz-l-sidebar {
 			margin-top: 0;
 			padding: 0;
@@ -591,6 +633,33 @@
 		    display: none;
 		}
 	}
+
+	/**** Learning center search Page ****/
+	.mz-learning-center {
+		&.mz-searchresults {
+			.mz-l-sidebar {
+				.mz-facetingform {
+					border-bottom: 1px solid #e0e0e0;
+				    top: -36px;
+				}
+			}
+			.mz-l-paginatedlist {
+				.mz-productlisting-image {
+					img {
+						width: auto;
+						max-width: 100%;
+						max-height: 100%;
+					}
+				}
+			}
+			.mz-blog-listing {
+				.mz-productlist-item {
+				    padding: 0;
+				}
+			}
+		}
+	}
+	
 	//Breadcrumbs
 	.mz-breadcrumbs {
 		line-height: 12px;
@@ -732,10 +801,31 @@
 	.mz-product {
 		.mz-productimages {
 			.mz-productimages-main {
-				min-height: 210px;
+				min-height: 275px;
+				.bx-wrapper {
+					.bx-controls-direction {
+						a {
+						    width: 22px;
+						    height: 35px;
+						    background-size: cover;
+						    &.bx-next {
+							    right: -10px;
+							    background-position: -29px 0;
+							}
+							&.bx-prev {
+							    left: -10px;
+							}
+						}
+					}
+				}
 			}
 		}
-		.popular-addons { 
+		.popular-addons {
+    		max-width: 300px;
+			margin: 0 auto;
+			.addon-product {
+				width: 140px;
+			}
 			.bx-wrapper { 
 				max-width: 300px !important;  
 				padding: 0;  
@@ -1063,13 +1153,20 @@
 	/**** Learning Center Starts ****/ 
 	.mz-learning-center{
 		.mz-l-container{
-			margin-left: -15px;
-			margin-right: -15px; 
+			
+		}
+		.lc-breadcrumbs {
+			.mz-breadcrumbs {
+			    padding: 0;
+			}
 		}
 		.mz-banner{
 			float: left;
 			width: 100%; 
-			margin-bottom: 12px;   
+			margin-bottom: 12px; 
+			.row {
+				margin: 0
+			}  
 			.col-xs-12{
 				padding: 0; 
 			}
@@ -1098,7 +1195,6 @@
 			} 
 		}
 		.mz-featured-posts{
-			padding: 0 15px;
 			.mz-productlist-item, .mz-productlist-item:first-child{ 
 				padding: 0 0 25px;
 				margin: 0 0 25px;  
@@ -1109,6 +1205,7 @@
 
 		/**** Sidebar ****/
 		.mz-sidebar{
+			padding: 0;
 			.yotpo-gallery{
 				.mz-button{
 					font-size: 18px;
@@ -1204,9 +1301,6 @@
 					}
 				}
 				.bx-wrapper{ 
-					// .mz-productlist-item{ 
-					// 	padding: 10px 46px;
-					// }
 					padding: 0 10px;  
 					.bx-prev{
 						left: -5px;  
@@ -1305,6 +1399,28 @@
 					display: block;
 				}
 			}
+		}
+	}
+	.mz-featured-categorylist {
+		.mz-shop-by-categorylist-item {
+			padding: 0;
+		}
+	}
+	.mz-mobilenav-lcenter{
+		.mz-sitenav{
+			.learning-center-search{
+				width: 100%;
+				.mz-searchbox{
+					.mz-searchbox-field{
+						.mz-searchbox-input{
+							width: calc(~"100% - 40px");  
+						}		
+					}
+					.tt-dropdown-menu{
+						padding: 10px 15px;  
+					}
+				}
+			}		
 		}
 	}
 	/**** Learning Center Ends ****/ 

@@ -12,9 +12,9 @@ define([
     "modules/cart-monitor",
     "hyprlive",
     "modules/block-ui",
-    "yotpo"
+    'yotpo'
 
-], function($, _, api, Backbone, HyprLiveContext, ProductModels, bxslider, cart, cartModel, GlobalCart, CartMonitor, Hypr, blockUiLoader, yotpo) {  
+], function($, _, api, Backbone, HyprLiveContext, ProductModels, bxslider, cart, cartModel, GlobalCart, CartMonitor, Hypr, blockUiLoader, yotpo) { 
 $(document).on('click', '.mz-quick-view', function (event) {
     var $Elem = $(event.currentTarget);
     var prdCode = $Elem.attr("data-mz-productcode-quickview");
@@ -371,7 +371,7 @@ $(document).on('click', '.mz-quick-view', function (event) {
                 var quickviewModel = this.model;
                 this.model.on('addedtocart', function (cartitem) {
                     $('#quickViewModal').modal('hide');
-                     blockUiLoader.unblockUi();
+                    blockUiLoader.unblockUi(); 
                 });
                 var me = this;
                 this.model.on('addedtocarterror', function (error) {
@@ -408,7 +408,7 @@ $(document).on('click', '.mz-quick-view', function (event) {
             },
             clickOnNextOrprevious: function(){
                 if(typeof this.model.get('productCode') !== 'undefined'){
-                    $('[src="http://southasia.oneworld.net/ImageCatalog/no-image-icon/image_preview').parent().remove();
+                    $("img[onerror*='this.src']").parent().remove();
                     if($(".bx-pager-item").length > imagecount){
                         $(".bx-pager-item").eq(2).remove();
                     }
@@ -426,13 +426,13 @@ $(document).on('click', '.mz-quick-view', function (event) {
             el: $('#quickViewModal')
         });
         Quickview.render();
-        yotpo.showYotpoRatingStars(".mz-product-quick-view"); 
+
+        yotpo.showYotpoRatingStars(".mz-product-quick-view");   
     
         product.on('addedtocart', function (cartitem) {
             GlobalCart.update();
         });
-
-       
+        
         $('#quickViewModal').on('hidden.bs.modal', function (e) { 
             $(".destroy").remove();
             product.clear();

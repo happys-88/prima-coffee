@@ -3,7 +3,7 @@
     {% if pageContext.search.facets %}
         <div class="mz-clear-all">
             <div>
-                <button class="mz-button mz-facetingform-clearall" data-mz-action="clearFacets" data-mz-url="{% make_url "facet" "clear" %}">{{ labels.clearAllFilters }}<i class="fa fa-times-circle"></i></button>
+                <button class="mz-button mz-facetingform-clearall" data-mz-action="clearFacets" data-mz-url="{% make_url "facet" "clear" %}">{{ labels.clearAllFilters }}</button>
             </div>
             {% if model.hasValueFacets %}   
                 {% for facet in model.facets %}

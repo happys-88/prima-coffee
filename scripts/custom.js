@@ -181,10 +181,8 @@ define([
 		});
 
 		// Back To Top
-		$(".mz-back-to-top-btn").click(function(){
-			//scrollToTop(); 
-			 $("html, body").animate({ scrollTop: 0 }, 900);
-                  return false;
+		$(document).on('click','.mz-back-to-top-btn', function(){
+	        scrollToTop(); 
 	    });
 
 		// Refine By Toggle in Mobile
@@ -207,12 +205,11 @@ define([
 		// Brand Gateway 
 		$(".brand-letter a").on('click', function(e){
 		    var id = $(this).attr("name");
-		    var position = $(id).position();
-		    $('body,html').animate({
-		    	scrollTop : position.top                       
-		    }, 500);
-		    
-		});
+		    var position = $(id +" .brand-letter").offset().top-$(".mz-sticky-header").outerHeight( true );
+		   		$('body,html').animate({
+		       		scrollTop : position                  
+		      	}, 500); 
+		}); 
 
 		// Blog Facets
 		$(document).on('click','.mz-facet-row', function(){    
@@ -257,6 +254,14 @@ define([
 		}  
 		
 		// Checkout Changes
+
+		$(document).on('click',"select[data-mz-value='savedPaymentMethodId']", function(){
+  			var defaultcardselect = $("[data-mz-value='savedPaymentMethodId']").val();
+	        if(defaultcardselect===""){
+	            var first= $("[data-mz-value='savedPaymentMethodId']").val($("[data-mz-value='savedPaymentMethodId'] option:nth(1)").val());
+	        }
+      	});
+
 		setTimeout(function(){ 
 			$("#checkout-form").find("#step-shipping-address.is-complete").addClass("mz-shipping-address-complete");
 		}, 1000);
@@ -309,6 +314,10 @@ define([
 			$(".mz-mobilenav-lcenter .toggle-btn").click(function(){  
 				$(this).toggleClass("active");       
 			}); 
+		}
+
+		if(!HyprLiveContext.locals.user.isAuthenticated){
+			localStorage.setItem("previousTime", null); 
 		}
 
 		// Global Cart Continue btn

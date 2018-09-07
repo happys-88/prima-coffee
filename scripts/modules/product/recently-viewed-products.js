@@ -154,7 +154,8 @@ define([
                                     responsive: true,
                                     pager: false,
                                     speed: 1000,
-                                    infiniteLoop: false
+                                    infiniteLoop: false,
+                                    moveSlides: 1
                                 });
                             }
                         }

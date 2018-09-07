@@ -536,6 +536,7 @@
   "settings": {
     "siteName": "primacoffee",
     "allProductsCategoryId": "",
+    "allProductsCategoryIdLC": "",
     "sessionTimeout": "18000",
     "backofficeDateTimeFormat": "m/d/Y H:i:s O",
     "extendedPropertiesEnabled": false,

@@ -18,5 +18,9 @@
 		{% endif %}
     </div>
 </div>
+{% block page-footer %}
+    {% include "modules/page-footer/page-footer-error" %}  
+{% endblock page-footer %} 
+
 {% require_script "pages/error" %}
 {% endblock body-content %}

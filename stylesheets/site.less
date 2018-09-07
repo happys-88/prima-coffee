@@ -563,6 +563,12 @@ img[data-mztp]{
 		&.mz-productlist-tiled {
 			.mz-productlist-item {
 				.mz-pricestack {
+					span[class^="mz-pricestack-price"]{
+						display: inline-block;
+						.mz-price{
+	                        display: inline-block;  
+	                    }   
+					}
 					.mz-price {
 					    line-height: 14px;
 						font-weight: 600; 
@@ -577,7 +583,12 @@ img[data-mztp]{
 							text-transform: uppercase;
 							font-size: 14px;
 							.multiLineEllipsis(16px, 2);      
-						} 
+						}
+						&.mz-pricestack-range{
+		                    .mz-price{
+		                        display: block; 
+		                    }  
+		                } 
 					}
 				}
 			}
@@ -1048,6 +1059,15 @@ img[data-mztp]{
 			.blog_content_template{
 				display: none;  
 			}
+		}
+	}
+}
+
+/**** Error Page footer ****/
+.mz-errorpage{
+	#page-content{
+		.mz-pagefooter.error-page{
+			display: none;  
 		}
 	}
 }

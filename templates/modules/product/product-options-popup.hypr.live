@@ -3,7 +3,7 @@
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <h4 class="modal-title">
-                {% if model.addonsPopup %}
+                {% if model.addonsPopup or model.hideOptionsPopup %}
                     {{ labels.addToCartSuccess }} 
                 {% else %} 
                     {{ labels.optionsPopup }}
@@ -11,9 +11,9 @@
             </h4>
         </div>
         <div class="modal-body">
-            {% if model.addonsPopup %}
+            {% if model.addonsPopup or model.hideOptionsPopup %}
                 <div class="mz-product-addons">
-                    <span class="mz-validationmessage">{{ model.addToCartErr }}</span>
+                    <span class="mz-validationmessage">{{ model.addToCartErrr }}</span>
                     <h4 class="mz-l-stack-sectiontitle">
                         <a class="mz-productlisting-title" href="{% make_url "product" model %}">{{model.content.productName}}</a>
                     </h4>
@@ -64,7 +64,7 @@
                         <span class="mz-validationmessage" data-mz-validationmessage-for="quantity"></span>
                         {% if model.hasAddon === true %}
                             <div class="pull-right mz-productdetail-conversion-buttons">
-                                <button class="addtocartaddon mz-productdetail-addtocart mz-button mz-button-medium  {% if not model.inventoryInfo.onlineStockAvailable %} is-disabled {% endif %}" data-mz-productcode="{{model.variationProductCode|default(model.productCode) }}" {{ model.addToCartButton }}>
+                                <button class="addtocartaddon mz-productdetail-addtocart mz-button mz-button-medium" data-mz-productcode="{{model.variationProductCode|default(model.productCode) }}">
                                     {{ labels.addToCart }}
                                 </button>
                             </div>

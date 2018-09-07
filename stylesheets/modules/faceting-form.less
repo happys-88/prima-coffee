@@ -11,14 +11,7 @@
         border-radius: 4px 4px 4px 4px;
         margin-bottom: 0;
         padding-top: 3px;
-        // &:after {
-        //     content: "---";
-        //     display: block;
-        //     color: #808b98;
-        //     font-size: 16px;
-        //     line-height: 10px;
-        // }
-    }
+    } 
     .mz-clear-all {
         border-bottom: 1px solid #e0e0e0;
         padding-bottom: 15px;
@@ -31,14 +24,17 @@
             padding: 0;
             min-width: auto;
             text-transform: uppercase;
+            &:after {
+                content: "\f057";
+                font-family: "FontAwesome";
+                color: #d15f2a;
+                margin-left: 3px;
+            }
             .fa {
                 color: #d15f2a;
                 margin-left: 5px;
             }
             &:active {
-                -webkit-box-shadow: none;
-                -moz-box-shadow: none;
-                    box-shadow: none;
                 -webkit-box-shadow: none;
                 -moz-box-shadow: none;
                     box-shadow: none;
@@ -146,6 +142,16 @@
                         text-decoration: underline;
                     }
                 }
+            }
+        }
+    }
+}
+
+.mz-searchresults {
+    .mz-faceting-section {
+        .mz-l-sidebaritem {
+            &:first-child {
+                display: none;
             }
         }
     }

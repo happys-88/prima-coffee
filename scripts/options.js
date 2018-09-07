@@ -155,7 +155,54 @@ define([
                     this.model.set('mapPrice', prodPrice.attributes.price);
                 }  
             }
-            
+            var options = JSON.parse(JSON.stringify(this.model.get('options')));
+            var productCodes = [];
+            var c = 0;
+            c = parseInt(c, 10);
+            for (var j = 0; j < options.length; j++) {
+                var option = options[j];
+                if (option.attributeDetail.dataType == "ProductCode") {
+                    var optionValues = option.values;
+                    for (var k = 0; k < optionValues.length; k++) {
+                        var optionValue = optionValues[k];
+                        var productCode;
+                        if(optionValue.stringValue.indexOf(':') !== -1) {
+                            productCode = optionValue.value.slice(0,optionValue.value.lastIndexOf("-"));
+                        } else {
+                            productCode = optionValue.value;
+                        } 
+                        if (!(_.contains(productCodes, productCode))) {
+                            productCodes[c] = productCode;
+                            c++;
+                        }
+                    }
+                }
+            }
+            var prodModel = this.model;
+            if (productCodes.length > 0) {
+                var str = "";
+                for (var i = 0; i < productCodes.length; i++) {
+                    if (i == productCodes.length-1) {
+                        str += "productCode eq "+ "'" + productCodes[i] + "'";
+                    } else {
+                        str += "productCode eq "+ "'" + productCodes[i] + "'"+ " or ";
+                    }
+                }
+                api.request("GET", "/api/commerce/catalog/storefront/products/?filter=(" + str + ")&pageSize="+productCodes.length ).then(function(response){
+                    var items = response.items;
+                    prodModel.set('addonItems', items);
+                    me.render();
+                });
+            }
+        },
+        findStockProperty: function(properties) {
+            return _.find(properties, function(property){ return property.attributeFQN == 'tenant~field_display_oos1'; });
+        },
+        findElement: function(arr, element) {
+            var product = arr.find(function(el) {
+              return el.productCode == element;
+            });
+            return product;
         },
         render: function () {
             this.refreshOptions();
@@ -266,42 +313,64 @@ define([
         refreshOptions: function() {
             var selectedCount = 0;
             selectedCount = parseInt(selectedCount, 10);
-
+            var addonCount = 0;
+            addonCount = parseInt(addonCount, 10);
+            var optionValCount = 0;
+            optionValCount = parseInt(optionValCount, 10);
+            var items = this.model.get('addonItems');
             var options = JSON.parse(JSON.stringify(this.model.get('options')));
-            var hasAddon = false;
 
             for (var i = 0; i < options.length; i++) {
-                var stockCount = 0;
-                stockCount = parseInt(stockCount, 10);
+                optionValCount = 0;
                 var option = options[i];
                 if(option.attributeDetail.dataType == 'ProductCode') {
                     var optionValues = option.values;
-                    for (var j = 0; j < optionValues.length; j++) {
-                        var optionValue = optionValues[j];
-                        if (optionValue.bundledProduct.inventoryInfo.onlineStockAvailable > 0) {
-                            if (!hasAddon) {
-                                hasAddon = true;
-                            }
-                            stockCount++;
-                            break;
-                        }
-                    }
                     for (var k = 0; k < optionValues.length; k++) {
-                        if (optionValues[k].isSelected) {
+                        var optionValue = optionValues[k];
+                        var productCode;
+                        if(optionValue.stringValue.indexOf(':') !== -1) {
+                            productCode = optionValue.value.slice(0,optionValue.value.lastIndexOf("-"));
+                        } else {
+                            productCode = optionValue.value;
+                        } 
+                        
+                        var product = this.findElement(items, productCode);
+                        addonCount++;
+                        optionValCount++;
+                        var stockProperty = this.findStockProperty(product.properties);
+                        optionValue.itemDiscontinued = false;
+                        if (stockProperty) {
+                            var stockPropertyVal = stockProperty.values[0];
+                            if (stockPropertyVal.value == '4') {
+                                optionValue.itemDiscontinued = true;
+                                addonCount--;
+                                optionValCount--;
+                            }
+                        }
+                        optionValues[k] = optionValue;
+                    }
+                    var opt = this.model.get('options').get(option.attributeFQN);
+                    opt.set('values', optionValues);
+                    opt.set('optionValCount', optionValCount);
+
+                    for (var l = 0; l < optionValues.length; l++) {
+                        if (optionValues[l].isSelected) {
                             selectedCount++;
                             break;
                         }
                     }
                 }
-                var opt = this.model.get('options').get(option.attributeFQN);
-                opt.set('stockCount', stockCount);
             }
             if(selectedCount === 0){
                 this.model.set('addToCartButton','disabled');
             } else {
                 this.model.set('addToCartButton','');
             }
-            this.model.set('hasAddon', hasAddon);  
+            if (addonCount > 0) {
+                this.model.set('hasAddon', true);
+            } else {
+                this.model.set('hasAddon', false);
+            }  
         },
         onQuantityChange: _.debounce(function (e) {
             var $qField = $(e.currentTarget),
@@ -389,6 +458,12 @@ define([
             }
         },
         addToCartUpdate: function() {
+            if (this.model.get('addToCartButton') == 'disabled') {
+               this.model.set('addToCartErrr', Hypr.getLabel('selectAddonsError'));
+               return this.render();
+            }
+            this.model.unset('addToCartErrr');
+            eventCount = 1;
             if(require.mozuData('pagecontext').isEditMode) {
                 return false;
             }
@@ -429,6 +504,7 @@ define([
                         GlobalCart.update('redirect_to_cart');
                     } else {
                         optionModel.set('addonsPopup', true);
+                        optionModel.set('hideOptionsPopup', true);
                         optionModel.set('cartItemId',cartitem.data.id);
                         optionModel.set('totalQuant',cartitem.data.quantity);
                         var selectedOptions = optionModel.get('selectedOptions');
@@ -458,22 +534,25 @@ define([
                     for (var i = 0; i < options.length; i++) {
                         var ooption = options[i];
                         if (ooption.attributeDetail.dataType == 'ProductCode') {
-                            selectedOptions[n] = {id:ooption.attributeFQN, value:ooption.value};
-                            var option = optionModel.get('options').get(ooption.attributeFQN);
-                            option.set('value', null);
+                            if (ooption.value) {
+                                selectedOptions[n] = {id:ooption.attributeFQN, value:ooption.value};
+                                n++;
+                                var option = optionModel.get('options').get(ooption.attributeFQN);
+                                option.set('value', null);
+                            }
                         }
                     }
                     optionModel.set('selectedOptions', selectedOptions);
                     optionModel.set('addonsPopup', false);
                     optionModel.addToCart();
-                    if (error.message.indexOf('Validation Error: The following items have limited quantity or are out of stock') > -1) {
-                        optionModel.set('addToCartErrr', Hypr.getLabel('outOfStockError'));
+                    if (error.message.indexOf('Validation Error:') > -1) {
+                        optionModel.set('addToCartErrr', error.message.replace('Validation Error:', ''));
                     } else {
                         optionModel.set('addToCartErrr', error.message);
                     }
                 } else {
-                    if (error.message.indexOf('Validation Error: The following items have limited quantity or are out of stock') > -1) {
-                        optionModel.set('addToCartErr', Hypr.getLabel('outOfStockError'));
+                    if (error.message.indexOf('Validation Error:') > -1) {
+                        optionModel.set('addToCartErr', error.message.replace('Validation Error:', ''));
                     } else {
                         optionModel.set('addToCartErr', error.message);
                     }
@@ -492,77 +571,145 @@ define([
             "click .addtocartaddon":"addToCartUpdate"
         },
         initialize: function () {
-        // handle preset selects, etc
-        var me = this;
-        this.$('[data-mz-product-option]').each(function () {
-            var $this = $(this), isChecked, wasChecked;
-            if ($this.val()) {
-                switch ($this.attr('type')) {
-                    case "checkbox":
-                    case "radio":
-                        isChecked = $this.prop('checked');
-                        wasChecked = !!$this.attr('checked');
-                        if ((isChecked && !wasChecked) || (wasChecked && !isChecked)) {
+            // handle preset selects, etc
+            var me = this;
+            this.$('[data-mz-product-option]').each(function () {
+                var $this = $(this), isChecked, wasChecked;
+                if ($this.val()) {
+                    switch ($this.attr('type')) {
+                        case "checkbox":
+                        case "radio":
+                            isChecked = $this.prop('checked');
+                            wasChecked = !!$this.attr('checked');
+                            if ((isChecked && !wasChecked) || (wasChecked && !isChecked)) {
+                                me.configure($this);
+                            }
+                            break;
+                        default:
                             me.configure($this);
+                    }
+                }
+            });
+            var prodPrice = this.model.get('price');
+            if (prodPrice.attributes) {
+                var priceType = prodPrice.attributes.priceType;
+                if (priceType == 'MAP') {
+                    this.model.set('mapPrice', prodPrice.attributes.price);
+                }  
+            }
+            var options = JSON.parse(JSON.stringify(this.model.get('options')));
+            var productCodes = [];
+            var c = 0;
+            c = parseInt(c, 10);
+            for (var j = 0; j < options.length; j++) {
+                var option = options[j];
+                if (option.attributeDetail.dataType == "ProductCode") {
+                    var optionValues = option.values;
+                    for (var k = 0; k < optionValues.length; k++) {
+                        var optionValue = optionValues[k];
+                        var productCode;
+                        if(optionValue.stringValue.indexOf(':') !== -1) {
+                            productCode = optionValue.value.slice(0,optionValue.value.lastIndexOf("-"));
+                        } else {
+                            productCode = optionValue.value;
+                        } 
+                        if (!(_.contains(productCodes, productCode))) {
+                            productCodes[c] = productCode;
+                            c++;
                         }
-                        break;
-                    default:
-                        me.configure($this);
+                    }
                 }
             }
-        });
-         var prodPrice = this.model.get('price');
-        if (prodPrice.attributes) {
-            var priceType = prodPrice.attributes.priceType;
-            if (priceType == 'MAP') {
-                this.model.set('mapPrice', prodPrice.attributes.price);
-            }  
-        }
+            var prodModel = this.model;
+            if (productCodes.length > 0) {
+                var str = "";
+                for (var i = 0; i < productCodes.length; i++) {
+                    if (i == productCodes.length-1) {
+                        str += "productCode eq "+ "'" + productCodes[i] + "'";
+                    } else {
+                        str += "productCode eq "+ "'" + productCodes[i] + "'"+ " or ";
+                    }
+                }
+                api.request("GET", "/api/commerce/catalog/storefront/products/?filter=(" + str + ")&pageSize="+productCodes.length ).then(function(response){
+                    var items = response.items;
+                    prodModel.set('addonItems', items);
+                });
+            }
+        },
+        findStockProperty: function(properties) {
+            return _.find(properties, function(property){ return property.attributeFQN == 'tenant~field_display_oos1'; });
+        },
+        findElement: function(arr, element) {
+            var product = arr.find(function(el) {
+              return el.productCode == element;
+            });
+            return product;
         },
         render: function () {
             this.refreshOptions();
             Backbone.MozuView.prototype.render.call(this);
         },
         refreshOptions: function() {
-
             var selectedCount = 0;
             selectedCount = parseInt(selectedCount, 10);
-
+            var addonCount = 0;
+            addonCount = parseInt(addonCount, 10);
+            var optionValCount = 0;
+            optionValCount = parseInt(optionValCount, 10);
+            var items = this.model.get('addonItems');
             var options = JSON.parse(JSON.stringify(this.model.get('options')));
-            var hasAddon = false;
 
             for (var i = 0; i < options.length; i++) {
-                var stockCount = 0;
-                stockCount = parseInt(stockCount, 10);
+                optionValCount = 0;
                 var option = options[i];
                 if(option.attributeDetail.dataType == 'ProductCode') {
                     var optionValues = option.values;
-                    for (var j = 0; j < optionValues.length; j++) {
-                        var optionValue = optionValues[j];
-                        if (optionValue.bundledProduct.inventoryInfo.onlineStockAvailable > 0) {
-                            if (!hasAddon) {
-                                hasAddon = true;
-                            }
-                            stockCount++;
-                            break;
-                        }
-                    }
                     for (var k = 0; k < optionValues.length; k++) {
-                        if (optionValues[k].isSelected) {
+                        var optionValue = optionValues[k];
+                        var productCode;
+                        if(optionValue.stringValue.indexOf(':') !== -1) {
+                            productCode = optionValue.value.slice(0,optionValue.value.lastIndexOf("-"));
+                        } else {
+                            productCode = optionValue.value;
+                        } 
+                        
+                        var product = this.findElement(items, productCode);
+                        addonCount++;
+                        optionValCount++;
+                        var stockProperty = this.findStockProperty(product.properties);
+                        optionValue.itemDiscontinued = false;
+                        if (stockProperty) {
+                            var stockPropertyVal = stockProperty.values[0];
+                            if (stockPropertyVal.value == '4') {
+                                optionValue.itemDiscontinued = true;
+                                addonCount--;
+                                optionValCount--;
+                            }
+                        }
+                        optionValues[k] = optionValue;
+                    }
+                    var opt = this.model.get('options').get(option.attributeFQN);
+                    opt.set('values', optionValues);
+                    opt.set('optionValCount', optionValCount);
+
+                    for (var l = 0; l < optionValues.length; l++) {
+                        if (optionValues[l].isSelected) {
                             selectedCount++;
                             break;
                         }
                     }
                 }
-                var opt = this.model.get('options').get(option.attributeFQN);
-                opt.set('stockCount', stockCount);
             }
             if(selectedCount === 0){
                 this.model.set('addToCartButton','disabled');
             } else {
                 this.model.set('addToCartButton','');
             }
-            this.model.set('hasAddon', hasAddon);
+            if (addonCount > 0) {
+                this.model.set('hasAddon', true);
+            } else {
+                this.model.set('hasAddon', false);
+            }
         },
         onOptionChange: function (e) {
             this.model.unset('addToCartErr');
@@ -617,6 +764,11 @@ define([
             }
         },
         addToCartUpdate: function() {
+            if (this.model.get('addToCartButton') == 'disabled') {
+               this.model.set('addToCartErrr', Hypr.getLabel('selectAddonsError'));
+               return this.render();
+            }
+            this.model.unset('addToCartErrr');
             if(require.mozuData('pagecontext').isEditMode) {
                 return false;
             }
@@ -681,22 +833,25 @@ define([
                     for (var i = 0; i < options.length; i++) {
                         var ooption = options[i];
                         if (ooption.attributeDetail.dataType == 'ProductCode') {
-                            selectedOptions[n] = {id:ooption.attributeFQN, value:ooption.value};
-                            var option = optionModel.get('options').get(ooption.attributeFQN);
-                            option.set('value', null);
+                            if (ooption.value) {
+                                selectedOptions[n] = {id:ooption.attributeFQN, value:ooption.value};
+                                n++;
+                                var option = optionModel.get('options').get(ooption.attributeFQN);
+                                option.set('value', null);
+                            }
                         }
                     }
                     optionModel.set('selectedOptions', selectedOptions);
                     optionModel.set('addonsPopup', false);
                     optionModel.addToCart();
-                    if (error.message.indexOf('Validation Error: The following items have limited quantity or are out of stock') > -1) {
-                        optionModel.set('addToCartErrr', Hypr.getLabel('outOfStockError'));
+                    if (error.message.indexOf('Validation Error:') > -1) {
+                        optionModel.set('addToCartErrr', error.message.replace('Validation Error:', ''));
                     } else {
                         optionModel.set('addToCartErrr', error.message);
                     }
                 } else {
-                    if (error.message.indexOf('Validation Error: The following items have limited quantity or are out of stock') > -1) {
-                        optionModel.set('addToCartErr', Hypr.getLabel('outOfStockError'));
+                    if (error.message.indexOf('Validation Error:') > -1) {
+                        optionModel.set('addToCartErr', error.message.replace('Validation Error:', ''));
                     } else {
                         optionModel.set('addToCartErr', error.message);
                     }

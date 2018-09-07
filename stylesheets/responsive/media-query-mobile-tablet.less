@@ -148,7 +148,7 @@
 	#mz-mobilenav-containerLC {  
 		display: none;
 		top: 53px;
-		z-index: 999999;
+		z-index: 9; 
 		width: 50%;
 		padding: 0 10px; 
 	}
@@ -448,7 +448,8 @@
 		.mz-sitenav{
 			.mz-sitenav-item{
 				width: 100%; 
-				max-width: 100%;   
+				max-width: 100%;  
+				margin: 0;  
 			}
 			.panel-group{
 				.panel{
@@ -468,6 +469,9 @@
 						}		
 					}
 					.mz-sitenav-sub-sub{
+						display: block;
+						width: 100%;
+						position: static;  
 						padding-left: 15px; 
 					}		
 				}

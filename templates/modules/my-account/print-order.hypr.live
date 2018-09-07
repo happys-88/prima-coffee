@@ -71,10 +71,20 @@
 										<a class="mz-itemlisting-title" href="{{ item.product.url }}">{{ item.product.name }}</a>
 										<div class="mz-product-option">
 											{% for option in item.product.options %}
-												<div>{{ option.name }}: {{ option.value }}</div>
+												<div><strong>{{ option.name }}:</strong> 
+										        	{% if option.stringValue %} 
+										            	{{ option.stringValue }} 
+										          	{% else %} 
+										            	{% if option.value %} 
+										              		{{ option.value }} 
+										            	{% else %} 
+										              		{{ option.shopperEnteredValue }} 
+										            	{% endif %}  
+										          	{% endif %} 
+										        </div>  
 											{% endfor %}
 										</div>
-										<div class="mz-product-status">
+										<div class="mz-product-status"> 
 											<span>Status: {{ model.status }}</span>    	
 										</div>
 									</div>

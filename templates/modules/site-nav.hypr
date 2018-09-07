@@ -67,10 +67,9 @@
                       <ul class="mz-sitenav-sub">
                         {% for sublink in link.items %}
                           {% if not sublink.isHidden and not sublink.isEmpty %}
-                            {% if sublink.name|first == themeSettings.columnBreaker %}
-                              </ul>
-                              <ul class="mz-sitenav-sub">
-                            {% endif %}
+                            {% with "id eq {0}"|string_format(sublink.originalId) as filter %} 
+                              {% include_entities "modules/category-header-attribute" listFQN=themeSettings.categoryEntityName filter=filter %}
+                            {% endwith %} 
                             <li data-mz-role="sitemenu-item" class="mz-sitenav-item">
                               <a class="mz-sitenav-link sub-link" {% if link.openInNewWindow %}target='_blank'{% endif %} href="{{sublink.url}}">{{ sublink.name|replace("_", " ")|replace(themeSettings.columnBreaker, "")|safe }}</a>
                               

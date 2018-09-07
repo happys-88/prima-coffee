@@ -1,0 +1,16 @@
+
+{% partial_cache model.categoryId pageContext.Sorting pageContext.Pagination pageContext.query.sortBy pageContext.search.query %}
+<div class="lc-top-section"> 
+   {% include "modules/learning-center/lc-top-section" %}  	
+</div>
+{% if pageContext.search.query != "" and pageContext.search.query != 'undefined' %}
+    <h1 class="mz-pagetitle">{{ labels.foundSearchResults|string_format(model.totalCount, pageContext.search.query) }}</h1>
+{% else %}
+    <h1 class="mz-pagetitle">{{ navigation.currentNode.name|upper|replace("~", "")|safe }}</h1> 
+{% endif %}
+
+{% include "modules/product/learning-center/faceted-articles" %}  
+{% endpartial_cache %} 
+
+
+
