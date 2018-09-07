@@ -1582,9 +1582,14 @@
                 
                 return !_.isEqual(normalizedSavedPaymentInfo, normalizedLiveBillingInfo);
             },
-            submit: function () {
-
-                var order = this.getOrder();
+            submit: function () {var order = this.getOrder();
+                var paymentType = order.get('billingInfo.paymentType');
+                if (paymentType == 'CreditCard') {
+                   var cvv = order.get('billingInfo.card.cvv');
+                    if (!cvv) {
+                        this.get('card').selected = true;
+                    } 
+                }
                 // just can't sync these emails right
                 order.syncBillingAndCustomerEmail();
 
@@ -1592,14 +1597,15 @@
                 var currentPayment = order.apiModel.getCurrentPayment();
 
                 // the card needs to know if this is a saved card or not.
-                this.get('card').set('isSavedCard', order.get('billingInfo.usingSavedCard'));
+                this.get('card').set('isSavedCard', order.get('billingInfo.usingSavedCard')); 
+
                 // the card needs to know if this is Visa checkout (or Amazon? TBD)
                 if (currentPayment) {
                     this.get('card').set('isVisaCheckout', currentPayment.paymentWorkflow.toLowerCase() === 'visacheckout');
                 }
 
                 var radioVal = $('input[name=paymentType]:checked').val(); 
-                
+                console.log("Hello");
                 var val = this.validate();
                 if(radioVal !== 'Check' && radioVal !== 'PayPalExpress2') {
                     if (this.nonStoreCreditTotal() > 0 && val) {
@@ -1646,17 +1652,11 @@
                 if(this.get('paymentType').toLowerCase() === "purchaseorder") {
                     this.get('purchaseOrder').inflateCustomFields();
                 }
-                // console.log("currentPayment : "+JSON.stringify(currentPayment));
-                /*if (radioVal === 'PayPalExpress2') {
-                    this.markComplete();
-                } else*/ if (!currentPayment) {
-                    // console.log("111");
+                if (!currentPayment) {
                     return this.applyPayment();
                 } else if (this.hasPaymentChanged(currentPayment)) {
-                    // console.log("222");
                     return order.apiVoidPayment(currentPayment.id).then(this.applyPayment);
                 } else if (card.get('cvv') && card.get('paymentServiceCardId')) {
-                    // console.log("333");
                     return card.apiSave().then(this.markComplete, order.onCheckoutError);
                 } else {
                    this.markComplete();
