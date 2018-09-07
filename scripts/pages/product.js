@@ -326,6 +326,7 @@
                         optionValue.productUrl = addonValue.productUrl;
                         optionValue.imageFilePath = addonValue.imageFilePath;
                         optionValue.imageData = addonValue.imageData;
+                        optionValue.itemDiscontinued = addonValue.itemDiscontinued;
                         optionValues[j] = optionValue;
                     }
                     options[k].values = optionValues;
@@ -351,6 +352,9 @@
                 }
             });
 
+        },
+        findStockProperty: function(properties) {
+            return _.find(properties, function(property){ return property.attributeFQN == 'tenant~field_display_oos1'; });
         },
         initialize: function () {
             // handle preset selects, etc
@@ -490,6 +494,8 @@
                 }
                 api.request("GET", "/api/commerce/catalog/storefront/products/?filter=(" + str + ")&pageSize="+productCodes.length ).then(function(response){
                     var items = response.items;
+                    var addonCount = 0;
+                    addonCount = parseInt(addonCount, 10);
                     for (var j = 0; j < options.length; j++) {
                         var option = options[j];
                         if (option.attributeDetail.dataType == "ProductCode") {
@@ -524,6 +530,16 @@
                                 }
 
                                 optionValue.productUrl = "/"+productCode+"/p/"+productCode;
+                                addonCount++;
+                                var stockProperty = me.findStockProperty(product.properties);
+                                optionValue.itemDiscontinued = false;
+                                if (stockProperty) {
+                                    var stockPropertyVal = stockProperty.values[0];
+                                    if (stockPropertyVal.value == '4') {
+                                        optionValue.itemDiscontinued = true;
+                                        addonCount--;
+                                    }
+                                }
                                 optionValues[k] = optionValue;
                             }
                             option.values = optionValues;
@@ -531,6 +547,7 @@
                         }
                     
                     }
+                    prodModel.set('addonCount', addonCount);
                     prodModel.set('addons', options);
                     prodModel.set('hasOptions', hasOptions);
                     me.render();

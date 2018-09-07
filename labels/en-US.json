@@ -640,6 +640,7 @@
   "viewOnLoginErrMsg" : "Either Login for pricing or remove the Log in for price addon selection.",
   "select"                                : "Select" ,
   "outOfStockError"                       : "The following items have limited quantity or are out of stock.",
+  "selectAddonsError"                     : "Please select addons to proceed.",
   "printOrderItem": "Item" ,
   "printInvoice" : "Print Invoice"  ,
   "variationError" : "Product is configurable. Variations must be specified.",

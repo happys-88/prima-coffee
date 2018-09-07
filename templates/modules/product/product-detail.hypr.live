@@ -104,7 +104,7 @@
       <p>{{ model|get_product_attribute_value("tenant~disclaimer")|safe }}</p>  
     {% endif %} 
   </div>
-  {% if model.addons and model.addons.length > 0 %}
+  {% if model.addons and model.addons.length > 0 and model.addonCount > 0 %}
     <div class="row">
       <div class="col-md-12">
         <h4 class="mz-l-stack-sectiontitle">{{ labels.addons }}</h4>
