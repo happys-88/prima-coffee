@@ -12,7 +12,7 @@
 {% block breadcrumbs %}
 {% endblock breadcrumbs %}
 {% block body-content %}
-{% require_script "pages/wholesale" %}
+
 	<div id="bottom-navigation">
         <div class="navbar navbar-inverse">
            	<a href="/" class="brand-logo pull-left">
@@ -95,7 +95,9 @@
         </div>
     </div>
         <div class="mz-wholesale-form">
-            {% include "modules/page-footer/footer-forms/wholesale-form" %}
+            <div class="mz-contact-form">
+                 {% include "modules/page-footer/footer-forms/wholesale-form" %}
+            </div>    
         </div>
    
 

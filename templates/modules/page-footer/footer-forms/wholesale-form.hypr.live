@@ -1,8 +1,9 @@
 {% block wholesale-form %}
-<div class="container">
+{% require_script "pages/wholesale" %}
+<div>
     {% include "modules/common/message-bar" with model=model.messages %}
-    <div class="mz-contact-form clearfix">
-        <form name="wholesaleForm" method="" id="commercialForm" action="">    
+    <div class="clearfix">
+        <form name="wholesaleForm" method="" id="wholesaleForm" action="">    
         	<div class="form-group clearfix">
                 <label class="col-xs-12" for="sku">Name <span class="is-required"> *</span></label>
                 <div class="col-xs-12">

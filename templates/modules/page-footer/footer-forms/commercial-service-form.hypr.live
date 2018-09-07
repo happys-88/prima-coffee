@@ -1,4 +1,5 @@
         {% block commercial-form %}
+         {% require_script "pages/commercial-services" %}
 	           {% include "modules/common/message-bar" with model=model.messages %}
                 <div class="mz-contact-form">
                     <form name="commercialForm" method="" id="commercialForm" action="">    
