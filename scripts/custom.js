@@ -1,7 +1,7 @@
 define([ 
 	"modules/jquery-mozu",
-	'modules/api',
-	'hyprlivecontext',
+	"modules/api",
+	"hyprlivecontext",
 	"bxslider"
 ], function( $, api, HyprLiveContext, bxslider) { 
 	

@@ -534,6 +534,12 @@
     }
   ],
   "settings": {
+    "ogSiteNameTwitter": "@primacoffee", 
+    "ogSiteNameFb": "Prima Coffee",  
+    "ogImageWidth": "500",
+    "ogImageHeight": "270", 
+    "ogVideoWidth": "500",
+    "ogVideoHeight": "270", 
     "siteName": "primacoffee",
     "allProductsCategoryId": "",
     "allProductsCategoryIdLC": "",

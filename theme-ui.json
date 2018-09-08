@@ -493,6 +493,43 @@
                     "name": "mailchimpDeals"
                 }
             ]
+        },
+        { 
+            "xtype": "panel",
+            "title": "Meta Tags - Global Values",        
+            "collapsed": false,
+            "items": [
+                {
+                    "fieldLabel": "OG Site Name - Twitter",   
+                    "xtype": "mz-input-text",
+                    "name": "ogSiteNameTwitter"  
+                },
+                {
+                    "fieldLabel": "OG Site Name - Facebook",    
+                    "xtype": "mz-input-text",
+                    "name": "ogSiteNameFb"  
+                },
+                {
+                    "fieldLabel": "OG Image Width",    
+                    "xtype": "mz-input-text",
+                    "name": "ogImageWidth"  
+                },
+                {
+                    "fieldLabel": "OG Image Height",    
+                    "xtype": "mz-input-text",
+                    "name": "ogImageHeight"  
+                },
+                {
+                    "fieldLabel": "OG Video Width",    
+                    "xtype": "mz-input-text",
+                    "name": "ogVideoWidth"  
+                },
+                {
+                    "fieldLabel": "OG Video Height",    
+                    "xtype": "mz-input-text",
+                    "name": "ogVideoHeight"   
+                }
+            ]
         }
     ]
 }
