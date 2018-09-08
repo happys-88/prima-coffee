@@ -261,15 +261,28 @@ define([
         addItemToCart: function(e) {
             var self = this,
                 $target = $(e.currentTarget),
-                id = $target.data('mzItemId');
-            if (id) { 
+                //id = $target.data('mzItemId');
+            /*if (id) { 
                 this.editing.added = id;
                 this.doModelAction('addItemToCart', id).then(function(response){
                     GlobalCart.update(id);
                     return response;
                 });  
+            }*/
+            id = $target.data('mz-item-id');
+            if (id) {  
+                this.editing.added = id;
+                this.doModelAction('addItemToCart', id).then(function(response){
+                    GlobalCart.update(id);
+                    localStorage.setItem("lastAddedItemToCart", id);
+                    var productcod=localStorage.getItem("lastAddedItemToCart");
+                    var idd="#"+productcod;
+                    $(idd).prependTo(".mz-carttable-items-global"); 
+                    $(idd).addClass("recently-added");
+                    return response; 
+                });
             }
-        },
+        }, 
         doNotRemove: function() {
             this.editing.added = false;
             this.editing.remove = false;
