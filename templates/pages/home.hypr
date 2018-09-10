@@ -8,7 +8,7 @@
     
     {% dropzone "home-slider" scope="page" %}
 
-    <div class="mz-social-sharing"> 
+    <div class="mz-social-sharing container"> 
         <div class="addthis_toolbox" addthis:url='{{ pageContext.url }}{{ model.url }}'>      
             <a class="addthis_button_facebook_like"></a> 
             <a class="addthis_button_google_plusone"></a> 

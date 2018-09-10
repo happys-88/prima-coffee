@@ -1,12 +1,12 @@
-<div class="mz-footer-logo-section clearfix"> 
-    <div class="col-sm-6 col-xs-5"> 
+<div class="mz-footer-logo-section clearfix">
+    <div class="col-sm-6 col-xs-5">
         <div class="mz-footer-logo">
             <a href="{{siteContext.siteSubdirectory}}/">
-                <img src="/cms/files/footer-logo@2x.png" alt="Prima Supply"/>
+                <img src="/cms/files/footer-coffee-logo.png" alt="Prima coffee" />
             </a>
         </div>
     </div>
-    <div class="col-sm-6 col-xs-7"> 
+    <div class="col-sm-6 col-xs-7">
         <ul>
             <li>
                 <a href="/free-shipping">
@@ -19,10 +19,10 @@
                 </a>
             </li>
             <li>
-                <a href="/try-before-you-buy"> 
+                <a href="/try-before-you-buy">
                     <img src="/cms/files/try-before.png" alt="try-before">
                 </a>
-            </li> 
+            </li>
         </ul>
     </div>
-</div> 
+</div>

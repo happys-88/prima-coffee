@@ -279,6 +279,9 @@ define([
                     var idd="#"+productcod;
                     $(idd).prependTo(".mz-carttable-items-global"); 
                     $(idd).addClass("recently-added");
+                    $("#global-cart").show().delay(3000).hide(0, function () {
+                        $(this).css("display", "");
+                    });
                     return response; 
                 });
             }

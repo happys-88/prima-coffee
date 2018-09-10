@@ -146,9 +146,6 @@
         $window.bind("resize", function() {
             update();
         });
-         $(document).on('click touchstart', 'a[class="bx-next"]', function () {
-             update();
-        });
 
         /* With IOS5 force loading images when navigating with back button. */
         /* Non optimal workaround. */

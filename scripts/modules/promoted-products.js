@@ -1,5 +1,10 @@
 
-	define(['modules/jquery-mozu', 'underscore', 'modules/backbone-mozu', "modules/models-product"], function ($, _, Backbone, ProductModel) {
+	define(['modules/jquery-mozu', 
+	'underscore', 
+	'modules/backbone-mozu',
+	"modules/models-product",
+    'yotpo'],
+	function ($, _, Backbone, ProductModel, yotpo) {
 	var url = "https://api.yotpo.com/v1/widget/4X91rXasdFWFBX4Rnh5WEr4NnvMwpFpjxzNFLubD/products/promoted_products";
 		var slider;
 		$.get(url, function(data, status){ 
@@ -50,9 +55,11 @@
 			window.productView = productView;
 			productView.render();
 			productView.productCarousel();
+			yotpo.showYotpoRatingStars(".mz-recentproductlist-item");
 			$(window).resize(function () {
 				slider.destroySlider();
 				productView.productCarousel();
+				//yotpo.showYotpoRatingStars();
 			});
 		});
 	});

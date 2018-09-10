@@ -9,7 +9,9 @@
 	{% require_script "pages/category" %}
 	{% require_script "options" %}
 	{% require_script "modules/quickview" %} 
-	{% require_script "pages/stock-message" %}
+	<script type="text/javascript">
+		(function e() { var e = document.createElement("script"); e.type = "text/javascript", e.async = true, e.src = "//staticw2.yotpo.com/{{ themeSettings.yotpoApiKey }}/widget.js"; var t = document.getElementsByTagName("script")[0]; t.parentNode.insertBefore(e, t) })(); 
+	</script>
 	<div data-mz-category="{{model.categoryId}}" class="mz-l-container">
 	    {% include "pages/category-interior" %}
 	</div>

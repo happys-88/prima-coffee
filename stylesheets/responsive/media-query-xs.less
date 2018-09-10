@@ -253,9 +253,14 @@
 	/**** Home Slider ****/
 	.mz-homepage{
 		#mz-home-slider{
-		margin-top: 18px;
+		margin-top: 45px;
 		.bx-viewport{
 			min-height: inherit; 
+		}
+		.bx-wrapper {
+			img {
+			height: 42vh;
+		   }
 		}
 		.slider{
 			.mz-slide{
@@ -284,7 +289,8 @@
 			.mz-slide-details {
 					button {
 					font-size: 14px;
-					padding: 10px 6px;
+					padding: 7px 5px;
+					margin-left: 101px;
 				}
 		   }
 		 }
@@ -480,9 +486,9 @@
 				}
 			}
 			.mz-facetingform {
-				background: #fff;
+				background: #ccc;
 				position: absolute;
-			    top: 107px;
+			    top: -40px;
 			    right: 0;
 			    left: 0;
 				z-index: 1;
@@ -719,10 +725,12 @@
 	.recently-viewed-list,
 	.mz-product-cross-sells {
 		li {
-			&.mz-recentproductlist-item {
+			&.mz-recentproductlist-item,
+			&.mz-productlist-item-slider {
 				max-width: 100%;
 				.mz-product-image {
 					img {
+						margin: 0 auto;
 						padding: 0;
 						max-width: 115px;
 						min-height: 115px; 
@@ -2008,5 +2016,26 @@
 			float: none;
 	}
  }
+ //promoted product slider
+ #promotedProds {
+	 .bx-wrapper {
+		 padding: 0 20px;
+		 .bx-prev {
+				left: 0;
+			}
+			.bx-next {
+				right: 0;
+				background-position: -19px 0;
+			}
+		.bx-controls-direction {
+					a {
+					width: 22px;
+					height: 28px;
+					background-size: cover;
+				}
+			}
+     }
+  }
 }
+
 

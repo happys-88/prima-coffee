@@ -20,9 +20,15 @@
 	        	Rating : {{ prod.average_score }}
 	        	
 			</div> {% endcomment %}
-			<div class="mz-product-rating">
-				<img src="../../resources/images/product-rating.jpg" alt="product-rating">
+			{% block product-rating %}
+			<div id="product-rating">
+				<div class="yotpo bottomline">
+					<div class="yotpo-bottomline pull-left star-clickable">
+						<span class="yotpo-stars"></span>
+					</div>
+				</div>
 			</div>
+			{% endblock product-rating %}
 			<div class="mz-price-stack">
 				<span>{{ prod.price|currency }}</span>
 			</div>

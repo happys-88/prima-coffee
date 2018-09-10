@@ -176,7 +176,7 @@ function ($, _, Hypr, Backbone, HyprLiveContext, api, blockUiLoader) {
         });
     },
     showYotpoRatingStars: function(listClassName){
-        if((listClassName === ".mz-productlist-item") || (listClassName === ".mz-product-quick-view")){  
+        if ((listClassName === ".mz-productlist-item") || (listClassName === ".mz-product-quick-view") || (listClassName === ".mz-recentproductlist-item")){  
             listClassName = listClassName; 
         }else{
             listClassName = ".mz-productlist-item-slider";          

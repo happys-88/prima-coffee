@@ -14,7 +14,10 @@ require(["modules/jquery-mozu", "underscore", "hyprlive", "modules/backbone-mozu
 
             var incomplete = $(".is-incomplete");
             var offset = incomplete.offset();
-            $("html, body").animate({ scrollTop: offset.top }, 600); 
+            if (offset){
+                $("html, body").animate({ scrollTop: offset.top }, 600); 
+            }
+          
         },
         choose: function () {
             var me = this;
