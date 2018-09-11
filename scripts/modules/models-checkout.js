@@ -1632,7 +1632,9 @@
                     } 
                 }
                 // just can't sync these emails right
+                if(order.get('billingInfo.billingContact.email') !== '') {
                 order.syncBillingAndCustomerEmail();
+                }
 
                 // This needs to be ahead of validation so we can check if visa checkout is being used.
                 var currentPayment = order.apiModel.getCurrentPayment();
