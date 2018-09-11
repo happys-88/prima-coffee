@@ -1,4 +1,8 @@
-﻿{% comment %}<h1 class="mz-pagetitle">{{ labels.searchResults }}: <span class="mz-searchresults-query">{{ pageContext.search.query }}</span></h1>{% endcomment %}
+﻿{% if not pageContext.query.partial %}
+    {% if pageContext.search.query != "" and pageContext.search.query != 'undefined' %}
+        <h1 class="mz-pagetitle bb">{{ labels.foundSearchResults|string_format(model.totalCount, pageContext.search.query) }}</h1>
+    {% endif %}
+{% endif %}
 {% partial_cache model.categoryId pageContext.Sorting pageContext.Pagination pageContext.query.sortBy pageContext.search.query %}
     {% include "modules/product/faceted-products" %}
 {% endpartial_cache %}

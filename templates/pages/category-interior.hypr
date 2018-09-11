@@ -1,16 +1,15 @@
 {% dropzone "category-page-top" scope="page" %}
 
 {% if not pageContext.query.partial %} 
-{% if pageContext.search.query != "" and pageContext.search.query != 'undefined' %}
-</h1>
- {% else %}
-<h1 class="mz-pagetitle">{{ model.content.name }}</h1>
-<div class="category-description">
-	<div>{{ model.content.description|safe }}</div>
-</div>
-{% endif %} 
+	{% if pageContext.search.query != "" and pageContext.search.query != 'undefined' %}
+		
+ 	{% else %}
+		<h1 class="mz-pagetitle">{{ model.content.name }}</h1>
+		<div class="category-description">
+			<div>{{ model.content.description|safe }}</div>
+		</div>
+	{% endif %} 
 {% endif %}
-
 
 
 {% partial_cache model.categoryId pageContext.Sorting model.content pageContext.Pagination pageContext.query.sortBy %}

@@ -10,7 +10,7 @@
             <div class="mz-customer-service-section">
                 <h3 class="mz-l-stack-sectiontitle">{{ model.properties.title|safe }}</h3>
                 <div class="field-item even">
-                    <ul class="nav nav-pills">
+                    <ul class="nav nav-pills hidden">
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="https://prima-coffee.com/" id="drop1" role="button">Equipment
                                 <b class="caret"></b>
