@@ -27,17 +27,23 @@
 					<p>{{ model.billingInfo.billingContact.email }} </p>
 					<p class="mz-heading">Payment Method</p>   
 					<p>{{ model.billingInfo.paymentType }} for {{ model.total|currency }} </p>
-					{% if model.discount.lenght>0 or model.shippingDiscounts.length>0 or model.orderDiscounts.length>0  %} 
-					<strong>Coupon Code:</strong> <br>  
+					{% if model.discount.length>0 or model.shippingDiscounts.length>0 or model.orderDiscounts.length>0  %}
+						{% if model.couponCodes %} 
+							<strong>Coupon Code:</strong> <br> 
+						{% endif %}  
 					{% endif %}
 					{% for key, value  in model.discount %}
 						<p class="mz-discount"><span> {{ key }} </span>  for  <span>{{ value|currency }}</span></p>  
 					{% endfor %}
 					{% for shippingDiscount in model.shippingDiscounts %}
-						<p class="mz-discount"><span> {{ shippingDiscount.discount.couponCode }} </span>  for  <span>{{ shippingDiscount.discount.impact|currency }}</span></p>	 
+						{% if shippingDiscount.discount.couponCode %} 
+							<p class="mz-discount"><span> {{ shippingDiscount.discount.couponCode }} </span>  for  <span>{{ shippingDiscount.discount.impact|currency }}</span></p>	 
+						{% endif %}
 					{% endfor %}
-					{% for orderDiscount in model.orderDiscounts %}  
-						<p class="mz-discount"><span> {{ orderDiscount.couponCode }} </span>  for  <span>{{ orderDiscount.impact|currency }}</span></p>	  
+					{% for orderDiscount in model.orderDiscounts %}
+						{% if orderDiscount.couponCode %}   
+							<p class="mz-discount"><span> {{ orderDiscount.couponCode }} </span>  for  <span>{{ orderDiscount.impact|currency }}</span></p>	
+						{% endif %} 
 					{% endfor %} 
 				</div>
 			</div>
@@ -68,7 +74,7 @@
 										</div>
 									</div>
 									<div class="mz-product-info col-sm-8">    
-										<a class="mz-itemlisting-title" href="{{ item.product.url }}">{{ item.product.name }}</a>
+										<p class="mz-itemlisting-title">{{ item.product.name }}</p> 
 										<div class="mz-product-option">
 											{% for option in item.product.options %}
 												<div><strong>{{ option.name }}:</strong> 

@@ -38,15 +38,11 @@
     {% if model.getNonShippedItems.length > 0 %}
         <h2 class="mz-orderlisting-heading">{{labels.orderItemsNotShipped}}</h2> 
         <div class="mz-orderlisting-nonShipped">
-        {% for item in model.getNonShippedItems %}
-            {% if item.Type == "BundleItem" %}
-                
-            {% else %}
+            {% for item in model.items %} 
                 {% include "modules/my-account/order-history-listing-item" with model=item %}
-            {% endif %}
-        {% endfor %}
+            {% endfor %} 
         </div>
-    {% endif %}
+    {% endif %} 
 
 </div>
 {% endblock order-items %}

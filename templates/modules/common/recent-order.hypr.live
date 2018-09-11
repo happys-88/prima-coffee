@@ -99,10 +99,10 @@
 
     <div class="mz-l-stack-section mz-accountorderrecent">
         {% for recentorder in model.items %}
-            <li data-mz-order-id="{{order.id}}" data-mz-order-history-listing>
+            <li data-mz-order-id="{{recentorder.id}}" data-mz-order-history-listing>  
                 <div data-order-message-bar class="order-message-bar"></div>
                 <div class="listing">
-                    {% include "modules/my-account/order-history-listing-item" with model=recentorder %}
+                    {% include "modules/my-account/recent-order-listing-item" with model=recentorder %}   
                 </div>
             </li>
         {% endfor %}

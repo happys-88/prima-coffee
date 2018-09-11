@@ -1,29 +1,20 @@
-﻿{% extends "modules/common/item-listing" %}  
+{% extends "modules/common/item-listing" %}  
 {% block item-details %}
     <div class="mz-itemlisting-description">
       <p><strong>{{ model.product.variationProductCode|default(model.product.productCode) }}</strong></p> 
       {% for option in model.product.options %}
-        {% if option.name=="add-on" %}  
-          {% if model.product.bundledProducts %}
-            {% for addonProd in model.product.bundledProducts %}  
-              <p><strong>{{ option.name }}:</strong> {{addonProd.name}} 
-            {% endfor %}  
-          {% endif %}
-        {% else %}  
-          <p><strong>{{ option.name }}:</strong> 
-            {% if option.stringValue %} 
-              {{ option.stringValue }} 
+        <p><strong>{{ option.name }}:</strong>  
+          {% if option.stringValue %} 
+            {{ option.stringValue }} 
+          {% else %} 
+            {% if option.value %} 
+              {{ option.value }} 
             {% else %} 
-              {% if option.value %} 
-                {{ option.value }} 
-              {% else %} 
-                {{ option.shopperEnteredValue }} 
-              {% endif %}  
-            {% endif %}
-          </p>
-        {% endif %} 
-         
-      {% endfor %}
+              {{ option.shopperEnteredValue }} 
+            {% endif %}  
+          {% endif %}
+        </p> 
+      {% endfor %} 
     </div> 
     <div class="mz-itemlisting-price">
      {{labels.orderPackagePrice}} : {%if model.product.price.tenantOverridePrice %} {{ model.product.price.tenantOverridePrice|currency }} {% else %} {%if model.product.price.salePrice %} {{ model.product.price.salePrice|currency }} {% else %} {{ model.product.price.price|currency }} {%endif%}{%endif%}

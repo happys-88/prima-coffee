@@ -820,6 +820,7 @@
           couponDetails: function() {
               var order = this.getOrder();
               var discountsArray = [];
+              var couponCodes= order.get("couponCodes");
               var dataitems=_.pluck(order.get('items'), 'productDiscounts');
               var coupon= _.pluck(_.flatten(dataitems),'couponCode');
               var impact=_.pluck(_.flatten(dataitems),'impact');
@@ -838,6 +839,9 @@
                var discountarray= _.object(unqcoupon,unqimpact);
               discountsArray.push({
                   OrderDiscounts:  order.get('orderDiscounts')
+              });
+              discountsArray.push({
+                  couponCodes:  couponCodes   
               });
               discountsArray.push({
                   itemDiscount:  discountarray

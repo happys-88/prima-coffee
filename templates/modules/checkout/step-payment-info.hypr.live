@@ -24,18 +24,26 @@
                         </div>
                     </div>
                     -->
-                    {% if model.couponDetails %}
-                        <div>Coupon Code:</div>
-                    {% endif %}
+                    
+                    {% for couponCode in model.couponDetails %}  
+                        {% if couponCode.couponCodes %}    
+                            <div>Coupon Code:</div>
+                        {% endif %}
+                    {% endfor %}
+                    
                     {% for orderlevel in model.couponDetails %}
                         {% for orddisc in orderlevel.OrderDiscounts %}
-                        <div class="coupon-code"><p> {{orddisc.couponCode}} for {{orddisc.impact|currency}}</p></div> 
+                            {% if orddisc.couponCode %}  
+                                <div class="coupon-code"><p> {{orddisc.couponCode}} for {{orddisc.impact|currency}}</p></div> 
+                            {% endif %}
                         {% endfor %} 
                         {% for key, value  in orderlevel.itemDiscount %}
                             <p class="mz-discount"><span> {{ key }} </span>  for  <span>{{ value|currency }}</span></p>  
                         {% endfor %}
                         {% for shippingDiscount in orderlevel.shippingDiscount %}  
-                            <p class="mz-discount"><span> {{ shippingDiscount.couponCode }} </span>  for  <span>{{ shippingDiscount.impact|currency }}</span></p>     
+                            {% if shippingDiscount.couponCode %}
+                                <p class="mz-discount"><span> {{ shippingDiscount.couponCode }} </span>  for  <span>{{ shippingDiscount.impact|currency }}</span></p> 
+                            {% endif %}       
                         {% endfor %}
                     {% endfor %}
                 </div>
@@ -61,18 +69,24 @@
                             {% endif %}
                         {% endfor %}
                         </p>
-                        {% if model.couponDetails %}
-                            <div>Coupon Code:</div>
-                        {% endif %}
+                        {% for couponCode in model.couponDetails %}  
+                            {% if couponCode.couponCodes %}    
+                                <div>Coupon Code:</div>
+                            {% endif %}
+                        {% endfor %}
                         {% for orderlevel in model.couponDetails %}
                             {% for orddisc in orderlevel.OrderDiscounts %}
-                            <div class="coupon-code"><p> {{orddisc.couponCode}} for {{orddisc.impact|currency}}</p></div> 
+                                {% if orddisc.couponCode %}  
+                                    <div class="coupon-code"><p> {{orddisc.couponCode}} for {{orddisc.impact|currency}}</p></div> 
+                                {% endif %}
                             {% endfor %} 
                             {% for key, value  in orderlevel.itemDiscount %}
                                 <p class="mz-discount"><span> {{ key }} </span>  for  <span>{{ value|currency }}</span></p>  
                             {% endfor %}
                             {% for shippingDiscount in orderlevel.shippingDiscount %}  
-                                <p class="mz-discount"><span> {{ shippingDiscount.couponCode }} </span>  for  <span>{{ shippingDiscount.impact|currency }}</span></p>     
+                                {% if shippingDiscount.couponCode %}
+                                    <p class="mz-discount"><span> {{ shippingDiscount.couponCode }} </span>  for  <span>{{ shippingDiscount.impact|currency }}</span></p> 
+                                {% endif %}       
                             {% endfor %}
                         {% endfor %}
                     </div>
@@ -108,20 +122,26 @@
                                 </div>
                             </div>
                         {% endfor %}
-                        {% if model.couponDetails %} 
-                            <div>Coupon Code:</div>
-                        {% endif %}
+                        {% for couponCode in model.couponDetails %}  
+                            {% if couponCode.couponCodes %}    
+                                <div>Coupon Code:</div>
+                            {% endif %}
+                        {% endfor %} 
                         {% for orderlevel in model.couponDetails %}
                             {% for orddisc in orderlevel.OrderDiscounts %}
-                            <div class="coupon-code"><p> {{orddisc.couponCode}} for {{orddisc.impact|currency}}</p></div> 
+                                {% if orddisc.couponCode %}  
+                                    <div class="coupon-code"><p> {{orddisc.couponCode}} for {{orddisc.impact|currency}}</p></div> 
+                                {% endif %}
                             {% endfor %} 
                             {% for key, value  in orderlevel.itemDiscount %}
                                 <p class="mz-discount"><span> {{ key }} </span>  for  <span>{{ value|currency }}</span></p>  
                             {% endfor %}
                             {% for shippingDiscount in orderlevel.shippingDiscount %}  
-                                <p class="mz-discount"><span> {{ shippingDiscount.couponCode }} </span>  for  <span>{{ shippingDiscount.impact|currency }}</span></p>     
+                                {% if shippingDiscount.couponCode %}
+                                    <p class="mz-discount"><span> {{ shippingDiscount.couponCode }} </span>  for  <span>{{ shippingDiscount.impact|currency }}</span></p> 
+                                {% endif %}       
                             {% endfor %}
-                        {% endfor %}
+                        {% endfor %} 
                     </div>
                     <div class="mz-l-stack-section mz-checkout-current-payment mz-checkout-saved-billingaddress">
                         <h4 class="mz-checkoutform-title">{{ labels.billingAddress }}</h4>
@@ -208,7 +228,7 @@
             {% else %}
 
                 <div class="mz-l-stack-section">
-                    {% include "modules/checkout/payment-selector" %} 
+                    {% include "modules/checkout/payment-selector" %}
                 </div>
             {% endif %}
         {% else %}
