@@ -1,7 +1,7 @@
 define([ 
 	"modules/jquery-mozu",
-	'modules/api',
-	'hyprlivecontext',
+	"modules/api",
+	"hyprlivecontext",
 	"bxslider"
 ], function( $, api, HyprLiveContext, bxslider) { 
 	
@@ -54,6 +54,15 @@ define([
 	}
 	
 	$(document).ready(function(){ 
+		//overlay 
+
+		$(".mz-hamburger-icon").click(function () {
+			$(".overlay").addClass("active");
+		});
+		$(".overlay").click(function () {
+			$(this).removeClass("active");
+			//$("[class='mz-hamburger-icon']").addClass("collapsed").attr("aria-expanded", false);
+		});
 
 		$('.mz-searchbox-button').click(function(e) {
 			var elm = e.currentTarget;
@@ -63,13 +72,11 @@ define([
 		
 		$("#subscribeEmail").keydown(function(e) {
 			if (e.which === 13) {
-				alert("Ok");
                 $("#subscribeEmailButton").trigger("click");
             }
         });
         $("#subscribeEmailButton").click(function(e){
 			var email = $("#subscribeEmail").val();
-			console.log("Email : "+email);
 			var labels = HyprLiveContext.locals.labels;
 			var errorMessage = labels.subscribeMsg;
 			var pattern =/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -79,9 +86,9 @@ define([
    				$("#errorMsg").html(errorMessage);
    				$("#errorMsg").show().delay(2000).fadeOut();
    				api.request("POST", "/mailchimp", {'accountId':email, deals:"PCNewsLetter"}).then(function (response){
-                   console.log("Response : "+JSON.stringify(response));    
+                   console.log("Success");    
                 }, function(err) {
-                    console.log("Failure : "+JSON.stringify(err));
+                    console.log("Error : "+JSON.stringify(err));
                 });
    			} else {
    				errorMessage = labels.emailMissing;
@@ -103,9 +110,9 @@ define([
    				$("#newsletterEmail").val('');
    				$("#thanksMsg").show().delay(2000).fadeOut();
    				api.request("POST", "/mailchimp", {'accountId':email, deals:"PCNewsLetter"}).then(function (response){
-                   console.log("Response : "+JSON.stringify(response));    
+                   console.log("Success");    
                 }, function(err) {
-                    console.log("Failure : "+JSON.stringify(err));
+                    console.log("Error : "+JSON.stringify(err));
                 });
    			} else {
    				$("#errorEmail").show();
@@ -135,9 +142,6 @@ define([
 	                currentParentOffset = currentElemnt.parents(".mz-sitenav-item").offset().left, 
 	                leftOrigin = $(".mz-sitenav-list").offset().left;
 	                
-	                //console.log(leftOrigin); 
-	                //console.log(currentDropWidth + "--" + currentParentOffset);   
-	              
 	            if (currentParentOffset + currentDropWidth >= rightReference) {
 	                currentElemnt.addClass("menu-right");
 	            } else {
@@ -326,7 +330,6 @@ define([
 		// });  
 	
 			$('input[type="checkbox"]').click(function () {
-				console.log("working");
 				$(".mz-certificate-upload").toggle();
 			});  
 			var singleImgContainer = $(".yotpo-single-image-container");

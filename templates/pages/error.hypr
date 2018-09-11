@@ -18,6 +18,8 @@
 		{% endif %}
     </div>
 </div>
+{% block breadcrumbs %}{% endblock breadcrumbs %}
+{% block commonbody-content %}{% endblock commonbody-content %}
 {% block page-footer %}
     {% include "modules/page-footer/page-footer-error" %}  
 {% endblock page-footer %} 

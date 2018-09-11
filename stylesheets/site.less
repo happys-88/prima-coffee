@@ -553,8 +553,8 @@ img[data-mztp]{
 	.mz-l-pagecontent {
 		h1 {
 			&.mz-pagetitle {
-				margin-top: 16px;
-				margin-bottom: 16px;
+				margin-top: 5px;
+				margin-bottom: 0px;
 				padding-bottom: 12px;
 			}
 		}
@@ -816,7 +816,7 @@ img[data-mztp]{
    		border-top: none;
    		z-index: 99991;  
    		.logged-user{
-   			background: #415265; 
+   			background: #ff7a00; 
 		    color: #fff;
 		    padding: 6px 15px;
 		    text-align: center;
@@ -947,6 +947,12 @@ img[data-mztp]{
 				}
 				.mz-product-info{
 					float: left;
+					.mz-itemlisting-title{
+						margin: 0 0 5px;
+						&:hover{
+							text-decoration: none; 
+						} 
+					}
 				}  
 				.mz-product-code {
 					float: left;
@@ -1060,6 +1066,9 @@ img[data-mztp]{
 				display: none;  
 			}
 		}
+		.mz-feature-product{
+			display: none; 
+		}
 	}
 }
 
@@ -1070,4 +1079,8 @@ img[data-mztp]{
 			display: none;  
 		}
 	}
+}
+//according to admin related
+.span7{
+   margin: 0 15px;
 }

@@ -801,12 +801,9 @@
             validatePaymentType: function(value, attr) {
                 var order = this.getOrder();
                 var payment = order.apiModel.getCurrentPayment();
-/*                console.log("Vlaue : "+value);
-                console.log("validatePaymentType : "+JSON.stringify(payment));*/
                 var errorMessage = Hypr.getLabel('paymentTypeMissing');
                 if (!value) return errorMessage;
                 if ((value === "StoreCredit" || value === "GiftCard") && this.nonStoreCreditTotal() > 0 && !payment) return errorMessage;
-                // console.log("errorMessage : "+JSON.stringify(errorMessage));
             },
             validateSavedPaymentMethodId: function (value, attr, computedState) {
                 if (this.get('usingSavedCard')) {
@@ -820,6 +817,7 @@
           couponDetails: function() {
               var order = this.getOrder();
               var discountsArray = [];
+              var couponCodes= order.get("couponCodes");
               var dataitems=_.pluck(order.get('items'), 'productDiscounts');
               var coupon= _.pluck(_.flatten(dataitems),'couponCode');
               var impact=_.pluck(_.flatten(dataitems),'impact');
@@ -838,6 +836,9 @@
                var discountarray= _.object(unqcoupon,unqimpact);
               discountsArray.push({
                   OrderDiscounts:  order.get('orderDiscounts')
+              });
+              discountsArray.push({
+                  couponCodes:  couponCodes   
               });
               discountsArray.push({
                   itemDiscount:  discountarray
@@ -1648,7 +1649,6 @@
                 }
 
                 var radioVal = $('input[name=paymentType]:checked').val(); 
-                console.log("Hello");
                 var val = this.validate();
                 if(radioVal !== 'Check' && radioVal !== 'PayPalExpress2') {
                     if (this.nonStoreCreditTotal() > 0 && val) {
@@ -1668,8 +1668,6 @@
                         return false;
                     }
                 } else {
-                   /* console.log("Val : "+JSON.stringify(val));
-                    console.log("Has : "+_.has(val, "billingContact.email"));*/
                     if(_.has(val, "billingContact.email")) {
                        if (this.nonStoreCreditTotal() > 0 && val) {
                             // display errors:
@@ -1713,7 +1711,6 @@
                     var payment = order.apiModel.getCurrentPayment();
                     order.messages.reset();
                     return order.apiAddPayment().then(function(o) {
-                        // console.log("Success : "+JSON.stringify(o));
                         var payment = order.apiModel.getCurrentPayment();
                         var modelCard, modelCvv;
                         var activePayments = order.apiModel.getActivePayments();
@@ -2094,9 +2091,9 @@
                     var deals = $('#PSNewsLetter').is(':checked') ? "PSNewsLetter" : '';
                     if(deals !== '') {
                         api.request("POST", "/mailchimp", {'accountId':email, 'deals':deals}).then(function (response){
-                           console.log("Response : "+JSON.stringify(response));    
+                           console.log("Success");    
                         }, function(err) {
-                            console.log("MailChimp");
+                            console.log("Error : "+JSON.stringify(err));
                         });
                     }
                     self.customerCreated = true;
@@ -2383,7 +2380,6 @@
                 // skip payment validation, if there are no payments, but run the attributes and accept terms validation.
                 var radioVal = $('input[name=paymentType]:checked').val(); 
                 if(radioVal !== 'Check') {
-                // console.log("INside : "+JSON.stringify(this.validate()));
                 if (nonStoreCreditTotal > 0 && this.validate() && ( !this.isNonMozuCheckout() || this.validate().agreeToTerms)) {
                     this.isSubmitting = false;
                     return false;

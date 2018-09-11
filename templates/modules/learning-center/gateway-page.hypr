@@ -9,6 +9,7 @@
 
 {% block body-content %}
 	{% dropzone "blog-name" scope="page" %}
+	{% block breadcrumbs %}{% endblock breadcrumbs %}
 	
 	<div data-mz-category="{{model.categoryId}}" class="mz-l-container">
 		<div class="lc-top-section"> 
@@ -40,5 +41,6 @@
 	</div> 
 {% require_script "pages/yotpo-review" %}
 {% endblock body-content %}
+{% block commonbody-content %}{% endblock commonbody-content %}
 
 

@@ -17,3 +17,4 @@
 		{% endif %} 
 	</div>
 {% endblock body-content %}   
+{% block commonbody-content %}{% endblock commonbody-content %}

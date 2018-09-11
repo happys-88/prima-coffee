@@ -4,10 +4,9 @@
         <div>
           <a  class="mz-slide">
                 <picture>
-                  <source srcset="{{ model.config.slideImageOnedes }}"
-                    media="(min-width: 1000px)">
-                  <source srcset="{{ model.config.slideImageOnetab }}" media="(min-width: 800px)">
-                  <img srcset="{{ model.config.slideImageOnemob }}" alt="…">
+                  <source srcset="{{ model.config.slideImageOnedes }}" media="(min-width: 991px)">
+                  <source srcset="{{ model.config.slideImageOnetab }}" media="(min-width: 768px)">
+                  <img class="img-responsive" srcset="{{ model.config.slideImageOnetab }}" alt="…">
                 </picture>
 
               <div class="mz-slide-details">
@@ -23,9 +22,9 @@
         <div>
           <a  class="mz-slide">
             <picture>
-              <source srcset="{{ model.config.slideImageTwodes }}" media="(min-width: 1000px)">
-              <source srcset="{{ model.config.slideImageTwotab }}" media="(min-width: 800px)">
-              <img srcset="{{ model.config.slideImageTwomob }}" alt="…">
+              <source srcset="{{ model.config.slideImageTwodes }}" media="min-width: 991px)">
+              <source srcset="{{ model.config.slideImageTwotab }}" media="(min-width: 768px)">
+              <img class="img-responsive" srcset="{{ model.config.slideImageTwotab }}" alt="…">
             </picture>
               <div class="mz-slide-details">
                 {% if model.config.slideButtonTwo %}
@@ -39,9 +38,9 @@
         <div>
           <a  class="mz-slide" >
             <picture>
-              <source srcset="{{ model.config.slideImageThreedes }}" media="(min-width: 1000px)">
-              <source srcset="{{ model.config.slideImageThreetab }}" media="(min-width: 800px)">
-              <img srcset="{{ model.config.slideImageThreemob }}" alt="…">
+              <source srcset="{{ model.config.slideImageThreedes }}" media="(min-width: 991px)">
+              <source srcset="{{ model.config.slideImageThreetab }}" media="min-width: 768px)">
+              <img class="img-responsive" srcset="{{ model.config.slideImageThreetab }}" alt="…">
             </picture>
               <div class="mz-slide-details">
               {% if model.config.slideButtonThree %}

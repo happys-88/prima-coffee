@@ -134,17 +134,23 @@ define([
                                     maxSlides,
                                     slideWidth,
                                     slideMargin,
+                                    pager,
+                                    controls,
                                     windowWidth=$( window ).width();
                                 if(windowWidth<=767){
                                     minSlides=2;
                                     maxSlides=2;
                                     slideMargin= 5;
                                     slideWidth= 333;
+                                    pager=true;
+                                    controls=false;
                                 }else{
                                     minSlides=4;
                                     maxSlides=12;
                                     slideWidth= 333;
                                     slideMargin=15;
+                                    pager=false;
+                                    controls=true;
                                 }
                                 $(container + ' .recently-viewed-list').bxSlider({
                                     minSlides: minSlides,
@@ -152,10 +158,13 @@ define([
                                     slideWidth: 333,
                                     slideMargin: 15,
                                     responsive: true,
-                                    pager: false,
+                                    pager: pager,
+                                    controls: controls,
                                     speed: 1000,
                                     infiniteLoop: false,
-                                    moveSlides: 1
+                                    moveSlides: 1,
+                                    touchEnabled: true,
+                                    stopAutoOnClick: true
                                 });
                             }
                         }

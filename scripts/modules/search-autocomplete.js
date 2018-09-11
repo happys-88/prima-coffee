@@ -23,7 +23,6 @@
         nonWordRe = /\W+/,
         makeSuggestionGroupFilter = function(name) {
             return function(res) {
-                // console.log("Results : "+JSON.stringify(res));
                 var suggestionGroups = res.suggestionGroups,
                     thisGroup;
                 for (i = suggestionGroups.length - 1; i >= 0; i--) {
@@ -35,7 +34,6 @@
 
                 if($('.learningCenterInput').is(':focus') && name==='Pages') { 
                     var valArray = filterCatsArray();
-                    console.log("Hello");
                     var result = _.filter(thisGroup.suggestions, function(someThing) {
                         var prodTypeVal = someThing.suggestion.productType;
                         return prodTypeVal.toUpperCase() === 'CONTENT';
@@ -209,14 +207,30 @@
             if (data.suggestion.productCode) window.location = (HyprLiveContext.locals.siteContext.siteSubdirectory||'') + "/p/" + data.suggestion.productCode;
         });
         $('.searchbox').on('submit', function(e) {
-            var searchVal = $("[data-id='globalSearch']").val().trim();
+            /*var searchVal = $("[data-id='globalSearch']").val().trim();
             if (searchVal === "") {
                 window.alert(Hypr.getLabel('blankSearchResult'));
                 e.preventDefault();
             } else if (searchVal.length < 3) {
                 window.alert("Your keyword or item number must be at least 3 characters long"); 
                 e.preventDefault();
+            }*/
+
+            var searchVal = "";
+            var searchvalue = $('[placeholder="Keyword or SKU#"]');        
+            for(var i=0; i<searchvalue.length; i++){
+                if(searchvalue[i].value!==""){
+                    searchVal = searchvalue[i].value.trim();  
+                }
             }
+            if (searchVal === "") {
+                window.alert(Hypr.getLabel('blankSearchResult'));
+                e.preventDefault();
+            } else if (searchVal.length < 3) {
+                window.alert("Your keyword or item number must be at least 3 characters long");
+                e.preventDefault(); 
+            }
+
         });
         /*$('[data-mz-form="lcSearchBox"]').on('submit', function(e) { 
             var searchVal = $("[data-mz-input='learningCenter']").val().trim();    

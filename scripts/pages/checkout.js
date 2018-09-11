@@ -14,7 +14,10 @@ require(["modules/jquery-mozu", "underscore", "hyprlive", "modules/backbone-mozu
 
             var incomplete = $(".is-incomplete");
             var offset = incomplete.offset();
-            $("html, body").animate({ scrollTop: offset.top }, 600); 
+            if (offset){
+                $("html, body").animate({ scrollTop: offset.top }, 600); 
+            }
+          
         },
         choose: function () {
             var me = this;
@@ -54,7 +57,6 @@ require(["modules/jquery-mozu", "underscore", "hyprlive", "modules/backbone-mozu
     var ShippingSummary = Backbone.MozuView.extend({
 
         initialize: function () {
-           console.log("BillingSummary");
            // this.listenTo(this.model.get('billingInfo'), 'orderPayment', this.onOrderCreditChanged, this);
            
         },
@@ -62,7 +64,6 @@ require(["modules/jquery-mozu", "underscore", "hyprlive", "modules/backbone-mozu
             this.render();
         },
         render: function() {
-            console.log("Current Model : ");
         }
     });
 
@@ -113,10 +114,8 @@ require(["modules/jquery-mozu", "underscore", "hyprlive", "modules/backbone-mozu
     var ShippingInfoView = CheckoutStepView.extend({
         templateName: 'modules/checkout/step-shipping-method',
         initialize: function() {
-            // console.log("JSON : "+JSON.stringify(this.model));
             var shippings = this.model.get('availableShippingMethods');
             var selectedShipping = localStorage.getItem('selectedShipping');
-            console.log("value : "+selectedShipping);
             if(shippings && selectedShipping && selectedShipping !== 'null') {
                 var code = _.find(shippings, function(arr){
                     return arr.shippingMethodName === selectedShipping;
@@ -156,7 +155,6 @@ require(["modules/jquery-mozu", "underscore", "hyprlive", "modules/backbone-mozu
         },
         initialize: function() {
 
-            // console.log("Model : "+JSON.stringify(this.model));
         },
         updateTbyb: function (e) {
            this.model.updateTbyb(e);
@@ -285,7 +283,6 @@ require(["modules/jquery-mozu", "underscore", "hyprlive", "modules/backbone-mozu
             }
 
             $('#mailBillingForm').hide();
-            // console.log("SESSION STORAGE : "+sessionStorage.getItem('guestEmail'));
             if(sessionStorage.getItem('guestEmail')) {
                 $('#billing-email').val(sessionStorage.getItem('guestEmail'));
                 $('#billing-email').focus();
@@ -366,7 +363,6 @@ require(["modules/jquery-mozu", "underscore", "hyprlive", "modules/backbone-mozu
             var val = $(e.currentTarget).prop('value'),
                 creditCode = $(e.currentTarget).attr('data-mz-credit-code-target');  //target
             if (!creditCode) {
-                //console.log('checkout.applyDigitalCredit could not find target.');
                 return;
             }
             var amtToApply = this.stripNonNumericAndParseFloat(val);
@@ -430,7 +426,6 @@ require(["modules/jquery-mozu", "underscore", "hyprlive", "modules/backbone-mozu
             // on success, attach the encoded payment data to the window
             // then call the sdk's api method for digital wallets, via models-checkout's helper
             window.V.on("payment.success", function(payment) {
-                //console.log({ success: payment });
                 me.editing.savedCard = false;
                 me.model.parent.processDigitalWallet('VisaCheckout', payment);
             });

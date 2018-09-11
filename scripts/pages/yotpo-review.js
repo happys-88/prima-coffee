@@ -40,7 +40,7 @@ function ($, _, Hypr, Backbone, HyprLiveContext, ProductModel, api, yotpo) {
 	            }
 	            $('#popular-articles').html(artContent);
 	        }, function(err) {
-	            console.log("Failure : "+JSON.stringify(err));
+	            console.log("Error : "+JSON.stringify(err));
 	        }); 
 	   }
 

@@ -1,5 +1,62 @@
 {% extends "page" %}
 
+{% block meta-og-tags %}
+    {% set_var prodModelMeta=model.0.prodModel %}   
+
+    <!-- Used by Facebook, Pinterest and Google+ -->
+    {% if prodModelMeta.content.productName %} 
+        <meta property="og:title" content='{% firstof pageContext.metaTitle|replace("'","&rsquo;")|replace('"','&rdquo;')|safe prodModelMeta.content.productName|replace("'","&rsquo;")|replace('"','&rdquo;')|safe %} - {{ siteContext.generalSettings.websiteName }}'>
+    {% else %}
+        {% if PageContext.metaTitle %}
+            <meta property="og:title" content='{{ PageContext.metaTitle|replace("'","&rsquo;")|replace('"','&rdquo;')|safe }}'>
+        {% endif %}
+    {% endif %} 
+    {% if PageContext.MetaDescription %}
+        <meta property="og:description" content='{{ PageContext.MetaDescription|replace("'","&rsquo;")|replace('"','&rdquo;')|safe }}'> 
+    {% endif %}
+    {% if prodModelMeta.mainImage %} 
+        <meta property="og:image" content='{% make_url "image" prodModelMeta.mainImage with maxWidth=themeSettings.ogImageWidth as_parameters %}'>
+    {% else %}
+        <meta property="og:image" content='{% if themeSettings.defaultStoreImage %}{{ themeSettings.defaultStoreImage }}{% endif %}'>    
+    {% endif %}
+
+    {% comment %}
+    {% if (prodModelMeta|get_product_attribute_value("tenant~og-image-url")) %} 
+        <meta property="og:image" content='https:{{prodModelMeta|get_product_attribute_value("tenant~og-image-url")}}'>   
+    {% endif %}
+    {% endcomment %}
+
+    <meta property="og:image:width" content="{{themeSettings.ogImageWidth}}" /> 
+    <meta property="og:image:height" content="{{themeSettings.ogImageHeight}}" />
+    <meta property="og:image:type" content="{{prodModelMeta|get_product_attribute_value("tenant~og-image-type")}}" />  
+    <meta property="og:url" content="{{ PageContext.url }}">
+    <meta property="og:site_name" content="{{ siteContext.generalSettings.websiteName }}"> 
+    <meta property="og:type" content="article">
+    {% comment %}
+    {% if (prodModelMeta|get_product_attribute_value("tenant~og-content-type")) %} 
+        <meta name="twitter:creator" content='{{prodModelMeta|get_product_attribute_value("tenant~og-content-type")}}' />
+    {% endif %}
+    {% endcomment %}     
+
+    <!-- Used exclusively by Twitter --> 
+    <meta name="twitter:card" content="summary_large_image">      
+    <meta name="twitter:site" content="{{ themeSettings.ogSiteNameTwitter }}" />   
+    {% if (prodModelMeta|get_product_attribute_value("tenant~creator-s-twitter-account")) %} 
+        <meta name="twitter:creator" content='{{prodModelMeta|get_product_attribute_value("tenant~creator-s-twitter-account")}}' />
+    {% endif %} 
+    {% if PageContext.metaTitle %} 
+        <meta name="twitter:title" content='{{ PageContext.metaTitle|replace("'","&rsquo;")|replace('"','&rdquo;')|safe }}'>  
+    {% endif %}
+    {% if PageContext.MetaDescription %}
+        <meta name="twitter:description" content='{{ PageContext.MetaDescription|replace("'","&rsquo;")|replace('"','&rdquo;')|safe }}'> 
+    {% endif %}
+    {% if prodModelMeta.mainImage %} 
+        <meta name="twitter:image" content='{% make_url "image" prodModelMeta.mainImage with maxWidth=themeSettings.ogImageWidth as_parameters %}'>
+    {% else %}
+        <meta name="twitter:image" content='{% if themeSettings.defaultStoreImage %}{{ themeSettings.defaultStoreImage }}{% endif %}'>    
+    {% endif %} 
+{% endblock meta-og-tags %}
+
 {% block title-tag-content %}{% firstof pageContext.metaTitle model.0.prodModel.content.productName|safe %}  - {% parent %}{% endblock title-tag-content %}
 
 {% block body-tag-classes %}mz-product{% endblock body-tag-classes %} 
@@ -30,6 +87,22 @@
 <div itemscope itemtype="http://schema.org/Product" class="mz-l-container">
     <div class="row">
         <h1 class="mz-pagetitle" itemprop="name">{{ prodMod.content.productName }}</h1>
+        <script type="text/javascript" src="https://s7.addthis.com/js/300/addthis_widget.js#pubid={{themeSettings.addThisPubId}}"></script>
+        <div class="mz-social-sharing container clearfix">
+            <div class="addthis_toolbox" addthis:url='{{ pageContext.url }}{{ model.url }}'>
+                <a class="addthis_button_facebook_like"></a>
+                <a class="addthis_button_google_plusone"></a>
+                <a class="addthis_button_tweet"></a>
+                <a class="addthis_button_reddit"></a>
+                <span class="addthis_separator">/</span>
+                <span class="share-counter-block">
+                    <span id="shareCount"></span>shares
+                </span>
+            </div>
+            <div class="pc-customer-count">
+                <span id="customer-counter">52,445</span> people brewing better with gear from <strong>Prima Coffee Equipment</strong>
+            </div>
+        </div>
         <div data-mz-productimages class="col-xs-12 col-sm-6 mz-productimages mz-l-sidebar">
             {% include "modules/product/product-images" with model=prodMod %}
         </div> 

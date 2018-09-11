@@ -28,7 +28,6 @@ define(['modules/api',
                 var business = self.model.get('business');
                 
                 if (!self.model.validate()) {
-                    console.log("Validated");
                     api.request("POST", "/commonRoute",
                     {
                         requestFor:'wholesaleForm',
@@ -36,7 +35,6 @@ define(['modules/api',
                         email:email,
                         business: business
                     }).then(function (response){
-                    // console.log("Tax Estimation : "+JSON.stringify(response));
                         var errorMessage = labels.emailMessage;
                         if(response[0]) {
                             /*if(response[0] !== 'one' && response[0].indexOf('ITEM_ALREADY_EXISTS') < 0) {

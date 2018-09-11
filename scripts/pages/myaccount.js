@@ -91,15 +91,10 @@ define([
                 
                 if(deals !== '') {
                     Api.request("POST", "/mailchimp", {'accountId':email, 'deals':deals}).then(function (response){
-                       console.log("Response : "+JSON.stringify(response));    
+                       console.log("Success");    
                     }, function(err) {
-                        console.log("MailChimp");
+                        console.log("Error : "+JSON.stringify(err));
                     });
-                    /*$.get("/mailchimp", {accountId:email, deals:deals},  function(res){ 
-                       console.log("Response : "+res);   
-                    }).fail(function(err) {
-                        console.log("Failure "+JSON.stringify(err));   
-                    });*/
                 }
                 self.editing = false;
             }).otherwise(function() {
@@ -261,15 +256,31 @@ define([
         addItemToCart: function(e) {
             var self = this,
                 $target = $(e.currentTarget),
-                id = $target.data('mzItemId');
-            if (id) { 
+                //id = $target.data('mzItemId');
+            /*if (id) { 
                 this.editing.added = id;
                 this.doModelAction('addItemToCart', id).then(function(response){
                     GlobalCart.update(id);
                     return response;
                 });  
+            }*/
+            id = $target.data('mz-item-id');
+            if (id) {  
+                this.editing.added = id;
+                this.doModelAction('addItemToCart', id).then(function(response){
+                    GlobalCart.update(id);
+                    localStorage.setItem("lastAddedItemToCart", id);
+                    var productcod=localStorage.getItem("lastAddedItemToCart");
+                    var idd="#"+productcod;
+                    $(idd).prependTo(".mz-carttable-items-global"); 
+                    $(idd).addClass("recently-added");
+                    $("#global-cart").show().delay(3000).hide(0, function () {
+                        $(this).css("display", "");
+                    });
+                    return response; 
+                });
             }
-        },
+        }, 
         doNotRemove: function() {
             this.editing.added = false;
             this.editing.remove = false;
