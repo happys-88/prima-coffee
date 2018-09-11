@@ -8,7 +8,7 @@
 {% block body-tag-classes %}mz-learning-center gateway-page{% endblock body-tag-classes %}  
 
 {% block body-content %}
-	{% dropzone "blog-name" scope="page" %}
+	{% dropzone "blog-name" scope="page" %}  
 	{% block breadcrumbs %}{% endblock breadcrumbs %}
 	
 	<div data-mz-category="{{model.categoryId}}" class="mz-l-container">

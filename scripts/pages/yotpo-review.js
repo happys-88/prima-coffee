@@ -45,9 +45,9 @@ function ($, _, Hypr, Backbone, HyprLiveContext, ProductModel, api, yotpo) {
 	   }
 
 	   	// Instagram Feed for learning center 
-	   	var galleryThumbnailsLC = 4; 
+	   	/*var galleryThumbnailsLC = 4; 
 	   	$(".yotpo-single-image-container").addClass("hidden-thumbnails");
-	    $('.yotpo-single-image-container:lt('+galleryThumbnailsLC+')').removeClass("hidden-thumbnails");
+	    $('.yotpo-single-image-container:lt('+galleryThumbnailsLC+')').removeClass("hidden-thumbnails");*/ 
 
 	    if(typeof product.attributes.productType!=="undefined")
 	    if(typeof prodType !== 'undefined' && prodType.toUpperCase() !== 'CONTENT') { 
