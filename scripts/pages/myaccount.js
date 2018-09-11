@@ -91,15 +91,10 @@ define([
                 
                 if(deals !== '') {
                     Api.request("POST", "/mailchimp", {'accountId':email, 'deals':deals}).then(function (response){
-                       console.log("Response : "+JSON.stringify(response));    
+                       console.log("Success");    
                     }, function(err) {
-                        console.log("MailChimp");
+                        console.log("Error : "+JSON.stringify(err));
                     });
-                    /*$.get("/mailchimp", {accountId:email, deals:deals},  function(res){ 
-                       console.log("Response : "+res);   
-                    }).fail(function(err) {
-                        console.log("Failure "+JSON.stringify(err));   
-                    });*/
                 }
                 self.editing = false;
             }).otherwise(function() {

@@ -69,7 +69,6 @@ define([
 		  		break;
 			}
 	 	}
-		console.log(newaddedproductcode);
 		$.each(sell.items, function( index, value ) {
 			if(value.product.productCode==newaddedproductcode){
 				indexcartnewproduct=index;

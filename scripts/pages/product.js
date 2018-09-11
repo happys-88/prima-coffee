@@ -636,7 +636,6 @@
                 var cdn = sitecontext.cdnPrefix;
                 var siteID = cdn.substring(cdn.lastIndexOf('-') + 1);
                 var imagefilepath = cdn + '/cms/' + siteID + '/files/' + productcode + '_' + colorcode +'_v1'+'.jpg';
-                console.log(imagefilepath);
                 product.get("mainImage").imageUrl=imagefilepath;
                 product.get("mainImage").src=imagefilepath;
                 product.get("content").get("productImages")[0].src=imagefilepath;

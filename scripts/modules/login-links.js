@@ -311,17 +311,14 @@
                 //var user = api.createSync('user', payload);
                 this.setLoading(true);
                 return api.action('customer', 'createStorefront', payload).then(function (resp) {
-                    console.log("Resp : "+JSON.stringify(resp));
                     var email = resp.data.customerAccount.emailAddress;
-                    console.log("Email : "+email);
                     if(deals !== '') {
                         api.request("POST", "/mailchimp", {'accountId':email, 'deals':deals}).then(function (response){
-                           console.log("Response : "+JSON.stringify(response));    
+                           console.log("Success");    
                         }, function(err) {
-                            console.log("MailChimp");
+                            console.log("Error : "+JSON.stringify(err));
                         });
                     }
-                    console.log("Self : "+JSON.stringify(self));
                     if (self.redirectTemplate) {
                         window.location.pathname = self.redirectTemplate;
                     }

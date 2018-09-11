@@ -71,7 +71,6 @@ define([
                 stateData = localStorage.getItem('selectedState');
             }
             
-            // console.log("Shipping storage : "+shipping);
             if(typeof stateData !== 'undefined' && stateData !== null) {
                 this.model.set({'selectedState': stateData});
                 this.calculateTax(stateData, false, this.model);
@@ -140,7 +139,6 @@ define([
                         localStorage.setItem('selectedShipping',shippingRates[0].content.name);
                     }
 
-                    // console.log("Mode : "+cart.selectedShipping);
                     var shipping = cart.get('selectedShipping');
                     if(typeof shipping !== 'undefined') {
                         var shippingDetailObj = cart.get("shippingDetail");
@@ -152,15 +150,10 @@ define([
                         });
 
                         var selectedMethodAmount = selectedMethod.amount;
-                        // var cart = this.model;
-                        // var tot = cart.get('shippingTotal');
                         cart.set({'shippingTotal': selectedMethodAmount});
                         var tot = cart.get('shippingTotal');
                         var total = cart.get('discountedTotal');
-                        // console.log("tot : "+tot + ": "+total);
                         var newTotal = Number(tot)+Number(total);
-                        // console.log("TOTAL :  ::  "+newTotal);
-                        // cart.set({'total':newTotal});
                     }
                    });
                    
@@ -176,16 +169,10 @@ define([
                     }
                 });
                 var selectedMethodAmount = selectedMethod.amount;
-               // cart = this.model;
-                // var tot = cart.get('shippingTotal');
                 this.model.set({'shippingTotal': selectedMethodAmount});
                 var tot = this.model.get('shippingTotal');
                 var total = this.model.get('discountedTotal');
-                // console.log("tot : "+tot + ": "+total);
                 var newTotal = Number(tot)+Number(total);
-                // console.log("TOTAL :  ::  "+newTotal);
-                // cart.set({'total':newTotal});
-                
             }
         }),
         render: function() {
@@ -203,21 +190,6 @@ define([
             $(id).prependTo(".mz-carttable-items-global"); 
             $(id).addClass("recently-added");
         },
-        /*callCustomRoute : function(e) {
-            console.log("called");
-            this.off();
-            api.request("POST", "/TaxExtimation").then(function (response){
-                // console.log("Tax Estimation : "+JSON.stringify(response));
-                if(response.statusCode == 200) {
-
-                } else {
-
-                }
-            }, function(err) {
-                console.log("Failure : "+JSON.stringify(err));
-            });
-            
-        },*/
         allowDigit: function(e) {
             e.stopImmediatePropagation();
             e.target.value = e.target.value.replace(/[^\d]/g, '');
@@ -236,25 +208,17 @@ define([
             }
         },
         getShippingMethodsDetail: function() {
-           /* console.log("DATA");
-            var responseData = '';*/
         },
         populateDropDowns: function(e) {
             e.stopImmediatePropagation();
-            // console.log("populateDropDowns : ");
-            // var cart = this.model;
             var stateSel = $('#usStates :selected').val();
             var shippingSel = $('#shippingOption :selected').val();
-            // console.log("Seleyed : "+shippingSel);
             if(typeof shippingSel === 'undefined') {
                 var shippingDetailObj = this.model.get("shippingDetail");
                 var defaultShippingMethod = shippingDetailObj[0].content.name;
                 
-                // console.log("detail : "+JSON.stringify(shippingDetailObj[0].amount));
-                // localStorage.setItem('selectedState',stateSel);    
                 localStorage.setItem('selectedShipping',defaultShippingMethod);
             } else {
-                // localStorage.setItem('selectedState',stateSel);    
                 localStorage.setItem('selectedShipping',shippingSel);
             }
 
@@ -263,13 +227,11 @@ define([
                this.model.set({'selectedState': localStorage.getItem('selectedState')}) ;
             }
             this.populateShipping(true);
-            // console.log("CART : "+JSON.stringify(this.model));
             
             // this.render();
 
         },
         calculateTax: function(stateSel, bool, cart){
-            console.log("Twice");
             $('[data-mz-validation-message="zipCode"]').hide();
 
             if(typeof cart === 'undefined') {
@@ -283,7 +245,6 @@ define([
 
             }
             api.request("POST", "/taxEstimation", {'state':stateSel}).then(function (response){
-                // console.log("Tax Estimation : "+JSON.stringify(response));
                 if(response.statusCode == 200) {
 
                     var resp = JSON.parse(response.body);
@@ -321,8 +282,6 @@ define([
             }, function(err) {
                 if(stateSel && bool)
                     $('[data-mz-validation-message="zipCode"]').show();
-
-                // console.log("Failure : "+JSON.stringify(err));
             });
         },
         populateShippingMethod: function(cart) {
@@ -350,8 +309,6 @@ define([
 
         },
         populateShipping: function(bool){
-                // console.log("Populate Shipping"+JSON.stringify(this.model));
-                // var stateSel = $('#usStates :selected').val();
                 var shippingSel = $('#shippingOption :selected').val();
                 var shippingAmount = $('#shippingOption :selected').attr("price");
                 if(typeof shippingSel === 'undefined') {
@@ -365,30 +322,17 @@ define([
                     });
                 }
 
-                // console.log("Shipping Selected : "+shippingAmount);
-                // var elm = e.target;
-                // var cartModel = CartModels.Cart.fromCurrent();
-                // var cart = this.model;                
                 var tot = this.model.get('shippingTotal');
                 this.model.set({'shippingTotal': shippingAmount});
                 var stateSel = localStorage.getItem('selectedState');
                 if(bool)
                     this.calculateTax(stateSel, true, this.model);
-                /*tot = cart.get('shippingTotal');
-                var total = cart.get('discountedTotal');
-                var newTotal = Number(tot)+Number(total);
-                // console.log("TOTAL :  ::  "+newTotal);
-                cart.set({'total':newTotal});*/
-                // this.render();
-                
-                
         },     
         updateQuantity: _.debounce(function (e) {
             var $qField = $(e.currentTarget),
                 newQuantity = parseInt($qField.val(), 10),
                 id = $qField.data('mz-cart-item'),
                 item = this.model.get("items").get(id);
-                console.log($qField);
                 this._isSyncing = true;
             if (item && !isNaN(newQuantity)) {
                 item.set('quantity', newQuantity);
@@ -599,8 +543,6 @@ define([
     }
     /* end visa checkout */
 
-        /*var checkoutData = CheckoutModels.CheckoutPage;
-        alert("CHECKOUT DATA : "+JSON.stringify(checkoutData));*/
         var cartModel = CartModels.Cart.fromCurrent();
         
             var cartViews = {

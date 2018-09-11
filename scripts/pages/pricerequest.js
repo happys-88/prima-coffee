@@ -35,10 +35,8 @@ define(['modules/api',
                 var mailBody = "Sku : "+sku;
                 
                 if (!self.model.validate()) {
-                    console.log("Validated");
                     api.request("POST", "/commonRoute", {'requestFor':'pricerequest','sku':sku, 'price': price, 
                         'url':url, 'zipcode':zipcode, 'name':name, 'contact':contact}).then(function (response){
-                    // console.log("Tax Estimation : "+JSON.stringify(response));
                         var errorMessage = labels.emailMessage;
                         if(response[0]) {
                             if(response[0] !== 'one' && response[0].indexOf('ITEM_ALREADY_EXISTS') < 0) {

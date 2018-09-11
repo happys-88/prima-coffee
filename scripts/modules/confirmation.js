@@ -68,12 +68,13 @@ require(["modules/jquery-mozu", "underscore", 'modules/api', "hyprlive", "module
                 var email = $('#emailId').val();
                 if(deals !== '') {
                     api.request("POST", "/mailchimp", {'accountId':email, 'deals':deals}).then(function (response){
+                       console.log("Success"); 
                        $('#PCDeals').attr('checked', false);
                        $('#PCNewsLetter').attr('checked', false);
                        $('#PCBlogs').attr('checked', false);
                        $(".mz-look-email").show().delay(5000).fadeOut();  
                     }, function(err) {
-                        console.log("Failure : "+JSON.stringify(err));
+                        console.log("Error : "+JSON.stringify(err));
                     });
                 }
             }

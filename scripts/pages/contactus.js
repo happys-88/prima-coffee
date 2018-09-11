@@ -30,7 +30,6 @@ define(['modules/api',
                 var subject = self.model.get('subject');
                 var ordernumber = self.model.get('order');
                 var message = self.model.get('message');
-                console.log(self.model);
                 if (!self.model.validate()) {
                     api.request("POST", "/commonRoute",
                     {
@@ -76,8 +75,7 @@ define(['modules/api',
                         }
                         
                     }, function(err) {
-                        console.log("Failure : "+JSON.stringify(err));
-                         console.log("Error : ");
+                         console.log("Failure : "+JSON.stringify(err));
                          var errorMessage  = err.message;
                          $("#submitMsg").html(errorMessage);
                          $("#submitMsg").show();

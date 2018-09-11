@@ -23,7 +23,6 @@
         nonWordRe = /\W+/,
         makeSuggestionGroupFilter = function(name) {
             return function(res) {
-                // console.log("Results : "+JSON.stringify(res));
                 var suggestionGroups = res.suggestionGroups,
                     thisGroup;
                 for (i = suggestionGroups.length - 1; i >= 0; i--) {
@@ -35,7 +34,6 @@
 
                 if($('.learningCenterInput').is(':focus') && name==='Pages') { 
                     var valArray = filterCatsArray();
-                    console.log("Hello");
                     var result = _.filter(thisGroup.suggestions, function(someThing) {
                         var prodTypeVal = someThing.suggestion.productType;
                         return prodTypeVal.toUpperCase() === 'CONTENT';
