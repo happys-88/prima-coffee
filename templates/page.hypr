@@ -213,7 +213,6 @@
                 <script type="text/javascript">
                     (function e() { var e = document.createElement("script"); e.type = "text/javascript"; e.async = true; e.src = "//staticw2.yotpo.com/4X91rXasdFWFBX4Rnh5WEr4NnvMwpFpjxzNFLubD/widget.js"; var t = document.getElementsByTagName("script")[0]; t.parentNode.insertBefore(e, t) })();
                 </script>
-                 {% require_script "widgets/featured-products" %}
                  {% dropzone "feature-product" scope="site" %}
                 <div class="yotpo-gallery clearfix">
                     <h2 class="heading-2">
