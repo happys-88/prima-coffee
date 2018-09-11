@@ -6,32 +6,34 @@ define([
 	"bxslider",
 	"modules/api",
 	"modules/models-product",
-	"pages/cart",
-	"modules/models-cart",
-	"hyprlivecontext",
 	'yotpo'
-], function ($, _, Backbone, Hypr, bxslider, api, ProductModel, cart, cartModel, HyprLiveContext, yotpo) {
+], function ($, _, Backbone, Hypr, bxslider, api, ProductModel, yotpo) {
 	var slider;
 	var productCrossSellView = Backbone.MozuView.extend({
 	    templateName: 'modules/product/product-crosssells',  
 	    productCarousel: function () {
-			//this.render();
 			yotpo.showYotpoRatingStars(); 
 			var minSlides,
 				maxSlides,
 				slideWidth,
 				slideMargin,
+				pager,
+				controls,
 				windowWidth=$( window ).width();
 			if(windowWidth<=767){
 				minSlides=2;
 				maxSlides=2;
 				slideMargin= 10;
 				slideWidth= 333;
+				pager = true;
+				controls = false;
 			}else{
 				minSlides=4;
 				maxSlides=12;
 				slideWidth= 333;
 				slideMargin=15;
+				pager = false;
+				controls = true;
 			}
 	        slider = $('#crossSellSlider').bxSlider({ 
 		        minSlides: minSlides,
@@ -40,9 +42,12 @@ define([
                 slideWidth: slideWidth,
                 slideMargin: slideMargin,
                 responsive: true,
-                pager: false,
+				pager: pager,
+				controls: controls,
                 speed: 1000,
-                infiniteLoop: false,
+				infiniteLoop: false,
+				touchEnabled: true,
+				stopAutoOnClick: true,
 		        onSliderLoad: function() {
 		            $(".slider").css("visibility", "visible");
 		        }  
@@ -51,14 +56,9 @@ define([
 		}
 	});
 
-	var getProduct = require.mozuData("product");       
-	var cartModels = cartModel.Cart.fromCurrent();
-	var indexcartnewproduct;
+	var getProduct = require.mozuData("product");
 	var prodCodeCrossSell = [];
 	var variantion=[];
-	var yotpoBottomlineBaseUrl = HyprLiveContext.locals.themeSettings.yotpoBottomlineBaseUrl;
-	var yotpoApiKey = HyprLiveContext.locals.themeSettings.yotpoApiKey;
-	var bottomline = HyprLiveContext.locals.themeSettings.bottomline;
 	if(typeof getProduct.properties!= "undefined"){
 		$.each(getProduct.properties, function( index, value ) {
 			if(value.attributeFQN == "tenant~product-crosssell"){
@@ -108,7 +108,6 @@ define([
 				
 						crosssellview.render();
 						crosssellview.productCarousel();
-
 						yotpo.showYotpoRatingStars(); 
 
 					});

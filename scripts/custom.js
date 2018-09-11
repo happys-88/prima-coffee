@@ -54,6 +54,15 @@ define([
 	}
 	
 	$(document).ready(function(){ 
+		//overlay 
+
+		$(".mz-hamburger-icon").click(function () {
+			$(".overlay").addClass("active");
+		});
+		$(".overlay").click(function () {
+			$(this).removeClass("active");
+			//$("[class='mz-hamburger-icon']").addClass("collapsed").attr("aria-expanded", false);
+		});
 
 		$('.mz-searchbox-button').click(function(e) {
 			var elm = e.currentTarget;

@@ -6,31 +6,34 @@ define([
 	"bxslider",
 	"modules/api",
 	"modules/models-product",
-	"pages/cart",
-	"modules/models-cart",
 	"yotpo"
-], function ($, _, Backbone, Hypr, bxslider, api, ProductModel, cart, cartModel, yotpo) { 
-	var slider;  
+], function ($, _, Backbone, Hypr, bxslider, api, ProductModel, yotpo) { 
+	var slider;
 	var productUpSellView = Backbone.MozuView.extend({
 	    templateName: 'modules/product/product-upsells',   
 	    productCarousel: function () {
-			//this.render();
 			yotpo.showYotpoRatingStars(); 
 			var minSlides,
 			    maxSlides,
 			    slideWidth,
-			    slideMargin,
+				slideMargin,
+				pager,
+				controls,
 				windowWidth=$( window ).width();
 			if(windowWidth<=767){
 				minSlides=2;
 				maxSlides=2;
 				slideMargin= 10;
 				slideWidth= 333;
+				pager = true;
+				controls = false;
 			}else{
 				minSlides=4;
 				maxSlides=12;
 				slideWidth= 333;
 				slideMargin=15;
+				pager = false;
+				controls = true;
 			}
 	        slider = $('#UpSellSlider').bxSlider({ 
 				minSlides: minSlides,
@@ -39,10 +42,13 @@ define([
                 slideWidth: slideWidth,
                 slideMargin: slideMargin,
                 responsive: true,
-                pager: false,
+				pager: pager,
+				controls: controls,
                 speed: 1000,
                 infiniteLoop: false,
-                hideControlOnEnd: true,
+				hideControlOnEnd: true,
+				touchEnabled: true,
+				stopAutoOnClick: true,
 		        onSliderLoad: function() {
 		            $(".slider").css("visibility", "visible");
 		        }  
@@ -52,7 +58,6 @@ define([
 	});
 
 	var sell = require.mozuData("cart");    
-	var cartModels = cartModel.Cart.fromCurrent();
 	var indexcartnewproduct=-1; 
 	var newaddedproductcode;
 	
@@ -64,7 +69,7 @@ define([
 		  		break;
 			}
 	 	}
-	 	
+		console.log(newaddedproductcode);
 		$.each(sell.items, function( index, value ) {
 			if(value.product.productCode==newaddedproductcode){
 				indexcartnewproduct=index;

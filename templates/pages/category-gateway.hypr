@@ -46,3 +46,4 @@
     </div>     
 </div>
 {% endblock category-gateway %}
+{% block commonbody-content %} {% endblock commonbody-content %}

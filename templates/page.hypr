@@ -305,6 +305,7 @@
               })();
             </script>
        {% endblock live-chat-script %}
+       <div class="overlay"></div>
     </body>
     {% endblock body-tag %}
 

@@ -3,7 +3,7 @@
 {% block title-tag-content %}{{ labels.noResultsTitle|string_format(pageContext.search.query) }}  - {% parent %}{% endblock title-tag-content %}
 
 {% block body-tag-classes %} mz-searchresults mz-noresults {% endblock body-tag-classes %}
-
+{% block breadcrumbs %}{% endblock breadcrumbs %}
 {% block body-content %}
 
 <div class="mz-l-container">
@@ -16,6 +16,7 @@
 </div>
 
 {% endblock body-content %}
+{% block commonbody-content %}{% endblock commonbody-content %}
 
 {% block body-below-content %}
 {% endblock body-below-content %}

@@ -46,7 +46,7 @@
 body {
 	background: @textColorWhite;
 	font-family: @fontFamily;
-	background: #f3eded url(/resources/images/background_cream_dust.png) repeat 0 0;
+	background: #f3eded url(../resources/images/background_cream_dust.png) repeat 0 0;
   	.mz-l-pagewrapper {
 	  	.mz-l-pagecontent {
 		  	background: transparent;
@@ -386,7 +386,7 @@ body {
 }
 //feature Product
 .bx-wrapper {
-	background: #f3eded;
+	background: transparent;
 }
 .mz-featured-products {
 	.mz-productlist {
@@ -452,7 +452,8 @@ body {
     border-top: 1px solid #bbb;
     box-shadow: inset 0 1px #fff, inset 0 5px 7px -7px #000;
     border-radius: 6px;
-    margin-top: 80px;
+	//margin-top: 80px;
+	 margin-top: 15px;
     padding: 28px 0;
     position: relative;
 }
@@ -708,8 +709,9 @@ li {
 			//padding: 0 30px;
 			margin-top: 12px;
 			img {
-				max-width: 160px;
+				max-width: 140px;
 				max-height: 160px;
+				min-height: 160px;
 				margin: 0 auto;
 			}
 		}
@@ -1028,5 +1030,22 @@ li {
 
 	}
 	
+}
+
+
+.overlay {
+    background: #000;
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0.8;
+    z-index: 2;
+}
+.overlay.active {
+    display: block;
 }
  

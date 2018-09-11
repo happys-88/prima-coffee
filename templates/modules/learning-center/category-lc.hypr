@@ -10,7 +10,7 @@
 {% block body-content %}
 	
 	{% dropzone "blog-name" scope="page" %}  
-
+    {% block breadcrumbs %}{% endblock breadcrumbs %}
 	<div data-mz-category="{{model.categoryId}}" class="mz-l-container" id="lcCategoryContent"> 
 	    <div class="lc-top-section"> 
 			{% include "modules/learning-center/lc-top-section" %} 	
@@ -25,3 +25,4 @@
 	{% require_script "category-lc" %}     
 
 {% endblock body-content %} 
+{% block commonbody-content %} {% endblock commonbody-content %}
