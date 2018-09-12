@@ -410,6 +410,11 @@
 	}
 	
 	.mz-mobilenav-lcenter{  
+		.mz-sitenav{
+			.mz-sitenav-list {
+					display: block;
+				}
+			}
 		.toggle-btn{  
 			float: left; 
 		    width: 100%;
@@ -441,6 +446,9 @@
 			}
 			
 		}
+		.toggle-btn[aria-expanded=true] {
+					border-radius: 15px 15px 0 0;
+			}
 		#mz-mobilenav-containerLC{
 			width: 100%;
 			top: 56px; 
@@ -459,7 +467,7 @@
 					.panel-heading{
 						.panel-title{
 							a{
-								padding: 11px 25px 11px 15px;   
+								padding: 11px 25px 11px 3px;   
 								background: #f3f3f3; 
 								text-transform: uppercase;
 								color: #333;
