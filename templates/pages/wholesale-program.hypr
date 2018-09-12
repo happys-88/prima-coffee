@@ -16,7 +16,7 @@
 	<div id="bottom-navigation">
         <div class="navbar navbar-inverse">
            	<a href="/" class="brand-logo pull-left">
-               <img class="lazy" data-original="https://prima-coffee.com/sites/all/themes/pc/images/logo.png" alt="">
+               <img src="../resources/images/logo.png" alt="">
             </a>
             <a href="#start" class="mz-signup pull-right">Sign up now</a>
         </div>
@@ -32,7 +32,7 @@
                             </h1>
                             <h6 class="title">Get the gear you need for your retail space at wholesale prices. </h6>
                             <div>
-                              <a class="center-content btn btn-primary start">GET STARTED NOW</a>
+                              <a class="center-content btn btn-primary start mz-button" href="#start">GET STARTED NOW</a>
                             </div>
                         </div>
                     </div>
@@ -58,23 +58,23 @@
             <div class="col-xs-12 why-prima">
                 <ul>
                     <li>
-                       <img class="lazy" data-original="https://static.prima-coffee.com/pages//checklist.png">
+                       <img  src="../resources/images/wholesale/checklist.png">
                         <h6 class="why-header">Easy Ordering</h6>
                     </li>
                     <li>
-                       <img class="lazy" data-original="https://static.prima-coffee.com/pages//cost.png">
+                       <img  src="../resources/images/wholesale/cost.png">
                         <h6 class="why-header">Competitive Pricing</h6>
                     </li>
                     <li>
-                       <img class="lazy" data-original="https://static.prima-coffee.com/pages//coffee_brain.png">
+                       <img  src="../resources/images/wholesale/coffee_brain.png">
                         <h6 class="why-header">Knowledgeable Staff</h6>
                     </li>
                     <li>
-                       <img class="lazy" data-original="https://static.prima-coffee.com/pages//pourover.png">
+                       <img  src="../resources/images/wholesale/pourover.png">
                         <h6 class="why-header">Expansive Lineup</h6>
                     </li>
                     <li>
-                       <img class="lazy" data-original="https://static.prima-coffee.com/pages//shipping2.png">
+                       <img  src="../resources/images/wholesale/shipping2.png">
                         <h6 class="why-header">Fast &amp; Accurate Shipping</h6>
                     </li>
                 </ul>
@@ -102,3 +102,4 @@
    
 
 {% endblock body-content %}
+{% block commonbody-content %} {% endblock commonbody-content %}
