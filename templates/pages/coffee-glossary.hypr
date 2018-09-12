@@ -9,6 +9,22 @@
         <div class="col-xs-12 col-sm-12 pull-right">
             <div class="mz-customer-service-section">
                 <h3 class="mz-l-stack-sectiontitle">{{ model.properties.title|safe }}</h3>
+                <div class="mz-social-sharing container">
+                    <div class="addthis_toolbox" addthis:url='{{ pageContext.url }}{{ model.url }}'>
+                        <a class="addthis_button_facebook_like"></a>
+                        <a class="addthis_button_google_plusone"></a>
+                        <a class="addthis_button_tweet"></a>
+                        <a class="addthis_button_reddit"></a>
+                        <span class="addthis_separator">/</span>
+                        <span class="share-counter-block">
+                            <span id="shareCount"></span>shares
+                        </span>
+                    </div>
+                    <div class="pc-customer-count">
+                        <span id="customer-counter">52,445</span> people brewing better with gear from <strong>Prima Coffee Equipment</strong>
+                    </div>
+                </div>  
+                <script type="text/javascript" src="https://s7.addthis.com/js/300/addthis_widget.js#pubid={{themeSettings.addThisPubId}}"></script>
                 <div class="field-item even">
                     <ul class="nav nav-pills hidden">
                         <li class="dropdown">
@@ -1341,3 +1357,4 @@
     </div>
 </div>
 {% endblock body-content %}
+ {% block commonbody-content %}{% endblock commonbody-content %}

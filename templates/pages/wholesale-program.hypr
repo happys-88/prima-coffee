@@ -43,7 +43,7 @@
                         <div class="spacer-mheader"></div> 
                     </div>
                     <div id="learning_content">
-                        <div class="content_masthead_wrapper" id="start">
+                        <div class="content_masthead_wrapper">
                             <h2 class="content_masthead_text content_text span6">Get Started Now
                             </h2>
                         </div>
@@ -82,7 +82,7 @@
         </div>
     </div>
     <div id="learning_content">
-        <div class="content_masthead_wrapper" id="start">
+        <div class="content_masthead_wrapper">
             <h2 class="content_masthead_text content_text col-xs-6">Get Started Now
             </h2>
         </div>
@@ -94,7 +94,7 @@
             </div>
         </div>
     </div>
-        <div class="mz-wholesale-form">
+        <div class="mz-wholesale-form" id="start">
             <div class="mz-contact-form">
                  {% include "modules/page-footer/footer-forms/wholesale-form" %}
             </div>    

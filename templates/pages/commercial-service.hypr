@@ -19,6 +19,22 @@
                     <div id="commercialForm">
                         {% include "modules/page-footer/footer-forms/commercial-service-form" %}
                     </div>
+                    <div class="mz-social-sharing container">
+                        <div class="addthis_toolbox" addthis:url='{{ pageContext.url }}{{ model.url }}'>
+                            <a class="addthis_button_facebook_like"></a>
+                            <a class="addthis_button_google_plusone"></a>
+                            <a class="addthis_button_tweet"></a>
+                            <a class="addthis_button_reddit"></a>
+                            <span class="addthis_separator">/</span>
+                            <span class="share-counter-block">
+                                <span id="shareCount"></span>shares
+                            </span>
+                        </div>
+                        <div class="pc-customer-count">
+                            <span id="customer-counter">52,445</span> people brewing better with gear from <strong>Prima Coffee Equipment</strong>
+                        </div>
+                    </div>
+                    <script type="text/javascript" src="https://s7.addthis.com/js/300/addthis_widget.js#pubid={{themeSettings.addThisPubId}}"></script>
 
                 </div>
             </div>

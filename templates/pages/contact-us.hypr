@@ -2,9 +2,7 @@
 
 {% block title-tag-content %}{% firstof pageContext.metaTitle model.name %}  - {% parent %}{% endblock title-tag-content %}
 {% block body-tag-classes %}mz-contact-us {% endblock body-tag-classes %} 
-{% block breadcrumbs %}
-    {% include "modules/customer-service-breadcumb" %}
-{% endblock breadcrumbs %}
+
 {% block body-content %}
 {% preload_json selectTopic "selectTopic" %}
 {% require_script "pages/contactus" %}
@@ -14,6 +12,22 @@
             <div class="row"> 
                 <div class="col-xs-12 col-sm-12 pull-right">
                     <h3 class="mz-l-stack-sectiontitle">{{ labels.contactUs }}</h3>
+                    <div class="mz-social-sharing">
+                        <div class="addthis_toolbox" addthis:url='{{ pageContext.url }}{{ model.url }}'>
+                            <a class="addthis_button_facebook_like"></a>
+                            <a class="addthis_button_google_plusone"></a>
+                            <a class="addthis_button_tweet"></a>
+                            <a class="addthis_button_reddit"></a>
+                            <span class="addthis_separator">/</span>
+                            <span class="share-counter-block">
+                                <span id="shareCount"></span>shares
+                            </span>
+                        </div>
+                        <div class="pc-customer-count">
+                            <span id="customer-counter">52,445</span> people brewing better with gear from <strong>Prima Coffee Equipment</strong>
+                        </div>
+                    </div>
+                    <script type="text/javascript" src="https://s7.addthis.com/js/300/addthis_widget.js#pubid={{themeSettings.addThisPubId}}"></script>
                     <div class="row">
                         <div class="contact">
                             {% include "modules/contact-us/contact" with model=model %}
@@ -35,3 +49,4 @@
     </div>
 </div>
 {% endblock body-content %}
+{% block commonbody-content %} {% endblock commonbody-content %}
