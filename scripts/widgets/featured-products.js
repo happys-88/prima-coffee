@@ -4,16 +4,21 @@ define([
     'lazyload'
 ],
     function ($, bxSlider, lazyload) {
+        $(".mz-featured-products").prop("hidden", false);
+        var url = window.location.pathname;
+        var n = url.indexOf("/learn");
         $("img.lazy").lazyload({
             placeholder: "https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif"
         });
         $(document).on('click touchstart', 'a[class="bx-next"]', function () {
             $("img.lazy").lazyload();
         });
+      
+      if(n==-1){
         var slider;
         var slide = {
             productCarousel: function () {
-                $(".mz-featured-products").prop("hidden", false);
+               
                 var minSlides,
                     maxSlides,
                     slideWidth,
@@ -62,4 +67,5 @@ define([
             slider.destroySlider();
             slide.productCarousel();
         });
+     }
     });
