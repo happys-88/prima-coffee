@@ -3,25 +3,22 @@
         (function() {
 
             var IDLE_TIMEOUT = sessionTime; //seconds
-            var _idleSecondsCounter = 0;
-            var previousTime  = localStorage.getItem("previousTime");
-            var currentTime = new Date();
-            var localStorageTime = Date.parse(previousTime);
-            var diff = Math.abs(currentTime.getTime() - localStorageTime); 
-            var timeDiffer = diff/1014 ; 
+            //var _idleSecondsCounter = 0;
 
             document.onclick = function() {
-                _idleSecondsCounter = 0;
+               // _idleSecondsCounter = 0;
+                 var time = new Date();
+                localStorage.setItem("previousTime", time);
             };
             document.onmousemove = function() {
                  var time = new Date();
                 localStorage.setItem("previousTime", time);
-                _idleSecondsCounter = 0;
+                //_idleSecondsCounter = 0;
             };
             document.onkeypress = function() {
                 var time = new Date();
                 localStorage.setItem("previousTime", time);
-                _idleSecondsCounter = 0;
+                //_idleSecondsCounter = 0;
             };
 
             if (true) {
@@ -29,11 +26,18 @@
             }
 
             function CheckIdleTime() {
-                _idleSecondsCounter++;
-                if ((IDLE_TIMEOUT - _idleSecondsCounter == 0 )|| timeDiffer >= IDLE_TIMEOUT ) {
+
+            var previousTime  = localStorage.getItem("previousTime");
+            var currentTime = new Date();
+            var localStorageTime = Date.parse(previousTime);
+            var diff = Math.abs(currentTime.getTime() - localStorageTime);
+            var timeDiffer = diff/1014 ; 
+
+               // _idleSecondsCounter++;
+                if (timeDiffer >= IDLE_TIMEOUT ) {
                     callback();
                 }
-                if (_idleSecondsCounter >= IDLE_TIMEOUT  || timeDiffer >= IDLE_TIMEOUT) {
+                if ( timeDiffer >= IDLE_TIMEOUT) {
                     localStorage.setItem("previousTime", null);
                     clearInterval(sesTimer);
                 }

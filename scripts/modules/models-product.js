@@ -276,35 +276,6 @@
             this.lastConfiguration = [];
             this.calculateHasPriceRange(conf);
             this.on('sync', this.calculateHasPriceRange);
-            var variations = [];
-            if(typeof this.get('variations') !== "undefined" ){
-            variations = this.get('variations');
-            var sum = 0;
-           try{
-            if(variations.length !== 0)
-            { 
-                var stockArray = [];
-                
-                for(var i=0; i<variations.length; i++)
-                {
-                        stockArray.push(variations[i].inventoryInfo.onlineStockAvailable);
-                        sum += variations[i].inventoryInfo.onlineStockAvailable;
-                }
-                this.set({'totalCount': sum});
-                var inStock =_.contains(stockArray, 0);
-                this.set({'containsZero': inStock});
-               
-            }
-
-            else{
-                this.set({'totalCount': this.get('inventoryInfo').onlineStockAvailable});
-                
-            }
-            }
-            catch(err){
-                //alert("hiuu");
-            }
-        }
         },
         mainImage: function() {
             var productImages = this.get('content.productImages');
