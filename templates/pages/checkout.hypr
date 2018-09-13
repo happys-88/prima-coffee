@@ -77,13 +77,14 @@
     </div>
 
     {% block page-footer %} {% endblock %}
-
-    <div class="mz-checkout-footer">  
-        <div class="mz-pagefooter-copyright" id="copyright">
-            <span class="mz-pagefooter-copyrighttext">
-                {{ labels.copyRight }} {% now Y %} {{ siteContext.generalSettings.websiteName }}.
-            </span>
-        </div>      
+    <div class="row">
+        <div class="mz-checkout-footer">  
+            <div class="mz-pagefooter-copyright" id="copyright">
+                <span class="mz-pagefooter-copyrighttext">
+                    {{ labels.copyRight }} {% now Y %} {{ siteContext.generalSettings.websiteName }}.
+                </span>
+            </div>      
+        </div>
     </div> 
 {% endblock body-content %}
 {% block commonbody-content %} {% endblock commonbody-content %}
