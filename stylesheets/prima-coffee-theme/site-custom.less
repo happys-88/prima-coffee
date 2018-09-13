@@ -1,3 +1,11 @@
+/***** Variable declaration ****/
+@fontFamily: {{ themeSettings.primaryFont }}, sans-serif;
+@siteBaseColor: #191919;
+@primaryBtnColor: #FF7A00; 
+@secondaryBtnColor: #47ADCB; 
+@tertiaryBtnColor: #191919;  
+
+/***** Variable declaration ****/
 
 /**** Button Styling ****/
 .mzPrimaryBtn{  
@@ -496,6 +504,41 @@ body {
 	} 
 }
 
+//detail page
+.mz-l-paginatedlist-list {
+	.mz-productlist {
+	    .mz-productlist-list {
+	        .mz-productlist-item {
+				padding:5px;
+	            .mz-productlisting {
+					padding: 10px 0 10px 0;
+	                border: 1px solid #d4cccc;
+					border-radius: 11px;
+					background: #fff;
+					.mz-productlisting-info{
+						.mz-button {
+							border-radius: 5px;
+						}
+					}
+					.mz-productlisting-title {
+	                    color: #ff7a00;
+	                    font-size: 14px;
+	                    width: 100%;
+	                    text-decoration: none;
+	                    font-family: helvetica neue,Helvetica,Arial,sans-serif;
+	                    font-size: 16px;
+	                    text-decoration: none;
+						text-align: center;
+						overflow:hidden;
+						max-height: 66px;
+						min-height: 66px;
+	                }
+	            }
+	        }
+	    } 
+  	}
+}
+
 .mz-aboutus {
 	.mz-customer-service-section {
 		h3 {
@@ -748,13 +791,25 @@ li {
 		margin: 10px 0; 
 		a {
 			margin-right: 15px;  
-			margin-bottom: 0;  
+			margin-bottom: 0; 
+			display: inline-block;
+			vertical-align: middle; 
 		}
-		.share-counter-block{
-			color: #999;
-			#shareCount{
-				.share-count-text(); 	
-			} 
+		.addthis_button_google_plusone {
+				margin-top: 4px;
+				padding: 0px;
+				margin: 1px;
+				width: 43px;
+			}
+			.addthis_button_tweet {
+				margin: 0px;
+				width: 76px;
+			}
+			.share-counter-block{
+				color: #999;
+				#shareCount{
+					.share-count-text(); 	
+				} 
 		} 
 	}
 	.pc-customer-count{
