@@ -8,5 +8,5 @@
     {% if themeSettings.useSearchAutocomplete %}
         {% require_script "modules/search-autocomplete" %}   
     {% endif %}
-    <input type="hidden" name="categoryId" value="themeSettings.allProductsCategoryIdLC">  
+    <input type="hidden" name="categoryId" value="{{ themeSettings.allProductsCategoryId }}">   
 </form>   

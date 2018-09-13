@@ -1,10 +1,4 @@
-{% if not pageContext.query.partial %}
-{% if pageContext.search.query != "" and pageContext.search.query != 'undefined' %}
-
-    <h1 class="mz-pagetitle">{{ labels.foundSearchResults|string_format(model.totalCount, pageContext.search.query) }}</h1>
-
-{% endif %} 
-
+{% if not pageContext.query.partial %} 
 <script type="text/json" id="data-mz-preload-facetedarticles"> 
 {
     "facets": {% json model.facets %}, 

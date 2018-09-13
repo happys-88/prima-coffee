@@ -106,12 +106,7 @@
                     "xtype": "mz-input-number",
                     "name": "allProductsCategoryId",
                     "fieldLabel": "Enter CategoryId which is having all products"
-                },
-                {
-                    "xtype": "mz-input-number",
-                    "name": "allProductsCategoryIdLC",
-                    "fieldLabel": "Enter CategoryId which is having all products - Learning Center" 
-                }  
+                }   
             ]
         },
         {
