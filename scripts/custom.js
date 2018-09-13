@@ -56,13 +56,18 @@ define([
 	$(document).ready(function(){ 
 		//overlay 
 
-		$(".mz-hamburger-icon").click(function () {
+		$(document).on('click', '.mz-hamburger-icon', function () {
 			$(".overlay").addClass("active");
 		});
-		$(".overlay").click(function () {
+		$(document).on('click', '.overlay', function () {
 			$(this).removeClass("active");
+			$('nav').removeClass("in");
 		}); 
-
+		$(document).on('click', '.mz-pagenumbers-number', function () {
+			$("body, html").animate({
+				scrollTop: 0
+			}, 1200);
+		});
 		$('.mz-searchbox-button').click(function(e) {
 			var elm = e.currentTarget;
 			var searchType = elm.getAttribute('data-mz-searchType'); 	
