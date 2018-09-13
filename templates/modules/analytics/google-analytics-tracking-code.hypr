@@ -3,9 +3,28 @@
     _gaq.push(['_setAccount', '{{ siteContext.generalSettings.googleAnalyticsCode }}']);
     _gaq.push(['_trackPageview']);
 
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
+    var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+	_gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+	_gaq.push(['_setSiteSpeedSampleRate', 100]);
+
+    if ( typeof _adblock !== 'undefined' && _adblock === false ) {
+       _gaq.push(['_setCustomVar',2,'Adblocker','Not Installed',3]); 
+	} else {
+       _gaq.push(['_setCustomVar',2,'Adblocker','Installed',3]); 
+	}
+	_gaq.push(["_trackPageview"]);
+	try {
+	    (function() {
+	    	var ga, s;
+	    	if(typeof _adblock !== 'undefined' && _adblock === false) {
+	        ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	        ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+	        s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	    } else {
+	    	ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	        s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	    }
+	    })();
+	} catch(e) {};
 </script>
