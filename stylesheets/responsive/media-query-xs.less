@@ -1428,24 +1428,131 @@
 			padding: 0;
 		}
 	}
+
+	/**** Mobile Nav Learning Center ****/
+	.mz-learning-center{ 
+		.lc-breadcrumbs{  
+			float: left;
+			width: 100%; 
+			margin: 5px 0 15px;   
+		}	
+	}
+	
 	.mz-mobilenav-lcenter{
 		.mz-sitenav{
-			.learning-center-search{
-				width: 100%;
-				.mz-searchbox{
-					.mz-searchbox-field{
-						.mz-searchbox-input{
-							width: calc(~"100% - 40px");  
-							padding: 16px;
+			.mz-sitenav-list {
+				display: block;
+			}
+		} 
+		.toggle-btn{  
+			float: left; 
+		    width: 100%;
+		    text-align: left;
+		    background: #f3f3f3;
+		    font-size: 16px;
+		    color: #333;
+		    text-transform: uppercase;
+		    padding: 18px 25px 18px 15px;  
+		    border: none;
+			border-bottom: 1px solid #e3e3e3; 
+			border-radius: 15px;
+			margin-top: 40px;
+		    .fa{  
+		    	float: right; 
+			    font-size: 30px;
+			    color: #1a3155;
+			    line-height: 18px;
+			    &:before {
+					content: "\f107";    
+				}
+			}
+			&.active{
+				.fa { 
+					&:before { 
+						content: "\f106";   
+					}
+				}
+			}
+			
+		}
+		.toggle-btn[aria-expanded=true] {
+					border-radius: 15px 15px 0 0;
+			}
+		#mz-mobilenav-containerLC{
+			width: 100%;
+			top: 56px; 
+			background: #f3f3f3;
+			padding-bottom: 20px;  
+		}
+		.mz-sitenav{
+			.mz-sitenav-item{
+				width: 100%; 
+				max-width: 100%;  
+				margin: 0;  
+			}
+			.panel-group{
+				.panel{
+					border-color: #e3e3e3; 
+					.panel-heading{
+						.panel-title{
+							a{
+								padding: 11px 25px 11px 3px;   
+								background: #f3f3f3; 
+								text-transform: uppercase;
+								color: #333;
+								.glyphicon{
+									color: #1a3155;
+									right: 25px;  	
+								}   
+							}
 						}		
+					}
+					.mz-sitenav-sub-sub{
+						display: block;
+						width: 100%;
+						position: static;  
+						padding-left: 15px; 
+					}		
+				}
+			}
+			.learning-center-search{
+				width: 100%; 
+				padding: 0;
+				margin-top: 10px;   
+				.mz-searchbox{ 
+					.mz-searchbox-field{
+						width: 100%;
+						height: auto;  
+						background: #f3f3f3; 
+						border: none;
+						border: 1px solid #000;
+						.twitter-typeahead{
+							width: 100%;  
+						} 
+						.mz-searchbox-input{
+							background: #f3f3f3;
+							width: calc(~"100% - 46px"); 
+							height: 40px;
+							padding: 0 15px 0 0;     
+						}
+						.mz-searchbox-button{
+							width: 40px;
+							height: 40px;
+							.fa{ 
+								color: #1a3155; 
+							}
+						}
 					}
 					.tt-dropdown-menu{
 						padding: 10px 15px;  
 					}
-				}
-			}		
+				}	
+			}
+				
 		}
 	}
+	/**** Mobile Nav Learning Center End ****/
+
 	/**** Learning Center Ends ****/ 
 
 

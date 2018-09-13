@@ -65,21 +65,22 @@
 
 {% require_script "pages/product" %} 
 
-{% preload_json model "product" %} 
-
 {% if model.length==2 %}
     {% for vals in model %}
         {% if forloop.first %}
             {% set_var prodMod=vals.prodModel %}
         {% else %}
-            {% set_var reviews=vals.review %}
+            {% set_var disqus=vals.disqus %}
         {% endif %}   
     {% endfor %}
+    {% preload_json prodMod "product" %} 
 {% else %}
-    {% set_var prodMod=model %} 
-{% endif %} 
+    {% set_var prodMod=model %}
+    {% preload_json prodMod "product" %} 
+{% endif %}
 
 <div class="lc-top-section">
+    {% block breadcrumbs %}{% endblock breadcrumbs %}  
     {% dropzone "blog-name" scope="page" %}            
     {% include "modules/learning-center/lc-top-section" with model=prodMod %}   
 </div>   
@@ -106,7 +107,7 @@
                 </div>
 
                 <div class="mz-blog-content-detail">
-                    {% include "modules/learning-center/blog-article-detail" with model=prodMod %}     
+                    {% include "modules/learning-center/blog-article-detail" with model=prodMod disqusData=disqus %}     
                 </div>
             </div>
 
@@ -115,10 +116,9 @@
 </div>
 
 {% endblock body-content %}
-{% block commonbody-content %}{% endblock commonbody-content %}
 
 {% block body-below-content %}
-    {% dropzone "body-bottom" scope="page" %}
+    {% dropzone "body-bottom" scope="page" %} 
 {% endblock body-below-content %}    
 
 

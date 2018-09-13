@@ -32,18 +32,18 @@
                         </h4>
                       </div>
                       {% if sublink.items %} 
-                      <div id="sub-nav-{{sublink.categoryCode}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="sub-nav-heading-{{sublink.categoryCode}}"> 
-                        <div class="panel-body">
-                          <ul class="mz-sitenav-sub-sub">
-                            {% for subsublink in sublink.items %} 
-                              <li class="mz-sitenav-item">
-                                <a class="mz-sitenav-link sub-sub-link" {% if link.openInNewWindow %}target='_blank'{% endif %} href="{{subsublink.url}}">{{ subsublink.name|replace("_", " ")|safe }}</a> 
-                              </li> 
-                            {% endfor %}  
-                          </ul>
+                        <div id="sub-nav-{{sublink.categoryCode}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="sub-nav-heading-{{sublink.categoryCode}}"> 
+                          <div class="panel-body">
+                            <ul class="mz-sitenav-sub-sub">
+                              {% for subsublink in sublink.items %} 
+                                <li class="mz-sitenav-item">
+                                  <a class="mz-sitenav-link sub-sub-link" {% if link.openInNewWindow %}target='_blank'{% endif %} href="{{subsublink.url}}">{{ subsublink.name|replace("_", " ")|safe }}</a> 
+                                </li> 
+                              {% endfor %}  
+                            </ul>
+                          </div>
                         </div>
-                      </div>
-                    {% endif %}  
+                      {% endif %}  
                     </div>
                    
                   {% endfor %}

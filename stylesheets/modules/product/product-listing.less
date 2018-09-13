@@ -15,6 +15,7 @@
             line-height: 13px;
             width: 100%;
             max-width: 160px;
+            border-radius: 5px; 
         }
         .mz-product-msg {
             font-size: 12px;
@@ -73,28 +74,16 @@
 
 /**** Product Listing Styling ****/ 
 .mz-productlist{ 
-    /*.mz-productlist-item {
-        width: 100%;
-        margin-bottom: @gutter; 
-        .mz-productlisting{
-            .mz-productlisting-image{
-                float: left;
-                width: 200px;
-                text-align: left; 
-            }
-            .mz-productlisting-info{
-                float: left;
-                width: calc(~"100% - 200px"); 
-                text-align: left; 
-            } 
-        } 
-    } */   
-    &.mz-productlist-tiled { 
+    &.mz-productlist-tiled {  
         .mz-productlist-item {
-            //width: 25%;
+            padding: 5px; 
             margin-bottom: 30px;
             text-align: center;
             .mz-productlisting {
+                padding: 10px 0 10px 0;
+                border: 1px solid #d4cccc;
+                border-radius: 11px;
+                background: #fff; 
                 .mz-productlisting-image{
                     width: 100%; 
                     text-align: center; 
@@ -104,16 +93,13 @@
                     text-align: center; 
                 }
                 .mz-productlisting-title {
-                    font-size: 14px;  
-                    color: #495363;
-                    font-size: 14px;
+                    font-size: 16px;   
+                    color: @primaryBtnColor;  
                     width: 100%;
-                    min-height: 60px;
-                    text-decoration: none;
+                    text-decoration: none; 
                     .multiLineEllipsis(18px, 3);   
                 }
                 .mz-productlisting-productcode {
-                   // display: none;
                    font-size: 15px;
                    color: #ccccd2;
                 }

@@ -1,8 +1,8 @@
-<div class="mz-sitenav-lcenter hidden-xs hidden-sm">   
+<div class="mz-sitenav-lcenter hidden-xs">   
 	{% include "modules/learning-center/lc-site-nav" %}	
 </div>
 
-<div class="mz-mobilenav-lcenter visible-xs visible-sm"> 
+<div class="mz-mobilenav-lcenter visible-xs">  
 	<button class="toggle-btn" data-toggle="collapse" data-target="#mz-mobilenav-containerLC" aria-expanded="false">Learn<i class="fa fa-angle-down"></i></button>   
 	{% include "modules/learning-center/lc-mobile-nav" %}    	  	
 </div>
