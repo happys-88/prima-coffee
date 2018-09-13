@@ -10,7 +10,7 @@
     "allowProduction": true,
     "baseTheme": "https://github.com/happys-88/prima-coffee",
     "baseThemeVersion": {
-      "commit": "d2c4b462c683c9d2f72940d58748eeaccdf5a44c"
+      "commit": "c3a26176c98443a62d393a5e7a4a542fc0efb111"
     },
     "baseThemeChannel": "stable"
   },
@@ -534,12 +534,12 @@
     }
   ],
   "settings": {
-    "ogSiteNameTwitter": "@primacoffee", 
-    "ogSiteNameFb": "Prima Coffee",  
+    "ogSiteNameTwitter": "@primacoffee",
+    "ogSiteNameFb": "Prima Coffee",
     "ogImageWidth": "500",
-    "ogImageHeight": "270", 
+    "ogImageHeight": "270",
     "ogVideoWidth": "500",
-    "ogVideoHeight": "270", 
+    "ogVideoHeight": "270",
     "siteName": "primacoffee",
     "allProductsCategoryId": "",
     "allProductsCategoryIdLC": "",
@@ -655,9 +655,7 @@
     "columnBreaker": "~",
     "liftGatePrice": 59,
     "snapengaeWidgetId": "d93fa82a-6087-44f8-bd79-3df50a1c3130",
-    "searchSuggestionFilter": "348,603,358,361,369,372,373,382,394,397,640,816",
     "productTypeId": "120",
-    "blogParentCategoryCode": "286", 
     "avalaraToken": "MjAwMDA4NDgwMzpFQUQyM0JBQzMzNzRBN0I3",
     "avalaraCompanyCode": "PRIMALLC",
     "mailChimpKey": "1afe25343b7a71ed977589911f618df7-us7",
