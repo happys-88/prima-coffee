@@ -23,10 +23,17 @@ define([
 		}
 	});
 	//home slider ends
-	//lazy laod
 
 	// My Account Tabbing Redirection
 	if(window.location.pathname == "/myaccount"){
+		//Account section scroll to top after site left nav choose
+		$(".mz-scrollnav-item").click(function (e) {
+			$("html, body").animate({ scrollTop: 0 }, 600);
+				if (e.currentTarget.className !== 'mz-scrollnav-item active') {
+					$(".mz-messagebar").empty();
+				}
+		}); 
+
 		var hash=window.location.hash;
 		if(hash !==""){
 			$("li.mz-scrollnav-item").removeClass("active");
