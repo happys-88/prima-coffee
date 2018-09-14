@@ -17,13 +17,13 @@ define([
     //lazy load
     $("img.lazy").lazyload({
         placeholder: "https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif"
+    }); 
+    $(document).on('click touchstart', 'a[class="bx-next"]', function () {
+        $("img.lazy").lazyload(); 
     });
-    // $(document).on('click', 'a[class="bx-next"]', function () {
-    //     $("img.lazy").lazyload();
-    // });
-    // $(document).on('click', 'a[class="bx-prev"]', function () {
-    //     $("img.lazy").lazyload();
-    // }); 
+    $(document).on('click touchstart', 'a[class="bx-pager-link"]', function () {
+        $("img.lazy").lazyload();
+    });
 
     function factory(conf) {
         var _$body = conf.$body;
@@ -100,7 +100,6 @@ define([
                 'change input[data-mz-facet-value]',
                 'change [data-mz-value="pageSize"]',
                 'change [data-mz-value="sortBy"]'
-                //'click a[class="bx-next"]'
             ],
             intentToUrl
         );

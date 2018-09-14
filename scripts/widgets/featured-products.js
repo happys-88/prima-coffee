@@ -13,6 +13,10 @@ define([
         $(document).on('click touchstart', 'a[class="bx-next"]', function () {
             $("img.lazy").lazyload();
         });
+        $(document).on('click touchstart', 'a[class="bx-pager-link"]', function () {
+            $("img.lazy").lazyload();
+        });
+
       
       if(n==-1){
         var slider;
@@ -23,24 +27,25 @@ define([
                     maxSlides,
                     slideWidth,
                     slideMargin,
+                    pager,
+                    controls,
                     windowWidth = $(window).width();
                 if (windowWidth >= 480 || windowWidth <= 767) {
                     minSlides = 2;
                     maxSlides = 2;
                     slideMargin = 10;
                     slideWidth = 333;
-                }
-                if (windowWidth < 480) {
-                    minSlides = 1;
-                    maxSlides = 1;
-                    slideMargin = 10;
-                    slideWidth = 333;
+                    pager = true;
+                    controls = false;
+
                 }
                 if (windowWidth > 767) {
                     minSlides = 4;
                     maxSlides = 12;
                     slideWidth = 333;
                     slideMargin = 15;
+                    pager = false;
+                    controls = true;
                 }
                 slider = $(".mz-featured-products .mz-productlist-list").bxSlider({
                     auto: false,
@@ -49,11 +54,12 @@ define([
                     maxSlides: 12,
                     slideWidth: slideWidth,
                     moveSlides: 1,
-                    slideMargin: slideMargin,
+                    slideMargin: slideMargin,            
+                    pager: pager,
+                    controls: controls,
                     infiniteLoop: false,
-                    controls: true,
-                    pager: false,
                     touchEnabled: true,
+                    stopAutoOnClick: true,
                     preloadImages: "all",
                     onSliderLoad: function () {
                         $(".slider").css("visibility", "visible");

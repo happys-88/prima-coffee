@@ -99,9 +99,6 @@
                     <span id="shareCount"></span>shares
                 </span>
             </div>
-            <div class="pc-customer-count">
-                <span id="customer-counter">52,445</span> people brewing better with gear from <strong>Prima Coffee Equipment</strong>
-            </div>
         </div>
         <div data-mz-productimages class="col-xs-12 col-sm-6 mz-productimages mz-l-sidebar">
             {% include "modules/product/product-images" with model=prodMod %}
@@ -152,6 +149,3 @@
 {% block body-below-content %}
     {% dropzone "body-bottom" scope="page" %}   
 {% endblock body-below-content %}
-     
-
- 

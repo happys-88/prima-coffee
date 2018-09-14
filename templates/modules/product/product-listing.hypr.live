@@ -11,7 +11,11 @@
         {% endblock product-image %}
     </div>
      <div class="mz-productlisting-info">  
-        <a class="mz-productlisting-title" href='{% make_url "product" model %}'>{{model.content.productName}}</a>
+        {% if pageContext.isDesktop %}
+            <a class="mz-productlisting-title" href="{% make_url "product" model %}">{{model.content.productName}}</a>
+        {% else %}
+            <a class="mz-productlisting-title" href="{% make_url "product" model %}">{{model.content.productName|truncatewords(4)}}</a>
+        {% endif %} 
          
             {% if model.content.productShortDescription and themeSettings.listProductShortDesc %}
                 <div class="mz-productlisting-shortdesc"> 

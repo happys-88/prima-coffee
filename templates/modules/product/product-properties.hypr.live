@@ -1,13 +1,16 @@
-{% if model.properties and themeSettings.showProductDetailProperties %}
-    {% for property in model.properties %}
-        {% if property.attributeFQN == "tenant~features" or property.attributeFQN == "tenant~specifications" or property.attributeFQN == "tenant~body" %}    <div class="col-md-12 mz-productdetail-properties mz-l-stack-section">
+<div class="col-md-12 mz-productdetail-properties mz-l-stack-section">
+    <h2 class="heading-2"><span>Details</span></h2>
+    <div class="mz-productdetail-shortdesc">{{ model.content.productFullDescription|safe }}</div>  
+    {% if model.properties and themeSettings.showProductDetailProperties %}
+        {% for property in model.properties %}
+            {% if property.attributeFQN == "tenant~features" or property.attributeFQN == "tenant~specifications" %}
                 <div class="mz-propertylist mz-propertylist-justified">
                     <h2 class="heading-2"><span>{{property.attributeDetail.name}}</span></h2>
                     {% for v in property.values %}
                         <div>{% if v.stringValue %}{{v.stringValue|safe}}{% else %}{{v.value|safe}}{% endif %}</div>
                     {% endfor %}
-                </div>
-            </div> 
-        {% endif %}
-    {% endfor %} 
-{% endif %}
+                </div> 
+            {% endif %}
+        {% endfor %} 
+    {% endif %}
+</div>
