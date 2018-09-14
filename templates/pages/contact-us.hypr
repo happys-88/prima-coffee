@@ -12,7 +12,7 @@
             <div class="row"> 
                 <div class="col-xs-12 col-sm-12 pull-right">
                     <h3 class="mz-l-stack-sectiontitle">{{ labels.contactUs }}</h3>
-                    <div class="mz-social-sharing">
+                    <div class="mz-social-sharing clearfix">
                         <div class="addthis_toolbox" addthis:url='{{ pageContext.url }}{{ model.url }}'>
                             <a class="addthis_button_facebook_like"></a>
                             <a class="addthis_button_google_plusone"></a>
@@ -22,9 +22,6 @@
                             <span class="share-counter-block">
                                 <span id="shareCount"></span>shares
                             </span>
-                        </div>
-                        <div class="pc-customer-count">
-                            <span id="customer-counter">52,445</span> people brewing better with gear from <strong>Prima Coffee Equipment</strong>
                         </div>
                     </div>
                     <script type="text/javascript" src="https://s7.addthis.com/js/300/addthis_widget.js#pubid={{themeSettings.addThisPubId}}"></script>
