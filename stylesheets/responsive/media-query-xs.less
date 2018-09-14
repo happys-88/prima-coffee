@@ -1482,7 +1482,7 @@
 			width: 100%;
 			top: 56px; 
 			background: #f3f3f3;
-			padding-bottom: 20px;  
+			padding:0 0 20px;   
 		}
 		.mz-sitenav{
 			.mz-sitenav-item{
@@ -1496,28 +1496,30 @@
 					.panel-heading{
 						.panel-title{
 							a{
-								padding: 11px 25px 11px 3px;   
+								padding: 10px 25px 10px 15px;     
 								background: #f3f3f3; 
 								text-transform: uppercase;
 								color: #333;
 								.glyphicon{
 									color: #1a3155;
-									right: 25px;  	
+									right: 25px;    	
 								}   
 							}
 						}		
 					}
-					.mz-sitenav-sub-sub{
+					.mz-sitenav-sub-sub{ 
 						display: block;
 						width: 100%;
 						position: static;  
 						padding-left: 15px; 
+						float: left;
+						box-shadow: none; 
 					}		
 				}
 			}
 			.learning-center-search{
 				width: 100%; 
-				padding: 0;
+				padding: 0 15px; 
 				margin-top: 10px;   
 				.mz-searchbox{ 
 					.mz-searchbox-field{
@@ -1525,7 +1527,8 @@
 						height: auto;  
 						background: #f3f3f3; 
 						border: none;
-						border: 1px solid #000;
+						border-bottom: 1px solid #000;
+						border-radius: 0px; 
 						.twitter-typeahead{
 							width: 100%;  
 						} 
@@ -1533,7 +1536,7 @@
 							background: #f3f3f3;
 							width: calc(~"100% - 46px"); 
 							height: 40px;
-							padding: 0 15px 0 8px;     
+							padding: 0 15px 0 0;      
 						}
 						.mz-searchbox-button{
 							width: 40px;

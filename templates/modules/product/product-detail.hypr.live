@@ -123,10 +123,12 @@
   </div>
 {% endif %} 
 
-<div class="mz-productdetail-fulldesc mz-l-stack-section">
-  <h4 class="mz-l-stack-sectiontitle">Overview</h4>  
-  {{ model.content.productFullDescription|safe }}
-</div>
+{% if (model|get_product_attribute_value("tenant~product-overview")) %} 
+  <div class="mz-productdetail-fulldesc mz-l-stack-section">
+    <h4 class="mz-l-stack-sectiontitle">Overview</h4>  
+    {{ model|get_product_attribute_value("tenant~product-overview")|safe }} 
+  </div> 
+{% endif %} 
 
 {% if model.productUsage == 'Bundle' %}
 <div class="mz-productdetail-bundleitems mz-l-stack-section">
