@@ -15,7 +15,7 @@ define([
 		moveSlides: 1,
 		slideMargin: 0,
 		infiniteLoop: true,
-		pager: false,
+		pager: true,
 		touchEnabled: true,
         stopAutoOnClick: true,
 		onSliderLoad: function() {

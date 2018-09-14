@@ -179,7 +179,7 @@
 	#mz-mobilenav-container {
 		width: 100%;
 		//width: 80%;
-		max-width: 320px;
+		max-width: 100%;
 		top: 67px; 
 		border-top: 1px solid #cbcbcb;
 		position: fixed;
@@ -194,12 +194,12 @@
 		.mz-searchbox {
 			//max-width: 320px;
 				.mz-searchbox-field{
-					max-width: 320px;
+					max-width: 100%;
 					border-radius: 50px;
 					font-weight: 500;
 					margin: 13px 0;
 						.mz-searchbox-input {
-								max-width: 320px;
+								max-width: 100%;
 								border-radius:50px;
 								background-color:rgb(219, 213, 213);
 								&:focus{
@@ -2164,6 +2164,24 @@
   #mz-drop-zone-feature-product{
 	  float: left;
       width: 100%;
+  }
+   //popular article and recently article
+  #mz-drop-zone-popular-articles {
+		.mz-node-blog {
+				a{
+			
+				font-size: 18px;
+				line-height: 20px; 
+		}
+    }
+  }
+  #mz-drop-zone-promoted-products{
+	  .field-content{
+		  a{
+			  font-size: 18px;
+			  line-height: 20px; 
+		  }
+	  }
   }
 }
 
