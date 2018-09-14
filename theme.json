@@ -543,7 +543,7 @@
     "siteName": "primacoffee",
     "allProductsCategoryId": "",
     "allProductsCategoryIdLC": "",
-    "sessionTimeout": "18000",
+    "sessionTimeout": "1800",
     "backofficeDateTimeFormat": "m/d/Y H:i:s O",
     "extendedPropertiesEnabled": false,
     "extendedPropertyParameters": "",
