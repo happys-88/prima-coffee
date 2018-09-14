@@ -46,7 +46,7 @@
                     <p>Allowed file types: <strong>gif jpg png pdf doc docx</strong>.</p>
                 </div>
             </div>
-            <div class="col-xs-12"><span id="wholesaleFormError" class="mz-validationmessage"></span></div>
+            <div class="col-xs-12"><span id="wholesaleFormError"></span></div>
                                         
             <div class="form-group clearfix">
                 <div class="col-xs-12">

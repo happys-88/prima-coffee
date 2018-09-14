@@ -45,9 +45,19 @@ define(['modules/api',
                             } else*/ if(response[0] !== 'two') {
                                 console.log("Error : "+response[0]);
                                 errorMessage  = labels.contactUsError;
+                                if ($("#wholesaleFormError").hasClass("success")){
+                                    $("#wholesaleFormError").removeClass("success");
+                                   
+                                }
+                                $("#wholesaleFormError").addClass("error");
                                 $("#wholesaleFormError").html(errorMessage);
                                 $("#wholesaleFormError").show();    
                             } else {
+                                if ($("#wholesaleFormError").hasClass("error")) {
+                                    $("#wholesaleFormError").removeClass("error");
+
+                                }
+                                $("#wholesaleFormError").addClass("success");
                                 $("#wholesaleFormError").html(errorMessage);
                                 $('#wholesaleForm').each(function(){
                                     this.reset();
@@ -57,6 +67,11 @@ define(['modules/api',
                         }
                     });
                 } else {
+                    if ($("#wholesaleFormError").hasClass("success")) {
+                        $("#wholesaleFormError").removeClass("success");
+
+                    }
+                    $("#wholesaleFormError").addClass("error");
                     $('#wholesaleFormError').html("Invalid form submission");
                     console.log("Error : ");
                 }

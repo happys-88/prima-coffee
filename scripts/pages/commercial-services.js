@@ -45,9 +45,17 @@ define(['modules/api',
                             } else*/ if(response[0] !== 'two') {
                                 console.log("Error : "+response[1]);
                                 errorMessage  = labels.contactUsError;
+                                if ($("#commerceialFormError").hasClass("success")) {
+                                    $("#commerceialFormError").removeClass("success").addClass("error");
+                                }
+                              
                                 $("#commerceialFormError").html(errorMessage);
                                 $("#commerceialFormError").show();    
                             } else {
+                                if ($("#commerceialFormError").hasClass("error")) {
+                                    $("#commerceialFormError").removeClass("error").addClass("success");
+                                }
+                               
                                 $("#commerceialFormError").html(errorMessage);
                                 $('#commercialForm').each(function(){
                                     this.reset();
@@ -57,6 +65,10 @@ define(['modules/api',
                         }
                     });
                 } else {
+                    if ($("#commerceialFormError").hasClass("success")) {
+                        $("#commerceialFormError").removeClass("success").addClass("error");
+
+                    }
                     $('#commerceialFormError').html("Invalid form submission");
                     console.log("Error : ");
                 }
