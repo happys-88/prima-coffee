@@ -53,6 +53,7 @@
         </div>
     </div>
 {% endblock body-content %}
+{% block commonbody-content %}{% endblock commonbody-content %}
 
 {% block trailing-scripts %}
     {% require_script "modules/confirmation" %} 

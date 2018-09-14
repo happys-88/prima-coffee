@@ -57,7 +57,11 @@ define([
 		//overlay 
 
 		$(document).on('click', '.mz-hamburger-icon', function () {
-			$(".overlay").addClass("active");
+			if($(".overlay").hasClass("active")){
+				$(".overlay").removeClass("active");
+			}else{
+				$(".overlay").addClass("active");
+			}
 		});
 		$(document).on('click', '.overlay', function () {
 			$(this).removeClass("active");

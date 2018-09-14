@@ -187,10 +187,12 @@
                 }
             }
             if (searchVal === "") {
-                window.alert(Hypr.getLabel('blankSearchResult'));
+                $("#emptymsg").modal();
+               // window.alert(Hypr.getLabel('blankSearchResult'));
                 e.preventDefault();
             } else if (searchVal.length < 3) {
-                window.alert("Your keyword or item number must be at least 3 characters long");
+                $("#threeletter").modal();
+               // window.alert("Your keyword or item number must be at least 3 characters long");
                 e.preventDefault(); 
             }
 
@@ -214,10 +216,12 @@
                 }
             }
             if (searchVal === "") {
-                window.alert(Hypr.getLabel('blankSearchResult'));
+                //window.alert(Hypr.getLabel('blankSearchResult'));
+                $("#emptymsg").modal();
                 e.preventDefault();
             } else if (searchVal.length < 3) {
-                window.alert("Your keyword or item number must be at least 3 characters long");
+                //window.alert("Your keyword or item number must be at least 3 characters long");
+                $("#threeletter").modal();
                 e.preventDefault(); 
             }
         });

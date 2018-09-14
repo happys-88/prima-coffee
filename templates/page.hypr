@@ -243,6 +243,33 @@
             </div>
              
             {% endblock commonbody-content %}
+            {% block error-message %}
+            <div class="modal fade" id="emptymsg" role="dialog">
+                <div class="modal-dialog">   
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <a type="button" class="close" data-dismiss="modal">&times;</a>
+                            <h5>{{ labels.blankSearchResult }}</h5>
+                           
+                        </div>
+                    </div>
+            
+                </div>
+            </div>
+            <div class="modal fade" id="threeletter" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <a type="button" class="close" data-dismiss="modal">&times;</a>
+                            <h5>{{ labels.searchKeywordLength }}</h5>
+                            
+                        </div>
+                    </div>
+            
+                </div>
+            </div>
+            {% endblock error-message %}
+
               {% dropzone "welcome-text-home" scope="page" %}
                 {% block body-below-content %}
                     {% dropzone "body-bottom" scope="page" %} 

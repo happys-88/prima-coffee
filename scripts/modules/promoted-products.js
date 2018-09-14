@@ -38,7 +38,7 @@
 					 slider=$("#PromotedProductSlider").bxSlider({
 						minSlides: minSlides,
 						maxSlides: maxSlides,
-						moveSlides: 1,
+						moveSlides: 2,
 						slideWidth: slideWidth,
 						slideMargin: slideMargin,
 						responsive: true,
