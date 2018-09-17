@@ -168,6 +168,19 @@ define([
                       return obj;
                     }
                 });
+
+                if(typeof selectedMethod === 'undefined') {
+                    if(shippingDetailObj.length > 1) {
+                        selectedMethod = _.find(shippingDetailObj, function(obj) {
+                            if(obj.amount === 0){ 
+                              return obj;
+                            }  
+                        });          
+                    } else if(shippingDetailObj.length > 0 && shippingDetailObj.length === 1) {
+                        selectedMethod = shippingDetailObj[0];
+                    }
+                }
+
                 var selectedMethodAmount = selectedMethod.amount;
                 this.model.set({'shippingTotal': selectedMethodAmount});
                 var tot = this.model.get('shippingTotal');
