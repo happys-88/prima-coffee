@@ -29,7 +29,7 @@ $(document).on('click', '.mz-quick-view', function (event) {
                 "change .mz-productoptions-option": "onOptionChange",
                 "click [data-mz-qty-minus]": "quantityMinus",
                 "click [data-mz-qty-plus]": "quantityPlus",
-                "click .bx-controls-direction a":"clickOnNextOrprevious",
+                "click #quickViewModal .bx-controls-direction a":"clickOnNextOrprevious",
                 "keyup [id=qty-field]":"updateqtyManual",
                 "click .login-for-lowprice" : "closeQuickviewModal"
 

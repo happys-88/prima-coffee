@@ -292,6 +292,11 @@ define([
 		    $("#step-shipping-method .mz-button").css('display', 'none');
 		});
 
+		$(document).on('click','#submitted-resale-certificate', function(){
+			alert("Hello 11");
+			$(".mz-certificate-upload").toggle();
+		});
+
 		// Featured Products Slider in blog detail
 		if(windowWidth <= 767){ 
 			$('#productSliderMobile').bxSlider({      
@@ -320,12 +325,7 @@ define([
 
 		if(!HyprLiveContext.locals.user.isAuthenticated){
 			localStorage.setItem("previousTime", null); 
-		}
-
-		$('input[type="checkbox"]').click(function () {
-			$(".mz-certificate-upload").toggle();
-		});  
-			
+		}	
 
 	});
 }); 
