@@ -39,7 +39,7 @@
                     {% if pageContext.search.query != "" and pageContext.search.query != 'undefined' %}
                         <h1 class="mz-pagetitle">{{ labels.foundSearchResults|string_format(model.totalCount, pageContext.search.query) }}</h1>
                     {% else %}
-                        <h1 class="mz-pagetitle">{{ navigation.currentNode.name|upper|replace("~", "")|safe }}</h1>
+                        {% comment %} <h1 class="mz-pagetitle">{{ navigation.currentNode.name|upper|replace("~", "")|safe }}</h1> {% endcomment %}
                     {% endif %} 
                 {% endif %}
                 <div class="col-xs-12 col-md-4">

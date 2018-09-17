@@ -46,32 +46,37 @@ define(['modules/api',
                                 console.log("Error : "+response[1]);
                                 errorMessage  = labels.contactUsError;
                                 if ($("#commerceialFormError").hasClass("success")) {
-                                    $("#commerceialFormError").removeClass("success").addClass("error");
+                                    $("#commerceialFormError").removeClass("success");
                                 }
+                                $("#commerceialFormError").addClass("error");
                               
                                 $("#commerceialFormError").html(errorMessage);
                                 $("#commerceialFormError").show();    
                             } else {
                                 if ($("#commerceialFormError").hasClass("error")) {
-                                    $("#commerceialFormError").removeClass("error").addClass("success");
+                                    $("#commerceialFormError").removeClass("error");
                                 }
+                                $("#commerceialFormError").addClass("success");
                                
                                 $("#commerceialFormError").html(errorMessage);
                                 $('#commercialForm').each(function(){
                                     this.reset();
+                                    self.model.clear();
                                 });
-                                $("#commerceialFormError").show().delay(4000).fadeOut();    
+                                $("#commerceialFormError").show();    
                             }
                         }
+                        
                     });
                 } else {
                     if ($("#commerceialFormError").hasClass("success")) {
-                        $("#commerceialFormError").removeClass("success").addClass("error");
-
+                        $("#commerceialFormError").removeClass("success");
                     }
+                    $("#commerceialFormError").addClass("error");
                     $('#commerceialFormError').html("Invalid form submission");
                     console.log("Error : ");
                 }
+               
                 
             },
             render: function() {

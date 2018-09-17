@@ -11,10 +11,10 @@ define([
     'modules/facet-clear',
     'modules/block-ui',
     'yotpo',
-    'modules/category/infinite-scroller',
+    //'modules/category/infinite-scroller',
     "lazyload"
 ], function(Backbone, $, _, UrlDispatcher, IntentEmitter, getPartialView, makeClearUrl, blockUiLoader, yotpo, InfiniteScroller, lazyload) {  
-    console.log(lazyload);
+   
     //lazy load
     $("img.lazy").lazyload({
         placeholder: "https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif"

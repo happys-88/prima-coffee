@@ -49,29 +49,34 @@ define(['modules/api',
                                 console.log("Error : "+response[1]);
                                 errorMessage  = labels.contactUsError;
                                 if ($("#priceRequestError").hasClass("success")) {
-                                    $("#priceRequestError").removeClass("success").addClass("error");
+                                    $("#priceRequestError").removeClass("success");
                                 }
+                                $("#priceRequestError").addClass("error");
                                 $("#priceRequestError").html(errorMessage);
                                 $("#priceRequestError").show();    
                             } else {
                                 $("#priceRequestError").html(errorMessage);
                                 if ($("#priceRequestError").hasClass("error")) {
-                                    $("#priceRequestError").removeClass("error").addClass("success");
+                                    $("#priceRequestError").removeClass("error");
                                 }
+                                $("#priceRequestError").addClass("success");
                                 $('#priceGuarranteeForm').each(function(){
                                     this.reset();
+                                    self.model.clear();
                                 });
-                                $("#priceRequestError").show().delay(4000).fadeOut();    
+                                $("#priceRequestError").show();    
                             }
                         }
                     });
                 } else {
                     if ($("#priceRequestError").hasClass("success")) {
-                        $("#priceRequestError").removeClass("success").addClass("error");
+                        $("#priceRequestError").removeClass("success");
                     }
+                    $("#priceRequestError").addClass("error");
                     $('#priceRequestError').html("Invalid Form Submission");
                     console.log(" Error : Invalid ");
                 }
+               
                 
             },
             render: function() {

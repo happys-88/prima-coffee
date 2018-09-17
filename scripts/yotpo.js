@@ -89,6 +89,7 @@ function ($, _, Hypr, Backbone, HyprLiveContext, api, blockUiLoader) {
         }
     },
     enableButtons: function(items) {
+        blockUiLoader.unblockUi();
         var productData = [];
         for (var i = 0; i < items.length; i++) {
             var fieldDisplayOOSProp = false;

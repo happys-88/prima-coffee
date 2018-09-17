@@ -35,7 +35,6 @@
     "bootstrap": "3.2.0",
     "bxslider": "^4.2.13",
     "jquery-colorbox": "1.5.15",
-    "jquery-lazyload": "^1.9.7",
     "jquery.cookie": "1.4.1",
     "npm": "^6.0.0",
     "typeahead.js": "0.10.5",

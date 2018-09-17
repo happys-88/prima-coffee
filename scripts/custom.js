@@ -63,20 +63,22 @@ define([
 	$(document).ready(function(){ 
 		//overlay 
 
-		$(document).on('click', '.mz-hamburger-icon', function () {
-			if($(".overlay").hasClass("active")){
-				$(".overlay").removeClass("active");
-			}else{
-				$(".overlay").addClass("active");
-			}
-		});
-		$(document).on('click', '.overlay', function () {
-			$(this).removeClass("active");
-			$('nav').removeClass("in");
-		}); 
+		// $(document).on('click', '.mz-hamburger-icon', function () {
+		// 	if($(".overlay").hasClass("active")){
+		// 		$(".overlay").removeClass("active");
+		// 	}else{
+		// 		$(".overlay").addClass("active");
+		// 	}
+		// });
+		// $(document).on('click', '.overlay', function () {
+		// 	$(this).removeClass("active");
+		// 	$('nav').removeClass("in");
+		// }); 
 		$(document).on('click', '.mz-pagenumbers-number', function () {
+			var position = $(".mz-l-paginatedlist-header").offset().top - 80;
 			$("body, html").animate({
-				scrollTop: 0
+				scrollTop: position
+
 			}, 1200);
 		});
 		$('.mz-searchbox-button').click(function(e) {
@@ -212,7 +214,7 @@ define([
 		// Brand Gateway 
 		$(".brand-letter a").on('click', function(e){
 		    var id = $(this).attr("name");
-		    var position = $(id +" .brand-letter").offset().top-$(".mz-sticky-header").outerHeight( true );
+			var position = $(id + " .brand-letter").offset().top - $(".mz-sticky-header").outerHeight(true) + 90;
 		   		$('body,html').animate({
 		       		scrollTop : position                  
 		      	}, 500); 

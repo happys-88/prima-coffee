@@ -12,7 +12,7 @@
   {% if brands.content.name == "Brands" %}
     <ul class="brand-header col-xs-12"> 
       {% for subbrands in brands.childrenCategories|dictsort("name") %}
-        {% with subbrands.name|first as firstLetter %}
+        {% with subbrands.name|upper|first as firstLetter %}
           {% if forloop.counter0==0 %}
             {% if firstLetter=="0" or  firstLetter=="1" or firstLetter=="2" or firstLetter=="3" or firstLetter=="4" or firstLetter=="5" or firstLetter=="6" or firstLetter=="7" or firstLetter=="8" or firstLetter=="9"  %}
               <li class="brand-letter"><span><a href="javascript:void(0);" name="#{{firstLetter}}">0-9</a></span> </li>
@@ -20,7 +20,9 @@
               <li class="brand-letter"><span><a href="javascript:void(0);" name="#{{firstLetter}}">{{ firstLetter|upper }}</a></span> </li>
             {% endif %}
           {% else %}
+          
             {% if firstLetter!=subbrand %}
+            
               {% if firstLetter=="0" or  firstLetter=="1" or firstLetter=="2" or firstLetter=="3" or firstLetter=="4" or firstLetter=="5" or firstLetter=="6" or firstLetter=="7" or firstLetter=="8" or firstLetter=="9"  %}
             {% else %}
               <li class="brand-letter"><span><a href="javascript:void(0);" name="#{{firstLetter}}">{{ firstLetter|upper }}</a></span> </li>
@@ -34,7 +36,7 @@
     </ul>
     
     {% for subbrands in brands.childrenCategories|dictsort("name") %}
-      {% with  subbrands.name|first as firstLetter %}
+      {% with  subbrands.name|upper|first as firstLetter %}
         {% if forloop.counter0==0 %}
           {% if firstLetter=="0" or  firstLetter=="1" or firstLetter=="2" or firstLetter=="3" or firstLetter=="4" or firstLetter=="5" or firstLetter=="6" or firstLetter=="7" or firstLetter=="8" or firstLetter=="9"  %}
             <div class="brand-section" id="0-9">

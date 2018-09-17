@@ -7,6 +7,10 @@ define([
         $(".mz-featured-products").prop("hidden", false);
         var url = window.location.pathname;
         var n = url.indexOf("/learn");
+        $('img.lazy').each(function () {
+            $(this).attr("src", $(this).data("original"));
+
+        });
         $("img.lazy").lazyload({
             placeholder: "https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif"
         });

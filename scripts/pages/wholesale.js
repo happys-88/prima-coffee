@@ -8,7 +8,6 @@ define(['modules/api',
         'modules/editable-view'
     ],
     function(api, Backbone, _, $, HyprLiveContext, Hypr, blockUiLoader, EditableView) {
-
         var WholesaleView = EditableView.extend({
             templateName: 'modules/page-footer/footer-forms/wholesale-form',
             autoUpdate: [
@@ -61,8 +60,9 @@ define(['modules/api',
                                 $("#wholesaleFormError").html(errorMessage);
                                 $('#wholesaleForm').each(function(){
                                     this.reset();
+                                    self.model.clear();
                                 });
-                                $("#wholesaleFormError").show().delay(4000).fadeOut();    
+                                $("#wholesaleFormError").show();    
                             }
                         }
                     });
@@ -75,6 +75,7 @@ define(['modules/api',
                     $('#wholesaleFormError').html("Invalid form submission");
                     console.log("Error : ");
                 }
+               
                 
             },
             render: function() {
