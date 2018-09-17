@@ -1,7 +1,7 @@
 {% extends "page" %}  
 
 {% block title-tag-content %}{% firstof pageContext.metaTitle model.name %}  - {% parent %}{% endblock title-tag-content %}
-{% block body-tag-classes %} Brands {% endblock body-tag-classes %}
+{% block body-tag-classes %}mz-brand {% endblock body-tag-classes %}
  {% block commonbody-content %} {% endblock commonbody-content %}
 {% block brand-gateway %} 
   {% dropzone "Merchandise-drop-zone" scope="page" %}
