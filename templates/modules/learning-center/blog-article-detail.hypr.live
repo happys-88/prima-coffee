@@ -68,8 +68,6 @@ var disqus_config = function () {
 	
 };
 
-
-
 (function() { // DON'T EDIT BELOW THIS LINE
 
 	var d = document, s = d.createElement('script');
@@ -85,4 +83,3 @@ var disqus_config = function () {
 
 {% endblock disqus-section %}
 
-{% require_script "pages/product" %}  

@@ -9,7 +9,7 @@
             <span type="hidden" itemprop="price" content="{{ model.salePrice }}" ></span>
             {{model.salePrice|currency}}
         {% else %}
-            <span class="orange-text">{{ labels.mapPrice }}</span></span> 
+            <span class="orange-text">{{ labels.mapPrice }}</span>
         {% endif %}
     </span>
 {% else %}

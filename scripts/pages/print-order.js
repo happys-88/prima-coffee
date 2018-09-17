@@ -11,39 +11,26 @@ function ($, _, Hypr, Backbone, HyprLiveContext, api) {
 	$(document).ready(function(){ 
 	    var orderId = location.hash.substring(1);
     	api.request("GET", '/api/commerce/orders/'+orderId).then(function(body){ 
-    		var impact = 0; 
-			var m = 0;
-			var discountarray;
-			var couponwithimpact=[];
-			var couponwithCode=[];
-			
-			$.each(body.couponCodes, function(i, item) {
-				$.each(body.items, function(j, disc) {	
-					$.each(disc.productDiscounts, function(k, item) {
-						if(k>0){
-							if(item.couponCode == body.couponCodes[i]){
-								impact = impact+item.impact;
-								couponwithimpact[m] = item.couponCode;
-								couponwithCode[m] = impact;
-								}
-						}else{
-							if(item.couponCode == body.couponCodes[i]){
-								impact = impact+item.impact;
-								couponwithimpact[m] = item.couponCode;
-								couponwithCode[m] = impact;								
+		var dataitems=_.pluck(body.items, 'productDiscounts');
+		var coupon= _.pluck(_.flatten(dataitems),'couponCode');
+		var impact=_.pluck(_.flatten(dataitems),'impact');
+		var unqimpact=[];
+		var impactsum=0;
+		var unqcoupon=_.uniq(coupon);
+		for(var i=0;i<unqcoupon.length; i++){
+		impactsum=0;
+		for(var j=0;j<coupon.length; j++){
+			if(unqcoupon[i]==coupon[j]){
+				impactsum=impactsum+impact[j];
 							}
 						}
-					 });
-				});
-				m = m+1;
-			});
-			var comp1 =_.compact(couponwithimpact);
-			var comp2 =_.compact(couponwithCode);
-			discountarray =_.object(comp1,comp2);
+		unqimpact.push(impactsum);
+		}	
+		var discountcoupon= _.object(unqcoupon,unqimpact);
 			var print = Backbone.MozuModel.extend({}); 
 			var printmodel = new print(body);
 			printmodel.set({
-			 	"discount": discountarray
+			 	"discount": discountcoupon
 			 });	
 			$('#print-order').empty().append(Hypr.getTemplate('modules/my-account/print-order').render({ model: printmodel.toJSON() }));      
 		});
