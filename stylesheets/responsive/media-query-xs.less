@@ -2020,9 +2020,15 @@
 	/***\ Addon model ***/
 .mz-searchbox{
 		.tt-dropdown-menu {
+			position: static!important;
 			width: 100%;
 			overflow-y: auto;
 			max-height: 400px;
+			&:before {
+			    top: 33px;
+			    right: auto;
+			    left: 30px;
+			}
 			.tt-dataset-pages {
 				float: none; 
 				width: 100%;

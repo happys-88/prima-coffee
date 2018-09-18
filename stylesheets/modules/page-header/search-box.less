@@ -1,7 +1,5 @@
 ﻿.mz-searchbox {
-
     @expandedSearchWidth: 1140px;
-
     .mz-searchbox-field {
         display: inline-block;
         position: relative;
@@ -9,7 +7,6 @@
         background: white;
         height: 38px;
     }
-
     &.mz-searchbox-expands .mz-searchbox-input {
         .transition(~"width 0.5s ease");
         &:focus {
@@ -28,7 +25,6 @@
     :-moz-placeholder { /* Firefox 18- */
         color: #000;
     }
-
     .mz-searchbox-input {   
         display: block;
         box-sizing: border-box;
@@ -37,7 +33,6 @@
         margin: 0; 
         padding: 0 25px;
         border-width: 0;
-        //.border-radius(0);
         font-size: 16px; 
         color: #3d3d3d;
         line-height: 20px;
@@ -46,7 +41,6 @@
             outline-width: 0;
         }
     }
-
     .mz-searchbox-button {
         background: #495363; 
         color: #fff;
@@ -62,34 +56,38 @@
         padding: 0;
         display:none;
     }
-
     .mz-searchbox-categories {
         vertical-align: top;
         width: 100px;
     }
-
     .tt-dropdown-menu {
         box-sizing: border-box;
-        border: 1px solid @inputBorder;
-        border-width: 1px;
+        box-shadow: 0 3px 3px rgba(0,0,0,0.2);
         width: @expandedSearchWidth + 2;
         background: white;
         padding: 0;
         left: auto!important;
         right: 0!important;
-        margin-top: 20px;
+        margin-top: 14px;
+        &:before {
+            content: "";
+            position: absolute;
+            border: 10px solid transparent;
+            border-bottom-color: #fff;
+            top: -20px;
+            right: 30px;
+        }
     }
 
-   
-
     /*Left Colum*/
-   
     .tt-dataset-terms,
     .tt-dataset-categories {
-        //display: none;
         float: left;
         width: 25%;
         padding: 20px 30px;
+        &:empty {
+            padding: 0;
+        }
         .tt-suggestions {
             .tt-suggestion {
                 p {
@@ -115,7 +113,6 @@
             }
         }
     }
-
     /*Right Colum*/
     .tt-dataset-pages {
         float: left;
@@ -241,6 +238,4 @@
             display: none; 
         }    
     }
-
-
 }
