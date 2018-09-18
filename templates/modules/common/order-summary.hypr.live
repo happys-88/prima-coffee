@@ -62,7 +62,8 @@
                                         {% if property.name == 'Try Before You Buy' %}
                                             {% for v in property.values %}
                                                 {% if v.stringValue == true or v.value == true %}
-                                                    {% if selectedTbybItemVal == tbybItem %}
+
+                                                        {% if selectedTbybItemVal == selectedModel.selCode %}
                                                         <div class="tbyb-msg" id="tbyb_{{ item.product.variationProductCode|default(item.product.productCode) }}_{{item.id}}">
                                                             {{ labels.tbybMsg }}
                                                         </div>
