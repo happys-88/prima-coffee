@@ -116,10 +116,11 @@
 </div>
 
 {% endblock body-content %}
-
-{% block body-below-content %}
+{% block commonbody-content %} {% endblock commonbody-content %}  
+{% block body-below-content %} 
     {% dropzone "body-bottom" scope="page" %} 
-{% endblock body-below-content %}    
+{% endblock body-below-content %} 
+
 
 
 
