@@ -1,6 +1,6 @@
 <section class="mz-facetingform">
-    <h2 class="mz-facets-dropdown">{{ labels.refineBy }}</h2>
     {% if pageContext.search.facets %}
+    <h2 class="mz-facets-dropdown">{{ labels.refineBy }}</h2>
         <div class="mz-clear-all">
             <div>
                 <button class="mz-button mz-facetingform-clearall" data-mz-action="clearFacets" data-mz-url="{% make_url "facet" "clear" %}">{{ labels.clearAllFilters }}</button>

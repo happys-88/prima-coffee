@@ -2,14 +2,14 @@
 	define(['modules/jquery-mozu', 
 	'underscore', 
 	'modules/backbone-mozu',
-	"modules/models-product",
     'yotpo'],
-	function ($, _, Backbone, ProductModel, yotpo) {
+	function ($, _, Backbone, yotpo) {
 	var url = "https://api.yotpo.com/v1/widget/4X91rXasdFWFBX4Rnh5WEr4NnvMwpFpjxzNFLubD/products/promoted_products";
 		var slider;
 		$.get(url, function(data, status){ 
-		_.defer( function() {			
-			var product = new ProductModel.Product(data.response); 
+		_.defer( function() {	
+			var Product = Backbone.MozuModel.extend();		
+			var product = new Product(data.response); 
 			var ReviewsView = Backbone.MozuView.extend({
 				templateName: "modules/product/promoted-products",
 				productCarousel: function () {
@@ -38,7 +38,7 @@
 					 slider=$("#PromotedProductSlider").bxSlider({
 						minSlides: minSlides,
 						maxSlides: maxSlides,
-						moveSlides: 2,
+						moveSlides: 1,
 						slideWidth: slideWidth,
 						slideMargin: slideMargin,
 						responsive: true,
@@ -53,7 +53,38 @@
 						}
 				   });
 					window.slider = slider;
-				}
+				},
+				showYotpoRatingStars: function(ratingURL, currentProduct){
+					var ratingElement, yotpoStars;  
+					var  currentProductid="#"+currentProduct+" #product-rating" +" .yotpo-stars";
+					ratingElement = $(currentProductid);    
+					yotpoStars = '<span class="yotpo-icon rating-star yotpo-icon-empty-star"></span><span class="yotpo-icon rating-star yotpo-icon-empty-star"></span><span class="yotpo-icon rating-star yotpo-icon-empty-star"></span><span class="yotpo-icon rating-star yotpo-icon-empty-star"></span><span class="yotpo-icon rating-star yotpo-icon-empty-star"></span>' ;     
+					$(ratingElement).html(yotpoStars);   
+							var ratingAverageScore = ratingURL,
+								starRating,
+								decimalNumber;
+								if (ratingAverageScore.toString().indexOf('.') > -1) {
+									starRating = ratingAverageScore.toString().split('.');
+									decimalNumber = true;
+								} else {
+									decimalNumber = false;
+								} 
+								var fullStarsToShow = " ",
+								halfStarsToShow = " " ; 
+				
+							if(decimalNumber){  
+								fullStarsToShow = starRating[0]; 
+								halfStarsToShow = starRating[1]; 
+								$(ratingElement).find('.yotpo-icon:lt('+fullStarsToShow+')').removeClass("yotpo-icon-empty-star").addClass("yotpo-icon-star");
+								if(halfStarsToShow>=5 && halfStarsToShow<=9){ 
+									$(ratingElement).find('.yotpo-icon:eq('+fullStarsToShow+')').removeClass("yotpo-icon-empty-star").addClass("yotpo-icon-half-star");    
+								}   
+							
+							} else{ 
+								fullStarsToShow = ratingAverageScore;    
+								$(ratingElement).find('.yotpo-icon:lt('+fullStarsToShow+')').removeClass("yotpo-icon-empty-star").addClass("yotpo-icon-star");       
+							} 
+				 }
 				
 			});
 
@@ -64,11 +95,13 @@
 			window.productView = productView;
 			productView.render();
 			productView.productCarousel();
-			yotpo.showYotpoRatingStars(".mz-recentproductlist-item");
+				for (var i=0; i<product.get("products").length; i++) {
+                      productView.showYotpoRatingStars(product.get("products")[i].average_score,product.get("products")[i].products_app_id);
+                }
 			$(window).resize(function () {
 				slider.destroySlider();
 				productView.productCarousel();
-				//yotpo.showYotpoRatingStars();
+				
 			});
 		});
 	});

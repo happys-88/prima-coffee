@@ -5,7 +5,7 @@
 	</h2>
 	<ul class="slider" id="PromotedProductSlider">
 	{% for prod in model.products %}
-	<li class="mz-recentproductlist-item text-center">
+	<li class="mz-recentproductlist-item text-center" id="{{ prod.products_app_id }}">
 		<div class="mz-product-image">
 	     	<a href="{{ prod.url }}">
 	            <img src="{{ prod.image }}" alt="Orange">
