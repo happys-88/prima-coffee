@@ -11,9 +11,7 @@ define([
             $(this).attr("src", $(this).data("original"));
 
         });
-        $("img.lazy").lazyload({
-            placeholder: "https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif"
-        });
+        $("img.lazy").lazyload();
       
       if(n==-1){
         var slider;
@@ -31,7 +29,7 @@ define([
                     minSlides = 2;
                     maxSlides = 2;
                     slideMargin = 10;
-                    slideWidth = 333;
+                    slideWidth = 400;
                     pager = true;
                     controls = false;
 
@@ -39,7 +37,7 @@ define([
                 if (windowWidth > 767) {
                     minSlides = 4;
                     maxSlides = 12;
-                    slideWidth = 333;
+                    slideWidth = 400;
                     slideMargin = 15;
                     pager = false;
                     controls = true;
