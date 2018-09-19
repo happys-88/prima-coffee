@@ -3,37 +3,35 @@
       <div class="mz-close-nav hidden">                         
         <button data-toggle="collapse" data-target="#mz-mobilenav-container" aria-expanded="false"><span></span></button>  
       </div>
-      <div>
-       {% block utility-nav %} 
-       {% include "modules/page-header/utility-nav" %} 
-       {% endblock utility-nav %}
-      <div>
-        {% block search-box %} 
+      {% block utility-nav %} 
+        {% include "modules/page-header/utility-nav" %} 
+      {% endblock utility-nav %}
+      
+      {% block search-box %} 
         {% include "modules/page-header/search-box" %} 
-        {% endblock search-box %}
-      </div>
+      {% endblock search-box %} 
+      
 
       <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
         {% partial_cache %}
-       
           {% for link in navigation.tree %}
-            {% if not link.isHidden and not link.isEmpty and forloop.counter0 <= themeSettings.maxTopLevelNavItems %}
+            {% if not link.isHidden and not link.isEmpty and forloop.counter0 <= themeSettings.maxTopLevelNavItems %} 
               <div class="panel">
                 <div class="panel-heading" role="tab" id="main-nav-heading-{{link.categoryCode}}">
                   <h4 class="panel-title"> 
+                    <a role="button" {% if link.openInNewWindow %}target='_blank'{% endif %}
+                      {% if link.items %} 
+                        target="_self"
+                        class="collapsed"
+                        data-toggle="collapse" data-parent="#accordion" data-target="#main-nav-{{link.categoryCode}}" aria-expanded="false" aria-controls="main-nav-{{link.categoryCode}}"
+                      {% endif %}
+                      {% if not link.items %} href="{{link.url}}" {% endif %}>
+                      {{link.name|replace(themeSettings.columnBreaker, ""|replace("_", " ")|safe}}
+                      {% if link.items %} 
+                        <span class="glyphicon glyphicon-plus-minus" aria-hidden="true"></span>  
+                      {% endif %}
                     
-                    <a role="button" {% if link.openInNewWindow %} target='_blank' {% endif %} 
-                    href="{{link.url}}">
-                      {{ link.name|replace(themeSettings.columnBreaker, ""|replace("_", " ")|safe }}
                     </a>
-
-                    {% if link.items %}
-                    <a role="button" {% if link.openInNewWindow %}target='_blank' {% endif %} {% if link.items %} target="_self" class="collapsed"
-                      data-toggle="collapse" data-parent="#accordion" data-target="#main-nav-{{link.categoryCode}}" aria-expanded="false"
-                      aria-controls="main-nav-{{link.categoryCode}}" {% endif %}>
-                      <span class="glyphicon glyphicon-plus-minus" aria-hidden="true"></span>
-                    </a>
-                    {% endif %}
                   </h4>
                 </div>
                 {% if link.items %}
@@ -47,20 +45,16 @@
                             <div class="panel-heading" role="tab" id="sub-nav-heading-{{sublink.categoryCode}}">
                               <h4 class="panel-title">  
                                 <a role="button"{% if sublink.openInNewWindow %} target="_blank"{% endif %}                        
-                                   href="{{sublink.url}}">
-                                  {{sublink.name|replace(themeSettings.columnBreaker, "")|replace("_", " ")|safe}}  
+                                  {% if sublink.items %} 
+                                    class="collapsed" data-toggle="collapse" data-parent="#sub-accordion-{{link.categoryCode}}" data-target="#sub-nav-{{sublink.categoryCode}}" aria-expanded="false" aria-controls="sub-nav-{{sublink.categoryCode}}"
+                                  {% endif %}
+                                  {% if not sublink.items %} href="{{sublink.url}}"{% endif %}>
+                                  {{sublink.name|replace(themeSettings.columnBreaker, "")|replace("_", " ")|safe}}
+                                  {% if sublink.items %} 
+                                    <span class="glyphicon glyphicon-plus-minus" aria-hidden="true"></span>    
+                                  {% endif %}
+                                  
                                 </a>
-                                {% if sublink.items %}
-                              <a role="button" {% if sublink.openInNewWindow %} target="_blank" {% endif %}
-                                 {% if sublink.items %} class="collapsed"
-                                    data-toggle="collapse" data-parent="#sub-accordion-{{link.categoryCode}}" data-target="#sub-nav-{{sublink.categoryCode}}"
-                                    aria-expanded="false" aria-controls="sub-nav-{{sublink.categoryCode}}" {% endif %} 
-                                     href="{{sublink.url}}">
-                                    {% if sublink.items %}
-                                    <span class="glyphicon glyphicon-plus-minus" aria-hidden="true"></span>
-                                 {% endif %}                           
-                                </a>
-                                {% endif %}
                               </h4>
                             </div>
                             <div id="sub-nav-{{sublink.categoryCode}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="sub-nav-heading-{{sublink.categoryCode}}">

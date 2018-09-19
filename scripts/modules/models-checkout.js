@@ -850,8 +850,8 @@
                 });
                 var orderDiscounts = order.get('orderDiscounts');
                 var shippingDiscounts = order.get('shippingDiscounts');
-                if((orderDiscounts && orderDiscounts.length > 0 && typeof checkOrderDiscount[0]!=="undefined") || (discountarray && discountarray.length) || (shippingDiscounts && shippingDiscounts.length > 0 && typeof checkShippingDiscount[0]!=="undefined")) {  
-                    return discountsArray; 
+                if((orderDiscounts && orderDiscounts.length > 0 && typeof checkOrderDiscount[0]!=="undefined") || ((unqcoupon && unqcoupon.length)) || (shippingDiscounts && shippingDiscounts.length > 0 && typeof checkShippingDiscount[0]!=="undefined")) {  
+                    return discountsArray;  
                 } 
             },
             acceptsMarketing: function () {
