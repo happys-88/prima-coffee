@@ -26,6 +26,11 @@
                     "fieldLabel": "Session Timeout Interval in Secs."
                 },
                 {
+                    "fieldLabel": "Default Store Image",
+                    "xtype": "mz-input-text",
+                    "name": "defaultStoreImage"
+                },
+                {
                     "xtype": "mz-input-text",
                     "name": "categoryEntityName",
                     "fieldLabel": "Category Entity Name"   

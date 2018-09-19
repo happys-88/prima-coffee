@@ -815,44 +815,45 @@
             helpers: ['acceptsMarketing', 'savedPaymentMethods', 'availableStoreCredits', 'applyingCredit', 'maxCreditAmountToApply',
             'activeStoreCredits', 'nonStoreCreditTotal', 'activePayments', 'hasSavedCardPayment', 'availableDigitalCredits', 'digitalCreditPaymentTotal', 'isAnonymousShopper', 'visaCheckoutFlowComplete','isExternalCheckoutFlowComplete', 'checkoutFlow','couponDetails'],
           couponDetails: function() {
-              var order = this.getOrder();
-              var discountsArray = [];
-              var couponCodes= order.get("couponCodes");
-              var dataitems=_.pluck(order.get('items'), 'productDiscounts');
-              var coupon= _.pluck(_.flatten(dataitems),'couponCode');
-              var impact=_.pluck(_.flatten(dataitems),'impact');
-              var unqimpact=[];
-              var impactsum=0;
-              var unqcoupon=_.uniq(coupon);
-               for(var i=0;i<unqcoupon.length; i++){
-                 impactsum=0;
-                 for(var j=0;j<coupon.length; j++){
-                    if(unqcoupon[i]==coupon[j]){
-                      impactsum=impactsum+impact[j];
+                var order = this.getOrder();
+                var checkOrderDiscount = _.pluck(order.get('orderDiscounts'), 'couponCode'); 
+                var checkShippingDiscount = _.pluck(_.pluck(_.flatten(order.get('shippingDiscounts')), 'discount'),'couponCode');     
+                var discountsArray = []; 
+                var couponCodes= order.get("couponCodes"); 
+                var dataitems=_.pluck(order.get('items'), 'productDiscounts');
+                var coupon= _.pluck(_.flatten(dataitems),'couponCode');
+                var impact=_.pluck(_.flatten(dataitems),'impact');
+                var unqimpact=[];
+                var impactsum=0;
+                var unqcoupon=_.uniq(coupon);
+                for(var i=0;i<unqcoupon.length; i++){
+                    impactsum=0;
+                    for(var j=0;j<coupon.length; j++){
+                        if(unqcoupon[i]==coupon[j]){
+                          impactsum=impactsum+impact[j];
+                        }
                     }
-                 }
-                 unqimpact.push(impactsum);
-               }              
-               var discountarray= _.object(unqcoupon,unqimpact);
-              discountsArray.push({
-                  OrderDiscounts:  order.get('orderDiscounts')
-              });
-              discountsArray.push({
-                  couponCodes:  couponCodes   
-              });
-              discountsArray.push({
-                  itemDiscount:  discountarray
-              });
-              discountsArray.push({
-                  shippingDiscount:  order.get('shippingDiscounts')
-              });
-              var orderDiscounts = order.get('orderDiscounts');
-              var shippingDiscounts = order.get('shippingDiscounts');
-              if((orderDiscounts && orderDiscounts.length > 0) || (discountarray && discountarray.length) || (shippingDiscounts && shippingDiscounts.length > 0)) {
-
-                return discountsArray;
-              }
-          },
+                    unqimpact.push(impactsum);
+                }              
+                var discountarray= _.object(unqcoupon,unqimpact);
+                discountsArray.push({
+                    OrderDiscounts:  order.get('orderDiscounts')
+                });
+                discountsArray.push({
+                    couponCodes:  couponCodes   
+                });
+                discountsArray.push({
+                    itemDiscount:  discountarray
+                });
+                discountsArray.push({
+                    shippingDiscount:  order.get('shippingDiscounts')
+                });
+                var orderDiscounts = order.get('orderDiscounts');
+                var shippingDiscounts = order.get('shippingDiscounts');
+                if((orderDiscounts && orderDiscounts.length > 0 && checkOrderDiscount.length > 0) || (discountarray && discountarray.length) || (shippingDiscounts && shippingDiscounts.length > 0 && checkShippingDiscount.length > 0)) {  
+                    return discountsArray; 
+                }
+            },
             acceptsMarketing: function () {
                 return this.getOrder().get('acceptsMarketing');
             },

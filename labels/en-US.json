@@ -503,7 +503,9 @@
   "paymenOptionsDesc"                      :   "Wire Transfers Checks Too!",
   "copyRight"                              :   "Copy Right",
   "enterEmailAddress"                      :   "Enter Email Address",
+  "enterEmailAddress1"                     :   "Enter Your Email Address",  
   "join"                                   :   "Join",
+  "subscribe"                              :   "Subscribe", 
 
   "quickView"                              :   "Quick View",
   "shopByBrandHeading"                     :   "Shop Brands We Love",
