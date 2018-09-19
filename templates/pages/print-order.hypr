@@ -12,17 +12,17 @@
 	{% block page-header %} {% endblock %} 
 	{% block site-nav %} {% endblock %}
 	{% block mobile-nav %} {% endblock %}
-
-	<div class="mz-logo-header">   
+   
+	<div class="mz-logo-header row">
 		<div class="mz-storebranding pull-left">
 			<a class="mz-logo" href="{{siteContext.siteSubdirectory}}/" title="{{ siteContext.generalSettings.websiteName }}">
-				<img src='{% make_url "cdn" "/cms/files/prima-supply-logo.png" %}' alt="Prima Supply">   
+				<img src='{% make_url "cdn" "/cms/files/logo.png" %}' alt="Prima coffee">
 			</a>
 		</div>
-		<div class="phone-no pull-right"> 
-	        <a href="tel:+(888)810-5043">(888) 810-5043</a>      
-	    </div>	 		
-	</div>    
+		<div class="phone-no pull-right">
+			<a href="tel:+(888)810-5043">(888) 810-5043</a>
+		</div>
+	</div>
 
 	<div id="print-order"></div>
 
