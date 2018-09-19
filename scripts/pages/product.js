@@ -574,7 +574,7 @@
         console.log("Hello");
         $("#blognewsletterEmail").keydown(function(e) {
             if (e.which === 13) {
-                $("#newsletter").trigger("click");
+                $("#blognewsletter").trigger("click");
             }
         });
         $("#blognewsletter").click(function(e){
