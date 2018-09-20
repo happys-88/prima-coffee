@@ -59,7 +59,7 @@
                 </div> 
                 
             {% else %}
-<span class="hidden-xs">Welcome! Please </span><a href="javascript:void(0);" data-toggle="modal" data-target="#loginPopup" class="mz-utilitynav-link">{% comment %}<i class="fa fa-user"></i>{% endcomment %}{{ labels.logIn }} <span class="hidden-xs">or Create Account</span></a>
+<span class="hidden-xs welcome-text">Welcome! Please </span><a href="javascript:void(0);" data-toggle="modal" data-target="#loginPopup" class="mz-utilitynav-link">{% comment %}<i class="fa fa-user"></i>{% endcomment %}{{ labels.logIn }} <span class="hidden-xs">or Create Account</span></a>
             {% endif %}
         </li>
 
