@@ -447,8 +447,7 @@ define([
             this.model.isLoading(true);
             // the rest is done through a regular HTTP POST
         },
-        addCoupon: function(e) {  
-            e.stopImmediatePropagation();
+        addCoupon: function() {  
             var self = this;
             if (!$('#coupon-code').val()) {
                 $('[data-mz-validationmessage-for="couponcode"]').text(Hypr.getLabel('couponCodeRequired'));
