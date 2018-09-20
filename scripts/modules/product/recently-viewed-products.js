@@ -115,7 +115,7 @@ define([
                         }
                        
                         if(orderedProductList.length > 0) {
-                            $(container).removeClass('hide').append('<div class="col-xs-12 recently-view"><h2 class="heading-2"><span></span></h2><ul class="recently-viewed-list"></ul></div><div class="clearfix"></div>');
+                            $(container).removeClass('hide').append('<div class="recently-view"><h2 class="heading-2"><span></span></h2><ul class="recently-viewed-list"></ul></div><div class="clearfix"></div>');
                             $(".recently-view .heading-2").find("span").text(rviHeading);  
                             var recentModel = Backbone.MozuModel.extend(); 
                             var Modelrec = new recentModel();

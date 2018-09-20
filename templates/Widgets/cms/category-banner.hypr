@@ -1,4 +1,4 @@
-<div class="mz-category-banner">
+<div class="mz-category-banner col-xs-12">
 	{% if model.config.categoryBanner %}
 		<img class="img-rounded" src="{% make_url "image" model.config.categoryBanner %}" {% if model.config.categoryBanner.altText %}alt="{{ model.config.categoryBanner.altText }}"{% endif %}>
 	{% endif %}

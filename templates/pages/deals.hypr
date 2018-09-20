@@ -17,3 +17,4 @@
         {% dropzone "buy-bundles" scope="page" %}
     </div>  
 {% endblock body-content %}
+{% block commonbody-content %}{% endblock commonbody-content %}
