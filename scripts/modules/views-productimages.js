@@ -28,7 +28,7 @@
             });
         },
         elevatezoom: function (event) {
-            var zoomConfig = { zoomType: "inner", cursor: "crosshair", zoomWindowFadeIn: 500, zoomWindowFadeOut: 500 };       
+            var zoomConfig = { zoomType: "inner", cursor: "crosshair", zoomWindowFadeIn:600, zoomWindowFadeOut:600 };       
             var zoomImage = $('.mz-productimages-mainimage');
             var elm = $(event.currentTarget);  
             $('.zoomContainer').remove();
@@ -37,7 +37,7 @@
             zoomImage.elevateZoom(zoomConfig);
           },
           elevateZoomAfter: function (src) {
-            var zoomConfig = { zoomType: "inner", cursor: "crosshair", zoomWindowFadeIn: 500, zoomWindowFadeOut: 500 };       
+            var zoomConfig = { zoomType: "inner", cursor: "crosshair", zoomWindowFadeIn:600, zoomWindowFadeOut:600 };       
             var zoomImage = $('.mz-productimages-mainimage');    
             $('.zoomContainer').remove();
             zoomImage.removeData('elevateZoom'); 
