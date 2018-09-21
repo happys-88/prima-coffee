@@ -8,12 +8,7 @@ define([
     'sdk',
     'yotpo'
 ], function($, _, api, Backbone, HyprLiveContext, bxslider, sdk, yotpo) { 
-    var sitecontext = HyprLiveContext.locals.siteContext,
-        cdn = sitecontext.cdnPrefix,
-        siteID = cdn.substring(cdn.lastIndexOf('-') + 1),
-        imagefilepath = cdn + '/cms/' + siteID + '/files',
-        pageContext = require.mozuData('pagecontext'),
-        rviHeading = HyprLiveContext.locals.themeSettings.rviHeading, 
+    var rviHeading = HyprLiveContext.locals.themeSettings.rviHeading, 
         rviEnable = HyprLiveContext.locals.themeSettings.rviEnable,
         rviNumberCookie = parseInt(HyprLiveContext.locals.themeSettings.rviNumberCookie, 10),
         rviExpirationDuration = parseInt(HyprLiveContext.locals.themeSettings.rviExpirationDuration, 10)||1,
@@ -23,19 +18,8 @@ define([
 
         //Product List Item View
         var ProductListItemView = Backbone.MozuView.extend({
-            templateName: 'modules/product/recent/recent-products',
-            initialize: function() {
-                var self = this;
-                self.listenTo(self.model, 'change', self.render);
-            },
-            render: function() {
-                Backbone.MozuView.prototype.render.apply(this);
-                return this;
-            }
+            templateName: 'modules/product/recent/recent-products'
         });
-
-        var Model = Backbone.MozuModel.extend();
-
         function getProductCodeFromUrl() {
             return require.mozuData('pagecontext').productCode||null;
         }
@@ -62,7 +46,7 @@ define([
                 if(cookieValue[i].last + rviDuration > (new Date()).getTime() && cookieValue[i].pCode != require.mozuData('pagecontext').productCode) {
                     products.push(cookieValue[i].pCode);
                 }
-            }
+            } 
             return products; 
         }
 

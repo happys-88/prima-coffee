@@ -1,7 +1,11 @@
 <li class="mz-productlist-item-slider" data-mz-product="{{model.variationProductCode|default(model.productCode)}}">      
     <div class="mz-product-image">
-        <a href="{% make_url "product" model.productCode %}" data-mz-productimage-thumb="{{ model.sequence }}">            
-            <img src="{{ model.content.productImages[0].imageUrl }}" {% if model.altText %}alt="{{ image.altText }}"{% endif %} />
+        <a href="{% make_url 'product' model.productCode %}" data-mz-productimage-thumb="{{ model.sequence }}">   
+            {% if model.content.productImages.length > 0 %}  
+                <img src="{{ model.content.productImages|first.imageUrl }}" {% if model.altText %}alt="{{ image.altText }}"{% endif %} />
+            {% else %}
+                <span class="noimage-placeholder"><span class="noimage-text">{{ labels.productImagePlaceholder }}</span></span>
+            {% endif %}
         </a> 
     </div>
     
