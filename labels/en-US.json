@@ -545,6 +545,7 @@
   "oversizedShippingCharge"                :   "Oversized Shipping Charge",
   "estimatedTax"                           :   "Estimated Tax",
   "estimatedShipping"                      :   "Estimated Shipping",
+  "estimatedTotal"                         :   "Estimated Total",
   "estimateYourTaxShipping"                :   "Estimate your tax and shipping",
   "merchandiseSubtotal"                    :   "Merchandise Subtotal",
   "zipCode"                                :   "Enter ZipCode", 
