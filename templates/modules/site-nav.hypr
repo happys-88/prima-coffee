@@ -5,11 +5,29 @@
           data-mz-contextify-val='is-current'>
           
           {% partial_cache %}
-
           {% for link in navigation.tree %} 
             {% if not link.isHidden and not link.isEmpty and forloop.counter0 <= themeSettings.maxTopLevelNavItems %}    
             <li class="mz-sitenav-item {% if link.name=='Home' %}home-link hidden{% endif %}"> 
-                <a class="mz-sitenav-link main-link" {% if link.openInNewWindow %}target='_blank'{% endif %} href="{{link.url}}"> 
+                <a class="mz-sitenav-link main-link" {% if link.openInNewWindow %}target='_blank'{% endif %} href="{{link.url}}">
+
+                  {% if link.name=='Brew' %} 
+                      <span class="icomoon-icon chemex-icon"></span>
+                   {% endif %} 
+                  {% if link.name=='Grind' %} 
+                    <span class="icomoon-icon grinder-icon"></span> 
+                  {% endif %}
+                  {% if link.name=='Merch' %} 
+                    <span class="icomoon-icon server-icon"></span> 
+                  {% endif %}
+                  {% if link.name=='Serve' %} 
+                    <span class="icomoon-icon tamper-icon"></span></span> 
+                  {% endif %}
+                  {% if link.name=='Brands' %}
+                     <span class="glyphicon glyphicon-book" aria-hidden="true"></span> 
+                  {% endif %}
+                  {% if link.name=='Learn' %} 
+                     <span class="glyphicon glyphicon-tags" aria-hidden="true"></span> 
+                  {% endif %}
                   <span class="mz-sitenav-link-iiner"> 
                     {{link.name|replace("_", " ")|replace(themeSettings.columnBreaker, "")|safe}}
                     <!-- <span class="seperator"></span><span class="top-arrow"></span>   -->
