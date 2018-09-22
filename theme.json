@@ -10,7 +10,7 @@
     "allowProduction": true,
     "baseTheme": "https://github.com/happys-88/prima-coffee",
     "baseThemeVersion": {
-      "commit": "56948fa1fd6078fa0dd2ba87c3c86c0043d2d07a"
+      "commit": "afbe68e79d47f2cb0ca1e529414c99b0fd38bc8d"
     },
     "baseThemeChannel": "stable"
   },
@@ -651,7 +651,7 @@
     "showProductDetailShortDesc": true,
     "showProductDetailUPC": true,
     "textColor": "#444444",
-    "categoryEntityName": "categoryAttributes@ng",
+    "categoryEntityName": "categoryattributes@prima",
     "columnBreaker": "~",
     "liftGatePrice": 59,
     "snapengaeWidgetId": "d93fa82a-6087-44f8-bd79-3df50a1c3130",
