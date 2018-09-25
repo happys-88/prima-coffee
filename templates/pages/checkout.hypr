@@ -24,11 +24,11 @@
     <div class="mz-logo-header row">      
         <div class="mz-storebranding pull-left">
             <a class="mz-logo" href="{{siteContext.siteSubdirectory}}/" title="{{ siteContext.generalSettings.websiteName }}">
-                <img src='{% make_url "cdn" "/cms/files/logo.png" %}' alt="Prima coffee">   
+                <img src='{% make_url "cdn" "/cms/files/prima-coffee-checkout-logo.png" %}' alt="Prima coffee">   
             </a>
         </div>
         <div class="phone-no pull-right"> 
-            <a href="tel:+(888)810-5043">(888) 810-5043</a>   
+            <a href="tel:+(888)810-5043">(888) 810-5043</a>    
         </div>          
     </div>  
    
