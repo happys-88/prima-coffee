@@ -240,7 +240,7 @@
       "customEditor": "productContent@mozu"
     },
     {
-      "entityType": "webpage",
+      "entityType": "category", 
       "id": "Brands",
       "template": "brand-gateway",
       "title": "Brand Gateway",
