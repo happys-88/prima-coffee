@@ -49,6 +49,7 @@
                             {% with item.product.variationProductCode|default(item.product.productCode) as prodCode %}
 
                                 {% with labels.tbybProductCode|string_format(prodCode, item.id) as tbybItem %}
+                                    {% with  model.tbybInfo.requireOrderModel|findwhere("prodMatch",tbybItem) as selectedModel %}                                    
                                     {% for property in item.product.properties %}
                                         {% if property.name == 'Free Liftgate' %}
                                             {% for v in property.values %}
@@ -59,6 +60,7 @@
                                                 {% endif %}
                                             {% endfor %}
                                         {% endif %}
+                                            {% if selectedTbybItemVal %}
                                         {% if property.name == 'Try Before You Buy' %}
                                             {% for v in property.values %}
                                                 {% if v.stringValue == true or v.value == true %}
@@ -71,8 +73,10 @@
                                                 {% endif %}
                                             {% endfor %}
                                         {% endif %}
+                                            {% endif %}
                                     {% endfor %}
                                 {% endwith %}
+                            {% endwith %}
                             {% endwith %}
 
                         </div>
