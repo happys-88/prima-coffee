@@ -598,7 +598,7 @@
   //Checkout
   "signInCheckout"                         :   "sign in & checkout",
   "signInCheckoutMsg"                      :   "Welcome Back! Sign in for quickest checkout.",
-  "newToPrimaSupply"                       :   "new to prima supply?",
+  "newToPrimaSupply"                       :   "new to prima coffee?", 
   "newToPrimaSupplyMsg"                    :   "You can start an account with us after your order.",
   "needLightGate"                          :   "Need lightgate delivery?",
   "needLightGateMsg1"                      :   "Add Lift Gate Delivery",
