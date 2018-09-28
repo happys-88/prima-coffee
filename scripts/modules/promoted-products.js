@@ -2,9 +2,14 @@
 	define(['modules/jquery-mozu', 
 	'underscore', 
 	'modules/backbone-mozu',
-    'yotpo'],
-	function ($, _, Backbone, yotpo) {
-	var url = "https://api.yotpo.com/v1/widget/4X91rXasdFWFBX4Rnh5WEr4NnvMwpFpjxzNFLubD/products/promoted_products";
+    'yotpo',
+    'hyprlivecontext'],
+	function ($, _, Backbone, yotpo, HyprLiveContext) {
+
+	var yotpoApiKey = HyprLiveContext.locals.themeSettings.yotpoApiKey;
+    var bottomline = HyprLiveContext.locals.themeSettings.bottomline;
+    var yotpoBaseUrl = HyprLiveContext.locals.themeSettings.yotpoBaseUrl; 
+    var url = ""+yotpoBaseUrl+"/"+yotpoApiKey+"/products/promoted_products";
 		var slider;
 		$.get(url, function(data, status){ 
 		_.defer( function() {	
