@@ -571,7 +571,6 @@
     $(document).ready(function () {
         $('#indexreviews').hide();  
         $('#disqus-comments-noscript').hide(); 
-        console.log("Hello");
         $("#blognewsletterEmail").keydown(function(e) {
             if (e.which === 13) {
                 $("#blognewsletter").trigger("click");

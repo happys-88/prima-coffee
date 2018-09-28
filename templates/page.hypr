@@ -177,7 +177,7 @@
             </div>  {% endcomment %}
           
 
-            <div class="mz-sticky-header">
+            <div class="mz-sticky-header" {% if pageContext.isEditMode == "true" %}style="position:relative;" {% endif %}> 
                 <div class="container"> 
                     {% block utility-nav %}
                         {% include "modules/page-header/utility-nav" %} 

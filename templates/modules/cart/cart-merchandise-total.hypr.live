@@ -10,7 +10,9 @@
     {% endif %}
   {% endfor %}  
 </div>
+{% comment %}
 <div class="mz-discount-row mz-oversized-shipping">
   <span class="mz-left-col">{{ labels.oversizedShippingCharge }}:</span>
   <span class="mz-right-col">$X.XX</span>  
 </div>
+{% endcomment %}

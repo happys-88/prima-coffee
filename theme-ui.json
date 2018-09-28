@@ -111,6 +111,11 @@
                     "xtype": "mz-input-number",
                     "name": "allProductsCategoryId",
                     "fieldLabel": "Enter CategoryId which is having all products"
+                },
+                {
+                    "xtype": "mz-input-number",
+                    "name": "productTypeId", 
+                    "fieldLabel": "Enter productTypeId of Content (LC Products)" 
                 }   
             ]
         },

@@ -1,7 +1,7 @@
 
 {% if model.properties.page_type_definition=="customer-service" or pageContext.cmsContext.template.path=="track-my-order" or pageContext.cmsContext.template.path=="contact-us" %}     
-    <h3 class="mz-l-stack-sectiontitle">Customer Service</h3> 
-    <nav class="mz-scrollnav"> 
+    <h3 class="mz-l-stack-sectiontitle">Customer Service</h3>
+    <nav class="mz-scrollnav">  
         <ul class="mz-scrollnav-list nav"> 
             <li class="mz-scrollnav-item {% if pageContext.metaTitle=="Track My Order" %}active {% endif %}">
                 <a class="mz-scrollnav-link" href="/track-my-order">{{ labels.trackMyOrder }}</a>
@@ -9,7 +9,7 @@
             <li class="mz-scrollnav-item {% if pageContext.metaTitle=="Shipping Info" %}active {% endif %}">
                 <a class="mz-scrollnav-link" href="/shipping-info">{{ labels.shippingInfo }}</a>
             </li>
-            <li class="mz-scrollnav-item {% if pageContext.metaTitle=="Returns & Exchanges" %}active {% endif %}"> 
+            <li class="mz-scrollnav-item {% if pageContext.metaTitle=="Returns & Exchange" %}active {% endif %}">   
                 <a class="mz-scrollnav-link" href="/returns-exchange">{{ labels.returnAndExchange }}</a>
             </li>
             <li class="mz-scrollnav-item {% if pageContext.metaTitle=="Price Match Request" %}active {% endif %}">
@@ -33,7 +33,7 @@
                 <a class="mz-scrollnav-link" href="/why-buy-with-us">Why Buy With Us</a>
             </li>
             <li class="mz-scrollnav-item {% if pageContext.metaTitle=="" %}active {% endif %}">
-                <a class="mz-scrollnav-link" href="/c/424">Learning Center</a>
+                <a class="mz-scrollnav-link" href="/learn">Learning Center</a> 
             </li>
             <li class="mz-scrollnav-item {% if pageContext.metaTitle=="Careers" %}active {% endif %}">
                 <a class="mz-scrollnav-link" href="/careers">Careers</a>

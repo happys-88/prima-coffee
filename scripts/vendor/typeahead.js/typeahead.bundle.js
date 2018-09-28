@@ -1519,11 +1519,11 @@
                 this.isActivated = true;
                 this.dropdown.open();
             },
-            // _onBlurred: function onBlurred() {
-            //     this.isActivated = false;
-            //     this.dropdown.empty();
-            //     this.dropdown.close(); 
-            // },
+            _onBlurred: function onBlurred() {
+                this.isActivated = false;
+                this.dropdown.empty();
+                this.dropdown.close(); 
+            }, 
             _onEnterKeyed: function onEnterKeyed(type, $e) {
                 var cursorDatum, topSuggestionDatum;
                 cursorDatum = this.dropdown.getDatumForCursor();

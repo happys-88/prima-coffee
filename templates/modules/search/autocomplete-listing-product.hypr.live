@@ -7,8 +7,10 @@
 				{% with model.content.productImages|first as image %}
 					{% if image.imageUrl %}
 						<img class="mz-itemlisting-thumb-img" src="{% make_url "image" image with max=80 as_parameters %}" {% if image.altText %}alt="{{ image.altText }}"{% endif %} />
-					{% endif %}
-				{% endwith %}
+					{% else %}
+		          		<span class="noimage-placeholder"><span class="noimage-text">{{ labels.productImagePlaceholder }}</span></span> 
+		        	{% endif %}	
+				{% endwith %} 
 			</div>
 		{% endblock %}
 		{% block item-details %}

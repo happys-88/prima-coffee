@@ -293,8 +293,7 @@ define([
 		});
 
 		$(document).on('click','#submitted-resale-certificate', function(){
-			alert("Hello 11");
-			$(".mz-certificate-upload").toggle();
+			$(".mz-certificate-upload").toggle(); 
 		});
 
 		// Featured Products Slider in blog detail

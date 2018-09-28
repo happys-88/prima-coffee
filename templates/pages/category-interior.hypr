@@ -12,6 +12,6 @@
 {% endif %}
 
 
-{% partial_cache model.categoryId pageContext.Sorting model.content pageContext.Pagination pageContext.query.sortBy %}
+{% partial_cache model.categoryId pageContext.Sorting model.content pageContext.Pagination pageContext.query.sortBy pageContext.user.isAnonymous %}
 	{% include_products "modules/product/faceted-products" with  includeFacets=themeSettings.showCategoryFacets   and pageWithUrl=true and sortWithUrl=true and pageSize=themeSettings.defaultPageSize as_parameter  %}
 {% endpartial_cache %}
