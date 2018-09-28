@@ -209,6 +209,27 @@
 									}
 								}
 							}
+							.icomoon-icon {
+							    margin-right: 0;
+							    width: 20px;
+							    display: inline-block;
+							}
+							.nav-icon {
+								&.glyphicon {
+									position: static;
+									width: 20px;
+									&.glyphicon-tags {
+										&:before {
+										    content: "\e042";
+										}
+									}
+									&.glyphicon-book {
+										&:before {
+										    content: "\e043";
+										}
+									}
+								}
+							}
 						}
 					}
 				}
@@ -216,6 +237,15 @@
 					float: left;
 					width: 100%;
 					background: @mobileNavSubMenuBg;
+					.panel {
+						.panel-heading {
+							.panel-title {
+								a {
+								    padding: 11px 37px;
+								}
+							}
+						}
+					}
 					&.in {
 						.panel {
 							background: @mobileNavSubMenuBg;
@@ -244,7 +274,8 @@
 					.mz-sitenav-link {
 						display: block;
 						height: auto !important;
-						padding: 11px 15px;
+						padding: 11px 47px;
+    					font-size: 14px;
 					}
 				}
 			}

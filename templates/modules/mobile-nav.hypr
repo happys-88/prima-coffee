@@ -32,20 +32,20 @@
                       {% if link.name=='Grind' %}
                       <span class="icomoon-icon grinder-icon"></span>
                       {% endif %}
-                      {% if link.name=='Merch' %}
+                      {% if link.name=='Prep' %}
                       <span class="icomoon-icon tamper-icon"></span></span>
                       {% endif %}
                       {% if link.name=='Serve' %}
                       <span class="icomoon-icon server-icon"></span>
                       {% endif %}
                       {% if link.name=='Brands' %}
-                      <span class="glyphicon glyphicon-book"></span>
+                      <span class="nav-icon glyphicon glyphicon-tags"></span>
                       {% endif %}
                       {% if link.name=='Learn' %}
-                      <span class="glyphicon glyphicon-tags"></span>
+                      <span class="nav-icon glyphicon glyphicon-book"></span>
                       {% endif %}
                       {% if link.name=='deals' %}
-                      <span class="glyphicon glyphicon-usd"></span>
+                      <span class="nav-icon glyphicon glyphicon-usd"></span>
                       {% endif %}
                       {{link.name|replace(themeSettings.columnBreaker, ""|replace("_", " ")|safe}}
                       {% if link.items %} 

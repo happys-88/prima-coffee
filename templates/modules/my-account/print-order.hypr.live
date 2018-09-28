@@ -152,8 +152,10 @@
 		                <span class="mz-ordersummary-totalvalue">{{ model.dutyAmount|currency }}</span>
 		            </div>
 		        {% endif %} 
-				<div class="mz-order-total"><strong>Total:<span>{{ model.total|currency }}</span></strong></div>  
-				<div><strong>{{ labels.youSaved }}:<span>{{ model.discountTotal|currency }}</span></strong></div>   
+				<div class="mz-order-total"><strong>Total:<span>{{ model.total|currency }}</span></strong></div>
+				{% if model.discountTotal > 0 %} 
+					<div><strong>{{ labels.youSaved }}:<span>{{ model.discountTotal|currency }}</span></strong></div>
+				{% endif %} 
 			</div>
 		</div>
 		<div class="col-xs-12">
