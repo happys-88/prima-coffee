@@ -186,10 +186,12 @@
                 <span class="mz-ordersummary-totalvalue">{{ model.billingInfo.nonStoreCreditTotal|currency }}</span>
             </div>
         {% endif %}
-        <div class="mz-ordersummary-saved">
-            <span class="mz-ordersummary-totalname">{{ labels.youSaved }}:</span> 
-            <span class="mz-ordersummary-totalvalue">{{ model.discountTotal|currency }}</span> 
-        </div>
+        {% if model.discountTotal > 0 %}
+            <div class="mz-ordersummary-saved">
+                <span class="mz-ordersummary-totalname">{{ labels.youSaved }}:</span> 
+                <span class="mz-ordersummary-totalvalue">{{ model.discountTotal|currency }}</span> 
+            </div>
+        {% endif %}
     </div>
 </div>
 

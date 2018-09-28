@@ -21,7 +21,9 @@
   <span class="mz-left-col">{{ labels.estimatedTotal }}:</span> 
   <span class="mz-right-col">{{ model.discountedTotal|add(model.taxTotal)|add(model.shippingTotal)|currency }}</span>
 </div>
-<div class="mz-discount-row you-saved">  
-  <span class="mz-left-col"><strong>{{ labels.youSaved }}:</strong></span>  
-  <span class="mz-right-col">{{ model.discountTotal|currency }}</span>     
-</div>
+{% if model.discountTotal > 0 %}
+  <div class="mz-discount-row you-saved">  
+    <span class="mz-left-col"><strong>{{ labels.youSaved }}:</strong></span>  
+    <span class="mz-right-col">{{ model.discountTotal|currency }}</span>     
+  </div>
+{% endif %}
