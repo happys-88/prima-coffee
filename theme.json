@@ -10,7 +10,7 @@
     "allowProduction": true,
     "baseTheme": "https://github.com/happys-88/prima-coffee",
     "baseThemeVersion": {
-      "commit": "56948fa1fd6078fa0dd2ba87c3c86c0043d2d07a"
+      "commit": "c3a26176c98443a62d393a5e7a4a542fc0efb111"
     },
     "baseThemeChannel": "stable"
   },
@@ -915,7 +915,7 @@
     "rviHeading": "Recently Viewed",
     "rviNumberCookie": 10,
     "rviExpirationDuration": 21,
-    "yotpoApiKey": "4X91rXasdFWFBX4Rnh5WEr4NnvMwpFpjxzNFLubD",
+    "yotpoApiKey": "OlkNvoLh5f5XgW1NdooEsafbEGVnWuH8oYr90j13",
     "yotpoBaseUrl": "https://api.yotpo.com/v1/widget",
     "yotpoBottomlineBaseUrl": "https://api.yotpo.com/products",
     "yotpoQuestionBaseUrl": "https://api.yotpo.com/products",
