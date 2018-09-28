@@ -16,17 +16,17 @@
                   {% if link.name=='Grind' %} 
                     <span class="icomoon-icon grinder-icon"></span> 
                   {% endif %}
-                  {% if link.name=='Merch' %} 
+                  {% if link.name=='Prep' %} 
                     <span class="icomoon-icon tamper-icon"></span></span>
                   {% endif %}
                   {% if link.name=='Serve' %} 
                     <span class="icomoon-icon server-icon"></span>  
                   {% endif %}
                   {% if link.name=='Brands' %}
-                     <span class="glyphicon glyphicon-book" aria-hidden="true"></span> 
+                      <span class="glyphicon glyphicon-tags" aria-hidden="true"></span>
                   {% endif %}
                   {% if link.name=='Learn' %} 
-                     <span class="glyphicon glyphicon-tags" aria-hidden="true"></span> 
+                    <span class="glyphicon glyphicon-book" aria-hidden="true"></span> 
                   {% endif %}
                   {% if link.name=='deals' %} 
                     <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>

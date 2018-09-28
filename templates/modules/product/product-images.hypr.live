@@ -1,9 +1,7 @@
 {% if model.content.productImages %}
 	<div class="hidden-xs">
 		<figure class="mz-productimages-main clearfix" id="mz-image-zoom">
-			<div class="col-md-10 col-md-offset-1 text-center">
-				 <img itemprop="image" class="mz-productimages-mainimage" data-mz-productimage-main src="{% make_url "image" model.mainImage with max=themeSettings.productImagesContainerWidth as_parameters %}" {% if model.mainImage.altText %}alt="{{ model.mainImage.altText }}"{% endif %}  data-zoom-image="{% make_url "image" model.mainImage with max=themeSettings.productImagesZoomContainerWidth as_parameters %}" />
-			 </div>
+			<img itemprop="image" class="mz-productimages-mainimage" data-mz-productimage-main src="{% make_url "image" model.mainImage with max=themeSettings.productImagesContainerWidth as_parameters %}" {% if model.mainImage.altText %}alt="{{ model.mainImage.altText }}"{% endif %}  data-zoom-image="{% make_url "image" model.mainImage with max=themeSettings.productImagesZoomContainerWidth as_parameters %}" />
 		</figure>
 		{% if model.mainImage.sequence == 1 %}
 			{% if model.color == true %}
