@@ -45,7 +45,7 @@ define(['modules/api',
                             //     $("#priceRequestError").html(errorMessage);
                             //     $("#priceRequestError").show(); 
                             // } else 
-                            if(response[1] !== 'two') {
+                            if(response[0] !== 'two') {
                                 console.log("Error : "+response[1]);
                                 errorMessage  = labels.contactUsError;
                                 if ($("#priceRequestError").hasClass("success")) {

@@ -59,10 +59,8 @@ define(['modules/api',
                                 $("#commerceialFormError").addClass("success");
                                
                                 $("#commerceialFormError").html(errorMessage);
-                                $('#commercialForm').each(function(){
-                                    this.reset();
-                                    self.model.clear();
-                                });
+                                $('[name="commercialForm"')[0].reset();
+                                self.model.clear();
                                 $("#commerceialFormError").show();    
                             }
                         }
