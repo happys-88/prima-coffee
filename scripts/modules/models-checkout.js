@@ -1752,6 +1752,7 @@
             },
             markComplete: function () {
                 this.stepStatus('complete');
+                this.parent.get('tbybInfo').stepStatus('complete');
                 this.isLoading(false);
                 var order = this.getOrder();
                 _.defer(function() { 

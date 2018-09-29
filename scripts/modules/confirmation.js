@@ -70,6 +70,7 @@ require(["modules/jquery-mozu", "underscore", 'modules/api', "hyprlive", "module
                     if(deals.replace(/,/g, '') === '') {
                         var msg = Hypr.getLabel('pleaseSubscribe');
                         $(".mz-look-email").text(msg);
+                        $(".mz-look-email").addClass("mz-validationmessage");
                         $(".mz-look-email").show().delay(5000).fadeOut();
                     } else {
                         api.request("POST", "/mailchimp", {'accountId':email, 'deals':deals}).then(function (response){
