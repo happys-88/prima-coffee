@@ -684,5 +684,6 @@
   "contactUsError"                       : "Some problem occured saving the data. Please submit the form again.",
   "mailError"                            : "The details are saved but you might not receive the mail due to some server error, Thanks",
   "addonSelectMsg"                        : "Press ctrl to select multiple addons",
-  "newArrivals"                           : "New Arrivals" 
+  "newArrivals"                           : "New Arrivals", 
+  "pleaseSubscribe"                      : "Please select a checkbox"
 }

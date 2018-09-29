@@ -1,6 +1,6 @@
 ﻿<div class="mz-ordersummary">  
     <div class="mz-ordersummary-product-lists">
-        {% with model.attributes|findwhere("fullyQualifiedName", "tenant~trybeforebuy") as selectedTbybItem %}
+        {% with model.attributes|findwhere("fullyQualifiedName", "tenant~trybeforeyoubuy") as selectedTbybItem %}
             {% with model.attributes|findwhere("fullyQualifiedName", "tenant~lift-gate") as liftGate %}
                 {% set liftGateMsgShow=liftGate.values %}
                 {% set selectedTbybItemVal=selectedTbybItem.values %}
@@ -60,20 +60,20 @@
                                                 {% endif %}
                                             {% endfor %}
                                         {% endif %}
-                                            {% if selectedTbybItemVal %}
-                                        {% if property.name == 'Try Before You Buy' %}
-                                            {% for v in property.values %}
-                                                {% if v.stringValue == true or v.value == true %}
+                                        {% if selectedTbybItemVal %}
+                                            {% if property.name == 'Try Before You Buy' %}
+                                                {% for v in property.values %}
+                                                    {% if v.stringValue == true or v.value == true %}
 
-                                                        {% if selectedTbybItemVal == selectedModel.selCode %}
-                                                        <div class="tbyb-msg" id="tbyb_{{ item.product.variationProductCode|default(item.product.productCode) }}_{{item.id}}">
-                                                            {{ labels.tbybMsg }}
-                                                        </div>
+                                                            {% if selectedTbybItemVal == selectedModel.selCode %}
+                                                            <div class="tbyb-msg" id="tbyb_{{ item.product.variationProductCode|default(item.product.productCode) }}_{{item.id}}">
+                                                                {{ labels.tbybMsg }}
+                                                            </div>
+                                                        {% endif %}
                                                     {% endif %}
-                                                {% endif %}
-                                            {% endfor %}
-                                        {% endif %}
+                                                {% endfor %}
                                             {% endif %}
+                                        {% endif %}
                                     {% endfor %}
                                 {% endwith %}
                             {% endwith %}

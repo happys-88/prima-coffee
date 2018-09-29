@@ -518,7 +518,7 @@
                     
                    for(var propindextwo in properties){
                         var propertytwo = properties[propindextwo];
-                        if(propertytwo.name === 'Try Before You Buy' && propertytwo.values.length > 0 && propertytwo.values[0].value === true ){
+                        if(propertytwo.attributeFQN === 'tenant~try-before-you_buy' && propertytwo.values.length > 0 && propertytwo.values[0].value === true ){
                             hasTybyItem = true;
                             this.set('tbybProduct',true);
                             tbybProducts[j] = item;
@@ -542,7 +542,7 @@
                     
                     for(var propindex in properties){
                         var propertytwo = properties[propindex];
-                        if(propertytwo.name === 'Try Before You Buy' && propertytwo.values.length > 0 && propertytwo.values[0].value === true ){
+                        if(propertytwo.attributeFQN === 'tenant~try-before-you_buy' && propertytwo.values.length > 0 && propertytwo.values[0].value === true ){
                             var itemOptions = item.product.options;
                             var optionsVals = '';
                             var optionsCodes = '';
@@ -621,7 +621,7 @@
                     var updateAttrs = [];
                     storefrontOrderAttributes.forEach(function(attr){
                         var attrVal;
-                        if(attr.attributeFQN === 'tenant~trybeforebuy'){
+                        if(attr.attributeFQN === 'tenant~trybeforeyoubuy'){
                             attrVal = "NONE";
                             updateAttrs.push({
                                 'fullyQualifiedName': attr.attributeFQN,
@@ -646,7 +646,7 @@
                     var updateAttrs = [];
                     storefrontOrderAttributes.forEach(function(attr){
                         var attrVal;
-                        if(attr.attributeFQN === 'tenant~trybeforebuy'){
+                        if(attr.attributeFQN === 'tenant~trybeforeyoubuy'){
                             attrVal = prodCode;
                             updateAttrs.push({
                                 'fullyQualifiedName': attr.attributeFQN,
@@ -667,7 +667,7 @@
                 var selectedTbybExists = false;
                 var code = 'NONE';
                 _.each(attribs, function(obj){
-                  if(obj.fullyQualifiedName === 'tenant~trybeforebuy') {
+                  if(obj.fullyQualifiedName === 'tenant~trybeforeyoubuy') {
                     // Check if the TBYB attribute code is present in the line items or not
                     for(var prodindex in tbybProducts ){
                         var itemVal = tbybProducts[prodindex].product.productCode;
@@ -676,7 +676,7 @@
                         var item = tbybProducts[prodindex];
                         var properties = item.product.properties; 
                         var property = _.filter(properties, 
-                        function(attr) { return attr.name === 'Try Before You Buy' && attr.values.length > 0 && attr.values[0].value === true ; });
+                        function(attr) { return attr.attributeFQN === 'tenant~try-before-you_buy' && attr.values.length > 0 && attr.values[0].value === true ; });
 
                         var optionsCodes = '';
                         if(property.length > 0) {
@@ -723,7 +723,7 @@
                 var attribs = order.get('attributes');
                 var isSelected = false;
                 _.each(attribs, function(obj){
-                  if(obj.fullyQualifiedName === 'tenant~trybeforebuy') {
+                  if(obj.fullyQualifiedName === 'tenant~trybeforeyoubuy') {
                     isSelected  = true;
                   }  
                 });
@@ -755,7 +755,7 @@
                     var updateAttrs = [];
                     storefrontOrderAttributes.forEach(function(attr){
                         var attrVal;
-                        if(attr.attributeFQN === 'tenant~trybeforebuy'){
+                        if(attr.attributeFQN === 'tenant~trybeforeyoubuy'){
                             attrVal = code;
                             updateAttrs.push({
                                 'fullyQualifiedName': attr.attributeFQN,
@@ -2326,7 +2326,7 @@
                 } else {
                     freightShipmentVal = 'false';
                 }
-                var tbybVal = this.get('tenant~trybeforebuy');
+                var tbybVal = this.get('tenant~trybeforeyoubuy');
                 var storefrontOrderAttributes = require.mozuData('pagecontext').storefrontOrderAttributes;
                 if(storefrontOrderAttributes && storefrontOrderAttributes.length > 0) {
                     var updateAttrs = [];
@@ -2336,11 +2336,11 @@
                             attrVal = liftGateVal;                            
                         } else if(attr.attributeFQN === 'tenant~freight-shipment'){
                             attrVal = freightShipmentVal;
-                        } else if(attr.attributeFQN === 'tenant~trybeforebuy') {
+                        } else if(attr.attributeFQN === 'tenant~trybeforeyoubuy') {
                                 var attribs = order.get('attributes');
                                 var code = '';
                                 _.each(attribs, function(obj){
-                                  if(obj.fullyQualifiedName === 'tenant~trybeforebuy') {
+                                  if(obj.fullyQualifiedName === 'tenant~trybeforeyoubuy') {
                                     code  = obj.values[0];
                                   }  
                                 });

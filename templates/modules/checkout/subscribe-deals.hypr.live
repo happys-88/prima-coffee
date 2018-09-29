@@ -14,8 +14,7 @@
         <button type="button" class="mz-button" data-mz-action="subscribeDeals">{{ labels.save }}</button>
     </div>
     <div class="mz-look-email">
-        <span>{{ labels.saved }}</span>
-        <p>{{ labels.savedMsg }}</p>
+        
     </div>
 </form>
 
