@@ -61,11 +61,22 @@
         padding: 0;
         margin: 7px 0 0;
         li {
-            margin: 8px 0;
+            margin: 3px 0;
         }
         a {
             text-decoration: none;
-             //color: #ff7a00;
+        }
+        &.brand  {
+            li {
+                position: relative;
+                margin: 3px 0;
+                padding-left: 18px;
+                .mz-facetingform-value {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                }
+            }
         }
         &.color {
             li {
@@ -127,9 +138,8 @@
     .mz-facetingform-valuelabel {
         display: inline-block;
          color: #ff7a00;
-         font-weight: 600;
+         font-weight: 500;
     }
-
     .mz-facetingform-facet-hierarchy {
         .mz-facetingform-facet-hierarchy {
             li {
