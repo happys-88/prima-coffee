@@ -61,11 +61,22 @@
         padding: 0;
         margin: 7px 0 0;
         li {
-            margin: 8px 0;
+            margin: 3px 0;
         }
         a {
             text-decoration: none;
-             //color: #ff7a00;
+        }
+        &.brand  {
+            li {
+                position: relative;
+                margin: 3px 0;
+                padding-left: 18px;
+                .mz-facetingform-value {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                }
+            }
         }
         &.color {
             li {
@@ -103,6 +114,7 @@
                 width: 24%;
                 height: 43px;
                 margin: 0 1.33% 1.33% 0;
+                overflow: hidden;
                 text-align: center;
                 &:nth-child(4n+4) {
                     margin-right: 0;
@@ -112,7 +124,7 @@
                 }
                 .mz-facetingform-valuelabel {
                     color: #8f97a3;
-                    font-size: 14px;
+                    font-size: 10px;
                     margin-bottom: 0;
                     width: 100%;
                 }
@@ -127,9 +139,8 @@
     .mz-facetingform-valuelabel {
         display: inline-block;
          color: #ff7a00;
-         font-weight: 600;
+         font-weight: 500;
     }
-
     .mz-facetingform-facet-hierarchy {
         .mz-facetingform-facet-hierarchy {
             li {
