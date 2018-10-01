@@ -94,6 +94,10 @@ define(['modules/api',
             'name': {
                 required: true,
                 msg: Hypr.getLabel("fieldEmpty")
+            },
+            'comment': {
+                required: true,
+                msg: Hypr.getLabel("fieldEmpty")
             }
         };
         var Model = Backbone.MozuModel.extend({
