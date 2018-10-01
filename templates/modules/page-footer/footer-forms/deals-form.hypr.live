@@ -3,14 +3,17 @@
             {% include "modules/common/message-bar" with model=model.messages %}
             <div class="mz-deal-form">
                 <h4 class="text-center" id="blog_subscribe">Don't want to miss out on our deals? Get them right in your inbox!</h4>
-                <form name="dealsForm" method="" id="dealsForm" action="" class="clearfix">
+                <form name="subscribeEmailForm" method="" id="subscribeEmailForm" class="clearfix" onsubmit="return false;">
                     <div class="form-group col-xs-12 col-sm-6 col-md-4 col-md-offset-2">
-                        <input type="text" placeholder="enter your email address" name="email" type="email" data-mz-value="email" class="form-control">
+                        <input type="text" placeholder="enter your email address" name="email" type="email" id="subscribeEmail" class="form-control">
                         <span class="mz-validationmessage" data-mz-validationmessage-for="email"></span>
                     </div>
                     <span id="dealsFormError"></span>
                     <div class="form-group col-sm-6 col-md-4 col-xs-12">
-                        <button class="mz-button" type="button" data-mz-action="submitRequest">Send me deals</button>
+                        <button class="mz-button" type="button" id="subscribeEmailButton">Send me deals</button>
+                    </div>
+                    <div class="input-group">   
+                        <span id="errorMsg" hidden="true"></span>
                     </div>
                 </form>
             </div>
