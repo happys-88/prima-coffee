@@ -100,6 +100,7 @@ define([
    			if(pattern.test(email)) {
    				$("#errorMsg").hide();
    				$("#subscribeEmail").val('');
+   				$("#errorMsg").addClass("success");
    				$("#errorMsg").html(errorMessage);
    				$("#errorMsg").show().delay(2000).fadeOut();
    				api.request("POST", "/mailchimp", {'accountId':email, deals:"PCNewsLetter"}).then(function (response){
