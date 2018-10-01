@@ -492,6 +492,11 @@
                     "fieldLabel": "Disqus API Key", 
                     "xtype": "mz-input-text",
                     "name": "disqusKey"
+                },
+                {
+                    "fieldLabel": "SendGrid Key", 
+                    "xtype": "mz-input-text",
+                    "name": "sendGridKey"  
                 },{
                     "fieldLabel": "MailChimp Deals", 
                     "xtype": "mz-input-textarea",
