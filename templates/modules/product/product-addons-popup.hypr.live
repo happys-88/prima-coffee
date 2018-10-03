@@ -66,7 +66,7 @@
                     </div>
                 </div>
             {% else %}
-                    <input id="qty-field" class="mz-productdetail-qty text-center mz-carttable-qty-field" type="text" data-mz-cart-item="{{ model.productTypeId }}" value="1" readonly="readonly"data-mz-value='quantity' title="Quantity" style="display: none;">
+                    <input id="qty-field" class="mz-productdetail-qty text-center mz-carttable-qty-field" type="text" data-mz-cart-item="{{ model.productTypeId }}" value="1" data-mz-value='quantity' title="Quantity" style="display: none;">
                     <div class="mz-productdetail-conversion-buttons">
                         <button class="addtocart mz-productdetail-addtocart mz-button mz-button-medium" disabled= "{% if not model.isPurchasable %} disabled {% endif %}" data-mz-productcode="{{model.variationProductCode|default(model.productCode) }}" style="display: none;">
                         </button>

@@ -89,7 +89,7 @@
             <div class="qty-block">  
               <span class="qty-counter" data-mz-qty="plus" role="button"><i class="mz-icon arrow-up" aria-hidden="true"></i></span> 
               <span class="qty-counter" data-mz-qty="minus" role="button"><i class="mz-icon arrow-down"  aria-hidden="true"></i></span>    
-              <input  class="text-center mz-carttable-qty-field" readonly type="text" min="1" value="{{ item.quantity }}" data-mz-cart-item="{{ item.id }}" data-mz-value='quantity' title="Quantity">
+              <input  class="text-center mz-carttable-qty-field" type="text" min="1" value="{{ item.quantity }}" data-mz-cart-item="{{ item.id }}" data-mz-value='quantity' title="Quantity">
             </div>
             <a class="mz-carttable-item-remove" href="javascript:void(0);" data-mz-action="removeItem" data-mz-cart-item="{{ item.id }}"><i class="fa fa-times"></i>{{ labels.remove }}</a>    
           </div>
