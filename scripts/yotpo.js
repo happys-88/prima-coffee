@@ -185,7 +185,7 @@ function ($, _, Hypr, Backbone, HyprLiveContext, api, blockUiLoader) {
         
         $(listClassName).each(function(index, value) {       
             var currentProduct = $(this);
-            var productCode = $(this).data("mz-product"); 
+            var productCode = $(this).data("mz-product");   
             var ratingURL = ""+yotpoBottomlineBaseUrl+"/"+yotpoApiKey+"/"+productCode+"/"+bottomline+"";
             YotPo.yotpoReviewMethod(ratingURL, currentProduct);  
         }); 

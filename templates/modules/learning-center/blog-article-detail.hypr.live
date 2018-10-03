@@ -83,3 +83,7 @@ var disqus_config = function () {
 
 {% endblock disqus-section %}
 
+{% block newsletter %}
+    {% include "modules/product/subscribe-newsletter" %}
+{% endblock newsletter %}
+

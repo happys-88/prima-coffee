@@ -1,6 +1,6 @@
 ﻿<div class="mz-ordersummary">  
     <div class="mz-ordersummary-product-lists">
-        {% with model.attributes|findwhere("fullyQualifiedName", "tenant~trybeforebuy") as selectedTbybItem %}
+        {% with model.attributes|findwhere("fullyQualifiedName", "tenant~trybeforeyoubuy") as selectedTbybItem %}
             {% with model.attributes|findwhere("fullyQualifiedName", "tenant~lift-gate") as liftGate %}
                 {% set liftGateMsgShow=liftGate.values %}
                 {% set selectedTbybItemVal=selectedTbybItem.values %}
@@ -49,6 +49,7 @@
                             {% with item.product.variationProductCode|default(item.product.productCode) as prodCode %}
 
                                 {% with labels.tbybProductCode|string_format(prodCode, item.id) as tbybItem %}
+                                    {% with  model.tbybInfo.requireOrderModel|findwhere("prodMatch",tbybItem) as selectedModel %}                                    
                                     {% for property in item.product.properties %}
                                         {% if property.name == 'Free Liftgate' %}
                                             {% for v in property.values %}
@@ -59,19 +60,23 @@
                                                 {% endif %}
                                             {% endfor %}
                                         {% endif %}
-                                        {% if property.name == 'Try Before You Buy' %}
-                                            {% for v in property.values %}
-                                                {% if v.stringValue == true or v.value == true %}
-                                                    {% if selectedTbybItemVal == tbybItem %}
-                                                        <div class="tbyb-msg" id="tbyb_{{ item.product.variationProductCode|default(item.product.productCode) }}_{{item.id}}">
-                                                            {{ labels.tbybMsg }}
-                                                        </div>
+                                        {% if selectedTbybItemVal %}
+                                            {% if property.name == 'Try Before You Buy' %}
+                                                {% for v in property.values %}
+                                                    {% if v.stringValue == true or v.value == true %}
+
+                                                            {% if selectedTbybItemVal == selectedModel.selCode %}
+                                                            <div class="tbyb-msg" id="tbyb_{{ item.product.variationProductCode|default(item.product.productCode) }}_{{item.id}}">
+                                                                {{ labels.tbybMsg }}
+                                                            </div>
+                                                        {% endif %}
                                                     {% endif %}
-                                                {% endif %}
-                                            {% endfor %}
+                                                {% endfor %}
+                                            {% endif %}
                                         {% endif %}
                                     {% endfor %}
                                 {% endwith %}
+                            {% endwith %}
                             {% endwith %}
 
                         </div>
@@ -185,10 +190,12 @@
                 <span class="mz-ordersummary-totalvalue">{{ model.billingInfo.nonStoreCreditTotal|currency }}</span>
             </div>
         {% endif %}
-        <div class="mz-ordersummary-saved">
-            <span class="mz-ordersummary-totalname">{{ labels.youSaved }}:</span> 
-            <span class="mz-ordersummary-totalvalue">{{ model.discountTotal|currency }}</span> 
-        </div>
+        {% if model.discountTotal > 0 %}
+            <div class="mz-ordersummary-saved">
+                <span class="mz-ordersummary-totalname">{{ labels.youSaved }}:</span> 
+                <span class="mz-ordersummary-totalvalue">{{ model.discountTotal|currency }}</span> 
+            </div>
+        {% endif %}
     </div>
 </div>
 

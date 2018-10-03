@@ -26,6 +26,11 @@
                     "fieldLabel": "Session Timeout Interval in Secs."
                 },
                 {
+                    "fieldLabel": "Default Store Image",
+                    "xtype": "mz-input-text",
+                    "name": "defaultStoreImage"
+                },
+                {
                     "xtype": "mz-input-text",
                     "name": "categoryEntityName",
                     "fieldLabel": "Category Entity Name"   
@@ -106,6 +111,11 @@
                     "xtype": "mz-input-number",
                     "name": "allProductsCategoryId",
                     "fieldLabel": "Enter CategoryId which is having all products"
+                },
+                {
+                    "xtype": "mz-input-number",
+                    "name": "productTypeId", 
+                    "fieldLabel": "Enter productTypeId of Content (LC Products)" 
                 }   
             ]
         },
@@ -482,6 +492,11 @@
                     "fieldLabel": "Disqus API Key", 
                     "xtype": "mz-input-text",
                     "name": "disqusKey"
+                },
+                {
+                    "fieldLabel": "SendGrid Key", 
+                    "xtype": "mz-input-text",
+                    "name": "sendGridKey"  
                 },{
                     "fieldLabel": "MailChimp Deals", 
                     "xtype": "mz-input-textarea",

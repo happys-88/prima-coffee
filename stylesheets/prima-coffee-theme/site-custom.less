@@ -62,7 +62,7 @@ body {
 	  	}
 	  
 	  	.container {
-			max-width: 1170px;
+			max-width: 1410px;
 		  	.mz-utilitynav {
 				  .mz-utilitynav-list {
 					float: right;
@@ -178,7 +178,15 @@ body {
 .mz-sitenav{
 	.mz-sitenav-item{
 		.mz-sitenav-link {
-				padding: 23px 20px;
+			.mz-sitenav-link-iiner{
+				text-transform: capitalize;
+			 }
+				.glyphicon{
+					font-size: 14px;
+					color: #fff;
+					margin-right: 2px;
+				}
+				padding: 23px 8px;
                 height: auto!important;
 		    }
 		&:hover{
@@ -550,6 +558,9 @@ body {
 			a {
 				color: #ff7a00;
 				text-decoration: none;
+				&.btn{
+					color: #fff;  
+				}
 			}
 			h2 {    
 				margin: 14px 0;
@@ -686,6 +697,9 @@ li {
 			text-align: center;
 			height: 40px;
 			overflow: hidden;
+			&:visited{
+				color:#ff7a00;
+			}
 		}
 		.mz-price-stack {
 			text-align: center;

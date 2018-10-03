@@ -64,6 +64,7 @@ define(['modules/api',
                                 $("#submitMsg").html(errorMessage);
                                 $('#contactUsForm').each(function(){
                                     this.reset();
+                                    self.model.clear();
                                 });
                                 $("#submitMsg").show().delay(4000).fadeOut();    
                             }

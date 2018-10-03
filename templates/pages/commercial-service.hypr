@@ -8,10 +8,12 @@
 {% require_script "pages/commercial-services" %}
     <div class="mz-l-container">
         <div class="row">
-            <div class="col-xs-12 col-sm-12 pull-right">
-                <div class="mz-customer-service-section">
-                    
-                    {% dropzone "about-us-dropzone1" scope="page" %} 
+            <div class="mz-customer-service-section">
+                
+                <div class="col-xs-12 col-sm-12">
+                    <div class="row">
+                        {% dropzone "about-us-dropzone1" scope="page" %}
+                    </div>
                     {% dropzone "about-us-dropzone2" scope="page" %}
                     {% dropzone "about-us-dropzone3" scope="page" %}
                     {% dropzone "about-us-dropzone4" scope="page" %} 
@@ -20,6 +22,7 @@
                     <div id="commercialForm">
                         {% include "modules/page-footer/footer-forms/commercial-service-form" %}
                     </div>
+
                     <div class="mz-social-sharing clearfix container">
                         <div class="addthis_toolbox" addthis:url='{{ pageContext.url }}{{ model.url }}'>
                             <a class="addthis_button_facebook_like"></a>

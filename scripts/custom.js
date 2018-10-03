@@ -100,6 +100,7 @@ define([
    			if(pattern.test(email)) {
    				$("#errorMsg").hide();
    				$("#subscribeEmail").val('');
+   				$("#errorMsg").addClass("success");
    				$("#errorMsg").html(errorMessage);
    				$("#errorMsg").show().delay(2000).fadeOut();
    				api.request("POST", "/mailchimp", {'accountId':email, deals:"PCNewsLetter"}).then(function (response){
@@ -293,8 +294,7 @@ define([
 		});
 
 		$(document).on('click','#submitted-resale-certificate', function(){
-			alert("Hello 11");
-			$(".mz-certificate-upload").toggle();
+			$(".mz-certificate-upload").toggle(); 
 		});
 
 		// Featured Products Slider in blog detail

@@ -8,12 +8,15 @@
         {% dropzone "deals-home-image" scope="page" %}
         
         {% dropzone "deals-items" scope="page" %}
-         <div id="dealForm">
-             {% include "modules/page-footer/footer-forms/deals-form" %}
-         </div>
-        
-        {% dropzone "deals-footer-image" scope="page" %}   
-        
-        {% dropzone "buy-bundles" scope="page" %}
+        <div class="col-xs-12">
+	        <div id="dealForm">
+	            {% include "modules/page-footer/footer-forms/deals-form" %}
+	        </div>
+	        
+	        {% dropzone "deals-footer-image" scope="page" %}   
+	        
+	        {% dropzone "buy-bundles" scope="page" %}
+	    </div>
     </div>  
 {% endblock body-content %}
+{% block commonbody-content %}{% endblock commonbody-content %}

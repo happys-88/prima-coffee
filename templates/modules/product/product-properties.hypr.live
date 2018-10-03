@@ -1,4 +1,4 @@
-<div class="col-md-12 mz-productdetail-properties mz-l-stack-section">
+<div class="col-xs-12  mz-productdetail-properties mz-l-stack-section">
     <h2 class="heading-2"><span>Details</span></h2>
     <div class="mz-productdetail-shortdesc">{{ model.content.productFullDescription|safe }}</div>  
     {% if model.properties and themeSettings.showProductDetailProperties %}

@@ -240,7 +240,7 @@
       "customEditor": "productContent@mozu"
     },
     {
-      "entityType": "webpage",
+      "entityType": "category",
       "id": "Brands",
       "template": "brand-gateway",
       "title": "Brand Gateway",
@@ -591,7 +591,7 @@
       }
     ],
     "defaultPageSize": 32,
-    "defaultSort": "createDate asc",
+    "defaultSort": "createDate desc",
     "enablePartialCaching": true,
     "loadGoogleFonts": [
       "Source Sans Pro"
@@ -651,7 +651,7 @@
     "showProductDetailShortDesc": true,
     "showProductDetailUPC": true,
     "textColor": "#444444",
-    "categoryEntityName": "categoryAttributes@ng",
+    "categoryEntityName": "categoryattributes@prima",
     "columnBreaker": "~",
     "liftGatePrice": 59,
     "snapengaeWidgetId": "d93fa82a-6087-44f8-bd79-3df50a1c3130",
@@ -915,7 +915,7 @@
     "rviHeading": "Recently Viewed",
     "rviNumberCookie": 10,
     "rviExpirationDuration": 21,
-    "yotpoApiKey": "4X91rXasdFWFBX4Rnh5WEr4NnvMwpFpjxzNFLubD",
+    "yotpoApiKey": "OlkNvoLh5f5XgW1NdooEsafbEGVnWuH8oYr90j13",
     "yotpoBaseUrl": "https://api.yotpo.com/v1/widget",
     "yotpoBottomlineBaseUrl": "https://api.yotpo.com/products",
     "yotpoQuestionBaseUrl": "https://api.yotpo.com/products",
@@ -927,10 +927,11 @@
     "instagramFollowUsLink": "https://www.instagram.com/primacoffee/",
     "addThisPubId": "ra-51b87b7c4a40d8c0",
     "showProductTooltip": true,
-    "noHasstleReturnTooltip": "",
-    "tryBeforeYouBuyTooltip": "",
-    "priceMatchGuaranteeTooltip": "",
-    "freeShippingTooltip": ""
+    "noHasstleReturnTooltip": "PS: \"This item may be returned under our <a href=\"/returns-exchange\">Prima Returns Policy</a>. Please note there will be a 25% restocking fee on all returned merchandise.\" and PC: \"Returning this product is simple under our <a href=\"/returns-exchange\">No-Hassle Return Policy</a>.\"",
+    "tryBeforeYouBuyTooltip": "\"Wonder if this product is exactly what you need? Try it out risk free for 14 days from the date of shipment! If you don't like it we will pay to ship it back.<br /><a href=\"/try-before-you-buy\">Read about it here</a>.\"",
+    "priceMatchGuaranteeTooltip": "Found a better price somewhere else? We'll beat it! Call us at <b>[store phone]</b> or <a href=\"/price-match-request\">fill out our price match form</a>.\"",
+    "freeShippingTooltip": "\"Lucky you! This product qualifies for free shipping (contiguous United States only).<br /><a href=\"/prima-advantage\">Click here to see why</a>.\" (PC uses /prima-edge as the link currently.)",
+    "defaultStoreImage": "/cms/files/prima-supply-store-image.jpg"
   },
   "layoutWidgets": [
     {

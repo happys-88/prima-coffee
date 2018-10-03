@@ -571,6 +571,28 @@
     $(document).ready(function () {
         $('#indexreviews').hide();  
         $('#disqus-comments-noscript').hide(); 
+        $("#blognewsletterEmail").keydown(function(e) {
+            if (e.which === 13) {
+                $("#blognewsletter").trigger("click");
+            }
+        });
+        $("#blognewsletter").click(function(e){
+            var email = $("#blognewsletterEmail").val();
+            var pattern =/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            if(pattern.test(email)) {
+                $("#blogerrorEmail").hide();
+                $("#blognewsletterEmail").val('');
+                $("#blogthanksMsg").show().delay(2000).fadeOut();
+                api.request("POST", "/mailchimp", {'accountId':email, deals:"PCNewsLetter"}).then(function (response){
+                   console.log("Success");    
+                }, function(err) {
+                    console.log("Error : "+JSON.stringify(err));
+                });
+            } else {
+                $("#blogerrorEmail").show();
+            }
+        });
+
         var product = ProductModels.Product.fromCurrent();
         var currentProductCode = product.attributes.productCode;
         if(typeof product.attributes.categories !== "undefined"){

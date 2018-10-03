@@ -503,7 +503,9 @@
   "paymenOptionsDesc"                      :   "Wire Transfers Checks Too!",
   "copyRight"                              :   "Copy Right",
   "enterEmailAddress"                      :   "Enter Email Address",
+  "enterEmailAddress1"                     :   "Enter Your Email Address",  
   "join"                                   :   "Join",
+  "subscribe"                              :   "Subscribe", 
 
   "quickView"                              :   "Quick View",
   "shopByBrandHeading"                     :   "Shop Brands We Love",
@@ -543,6 +545,7 @@
   "oversizedShippingCharge"                :   "Oversized Shipping Charge",
   "estimatedTax"                           :   "Estimated Tax",
   "estimatedShipping"                      :   "Estimated Shipping",
+  "estimatedTotal"                         :   "Estimated Total",
   "estimateYourTaxShipping"                :   "Estimate your tax and shipping",
   "merchandiseSubtotal"                    :   "Merchandise Subtotal",
   "zipCode"                                :   "Enter ZipCode", 
@@ -595,7 +598,7 @@
   //Checkout
   "signInCheckout"                         :   "sign in & checkout",
   "signInCheckoutMsg"                      :   "Welcome Back! Sign in for quickest checkout.",
-  "newToPrimaSupply"                       :   "new to prima supply?",
+  "newToPrimaSupply"                       :   "new to prima coffee?", 
   "newToPrimaSupplyMsg"                    :   "You can start an account with us after your order.",
   "needLightGate"                          :   "Need lightgate delivery?",
   "needLightGateMsg1"                      :   "Add Lift Gate Delivery",
@@ -681,5 +684,6 @@
   "contactUsError"                       : "Some problem occured saving the data. Please submit the form again.",
   "mailError"                            : "The details are saved but you might not receive the mail due to some server error, Thanks",
   "addonSelectMsg"                        : "Press ctrl to select multiple addons",
-  "newArrivals"                           : "New Arrivals" 
+  "newArrivals"                           : "New Arrivals", 
+  "pleaseSubscribe"                      : "Please select a checkbox"
 }

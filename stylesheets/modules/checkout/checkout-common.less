@@ -508,6 +508,12 @@
 					        position: absolute;
 					        top: 0;
 					        left: 0;
+					        img {
+								display: block;
+								width: auto;
+								max-height: 100%;
+								margin: 0 auto;
+					        }
 					    }
 					    .mz-order-product-info {
 					        padding-left: 120px;
@@ -592,8 +598,20 @@
 		}
 		.mz-checkout-payment{
 			padding-bottom: 15px;
+			&.mz-l-stack-section{
+				color: @textColor; 
+			}
+			.mz-l-stack-section{
+				color: @textColor; 
+			}
 			.mz-checkout-current-payment {
 				clear: initial;
+			}
+			.checkout-coupon-codes{
+				margin-top: 5px;  
+				p{
+					margin: 2px 0;   
+				}
 			}
 		}
 		

@@ -67,15 +67,24 @@ require(["modules/jquery-mozu", "underscore", 'modules/api', "hyprlive", "module
                 deals = $('#PCBlogs').is(':checked') ? deals+","+$('#PCBlogs').val() : deals+","+'';
                 var email = $('#emailId').val();
                 if(deals !== '') {
-                    api.request("POST", "/mailchimp", {'accountId':email, 'deals':deals}).then(function (response){
-                       console.log("Success"); 
-                       $('#PCDeals').attr('checked', false);
-                       $('#PCNewsLetter').attr('checked', false);
-                       $('#PCBlogs').attr('checked', false);
-                       $(".mz-look-email").show().delay(5000).fadeOut();  
-                    }, function(err) {
-                        console.log("Error : "+JSON.stringify(err));
-                    });
+                    if(deals.replace(/,/g, '') === '') {
+                        var msg = Hypr.getLabel('pleaseSubscribe');
+                        $(".mz-look-email").text(msg);
+                        $(".mz-look-email").addClass("mz-validationmessage");
+                        $(".mz-look-email").show().delay(5000).fadeOut();
+                    } else {
+                        api.request("POST", "/mailchimp", {'accountId':email, 'deals':deals}).then(function (response){
+                           console.log("Success"); 
+                           $('#PCDeals').attr('checked', false);
+                           $('#PCNewsLetter').attr('checked', false);
+                           $('#PCBlogs').attr('checked', false);
+                           var htm = "<span>"+Hypr.getLabel('saved')+"</span><p>"+Hypr.getLabel('savedMsg')+"</p>";
+                           $(".mz-look-email").html(htm);
+                           $(".mz-look-email").show().delay(5000).fadeOut();  
+                        }, function(err) {
+                            console.log("Error : "+JSON.stringify(err));
+                        });
+                    }
                 }
             }
         });

@@ -182,6 +182,7 @@
 				height: 30px;
 				.fa{
 					color: #1a3155;
+					display: block;
 				}
 			}
 
@@ -323,7 +324,9 @@
 					display: none; 
 				}
 				.mz-productlisting{
-					border: none;
+					 border: 0;
+					 border-radius: 0; 
+					 background: none ;
 					.mz-productlisting-info{
 						display: block;
 					}
@@ -834,6 +837,60 @@
 				}
 			}
 		}
+	}
+	.mz-newsletter{
+		float: left;
+		width: 100%;
+		padding-top: 35px;
+		border-top: 1px solid #e0e0e0;
+		h4{
+			font-size: 24px; 
+			color: @textColor;
+			line-height: 28px;
+			margin: 0 0 5px;  
+		}
+		.form-group{
+			.input-group{
+				float: left;
+				display: block;    
+				.form-control{
+					float: left; 
+					width: 360px;
+					font-size: 16px;
+					color: #313a47; 
+					line-height: 45px;
+					height: 45px;
+					padding: 8px 20px; 
+					border-radius: 0px;
+					border: solid 2px rgba(210, 210, 210, 0.44); 
+					box-shadow: none;
+					&:focus{
+						border-color: #66afe9;  
+					}  
+				}
+				.mz-button{
+					float: left;  
+					background: #313a47;
+					font-size: 18px;
+					line-height: 21px;  
+					text-transform: none;
+					padding: 10px 25px;  
+					margin: 0;
+					border-color: #313a47;
+					font-weight: normal;    
+					&:hover, &:focus{
+						background: #fff;
+						color: #313a47;  
+					}  
+				}
+			}
+		}
+		#blogerrorEmail{
+			color: #b94a48; 
+		}
+		#blogthanksMsg{
+			color: green;  
+		} 
 	} 
 }
 

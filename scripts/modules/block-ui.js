@@ -20,7 +20,7 @@ define([
             });
         }, 
         unblockUi: function() { 
-            $.unblockUI();
+            $.unblockUI(); 
         }
     };
     return blockUiLoader;

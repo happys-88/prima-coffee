@@ -1,0 +1,17 @@
+<div class="mz-newsletter">
+	<h4><strong>Our Blog.</strong>Your Inbox</h4>  
+	<form onsubmit="return false;">
+		<div class="form-group">
+			<div class="input-group">					  	
+				<input type="email" class="form-control" placeholder="{% if pageContext.isMobile %}Email Address {% else %}{{ labels.enterEmailAddress1 }} {% endif %}" id="blognewsletterEmail">   
+				<span class="input-group-btn">
+					<button class="mz-button" id="blognewsletter" type="button" >{{ labels.subscribe }}</button>  
+				</span>
+			</div>
+			<div class="input-group">   
+				<span id="blogerrorEmail" hidden="true">Please enter correct email</span>  
+				<span id="blogthanksMsg" hidden="true">Thanks for Subscribing!!</span>
+			</div>
+		</div>						
+	</form>
+</div>  

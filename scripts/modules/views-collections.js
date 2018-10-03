@@ -16,9 +16,7 @@ define([
 ], function(Backbone, $, _, UrlDispatcher, IntentEmitter, getPartialView, makeClearUrl, blockUiLoader, yotpo, InfiniteScroller, lazyload) {  
    
     //lazy load
-    $("img.lazy").lazyload({
-        placeholder: "https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif"
-    }); 
+    $("img.lazy").lazyload(); 
 
     function factory(conf) {
         var _$body = conf.$body;
@@ -33,9 +31,7 @@ define([
             /*if ($(".view-all.selected").length) {
                 InfiniteScroller.update();
             }*/ 
-            $("img.lazy").lazyload({
-                placeholder: "https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif"
-            });
+            $("img.lazy").lazyload();
             blockUiLoader.unblockUi();
             yotpo.update();
         } 
