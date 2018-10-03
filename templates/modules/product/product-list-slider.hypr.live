@@ -25,12 +25,14 @@
         <div class="mz-price-stack">
             <span class="mz-price {% if model.price.salePrice %} is-crossedout {% endif %}">
                 {% if model.priceRange %}
-                     <span itemprop="minPrice" class="mz-pricestack-price-lower">
-                         {% include "modules/common/price" with model=model.priceRange.lower %}
-                    </span>
-                     <span itemprop="maxPrice" class="mz-pricestack-price-upper">
-                         {% include "modules/common/price" with model=model.priceRange.upper %}
-                     </span>
+                    <div itemprop="priceSpecification" itemscope="" itemtype="http://schema.org/PriceSpecification" class="mz-pricestack mz-pricestack-range">
+                        <span itemprop="minPrice" class="mz-pricestack-price-lower">
+                             {% include "modules/common/price" with model=model.priceRange.lower %}
+                        </span>
+                        <span itemprop="maxPrice" class="mz-pricestack-price-upper">
+                             {% include "modules/common/price" with model=model.priceRange.upper %}
+                        </span>
+                    </div>
                 {% else %}
                     {{ model.price.price|currency }}
                 {% endif %}
