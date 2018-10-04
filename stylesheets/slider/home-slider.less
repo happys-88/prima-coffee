@@ -1,15 +1,11 @@
 #mz-home-slider {
-    .bx-viewport {
-       // min-height: 460px;
-        overflow: hidden;
-    }
     .slider {
         visibility: hidden;
         .mz-slide {
             display: block;
             background-position: center center; 
             background-size: cover;
-            //min-height: 460px;
+            min-height: 580px;
         }
         .mz-slide-details {
             width: 40%;
@@ -30,7 +26,7 @@
                 font-size: 20px;
                 margin: 0 0 @gutter;
             }
-            button {
+            .mz-button {
                 font-size: @fontSizeLarger;
                 color: #fff;
                 background: #d15f2a;
@@ -43,6 +39,7 @@
         }
     }
     .bx-wrapper {
+        padding: 0;
         .bx-controls-direction {
             width: 100%;
             max-width: 1410px;

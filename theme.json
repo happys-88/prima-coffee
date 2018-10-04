@@ -1515,44 +1515,20 @@
             },
             {
               "anchor": "50%",
-              "fieldLabel": "Add Link/Url",
-              "name": "slideLinkOne",
-              "xtype": "mz-input-text"
-            },
-            {
-              "anchor": "50%",
-              "fieldLabel": "Add Image Src desktop",
-              "name": "slideImageOnedes",
-              "xtype": "mz-input-text"
-            },
-            {
-              "anchor": "50%",
-              "fieldLabel": "Add Image Src tablet",
-              "name": "slideImageOnetab",
-              "xtype": "mz-input-text"
-            },
-            {
-              "anchor": "50%",
-              "fieldLabel": "Add Image Src mobile",
-              "name": "slideImageOnemob",
-              "xtype": "mz-input-text"
-            },
-            {
-              "anchor": "50%",
-              "fieldLabel": "Add Image Src tablet potrait mode",
-              "name": "slideImageOnetabpor",
-              "xtype": "mz-input-text"
-            },
-            {
-              "anchor": "50%",
-              "fieldLabel": "Add Image Src mobile potrait mode",
-              "name": "slideImageOnemobpor",
-              "xtype": "mz-input-text"
+              "fieldLabel": "Add Image",
+              "name": "slideImageOne",
+              "xtype": "mz-input-image"
             },
             {
               "anchor": "50%",
               "fieldLabel": "Add Button Ttile",
               "name": "slideButtonOne",
+              "xtype": "mz-input-text"
+            },
+            {
+              "anchor": "50%",
+              "fieldLabel": "Add Link/Url",
+              "name": "slideLinkOne",
               "xtype": "mz-input-text"
             }
           ]
@@ -1575,44 +1551,20 @@
             },
             {
               "anchor": "50%",
-              "fieldLabel": "Add Link/Url",
-              "name": "slideLinkTwo",
-              "xtype": "mz-input-text"
-            },
-            {
-              "anchor": "50%",
-              "fieldLabel": "Add Image Src desktop",
-              "name": "slideImageTwodes",
-              "xtype": "mz-input-text"
-            },
-            {
-              "anchor": "50%",
-              "fieldLabel": "Add Image Src tablet",
-              "name": "slideImageTwotab",
-              "xtype": "mz-input-text"
-            },
-            {
-              "anchor": "50%",
-              "fieldLabel": "Add Image Src mobile",
-              "name": "slideImageTwomob",
-              "xtype": "mz-input-text"
-            },
-            {
-              "anchor": "50%",
-              "fieldLabel": "Add Image Src tablet potrait mode",
-              "name": "slideImageTwotabpor",
-              "xtype": "mz-input-text"
-            },
-            {
-              "anchor": "50%",
-              "fieldLabel": "Add Image Src mobile potrait mode",
-              "name": "slideImageTwomobpor",
-              "xtype": "mz-input-text"
-            },
-            {
-              "anchor": "50%",
               "fieldLabel": "Add Button Ttile",
               "name": "slideButtonTwo",
+              "xtype": "mz-input-text"
+            },
+            {
+              "anchor": "50%",
+              "fieldLabel": "Add Image",
+              "name": "slideImageTwo",
+              "xtype": "mz-input-image"
+            },
+            {
+              "anchor": "50%",
+              "fieldLabel": "Add Link/Url",
+              "name": "slideLinkTwo",
               "xtype": "mz-input-text"
             }
           ]
@@ -1635,44 +1587,20 @@
             },
             {
               "anchor": "50%",
-              "fieldLabel": "Add Link/Url",
-              "name": "slideLinkThree",
-              "xtype": "mz-input-text"
-            },
-            {
-              "anchor": "50%",
-              "fieldLabel": "Add Image Src desktop",
-              "name": "slideImageThreedes",
-              "xtype": "mz-input-text"
-            },
-            {
-              "anchor": "50%",
-              "fieldLabel": "Add Image Src tablet",
-              "name": "slideImageThreetab",
-              "xtype": "mz-input-text"
-            },
-            {
-              "anchor": "50%",
-              "fieldLabel": "Add Image Src mobile",
-              "name": "slideImageThreemob",
-              "xtype": "mz-input-text"
-            },
-            {
-              "anchor": "50%",
-              "fieldLabel": "Add Image Src tablet potrait mode",
-              "name": "slideImageThreetabpor",
-              "xtype": "mz-input-text"
-            },
-            {
-              "anchor": "50%",
-              "fieldLabel": "Add Image Src mobile potrait mode",
-              "name": "slideImageThreemobpor",
-              "xtype": "mz-input-text"
+              "fieldLabel": "Add Image",
+              "name": "slideImageThree",
+              "xtype": "mz-input-image"
             },
             {
               "anchor": "50%",
               "fieldLabel": "Add Button Ttile",
               "name": "slideButtonThree",
+              "xtype": "mz-input-text"
+            },
+            {
+              "anchor": "50%",
+              "fieldLabel": "Add Link/Url",
+              "name": "slideLinkThree",
               "xtype": "mz-input-text"
             }
           ]
