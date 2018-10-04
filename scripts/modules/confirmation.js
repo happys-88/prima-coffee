@@ -104,5 +104,11 @@ require(["modules/jquery-mozu", "underscore", 'modules/api', "hyprlive", "module
             el: $('#confirmationDeals')
         });
         dealsView.render();  
+
+        api.request("POST", "/commonRoute",{"requestFor":"yotpoSendOrder", "orderData":order}).then(function (response){
+            console.log("Success");
+        }, function(err) {
+            console.log("Error : "+JSON.stringify(err));
+        });
     });
 });
