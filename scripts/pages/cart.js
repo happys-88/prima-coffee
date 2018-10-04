@@ -358,7 +358,10 @@ define([
             var $qField = $(e.currentTarget).parent(".qty-block"); 
             var qFieldValue = $qField.find(".mz-carttable-qty-field").val();        
             var _qtyCountObj = $qField.find(".mz-carttable-qty-field");  
-            value = parseInt(qFieldValue, 10);   
+            value = parseInt(qFieldValue, 10);  
+             if (value == 1) {
+                return;
+            } 
             value--;
             var errormsg = this.$('[data-mz-message]'); 
             if(value===0){
