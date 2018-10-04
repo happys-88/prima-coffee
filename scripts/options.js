@@ -147,14 +147,16 @@ define([
                 shippingMessage = availabilityMessage;
             }
             this.model.set('shippingMessage',shippingMessage);
-
-            var prodPrice = this.model.get('price');
-            if (prodPrice.attributes) {
-                var priceType = prodPrice.attributes.priceType;
-                if (priceType == 'MAP') {
-                    this.model.set('mapPrice', prodPrice.attributes.price);
-                }  
+            if(!HyprLiveContext.locals.user.isAuthenticated) {
+                var prodPrice = this.model.get('price');
+                if (prodPrice.attributes) {
+                    var priceType = prodPrice.attributes.priceType;
+                    if (priceType == 'MAP') {
+                        this.model.set('mapPrice', prodPrice.attributes.price);
+                    }  
+                }
             }
+            
             var options = JSON.parse(JSON.stringify(this.model.get('options')));
             var productCodes = [];
             var c = 0;
@@ -590,12 +592,14 @@ define([
                     }
                 }
             });
-            var prodPrice = this.model.get('price');
-            if (prodPrice.attributes) {
-                var priceType = prodPrice.attributes.priceType;
-                if (priceType == 'MAP') {
-                    this.model.set('mapPrice', prodPrice.attributes.price);
-                }  
+            if(!HyprLiveContext.locals.user.isAuthenticated) {
+                var prodPrice = this.model.get('price');
+                if (prodPrice.attributes) {
+                    var priceType = prodPrice.attributes.priceType;
+                    if (priceType == 'MAP') {
+                        this.model.set('mapPrice', prodPrice.attributes.price);
+                    }  
+                }
             }
             var options = JSON.parse(JSON.stringify(this.model.get('options')));
             var productCodes = [];
