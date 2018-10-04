@@ -3,20 +3,14 @@
       <div class="mz-close-nav hidden">                         
         <button data-toggle="collapse" data-target="#mz-mobilenav-container" aria-expanded="false"><span></span></button>  
       </div>
-      {% block utility-nav %} 
-        {% include "modules/page-header/utility-nav" %} 
-      {% endblock utility-nav %}
-      
       {% block search-box %} 
         {% include "modules/page-header/search-box" %} 
       {% endblock search-box %} 
-      
-
       <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
         {% partial_cache %}
           {% for link in navigation.tree %}
             {% if not link.isHidden and not link.isEmpty and forloop.counter0 <= themeSettings.maxTopLevelNavItems %} 
-              <div class="panel">
+              <div class="panel {% if link.name=='Home' %}home-link hidden{% endif %}"> 
                 <div class="panel-heading" role="tab" id="main-nav-heading-{{link.categoryCode}}">
                   <h4 class="panel-title"> 
                     <a role="button" {% if link.openInNewWindow %}target='_blank'{% endif %}
@@ -26,27 +20,29 @@
                         data-toggle="collapse" data-parent="#accordion" data-target="#main-nav-{{link.categoryCode}}" aria-expanded="false" aria-controls="main-nav-{{link.categoryCode}}"
                       {% endif %}
                       {% if not link.items %} href="{{link.url}}" {% endif %}>
+                      
                       {% if link.name=='Brew' %}
-                      <span class="icomoon-icon chemex-icon"></span>
+                        <span class="icomoon-icon chemex-icon"></span> 
                       {% endif %}
                       {% if link.name=='Grind' %}
-                      <span class="icomoon-icon grinder-icon"></span>
+                        <span class="icomoon-icon grinder-icon"></span>
                       {% endif %}
                       {% if link.name=='Prep' %}
-                      <span class="icomoon-icon tamper-icon"></span></span>
+                        <span class="icomoon-icon tamper-icon"></span>
                       {% endif %}
                       {% if link.name=='Serve' %}
-                      <span class="icomoon-icon server-icon"></span>
+                        <span class="icomoon-icon server-icon"></span>
                       {% endif %}
                       {% if link.name=='Brands' %}
-                      <span class="nav-icon glyphicon glyphicon-tags"></span>
+                        <span class="nav-icon glyphicon glyphicon-tags"></span>
                       {% endif %}
                       {% if link.name=='Learn' %}
-                      <span class="nav-icon glyphicon glyphicon-book"></span>
+                        <span class="nav-icon glyphicon glyphicon-book"></span>
                       {% endif %}
                       {% if link.name=='deals' %}
-                      <span class="nav-icon glyphicon glyphicon-usd"></span>
+                        <span class="nav-icon glyphicon glyphicon-usd"></span>
                       {% endif %}
+
                       {{link.name|replace(themeSettings.columnBreaker, ""|replace("_", " ")|safe}}
                       {% if link.items %} 
                         <span class="glyphicon glyphicon-plus-minus" aria-hidden="true"></span>  

@@ -91,7 +91,7 @@ define([
                         for(var i = 0;i<cookieValue.length;i++) {
                             var productAvailable = _.findWhere(productslist.items, {productCode: cookieValue[i].pCode});
 
-                            if (productAvailable) {
+                            if (productAvailable && productAvailable.productType!=="Content") {
                                 orderedProductList.push(productAvailable);
                                 continue;
                             }
