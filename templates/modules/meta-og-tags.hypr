@@ -1,0 +1,69 @@
+<!-- Used by Facebook, Pinterest and Google+ --> 
+{% if model.content.productName %}  
+    <meta property="og:title" content='{% firstof pageContext.metaTitle|replace("'","&rsquo;")|replace('"','&rdquo;')|safe prodModelMeta.content.productName|replace("'","&rsquo;")|replace('"','&rdquo;')|safe %} - {{ siteContext.generalSettings.websiteName }}'>
+{% else %}
+    {% if PageContext.metaTitle %}
+        <meta property="og:title" content='{{ PageContext.metaTitle|replace("'","&rsquo;")|replace('"','&rdquo;')|safe }}'>
+    {% endif %}
+{% endif %} 
+{% if PageContext.MetaDescription %}
+    <meta property="og:description" content='{{ PageContext.MetaDescription|replace("'","&rsquo;")|replace('"','&rdquo;')|safe }}'> 
+{% endif %}
+<meta property="og:url" content="{{ PageContext.url }}">
+<meta property="og:site_name" content="{{ siteContext.generalSettings.websiteName }}"> 
+
+{% if (model|get_product_attribute_value("tenant~og-content-type")) %} 
+    <meta property="og:type" content='{{model|get_product_attribute_value("tenant~og-content-type")}}' />
+{% else %}
+    <meta property="og:type" content="website" /> 
+{% endif %}
+{% if model.mainImage %} 
+    <meta property="og:image" content='{% make_url "image" model.mainImage with maxWidth=themeSettings.ogImageWidth as_parameters %}'>
+{% else %} 
+    <meta property="og:image" content='{% if themeSettings.defaultStoreImage %}{{ themeSettings.defaultStoreImage }}{% endif %}'> 
+{% endif %} 
+{% if (model|get_product_attribute_value("tenant~og-image-url")) %}  
+    <meta property="og:image:url" content='https:{{model|get_product_attribute_value("tenant~og-image-url")}}'>   
+{% endif %}
+{% if (model|get_product_attribute_value("tenant~og-secure-image-url")) %}  
+    <meta property="og:image:secure_url" content='https:{{model|get_product_attribute_value("tenant~og-secure-image-url")}}'>     
+{% endif %} 
+
+<meta property="og:image:width" content="{{themeSettings.ogImageWidth}}" /> 
+<meta property="og:image:height" content="{{themeSettings.ogImageHeight}}" />
+<meta property="og:image:type" content="{{model|get_product_attribute_value("tenant~og-image-type")}}" />  
+
+<!-- Used exclusively by Twitter --> 
+<meta name="twitter:card" content="summary_large_image">      
+<meta name="twitter:site" content="{{ themeSettings.ogSiteNameTwitter }}" />   
+{% if (model|get_product_attribute_value("tenant~creator-s-twitter-account")) %} 
+    <meta name="twitter:creator" content='{{model|get_product_attribute_value("tenant~creator-s-twitter-account")}}' />
+{% endif %} 
+{% if PageContext.metaTitle %} 
+    <meta name="twitter:title" content='{{ PageContext.metaTitle|replace("'","&rsquo;")|replace('"','&rdquo;')|safe }}'>  
+{% endif %}
+{% if PageContext.MetaDescription %}
+    <meta name="twitter:description" content='{{ PageContext.MetaDescription|replace("'","&rsquo;")|replace('"','&rdquo;')|safe }}'> 
+{% endif %}
+
+{% if model.mainImage %} 
+    <meta name="twitter:image" content='{% make_url "image" model.mainImage with maxWidth=themeSettings.ogImageWidth as_parameters %}'>
+{% else %}
+    <meta name="twitter:image" content='{% if themeSettings.defaultStoreImage %}{{ themeSettings.defaultStoreImage }}{% endif %}'> 
+{% endif %} 
+
+{% if (model|get_product_attribute_value("tenant~og-image-url")) %} 
+    <meta name="twitter:image:url" content='https:{{model|get_product_attribute_value("tenant~og-image-url")}}'>   
+{% endif %} 
+
+<!-- OG Tags for videos -->
+<meta name="twitter:player" content="{{model|get_product_attribute_value("tenant~twitter=player")}}" />  
+<meta name="twitter:player:width" content="{{themeSettings.twitterPlayerWidth}}" />
+<meta name="twitter:player:height" content="{{themeSettings.twitterPlayerHeight}}" />   
+<meta property="og:video:url" content="{{model|get_product_attribute_value("tenant~og-video-url")}}" />
+<meta property="og:video:secure_url" content="{{model|get_product_attribute_value("tenant~og-secure-video-url")}}" />   
+<meta property="og:video:width" content="{{themeSettings.ogVideoWidth}}" />    
+<meta property="og:video:height" content="{{themeSettings.ogVideoHeight}}" /> 
+<meta property="og:video:type" content="{{model|get_product_attribute_value("tenant~og-video-type")}}" /> 
+
+

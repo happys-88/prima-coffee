@@ -35,12 +35,11 @@
 <!--<![endif]-->
 {%endblock open-html-tag %}
 
-    {% block head-tag %}
+    {% block head-tag %} 
     <head> 
         {% block meta-tags %}
             <meta charset="utf-8">   
             <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0, user-scalable=no">
-            <meta name="HandheldFriendly" content="true">
             {% if not user.isAnonymous and not user.isAuthenticated and user.email !== "" %}
                 <meta http-equiv="refresh" content="0; url=/logout">
             {% endif %}
@@ -55,84 +54,31 @@
             {% if PageContext.correlationId %}
                 <meta name="correlationId" content="{{ PageContext.correlationId }}">
             {% endif %}
+            {% if PageContext.FeedUrl  %}
+                <link rel="alternate" type="application/rss+xml" title="{{ PageContext.Title }}" href="{{ PageContext.FeedUrl }}" />
+            {% endif %}
+
+            {% if PageContext.CrawlerInfo.CanonicalUrl %} 
+                <link rel="canonical" href="{% if PageContext.CrawlerInfo.CanonicalUrl=="/home" %}{{PageContext.secureHost}} {% else %} {{PageContext.secureHost}}{{PageContext.CrawlerInfo.CanonicalUrl}} {% endif %}">
+            {% endif %}
+
+            {% if PageContext.CrawlerInfo.PreviousUrl  %}
+                <link rel="prev" href="{{PageContext.CrawlerInfo.PreviousUrl}}">
+            {% endif %}
+
+            {% if PageContext.CrawlerInfo.NextUrl  %}
+                <link rel="next" href="{{PageContext.CrawlerInfo.NextUrl}}">
+            {% endif %} 
 
             {% block meta-og-tags %}
                 {% set_var prodModelMeta=model.0.prodModel %}   
-
-                <!-- Used by Facebook, Pinterest and Google+ -->
-                {% if prodModelMeta.content.productName %} 
-                    <meta property="og:title" content='{% firstof pageContext.metaTitle|replace("'","&rsquo;")|replace('"','&rdquo;')|safe prodModelMeta.content.productName|replace("'","&rsquo;")|replace('"','&rdquo;')|safe %} - {{ siteContext.generalSettings.websiteName }}'>
-                {% else %}
-                    {% if PageContext.metaTitle %}
-                        <meta property="og:title" content='{{ PageContext.metaTitle|replace("'","&rsquo;")|replace('"','&rdquo;')|safe }}'>
-                    {% endif %}
-                {% endif %} 
-                {% if PageContext.MetaDescription %}
-                    <meta property="og:description" content='{{ PageContext.MetaDescription|replace("'","&rsquo;")|replace('"','&rdquo;')|safe }}'> 
-                {% endif %}
-                {% if prodModelMeta.mainImage %} 
-                    <meta property="og:image" content='{% make_url "image" prodModelMeta.mainImage with maxWidth=themeSettings.ogImageWidth as_parameters %}'>
-                {% else %}
-                    <meta property="og:image" content='{% if themeSettings.defaultStoreImage %}{{ themeSettings.defaultStoreImage }}{% endif %}'>    
-                {% endif %}
-
-                {% comment %}
-                {% if (prodModelMeta|get_product_attribute_value("tenant~og-image-url")) %} 
-                    <meta property="og:image" content='https:{{prodModelMeta|get_product_attribute_value("tenant~og-image-url")}}'>   
-                {% endif %}
-                {% endcomment %}
-
-                <meta property="og:image:width" content="{{themeSettings.ogImageWidth}}" /> 
-                <meta property="og:image:height" content="{{themeSettings.ogImageHeight}}" />
-                <meta property="og:image:type" content="{{prodModelMeta|get_product_attribute_value('tenant~og-image-type')}}" />  
-                <meta property="og:url" content="{{ PageContext.url }}">
-                <meta property="og:site_name" content="{{ siteContext.generalSettings.websiteName }}"> 
-                <meta property="og:type" content="article">
-                {% comment %}
-                {% if (prodModelMeta|get_product_attribute_value("tenant~og-content-type")) %} 
-                    <meta name="twitter:creator" content='{{prodModelMeta|get_product_attribute_value("tenant~og-content-type")}}' />
-                {% endif %}
-                {% endcomment %}     
-
-                <!-- Used exclusively by Twitter --> 
-                <meta name="twitter:card" content="summary_large_image">      
-                <meta name="twitter:site" content="{{ themeSettings.ogSiteNameTwitter }}" />   
-                {% if (prodModelMeta|get_product_attribute_value("tenant~creator-s-twitter-account")) %} 
-                    <meta name="twitter:creator" content='{{prodModelMeta|get_product_attribute_value("tenant~creator-s-twitter-account")}}' />
-                {% endif %} 
-                {% if PageContext.metaTitle %} 
-                    <meta name="twitter:title" content='{{ PageContext.metaTitle|replace("'","&rsquo;")|replace('"','&rdquo;')|safe }}'>  
-                {% endif %}
-                {% if PageContext.MetaDescription %}
-                    <meta name="twitter:description" content='{{ PageContext.MetaDescription|replace("'","&rsquo;")|replace('"','&rdquo;')|safe }}'> 
-                {% endif %}
-                {% if prodModelMeta.mainImage %} 
-                    <meta name="twitter:image" content='{% make_url "image" prodModelMeta.mainImage with maxWidth=themeSettings.ogImageWidth as_parameters %}'>
-                {% else %}
-                    <meta name="twitter:image" content='{% if themeSettings.defaultStoreImage %}{{ themeSettings.defaultStoreImage }}{% endif %}'>    
-                {% endif %} 
-            {% endblock meta-og-tags %} 
-        {% endblock meta-tags %}
+                {% include "modules/meta-og-tags" with model=prodModelMeta %}  
+            {% endblock meta-og-tags %}  
+        {% endblock meta-tags %}  
 
         <title>
             {% block title-tag-content %}{{ siteContext.generalSettings.websiteName }}{% endblock title-tag-content %}
         </title>
-
-        {% if PageContext.FeedUrl  %}
-            <link rel="alternate" type="application/rss+xml" title="{{ PageContext.Title }}" href="{{ PageContext.FeedUrl }}" />
-        {% endif %}
-
-        {% if PageContext.CrawlerInfo.CanonicalUrl  %}
-            <link rel="canonical" href="{% if PageContext.CrawlerInfo.CanonicalUrl='/home' %}{{PageContext.secureHost}} {% else %} {{PageContext.secureHost}}{{PageContext.CrawlerInfo.CanonicalUrl}} {% endif %}">
-        {% endif %} 
-
-        {% if PageContext.CrawlerInfo.PreviousUrl  %}
-            <link rel="prev" href="{{PageContext.CrawlerInfo.PreviousUrl}}">
-        {% endif %}
-
-        {% if PageContext.CrawlerInfo.NextUrl  %}
-            <link rel="next" href="{{PageContext.CrawlerInfo.NextUrl}}">
-        {% endif %}
 
         {% include "modules/json-required-for-hyprlive" %}
 
@@ -164,19 +110,10 @@
     {% block body-tag %}
 
     {% block open-body-tag %}
-        <body class="{% block body-tag-classes %}{% endblock body-tag-classes %}">
+        <body class="{% block body-tag-classes %}{% endblock body-tag-classes %}"> 
     {% endblock open-body-tag %}
 
         <div id="page-wrapper" class="mz-l-pagewrapper">
-             {% comment %} <div class="container">
-               
-                {% block utility-bar %}
-                    {% include "modules/utility-bar/header" %}
-                {% endblock utility-bar %}
-               
-            </div>  {% endcomment %}
-          
-
             <div class="mz-sticky-header" {% if pageContext.isEditMode == "true" %}style="position:relative;" {% endif %}> 
                 <div class="container"> 
                     {% block utility-nav %}
