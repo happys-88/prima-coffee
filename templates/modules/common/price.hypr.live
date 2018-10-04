@@ -19,8 +19,23 @@
             <span type="hidden" itemprop="price" content="{{ model.price }}" ></span>
             {{model.price|currency}}
         {% else %}
-            <span class="mz-price is-crossedout">{{model.price|currency}}</span>
-            <span class="orange-text">{{ labels.mapPrice }}</span>
+            {% if user.isAnonymous and loginForPrice.values|first|prop("value") === true %}
+                <span class="mz-price is-crossedout">{{model.price|currency}}</span>
+            {% else %}
+                {% if not user.isAnonymous %}
+                    {% if model.catalogSalePrice %}
+                        <span class="mz-price is-crossedout">
+                            {{model.catalogListPrice|currency}}
+                        </span>
+                        <span class="mz-price">{{model.catalogSalePrice|currency}}</span>
+                    {% else %}
+                        <span class="mz-price">{{model.catalogListPrice|currency}}</span>
+                    {% endif %}
+                {% else %}
+                    <span class="mz-price is-crossedout">{{model.price|currency}}</span>
+                    <span class="orange-text">{{ labels.mapPrice }}</span>
+                {% endif %}
+            {% endif %}
         {% endif %} 
      </span>
 {% endif %} 
