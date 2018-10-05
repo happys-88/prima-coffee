@@ -49,7 +49,7 @@
                     
                 </div>
 
-                <div class="mz-blog-content-detail">
+                <div class="mz-blog-content-detail col-sm-8 col-sm-offset-2">
                     {% include "modules/learning-center/blog-article-detail" with model=prodMod disqusData=disqus %}     
                 </div>
             </div>
