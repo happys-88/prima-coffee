@@ -128,7 +128,9 @@
                     return d.couponCode.toLowerCase() === lowerCode;
                 }));
                 me.set('tentativeCoupon', couponExists && couponIsNotApplied ? code : undefined);
-
+                if(!(couponExists && couponIsNotApplied)) {
+                    me.set('codeApplied', true);
+                }
                 me.isLoading(false);
             });
         }
