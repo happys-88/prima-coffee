@@ -323,7 +323,7 @@
                 var liftGateSelected = false;
                 var freightShipmentSelected = false;
                 _.each(order.attributes.attributes, function(attributes) {
-                    if (attributes.fullyQualifiedName === 'tenant~lift-gate') {
+                    if (attributes.fullyQualifiedName === 'tenant~liftgate') {
                         if (attributes.values[0] === 'True') {
                             liftGateSelected = true; 
                         } 
@@ -344,7 +344,7 @@
                 var order = this.getOrder();
                 var liftGateSelected = false;
                 _.each(order.attributes.attributes, function(attributes) {
-                    if (attributes.fullyQualifiedName === 'tenant~lift-gate') {
+                    if (attributes.fullyQualifiedName === 'tenant~liftgate') {
                         if (attributes.values[0] === 'True') {
                             liftGateSelected = true; 
                         } 
@@ -435,7 +435,7 @@
                 }
                 var updateAttrs = [];
                 updateAttrs.push({
-                    'fullyQualifiedName': 'tenant~lift-gate',
+                    'fullyQualifiedName': 'tenant~liftgate',
                     'values': [ liftGateVal ]
                 });
                 if(updateAttrs.length > 0){
@@ -2330,7 +2330,7 @@
                     var updateAttrs = [];
                     storefrontOrderAttributes.forEach(function(attr){
                         var attrVal;
-                        if(attr.attributeFQN === 'tenant~lift-gate'){
+                        if(attr.attributeFQN === 'tenant~liftgate'){
                             attrVal = liftGateVal;                            
                         } else if(attr.attributeFQN === 'tenant~freight-shipment'){
                             attrVal = freightShipmentVal;

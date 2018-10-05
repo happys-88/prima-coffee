@@ -1,7 +1,7 @@
 ﻿<div class="mz-ordersummary">  
     <div class="mz-ordersummary-product-lists">
         {% with model.attributes|findwhere("fullyQualifiedName", "tenant~trybeforeyoubuy") as selectedTbybItem %}
-            {% with model.attributes|findwhere("fullyQualifiedName", "tenant~lift-gate") as liftGate %}
+            {% with model.attributes|findwhere("fullyQualifiedName", "tenant~liftgate") as liftGate %}
                 {% set liftGateMsgShow=liftGate.values %}
                 {% set selectedTbybItemVal=selectedTbybItem.values %}
             {% endwith %}
