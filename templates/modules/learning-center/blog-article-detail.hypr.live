@@ -1,19 +1,21 @@
-{% if model.content.productShortDescription and themeSettings.showProductDetailShortDesc %}
-  <div class="mz-productdetail-shortdesc mz-l-stack-section">
-    <span itemscope="description">{{ model.content.productShortDescription|safe }}</span>  
-  </div>
-{% endif %}
+<div class="mz-blog-centered-content col-sm-8 col-sm-offset-2"> 
+	{% if model.content.productShortDescription and themeSettings.showProductDetailShortDesc %}
+	  <div class="mz-productdetail-shortdesc mz-l-stack-section">
+	    <span itemscope="description">{{ model.content.productShortDescription|safe }}</span>  
+	  </div>
+	{% endif %}
 
-<div class="mz-productdetail-fulldesc mz-l-stack-section">
-  {{ model.content.productFullDescription|safe }} 
+	<div class="mz-productdetail-fulldesc mz-l-stack-section"> 
+	  {{ model.content.productFullDescription|safe }} 
+	</div>	
 </div>
 
-<div class="featured-products">
+<div class="featured-products"> 
   {% dropzone "featured-products" scope="page" %}   
 </div>
 
 <div class="mz-blog-pagination">  
-	<span class="prev-post"><a id="prev-url">{{ labels.previousPage }}</a></span>
+	<span class="prev-post"><a id="prev-url">{{ labels.previousPage }}</a></span>  
 	<span class="seperator">|</span> 
 	<span class="next-post"><a id="next-url">{{ labels.nextPage }}</a><i class="fa fa-angle-right"></i></span>   
 </div>

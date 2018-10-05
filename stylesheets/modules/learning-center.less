@@ -712,8 +712,8 @@
 
 /**** Blog Article Detail ****/
 .mz-blog-content{
-	.container{
-		max-width: 1048px;    
+	.parent-col{
+		padding: 0;  
 	}
 	.mz-blog-title{
 		font-size: 24px;
@@ -723,6 +723,11 @@
 		margin: 15px 0 @gutter;
 		text-align: center;
 	}
+	.mz-blog-mainimage{
+		img{
+			width: 100%;  
+		}
+	} 
 	p{
 		font-size: 18px;
 		line-height: 29px;
@@ -773,8 +778,11 @@
 		}
 		.page-text, .blog_content_template{
 			max-width: 100%; 
-			font-family: 'Lato', sans-serif !important; 
+			font-family: 'Lato', sans-serif !important;
+			margin: 0;  
+			padding: 0; 
 			margin-bottom: @gutter + 5;
+			text-align: inherit; 
 			a{
 				color: @blogLinkColor;  
 			}
@@ -899,6 +907,7 @@
 .mz-blog-pagination{
 	float: right;
 	margin: 15px 0;
+	clear: both; 
 	span{
 		font-size: 14px;  
 		color: #737c8b;

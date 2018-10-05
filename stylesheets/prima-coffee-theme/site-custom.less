@@ -682,8 +682,7 @@ li {
 		border: 1px solid #e2dede;
 		border-radius: 4px;
 		.mz-product-image {
-			//padding: 0 30px;
-			margin-top: 12px;
+			margin-top: 12px; 
 			img {
 				max-width: 140px;
 				max-height: 160px;
@@ -691,19 +690,23 @@ li {
 				margin: 0 auto;
 			}
 		}
-		a.mz-productlisting-title {
-			margin: 0 auto;
-			display: block;
-			text-align: center;
-			height: 40px;
-			overflow: hidden;
-			&:visited{
-				color:#ff7a00;
+		.mz-product-details{ 
+			padding: 10px;
+			.mz-productlisting-title {
+				margin: 0 auto;
+				display: block;
+				text-align: center;
+				height: 40px;
+				overflow: hidden;
+				&:visited{
+					color:#ff7a00;
+				}
 			}
+			.mz-price-stack {
+				text-align: center;
+			} 
 		}
-		.mz-price-stack {
-			text-align: center;
-		}
+		
 	}
 } 
 
