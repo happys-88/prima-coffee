@@ -16,7 +16,7 @@
         {% endwith %} 
           
         <h4><a class="mz-productlisting-title" href="{% make_url "product" model %}">{{model.content.productName}}</a></h4>
-        <span class="post-date">{{ model.createDate|date("M jS, Y" }}</span> 
+        <span class="post-date">{{ model.dateFirstAvailableInCatalog|date("M jS, Y") }}</span>   
         {% for property in model.properties %}   
             {% if property.attributeFQN == "tenant~author" %}
                 {% for propValue in property.values %} 

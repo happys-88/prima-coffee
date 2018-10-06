@@ -38,7 +38,7 @@
                 </div>
 
                 <div class="mz-blog-metadata"> 
-                    <span class="blog-date">{{ prodMod.createDate|date("M jS, Y" }}</span> 
+                    <span class="blog-date">{{ prodMod.dateFirstAvailableInCatalog|date("M jS, Y") }}</span>    
                     {% for property in prodMod.properties %}  
                         {% if property.attributeFQN == "tenant~author" %}
                             {% for propValue in property.values %} 
