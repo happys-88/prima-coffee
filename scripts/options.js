@@ -61,6 +61,7 @@ define([
         additionalEvents: {
             'click .addtocart': 'addToCart',
             "change [data-mz-value='quantity']": "onQuantityChange",
+            "keyup input[data-mz-value='quantity']": "onQuantityChange1",
             "change .mz-productoptions-option": "onOptionChange",
             "click [data-mz-qty-minus]": "quantityMinus",
             "click [data-mz-qty-plus]": "quantityPlus",
@@ -379,6 +380,33 @@ define([
               newQuantity = parseInt($qField.val(), 10);
             if (!isNaN(newQuantity)) {
                 this.model.updateQuantity(newQuantity);
+            }
+        },500),onQuantityChange1: _.debounce(function (e) {
+            var $qField = $(e.currentTarget),
+              newQuantity = parseInt($qField.val(), 10);
+              var Quantity = e.currentTarget.value;
+              var lastValue ='';
+              var reg = /^[A-Za-z]+$/;
+            if (Quantity !== '' &&  (!isNaN(newQuantity) || reg.test(newQuantity))){              
+                if(((e.which >= 48 && e.which <= 57) || (e.which >= 96 && e.which <= 105))&& (newQuantity > 0)) {
+                     this.model.updateQuantity(newQuantity);
+                     localStorage.setItem("currentVal", newQuantity);
+                } else if (newQuantity!== 'NaN'  && (!reg.test(newQuantity))) {
+                    if (newQuantity > 0){
+                       this.model.updateQuantity(newQuantity);
+                     localStorage.setItem("currentVal", newQuantity); 
+                     }else {
+                        lastValue = localStorage.getItem("currentVal");
+                        $('.mz-productdetail-qty').val(lastValue);
+                        this.model.updateQuantity(lastValue);
+                     }
+                }else{
+                     lastValue = localStorage.getItem("currentVal");
+                     $('.mz-productdetail-qty').val(lastValue);
+                     this.model.updateQuantity(lastValue);
+                }
+            }else {
+                $('.mz-productdetail-qty').val('1');
             }
         },500),
         onOptionChange: function (e) {

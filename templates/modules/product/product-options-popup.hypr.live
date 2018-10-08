@@ -92,7 +92,7 @@
                                 <div class="qty-block">
                                     <span class="qty-counter" id="plus" data-mz-qty-plus role="button"><i class="mz-icon arrow-up" aria-hidden="true"></i></span>
                                     <span class="qty-counter" id="minus" data-mz-qty-minus role="button"><i class="mz-icon arrow-down" aria-hidden="true"></i></span>
-                                    <input id="qty-field" class="mz-productdetail-qty text-center mz-carttable-qty-field form-control" type="text" data-mz-cart-item="{{ model.productTypeId }}" value="1" readonly="readonly" data-mz-value='quantity' title="Quantity">  
+                                        <input id="qty-field" class="mz-productdetail-qty text-center mz-carttable-qty-field form-control" type="text" data-mz-cart-item="{{ model.productTypeId }}" value="1" data-mz-value='quantity' title="Quantity" maxlength="3">  
                                 </div>
                             </div>
                             <div class="pull-right">

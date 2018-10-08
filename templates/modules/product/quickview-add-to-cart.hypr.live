@@ -4,7 +4,8 @@
         <div class="qty-block clearfix">
                 <span class="qty-counter" id="plus" data-mz-qty-plus role="button"><i class="mz-icon arrow-up" aria-hidden="true"></i></span>
                 <span class="qty-counter" id="minus" data-mz-qty-minus role="button"><i class="mz-icon arrow-down"  aria-hidden="true"></i></span>
-                <input id="qty-field" class="mz-productdetail-qty text-center mz-carttable-qty-field" type="text" data-mz-cart-item="{{ model.productTypeId }}" min="1" value="1" data-mz-value='quantity' title="Quantity" {% if model.checkItem === true %} {% else %} disabled="disabled" {% endif %}>
+                <input id="qty-field" class="mz-productdetail-qty text-center mz-carttable-qty-field" type="text" data-mz-cart-item="{{ model.productTypeId }}" min="1" value="1" data-mz-value='quantity' title="Quantity" {% if model.checkItem === true %} {% else %} disabled="disabled" {% endif %} maxlength="3">
+            
         </div>
     </div>
     
