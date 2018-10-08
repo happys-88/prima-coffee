@@ -1,6 +1,6 @@
 ﻿<div class="mz-mobile-nav">                         
     <button data-toggle="collapse" data-target="#mz-mobilenav-container" class="mz-hamburger-icon" aria-expanded="false"><span></span></button>
 </div>
-<h1 class="mz-storebranding" id="store-branding">
+<div class="mz-storebranding" id="store-branding">
     <a class="mz-logo" href="{{siteContext.siteSubdirectory}}/" title="{{ siteContext.generalSettings.websiteName }}"></a> 
-</h1>
+</div>

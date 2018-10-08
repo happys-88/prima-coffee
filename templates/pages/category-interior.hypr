@@ -4,7 +4,17 @@
 	{% if pageContext.search.query != "" and pageContext.search.query != 'undefined' %}
 		
  	{% else %}
-		<h1 class="mz-pagetitle">{{ model.content.name }}</h1>
+		{% for categoryObject in categories.all %}
+            {% if categoryObject.content.name == navigation.currentNode.name %}
+                {% if categoryObject.content.pageTitle %}
+                    <h1 class="mz-pagetitle">{{ categoryObject.content.pageTitle|upper|replace("~", "")|safe }}</h1>
+                    {% set_var pageTitle=true %}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+        {% if not pageTitle %}
+            <h1 class="mz-pagetitle">{{ navigation.currentNode.name|upper|replace("~", "")|safe }}</h1>
+        {% endif %}
 		<div class="category-description">
 			<div>{{ model.content.description|safe }}</div>
 		</div>
