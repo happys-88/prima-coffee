@@ -310,7 +310,23 @@
 .estimated-tax-shipping{
     .mz-l-formfieldgroup-cell{
         float: left;
-        width: 100%; 
+        width: 100%;
+        ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+            color: #d4d4d4;
+            font-style: italic;
+        }
+        ::-moz-placeholder { /* Firefox 19+ */
+            color: #d4d4d4;
+            font-style: italic;
+        }
+        :-ms-input-placeholder { /* IE 10+ */
+            color: #d4d4d4;
+            font-style: italic;
+        }
+        :-moz-placeholder { /* Firefox 18- */
+            color: #d4d4d4;  
+            font-style: italic;   
+        }  
     }
     #usStates, #shippingOption{
         float: left;
