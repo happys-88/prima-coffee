@@ -236,19 +236,19 @@
             if (Quantity !== '' &&  (!isNaN(newQuantity) || reg.test(newQuantity))){              
                 if(((e.which >= 48 && e.which <= 57) || (e.which >= 96 && e.which <= 105))&& (newQuantity > 0)) {
                      this.model.updateQuantity(newQuantity);
-                     localStorage.setItem("currentVal", newQuantity);
+                     this.model.set("currentVal", newQuantity);
                 } else if (newQuantity!== 'NaN'  && (!reg.test(newQuantity))) {
 
                     if (newQuantity > 0){
                        this.model.updateQuantity(newQuantity);
-                     localStorage.setItem("currentVal", newQuantity); 
+                     this.model.set("currentVal", Quantity);
                      }else {
-                        lastValue = localStorage.getItem("currentVal");
+                        lastValue =  this.model.get("currentVal");
                         $('.mz-productdetail-qty').val(lastValue);
                         this.model.updateQuantity(lastValue);
                      }
                 }else{
-                     lastValue = localStorage.getItem("currentVal");
+                     lastValue =  this.model.get("currentVal");
                      $('.mz-productdetail-qty').val(lastValue);
                      this.model.updateQuantity(lastValue);
                 }

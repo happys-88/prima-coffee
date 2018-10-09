@@ -271,22 +271,23 @@ $(document).on('click', '.mz-quick-view', function (event) {
             }, 500),
             onQuantityChange1: _.debounce(function (e) {
             var Quantity = e.currentTarget.value;
+            var lastValue ='';
               var reg = /^[A-Za-z]+$/;
             if (Quantity !== '' &&  (!isNaN(Quantity) || reg.test(Quantity))){              
                 if(((e.which >= 48 && e.which <= 57) || (e.which >= 96 && e.which <= 105)) && (Quantity > 0)){
                      this.model.updateQuantity(Quantity);
-                     localStorage.setItem("currentVal", Quantity);
+                     this.model.set("currentVal", Quantity);
                 } else if (Quantity!== 'NaN'  && (!reg.test(Quantity))) {
                     if (Quantity > 0){
                      this.model.updateQuantity(Quantity);
-                     localStorage.setItem("currentVal", Quantity);
+                     this.model.set("currentVal", Quantity);
                     }else{
-                        lastValue = localStorage.getItem("currentVal");
+                        lastValue =  this.model.get("currentVal");
                         $('.mz-productdetail-qty').val(lastValue);
                         this.model.updateQuantity(lastValue);
                     }
                 }else{
-                     var lastValue = localStorage.getItem("currentVal");
+                    lastValue =  this.model.get("currentVal");
                      $('.mz-productdetail-qty').val(lastValue);
                      this.model.updateQuantity(lastValue);
                 }
