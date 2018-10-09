@@ -427,6 +427,11 @@
                     "name": "yotpoApiKey"  
                 },
                 {
+                    "fieldLabel": "Yotpo Secret Key", 
+                    "xtype": "mz-input-text",
+                    "name": "yotpoSecretKey"  
+                },
+                {
                     "fieldLabel": "Yotpo Base URL",  
                     "xtype": "mz-input-text",
                     "name": "yotpoBaseUrl"  
