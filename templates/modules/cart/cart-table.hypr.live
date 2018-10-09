@@ -148,10 +148,10 @@
         <span class="mz-heading">{{ labels.estimateYourTaxShipping }}</span> 
         <div class="mz-l-formfieldgroup-row">
           <div class="mz-l-formfieldgroup-cell">
-              <label for="shippingTo">Shipping To</label>
+              <label for="shippingTo">{{labels.ShippingTo}}</label>
           </div>
           <div class="mz-l-formfieldgroup-cell">
-            <input type="text" id="usStates" maxlength="5" value="" {% if model.selectedState !== 'null' %}placeholder="{{ model.selectedState}}" {% else %} placeholder="{{labels.zipCode}}" {% endif %} data-mz-value="usStates">
+            <input type="text" id="usStates" autocomplete="off_Bvc!hfy" maxlength="5" value="" placeholder="{{labels.zipSample}}" data-mz-value="usStates">
             <button type="button" id="zipCodeButton" class="mz-button" disabled data-mz-action="populateTax">{{ labels.submit }}</button>
             <span class="mz-validationmessage" data-mz-validation-message="zipCode" style="display: none;">{{ labels.wrongZipCode }}</span>  
           </div>
