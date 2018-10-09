@@ -131,11 +131,11 @@ define([
                         function(rates) { return (rates.amount === 0);   });
                     if(shipPrice.length > 0) {
                         cart.set('selectedShipping', shipPrice[0].content.name);
-                        cart.set('shippingTotal', shipPrice[0].amount);
+                        // cart.set('shippingTotal', shipPrice[0].amount);
                         localStorage.setItem('selectedShipping',shipPrice[0].content.name);
                     } else {
                         cart.set('selectedShipping', shippingRates[0].content.name);
-                        cart.set('shippingTotal', shippingRates[0].amount);
+                        // cart.set('shippingTotal', shippingRates[0].amount);
                         localStorage.setItem('selectedShipping',shippingRates[0].content.name);
                     }
 
@@ -150,7 +150,7 @@ define([
                         });
 
                         var selectedMethodAmount = selectedMethod.amount;
-                        cart.set({'shippingTotal': selectedMethodAmount});
+                        // cart.set({'shippingTotal': selectedMethodAmount});
                         var tot = cart.get('shippingTotal');
                         var total = cart.get('discountedTotal');
                         var newTotal = Number(tot)+Number(total);
@@ -182,6 +182,7 @@ define([
                 }
 
                 var selectedMethodAmount = selectedMethod.amount;
+               
                 this.model.set({'shippingTotal': selectedMethodAmount});
                 var tot = this.model.get('shippingTotal');
                 var total = this.model.get('discountedTotal');
@@ -203,6 +204,7 @@ define([
             $(id).prependTo(".mz-carttable-items-global"); 
             $(id).addClass("recently-added");
         },
+        
         allowDigit: function(e) {
             e.stopImmediatePropagation();
             e.target.value = e.target.value.replace(/[^\d]/g, '');
@@ -221,15 +223,16 @@ define([
             }
         },
         getShippingMethodsDetail: function() {
+           
         },
         populateDropDowns: function(e) {
             e.stopImmediatePropagation();
+            
             var stateSel = $('#usStates :selected').val();
             var shippingSel = $('#shippingOption :selected').val();
             if(typeof shippingSel === 'undefined') {
                 var shippingDetailObj = this.model.get("shippingDetail");
                 var defaultShippingMethod = shippingDetailObj[0].content.name;
-                
                 localStorage.setItem('selectedShipping',defaultShippingMethod);
             } else {
                 localStorage.setItem('selectedShipping',shippingSel);
@@ -241,8 +244,6 @@ define([
             }
             this.populateShipping(true);
             
-            // this.render();
-
         },
         calculateTax: function(stateSel, bool, cart){
             $('[data-mz-validation-message="zipCode"]').hide();
@@ -279,18 +280,12 @@ define([
                               return obj;
                             }
                         });
-
                         var selectedMethodAmount = selectedMethod.amount;
                         cart.set({'shippingTotal': selectedMethodAmount});
                     }
-                   /*var shippingAmount = $('#shippingOption :selected').attr("price");
-                   cart.set({'shippingTotal': shippingAmount});*/
-                    // this.populateShipping();
                 } else {
-
                     cart.set({'taxTotal':0});
                 }
-                // this.render();
 
             }, function(err) {
                 if(stateSel && bool)
@@ -307,10 +302,7 @@ define([
                       return obj;
                     }
                 });
-
                 var selectedMethodAmount = selectedMethod.amount;
-                // var cart = this.model;
-                // var tot = cart.get('shippingTotal');
                 cart.set({'shippingTotal': selectedMethodAmount});
             }
         },
@@ -400,6 +392,7 @@ define([
         },400),
         quantityMinus: _.debounce(function (e) {
           
+          
             var $qField = $(e.currentTarget).parent(".qty-block"); 
             var qFieldValue = $qField.find(".mz-carttable-qty-field").val();        
             var _qtyCountObj = $qField.find(".mz-carttable-qty-field");  
@@ -465,12 +458,9 @@ define([
         var errormsg = this.$('[data-mz-message]');
         var message = model.messages.models[0].attributes.message;
         var prodCode = message.split(':')[1]; 
-        /*if (message.indexOf('Validation Error: The following items have limited quantity or are out of stock') > -1) {
-            prodCode = message.replace('Validation Error: The following items have limited quantity or are out of stock:','');      
-        }*/
+        
        if (prodCode[prodCode.length-1] === ".")
             prodCode = prodCode.slice(0,-1);
-      //  $('.mz-productdetail-wrap').find('.mz-errors').remove();
     
         $('.mz-productdetail-wrap').find('.mz-errors').remove();
     },
@@ -515,9 +505,10 @@ define([
             });
              
         },
-        removeCoupon: function(e) {
+        removeCoupon: function(e) {  
             var self = this;
-            var getCouponCode = e.currentTarget.id;
+            var getCouponCode = e.currentTarget.id; 
+
             blockUiLoader.globalLoader();
             var serviceurl = '/api/commerce/carts/' + this.model.get('id') + '/coupons/' + getCouponCode;
             api.request('DELETE', serviceurl).then(function(response) {

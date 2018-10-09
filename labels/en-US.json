@@ -685,5 +685,7 @@
   "mailError"                            : "The details are saved but you might not receive the mail due to some server error, Thanks",
   "addonSelectMsg"                        : "Press ctrl to select multiple addons",
   "newArrivals"                           : "New Arrivals", 
-  "pleaseSubscribe"                      : "Please select a checkbox"
+  "pleaseSubscribe"                      : "Please select a checkbox",
+  "zipSample"                             : "Example: 93108",
+  "ShippingTo"                            : "Ship-to ZIP Code"
 }
