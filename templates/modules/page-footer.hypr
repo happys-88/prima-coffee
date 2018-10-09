@@ -16,13 +16,13 @@
                     </div>
                     <div class="col-sm-4 col-md-2 col-xs-12">  
                         <h4>{{ labels.customerService }}</h4>
-                         {% comment %} <ul>
+                        <ul>
                            {% if not user.isAnonymous %} 
                                 <li><a href="/myaccount">{{ labels.myAccount }}</a></li>
                             {% else %}
                                 <li><a href="javascript:void(0);" data-toggle="modal" data-target="#loginPopup">{{ labels.myAccount }}</a></li>
                             {% endif %}
-                        </ul> {% endcomment %}
+                        </ul>
                         {% dropzone "footer-dropzone-3" scope="site" %}
                         {% block payment-options %}
                             {% include "modules/page-footer/payment-options" %}
