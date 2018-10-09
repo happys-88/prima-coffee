@@ -24,13 +24,13 @@ $(document).on('click', '.mz-quick-view', function (event) {
             templateName: 'modules/product/quickview',
             additionalEvents: {
                 'click .addtocart': 'AddToCart',
-                "click [data-mz-product-option='tenant~color']": "colorswatch",
                 "change [data-mz-value='quantity']": "onQuantityChange",
+                "keyup input[data-mz-value='quantity']": "onQuantityChange1",
                 "change .mz-productoptions-option": "onOptionChange",
                 "click [data-mz-qty-minus]": "quantityMinus",
                 "click [data-mz-qty-plus]": "quantityPlus",
                 "click #quickViewModal .bx-controls-direction a":"clickOnNextOrprevious",
-                "keyup [id=qty-field]":"updateqtyManual",
+                // "keyup [id=qty-field]":"updateqtyManual",
                 "click .login-for-lowprice" : "closeQuickviewModal"
 
             },
@@ -250,7 +250,7 @@ $(document).on('click', '.mz-quick-view', function (event) {
                 this.model.set('stockMessage', stockMessage);
             },
             productThumbSlider: function () {
-                if( this.model.get("content").get("productImages").length > 1 || this.model.attributes.dataurl){
+                if( this.model.get("content").get("productImages").length > 1){
                     slider = $('#quick-slider').bxSlider({
                         minSlides: 1,
                         maxSlides: 1,
@@ -268,6 +268,36 @@ $(document).on('click', '.mz-quick-view', function (event) {
                     this.model.updateQuantity(newQuantity);
                 }
             }, 500),
+            onQuantityChange1: _.debounce(function (e) {
+            var Quantity = e.currentTarget.value;
+            var lastValue ='';
+              var reg = /^[A-Za-z]+$/;
+            if (Quantity !== '' &&  (!isNaN(Quantity) || reg.test(Quantity))){              
+                if(((e.which >= 48 && e.which <= 57) || (e.which >= 96 && e.which <= 105)) && (Quantity > 0)){
+                     this.model.updateQuantity(Quantity);
+                     this.model.set("currentVal", Quantity);
+                } else if (Quantity!== 'NaN'  && (!reg.test(Quantity))) {
+                    if (Quantity > 0){
+                     this.model.updateQuantity(Quantity);
+                     this.model.set("currentVal", Quantity);
+                    }else{
+                        lastValue =  this.model.get("currentVal");
+                        if(lastValue === undefined){
+                            lastValue ='1';
+                        }
+                        $('.mz-productdetail-qty').val(lastValue);
+                        this.model.updateQuantity(lastValue);
+                    }
+                }else{
+                    lastValue =  this.model.get("currentVal");
+                     $('.mz-productdetail-qty').val(lastValue);
+                     this.model.updateQuantity(lastValue);
+                }
+            }else {
+                $('.mz-productdetail-qty').val('1');
+                this.model.updateQuantity('1');
+            }
+        },500),
             onOptionChange: function (e) {
                 this.model.unset('addToCartErr');              
                 return this.configure($(e.currentTarget));
@@ -294,34 +324,23 @@ $(document).on('click', '.mz-quick-view', function (event) {
                     }
                 }
 
-                if(typeof this.model.get('productCode') !== 'undefined') {
-                    //Set url value here
-                    if(id !="tenant~color"){
-                        this.model.set({
-                            "dataurl": null
-                        });
-                    }
-                }
+                
             },
-            updateqtyManual: function () {
+            /*updateqtyManual: function () {
                 if(typeof this.model.get('productCode') !== 'undefined') {
                     var _qtyObj = $('[data-mz-validationmessage-for="quantity"]'),
                         _qtyCountObj = $('.mz-productdetail-qty');
                     _qtyObj.text('');
                     var value = parseInt(_qtyCountObj.val(), 10);
-                    if (isNaN(value)) {
-                        $(".mz-productdetail-addtocart").addClass("is-disabled");
-                    }
                     if (value === 0) {
                         _qtyObj.text("Quantity can't be zero.");
                         return;
                     }
                     if (!isNaN(value)) {
                         this.model.updateQuantity(value);
-                        $(".mz-productdetail-addtocart").removeClass("is-disabled");
                     }
                 }
-            },
+            },*/
             quantityMinus: function () {
                 if(typeof this.model.get('productCode') !== 'undefined') {
                     if(this.model.get('checkItem') === false) { return; }
@@ -374,23 +393,6 @@ $(document).on('click', '.mz-quick-view', function (event) {
             closeQuickviewModal: function() {
                 //$('#quickViewModal').modal('hide');
                 $('.modal.in').modal().hide();
-            },
-            colorswatch: function (event) {
-                if(typeof this.model.get('productCode') !== 'undefined') {
-
-                var $thisElem = $(event.currentTarget);
-                event.stopImmediatePropagation();
-                var colorValue = $thisElem.val();
-                var colorcode = $thisElem.attr("data-mz-option");
-                var productcode = $thisElem.attr("data-mz-prodduct-code");
-                var sitecontext = HyprLiveContext.locals.siteContext;
-                var cdn = sitecontext.cdnPrefix;
-                var siteID = cdn.substring(cdn.lastIndexOf('-') + 1);
-                var imagefilepath = cdn + '/cms/' + siteID + '/files/' + productcode + '_' + colorcode +'_v1' +'.jpg';
-                this.model.set({
-                    "dataurl": imagefilepath
-                });
-              }
             },
             clickOnNextOrprevious: function(){
                 if(typeof this.model.get('productCode') !== 'undefined'){

@@ -1,11 +1,11 @@
-{% if model.couponCodes.length > 0 %}
+{% if model.appliedCouponCodes.length > 0 %}
 	{% if model.codeApplied %}
 		<div class="mz-coupon-detail">
 			<p class="mz-coupon-success-msg text-success">Code Applied Successfully</p>
 		</div>
 	{% endif %}
 	
-	{% for discountData in  model.couponCodes %}
+	{% for discountData in  model.appliedCouponCodes %}
 		<div class="mz-coupon-detail">	
 			<span class="mz-coupon-code" >{{ discountData }}</span>
 			<span class="mz-remove-coupon" id="{{ discountData }}" data-mz-action="removeCoupon">Remove</span> 

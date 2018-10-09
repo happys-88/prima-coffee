@@ -18,7 +18,7 @@
             "click [data-mz-product-option]": "onOptionChange",
             "blur [data-mz-product-option]": "onOptionChange",
             "change [data-mz-value='quantity']": "onQuantityChange",
-            "keyup input[data-mz-value='quantity']": "onQuantityChange",
+            "keyup input[data-mz-value='quantity']": "onQuantityChange1",
             "click [data-mz-qty=minus]": "quantityMinus",
             "click [data-mz-qty=plus]": "quantityPlus"
         },
@@ -227,11 +227,46 @@
                 this.model.updateQuantity(newQuantity);
             }
         },500),
+        onQuantityChange1: _.debounce(function (e) {
+            var $qField = $(e.currentTarget),
+              newQuantity = parseInt($qField.val(), 10);
+              var Quantity = e.currentTarget.value;
+              var lastValue ='';
+              var reg = /^[A-Za-z]+$/;
+            if (Quantity !== '' &&  (!isNaN(newQuantity) || reg.test(newQuantity))){              
+                if(((e.which >= 48 && e.which <= 57) || (e.which >= 96 && e.which <= 105))&& (newQuantity > 0)) {
+                     this.model.updateQuantity(newQuantity);
+                     this.model.set("currentVal", newQuantity);
+                } else if (newQuantity!== 'NaN'  && (!reg.test(newQuantity))) {
+
+                    if (newQuantity > 0){
+                       this.model.updateQuantity(newQuantity);
+                     this.model.set("currentVal", Quantity);
+                     }else {
+                        lastValue =  this.model.get("currentVal");
+                        if(lastValue === undefined){
+                            lastValue ='1';
+                        }
+                        $('.mz-productdetail-qty').val(lastValue);
+                        this.model.updateQuantity(lastValue);
+                     }
+                }else{
+                     lastValue =  this.model.get("currentVal");
+                     $('.mz-productdetail-qty').val(lastValue);
+                     this.model.updateQuantity(lastValue);
+                }
+            }else {
+                $('.mz-productdetail-qty').val('1');
+            }
+        },500),
         quantityMinus: _.debounce(function () {
             if (this.model.get('checkItem') === false) { return; }
             var _qtyCountObj = $('.mz-productdetail-qty');
+            var _qtyObj = $('[data-mz-validationmessage-for="quantity"]');
             var value = parseInt(_qtyCountObj.val(), 10);
+            _qtyObj.text('');
             if (value == 1) {
+                _qtyObj.text("Quantity can't be zero.");
                 return;
             }
             value--;
@@ -241,6 +276,8 @@
         quantityPlus: _.debounce(function () {
             if (this.model.get('checkItem') === false) { return; }
             var _qtyCountObj = $('.mz-productdetail-qty');
+            var _qtyObj = $('[data-mz-validationmessage-for="quantity"]');
+            _qtyObj.text('');
             var value = parseInt(_qtyCountObj.val(), 10);
             value++;
             this.model.updateQuantity(value);
@@ -438,13 +475,13 @@
             }
             this.model.set('shippingMessage',shippingMessage);
 
-            /*var prodPrice = this.model.get('price');
+            var prodPrice = this.model.get('price');
             if (prodPrice.attributes) {
                 var priceType = prodPrice.attributes.priceType;
                 if (priceType == 'MAP') {
                     this.model.set('mapPrice', prodPrice.attributes.price);
                 }  
-            }*/
+            }
             var hasOptions = false;
             var c = 0;
             c = parseInt(c, 10);
@@ -644,86 +681,7 @@
                 }
                 });
         }
-       var incr=0;
-        $(document).on('click','[name=Color]', function(event){  
-            incr=0;
-            var i, j;
-           
-            if(product.get("mainImage")!==null){
-                product.set({"color":true});
-                var $thisElem = $(event.currentTarget);
-                event.stopImmediatePropagation();
-                var colorcode = $thisElem.attr("data-mz-option").replace(/ /g,"_");
-                var productcode = product.get("productCode");
-                var sitecontext = HyprLiveContext.locals.siteContext;
-                var cdn = sitecontext.cdnPrefix;
-                var siteID = cdn.substring(cdn.lastIndexOf('-') + 1);
-                var imagefilepath = cdn + '/cms/' + siteID + '/files/' + productcode + '_' + colorcode +'_v1'+'.jpg';
-                var feed;
-                product.get("mainImage").imageUrl=imagefilepath;       
-                product.get("mainImage").src=imagefilepath;
-                if( typeof product.get("content").get("productImages")[0].start==="undefined"){
-                   feed = { imageUrl: imagefilepath, src: imagefilepath, alt:imagefilepath, sequence: product.get("mainImage").sequence, "start":"start"  };
-                    product.get("content").get("productImages").unshift(feed);
-                    for (j = 1; j < product.get("content").get("productImages").length; j++){
-                        if(product.get("content").get("productImages")[j].imageUrl.search(imagefilepath)!==-1){
-                            product.get("content").get("productImages")[j].imageUrl.splice(j, 1);
-                            break;     
-                        }
-                    } 
-                    for (i = 1; i < product.get("content").get("productImages").length; i++){
-                        product.get("content").get("productImages")[i].sequence = product.get("content").get("productImages")[i-1].sequence+1;
-                    }
-                }else{
-                    product.get("content").get("productImages").shift();
-                    feed = { imageUrl: imagefilepath, src: imagefilepath, alt:imagefilepath, sequence: product.get("mainImage").sequence, "start":"start" };
-                    product.get("content").get("productImages").unshift(feed);
-                    for (j = 1; j < product.get("content").get("productImages").length; j++){
-                        if(product.get("content").get("productImages")[j].imageUrl.search(imagefilepath)!==-1){
-                            product.get("content").get("productImages")[j].imageUrl.splice(j, 1);
-                            break;     
-                        }
-                    } 
-                    for (i = 1; i < product.get("content").get("productImages").length; i++){
-                        product.get("content").get("productImages")[i].sequence = product.get("content").get("productImages")[i-1].sequence+1;
-                    }
-                } 
-                
-                //product.get("content").get("productImages")[0].src=imagefilepath;
-                // product.get("content").get("productImages")[0].imageUrl=imagefilepath; 
-                
-                // $.each(product.get("content").get("productImages"), function(i, item) {
-                //     var j=i+1;
-                //     var ver="_v"+j;
-                //     imagefilepath = cdn + '/cms/' + siteID + '/files/' + productcode + '_' + colorcode + ver+'.jpg';
-                //     item.color = false;
-                //     checkImage(imagefilepath, function(response) {
-                //         if (response) {
-                //             incr++;
-                //         }
-                //     });
-                // });
-                // if(incr===0){
-                //   //  product.get("content").get("productImages")[0].src=imagefilepath;
-                //    // product.get("content").get("productImages")[0].imageUrl=imagefilepath;
-                //     product.get("content").get("productImages")[0].color = true;
-                // }
-                
-          }
-          
-        });  
-     function checkImage(imagefilepath, callback) {
-        $.get(imagefilepath).done(function() {
-            product.get("content").get("productImages")[incr].src=imagefilepath;
-            product.get("content").get("productImages")[incr].imageUrl=imagefilepath;
-            product.get("content").get("productImages")[incr].color = true;
-            callback(true);
-        }).error(function() {
-            callback(false);
-        });
-
-    }
-       
+            
         product.on('addedtocart', function (cartitem) {
             if (cartitem && cartitem.prop('id')) {
                 $('.mz-errors').remove();

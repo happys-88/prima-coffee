@@ -498,10 +498,10 @@
   // Custom Labels
   "itemInStock"                            :   "Hurry, only {0} more in stock",
   "stayConnected"                          :   "Stay Connected",
-  "signUpTitle"                            :   "Sign Up For Hot Deals News",
+  "signUpTitle"                            :   "Sign Up To Get Top Deals On Curated Products",
   "paymentOptions"                         :   "Payment Options",
-  "paymenOptionsDesc"                      :   "Wire Transfers Checks Too!",
-  "copyRight"                              :   "Copy Right",
+  "paymenOptionsDesc"                      :   "Wire Transfers & Checks Too!",
+  "copyRight"                              :   "Copyright",
   "enterEmailAddress"                      :   "Enter Email Address",
   "enterEmailAddress1"                     :   "Enter Your Email Address",  
   "join"                                   :   "Join",
@@ -685,5 +685,7 @@
   "mailError"                            : "The details are saved but you might not receive the mail due to some server error, Thanks",
   "addonSelectMsg"                        : "Press ctrl to select multiple addons",
   "newArrivals"                           : "New Arrivals", 
-  "pleaseSubscribe"                      : "Please select a checkbox"
+  "pleaseSubscribe"                      : "Please select a checkbox",
+  "zipSample"                             : "Example: 93108",
+  "ShippingTo"                            : "Ship-to ZIP Code"
 }

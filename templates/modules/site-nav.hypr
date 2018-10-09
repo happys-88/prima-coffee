@@ -111,6 +111,13 @@
                       </ul>
                     </div>
                     {% comment %} All Categories End {% endcomment %}
+
+                    {% with link.originalId as navNode %}
+                      <div class="mz-sitenav-dropzone">   
+                        {% dropzone "mega-menu_{0}"|string_format(navNode) scope="site" %} 
+                      </div> 
+                    {% endwith %} 
+
                 </div>
                 {% endif %}
               
@@ -121,10 +128,3 @@
           {% require_script "modules/contextify" %}
       </ul>
 </nav>
-
-{% comment %}
-{% block search-box-lc %}
-    {% include "modules/page-header/search-box-lc" %}
-{% endblock search-box-lc %}
-{% endcomment %}
-

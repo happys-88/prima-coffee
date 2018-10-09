@@ -115,13 +115,13 @@ require(["modules/jquery-mozu", "underscore", "hyprlive", "modules/backbone-mozu
         templateName: 'modules/checkout/step-shipping-method',
         initialize: function() {
             var shippings = this.model.get('availableShippingMethods');
-            var selectedShipping = localStorage.getItem('selectedShipping');
+            /*var selectedShipping = localStorage.getItem('selectedShipping');
             if(shippings && selectedShipping && selectedShipping !== 'null') {
                 var code = _.find(shippings, function(arr){
                     return arr.shippingMethodName === selectedShipping;
                 }).shippingMethodCode;
                 this.model.updateShippingMethod(code);
-            }
+            }*/
         },
         renderOnChange: [
             'availableShippingMethods'
