@@ -357,8 +357,11 @@ define([
                           }
                           else{
                             lastValue =  this.model.get("currentVal");
+                              if(lastValue === undefined){
+                                lastValue ='1';
+                                }
                             $('#mz-carttable-qty-field').val(lastValue);
-                            $('#global-mz-carttable-qty-field').val(lastValue);
+                            $("[data-id='global-mz-carttable-qty-field']").val(lastValue);
                             item.set('quantity', lastValue);
                           }
                             item.saveQuantity();
@@ -368,7 +371,7 @@ define([
                          if (textValue === '' || reg.test(textValue)){
                             lastValue =  this.model.get("currentVal");
                             $('#mz-carttable-qty-field').val(lastValue);
-                            $('#global-mz-carttable-qty-field').val(lastValue);
+                            $("[data-id='global-mz-carttable-qty-field']").val(lastValue);
                             item.set('quantity', lastValue);
             }
                          
@@ -376,7 +379,7 @@ define([
                     }
                 }else {
                     $('#mz-carttable-qty-field').val('1');
-                    $('#global-mz-carttable-qty-field').val('1');
+                    $("[data-id='global-mz-carttable-qty-field']").val('1');
                     this._isSyncing = true;
                     item.set('quantity', '1');
                     item.saveQuantity();
