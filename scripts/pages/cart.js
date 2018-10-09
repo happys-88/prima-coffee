@@ -353,18 +353,18 @@ define([
                     if(((e.which >= 48 && e.which <= 57) || (e.which >= 96 && e.which <= 105)) && (newQuantity > 0)){
                 this._isSyncing = true;
                 item.set('quantity', newQuantity);
-                         item.saveQuantity();   
-                         localStorage.setItem("currentVal", newQuantity);
+                         item.saveQuantity(); 
+                         this.model.set("currentVal", newQuantity);  
                     } else if (newQuantity!== 'NaN'  && (!reg.test(newQuantity))) {
                           this._isSyncing = true;
                           if (newQuantity > 0){
                             $('#mz-carttable-qty-field').val(newQuantity);
                             $('#global-mz-carttable-qty-field').val(newQuantity);
                             item.set('quantity', newQuantity);
-                            localStorage.setItem("currentVal", newQuantity);
+                            this.model.set("currentVal", newQuantity);
                           }
                           else{
-                            lastValue = localStorage.getItem("currentVal");
+                            lastValue =  this.model.get("currentVal");
                             $('#mz-carttable-qty-field').val(lastValue);
                             $('#global-mz-carttable-qty-field').val(lastValue);
                             item.set('quantity', lastValue);
@@ -374,7 +374,7 @@ define([
                 
                          this._isSyncing = true;
                          if (textValue === '' || reg.test(textValue)){
-                            lastValue = localStorage.getItem("currentVal");
+                            lastValue =  this.model.get("currentVal");
                             $('#mz-carttable-qty-field').val(lastValue);
                             $('#global-mz-carttable-qty-field').val(lastValue);
                             item.set('quantity', lastValue);
