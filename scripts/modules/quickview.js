@@ -24,7 +24,6 @@ $(document).on('click', '.mz-quick-view', function (event) {
             templateName: 'modules/product/quickview',
             additionalEvents: {
                 'click .addtocart': 'AddToCart',
-                "click [data-mz-product-option='tenant~color']": "colorswatch",
                 "change [data-mz-value='quantity']": "onQuantityChange",
                 "keyup input[data-mz-value='quantity']": "onQuantityChange1",
                 "change .mz-productoptions-option": "onOptionChange",
@@ -251,7 +250,7 @@ $(document).on('click', '.mz-quick-view', function (event) {
                 this.model.set('stockMessage', stockMessage);
             },
             productThumbSlider: function () {
-                if( this.model.get("content").get("productImages").length > 1 || this.model.attributes.dataurl){
+                if( this.model.get("content").get("productImages").length > 1){
                     slider = $('#quick-slider').bxSlider({
                         minSlides: 1,
                         maxSlides: 1,
@@ -322,14 +321,7 @@ $(document).on('click', '.mz-quick-view', function (event) {
                     }
                 }
 
-                if(typeof this.model.get('productCode') !== 'undefined') {
-                    //Set url value here
-                    if(id !="tenant~color"){
-                        this.model.set({
-                            "dataurl": null
-                        });
-                    }
-                }
+                
             },
             /*updateqtyManual: function () {
                 if(typeof this.model.get('productCode') !== 'undefined') {
@@ -398,23 +390,6 @@ $(document).on('click', '.mz-quick-view', function (event) {
             closeQuickviewModal: function() {
                 //$('#quickViewModal').modal('hide');
                 $('.modal.in').modal().hide();
-            },
-            colorswatch: function (event) {
-                if(typeof this.model.get('productCode') !== 'undefined') {
-
-                var $thisElem = $(event.currentTarget);
-                event.stopImmediatePropagation();
-                var colorValue = $thisElem.val();
-                var colorcode = $thisElem.attr("data-mz-option");
-                var productcode = $thisElem.attr("data-mz-prodduct-code");
-                var sitecontext = HyprLiveContext.locals.siteContext;
-                var cdn = sitecontext.cdnPrefix;
-                var siteID = cdn.substring(cdn.lastIndexOf('-') + 1);
-                var imagefilepath = cdn + '/cms/' + siteID + '/files/' + productcode + '_' + colorcode +'_v1' +'.jpg';
-                this.model.set({
-                    "dataurl": imagefilepath
-                });
-              }
             },
             clickOnNextOrprevious: function(){
                 if(typeof this.model.get('productCode') !== 'undefined'){
