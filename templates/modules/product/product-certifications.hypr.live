@@ -10,7 +10,7 @@
                   <img class="lazy" src="{{ brandImage.imageUrl }}" alt="{{ brandImage.altText }}">    
                 </a> 
               {% else %} 
-                <a href="{{ brandCat.url }}"> 
+                <a href="{% make_url "category" brandCat %}"> 
                   <span class="noimage-placeholder"><span class="noimage-text">{{ labels.productImagePlaceholder }}</span></span> 
                 </a>  
               {% endif %}

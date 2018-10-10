@@ -7,7 +7,7 @@
 					{% if categoryObject.categoryId == getCategoryId %}  
 						{% for catImage in categoryObject.content.categoryImages %}
 				   			<li class="mz-shop-by-categorylist-item">
-							    <a href="{{ categoryObject.url }}">
+							    <a href="{% make_url "category" categoryObject %}">
 							    	<div class="mz-category-image">
 							    		<img class="lazy" data-original="{{ catImage.imageUrl }}" alt="{{ catImage.altText }}">
 							    	</div>
@@ -33,7 +33,7 @@
 					{% if categoryObject.categoryId == getCategoryId %}  
 						{% for catImage in categoryObject.content.categoryImages %}
 				   			<li class="mz-shop-by-categorylist-item">
-							    <a href="{{ categoryObject.url }}">
+							    <a href="{% make_url "category" categoryObject %}">
 							    	<div class="mz-category-image">
 							    		<img src="{{ catImage.imageUrl }}" alt="{{ catImage.altText }}">
 							    	</div>

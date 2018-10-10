@@ -56,19 +56,19 @@
                                     <div class="mz-category-image">
                                       {% if categoryObject.content.categoryImages.length>0 %}
                                         {% for catImage in categoryObject.content.categoryImages %} 
-                                          <a href="{{ categoryObject.url }}"> 
+                                          <a href="{% make_url "category" categoryObject %}"> 
                                             <img src="{{ catImage.imageUrl }}" alt="{{ catImage.altText }}">
                                           </a> 
                                         {% endfor %}
                                       {% else %} 
-                                        <a href="{{ categoryObject.url }}">
+                                        <a href="{% make_url "category" categoryObject %}">
                                           <span class="noimage-placeholder"><span class="noimage-text">{{ labels.productImagePlaceholder }}</span></span>
                                         </a> 
                                       {% endif %}  
                                       
                                     </div>  
                                     <div class="mz-category-name">
-                                      <a class="mz-sitenav-link" {% if link.openInNewWindow %}target='_blank'{% endif %} href="{{ categoryObject.url }}">{{ categoryObject.content.name|replace("_", " ")|replace(themeSettings.columnBreaker, "")|safe }}</a>
+                                      <a class="mz-sitenav-link" {% if link.openInNewWindow %}target='_blank'{% endif %} href="{% make_url "category" categoryObject %}">{{ categoryObject.content.name|replace("_", " ")|replace(themeSettings.columnBreaker, "")|safe }}</a>
                                     </div>
                                   </li>
                                 {% endif %}
