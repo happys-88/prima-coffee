@@ -78,7 +78,7 @@ img{
 }
 
 .container{
-	max-width: 1170px;        
+	max-width: 1440px;        
 }
 .mz-l-pagecontent{
 	background: @textColorWhite;
@@ -103,13 +103,12 @@ img[data-mztp]{
   	h1 {
 		&.mz-pagetitle {
 		    color: #495363;
-		    //border-bottom: 1px solid #e0e0e0;
+		    border-bottom: 1px solid #e0e0e0;
 		    font-size: 30px;
 		    margin-top: 16px;
 		    margin-bottom: 40px;
 		    padding-bottom: 12px;
-			text-transform: capitalize;
-			font-weight: 700;
+		    text-transform: uppercase;
 		}
 	}
 }
@@ -287,7 +286,7 @@ img[data-mztp]{
       
     .mz-sitenav-sub-container{     
     	position: absolute;
-    	width: auto;   
+    	width: 100%;   
         -webkit-box-shadow: 0 6px 12px rgba(0,0,0,0.175);
         box-shadow: 0 6px 12px rgba(0,0,0,0.175);
         left: 0;
@@ -319,6 +318,7 @@ img[data-mztp]{
         	max-width: 100%;
         	text-align: left;
         	margin-bottom: 10px;
+		padding: 0 15px;
         	.mz-sitenav-link {
 	            padding: 2px 0 !important;
 	            color: @textColor;
@@ -371,7 +371,7 @@ img[data-mztp]{
     .mz-category-heading{
     	float: left;
     	width: 100%;
-    	padding: 0 15px;
+    	padding: 0 ;
     	.heading-2 {
     		margin-top: 15px;
     	}
@@ -382,6 +382,7 @@ img[data-mztp]{
 		float: left;
 		padding: 15px 0;  
 		border-bottom: 1px solid #c0c6cc;
+		width: 100%;
 		.mz-sitenav-item{
 			width: 220px; 
 			padding: 0 15px;
@@ -390,7 +391,6 @@ img[data-mztp]{
 		.mz-category-image, .mz-category-name{
 			float: left;
 			width: 100%;
-			text-align: center;
 			img, .mz-sitenav-link{
 				display: inline-block;
 				font-size: 14px;
@@ -405,6 +405,7 @@ img[data-mztp]{
 		.mz-category-image{
 			font-size: 14px;
 			min-height: 80px;  
+			//text-align: center; 
 			img{
 				max-width: 80px;
 				max-height: 80px;  
@@ -416,6 +417,7 @@ img[data-mztp]{
 		float: left;
 		clear: both;
 		padding: 15px 0; 
+		width: 100%;
 		.mz-sitenav-sub{
 			width: 220px;  
 		}	

@@ -144,79 +144,78 @@
                 {% block brand-gateway %}{% endblock brand-gateway %}
                 {% block category-gateway %}{% endblock category-gateway %}
 
-             {% block commonbody-content %}
-                <div class="container">
-                    <script type="text/javascript">
-                        (function e() { var e = document.createElement("script"); e.type = "text/javascript"; e.async = true; e.src = "//staticw2.yotpo.com/{{ themeSettings.yotpoApiKey }}/widget.js"; var t = document.getElementsByTagName("script")[0]; t.parentNode.insertBefore(e, t) })();
-                    </script>   
-                     {% dropzone "feature-product" scope="site" %}
-                    <div class="yotpo-gallery clearfix">
-                        <h2 class="heading-2">
-                            <span>Pictures Gallery</span>
-                        </h2>
-                        <div class="yotpo yotpo-pictures-gallery" 
-                              data-layout="full_page" 
-                              data-layout-scroll="0" 
-                              data-spacing="0" 
-                              data-source="instagram"
-                              data-title="0" 
-                              data-hover-color="#ffffff" 
-                              data-hover-opacity="0.8" 
-                              data-hover-icon="true" 
-                              data-cta-text="Shop Now" 
-                              data-cta-color="#ff7a00">
+                {% block commonbody-content %}
+                    <div class="container">
+                        <script type="text/javascript">
+                            (function e() { var e = document.createElement("script"); e.type = "text/javascript"; e.async = true; e.src = "//staticw2.yotpo.com/{{ themeSettings.yotpoApiKey }}/widget.js"; var t = document.getElementsByTagName("script")[0]; t.parentNode.insertBefore(e, t) })();
+                        </script>   
+                         {% dropzone "feature-product" scope="site" %}
+                        <div class="yotpo-gallery clearfix">
+                            <h2 class="heading-2">
+                                <span>Pictures Gallery</span>
+                            </h2>
+                            <div class="yotpo yotpo-pictures-gallery" 
+                                  data-layout="full_page" 
+                                  data-layout-scroll="0" 
+                                  data-spacing="0" 
+                                  data-source="instagram"
+                                  data-title="0" 
+                                  data-hover-color="#ffffff" 
+                                  data-hover-opacity="0.8" 
+                                  data-hover-icon="true" 
+                                  data-cta-text="Shop Now" 
+                                  data-cta-color="#ff7a00">
+                            </div>
                         </div>
-                    </div>
-                    <div class="yotpo-recent-reviews">
-                        {% dropzone "yotpo-reviews-carousel" scope="page" %}
-                    </div> 
+                        <div class="yotpo-recent-reviews">
+                            {% dropzone "yotpo-reviews-carousel" scope="page" %}
+                        </div> 
 
-                    <div class="row clearfix">
-                        <div class="col-md-6 col-xs-12">
-                            {% dropzone "popular-articles" scope="site" %}
-                        </div>
-                        <div class="col-md-6 col-xs-12">
-                            {% dropzone "promoted-products" scope="site" %}
-                        </div>
-                    </div>
-                </div>
-            {% endblock commonbody-content %} 
-
-            {% block error-message %}
-                <div class="modal fade" id="emptymsg" role="dialog">
-                    <div class="modal-dialog">   
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <a type="button" class="close" data-dismiss="modal">&times;</a>
-                                <h5>{{ labels.blankSearchResult }}</h5>
+                        <div class="row clearfix">
+                            <div class="col-md-6 col-xs-12">
+                                {% dropzone "popular-articles" scope="site" %}
+                            </div>
+                            <div class="col-md-6 col-xs-12">
+                                {% dropzone "promoted-products" scope="site" %}
                             </div>
                         </div>
                     </div>
-                </div> 
-                <div class="modal fade" id="threeletter" role="dialog">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <a type="button" class="close" data-dismiss="modal">&times;</a>
-                                <h5>{{ labels.searchKeywordLength }}</h5>
-                            </div> 
+                {% endblock commonbody-content %} 
+
+                {% block error-message %}
+                    <div class="modal fade" id="emptymsg" role="dialog">
+                        <div class="modal-dialog">   
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <a type="button" class="close" data-dismiss="modal">&times;</a>
+                                    <h5>{{ labels.blankSearchResult }}</h5>
+                                </div>
+                            </div>
                         </div>
                     </div> 
-                </div> 
-            {% endblock error-message %}
+                    <div class="modal fade" id="threeletter" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <a type="button" class="close" data-dismiss="modal">&times;</a>
+                                    <h5>{{ labels.searchKeywordLength }}</h5>
+                                </div> 
+                            </div>
+                        </div> 
+                    </div> 
+                {% endblock error-message %}
 
-            {% dropzone "welcome-text-home" scope="page" %}
-            {% block body-below-content %}
-                {% dropzone "body-bottom" scope="page" %} 
-            {% endblock body-below-content %} 
-                        
+                {% dropzone "welcome-text-home" scope="page" %}
+                {% block body-below-content %}
+                    {% dropzone "body-bottom" scope="page" %} 
+                {% endblock body-below-content %} 
+            </div>
             {% block page-footer %}
                 {% include "modules/page-footer" %}
             {% endblock page-footer %}
 
             {% include "modules/page-header/login-signup-modal" %}
             {% include "modules/checkout/login-checkout-modal" %}
-        </div>
 
         {% block back-to-top %}
             <div class="mz-back-to-top-btn" id="back-to-top"><i class="fa fa-chevron-up"></i></div>

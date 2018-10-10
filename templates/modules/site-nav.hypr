@@ -37,21 +37,27 @@
                   </span>
                   
                 </a>
-
+               
                 {% if link.items %}
                   <div class="mz-sitenav-sub-container"> 
                     
                     {% comment %} Top Categories {% endcomment %}
-                      <div class="mz-sitenav-top-categories">
-                        <div class="mz-category-heading">
-                          <h3 class="heading-2"><span>Top Categories</span></h3>  
-                        </div>
-                          
+                      {% if link.name=="Brands" %}
+                      <div class="mz-category-heading">
+                        <h3 class="heading-2"><span>Top Brands</span></h3>
+                      </div>
+                      {% else %}
+                      <div class="mz-category-heading">
+                        <h3 class="heading-2"><span>Top Categories</span></h3>
+                      </div>
+                      {% endif %}
+                      <div class="mz-sitenav-top-categories">        
                         <ul class="mz-sitenav-sub"> 
                           {% for getTopCategory in link.items %}
-                            {% if not getTopCategory.isHidden and not getTopCategory.isEmpty and forloop.counter0 < 5 %}
+                            {% if not getTopCategory.isHidden and forloop.counter0 < 5 %}
                               {% for categoryObject in categories.all %}
                                 {% if categoryObject.categoryId == getTopCategory.originalId %}
+                                
                                   <li class="mz-sitenav-item">
                                     <div class="mz-category-image">
                                       {% if categoryObject.content.categoryImages.length>0 %}
@@ -82,9 +88,16 @@
 
                     {% comment %} All Categories {% endcomment %}
                     <div class="mz-sitenav-all-categories">
-                      <div class="mz-category-heading">
-                        <h3 class="heading-2"><span>  All Categories</span></h3>  
-                      </div>
+                      {% if link.name=="Brands" %}
+                        <div class="mz-category-heading">
+                          <h3 class="heading-2"><span> All Brands</span></h3>
+                        </div>
+                      {% else %}
+                        <div class="mz-category-heading">
+                          <h3 class="heading-2"><span> All Categories</span></h3>
+                        </div>
+                      {% endif %}
+                     
                       <ul class="mz-sitenav-sub">
                         {% for sublink in link.items %}
                           {% if not sublink.isHidden and not sublink.isEmpty %}
@@ -93,17 +106,18 @@
                             {% endwith %} 
                             <li data-mz-role="sitemenu-item" class="mz-sitenav-item">
                               <a class="mz-sitenav-link sub-link" {% if link.openInNewWindow %}target='_blank'{% endif %} href="{{sublink.url}}">{{ sublink.name|replace("_", " ")|replace(themeSettings.columnBreaker, "")|safe }}</a>
-                              
-                              {% if sublink.items %}
-                                <ul class="mz-sitenav-sub-sub">
-                                  {% for subsublink in sublink.items %}
-                                    {% if not subsublink.isHidden and not subsublink.isEmpty %}
-                                      <li class="mz-sitenav-item">
-                                        <a class="mz-sitenav-link sub-sub-link" {% if link.openInNewWindow %}target='_blank'{% endif %} href="{{subsublink.url}}">{{ subsublink.name|replace("_", " ")|replace(themeSettings.columnBreaker, "")|safe }}</a>
-                                      </li>
-                                    {% endif %}
-                                  {% endfor %}
-                                </ul>
+                              {% if link.name !="Brands" %}
+                                  {% if sublink.items %}
+                                    <ul class="mz-sitenav-sub-sub">
+                                      {% for subsublink in sublink.items %}
+                                        {% if not subsublink.isHidden %}
+                                          <li class="mz-sitenav-item">
+                                            <a class="mz-sitenav-link sub-sub-link" {% if link.openInNewWindow %}target='_blank'{% endif %} href="{{subsublink.url}}">{{ subsublink.name|replace("_", " ")|replace(themeSettings.columnBreaker, "")|safe }}</a>
+                                          </li>
+                                        {% endif %}
+                                      {% endfor %}
+                                    </ul>
+                                  {% endif %}
                               {% endif %}
                             </li>
                           {% endif %}
@@ -111,6 +125,13 @@
                       </ul>
                     </div>
                     {% comment %} All Categories End {% endcomment %}
+
+                    {% with link.originalId as navNode %}
+                      <div class="mz-sitenav-dropzone">   
+                        {% dropzone "mega-menu_{0}"|string_format(navNode) scope="site" %} 
+                      </div> 
+                    {% endwith %}  
+
                 </div>
                 {% endif %}
               
@@ -121,10 +142,3 @@
           {% require_script "modules/contextify" %}
       </ul>
 </nav>
-
-{% comment %}
-{% block search-box-lc %}
-    {% include "modules/page-header/search-box-lc" %}
-{% endblock search-box-lc %}
-{% endcomment %}
-

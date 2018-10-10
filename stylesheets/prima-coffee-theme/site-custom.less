@@ -107,19 +107,19 @@ body {
 					border-radius: 50px;
 					font-weight: 500;
 					width: 100%;
-						.twitter-typeahead{
-							width:100%;
+					.twitter-typeahead{
+						width:100%;
+					}
+					.mz-searchbox-input {
+						width: 100%;
+						border-radius:50px;
+						background-color:rgb(219, 213, 213);
+						&:focus{
+							background-color:#fefcff!important;
 						}
-						.mz-searchbox-input {
-								width: 100%;
-								border-radius:50px;
-								background-color:rgb(219, 213, 213);
-								&:focus{
-									background-color:#fefcff!important;
-								}
-					  }
+				  	}
 				}	
-		   }
+	   		}
 		}
 		.mz-storebranding{
 			.mz-logo{
@@ -231,27 +231,6 @@ body {
 		}
 	}
 }
-#mz-home-slider{ 
-	text-align: -webkit-center;
-	.bx-wrapper {
-		img {
-			width: 100%!important; 
-		}
-    }
-	.slider{
-		.mz-slide-details{
-			.mz-button{
-				.mzPrimaryBtn();
-				border: 2px solid @primaryBtnColor;
-				transition:none;
-				&:hover{
-					.mzPrimaryBtnHover();
-				}
-			}
-		}
-	}
-} 
-
 .yotpo-default-button{
 	color: @secondaryBtnColor; 
 	&:hover{

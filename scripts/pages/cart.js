@@ -339,6 +339,7 @@ define([
                 id = $qField.data('mz-cart-item'),
                 item = this.model.get("items").get(id);
                 var textValue = e.currentTarget.value;
+                textValue = textValue.trim();
                 var reg = /^[A-Za-z]+$/;
                 var lastValue ='';
                 if (textValue !== '' &&  (!isNaN(newQuantity) || reg.test(newQuantity))){              
@@ -357,8 +358,11 @@ define([
                           }
                           else{
                             lastValue =  this.model.get("currentVal");
+                              if(lastValue === undefined){
+                                lastValue ='1';
+                                }
                             $('#mz-carttable-qty-field').val(lastValue);
-                            $('#global-mz-carttable-qty-field').val(lastValue);
+                            $("[data-id='global-mz-carttable-qty-field']").val(lastValue);
                             item.set('quantity', lastValue);
                           }
                             item.saveQuantity();
@@ -367,8 +371,11 @@ define([
                          this._isSyncing = true;
                          if (textValue === '' || reg.test(textValue)){
                             lastValue =  this.model.get("currentVal");
+                            if(lastValue === undefined){
+                                lastValue ='1';
+                                }
                             $('#mz-carttable-qty-field').val(lastValue);
-                            $('#global-mz-carttable-qty-field').val(lastValue);
+                            $("[data-id='global-mz-carttable-qty-field']").val(lastValue);
                             item.set('quantity', lastValue);
             }
                          
@@ -376,7 +383,7 @@ define([
                     }
                 }else {
                     $('#mz-carttable-qty-field').val('1');
-                    $('#global-mz-carttable-qty-field').val('1');
+                    $("[data-id='global-mz-carttable-qty-field']").val('1');
                     this._isSyncing = true;
                     item.set('quantity', '1');
                     item.saveQuantity();
@@ -514,6 +521,9 @@ define([
             api.request('DELETE', serviceurl).then(function(response) {
                 blockUiLoader.unblockUi();
                 self.model.set(response);
+                var arr = _.without(self.model.get("appliedCouponCodes"), _.findWhere(self.model.get("appliedCouponCodes"), getCouponCode));
+                self.model.set("appliedCouponCodes", arr);
+                self.model.set('codeApplied', false);
                 self.render();
                 $("#couponDisclaimer").text("");
             }, function(err) {

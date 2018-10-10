@@ -270,6 +270,7 @@ $(document).on('click', '.mz-quick-view', function (event) {
             }, 500),
             onQuantityChange1: _.debounce(function (e) {
             var Quantity = e.currentTarget.value;
+            Quantity = Quantity.trim();
             var lastValue ='';
               var reg = /^[A-Za-z]+$/;
             if (Quantity !== '' &&  (!isNaN(Quantity) || reg.test(Quantity))){              
@@ -282,11 +283,17 @@ $(document).on('click', '.mz-quick-view', function (event) {
                      this.model.set("currentVal", Quantity);
                     }else{
                         lastValue =  this.model.get("currentVal");
+                        if(lastValue === undefined){
+                            lastValue ='1';
+                        }
                         $('.mz-productdetail-qty').val(lastValue);
                         this.model.updateQuantity(lastValue);
                     }
                 }else{
                     lastValue =  this.model.get("currentVal");
+                    if(lastValue === undefined){
+                            lastValue ='1';
+                        }
                      $('.mz-productdetail-qty').val(lastValue);
                      this.model.updateQuantity(lastValue);
                 }
