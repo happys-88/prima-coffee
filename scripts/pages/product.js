@@ -252,6 +252,9 @@
                      }
                 }else{
                      lastValue =  this.model.get("currentVal");
+                     if(lastValue === undefined){
+                            lastValue ='1';
+                        }
                      $('.mz-productdetail-qty').val(lastValue);
                      this.model.updateQuantity(lastValue);
                 }

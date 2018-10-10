@@ -370,6 +370,9 @@ define([
                          this._isSyncing = true;
                          if (textValue === '' || reg.test(textValue)){
                             lastValue =  this.model.get("currentVal");
+                            if(lastValue === undefined){
+                                lastValue ='1';
+                                }
                             $('#mz-carttable-qty-field').val(lastValue);
                             $("[data-id='global-mz-carttable-qty-field']").val(lastValue);
                             item.set('quantity', lastValue);
