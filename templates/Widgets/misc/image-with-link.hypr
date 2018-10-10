@@ -1,0 +1,7 @@
+<div class="mz-image-link-widget"> 
+  {% if model.config.getImage %}  
+    <a {% if model.config.getImageLink %}href="{{ model.config.getImageLink }}"{% endif %}> 
+      <img src="{% make_url "image" model.config.getImage %}" {% if model.config.getImage.altText %}alt="{{ model.config.getImage.altText }}"{% endif %}>  
+    </a> 
+  {% endif %}  
+</div> 

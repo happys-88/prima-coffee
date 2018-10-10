@@ -1460,6 +1460,29 @@
       ]
     },
     {
+      "displayName": "Add Image With Link", 
+      "displayTemplate": "misc/image-with-link", 
+      "editViewFields": [
+        { 
+          "anchor": "50%",
+          "fieldLabel": "Add Image",
+          "name": "getImage", 
+          "xtype": "mz-input-image"
+        },
+        {
+          "anchor": "50%",
+          "fieldLabel": "Add Link/Url",
+          "name": "getImageLink",    
+          "xtype": "mz-input-text"
+        }
+      ],
+      "icon": "/resources/admin/widgets/00_photo.png",  
+      "id": "image-with-link",  
+      "validPageTypes": [
+        "*"
+      ]
+    }, 
+    {
       "displayName": "Shop By Category",
       "displayTemplate": "misc/shop-by-category",
       "editViewFields": [
