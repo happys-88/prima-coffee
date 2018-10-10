@@ -151,7 +151,7 @@
               <label for="shippingTo">Ship-to ZIP Code</label> 
           </div>
           <div class="mz-l-formfieldgroup-cell">
-            <input type="text" id="usStates" autocomplete="off_Bvc!hfy" maxlength="5" value="" placeholder="{{labels.zipSample}}" data-mz-value="usStates">
+            <input type="text" name="zip" id="zip" pattern="[0-9]*" maxlength="5" value="" placeholder="{{labels.zipSample}}" data-mz-value="usStates">
             <button type="button" id="zipCodeButton" class="mz-button" disabled data-mz-action="populateTax">{{ labels.submit }}</button>
             <span class="mz-validationmessage" data-mz-validation-message="zipCode" style="display: none;">{{ labels.wrongZipCode }}</span>  
           </div>
