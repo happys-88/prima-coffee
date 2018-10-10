@@ -228,7 +228,7 @@ define([
         populateDropDowns: function(e) {
             e.stopImmediatePropagation();
             
-            var stateSel = $('#usStates :selected').val();
+            var stateSel = $('#zip :selected').val();
             var shippingSel = $('#shippingOption :selected').val();
             if(typeof shippingSel === 'undefined') {
                 var shippingDetailObj = this.model.get("shippingDetail");
@@ -308,7 +308,7 @@ define([
         },
         populateTax: function(e){
             e.stopImmediatePropagation();
-            var stateSel = $('#usStates').val();
+            var stateSel = $('#zip').val();
             this.calculateTax(stateSel, true);
             this.populateShipping(false);
 
