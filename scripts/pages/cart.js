@@ -339,6 +339,7 @@ define([
                 id = $qField.data('mz-cart-item'),
                 item = this.model.get("items").get(id);
                 var textValue = e.currentTarget.value;
+                textValue = textValue.trim();
                 var reg = /^[A-Za-z]+$/;
                 var lastValue ='';
                 if (textValue !== '' &&  (!isNaN(newQuantity) || reg.test(newQuantity))){              

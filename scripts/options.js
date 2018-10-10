@@ -385,6 +385,7 @@ define([
             var $qField = $(e.currentTarget),
               newQuantity = parseInt($qField.val(), 10);
               var Quantity = e.currentTarget.value;
+              Quantity = Quantity.trim();
               var lastValue ='';
               var reg = /^[A-Za-z]+$/;
             if (Quantity !== '' &&  (!isNaN(newQuantity) || reg.test(newQuantity))){              

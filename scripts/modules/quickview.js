@@ -270,6 +270,7 @@ $(document).on('click', '.mz-quick-view', function (event) {
             }, 500),
             onQuantityChange1: _.debounce(function (e) {
             var Quantity = e.currentTarget.value;
+            Quantity = Quantity.trim();
             var lastValue ='';
               var reg = /^[A-Za-z]+$/;
             if (Quantity !== '' &&  (!isNaN(Quantity) || reg.test(Quantity))){              
