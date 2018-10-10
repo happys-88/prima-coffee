@@ -1504,27 +1504,9 @@
           "items": [
             {
               "anchor": "50%",
-              "fieldLabel": "Add Title",
-              "name": "slideTitleOne",
-              "xtype": "mz-input-text"
-            },
-            {
-              "anchor": "50%",
-              "fieldLabel": "Add Short Description",
-              "name": "slideShortDescOne",
-              "xtype": "mz-input-text"
-            },
-            {
-              "anchor": "50%",
               "fieldLabel": "Add Image",
               "name": "slideImageOne",
               "xtype": "mz-input-image"
-            },
-            {
-              "anchor": "50%",
-              "fieldLabel": "Add Button Ttile",
-              "name": "slideButtonOne",
-              "xtype": "mz-input-text"
             },
             {
               "anchor": "50%",
@@ -1538,24 +1520,6 @@
           "xtype": "panel",
           "title": "Second Slide",
           "items": [
-            {
-              "anchor": "50%",
-              "fieldLabel": "Add Title",
-              "name": "slideTitleTwo",
-              "xtype": "mz-input-text"
-            },
-            {
-              "anchor": "50%",
-              "fieldLabel": "Add Short Description",
-              "name": "slideShortDescTwo",
-              "xtype": "mz-input-text"
-            },
-            {
-              "anchor": "50%",
-              "fieldLabel": "Add Button Ttile",
-              "name": "slideButtonTwo",
-              "xtype": "mz-input-text"
-            },
             {
               "anchor": "50%",
               "fieldLabel": "Add Image",
@@ -1576,27 +1540,9 @@
           "items": [
             {
               "anchor": "50%",
-              "fieldLabel": "Add Title",
-              "name": "slideTitleThree",
-              "xtype": "mz-input-text"
-            },
-            {
-              "anchor": "50%",
-              "fieldLabel": "Add Short Description",
-              "name": "slideShortDescThree",
-              "xtype": "mz-input-text"
-            },
-            {
-              "anchor": "50%",
               "fieldLabel": "Add Image",
               "name": "slideImageThree",
               "xtype": "mz-input-image"
-            },
-            {
-              "anchor": "50%",
-              "fieldLabel": "Add Button Ttile",
-              "name": "slideButtonThree",
-              "xtype": "mz-input-text"
             },
             {
               "anchor": "50%",

@@ -1,35 +1,26 @@
-
 /**** Mobile and Tablet Common changes ****/
 
 @media @mz-mobile-tablet-common-media-query {
 	// Header
-	.mz-homepage {
-		#mz-home-slider{
-			margin-top: 61px;
+	.mz-sticky-header{
+		.mz-utilitynav {
+			position: absolute;
+			right: 15px;
+			top: 17px;
+			z-index: 100;
+			width: 440px;
+			text-align: right; 
 		}
-	}
-
-		.mz-sticky-header{
-			.mz-utilitynav {
-					position: absolute;
-					right: 15px;
-					top: 17px;
-					z-index: 100;
-					width: 440px;
-					text-align: right; 
-				}
 	}
 	.mz-pageheader{ 
 		.mz-header-bottom{
-				.col-md-2 {
+			.col-md-2 {
 				position: static;
 				width: 100%;
 			}
 			.container {
-					border-radius: 0;
-					
-				}
-			//padding: 25px 0 12px; 
+				border-radius: 0;	
+			}
 			padding:0;
 			.mz-storebranding{
 				width: 150px;  
@@ -100,7 +91,9 @@
 		// 	}  
 		// }
 	}
-	
+	#mz-home-slider {
+	    margin-top: 62px;
+	}
 	/**** Navigation ****/
 	#mz-sitenav-container{
 		display: none;  
