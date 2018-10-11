@@ -17,8 +17,8 @@ define([
         templateName: "modules/cart/cart-table",
         additionalEvents: {
                 /*"change [data-mz-value=usShipping]":"populateShipping",
-                "change [data-mz-value=usStates]":"populateShipping"*/
-                "change [data-mz-value=usShipping]":"populateDropDowns",
+                "change [data-mz-value=usStates]":"populateShipping"
+                "change [data-mz-value=usShipping]":"populateDropDowns",*/
                 "click [data-mz-qty=minus]": "quantityMinus", 
                 "click [data-mz-qty=plus]": "quantityPlus",
                 "keyup [data-mz-value=quantity]":"updateQuantity",
@@ -310,7 +310,7 @@ define([
             e.stopImmediatePropagation();
             var stateSel = $('#zip').val();
             this.calculateTax(stateSel, true);
-            this.populateShipping(false);
+            // this.populateShipping(false);
 
         },
         populateShipping: function(bool){

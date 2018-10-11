@@ -12,10 +12,12 @@
   {% endif %}
   </span>
 </div>
+{% comment %}
 <div class="mz-discount-row">
   <span class="mz-left-col">{{ labels.estimatedShipping }}:</span>
   <span class="mz-right-col">{{ model.shippingTotal|currency }}</span>
 </div>
+{% endcomment %}
 
 <div class="mz-carttable-total-wrap">
   <span class="mz-left-col">{{ labels.estimatedTotal }}:</span> 

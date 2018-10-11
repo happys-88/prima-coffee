@@ -156,6 +156,7 @@
             <span class="mz-validationmessage" data-mz-validation-message="zipCode" style="display: none;">{{ labels.wrongZipCode }}</span>  
           </div>
         </div> 
+        {% comment %}
         <div class="mz-l-formfieldgroup-row">
             <div class="mz-l-formfieldgroup-cell">
                 <label for="shippingTo">Shipping Method</label>
@@ -170,6 +171,7 @@
                </select>
             </div>
         </div>     
+        {% endcomment %}    
       </div>
       <div class="col-sm-6 col-md-8 col-xs-12 text-right visible-xs"> 
         {% include "modules/cart/cart-merchandise-total" %}   
