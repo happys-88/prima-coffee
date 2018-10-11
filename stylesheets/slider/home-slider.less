@@ -6,8 +6,19 @@
                 margin: 0 auto;
             }
         }
+        .slide {
+            display: none;
+            &:first-child {
+                display: block;
+            }
+        }
     }
     .bx-wrapper {
+        .slider {
+            .slide {
+                display: block;
+            }
+        }
         padding: 0;
         .bx-controls-direction {
             width: 100%;

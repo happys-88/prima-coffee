@@ -1,21 +1,21 @@
 <div id="mz-home-slider">
     <div class="slider">
         {% if model.config.slideImageOne %}
-            <div>
+            <div class="slide">
                 <a class="mz-slide" href="{{ model.config.slideLinkOne }}">
                     <img src="{% make_url "image" model.config.slideImageOne %}" alt="{{ model.config.slideImageOne.altText }}">
                 </a>
             </div>
         {% endif %}
         {% if model.config.slideImageTwo %}
-            <div>
+            <div class="slide">
                 <a class="mz-slide" href="{{ model.config.slideLinkTwo }}">
                     <img src="{% make_url "image" model.config.slideImageTwo %}" alt="{{ model.config.slideImageTwo.altText }}">
                 </a>
             </div>
         {% endif %}
         {% if model.config.slideImageThree %}
-            <div>
+            <div class="slide">
                 <a class="mz-slide" href="{{ model.config.slideLinkThree }}">
                     <img src="{% make_url "image" model.config.slideImageThree %}" alt="{{ model.config.slideImageThree.altText }}">
                 </a>
