@@ -16,8 +16,7 @@
 											{% endif %}
 							   			{% endfor %}	
 									</div>
-								</li>
-						
+								</li>						
 						{% endif %}
 					{% endfor %}
 				{% endif %}

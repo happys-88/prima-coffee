@@ -369,7 +369,7 @@ define([
                     }else{
                 
                          this._isSyncing = true;
-                         if ((textValue === '' || reg.test(textValue) || (!(e.which >= 48 && e.which <= 57) || (!(e.which >= 96 && e.which <= 105))))){
+                         if ((textValue === ''  || (!(e.which >= 48 && e.which <= 57) || (!(e.which >= 96 && e.which <= 105))))){
                             lastValue =  this.model.get("currentVal");
                             if(lastValue === undefined){
                                 lastValue ='1';

@@ -19,7 +19,8 @@
                             {% if model.content.productImages.length > 0 %} 
                                 {% for image in model.content.productImages %}
                                     <div class="product-image-slide">
-                                        <img src="{{ image.imageUrl }}" alt="{{ image.altText }}" />
+                                        <img src="{% make_url "image" image %}">
+                                        
                                     </div>
                                 {% endfor %}
                             {% else %}
