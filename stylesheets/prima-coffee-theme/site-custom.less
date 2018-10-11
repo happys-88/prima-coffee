@@ -108,15 +108,20 @@ body {
 					font-weight: 500;
 					width: 100%;
 					.twitter-typeahead{
-						width:100%;
+						position: static!important;
+						width: 100%;
 					}
 					.mz-searchbox-input {
 						width: 100%;
 						border-radius:50px;
-						background-color:rgb(219, 213, 213);
+						background-color: #999!important;
 						&:focus{
-							background-color:#fefcff!important;
+							background-color: #fefcff!important;
 						}
+						&.tt-hint {
+					        width: 0;
+					        padding: 0;
+					    }
 				  	}
 				}	
 	   		}
