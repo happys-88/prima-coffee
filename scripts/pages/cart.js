@@ -529,9 +529,9 @@ define([
             api.request('DELETE', serviceurl).then(function(response) {
                 blockUiLoader.unblockUi();
                 self.model.set(response);
-                var arr = _.without(self.model.get("appliedCouponCodes"), _.findWhere(self.model.get("appliedCouponCodes"), getCouponCode));
-                self.model.set("appliedCouponCodes", arr);
-                self.model.set('codeApplied', false);
+              //  var arr = _.without(self.model.get("appliedCouponCodes"), _.findWhere(self.model.get("appliedCouponCodes"), getCouponCode));
+              //  self.model.set("appliedCouponCodes", arr);
+               // self.model.set('codeApplied', false);
                 self.render();
                 $("#couponDisclaimer").text("");
             }, function(err) {

@@ -71,7 +71,7 @@
         initialize: function() {
             this.get("items").on('sync remove', this.fetch, this)
                              .on('loadingchange', this.isLoading, this);
-            this.applycoupon();
+            //this.applycoupon();
         },
         applycoupon: function(){
              var productDiscountss = _.flatten(_.pluck(_.pluck(this.get('items').models, 'attributes'), 'productDiscounts'));
@@ -144,7 +144,7 @@
                 if(!(couponExists && couponIsNotApplied)) {
                     me.set('codeApplied', true);
                 } 
-                me.applycoupon();
+              //  me.applycoupon();
                 var appliedCouponCodes = me.get("appliedCouponCodes");
                 if(!appliedCouponCodes.includes(code)) {
                     me.set('codeApplied', false);
