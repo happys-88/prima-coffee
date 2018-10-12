@@ -932,11 +932,11 @@
     "showProductTooltip": true,
     "noHasstleReturnTooltip": "PS: \"This item may be returned under our <a href=\"/returns-exchange\">Prima Returns Policy</a>. Please note there will be a 25% restocking fee on all returned merchandise.\" and PC: \"Returning this product is simple under our <a href=\"/returns-exchange\">No-Hassle Return Policy</a>.\"",
     "tryBeforeYouBuyTooltip": "\"Wonder if this product is exactly what you need? Try it out risk free for 14 days from the date of shipment! If you don't like it we will pay to ship it back.<br /><a href=\"/try-before-you-buy\">Read about it here</a>.\"",
-    "priceMatchGuaranteeTooltip": "Found a better price somewhere else? We'll beat it! Call us at <b>[store phone]</b> or <a href=\"/price-match-request\">fill out our price match form</a>.\"",
+    "priceMatchGuaranteeTooltip": "Found a better price somewhere else? We'll beat it! Call us at <b>[(888) 837-7892]</b> or <a href=\"/price-match-request\">fill out our price match form</a>.\"",
     "freeShippingTooltip": "\"Lucky you! This product qualifies for free shipping (contiguous United States only).<br /><a href=\"/prima-advantage\">Click here to see why</a>.\" (PC uses /prima-edge as the link currently.)",
     "defaultStoreImage": "/cms/files/prima-supply-store-image.jpg"
   },
-  "layoutWidgets": [
+  "layoutWidgets": [ 
     {
       "id": "mz-1-col",
       "category": "*",
