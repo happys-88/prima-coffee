@@ -404,10 +404,18 @@ define([
             var qFieldValue = $qField.find(".mz-carttable-qty-field").val();        
             var _qtyCountObj = $qField.find(".mz-carttable-qty-field");  
             value = parseInt(qFieldValue, 10);
-            var _qtyObj = $('[data-mz-validationmessage-for="quantity"]');
-            _qtyObj.text('');
+            var _qtyCartObj = $('[data-mz-Cart-validationmessage-for="quantity"]');
+            var _qtyGlobalObj = $('[data-mz-Global-validationmessage-for="quantity"]');
+            _qtyCartObj.text('');
+            _qtyGlobalObj.text('');
+
              if (value == 1) {
-                _qtyObj.text("Quantity can't be zero.");
+                if ($(e.delegateTarget).attr("id")=="cart"){
+                  _qtyCartObj.text("Quantity can't be zero.");
+                }
+                if ($(e.delegateTarget).attr("id")=="global-cart-listing"){
+                     _qtyGlobalObj.text("Quantity can't be zero.");
+                }   
                 return;
             } 
             value--;

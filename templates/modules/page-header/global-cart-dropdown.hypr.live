@@ -79,7 +79,7 @@
                         
                       </div>
                       <span class="mz-validationmessage">{{ model.addToCartErr }}</span>
-                      <span class="mz-validationmessage" data-mz-validationmessage-for="quantity"></span>
+                      <span class="mz-validationmessage" data-mz-Global-validationmessage-for="quantity"></span>
                       <div class="mz-carttable-item-qty col-sm-2">
                         <div class="qty-block">  
                           <span class="qty-counter" data-mz-qty="plus" role="button"><i class="mz-icon arrow-up" aria-hidden="true"></i></span> 
