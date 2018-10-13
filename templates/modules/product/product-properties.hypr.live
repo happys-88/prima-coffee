@@ -1,6 +1,15 @@
 <div class="col-xs-12  mz-productdetail-properties mz-l-stack-section">
     <h2 class="heading-2"><span>Details</span></h2>
     <div class="mz-productdetail-shortdesc">{{ model.content.productFullDescription|safe }}</div>  
+   
+        {% with model|get_product_attribute("tenant~custom-javascript") as customscript %}
+            {% if customscript %}
+                <div class="mz-custom-js-content">
+                {{ customscript.values.0.stringValue|safe }}
+                </div>
+            {% endif %}
+        {% endwith %}
+   
     {% if model.properties and themeSettings.showProductDetailProperties %}
         {% for property in model.properties %}
             {% if property.attributeFQN == "tenant~features" or property.attributeFQN == "tenant~specifications" %}

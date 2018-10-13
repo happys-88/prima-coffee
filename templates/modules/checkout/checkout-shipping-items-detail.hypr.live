@@ -39,8 +39,12 @@
                         <div class="mz-prima-product clearfix">
             				<div class="col-md-6 col-sm-12">
                 				<h5 class="mz-product-name">{{ item.product.name }}</h5>
-            	                {% for optionlist in item.product.options %}
-            	                    <div>{{ optionlist.name }}: {{ optionlist.value }}</div>
+								{% for optionlist in item.product.options %}
+								{% if optionlist.attributeFQN=="tenant~color" %}
+									<div>{{ optionlist.name }}: {{ optionlist.stringValue|default(optionlist.value) }}</div>
+								 {% else %}
+									<div>{{ optionlist.name }}: {{ optionlist.value }}</div>
+								{% endif%}
             	                {% endfor %}		
         	                </div>	    	
         	                <div class="col-md-6 col-sm-12">
