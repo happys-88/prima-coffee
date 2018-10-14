@@ -1,61 +1,58 @@
-{% block policy-form %}
-    		<div class="col-xs-12 mz-contact-form">
-                    <form name="priceGuarranteeForm" method="" id="priceGuarranteeForm" action="">    
-                    	<div class="form-group">
-                            <label class="col-xs-12 text-left" for="sku">{{labels.skuLabel}} <span class="is-required"> *</span></label>
-                            <div class="col-xs-12">
-                                <input type="text" name="sku" type="email" data-mz-value="sku" class="form-control">
-                                <span class="mz-validationmessage" data-mz-validationmessage-for="sku"></span>
-                            </div>
-                            <label class="col-sm-12 text-left" for="sku">{{labels.skuInfo}}</label>
-                        </div>
-                        <div class="form-group">
-                            <label class=" col-xs-12 text-left" for="price">{{ labels.priceLabel }}<span class="is-required"> *</span> </label>
-                            <div class="col-xs-12">
-                                <input type="text" name="price" data-mz-value="price" class="form-control">
-                                <span class="mz-validationmessage" data-mz-validationmessage-for="price"></span>
-                            </div>
-                            <label class="col-sm-12" for="price">{{ labels.priceInfo }} <span class="is-required"> *</span></label> 
-                        </div>
-                        <div class="form-group">
-                            <label class="col-xs-12 text-left" for="url">{{ labels.urlLabel }} <span class="is-required"> *</span></label>
-                            <div class="col-xs-12">
-                                <input type="text" name="url" data-mz-value="url" class="form-control">
-                                <span class="mz-validationmessage" data-mz-validationmessage-for="url"></span>
-                                
-                            </div>
-                            <label class="col-sm-12" for="url">{{ labels.urlInfo }} <span class="is-required"> *</span></label>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-xs-12 text-left" for="zipcode">{{ labels.zipCodeLabel }}<span class="is-required"> *</span> </label>
-                            <div class="col-xs-12">
-                                <input type="text" name="zipcode" data-mz-value="zipcode" class="form-control">
-                                <span class="mz-validationmessage" data-mz-validationmessage-for="zipcode"></span>                                        
-                            </div>
-                            <label class="col-sm-12 text-left" for="zipcode">{{ labels.zipCodeInfo }}</label>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-xs-12 text-left" for="name">{{ labels.nameLabel }} <span class="is-required"> *</span></label>
-                            <div class="col-xs-12">
-                                <input type="text" name="name" data-mz-value="name" class="form-control">
-                                <span class="mz-validationmessage" data-mz-validationmessage-for="name"></span>                                        
-                            </div>
-                            <label class="col-sm-12 text-left" for="name">{{ labels.nameInfo }} <span class="is-required"> *</span></label>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-xs-12" for="contact">{{ labels.contactLabel }} <span class="is-required"> *</span></label>
-                            <div class="col-xs-12">
-                                <input type="text" name="contact" maxlength="10" data-mz-value="contact" class="form-control">
-                                <span class="mz-validationmessage" data-mz-validationmessage-for="contact"></span>
-                            </div>
-                            <label class="col-sm-12 text-left" for="contact">{{ labels.contactInfo }}<span class="is-required"> *</span> </label>
-                        </div>  
-                        <span id="priceRequestError"></span>                              
-                        <div class="form-group">
-                            <div class="col-sm-8 col-sm-offset-4 col-xs-12">
-                                <button class="mz-button" type="button" data-mz-action="submitRequest">Request Price Match</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-    	{% endblock policy-form %}
+{% block policy-form %} 
+    <form name="priceGuarranteeForm" method="" id="priceGuarranteeForm" action="">    
+        <div class="form-group">
+            <label class="col-xs-12" for="sku">{{labels.skuLabel}} <span class="is-required"> *</span></label>
+            <div class="col-xs-12">
+                <input type="text" name="sku" type="email" data-mz-value="sku" class="form-control">
+                <span class="mz-validationmessage" data-mz-validationmessage-for="sku"></span>
+            </div>
+            <span class="col-xs-12 form-field-desc" for="sku">{{labels.skuInfo}}</span> 
+        </div>
+        <div class="form-group">
+            <label class=" col-xs-12" for="price">{{ labels.priceLabel }}<span class="is-required"> *</span> </label>
+            <div class="col-xs-12">
+                <input type="text" name="price" data-mz-value="price" class="form-control">
+                <span class="mz-validationmessage" data-mz-validationmessage-for="price"></span>
+            </div>
+            <span class="col-xs-12 form-field-desc" for="price">{{ labels.priceInfo }} <span class="is-required"> *</span></span>  
+        </div>
+        <div class="form-group">
+            <label class="col-xs-12" for="url">{{ labels.urlLabel }} <span class="is-required"> *</span></label>
+            <div class="col-xs-12">
+                <input type="text" name="url" data-mz-value="url" class="form-control">
+                <span class="mz-validationmessage" data-mz-validationmessage-for="url"></span>
+            </div>
+            <span class="col-xs-12 form-field-desc" for="url">{{ labels.urlInfo }} <span class="is-required"> *</span></span> 
+        </div>
+        <div class="form-group">
+            <label class="col-xs-12" for="zipcode">{{ labels.zipCodeLabel }}<span class="is-required"> *</span> </label>
+            <div class="col-xs-12">
+                <input type="text" name="zipcode" data-mz-value="zipcode" class="form-control">
+                <span class="mz-validationmessage" data-mz-validationmessage-for="zipcode"></span>
+            </div>
+            <span class="col-xs-12 form-field-desc" for="zipcode">{{ labels.zipCodeInfo }}</span> 
+        </div>
+        <div class="form-group">
+            <label class="col-xs-12" for="name">{{ labels.nameLabel }} <span class="is-required"> *</span></label>
+            <div class="col-xs-12">
+                <input type="text" name="name" data-mz-value="name" class="form-control">
+                <span class="mz-validationmessage" data-mz-validationmessage-for="name"></span>                                        
+            </div>
+            <span class="col-xs-12 form-field-desc" for="name">{{ labels.nameInfo }} <span class="is-required"> *</span></span> 
+        </div>
+        <div class="form-group">
+            <label class="col-xs-12" for="contact">{{ labels.contactLabel }} <span class="is-required"> *</span></label>
+            <div class="col-xs-12">
+                <input type="text" name="contact" maxlength="10" data-mz-value="contact" class="form-control">
+                <span class="mz-validationmessage" data-mz-validationmessage-for="contact"></span>
+            </div>
+            <span class="col-xs-12 form-field-desc" for="contact">{{ labels.contactInfo }}<span class="is-required"> *</span> </span>  
+        </div>  
+        <span id="priceRequestError"></span>                              
+        <div class="form-group">
+            <div class="col-sm-8 col-sm-offset-4 col-xs-12">
+                <button class="mz-button" type="button" data-mz-action="submitRequest">Request Price Match</button> 
+            </div>
+        </div>
+    </form>
+{% endblock policy-form %}    
