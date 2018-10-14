@@ -7,7 +7,16 @@
 
 	<div class="mz-productdetail-fulldesc mz-l-stack-section"> 
 	  {{ model.content.productFullDescription|safe }} 
-	</div>	
+	</div>
+
+	{% with model|get_product_attribute("tenant~custom-javascript") as customscript %}
+        {% if customscript %}
+            <div class="mz-custom-js-content">
+                {{ customscript.values.0.stringValue|safe }}
+            </div>
+        {% endif %}
+    {% endwith %} 
+
 </div>
 
 <div class="featured-products"> 
