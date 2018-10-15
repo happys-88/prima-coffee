@@ -576,7 +576,8 @@
   "welcome"                                :   "Welcome",
   "items"                                  :   "items",
   "resetPasswordMsg"                       :   "Enter a new password for your account",
-  "forgetPasswordMsg"                      :  "Our apologies for any inconvenience trying to login. Let's try and recover your password. To have your password reset, enter the email address associated to your Prima Supply Explorer account below.",
+  "forgetPasswordMsg"                      :  "Our apologies for any inconvenience trying to login. Let's try to recover your password. To have your password reset, please enter the email address associated with your Prima Coffee account below.", 
+  "forgetPasswordErrorMsg"                 :   "Oops! There is no account associated with the email address:", 
   "clickHere"                              :   "Click here",
 
   //QuickView

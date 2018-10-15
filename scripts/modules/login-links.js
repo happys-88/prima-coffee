@@ -112,6 +112,9 @@
                 msg = val[1].trim();
                 msg = msg.substr(msg.indexOf(' ')+1, msg.length);
             }
+            if (msg.indexOf('Item not found:') > -1) { 
+                msg = msg.replace("Item not found:", Hypr.getLabel('forgetPasswordErrorMsg')); 
+            } 
             this.$parent.find('[data-mz-role="popover-message"]').html('<span class="mz-validationmessage">' + msg + '</span>');
         },
         init: function (el) {
