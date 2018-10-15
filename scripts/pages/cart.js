@@ -190,10 +190,10 @@ define([
             }
         }),
         render: function() {
-            var cartEmpty = this.model.get("isEmpty");
+            /*var cartEmpty = this.model.get("isEmpty");
             if(this.$el.context.location.pathname === '/cart' && !cartEmpty && typeof cartEmpty !== "undefined"){
                 this.beforeRender(); 
-            }
+            }*/
             CartMonitor.update();
             preserveElement(this, ['.v-button', '.p-button'], function() {
                 Backbone.MozuView.prototype.render.call(this);
@@ -369,7 +369,7 @@ define([
                     }else{
                 
                          this._isSyncing = true;
-                         if ((textValue === ''  || (!(e.which >= 48 && e.which <= 57) || (!(e.which >= 96 && e.which <= 105))))){
+                         if ((textValue === '' ||(!(e.which >= 48 && e.which <= 57) || !(e.which >= 96 && e.which <= 105)))){
                             lastValue =  this.model.get("currentVal");
                             if(lastValue === undefined){
                                 lastValue ='1';
