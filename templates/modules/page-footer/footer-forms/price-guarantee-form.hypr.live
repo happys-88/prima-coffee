@@ -43,7 +43,7 @@
         <div class="form-group">
             <label class="col-xs-12" for="contact">{{ labels.contactLabel }} <span class="is-required"> *</span></label>
             <div class="col-xs-12">
-                <input type="text" name="contact" maxlength="10" data-mz-value="contact" class="form-control">
+                <input type="text" name="contact"  data-mz-value="contact" class="form-control">
                 <span class="mz-validationmessage" data-mz-validationmessage-for="contact"></span>
             </div>
             <span class="col-xs-12 form-field-desc" for="contact">{{ labels.contactInfo }}<span class="is-required"> *</span> </span>  
