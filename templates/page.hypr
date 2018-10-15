@@ -130,7 +130,7 @@
                 {% endblock mobile-nav %}       
             </div> 
 
-            <div role="main" id="page-content" class="mz-l-pagecontent container" {% if pageContext.isEditMode and pageContext.cmsContext.template.path=="" %} style="margin-top:190px;"{% endif %}>     
+            <div role="main" id="page-content" class="mz-l-pagecontent container">      
                 {% block breadcrumbs %}
                     {% if themeSettings.showBreadcrumbs %}
                         {% include "modules/breadcrumbs" %}
