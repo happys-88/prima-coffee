@@ -267,7 +267,7 @@ define([
                     tax = tax.toPrecision(3);
                     cart.set({'taxTotal':tax});
 
-                    var shipping = localStorage.getItem('selectedShipping');
+                   /* var shipping = localStorage.getItem('selectedShipping');
                     if(typeof shipping !== 'undefined') {
                         var Ships = localStorage.getItem("shippingData");
                         var shippingDetailObj = JSON.parse(Ships);
@@ -282,7 +282,7 @@ define([
                         });
                         var selectedMethodAmount = selectedMethod.amount;
                         cart.set({'shippingTotal': selectedMethodAmount});
-                    }
+                    }*/
                 } else {
                     cart.set({'taxTotal':0});
                 }
