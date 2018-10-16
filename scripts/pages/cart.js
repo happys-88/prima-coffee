@@ -255,9 +255,22 @@ define([
             if(typeof stateSel !== 'undefined') {
                 localStorage.setItem('selectedState',stateSel); 
                 this.model.set({'selectedState': localStorage.getItem('selectedState')});
-            } else {
+            } 
 
+            var codeRanges = HyprLiveContext.locals.themeSettings.zipCodeRanges;
+            var getTax = false;
+            codeRanges = codeRanges.split(",");
+            for(var i=0; i<codeRanges.length; i++) {
+                var range = codeRanges[i].split('-');
+                var state = Number(stateSel);
+                if(range[0] <= state && state <= range[1]) {
+                    getTax = true;
+                    break;
             }
+            }
+           
+            if(getTax) {
+
             api.request("POST", "/taxEstimation", {'state':stateSel}).then(function (response){
                 if(response.statusCode == 200) {
 
@@ -291,6 +304,10 @@ define([
                 if(stateSel && bool)
                     $('[data-mz-validation-message="zipCode"]').show();
             });
+            } else {
+                this.model.set({'taxTotal':0});
+                this.render();
+            }
         },
         populateShippingMethod: function(cart) {
             var shipping = cart.get('selectedShipping');

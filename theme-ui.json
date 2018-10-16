@@ -506,6 +506,10 @@
                     "fieldLabel": "MailChimp Deals", 
                     "xtype": "mz-input-textarea",
                     "name": "mailchimpDeals"
+                },{
+                    "fieldLabel": "Zip Ranges for Tax Estimation", 
+                    "xtype": "mz-input-text",
+                    "name": "zipCodeRanges"
                 }
             ]
         },

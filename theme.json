@@ -665,6 +665,7 @@
     "disqusKey": "ji62aEaY2h92OZ9iOdQBePwvgJUllr1b58BMnRWW2ZwcV0ewPvZVwxeLMWDrUjK5",
     "sendGridKey": "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",
     "merchantEmail": "sales@prima-coffee.com",
+    "zipCodeRanges": "90001-96162, 40003–42788",
     "usStates": [
       {
         "abbreviation": "AL",
