@@ -175,13 +175,6 @@
             </div>
         {% endif %}
 
-         <div class="merchandise-subtotal">
-            {% for thresholdMsg in model.discountThresholdMessages %}
-                <span class="mz-left-col">{{ thresholdMsg.message }} </span> 
-                <span class="mz-right-col"></span>
-            {% endfor %}
-        </div>
-
         <div class="mz-ordersummary-grandtotal">
             <span class="mz-ordersummary-totalname">{{ labels.orderTotal }}:</span> 
             <span class="mz-ordersummary-totalvalue">{{ model.total|currency }}</span>
@@ -205,5 +198,8 @@
         {% endif %}
     </div>
 </div>
-
-
+<div class="text-right thres-hold-msg">
+    {% for thresholdMsg in model.discountThresholdMessages %}
+       {{ thresholdMsg.message }}
+    {% endfor %}
+</div>

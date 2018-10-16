@@ -2,12 +2,7 @@
   <span class="mz-left-col">{{ labels.merchandiseSubtotal }}:</span>
   <span class="mz-right-col mz-carttable-total"><strong>{{ model.discountedSubtotal|currency }}</strong></span>
 </div>
-<div class="merchandise-subtotal">
-  {% for thresholdMsg in model.discountThresholdMessages %}
-    <span class="mz-left-col">{{ thresholdMsg.message }} </span> 
-    <span class="mz-right-col"></span>
-  {% endfor %}
-</div>
+
 <div class="mz-discount-row order-level-discount">
   {% for discount in model.orderDiscounts %}
     {% if not discount.excluded %}
@@ -15,6 +10,12 @@
       <span class="mz-right-col">{{ discount.impact|currency }}</span>
     {% endif %}
   {% endfor %}  
+</div>
+
+<div class="text-right thres-hold-msg">
+  {% for thresholdMsg in model.discountThresholdMessages %}
+    {{ thresholdMsg.message }}
+  {% endfor %}
 </div>
 {% comment %}
 <div class="mz-discount-row mz-oversized-shipping">
