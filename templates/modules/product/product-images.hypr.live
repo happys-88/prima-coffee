@@ -18,7 +18,7 @@
                                         <div class="start">    
                                         {% endif %}  
                                         <a class="mz-productimages-thumb {% if forloop.first %}active-thumb{% endif %}" data-mz-productimage-thumb="{{ image.sequence }}" href="{% make_url "image" image %}">
-                                            <img class="mz-productimages-thumbimage"  src="{% make_url "image" image with max=themeSettings.maxProductImageThumbnailSize as_parameters %}" {% if image.altText %} onerror="this.src='/cms/files/no-image.jpg'" alt="{{ image.altText }}"{% endif %} data-zoom-image="{% make_url "image" image with  max=themeSettings.productImagesZoomContainerWidth as_parameters %}" />
+                                            <img class="mz-productimages-thumbimage"  src="{% make_url "image" image with max=themeSettings.maxProductImageThumbnailSize as_parameters %}" {% if image.altText %} onerror="this.src='/cms/files/no-image-pc.jpg'" alt="{{ image.altText }}"{% endif %} data-zoom-image="{% make_url "image" image with  max=themeSettings.productImagesZoomContainerWidth as_parameters %}" />
                                         </a>
                                         {% if image.sequence|mod(10)==0 %}
                                         </div>     
@@ -37,7 +37,7 @@
                                             <div>    
                                             {% endif %}  
                                                 <a class="mz-productimages-thumb {% if forloop.first %}active-thumb{% endif %}" data-mz-productimage-thumb="{{ image.sequence }}" href="{% make_url "image" image %}">
-                                                    <img class="mz-productimages-thumbimage"  src="{% make_url "image" image with max=themeSettings.maxProductImageThumbnailSize as_parameters %}" {% if image.altText %} onerror="this.src='/cms/files/no-image.jpg'" alt="{{ image.altText }}"{% endif %} data-zoom-image="{% make_url "image" image with  max=themeSettings.productImagesZoomContainerWidth as_parameters %}" />
+                                                    <img class="mz-productimages-thumbimage"  src="{% make_url "image" image with max=themeSettings.maxProductImageThumbnailSize as_parameters %}" {% if image.altText %} onerror="this.src='/cms/files/no-image-pc.jpg'" alt="{{ image.altText }}"{% endif %} data-zoom-image="{% make_url "image" image with  max=themeSettings.productImagesZoomContainerWidth as_parameters %}" />
                                                 </a>
                                             {% if image.sequence|mod(8)==0 %}
                                             </div>     
@@ -59,7 +59,7 @@
                                             <div>    
                                             {% endif %}  
                                             <a class="mz-productimages-thumb {% if forloop.first %}active-thumb{% endif %}" data-mz-productimage-thumb="{{ image.sequence }}" href="{% make_url "image" image %}">
-                                                <img class="mz-productimages-thumbimage"  src="{% make_url "image" image with max=themeSettings.maxProductImageThumbnailSize as_parameters %}" {% if image.altText %} onerror="this.src='/cms/files/no-image.jpg'" alt="{{ image.altText }}"{% endif %} data-zoom-image="{% make_url "image" image with  max=themeSettings.productImagesZoomContainerWidth as_parameters %}" />
+                                                <img class="mz-productimages-thumbimage"  src="{% make_url "image" image with max=themeSettings.maxProductImageThumbnailSize as_parameters %}" {% if image.altText %} onerror="this.src='/cms/files/no-image-pc.jpg'" alt="{{ image.altText }}"{% endif %} data-zoom-image="{% make_url "image" image with  max=themeSettings.productImagesZoomContainerWidth as_parameters %}" />
                                             </a>
                                             {% if image.sequence|mod(10)==0  or forloop.last %}
                                             </div>     
@@ -74,7 +74,7 @@
                                             <div>    
                                             {% endif %}  
                                                 <a class="mz-productimages-thumb {% if forloop.first %}active-thumb{% endif %}" data-mz-productimage-thumb="{{ image.sequence }}" href="{% make_url "image" image %}">
-                                                    <img class="mz-productimages-thumbimage"  src="{% make_url "image" image with max=themeSettings.maxProductImageThumbnailSize as_parameters %}" {% if image.altText %} onerror="this.src='/cms/files/no-image.jpg'" alt="{{ image.altText }}"{% endif %} data-zoom-image="{% make_url "image" image with  max=themeSettings.productImagesZoomContainerWidth as_parameters %}" />
+                                                    <img class="mz-productimages-thumbimage"  src="{% make_url "image" image with max=themeSettings.maxProductImageThumbnailSize as_parameters %}" {% if image.altText %} onerror="this.src='/cms/files/no-image-pc.jpg'" alt="{{ image.altText }}"{% endif %} data-zoom-image="{% make_url "image" image with  max=themeSettings.productImagesZoomContainerWidth as_parameters %}" />
                                                 </a>
                                             {% if image.sequence|mod(8)==0  or forloop.last %}
                                             </div>     
@@ -100,7 +100,7 @@
                                             <div>    
                                             {% endif %}  
                                             <a class="mz-productimages-thumb {% if forloop.first %}active-thumb{% endif %}" data-mz-productimage-thumb="{{ image.sequence }}" href="{% make_url "image" image %}">
-                                                <img class="mz-productimages-thumbimage"  src="{% make_url "image" image with max=themeSettings.maxProductImageThumbnailSize as_parameters %}" {% if image.altText %} onerror="this.src='/cms/files/no-image.jpg'" alt="{{ image.altText }}"{% endif %} data-zoom-image="{% make_url "image" image with  max=themeSettings.productImagesZoomContainerWidth as_parameters %}" />
+                                                <img class="mz-productimages-thumbimage"  src="{% make_url "image" image with max=themeSettings.maxProductImageThumbnailSize as_parameters %}" {% if image.altText %} onerror="this.src='/cms/files/no-image-pc.jpg'" alt="{{ image.altText }}"{% endif %} data-zoom-image="{% make_url "image" image with  max=themeSettings.productImagesZoomContainerWidth as_parameters %}" />
                                             </a>
                                             {% if image.sequence|add(1)|mod(10)==0 %}
                                             </div>     
@@ -118,7 +118,7 @@
                                             <div>    
                                             {% endif %}  
                                             <a class="mz-productimages-thumb {% if forloop.first %}active-thumb{% endif %}" data-mz-productimage-thumb="{{ image.sequence }}" href="{% make_url "image" image %}">
-                                                <img class="mz-productimages-thumbimage"  src="{% make_url "image" image with max=themeSettings.maxProductImageThumbnailSize as_parameters %}" {% if image.altText %} onerror="this.src='/cms/files/no-image.jpg'" alt="{{ image.altText }}"{% endif %} data-zoom-image="{% make_url "image" image with  max=themeSettings.productImagesZoomContainerWidth as_parameters %}" />
+                                                <img class="mz-productimages-thumbimage"  src="{% make_url "image" image with max=themeSettings.maxProductImageThumbnailSize as_parameters %}" {% if image.altText %} onerror="this.src='/cms/files/no-image-pc.jpg'" alt="{{ image.altText }}"{% endif %} data-zoom-image="{% make_url "image" image with  max=themeSettings.productImagesZoomContainerWidth as_parameters %}" />
                                             </a>
                                             {% if image.sequence|add(1)|mod(8)==0 %}
                                             </div>     
@@ -140,7 +140,7 @@
                                             <div>    
                                             {% endif %}  
                                             <a class="mz-productimages-thumb {% if forloop.first %}active-thumb{% endif %}" data-mz-productimage-thumb="{{ image.sequence }}" href="{% make_url "image" image %}">
-                                                <img class="mz-productimages-thumbimage"  src="{% make_url "image" image with max=themeSettings.maxProductImageThumbnailSize as_parameters %}" {% if image.altText %} onerror="this.src='/cms/files/no-image.jpg'" alt="{{ image.altText }}"{% endif %} data-zoom-image="{% make_url "image" image with  max=themeSettings.productImagesZoomContainerWidth as_parameters %}" />
+                                                <img class="mz-productimages-thumbimage"  src="{% make_url "image" image with max=themeSettings.maxProductImageThumbnailSize as_parameters %}" {% if image.altText %} onerror="this.src='/cms/files/no-image-pc.jpg'" alt="{{ image.altText }}"{% endif %} data-zoom-image="{% make_url "image" image with  max=themeSettings.productImagesZoomContainerWidth as_parameters %}" />
                                             </a>
                                             {% if image.sequence|add(1)|mod(10)==0  or forloop.last %}
                                             </div>     
@@ -155,7 +155,7 @@
                                             <div>    
                                             {% endif %}  
                                             <a class="mz-productimages-thumb {% if forloop.first %}active-thumb{% endif %}" data-mz-productimage-thumb="{{ image.sequence }}" href="{% make_url "image" image %}">
-                                                <img class="mz-productimages-thumbimage"  src="{% make_url "image" image with max=themeSettings.maxProductImageThumbnailSize as_parameters %}" {% if image.altText %}onerror="this.src='/cms/files/no-image.jpg'" alt="{{ image.altText }}"{% endif %} data-zoom-image="{% make_url "image" image with  max=themeSettings.productImagesZoomContainerWidth as_parameters %}" />
+                                                <img class="mz-productimages-thumbimage"  src="{% make_url "image" image with max=themeSettings.maxProductImageThumbnailSize as_parameters %}" {% if image.altText %}onerror="this.src='/cms/files/no-image-pc.jpg'" alt="{{ image.altText }}"{% endif %} data-zoom-image="{% make_url "image" image with  max=themeSettings.productImagesZoomContainerWidth as_parameters %}" />
                                             </a>
                                             {% if image.sequence|add(1)|mod(8)==0  or forloop.last %}
                                             </div>     

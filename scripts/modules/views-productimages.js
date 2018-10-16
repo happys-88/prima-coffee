@@ -2,7 +2,7 @@
     var sitecontext = HyprLiveContext.locals.siteContext;
     var cdn = sitecontext.cdnPrefix;
     var siteID = cdn.substring(cdn.lastIndexOf('-') + 1);
-    var noimgsrc = "https:"+cdn + '/cms/' + siteID + '/files/' +'no-image.jpg';
+    var noimgsrc = "https:"+cdn + '/cms/' + siteID + '/files/' +'no-image-pc.jpg';
     var ProductPageImagesView = Backbone.MozuView.extend({
         templateName: 'modules/product/product-images',
         events: {

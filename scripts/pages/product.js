@@ -231,6 +231,7 @@
             
         },
         onOptionChange: function (e) {
+            this.model.set("addon-sequence", $(e.currentTarget).attr("data-addon-sequence")-1);
             return this.configure($(e.currentTarget));
         },
         onQuantityChange: _.debounce(function (e) {

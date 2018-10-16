@@ -3,7 +3,7 @@
         {% block product-image %}
         <a href='{% make_url "product" model %}'>
             {% if model.mainImage.imageUrl %}
-                <img class="lazy" src="/cms/files/Loading_icon.gif" data-original='{% make_url "image" model.mainImage with max=themeSettings.listProductThumbSize as_parameter %}' onerror="this.src='/cms/files/no-image.jpg'" {% if model.mainImage.altText %}alt="{{ model.mainImage.altText }}"{% endif %} />
+                <img class="lazy" src="/cms/files/Loading_icon.gif" data-original='{% make_url "image" model.mainImage with max=themeSettings.listProductThumbSize as_parameter %}' onerror="this.src='/cms/files/no-image-pc.jpg'" {% if model.mainImage.altText %}alt="{{ model.mainImage.altText }}"{% endif %} />
             {% else %}
                 <span class="noimage-placeholder"><span class="noimage-text">{{ labels.productImagePlaceholder }}</span></span> 
             {% endif %} 

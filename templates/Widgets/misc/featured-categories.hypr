@@ -7,7 +7,7 @@
 						<li class="col-xs-12 col-sm-6 mz-shop-by-categorylist-item"> 
 						    <div class="mz-category-image">
 					    		<a href="{% make_url "category" categoryObject %}">
-					    			<img src="{{ catImage.imageUrl }}" alt="{{ catImage.altText }}" onerror="this.src='/cms/files/no-image.jpg'">  
+					    			<img src="{{ catImage.imageUrl }}" alt="{{ catImage.altText }}" onerror="this.src='/cms/files/no-image-pc.jpg'">  
 					    		</a>
 					    	</div>
 						    <div class="mz-categorylisting-info">
