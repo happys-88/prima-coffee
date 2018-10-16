@@ -20,7 +20,7 @@
                       <div class="mz-carttable-item-product-image"> 
                         {% if item.product.imageUrl %} 
                           {% with item.product|get_product_attribute("tenant~color") as colorAttr %}  
-                            {% if colorAttr %}
+                           {% comment %} {% if colorAttr %}
                               {% with colorAttr.value|replace(" ","_") as colorValue %}
                                 {% with "/cms/files/{0}_{1}_v1.jpg"|string_format(item.product.productCode, colorValue, themeSettings.maxProductImageThumbnailSize) as fileName %}
                                     <a href="{{ item.product.url }}">
@@ -28,11 +28,11 @@
                                     </a>
                                 {% endwith %}     
                               {% endwith %}
-                            {% else %}
+                            {% else %}{% endcomment %}
                               <a href="{{ item.product.url }}">
                                 <img class="mz-carttable-item-image" src="{% make_url "image" item.product with maxWidth=themeSettings.maxProductImageThumbnailSize as_parameters %}" {% if item.product.imageAlternateText %}alt="{{ item.product.imageAlternateText }}"{% endif %} />
                               </a>
-                            {% endif %}  
+                           {% comment %} {% endif %}  {% endcomment %}
                           {% endwith %}
                         {% else %}
                           <a href="{{ item.product.url }}">
