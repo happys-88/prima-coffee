@@ -10,7 +10,7 @@
     "allowProduction": true,
     "baseTheme": "https://github.com/happys-88/prima-coffee",
     "baseThemeVersion": {
-      "commit": "c3a26176c98443a62d393a5e7a4a542fc0efb111"
+      "commit": "3efe618e185c353745b3051839a1da48e268b088"
     },
     "baseThemeChannel": "stable"
   },
@@ -169,7 +169,13 @@
       "customEditor": "back-office@mozu"
     }
   ],
-  "pageTypes": [
+  "pageTypes": [ 
+    {
+      "entityType": "siteTemplate",
+      "id": "site_page",
+      "template": "page",
+      "title": "Default Site Template"
+    }, 
     {
       "documentType": "web_page",
       "entityType": "webpage",
@@ -202,7 +208,7 @@
           ]
         }
       ]
-    },
+    }, 
     {
       "entityType": "category",
       "id": "category-gateway",
@@ -316,13 +322,7 @@
       "template": "print-order",
       "title": "Print Order",
       "userCreatable": true
-    },
-    {
-      "entityType": "siteTemplate",
-      "id": "site_page",
-      "template": "page",
-      "title": "Default Site Template"
-    },
+    }, 
     {
       "documentType": "web_page",
       "entityType": "webpage",
