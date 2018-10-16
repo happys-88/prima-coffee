@@ -163,7 +163,6 @@
                 this.stepStatus('incomplete');
             },
             next: function () {
-                $("#candidateValidatedAddresses:radio:first").prop("checked", true).trigger("click");
                 if (!this.requiresFulfillmentInfo() && this.requiresDigitalFulfillmentContact()) {
                     return this.nextDigitalOnly();
                 }
