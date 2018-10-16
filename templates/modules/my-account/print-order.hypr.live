@@ -146,7 +146,7 @@
 						<span class="mz-ordersummary-totalvalue">-{{ shippingDiscount.discount.impact|currency }}</span>
 					</div>
 				{% endfor %}  
-				{% if model.dutyAmount >= 0 %} 
+				{% if model.dutyAmount > 0 %} 
 		            <div class="mz-ordersummary-duty">
 		                <span class="mz-ordersummary-totalname">{{ labels.labelOversized }}:</span>
 		                <span class="mz-ordersummary-totalvalue">{{ model.dutyAmount|currency }}</span>
