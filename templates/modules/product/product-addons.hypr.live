@@ -7,7 +7,7 @@
                         {% if not value.itemDiscontinued %}
                         <li class="addon-product"> 
                             <label class="add-it">
-                                <input type="checkbox" class="mz-productoptions-option" data-mz-product-option="{{ addon.attributeFQN }}" {% if value.isSelected %}checked="checked"{% endif %} value="{{value.value}}"/> ADD IT
+                                <input type="checkbox" data-addon-sequence="{{ value.dataSequence }}" class="mz-productoptions-option" data-mz-product-option="{{ addon.attributeFQN }}" {% if value.isSelected %}checked="checked"{% endif %} value="{{value.value}}"/> ADD IT
                             </label>
                             {% if value.imageFilePath %}
                                 <img class="mz-itemlisting-thumb-img" src="{{ value.imageFilePath }}" {% if imageData.altText %}alt="{{ imageData.altText }}"{% endif %} onerror="this.onerror=null;this.src='{% if value.imageData %}{{ value.imageData.imageUrl }}{% else %}/cms/files/no-image.jpg{% endif %}'" /> 

@@ -179,7 +179,19 @@
                 page,
                 controls,
                 windowWidth = $(window).width(),
-                minSlideItems; 
+                minSlideItems,
+                sequence; 
+                 if(typeof this.model.get("addon-sequence")=="undefined" ){
+                     sequence= 0;
+                  }
+                  else{
+                        if(this.model.get("addon-sequence")<=3){
+                            sequence=0;
+                        }
+                        if(this.model.get("addon-sequence")>3){
+                            sequence=3;
+                        }
+               }
             if(windowWidth <= 991){  
                 minSlides = 2;
                 maxSlides = 2;
@@ -210,6 +222,7 @@
                     controls:controls,
                     speed: 1000,
                     infiniteLoop: false,
+                    startSlide: sequence,
                     onSliderLoad: function() {
                         $(".slider").css("visibility", "visible");
                     }  
@@ -368,6 +381,7 @@
                         optionValue.imageFilePath = addonValue.imageFilePath;
                         optionValue.imageData = addonValue.imageData;
                         optionValue.itemDiscontinued = addonValue.itemDiscontinued;
+                        optionValue.dataSequence = addonValue.dataSequence;
                         optionValues[j] = optionValue;
                     }
                     options[k].values = optionValues;
@@ -581,6 +595,7 @@
                                         addonCount--;
                                     }
                                 }
+                            optionValue.dataSequence = addonCount;
                                 optionValues[k] = optionValue;
                             }
                             option.values = optionValues;
