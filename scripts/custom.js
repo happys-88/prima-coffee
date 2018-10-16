@@ -103,7 +103,7 @@ define([
    				$("#errorMsg").addClass("success");
    				$("#errorMsg").html(errorMessage);
    				$("#errorMsg").show().delay(2000).fadeOut();
-   				api.request("POST", "/mailchimp", {'accountId':email, deals:"PCNewsLetter"}).then(function (response){
+   				api.request("POST", "/mailchimp", {'accountId':email, deals:"PCDeals"}).then(function (response){
                    console.log("Success");    
                 }, function(err) {
                     console.log("Error : "+JSON.stringify(err));

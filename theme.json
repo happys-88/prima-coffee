@@ -10,7 +10,7 @@
     "allowProduction": true,
     "baseTheme": "https://github.com/happys-88/prima-coffee",
     "baseThemeVersion": {
-      "commit": "3efe618e185c353745b3051839a1da48e268b088"
+      "commit": "c3a26176c98443a62d393a5e7a4a542fc0efb111"
     },
     "baseThemeChannel": "stable"
   },
@@ -665,7 +665,7 @@
     "disqusKey": "ji62aEaY2h92OZ9iOdQBePwvgJUllr1b58BMnRWW2ZwcV0ewPvZVwxeLMWDrUjK5",
     "sendGridKey": "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",
     "merchantEmail": "sales@prima-coffee.com",
-    "zipCodeRanges": "90001-96162, 40003–42788",
+    "zipCodeRanges": "90001-96162, 40003-42788",
     "usStates": [
       {
         "abbreviation": "AL",
@@ -929,7 +929,7 @@
     "questions": "questions",
     "showYotpoGallery": true,
     "instagramFollowUsLink": "https://www.instagram.com/primacoffee/",
-    "addThisPubId": "ra-51b87b7c4a40d8c0", 
+    "addThisPubId": "ra-51b87b7c4a40d8c0",
     "showProductTooltip": true,
     "noHasstleReturnTooltip": "PS: \"This item may be returned under our <a href=\"/returns-exchange\">Prima Returns Policy</a>. Please note there will be a 25% restocking fee on all returned merchandise.\" and PC: \"Returning this product is simple under our <a href=\"/returns-exchange\">No-Hassle Return Policy</a>.\"",
     "tryBeforeYouBuyTooltip": "\"Wonder if this product is exactly what you need? Try it out risk free for 14 days from the date of shipment! If you don't like it we will pay to ship it back.<br /><a href=\"/try-before-you-buy\">Read about it here</a>.\"",
@@ -937,7 +937,7 @@
     "freeShippingTooltip": "\"Lucky you! This product qualifies for free shipping (contiguous United States only).<br /><a href=\"/prima-advantage\">Click here to see why</a>.\" (PC uses /prima-edge as the link currently.)",
     "defaultStoreImage": "/cms/files/prima-supply-store-image.jpg"
   },
-  "layoutWidgets": [ 
+  "layoutWidgets": [
     {
       "id": "mz-1-col",
       "category": "*",
@@ -1461,28 +1461,28 @@
       ]
     },
     {
-      "displayName": "Add Image With Link", 
-      "displayTemplate": "misc/image-with-link", 
+      "displayName": "Add Image With Link",
+      "displayTemplate": "misc/image-with-link",
       "editViewFields": [
-        { 
+        {
           "anchor": "50%",
           "fieldLabel": "Add Image",
-          "name": "getImage", 
+          "name": "getImage",
           "xtype": "mz-input-image"
         },
         {
           "anchor": "50%",
           "fieldLabel": "Add Link/Url",
-          "name": "getImageLink",    
+          "name": "getImageLink",
           "xtype": "mz-input-text"
         }
       ],
-      "icon": "/resources/admin/widgets/00_photo.png",  
-      "id": "image-with-link",  
+      "icon": "/resources/admin/widgets/00_photo.png",
+      "id": "image-with-link",
       "validPageTypes": [
         "*"
       ]
-    }, 
+    },
     {
       "displayName": "Shop By Category",
       "displayTemplate": "misc/shop-by-category",
