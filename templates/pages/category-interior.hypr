@@ -1,4 +1,6 @@
-{% dropzone "category-page-top" scope="page" %}
+<div class="row">
+    {% dropzone "category-page-top" scope="page" %}
+</div>
 
 {% if not pageContext.query.partial %}   
 	{% if pageContext.search.query != "" and pageContext.search.query != 'undefined' %}
@@ -15,12 +17,15 @@
         {% if not pageTitle %}
             <h1 class="mz-pagetitle">{{ navigation.currentNode.name|upper|replace("~", "")|safe }}</h1>
         {% endif %}
+        {% comment %}
 		<div class="category-description">
 			<div>{{ model.content.description|safe }}</div>
 		</div>
+        {% endcomment %}
 
-        {% dropzone "category-page-slot-1" scope="page" %}   
-
+        <div class="row">
+            {% dropzone "category-page-slot-1" scope="page" %}   
+        </div>
 	{% endif %} 
 {% endif %} 
 
