@@ -200,6 +200,6 @@
 </div>
 <div class="text-right thres-hold-msg">
     {% for thresholdMsg in model.discountThresholdMessages %}
-       {{ thresholdMsg.message| safe}}
+        <p> {{ thresholdMsg.message| safe}} </p>
     {% endfor %}
 </div>
