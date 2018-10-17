@@ -1,11 +1,11 @@
 {% dropzone "category-page-top" scope="page" %}
 
-{% if not pageContext.query.partial %} 
+{% if not pageContext.query.partial %}   
 	{% if pageContext.search.query != "" and pageContext.search.query != 'undefined' %}
 		
  	{% else %}
 		{% for categoryObject in categories.all %}
-            {% if categoryObject.content.name == navigation.currentNode.name %}
+            {% if categoryObject.categoryCode == navigation.currentNode.categoryCode %} 
                 {% if categoryObject.content.pageTitle %}
                     <h1 class="mz-pagetitle">{{ categoryObject.content.pageTitle|upper|replace("~", "")|safe }}</h1>
                     {% set_var pageTitle=true %}
@@ -18,8 +18,11 @@
 		<div class="category-description">
 			<div>{{ model.content.description|safe }}</div>
 		</div>
+
+        {% dropzone "category-page-slot-1" scope="page" %}   
+
 	{% endif %} 
-{% endif %}
+{% endif %} 
 
 
 {% partial_cache model.categoryId pageContext.Sorting model.content pageContext.Pagination pageContext.query.sortBy pageContext.user.isAnonymous %}
