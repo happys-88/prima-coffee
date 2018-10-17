@@ -189,7 +189,7 @@
                             sequence=0;
                         }
                         if(this.model.get("addon-sequence")>3){
-                            sequence=3;
+                            sequence=parseInt(this.model.get("addon-sequence"), 10) - 3;
                         }
                }
             if(windowWidth <= 991){  
