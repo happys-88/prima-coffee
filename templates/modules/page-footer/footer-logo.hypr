@@ -2,7 +2,7 @@
     <div class="col-sm-6 col-xs-5">
         <div class="mz-footer-logo">
             <a href="{{siteContext.siteSubdirectory}}/">
-                <img src="/cms/files/footer-coffee-logo.png" alt="Prima coffee" />
+                <img src="/cms/files/logo-prima-coffee.png" alt="Prima coffee" />
             </a>
         </div>
     </div>
