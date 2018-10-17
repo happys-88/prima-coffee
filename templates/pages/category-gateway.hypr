@@ -4,7 +4,19 @@
 {% block body-tag-classes %} category-gateway {% endblock body-tag-classes %} 
 
 {% block category-gateway %}
-<h1 class="heading-2"><span>{{ navigation.currentNode.name|upper }}</span></h1>
+
+{% for categoryObject in categories.all %}
+    {% if categoryObject.categoryCode == navigation.currentNode.categoryCode %}
+        {% if categoryObject.content.pageTitle %}
+            <h1 class="heading-2"><span>{{ categoryObject.content.pageTitle|upper|replace("~", "")|safe }}</span></h1> 
+            {% set_var pageTitle=true %}
+        {% endif %}
+    {% endif %} 
+{% endfor %}
+{% if not pageTitle %}
+    <h1 class="heading-2"><span>{{ navigation.currentNode.name|upper|replace("~", "")|safe }}</span></h1>    
+{% endif %}
+
 <div class="row">
     <div class="col-xs-12"> 
         {% dropzone "m0" scope="page" %}
