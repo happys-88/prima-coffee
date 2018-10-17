@@ -20,7 +20,17 @@
 <div class="col-xs-12 faceted-articles">  
     <div class="mz-l-paginatedlist"> 
     <div class="mz-l-paginatedlist-header">
-        <h1 class="mz-pagetitle">{{ navigation.currentNode.name|safe }}</h1> 
+        {% for categoryObject in categories.all %} 
+            {% if categoryObject.categoryCode == navigation.currentNode.categoryCode %} 
+                {% if categoryObject.content.pageTitle %}
+                    <h1 class="mz-pagetitle tt">{{ categoryObject.content.pageTitle|upper|replace("~", "")|safe }}</h1> 
+                    {% set_var pageTitle=true %}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+        {% if not pageTitle %}
+            <h1 class="mz-pagetitle cc">{{ navigation.currentNode.name|upper|replace("~", "")|safe }}</h1> 
+        {% endif %}   
         
         {% if model.facets %}
             <div class="col-xs-12 no-padding">   

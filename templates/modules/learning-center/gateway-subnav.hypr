@@ -1,5 +1,16 @@
 <nav class="mz-sitenav-lc">
-  <h2>{{ navigation.currentNode.name }}</h2>  
+  {% for categoryObject in categories.all %} 
+      {% if categoryObject.categoryCode == navigation.currentNode.categoryCode %} 
+          {% if categoryObject.content.pageTitle %}
+              <h1 class="mz-pagetitle tt">{{ categoryObject.content.pageTitle|upper|replace("~", "")|safe }}</h1> 
+              {% set_var pageTitle=true %}
+          {% endif %}
+      {% endif %}
+  {% endfor %}
+  {% if not pageTitle %}
+      <h1 class="mz-pagetitle cc">{{ navigation.currentNode.name|upper|replace("~", "")|safe }}</h1> 
+  {% endif %}
+      
   <ul class="mz-sitenav-list"
       data-mz-contextify='.mz-sitenav-link[href="{{ navigation.currentNode.url }}"]'
       data-mz-contextify-attr='class'
