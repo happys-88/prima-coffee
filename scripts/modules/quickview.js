@@ -269,6 +269,7 @@ $(document).on('click', '.mz-quick-view', function (event) {
                 }
             }, 500),
             onQuantityChange1: _.debounce(function (e) {
+            e.target.value = e.target.value.replace(/[^\d]/g, '');
             var Quantity = e.currentTarget.value;
             Quantity = Quantity.trim();
             var lastValue ='';

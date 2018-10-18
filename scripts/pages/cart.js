@@ -351,6 +351,7 @@ define([
                     this.calculateTax(stateSel, true, this.model);
         },     
         updateQuantity: _.debounce(function (e) {
+            e.target.value = e.target.value.replace(/[^\d]/g, '');
             var $qField = $(e.currentTarget),
                 newQuantity = parseInt($qField.val(), 10),
                 id = $qField.data('mz-cart-item'),
