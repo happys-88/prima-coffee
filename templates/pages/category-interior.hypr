@@ -2,33 +2,26 @@
     {% dropzone "category-page-top" scope="page" %}
 </div>
 
-{% if not pageContext.query.partial %}   
-	{% if pageContext.search.query != "" and pageContext.search.query != 'undefined' %}
-		
- 	{% else %}
-		{% for categoryObject in categories.all %}
-            {% if categoryObject.categoryCode == navigation.currentNode.categoryCode %} 
-                {% if categoryObject.content.pageTitle %}
-                    <h1 class="mz-pagetitle">{{ categoryObject.content.pageTitle|upper|replace("~", "")|safe }}</h1>
-                    {% set_var pageTitle=true %}
-                {% endif %}
-            {% endif %}
-        {% endfor %}
-        {% if not pageTitle %}
-            <h1 class="mz-pagetitle">{{ navigation.currentNode.name|upper|replace("~", "")|safe }}</h1>
+{% for categoryObject in categories.all %}
+    {% if categoryObject.categoryCode == navigation.currentNode.categoryCode %} 
+        {% if categoryObject.content.pageTitle %}
+            <h1 class="mz-pagetitle">{{ categoryObject.content.pageTitle|upper|replace("~", "")|safe }}</h1>
+            {% set_var pageTitle=true %}
         {% endif %}
-        {% comment %}
-		<div class="category-description">
-			<div>{{ model.content.description|safe }}</div>
-		</div>
-        {% endcomment %}
+    {% endif %}
+{% endfor %}
+{% if not pageTitle %}
+    <h1 class="mz-pagetitle">{{ navigation.currentNode.name|upper|replace("~", "")|safe }}</h1>
+{% endif %}
+{% comment %}
+<div class="category-description">
+	<div>{{ model.content.description|safe }}</div>
+</div>
+{% endcomment %}
 
-        <div class="row">
-            {% dropzone "category-page-slot-1" scope="page" %}   
-        </div>
-	{% endif %} 
-{% endif %} 
-
+<div class="row">
+    {% dropzone "category-page-slot-1" scope="page" %}   
+</div> 
 
 {% partial_cache model.categoryId pageContext.Sorting model.content pageContext.Pagination pageContext.query.sortBy pageContext.user.isAnonymous %}
 	{% include_products "modules/product/faceted-products" with  includeFacets=themeSettings.showCategoryFacets   and pageWithUrl=true and sortWithUrl=true and pageSize=themeSettings.defaultPageSize as_parameter  %}
