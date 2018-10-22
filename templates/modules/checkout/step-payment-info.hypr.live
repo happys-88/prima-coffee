@@ -257,11 +257,13 @@
                     <span class="mz-validationmessage" data-mz-validationmessage-for="billingContact.email"></span>
                 </div>
             </div>
+            {% comment %}
             <div class="col-sm-8 col-sm-offset-4 mz-special-offers">
                 <label>
                     <input type="checkbox" name="special-offers" {% if model.acceptsMarketing %}checked="checked" {% endif %}data-mz-value="acceptsMarketing" class="mz-checkout-optin" /> {{ labels.optIn|string_format(siteContext.generalSettings.websiteName) }}
                 </label>
             </div>
+            {% endcomment %}
         </div>
     </div>
     <div class="mz-formstep-next">

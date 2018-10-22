@@ -2088,7 +2088,7 @@
                     },
                     password: this.get('password')
                 }).then(function (customer) {
-                    var deals = $('#PSNewsLetter').is(':checked') ? "PSNewsLetter" : '';
+                    var deals = $('#PCDeals').is(':checked') ? "PCDeals" : '';
                     if(deals !== '') {
                         api.request("POST", "/mailchimp", {'accountId':email, 'deals':deals}).then(function (response){
                            console.log("Success");    
