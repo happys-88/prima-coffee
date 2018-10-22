@@ -746,11 +746,10 @@
 
         window.productView = productView;
         productView.render();
-      //  productView.productCarousel();
+        //productView.productCarousel();
         $(window).resize(function(){
             productView.render(); 
+            productImagesView.render();
         }); 
-
     });
-
 });

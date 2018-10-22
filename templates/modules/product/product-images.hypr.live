@@ -175,7 +175,7 @@
                 <div class="bxslider mobile"> 
                     {% for image in model.content.productImages %}                 
                         <div class="col-md-10 col-md-offset-1 text-center">
-                            <img src="{% make_url "image" image with max=themeSettings.productImagesContainerWidth as_parameters %}" {% if image.altText %}alt="{{ image.altText }}"{% endif %}  />
+                            <img src="{% make_url "image" image with max=themeSettings.productImagesContainerWidth as_parameters %}" {% if image.altText %}alt="{{ image.altText }}"{% endif %} {% if not forloop.first %}hidden=true {% endif %} />
                         </div>
                     {% endfor %}        
                 </div>    
