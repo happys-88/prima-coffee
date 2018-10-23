@@ -2,13 +2,13 @@
 {% with modelItems|findwhere("freightShipment", true) as freightShipmentSelected %}
 <div class="mz-lightgate-section mz-checkoutattributes-attributes clearfix">
     {% for attribute in model %}
-        {% if attribute.attributeCode == 'lift-gate' or attribute.attributeCode == 'freight-shipment' %}
+        {% if attribute.attributeCode == 'liftgate' or attribute.attributeCode == 'freight-shipment' %}
             {% if attribute.inputType === "YesNo" %}
                 {% if attribute.valueType !== "AdminEntered" %}
-                    <div class="row {% if attribute.attributeCode == 'lift-gate' %}mz-lift-gate-section{% else %}mz-lift-shipment-section{% endif %}">
+                    <div class="row {% if attribute.attributeCode == 'liftgate' %}mz-lift-gate-section{% else %}mz-lift-shipment-section{% endif %}">
                         <h3>{{ attribute.content.value }}</h3>
                         <div class="col-sm-12 col-md-4">
-                            {% if attribute.attributeCode == 'lift-gate' %}
+                            {% if attribute.attributeCode == 'liftgate' %}
                                 <iframe src="https://www.youtube.com/embed/d2yeBTBSRWc"></iframe>
                             {% else %}
                                 <iframe src="https://www.youtube.com/embed/JYa-7j0tSwk"></iframe>
@@ -17,8 +17,8 @@
                         <div class="col-sm-12 col-md-8">
                             <label>
                                 <input type="radio" name="checkout-attribute-{{ attribute.attributeFQN }}" value="true"
-                                data-mz-attribute="{{ attribute.attributeFQN }}" data-mz-value="orderAttribute-{{attribute.attributeFQN}}" {% if attribute.attributeCode == 'lift-gate' %} data-mz-lift-gate-option {% if liftGateSelected.liftGate === true %}checked="checked"{% endif %} {% else %} data-mz-freight-shipment {% if freightShipmentSelected.freightShipment === true %}checked="checked"{% endif %} {% endif %} /> 
-                                {% if attribute.attributeCode == 'lift-gate' %}
+                                data-mz-attribute="{{ attribute.attributeFQN }}" data-mz-value="orderAttribute-{{attribute.attributeFQN}}" {% if attribute.attributeCode == 'liftgate' %} data-mz-lift-gate-option {% if liftGateSelected.liftGate === true %}checked="checked"{% endif %} {% else %} data-mz-freight-shipment {% if freightShipmentSelected.freightShipment === true %}checked="checked"{% endif %} {% endif %} /> 
+                                {% if attribute.attributeCode == 'liftgate' %}
                                     {{ labels.liftGateAddY }} {{ liftGatePrice|currency }}
                                 {% else %}
                                     {{ labels.freightShipmentY }}
@@ -26,8 +26,8 @@
                             </label>
                             <label>
                                 <input type="radio" name="checkout-attribute-{{ attribute.attributeFQN }}" value="false"
-                                data-mz-attribute="{{ attribute.attributeFQN }}" data-mz-value="orderAttribute-{{attribute.attributeFQN}}" {% if attribute.attributeCode == 'lift-gate' %} data-mz-lift-gate-option {% if liftGateSelected.liftGate !== true %}checked="checked"{% endif %} {% else %} data-mz-freight-shipment {% if freightShipmentSelected.freightShipment !== true %}checked="checked"{% endif %} {% endif %}  /> 
-                                {% if attribute.attributeCode == 'lift-gate' %}
+                                data-mz-attribute="{{ attribute.attributeFQN }}" data-mz-value="orderAttribute-{{attribute.attributeFQN}}" {% if attribute.attributeCode == 'liftgate' %} data-mz-lift-gate-option {% if liftGateSelected.liftGate !== true %}checked="checked"{% endif %} {% else %} data-mz-freight-shipment {% if freightShipmentSelected.freightShipment !== true %}checked="checked"{% endif %} {% endif %}  /> 
+                                {% if attribute.attributeCode == 'liftgate' %}
                                     {{ labels.liftGateAddN }}
                                 {% else %}
                                     {{ labels.freightShipmentN }}
