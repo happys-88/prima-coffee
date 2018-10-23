@@ -274,8 +274,15 @@
                 for(var index in items){
                     var item = items[index];
                     var properties = item.product.properties;
-                    
-                    for(var propindex in properties){
+                    var itemWeight = item.product.measurements.weight.value;
+                    if(itemWeight > 149) {
+                        this.set('liftGateProduct',true);
+                        this.set('liftGatePrice', HyprLiveContext.locals.themeSettings.liftGatePrice);
+                        liftGateProducts[i] = item;
+                        i++;
+                        // break;
+                    }
+                    /*for(var propindex in properties){
                         var property = properties[propindex];
                         if(property.name === 'Free Liftgate' && property.values[0].value === true ){
                             this.set('liftGateProduct',true);
@@ -284,7 +291,7 @@
                             i++;
                             break;
                         }
-                    }
+                    }*/
                     
                 }
                 this.set('liftGateProducts',liftGateProducts);
