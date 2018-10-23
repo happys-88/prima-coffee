@@ -2,5 +2,7 @@
     <button data-toggle="collapse" data-target="#mz-mobilenav-container" class="mz-hamburger-icon" aria-expanded="false"><span></span></button>
 </div>
 <div class="mz-storebranding" id="store-branding">
-    <a class="mz-logo" href="{{siteContext.siteSubdirectory}}/" title="{{ siteContext.generalSettings.websiteName }}"></a> 
+    <a class="mz-logo" href="{{siteContext.siteSubdirectory}}/" title="{{ siteContext.generalSettings.websiteName }}">
+    	<img src='{% make_url "cdn" "/cms/files/logo-prima-coffee.png" %}' alt="Prima Coffee">
+    </a> 
 </div>
