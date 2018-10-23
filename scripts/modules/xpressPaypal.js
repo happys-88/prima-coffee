@@ -21,6 +21,7 @@ function($, Api, CartModels, hyprlivecontext, _) {
         window.paypal.checkout.setup(merchantAccountId.value, {
             environment: environment.value,
             click: function(event) {
+                window.paypal.checkout.closeFlow();
                 event.preventDefault();
                 var url = "../paypal/token?id=" + id + (!document.URL.split('?')[1] ? "": "&" + document.URL.split('?')[1].replace("id="+id,"").replace("&&", "&"));
                 if (isCart)
