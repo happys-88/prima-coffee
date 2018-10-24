@@ -242,6 +242,7 @@
             }
         },500),
         onQuantityChange1: _.debounce(function (e) {
+            e.target.value = e.target.value.replace(/[^\d]/g, '');
             var $qField = $(e.currentTarget),
               newQuantity = parseInt($qField.val(), 10);
               var Quantity = e.currentTarget.value;
@@ -553,7 +554,6 @@
                     var addonCount = 0;
                     addonCount = parseInt(addonCount, 10);
                     if (items && items.length > 0) {
-                        
                         for (var j = 0; j < options.length; j++) {
                             var option = options[j];
                             if (option.attributeDetail.dataType == "ProductCode") {
@@ -604,7 +604,6 @@
                                     }
                                     optionValue.dataSequence = addonCount;
                                     optionValues[k] = optionValue;
-                                    
                                 }
                                 option.values = optionValues;
                                 options[j] = option;
@@ -753,11 +752,10 @@
 
         window.productView = productView;
         productView.render();
-      //  productView.productCarousel();
+        //productView.productCarousel();
         $(window).resize(function(){
             productView.render(); 
+            productImagesView.render();
         }); 
-
     });
-
 });
