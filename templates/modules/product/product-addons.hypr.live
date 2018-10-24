@@ -5,15 +5,15 @@
                 {% if addon.attributeDetail.inputType == "List" and addon.attributeDetail.dataType == "ProductCode" %}
                     {% for value in addon.values %}
                         {% if not value.itemDiscontinued %}
-                        <li class="addon-product"> 
+                        <li class="addon-product">
                             <label class="add-it">
                                 <input type="checkbox" data-addon-sequence="{{ value.dataSequence }}" class="mz-productoptions-option" data-mz-product-option="{{ addon.attributeFQN }}" {% if value.isSelected %}checked="checked"{% endif %} value="{{value.value}}"/> ADD IT
                             </label>
                             {% if value.imageFilePath %}
-                                <img class="mz-itemlisting-thumb-img" src="{{ value.imageFilePath }}" {% if imageData.altText %}alt="{{ imageData.altText }}"{% endif %} onerror="this.onerror=null;this.src='{% if value.imageData %}{{ value.imageData.imageUrl }}{% else %}/cms/files/no-image-pc.jpg{% endif %}'" /> 
+                                <img class="mz-itemlisting-thumb-img" src='{% make_url "image" value.imageFilePath %}' {% if imageData.altText %}alt="{{ imageData.altText }}"{% endif %} onerror="this.onerror=null;this.src='{% if value.imageData %}{{ value.imageData.imageUrl }}{% else %}/cms/files/no-image-pc.jpg{% endif %}'" /> 
                             {% else %}
                                 {% if value.imageData %}
-                                    <img class="mz-itemlisting-thumb-img" src="{{ value.imageData.imageUrl }}" {% if imageData.altText %}alt="{{ imageData.altText }}"{% endif %} />
+                                    <img class="mz-itemlisting-thumb-img" src='{% make_url "image" value.imageData.imageUrl %}' {% if imageData.altText %}alt="{{ imageData.altText }}"{% endif %} />
                                 {% else %}
                                     <span class="noimage-placeholder"><span class="noimage-text">{{ labels.productImagePlaceholder }}</span></span>
                                 {% endif %}

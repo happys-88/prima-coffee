@@ -12,7 +12,7 @@
                     <div class="mz-ordersummary-item-product">
                         <div class="mz-order-product-image">
                             {% if item.product.imageUrl %}
-                                <img src="{{ item.product.imageUrl }}" alt="{{ item.product.name }}" width="100" />
+                                <img src='{% make_url "image" item.product.imageUrl %}' alt="{{ item.product.name }}" width="100" />
                             {% else %}
                                 <span class="noimage-placeholder"><span class="noimage-text">{{ labels.productImagePlaceholder }}</span></span>
                             {% endif %}  

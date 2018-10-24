@@ -63,7 +63,7 @@
                                       {% if categoryObject.content.categoryImages.length>0 %}
                                         {% for catImage in categoryObject.content.categoryImages %} 
                                           <a href="{% make_url "category" categoryObject %}"> 
-                                            <img src="{{ catImage.imageUrl }}" alt="{{ catImage.altText }}">
+                                            <img src='{% make_url "image" catImage.imageUrl %}' alt="{{ catImage.altText }}">
                                           </a> 
                                         {% endfor %}
                                       {% else %} 

@@ -1,39 +1,37 @@
-
 {% block promoted-products %}
 	<h2 class="heading-2">
 		<span>Promoted Products</span>
 	</h2>
 	<ul class="slider" id="PromotedProductSlider">
-	{% for prod in model.products %}
-	<li class="mz-recentproductlist-item text-center" id="{{ prod.products_app_id }}">
-		<div class="mz-product-image">
-	     	<a href="{{ prod.url }}">
-	            <img src="{{ prod.image }}" alt="Orange">
-	        </a>        
-		</div>
-
-	    <div class="mz-productlisting-info">
-	        <a class="mz-productlisting-title" href="{{ prod.url }}">{{ prod.name }}</a>
-	        <div id="bottomline-ratings"></div>
-	        
-	        {% comment %} <div class="mz-productlisting-productcode ratings" totalcount="{{ prod.average_score }}"> 
-	        	Rating : {{ prod.average_score }}
-	        	
-			</div> {% endcomment %}
-			{% block product-rating %}
-			<div id="product-rating">
-				<div class="yotpo bottomline">
-					<div class="yotpo-bottomline pull-left star-clickable">
-						<span class="yotpo-stars"></span>
+		{% for prod in model.products %}
+			<li class="mz-recentproductlist-item text-center" id="{{ prod.products_app_id }}">
+				<div class="mz-product-image">
+			     	<a href="{{ prod.url }}">
+			     		<img src='{% make_url "image" prod.image %}' alt="{{ prod.name }}">
+			        </a>        
+				</div>
+			    <div class="mz-productlisting-info">
+			        <a class="mz-productlisting-title" href="{{ prod.url }}">{{ prod.name }}</a>
+			        <div id="bottomline-ratings"></div>
+			        {% comment %}
+			        <div class="mz-productlisting-productcode ratings" totalcount="{{ prod.average_score }}"> 
+			        	Rating : {{ prod.average_score }}
+					</div> 
+					{% endcomment %}
+					{% block product-rating %}
+					<div id="product-rating">
+						<div class="yotpo bottomline">
+							<div class="yotpo-bottomline pull-left star-clickable">
+								<span class="yotpo-stars"></span>
+							</div>
+						</div>
+					</div>
+					{% endblock product-rating %}
+					<div class="mz-price-stack">
+						<span>{{ prod.price|currency }}</span>
 					</div>
 				</div>
-			</div>
-			{% endblock product-rating %}
-			<div class="mz-price-stack">
-				<span>{{ prod.price|currency }}</span>
-			</div>
-		</div>
-	</li>
-	{% endfor %}
+			</li>
+		{% endfor %}
 	</ul>
 {% endblock promoted-products %}
