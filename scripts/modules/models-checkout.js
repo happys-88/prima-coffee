@@ -275,12 +275,12 @@
                     var item = items[index];
                     var properties = item.product.properties;
                     var itemWeight = item.product.measurements.weight.value;
-                    if(itemWeight > 149) {
+                    // if(itemWeight > 149) {
+                    if(i > 0) {
                         this.set('liftGateProduct',true);
                         this.set('liftGatePrice', HyprLiveContext.locals.themeSettings.liftGatePrice);
                         liftGateProducts[i] = item;
                         i++;
-                        // break;
                     }
                     /*for(var propindex in properties){
                         var property = properties[propindex];
