@@ -1,9 +1,11 @@
 <div class="mz-blog-centered-content col-sm-8 col-sm-offset-2"> 
+	{% comment %}
 	{% if model.content.productShortDescription and themeSettings.showProductDetailShortDesc %}
 	  <div class="mz-productdetail-shortdesc mz-l-stack-section">
 	    <span itemscope="description">{{ model.content.productShortDescription|safe }}</span>  
 	  </div>
 	{% endif %}
+	{% endcomment %}
 
 	<div class="mz-productdetail-fulldesc mz-l-stack-section"> 
 	  {{ model.content.productFullDescription|safe }} 
