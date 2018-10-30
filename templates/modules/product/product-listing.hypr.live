@@ -19,7 +19,7 @@
          
             {% if model.content.productShortDescription and themeSettings.listProductShortDesc %}
                 <div class="mz-productlisting-shortdesc"> 
-                    <span itemscope="description">{{ model.content.productShortDescription|truncatewords(themeSettings.maxProductSummaryWords)|safe }}</span>
+                    <span itemscope="description">{{ model.content.productShortDescription|safe }}</span>  
                 </div>
             {% endif %} 
             
