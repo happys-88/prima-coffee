@@ -1656,7 +1656,7 @@
 
                 var radioVal = $('input[name=paymentType]:checked').val(); 
                 var val = this.validate();
-                if(radioVal !== 'Check' && radioVal !== 'PayPalExpress2') {
+                if(radioVal !== 'Check' && radioVal !== 'PayPalExpress2' && radioVal !== 'PurchaseOrder') {
                     if (this.nonStoreCreditTotal() > 0 && val) {
                         // display errors:
                         var error = {"items":[]};
@@ -1673,6 +1673,22 @@
                         }
                         return false;
                     }
+                } else if(radioVal === 'PurchaseOrder') { 
+                    var errorsPO = {"items":[]};
+                    for (var keyVal in val) {
+                        if (val.hasOwnProperty(keyVal)) {
+                            if(keyVal.indexOf('purchaseOrder') !== -1 ) {
+                                var errorItems = {};
+                                errorItems.name = keyVal;
+                                errorItems.message = keyVal.substring(0, ".") + val[keyVal];
+                                errorsPO.items.push(errorItems);
+                            }
+                        }
+                    }
+
+                    if (errorsPO.items.length > 0) {
+                        return false;
+                    }                    
                 } else {
                     if(_.has(val, "billingContact.email")) {
                        if (this.nonStoreCreditTotal() > 0 && val) {
@@ -2386,11 +2402,27 @@
 
                 // skip payment validation, if there are no payments, but run the attributes and accept terms validation.
                 var radioVal = $('input[name=paymentType]:checked').val(); 
-                if(radioVal !== 'Check') {
+                if(radioVal !== 'Check' && radioVal !== 'PurchaseOrder') {
                 if (nonStoreCreditTotal > 0 && this.validate() && ( !this.isNonMozuCheckout() || this.validate().agreeToTerms)) {
                     this.isSubmitting = false;
                     return false;
                 } 
+                } else if(radioVal === 'PurchaseOrder') { 
+                    var errorsPO = {"items":[]};
+                    var val = this.validate();
+                    for (var keyVal in val) {
+                        if (val.hasOwnProperty(keyVal)) {
+                            if(keyVal.indexOf('purchaseOrder') !== -1 ) {
+                                var errorItems = {};
+                                errorItems.name = keyVal;
+                                errorItems.message = keyVal.substring(0, ".") + val[keyVal];
+                                errorsPO.items.push(errorItems);
+                            }
+                        }
+                    }
+                    if (errorsPO.items.length > 0) {
+                        return false;
+                    }                    
                 } else {
                     if ((nonStoreCreditTotal > 0 && _.has(this.validate(), "agreeToTerms"))) {
                        this.isSubmitting = false;
