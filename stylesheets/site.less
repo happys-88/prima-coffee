@@ -148,7 +148,7 @@ img[data-mztp]{
 	background: #00adce;
 }
 
-.mz-button{
+.mz-button, .btn{
 	display: inline-block;
 	background: @buttonBgColor;
 	padding: 12px;
@@ -177,6 +177,10 @@ img[data-mztp]{
 			color:  @textColorWhite; 
 		}
 	}
+	&.btn-default{
+		font-weight: 400;
+	    line-height: 13px; 
+	} 
 	
 }
 
@@ -1155,3 +1159,28 @@ img[data-mztp]{
 		} 
 	}
 }
+
+/*** PRM-278 ***/  
+.btn{ 
+	.mz-button;
+	&.btn-default,
+	&.btn-primary{ 
+		margin-top: 0px;
+	}  
+}
+
+.mz-aboutus{
+	.mz-customer-service-section{
+  		.mz-content-widget-inner-wrap{
+   			.btn{
+    			&.btn-default,
+    			&.btn-primary{
+     				color: @textColorWhite;
+    			}
+    			&:hover { 
+     				color: @buttonBgColor;
+    			} 
+   			}
+  		}
+	}
+} 
