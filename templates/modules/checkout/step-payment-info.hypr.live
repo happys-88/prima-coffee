@@ -116,7 +116,7 @@
                         </div>
                         <div class="mz-l-formfieldgroup-row mz-payment-purchase-order-payment-terms-row">
                             <div class="mz-l-formfieldgroup-cell">
-                                <span>{{ labels.purchaseOrderPaymentTerms }}: </span><span id="mz-payment-purchase-order-payment-terms">{{ payment.billingInfo.purchaseOrder.paymentTerm.description }}</span>
+                                <span>{{ labels.purchaseOrderPaymentTerms }}: </span><span>{{ payment.billingInfo.purchaseOrder.paymentTerm.description }}</span>
                             </div>
                         </div>
 

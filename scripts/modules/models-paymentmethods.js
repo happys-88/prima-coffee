@@ -339,6 +339,11 @@
                         return;
                     }
                     
+                    var val = $("#mz-payment-purchase-order-payment-terms option:selected").text();
+                    if(val.indexOf('Select') > -1) {
+                        return Hypr.getLabel('purchaseOrderPaymentTermMissing');
+                    }
+
                     if(!selectedPaymentTerm.get('description')) {
                         return Hypr.getLabel('purchaseOrderPaymentTermMissing');
                     }
