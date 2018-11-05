@@ -91,9 +91,28 @@
         margin: 15px 0;
         font-weight: bold;   
     }
+   
     a {
         color: #00adce;
+        &.mz-button{ 
+            color:  @textColorWhite; 
+            line-height: 13px;
+            font-weight: normal;    
+            &:hover { 
+                background: @textColorWhite;   
+                color:  @buttonBgColor;
+            }   
+        }
     }
+    .btn{
+        &.btn-default, &.btn-primary{  
+            color:  @textColorWhite;
+        }
+        &:hover { 
+            color:  @buttonBgColor; 
+        } 
+    }
+
     center {
         text-align: left;
         font {

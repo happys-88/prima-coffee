@@ -177,7 +177,7 @@ img[data-mztp]{
 			color:  @textColorWhite; 
 		}
 	}
-	&.btn-default{
+	&.btn-default, &.btn-primary{ 
 		font-weight: 400;
 	    line-height: 13px; 
 	} 
@@ -822,9 +822,18 @@ img[data-mztp]{
 			font-size: 16px;
 			color: #999;
 		}
-		a {
+		a { 
 			color: #00adce;
-		}
+			&.mz-button{
+				color:  @textColorWhite;
+				line-height: 13px;
+				font-weight: normal;   
+				&:hover { 
+					background: @textColorWhite;   
+					color:  @buttonBgColor;
+				}  	
+			}
+		} 
 		ul {
 			list-style: disc;
 			padding-left: 30px;
