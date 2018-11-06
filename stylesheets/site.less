@@ -1181,12 +1181,24 @@ img[data-mztp]{
 .mz-aboutus{
 	.mz-customer-service-section{
   		.mz-content-widget-inner-wrap{
+  			a{
+  				&.mz-button{
+					color:  @textColorWhite; 
+					line-height: 13px;
+					font-weight: normal;   
+					&:hover { 
+						background: @textColorWhite;   
+						color:  @buttonBgColor;
+					}  	
+				} 
+  			}
    			.btn{
     			&.btn-default,
     			&.btn-primary{
      				color: @textColorWhite;
     			}
-    			&:hover { 
+    			&:hover {
+    				background: @textColorWhite;   
      				color: @buttonBgColor;
     			} 
    			}
