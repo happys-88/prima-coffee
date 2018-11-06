@@ -18,11 +18,11 @@
     <div class="mz-availability col-sm-4">
         <!-- Stock msg -->
         <div class="mz-stock-availability">
-            <div class="mz-stock">
+            <div class="mz-stock"  {% if model.messageColor %} style="color: {{ model.messageColor }}" {% endif %}>
                 {{ model.stockMessage }}
             </div>
             <div class="mz-availability">
-                {% if model.checkItem === true %} {{ model.shippingMessage }} {% endif %}
+                {% if model.checkItem === true %} {{ model.helperMessage }} {% endif %}
             </div>
         </div>
         <!--/ Stock msg -->

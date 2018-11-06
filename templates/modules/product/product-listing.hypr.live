@@ -59,8 +59,7 @@
             {% endblock product-extrainfo %}
             <div class="mz-product-msg">
                 <div class="stock-message"></div>
-                <div class="stock-threshold-message"></div>
-                <div class="out-of-stock-message"></div>
+                <div class="shipping-message"></div>
                 <div class="shipping-messages" style="display: none;">
                     {% for propShipping in model.properties %}
                         {% if propShipping.attributeFQN == "tenant~availability" %}

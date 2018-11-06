@@ -143,11 +143,21 @@ define([
                 variationTotalStock = inventory.onlineStockAvailable;
             }
             if (variationTotalStock === 0 && prop) {
-                shippingMessage = expectedShipMessage;
-            } else {
-                shippingMessage = availabilityMessage;
+                if (expectedShipMessage && expectedShipMessage.length > 0) {
+                    shippingMessage = expectedShipMessage;
+                } else {
+                    if (prop.values[0].value == '1') {
+                        shippingMessage = Hypr.getLabel("temporarilyOutOfStockMessage");
+                    } else {
+                        shippingMessage = availabilityMessage;
+                    }
+                }
+                
             }
             this.model.set('shippingMessage',shippingMessage);
+            this.model.set("availabilityMessage", availabilityMessage);
+            this.model.set("expectedShipMessage", expectedShipMessage);
+            
             if(!HyprLiveContext.locals.user.isAuthenticated) {
                 var prodPrice = this.model.get('price');
                 if (prodPrice.attributes) {
@@ -217,101 +227,102 @@ define([
             var inventoryInfo = this.model.get('inventoryInfo');
             var manageStock = inventoryInfo.manageStock;
             var stockMessage;
-            if (!manageStock) {
-                stockMessage = Hypr.getLabel('inStock');
-            } else {
-                var productUsage = this.model.get('productUsage');
-                var outOfStockBehavior = inventoryInfo.outOfStockBehavior;
-                var onlineStockAvailable = inventoryInfo.onlineStockAvailable;
-                if (fieldDisplayOOSProp) {
-                    var fieldDisplayOOSPropVal = this.model.get('fieldDisplayOOSPropVal');
-                    var propValue = fieldDisplayOOSPropVal.values[0];
-                    
-                    if (propValue.value == '1') {
-                       var someOptionsInStock = this.model.get('someOptionsInStock');
-                       if (onlineStockAvailable === undefined) {
-                            if (someOptionsInStock) {
-                                stockMessage = Hypr.getLabel('someOptionInStock');
-                            } else {
-                                onlineStockAvailable = this.model.get('variationTotalStock');
-                                if (onlineStockAvailable < 10 && onlineStockAvailable > 0) {
-                                    stockMessage = Hypr.getLabel('stockThreshold').replace("{0}", onlineStockAvailable);
-                                } else if (onlineStockAvailable >= 10) {
-                                    stockMessage = Hypr.getLabel('inStock');
-                                } else {
-                                    if (outOfStockBehavior == 'AllowBackOrder') {
-                                        //If we need to show message in case of AllowBackOrder
-                                        // stockMessage = Hypr.getLabel('inStock');
-                                    } else {
-                                        stockMessage = Hypr.getLabel('outOfStock');
-                                    }
-                                }
-                            }
-                       } else {
-                            if (onlineStockAvailable < 10 && onlineStockAvailable > 0) {
-                                stockMessage = Hypr.getLabel('stockThreshold').replace("{0}", onlineStockAvailable);
-                            } else if (onlineStockAvailable >= 10) {
-                                stockMessage = Hypr.getLabel('inStock');
-                            } else {
-                                if (outOfStockBehavior == 'AllowBackOrder') {
-                                    //If we need to show message in case of AllowBackOrder
-                                    // stockMessage = Hypr.getLabel('inStock');
-                                } else {
-                                    stockMessage = Hypr.getLabel('outOfStock');
-                                }
-                            }
-                       }
-                    } else if (propValue.value == '0' || propValue.value == '2' || propValue.value == '3') {
-                        if (productUsage == 'Configurable' && onlineStockAvailable === undefined) {
-                           onlineStockAvailable = this.model.get('variationTotalStock');
-                        }
-                        if (onlineStockAvailable < 10 && onlineStockAvailable > 0) {
-                            stockMessage = Hypr.getLabel('stockThreshold').replace("{0}", onlineStockAvailable);
-                        } else if (onlineStockAvailable >= 10) {
-                            if (propValue.value == '0') {
-                                stockMessage = Hypr.getLabel('distributorStock');
-                            } else {
-                                stockMessage = Hypr.getLabel('inStock');
-                            }
-                        } else {
-                            if (outOfStockBehavior == 'AllowBackOrder') {
-                                //If we need to show message in case of AllowBackOrder
-                                /*if (propValue.value == '0') {
-                                    stockMessage = Hypr.getLabel('distributorStock');
-                                } else {
-                                    stockMessage = Hypr.getLabel('inStock');
-                                }*/
-                            } else {
-                                if (propValue.value == '2') {
-                                    stockMessage = Hypr.getLabel('preOrderOnly');
-                                } else if (propValue.value == '3') {
-                                    stockMessage = Hypr.getLabel('builtToOrder');
-                                } else {
-                                    stockMessage = Hypr.getLabel('outOfStock');
-                                }
-                                
-                            }
-                        }
-                    }
-                } else {
-                    if (productUsage == 'Configurable' && onlineStockAvailable === undefined) {
-                       onlineStockAvailable = this.model.get('variationTotalStock');
-                    }
-                    if (onlineStockAvailable < 10 && onlineStockAvailable > 0) {
-                        stockMessage = Hypr.getLabel('stockThreshold').replace("{0}", onlineStockAvailable);
-                    } else if (onlineStockAvailable >= 10) {
-                        stockMessage = Hypr.getLabel('inStock');
-                    } else {
-                        if (outOfStockBehavior == 'AllowBackOrder') {
-                            //If we need to show message in case of AllowBackOrder
-                            // stockMessage = Hypr.getLabel('inStock');
-                        } else {
-                            stockMessage = Hypr.getLabel('outOfStock');
-                        }
-                    }
+            var shippingMessage;
+            var color;
+            var itemDiscontinued = false;
+            if (fieldDisplayOOSProp) {
+                var fieldDisplayOOSPropValue = this.model.get('fieldDisplayOOSPropVal');
+                var prValue = fieldDisplayOOSPropValue.values[0];
+                if (prValue.value == '4') {
+                    stockMessage = Hypr.getLabel('itemDiscontinued');
+                    itemDiscontinued = true;
                 }
             }
+            if (!itemDiscontinued) {
+                if (!manageStock) {
+                    /*stockMessage = Hypr.getLabel('inStock');*/
+                } else {
+                    var productUsage = this.model.get('productUsage');
+                    var outOfStockBehavior = inventoryInfo.outOfStockBehavior;
+                    var onlineStockAvailable = inventoryInfo.onlineStockAvailable;
+                    var someOptionsInStock = this.model.get('someOptionsInStock');
+                    var variationTotalStock = this.model.get('variationTotalStock');
+                    if (onlineStockAvailable === undefined) {
+                        if (variationTotalStock > 0 && !someOptionsInStock) {
+                            if (variationTotalStock < 15) {
+                                stockMessage = Hypr.getLabel('inStock');
+                                shippingMessage = Hypr.getLabel('stockThreshold').replace("{0}", variationTotalStock);
+                            } else {
+                                stockMessage = Hypr.getLabel('inStock');
+                                shippingMessage = Hypr.getLabel('inStockMessage');
+                            }
+                        } else if (someOptionsInStock) {
+                            stockMessage = Hypr.getLabel('someOptionInStock');
+                            shippingMessage = Hypr.getLabel('someOptionInStockMessage');
+                        } else {
+                            if (fieldDisplayOOSProp) {
+                                shippingMessage = this.model.get('shippingMessage');
+                                var fieldDisplayOOSPropVal = this.model.get('fieldDisplayOOSPropVal');
+                                var prVal = fieldDisplayOOSPropVal.values[0];
+                                if (prVal.value == '1') {
+                                    color = "red";
+                                    stockMessage = Hypr.getLabel('outOfStock');
+                                } else if (prVal.value == '0') {
+                                    stockMessage = Hypr.getLabel('distributorStock');
+                                } else if (prVal.value == '2') {
+                                    stockMessage = Hypr.getLabel('preOrderOnly');
+                                } else if (prVal.value == '3') {
+                                    stockMessage = Hypr.getLabel('builtToOrder');
+                                }
+                            }
+                        }
+                    } else if (onlineStockAvailable < 15 && onlineStockAvailable > 0) {
+                        stockMessage = Hypr.getLabel('inStock');
+                        shippingMessage = Hypr.getLabel('stockThreshold').replace("{0}", onlineStockAvailable);
+                    } else if (onlineStockAvailable > 14) {
+                        stockMessage = Hypr.getLabel('inStock');
+                        shippingMessage = Hypr.getLabel('inStockMessage');
+                    } else {
+                        if (fieldDisplayOOSProp) {
+                            var fieldDisplayOOSPropVall = this.model.get('fieldDisplayOOSPropVal');
+                            var prVall = fieldDisplayOOSPropVall.values[0];
+                            if (productUsage == "Configurable") {
+                                var expectedShipMessage = this.model.get("expectedShipMessage");
+                                if (expectedShipMessage && expectedShipMessage.length > 0) {
+                                    shippingMessage = expectedShipMessage;
+                                } else {
+                                    if (prVall.value == '1') {
+                                        shippingMessage = Hypr.getLabel("temporarilyOutOfStockMessage");
+                                    } else {
+                                        shippingMessage = this.model.get("availabilityMessage");
+                                    }
+                                }
+                            } else {
+                                shippingMessage = this.model.get('shippingMessage');
+                            }
+                            if (prVall.value == '1') {
+                                color = "red";
+                                stockMessage = Hypr.getLabel('outOfStock');
+                            } else if (prVall.value == '0') {
+                                stockMessage = Hypr.getLabel('distributorStock');
+                            } else if (prVall.value == '2') {
+                                stockMessage = Hypr.getLabel('preOrderOnly');
+                            } else if (prVall.value == '3') {
+                                stockMessage = Hypr.getLabel('builtToOrder');
+                            }
+                        }
+                    }
+                    
+                }
+            }
+            this.model.set('checkItem', false);
+            if (!itemDiscontinued) {
+                $('#add-to-cart').prop('disabled', false);
+                this.model.set('checkItem', true);
+            }
             this.model.set('stockMessage', stockMessage);
+            this.model.set('helperMessage', shippingMessage);
+            this.model.set('messageColor', color);
         },
         refreshOptions: function() {
             var selectedCount = 0;

@@ -93,6 +93,8 @@ function ($, _, Hypr, Backbone, HyprLiveContext, api, blockUiLoader) {
         blockUiLoader.unblockUi();
         var productData = [];
         for (var i = 0; i < items.length; i++) {
+            
+            var someOptionsInStock = false;
             var fieldDisplayOOSProp = false;
             var fieldDisplayOOSPropVal;
             var stockCount = 0;
@@ -104,16 +106,43 @@ function ($, _, Hypr, Backbone, HyprLiveContext, api, blockUiLoader) {
             var manageStock = item.inventoryInfo.manageStock;
             var outOfStockBehavior = item.inventoryInfo.outOfStockBehavior;
             var properties = item.properties;
+            var shippingMessage;
+            var availabilityMessage;
+            var expectedShipMessage;
+            
+            
             var prop = _.find(properties, function(property){ return property.attributeFQN == 'tenant~field_display_oos1'; });
             if (prop) {
                 fieldDisplayOOSProp = true;
                 fieldDisplayOOSPropVal = prop.values[0];
+            }
+            var shippingProps = _.filter(properties, function(property){ return property.attributeFQN == "tenant~availability" || property.attributeFQN == "tenant~expected-ship-date-message"; });
+            if (shippingProps) {
+                for (var y = 0; y < shippingProps.length; y++) {
+                    var shippingProp = shippingProps[y];
+                    if (shippingProp.attributeFQN == "tenant~availability") {
+                        availabilityMessage = shippingProp.values[0].stringValue;
+                    } else if (shippingProp.attributeFQN == "tenant~expected-ship-date-message") {
+                        expectedShipMessage = shippingProp.values[0].stringValue;
+                    }
+                }
+            }
+            if (expectedShipMessage && expectedShipMessage.length > 0) {
+                shippingMessage = expectedShipMessage;
+            } else {
+                if (fieldDisplayOOSPropVal && fieldDisplayOOSPropVal.value == '1') {
+                    shippingMessage = Hypr.getLabel("temporarilyOutOfStockMessage");
+                } else {
+                    shippingMessage = availabilityMessage;
+                }
             }
             if (itemVariations) {
                 for (var k = 0; k < itemVariations.length; k++) {
                     var itemVariation = itemVariations[k];
                     if (itemVariation.inventoryInfo.onlineStockAvailable > 0) {
                         stockCount += itemVariation.inventoryInfo.onlineStockAvailable;
+                    } else {
+                        someOptionsInStock = true;
                     }
                 }
             } else {
@@ -129,7 +158,7 @@ function ($, _, Hypr, Backbone, HyprLiveContext, api, blockUiLoader) {
                     }
                 }
             }
-            productData[i] = {productCode:item.productCode,hasOptions:hasOptions,stockCount:stockCount,manageStock:manageStock,fieldDisplayOOSProp:fieldDisplayOOSProp,fieldDisplayOOSPropVal:fieldDisplayOOSPropVal,outOfStockBehavior:outOfStockBehavior};
+            productData[i] = {productCode:item.productCode,hasOptions:hasOptions,stockCount:stockCount,manageStock:manageStock,fieldDisplayOOSProp:fieldDisplayOOSProp,fieldDisplayOOSPropVal:fieldDisplayOOSPropVal,outOfStockBehavior:outOfStockBehavior, someOptionsInStock:someOptionsInStock, shippingMessage:shippingMessage};
         }
         var stockThreshold = Hypr.getLabel('stockThreshold');
         var outOfStock = Hypr.getLabel('outOfStock');
@@ -147,23 +176,35 @@ function ($, _, Hypr, Backbone, HyprLiveContext, api, blockUiLoader) {
             } else {
                 button.prop('disabled', false);
                 if (prod.manageStock === false) {
-                    $(this).find(".stock-message").html(inStock);
-                    shippingMessage.show();
+                    /*$(this).find(".stock-message").html(inStock);
+                    shippingMessage.show();*/
                 } else {
-                    if(prod.stockCount < 10 && prod.stockCount > 0) {
-                        $(this).find(".stock-threshold-message").html(stockThreshold.replace("{0}", prod.stockCount));
-                        shippingMessage.show();
-                    } else if(prod.stockCount >= 10) {
-                        $(this).find(".stock-message").html(inStock);
-                        shippingMessage.show();
+                    if (prod.someOptionsInStock && prod.stockCount > 0) {
+                        $(this).find(".stock-message").html(Hypr.getLabel('someOptionInStock'));
+                        $(this).find(".shipping-message").html(Hypr.getLabel('someOptionInStockMessage'));
                     } else {
-                        if (prod.outOfStockBehavior == 'AllowBackOrder') {
-                            //If we need to show message in case of AllowBackOrder
-                            // $(this).find(".stock-message").html(inStock);
-                        } else {
-                            $(this).find(".out-of-stock-message").html(outOfStock);
+                        if(prod.stockCount < 15 && prod.stockCount > 0) {
+                    $(this).find(".stock-message").html(inStock);
+                            $(this).find(".shipping-message").html(stockThreshold.replace("{0}", prod.stockCount));
+
+                        } else if(prod.stockCount > 14) {
+                        $(this).find(".stock-message").html(inStock);
+                            $(this).find(".shipping-message").html(Hypr.getLabel('inStockMessage'));
+                    } else {
+                            if (prod.fieldDisplayOOSProp) {
+                                $(this).find(".shipping-message").html(prod.shippingMessage);
+                               if (prod.fieldDisplayOOSPropVal.value == '1') {
+                                    $(this).find(".stock-message").css("color", "red");
+                                    $(this).find(".stock-message").html(Hypr.getLabel('outOfStock'));
+                                } else if (prod.fieldDisplayOOSPropVal.value == '0') {
+                                    $(this).find(".stock-message").html(Hypr.getLabel('distributorStock'));
+                                } else if (prod.fieldDisplayOOSPropVal.value == '2') {
+                                    $(this).find(".stock-message").html(Hypr.getLabel('preOrderOnly'));
+                                } else if (prod.fieldDisplayOOSPropVal.value == '3') {
+                                    $(this).find(".stock-message").html(Hypr.getLabel('builtToOrder'));
+                                } 
+                            }
                         }
-                        
                     }
                 }
             }
