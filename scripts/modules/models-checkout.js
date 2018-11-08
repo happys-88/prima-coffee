@@ -419,12 +419,12 @@
                     dutyAmount = parseFloat(HyprLiveContext.locals.themeSettings.liftGatePrice);
                 }
                 // order.apiModel.update(_.extend(order.toJSON(), {dutyAmount: dutyAmount }));
-                 order.apiModel.update(_.extend(order.toJSON(), {dutyAmount: dutyAmount }))
+                /* order.apiModel.update(_.extend(order.toJSON(), {dutyAmount: dutyAmount }))
                         .ensure(function(err) {
                             if(resetMessage) {
                                 me.parent.messages.reset(me.parent.get('messages'));
                             }
-                        });
+                        });*/
             },
             updateLiftGateOption: function (liftGateVal) {
               var order = this.getOrder(),
@@ -447,7 +447,7 @@
                 if(updateAttrs.length > 0){
                     order.apiUpdateAttributes(updateAttrs);
                 }
-                order.apiModel.update(_.extend(order.toJSON(), {dutyAmount: dutyAmount }));
+                // order.apiModel.update(_.extend(order.toJSON(), {dutyAmount: dutyAmount }));
                
             },
             updateFreightShipment: function (freightShipmentVal) {

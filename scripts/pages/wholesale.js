@@ -25,7 +25,7 @@ define(['modules/api',
                 var name = self.model.get('name');
                 var email = self.model.get('email');
                 var business = self.model.get('business');
-                
+                console.log("Hello");
                 if (!self.model.validate()) {
                     api.request("POST", "/commonRoute",
                     {
