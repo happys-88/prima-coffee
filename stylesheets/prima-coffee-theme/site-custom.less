@@ -722,13 +722,34 @@ li {
 		min-height: 1px;
 		margin-left: 30px;
 	}
-	.btn{
+	/*.btn{
 		color: #fff;
 		text-shadow: 0 -1px 0 rgba(0,0,0,.25);
 		background-image: linear-gradient(to bottom,#5bc0de,#2f96b4);
 		border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) rgba(0,0,0,.25);
 		padding: 11px 19px;
 		font-size: 20px;
+	}*/
+	a{
+		&.mz-button{
+			color:  @textColorWhite; 
+			line-height: 13px;
+			font-weight: normal;   
+			&:hover { 
+				background: @textColorWhite;   
+				color:  @buttonBgColor;
+			}  	
+		} 
+	}
+	.btn{
+		&.btn-default, 
+		&.btn-primary{
+				color: @textColorWhite; 
+		}
+		&:hover {
+			background: @textColorWhite;   
+				color: @buttonBgColor;
+		} 
 	}
 }
 
@@ -861,7 +882,7 @@ li {
 	}
 	.mz-newsletter{
 		.mz-button{
-			padding: 4px 25px;
+			padding: 6px 25px; 
 			margin-top: 0;
 		}
 	}
