@@ -1,7 +1,7 @@
 {% block purchase-order-form %}
-    <div class="mz-l-formfieldgroup-row">
-        <div class="mz-l-formfieldgroup-cell">
-        <!--
+    <div class="mz-purchase-order-form">
+        <div class="mz-l-formfieldgroup-row clearfix">
+            <!--
             <div class="mz-l-formfieldgroup-row mz-payment-purchase-order-amount-row">
                 <div class="mz-l-formfieldgroup-cell">
                     <label for="mz-payment-purchase-order-amount">{{ labels.purchaseOrderAmount }}:</label>
@@ -11,20 +11,20 @@
                 </div>
             </div>
             -->
-            <div class="mz-l-formfieldgroup-row mz-payment-purchase-order-number-row">
-                <div class="mz-l-formfieldgroup-cell">
+            <div class="form-group mz-payment-purchase-order-number-row">
+                <div class="col-sm-4">
                     <label for="mz-payment-purchase-order-number">{{ labels.purchaseOrderNumber }}<span class="is-required"> *</span>:</label>
                 </div>
-                <div class="mz-l-formfieldgroup-cell">
+                <div class="col-sm-8">
                     <input type="text" name="purchase-order-number" id="mz-payment-purchase-order-number" data-mz-value="{{ purchaseordercontext }}purchaseOrderNumber" value="{{ model.purchaseOrderNumber }}" />
                     <span class="mz-validationmessage" data-mz-validationmessage-for="{{ purchaseordercontext }}purchaseOrderNumber"></span>
                 </div>
             </div>
-            <div class="mz-l-formfieldgroup-row mz-payment-purchase-order-payment-terms-row">
-                <div class="mz-l-formfieldgroup-cell">
+            <div class="form-group mz-payment-purchase-order-payment-terms-row">
+                <div class="col-sm-4">
                     <label for="mz-payment-purchase-order-payment-terms">{{ labels.purchaseOrderPaymentTerms }}<span class="is-required"> *</span>:</label>
                 </div>
-                <div class="mz-l-formfieldgroup-cell">
+                <div class="col-sm-8">
                     {% if model.paymentTermOptions.length > 1 %}
                         <select class="mz-l-formfieldgroup-halfsize" id="mz-payment-purchase-order-payment-terms" name="payment-terms" data-mz-value="{{ purchaseordercontext }}paymentTerm" data-mz-purchase-order-payment-term >
                             <option selected="selected" value="{{labels.selectPurchaseOrderPaymentTerm}}">{{labels.selectPurchaseOrderPaymentTerm}}</option>
@@ -41,8 +41,8 @@
             {% for field in siteContext.checkoutSettings.purchaseOrder.customFields %}
                 {% if field.isEnabled %}
                 {% with 'pOCustomField-'+field.code as modelName %}
-                    <div class="mz-l-formfieldgroup-row mz-payment-purchase-order-custom-field-row">
-                        <div class="mz-l-formfieldgroup-cell">
+                    <div class="form-group mz-payment-purchase-order-custom-field-row">
+                        <div class="col-sm-4">
                             <label for="mz-payment-pOCustomField-{{ field.code }}">
                                 {{ field.label }}
                                 {% if field.isRequired %}
@@ -50,7 +50,7 @@
                                 {% endif %}
                             :</label>
                         </div>
-                        <div class="mz-l-formfieldgroup-cell">
+                        <div class="col-sm-8">
                             <input type="text" name="po-custom-field-{{ field.code }}" id="mz-payment-pOCustomField-{{ field.code }}" data-mz-value="{{ purchaseordercontext }}pOCustomField-{{field.code}}" value="{{model|prop(modelName)}}" />
                             <span class="mz-validationmessage" id="mz-payment-pOCustomField-{{ field.code }}-validation" data-mz-validationmessage-for="{{ purchaseordercontext }}pOCustomField-{{field.code}}"></span>
                         </div>
@@ -59,24 +59,12 @@
                 {% endif %}
             {% endfor %}
         </div>
-        <div class="mz-l-formfieldgroup-cell">
-            <div style="border: 2px solid black; padding: 4px;">
-                <div class="mz-l-formfieldgroup-row">
-                    <div class="mz-l-formfieldgroup-cell">
-                        <strong>{{labels.creditLimit}}:</strong>
-                    </div>
-                    <div class="mz-l-formfieldgroup-cell">
-                        <span>{{ model.creditLimit | currency }}</span>
-                    </div>
-                </div>
-                <div class="mz-l-formfieldgroup-row">
-                    <div class="mz-l-formfieldgroup-cell">
-                        <strong>{{labels.availableBalance}}:</strong>
-                    </div>
-                    <div class="mz-l-formfieldgroup-cell">
-                        <span>{{ model.availableBalance | currency }}
-                    </div>
-                </div>
+        <div class="mz-l-formfieldgroup-row mz-purchase-blnc clerfix">
+            <div class="col-xs-12">
+                <strong>{{labels.creditLimit}}:</strong> <span>{{ model.creditLimit | currency }}</span>
+            </div>
+            <div class="col-xs-12">
+                <strong>{{labels.availableBalance}}:</strong>  <span>{{ model.availableBalance | currency }}</span>
             </div>
         </div>
     </div>
