@@ -1555,8 +1555,8 @@
             },
             setDefaultPaymentType: function(me) {
                 if(me.isPurchaseOrderEnabled()) {
-                    me.set('paymentType', 'PurchaseOrder');
-                    me.selectPaymentType(me, 'PurchaseOrder');
+                    me.set('paymentType', 'CreditCard');
+                    me.selectPaymentType(me, 'CreditCard');
                 } else {
                     me.set('paymentType', 'CreditCard');
                     me.selectPaymentType(me, 'CreditCard');
