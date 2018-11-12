@@ -65,6 +65,13 @@ define(['modules/api',
                             }
                         }
                         
+                    }, function(error) {
+                        if ($("#commerceialFormError").hasClass("success")) {
+                            $("#commerceialFormError").removeClass("success");
+                        }
+                        $("#commerceialFormError").addClass("error");
+                        $('#commerceialFormError').html("Invalid form submission");
+                        console.log("Error : ");
                     });
                 } else {
                     if ($("#commerceialFormError").hasClass("success")) {

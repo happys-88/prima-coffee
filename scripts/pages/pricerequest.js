@@ -67,6 +67,13 @@ define(['modules/api',
                                 $("#priceRequestError").show();    
                             }
                         }
+                    }, function(error) {
+                        if ($("#priceRequestError").hasClass("success")) {
+                            $("#priceRequestError").removeClass("success");
+                        }
+                        $("#priceRequestError").addClass("error");
+                        $('#priceRequestError').html("Invalid Form Submission");
+                        console.log(" Error : Invalid ");
                     });
                 } else {
                     if ($("#priceRequestError").hasClass("success")) {

@@ -65,6 +65,14 @@ define(['modules/api',
                                 $("#wholesaleFormError").show();    
                             }
                         }
+                    }, function(error) {
+                        if ($("#wholesaleFormError").hasClass("success")) {
+                            $("#wholesaleFormError").removeClass("success");
+
+                        }
+                        $("#wholesaleFormError").addClass("error");
+                        $('#wholesaleFormError').html("Invalid form submission");
+                        console.log("Error : ");
                     });
                 } else {
                     if ($("#wholesaleFormError").hasClass("success")) {
