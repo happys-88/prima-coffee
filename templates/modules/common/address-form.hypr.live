@@ -17,6 +17,15 @@
             <span class="mz-validationmessage" data-mz-validationmessage-for="{{ addresscontext }}lastNameOrSurname"></span>
         </div>
     </div>
+    <div class="form-group mz-l-formfieldgroup-row mz-addressform-companyOrOrganization">
+        <div class="col-sm-4 mz-formgroup-align mz-label">
+            <label class="text-label" for="{{ addresscontext }}_{{ labels.company }}">Company:</label>  
+        </div>
+        <div class="col-sm-8 mz-formgroup-align">
+            <input class="form-control" aria-label="{{ labels.company }}" type="text" class="text-input" name="companyOrOrganization" data-mz-value="{{ addresscontext }}companyOrOrganization" value="{{ model.companyOrOrganization }}" maxlength="{{ themeSettings.addressLength}}" placeholder="(optional)">
+            <span class="mz-validationmessage"></span>
+        </div>
+    </div>
     <div class="form-group mz-l-formfieldgroup-row mz-addressform-address1">
         <div class="col-sm-4 mz-formgroup-align mz-label">
             <label class="text-label" for="{{ addresscontext }}_{{ labels.address }}">{{ labels.address }}<span class="is-required"> *</span>:</label>

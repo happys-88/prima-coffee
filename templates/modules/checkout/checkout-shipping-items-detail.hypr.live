@@ -6,6 +6,9 @@
                 <h3 class="mz-summary-header">{{ labels.shipTo }}</h3>
                 {% with model.fulfillmentContact as dataModel %}
                     <span>{{ dataModel.firstName }} {{ dataModel.lastNameOrSurname }}</span>
+                    {% if dataModel.companyOrOrganization %}
+                        <span>{{ dataModel.companyOrOrganization }}</span>
+                    {% endif %}
                     <span>{{ dataModel.address.address1 }}</span>
                     {% if dataModel.address.address2 %}
                         <span>{{ dataModel.address.address2 }}</span>

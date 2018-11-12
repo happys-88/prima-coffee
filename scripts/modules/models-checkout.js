@@ -105,6 +105,7 @@
                     if (!newContactId || newContactId === 'new') {
                         model.get('address').clear();
                         model.get('phoneNumbers').clear();
+                        model.unset('companyOrOrganization');
                         model.unset('id');
                         model.unset('firstName');
                         model.unset('lastNameOrSurname');

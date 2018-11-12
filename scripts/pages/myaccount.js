@@ -672,6 +672,7 @@ define([
             'editingCard.contactId',
             'editingContact.firstName',
             'editingContact.lastNameOrSurname',
+            'editingContact.companyOrOrganization',
             'editingContact.address.address1',
             'editingContact.address.address2',
             'editingContact.address.address3',
@@ -727,6 +728,7 @@ define([
         autoUpdate: [
             'editingContact.firstName',
             'editingContact.lastNameOrSurname',
+            'editingContact.companyOrOrganization',
             'editingContact.address.address1',
             'editingContact.address.address2',
             'editingContact.address.address3',

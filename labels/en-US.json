@@ -103,6 +103,7 @@
   "shippingContact"                       : "Shipping Contact",
   "firstName"                             : "First Name",
   "lastName"                              : "Last Name",
+  "company"                               : "Company",
   "address"                               : "Address",
   "addressType"                           : "Address Type",
   "residential"                           : "Residential",
