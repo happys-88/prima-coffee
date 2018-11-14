@@ -416,14 +416,14 @@ define([
             }*/
         },400),
         quantityMinus: _.debounce(function (e) {
-          
-          
+            var minusQty =$(e.currentTarget);
+            var msgId = minusQty.data('mz-cart-item-minus');
             var $qField = $(e.currentTarget).parent(".qty-block"); 
             var qFieldValue = $qField.find(".mz-carttable-qty-field").val();        
             var _qtyCountObj = $qField.find(".mz-carttable-qty-field");  
             value = parseInt(qFieldValue, 10);
-            var _qtyCartObj = $('[data-mz-Cart-validationmessage-for="quantity"]');
-            var _qtyGlobalObj = $('[data-mz-Global-validationmessage-for="quantity"]');
+            var _qtyCartObj = $('[data-mz-cart-item-msg='+ '"' +msgId + '"' +']');
+            var _qtyGlobalObj = $('[data-mz-global-cart-item-msg='+ '"' +msgId + '"' +']');
             _qtyCartObj.text('');
             _qtyGlobalObj.text('');
 
@@ -455,12 +455,16 @@ define([
            
         },400),
         quantityPlus:  _.debounce(function (e) {
+            var minusQty =$(e.currentTarget);
+            var msgId = minusQty.data('mz-cart-item-minus');
             var $qField = $(e.currentTarget).parent(".qty-block"); 
             var qFieldValue = $qField.find(".mz-carttable-qty-field").val();            
             var _qtyCountObj = $qField.find(".mz-carttable-qty-field");  
             value = parseInt(qFieldValue, 10);
-            var _qtyObj = $('[data-mz-validationmessage-for="quantity"]');
-            _qtyObj.text('');   
+            var  _qtyCartObj = $('[data-mz-cart-item-msg='+ '"' +msgId + '"' +']');
+            var _qtyGlobalObj = $('[data-mz-global-cart-item-msg='+ '"' +msgId + '"' +']');
+            _qtyGlobalObj.text('');
+            _qtyCartObj.text('');   
             value++;
             _qtyCountObj.val(value);  
             e.stopImmediatePropagation();

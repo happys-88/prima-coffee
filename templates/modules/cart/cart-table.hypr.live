@@ -86,11 +86,11 @@
 
           </div>
           <span class="mz-validationmessage">{{ model.addToCartErr }}</span>
-          <span class="mz-validationmessage" data-mz-Cart-validationmessage-for="quantity"></span>
+          <span class="mz-validationmessage" data-mz-Cart-validationmessage-for="quantity" data-mz-cart-item-msg="{{ item.id }}"></span>
           <div class="mz-productdetail-conversion-controls mz-carttable-item-qty col-xs-12 col-sm-2">  
             <div class="qty-block">  
               <span class="qty-counter" data-mz-qty="plus" role="button"><i class="mz-icon arrow-up" aria-hidden="true"></i></span> 
-              <span class="qty-counter" data-mz-qty="minus" role="button"><i class="mz-icon arrow-down"  aria-hidden="true"></i></span>    
+              <span class="qty-counter" data-mz-qty="minus" role="button" data-mz-cart-item-minus="{{ item.id }}"><i class="mz-icon arrow-down"  aria-hidden="true" data-mz-cart-item-minus="{{ item.id }}"></i></span>   
               <input  class="text-center mz-carttable-qty-field" data-id ="global-mz-carttable-qty-field"  type="text" min="1" value="{{ item.quantity }}" data-mz-cart-item="{{ item.id }}" data-mz-value='quantity' title="Quantity" maxlength="3">
             </div>
             <a class="mz-carttable-item-remove" href="javascript:void(0);" data-mz-action="removeItem" data-mz-cart-item="{{ item.id }}"><i class="fa fa-times"></i>{{ labels.remove }}</a>    
