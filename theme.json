@@ -10,7 +10,7 @@
     "allowProduction": true,
     "baseTheme": "https://github.com/happys-88/prima-coffee",
     "baseThemeVersion": {
-      "commit": "c3a26176c98443a62d393a5e7a4a542fc0efb111"
+      "commit": "57eff169be01b18faf9543bbc547980a67f4cd38"
     },
     "baseThemeChannel": "stable"
   },
