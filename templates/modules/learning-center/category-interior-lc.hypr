@@ -1,5 +1,5 @@
 {% partial_cache model.categoryId pageContext.Sorting pageContext.Pagination pageContext.query.sortBy %} 
-	{% include_products "modules/product/learning-center/faceted-articles" with includeFacets=themeSettings.showCategoryFacets and pageWithUrl=true and sortWithUrl=true and sort="daysAvailableInCatalog asc" and pageSize=themeSettings.defaultPageSizeDirectoryLC as_parameter %}      
+	{% include_products "modules/product/learning-center/faceted-articles" with includeFacets=themeSettings.showCategoryFacets and pageWithUrl=true and sortWithUrl=true and sort="daysAvailableInCatalog desc" and pageSize=themeSettings.defaultPageSizeDirectoryLC as_parameter %}      
 {% endpartial_cache %}
 
 {% dropzone "category-page-bottom" scope="page" %}         
