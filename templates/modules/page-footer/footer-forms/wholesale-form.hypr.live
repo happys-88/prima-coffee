@@ -36,7 +36,7 @@
              <div class="form-group mz-certificate-upload clearfix"> 
                 <label class="col-xs-12" for="Certificate">Upload Resale Certificate</label>
                 <div class="col-xs-8">
-                    <input type="file" placeholder="{{ labels.businessph }}" name="business"      data-mz-value="business" id="Certificate">
+                    <input type="file" placeholder="{{ labels.businessph }}" name="certificate" data-mz-value="certificate" id="Certificate">
                 </div>
                 <div class="col-xs-4">
                     <button class="mz-button" type="button">Upload</button>
