@@ -60,15 +60,6 @@
             <div class="mz-product-msg">
                 <div class="stock-message"></div>
                 <div class="shipping-message"></div>
-                <div class="shipping-messages" style="display: none;">
-                    {% for propShipping in model.properties %}
-                        {% if propShipping.attributeFQN == "tenant~availability" %}
-                            {% for shippingValue in propShipping.values  %}
-                                {{ shippingValue.stringValue }}
-                            {% endfor %}
-                        {% endif %}
-                    {% endfor %}
-                </div>
             </div>
             {% with model|get_product_attribute("tenant~login-for-price") as loginForPrice %}
              {% if loginForPrice.values|first|prop("value") === true %}
