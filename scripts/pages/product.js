@@ -35,6 +35,7 @@
         refreshStock: function () {
             var fieldDisplayOOSProp = this.model.get('fieldDisplayOOSProp');
             var inventoryInfo = this.model.get('inventoryInfo');
+            if (inventoryInfo) {
             var manageStock = inventoryInfo.manageStock;
             var stockMessage;
             var shippingMessage;
@@ -133,6 +134,7 @@
             this.model.set('stockMessage', stockMessage);
             this.model.set('helperMessage', shippingMessage);
             this.model.set('messageColor', color);
+            }
         },
         productCarousel: function () { 
             var minSlides, 
@@ -448,7 +450,7 @@
             }
 
             var inventory = this.model.get('inventoryInfo');
-            if (variationTotalStock === 0 && inventory.onlineStockAvailable) {
+            if (variationTotalStock === 0 && inventory && inventory.onlineStockAvailable) {
                 variationTotalStock = inventory.onlineStockAvailable;
             }
             if (variationTotalStock === 0 && prop) {
