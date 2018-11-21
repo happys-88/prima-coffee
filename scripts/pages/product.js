@@ -633,14 +633,14 @@
         if(typeof product.attributes.categories !== "undefined"){
             $.each(product.attributes.categories, function( index, value ) {
                 if(index === 0) {
-            var currentCategoryCode = value.categoryId;
+                    var currentCategoryCode = value.categoryId;
                     $.each(product.attributes.properties, function( index, value ) {                
                         var preUrl;
                         var hostname = window.location.hostname;
                         var flag1 = false;
                         var flag2 = false;
                         var nxtUrl;
-                        api.request("GET", "/api/commerce/catalog/storefront/products/?filter=categoryId eq "+currentCategoryCode+"").then(function(body){
+                        api.request("GET", "/api/commerce/catalog/storefront/products/?filter=categoryId eq "+currentCategoryCode+"&sortBy=daysAvailableInCatalog desc").then(function(body){
                             $.each(body.items, function(index, item){
                                 var productCode = item.productCode;
                                 var seoFriendlyUrl = item.content.seoFriendlyUrl;
@@ -677,7 +677,7 @@
                     });
                     return false;
                 }
-                });
+            });
         }
             
         product.on('addedtocart', function (cartitem) {
