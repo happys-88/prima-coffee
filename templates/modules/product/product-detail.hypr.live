@@ -66,7 +66,7 @@
                 <a class="mz-button login-for-lowprice" href="javascript:void(0);" data-toggle="modal" data-target="#loginPopup" data-productcode="{{model.productCode}}">{{ labels.viewOnLogin }}</a> 
               {% endif %}
             {% else %}
-              <a class="mz-button email-me-btn" href="javascript:void(0);" data-toggle="modal" data-target="#emailWhenBackInstock" data-productcode="{{model.productCode}}">Email Me When Back In Stock</a>  
+              <a class="mz-button email-me-btn" href="javascript:void(0);" data-toggle="modal" data-target="#emailWhenBackInstock" data-productcode="{{model.productCode}}">{{ labels.backInStockEmail }}</a>  
             {% endif %}    
           {% endif %} 
         {% else %}
@@ -83,7 +83,7 @@
               </button>
             
             {% else %}
-              <a class="mz-button email-me-btn" href="javascript:void(0);" data-toggle="modal" data-target="#emailWhenBackInstock">Email Me When Back In Stock</a>   
+              <a class="mz-button email-me-btn" href="javascript:void(0);" data-toggle="modal" data-target="#emailWhenBackInstock">{{ labels.backInStockEmail }}</a>   
             {% endif %}            
           {% endif %} 
           
