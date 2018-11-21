@@ -17,82 +17,78 @@
             <a class="mz-productlisting-title" href="{% make_url "product" model %}">{{model.content.productName|truncatewords(4)}}</a>
         {% endif %} 
          
-            {% if model.content.productShortDescription and themeSettings.listProductShortDesc %}
-                <div class="mz-productlisting-shortdesc"> 
-                    <span itemscope="description">{{ model.content.productShortDescription|safe }}</span>  
-                </div>
-            {% endif %} 
-            
-            {% block product-code %}
-                {% if themeSettings.listProductCode %}
-                    <div class="mz-productlisting-productcode">SKU:{{model.productCode}}</div> 
-                {% endif %}
-            {% endblock product-code %}
-
-            {% block product-rating %}     
-                <div id="product-rating">
-                    <div class="yotpo bottomline">
-                        <div class="yotpo-bottomline pull-left star-clickable">
-                            <span class="yotpo-stars"></span> 
-                        </div>
-                    </div> 
-                </div>
-            {% endblock product-rating %}    
-            
-            <div class="mz-price-in-cart">
-                {% include "modules/product/price-show-stack" %}
+        {% if model.content.productShortDescription and themeSettings.listProductShortDesc %}
+            <div class="mz-productlisting-shortdesc"> 
+                <span itemscope="description">{{ model.content.productShortDescription|safe }}</span>  
             </div>
+        {% endif %} 
+        
+        {% block product-code %}
+            {% if themeSettings.listProductCode %}
+                <div class="mz-productlisting-productcode">SKU:{{model.productCode}}</div> 
+            {% endif %}
+        {% endblock product-code %}
 
-            {% block product-extrainfo %}
-                {% if dealOfTheDay %}
-                    {% if dealOfTheDay.savings %}
-                        {% if model.price.discount.impact %}
-                            <p class="mz-productlisting-savings">You save: {{ model.price.discount.impact|currency }}</p>
-                        {% endif %}
-                    {% endif %}
-                    {% if dealOfTheDay.expirationDate %}
-                        {% if model.price.discount.discount.expirationDate %}
-                            <p class="mz-productlisting-expirationdate">Expires: {{ model.price.discount.discount.expirationDate|date("F j, Y") }}</p>
-                        {% endif %}
+        {% block product-rating %}     
+            <div id="product-rating">
+                <div class="yotpo bottomline">
+                    <div class="yotpo-bottomline pull-left star-clickable">
+                        <span class="yotpo-stars"></span> 
+                    </div>
+                </div> 
+            </div>
+        {% endblock product-rating %}    
+        
+        <div class="mz-price-in-cart">
+            {% include "modules/product/price-show-stack" %}
+        </div>
+
+        {% block product-extrainfo %}
+            {% if dealOfTheDay %}
+                {% if dealOfTheDay.savings %}
+                    {% if model.price.discount.impact %}
+                        <p class="mz-productlisting-savings">You save: {{ model.price.discount.impact|currency }}</p>
                     {% endif %}
                 {% endif %}
-            {% endblock product-extrainfo %}
-            <div class="mz-product-msg">
-                <div class="stock-message"></div>
-                <div class="shipping-message"></div>
-            </div>
-            {% with model|get_product_attribute("tenant~login-for-price") as loginForPrice %}
-             {% if loginForPrice.values|first|prop("value") === true %}
-               {% if not user.isAnonymous %}
-                 {% include "modules/product/product-add-to-cart" %}
-                 <button class="mz-quick-view" data-mz-productcode-quickview="{{ model.productCode }}" data-toggle="modal" data-target="#quickViewModal">{{ labels.quickShop }}</button>
-               {% else %}
-                 <a class="mz-button login-for-lowprice" href="javascript:void(0);" data-toggle="modal" data-target="#loginPopup" data-productcode="{{model.productCode}}">{{ labels.viewOnLogin }}</a>
-               {% endif %} 
-               {% else %}
-                 {% include "modules/product/product-add-to-cart" %}
-                 <button class="mz-quick-view" data-mz-productcode-quickview="{{ model.productCode }}" data-toggle="modal" data-target="#quickViewModal">{{ labels.quickShop }}</button>
-             {% endif %} 
-           {% endwith %}
+                {% if dealOfTheDay.expirationDate %}
+                    {% if model.price.discount.discount.expirationDate %}
+                        <p class="mz-productlisting-expirationdate">Expires: {{ model.price.discount.discount.expirationDate|date("F j, Y") }}</p>
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+        {% endblock product-extrainfo %}
+        <div class="mz-product-msg">
+            <div class="stock-message"></div>
+            <div class="shipping-message"></div>
+        </div>
+        {% with model|get_product_attribute("tenant~login-for-price") as loginForPrice %}
+         {% if loginForPrice.values|first|prop("value") === true %}
+           {% if not user.isAnonymous %}
+             {% include "modules/product/product-add-to-cart" %}
+             <button class="mz-quick-view" data-mz-productcode-quickview="{{ model.productCode }}" data-toggle="modal" data-target="#quickViewModal">{{ labels.quickShop }}</button>
+           {% else %}
+             <a class="mz-button login-for-lowprice" href="javascript:void(0);" data-toggle="modal" data-target="#loginPopup" data-productcode="{{model.productCode}}">{{ labels.viewOnLogin }}</a>
+           {% endif %} 
+           {% else %}
+             {% include "modules/product/product-add-to-cart" %}
+             <button class="mz-quick-view" data-mz-productcode-quickview="{{ model.productCode }}" data-toggle="modal" data-target="#quickViewModal">{{ labels.quickShop }}</button>
+         {% endif %} 
+        {% endwith %}
         {% with model|get_product_attribute("tenant~new-arrival") as newArrival %}
-                {% if newArrival.values|first|prop("value") == true %}
-                    <span class="mz-new-arrival-tag">{{ labels.new }}</span>
-                {% endif %} 
-            {% endwith %}   
+            {% if newArrival.values|first|prop("value") == true %}
+                <span class="mz-new-arrival-tag">{{ labels.new }}</span>
+            {% endif %} 
+        {% endwith %}   
         </div>
         <div class="mz-feature-product">
-                    {% if pageContext.isDesktop %}
-                        <a class="mz-productlisting-title" href="{% make_url "product" model %}">{{model.content.productName}}</a>
-                    {% else %}
-                        <a class="mz-productlisting-title" href="{% make_url "product" model %}">{{model.content.productName}}</a>
-                    {% endif %}
-                    <div class="short-description">
-                        <p>
-                          {{ model.content.productShortDescription|safe }}
-                        </p>
-                        <span>
-                            <a href="{{ model.url}}">Read More</a>
-                        </span>     
-                    </div>           
-            </div>
+            {% if pageContext.isDesktop %}
+                <a class="mz-productlisting-title" href="{% make_url "product" model %}">{{model.content.productName}}</a>
+            {% else %}
+                <a class="mz-productlisting-title" href="{% make_url "product" model %}">{{model.content.productName}}</a>
+            {% endif %}
+            <div class="short-description">
+                <p>{{ model.content.productShortDescription|safe }}</p>
+                <span><a href="{{ model.url}}">Read More</a></span>       
+            </div>           
+    </div>
 </div>

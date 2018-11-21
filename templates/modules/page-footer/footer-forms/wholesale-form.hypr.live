@@ -25,6 +25,7 @@
                     <span class="mz-validationmessage" data-mz-validationmessage-for="business"></span>
                 </div>
             </div>
+            {% comment %}
             <div class="form-group clearfix">
                 <div class="col-xs-12 resale-certificate">
                     <label>Do you have a Resale Certificate?</label>
@@ -32,6 +33,7 @@
                     <label for="submitted-resale-certificate"> Yes </label> 
                 </div>
             </div>
+            {% endcomment %}     
 
              <div class="form-group mz-certificate-upload clearfix"> 
                 <label class="col-xs-12" for="Certificate">Upload Resale Certificate</label>
