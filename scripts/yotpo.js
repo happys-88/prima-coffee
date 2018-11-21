@@ -96,7 +96,7 @@ function ($, _, Hypr, Backbone, HyprLiveContext, api, blockUiLoader) {
             
             var someOptionsInStock = false;
             var fieldDisplayOOSProp = false;
-            var fieldDisplayOOSPropVal;
+            var fieldDisplayOOSPropVal = "";
             var stockCount = 0;
             stockCount = parseInt(stockCount, 10);
             var item = items[i];
@@ -106,9 +106,9 @@ function ($, _, Hypr, Backbone, HyprLiveContext, api, blockUiLoader) {
             var manageStock = item.inventoryInfo.manageStock;
             var outOfStockBehavior = item.inventoryInfo.outOfStockBehavior;
             var properties = item.properties;
-            var shippingMessage;
-            var availabilityMessage;
-            var expectedShipMessage;
+            var shippingMessage = "";
+            var availabilityMessage = "";
+            var expectedShipMessage = "";
             
             
             var prop = _.find(properties, function(property){ return property.attributeFQN == 'tenant~field_display_oos1'; });

@@ -1,8 +1,8 @@
-{%if SiteContext.IsEditMode %}
-<span>Instock Request Widget</span>
+{%if SiteContext.IsEditMode %} 
+	<span>Instock Request Widget</span> 
 {% else %}
-	{% if pagemodel.productUsage and pagemodel.productUsage != 'Bundle' %}
-	  <span data-mz-instock-request="{% json_attribute model.config %}" style="display:none">
+	{% if pagemodel.0.prodModel.productUsage and pagemodel.0.prodModel.productUsage != 'Bundle' %} 
+	  <span data-mz-instock-request="{% json_attribute model.config %}"> 
 		{% include model.config.template|default:"modules/product/product-instock-request"  %}
 	  </span>
 	  {% require_script "widgets/instock-request" %}

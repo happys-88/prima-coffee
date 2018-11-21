@@ -246,17 +246,37 @@
         {% endif %}
 
         <div class="mz-l-stack-section mz-paymentselector-separator mz-checkoutform mz-biiling-email-address">
-            <div class="form-group clearfix">
-                <div class="col-sm-4">
+            {% include "modules/checkout/checkout-digital-credit" %}
+             <div class="form-group clearfix">
+                <div class="col-sm-4 label-padding">
                     <label for="billing-email">
                         {{ labels.billingContact }}<span class="is-required"> *</span>:
                     </label>
                 </div>
-                <div class="col-sm-8">
+                <div class="col-sm-8 extra-space">
                     <input type="text" id="billing-email" name="billing-email" data-mz-value="billingContact.email" value="{{ model.billingContact.email }}"/>
                     <span class="mz-validationmessage" data-mz-validationmessage-for="billingContact.email"></span>
                 </div>
             </div>
+            <h4 class="mz-checkoutform-title">{{ labels.digitalCredits }}</h4>
+                <div class="form-group clearfix">
+
+                    <div class="col-sm-4 label-padding"> 
+                        <label for="billing-email">
+                        {{ labels.digitalCredits }}<span class="is-required"> *</span>:
+                    </label>
+                    </div>
+                    <div class="col-sm-8"> 
+                        <div class="row">
+                            <div class="col-sm-9 col-xs-9 extra">
+                                <input type="text" id="digital-credit-code" name="digital-credit-code" class="mz-checkout-digitalcredit-enter-code" value="{{ model.digitalCreditCode }}" data-mz-value="digitalCreditCode" />
+                            </div>
+                            <div class="col-sm-3 col-xs-3 extra">
+                                <button class="mz-button" data-mz-action="getDigitalCredit" {% if not model.digitalCreditCode %} disabled="disabled" {% endif %}>{{ labels.apply }}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             {% comment %}
             <div class="col-sm-8 col-sm-offset-4 mz-special-offers">
                 <label>

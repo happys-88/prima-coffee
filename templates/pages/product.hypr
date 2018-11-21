@@ -48,7 +48,8 @@
         </div> 
         <div class="col-xs-12 col-sm-6 mz-productdetail-wrap">
             {% include "modules/common/message-bar" with model=prodMod %}    
-            <div class="yotpo-review-section-pdp">   
+            <div class="yotpo-review-section-pdp">
+              
               <!-- Yotpo Rating -->
               {% block star-rating %}
                 <div class="yotpo bottomLine" data-product-id="{{prodMod.productCode}}" id="reviewLink"></div>  
@@ -90,5 +91,20 @@
 {% endblock body-content %}
 {% block commonbody-content %} {% endblock commonbody-content %}
 {% block body-below-content %}
-    {% dropzone "body-bottom" scope="page" %}   
+    {% dropzone "body-bottom" scope="page" %}
+
+    <div class="modal fade" id="emailWhenBackInstock" role="dialog">  
+        <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h4>Email Me When Back In Stock</h4> 
+                  <a type="button" class="close" data-dismiss="modal">&times;</a>
+              </div>
+              <div class="modal-body">
+                  {% include "templates/Widgets/misc/instock-request" %}  
+              </div>
+          </div>
+        </div> 
+    </div>
+
 {% endblock body-below-content %}
