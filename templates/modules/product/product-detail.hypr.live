@@ -47,32 +47,25 @@
     <div class="mz-productdetail-conversion-buttons">
       {% with model|get_product_attribute("tenant~login-for-price") as loginForPrice %}
         {% if loginForPrice.values|first|prop("value") === true %}
-          {% if model.inventoryInfo && model.inventoryInfo.onlineStockAvailable!=0 %}
             {% if not user.isAnonymous %}
-              <button id="add-to-cart" class="mz-productdetail-addtocart mz-button mz-button-large" data-mz-action="addToCart" {% if model.checkItem === true %} {% else %} disabled="disabled" {% endif %}>
+                <button id="add-to-cart" class="mz-productdetail-addtocart mz-button mz-button-large" data-mz-action="addToCart" {% if model.compatibilityCheck === true %} data-target="#compatibilityModal" data-toggle="modal" {% endif %} {% if model.checkItem === true %} {% else %} disabled="disabled" {% endif %}>
                 {{ labels.addToCart }}
               </button>
             {% else %}
-              <a class="mz-button login-for-lowprice" href="javascript:void(0);" data-toggle="modal" data-target="#loginPopup" data-productcode="{{model.productCode}}">{{ labels.viewOnLogin }}</a> 
-            {% endif %}
-          {% else %}
-            <a class="mz-button email-me-btn" href="javascript:void(0);" data-toggle="modal" data-target="#emailWhenBackInstock" data-productcode="{{model.productCode}}">{{ labels.backInStockEmail }}</a>     
+                <a class="mz-button login-for-lowprice" href="javascript:void(0);" data-toggle="modal" data-target="#loginPopup" data-productcode="{{model.productCode}}">{{ labels.viewOnLogin }}</a>
           {% endif %} 
-        {% else %}
-          {% if model.inventoryInfo && model.inventoryInfo.onlineStockAvailable!=0 %}
+        {% else %}           
             <button id="add-to-cart" class="mz-productdetail-addtocart mz-button mz-button-large" data-mz-action="addToCart" {% if model.compatibilityCheck === true %} data-target="#compatibilityModal" data-toggle="modal" {% endif %} {% if model.checkItem === true %} {% else %} disabled="disabled" {% endif %}>
-              {{ labels.addToCart }}  
+                {{ labels.addToCart }}
             </button>
-          {% else %}
-            <a class="mz-button email-me-btn" href="javascript:void(0);" data-toggle="modal" data-target="#emailWhenBackInstock">{{ labels.backInStockEmail }}</a>    
           {% endif %} 
-        {% endif %}  
-      {% endwith %}
+      {% endwith %} 
 
       <!-- Instock Request Dropzone -->  
       {% dropzone "instockRequest" scope="template" %}  
 
     </div>
+
   </div>
   <div class="col-md-3 col-xs-12"> 
     <div class="mz-productdetail-conversion-buttons text-center">
