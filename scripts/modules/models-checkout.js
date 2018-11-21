@@ -2413,7 +2413,7 @@
                     var val = this.validate();
                     for (var keyVal in val) {
                         if (val.hasOwnProperty(keyVal)) {
-                            if(keyVal.indexOf('purchaseOrder') !== -1 ) {
+                            if(keyVal.indexOf('purchaseOrder') !== -1 || keyVal.indexOf('agreeToTerms') !== -1) {
                                 var errorItems = {};
                                 errorItems.name = keyVal;
                                 errorItems.message = keyVal.substring(0, ".") + val[keyVal];
@@ -2422,6 +2422,7 @@
                         }
                     }
                     if (errorsPO.items.length > 0) {
+                        this.isSubmitting = false;
                         return false;
                     }                    
                 } else {
