@@ -2404,10 +2404,10 @@
                 // skip payment validation, if there are no payments, but run the attributes and accept terms validation.
                 var radioVal = $('input[name=paymentType]:checked').val(); 
                 if(radioVal !== 'Check' && radioVal !== 'PurchaseOrder') {
-                if (nonStoreCreditTotal > 0 && this.validate() && ( !this.isNonMozuCheckout() || this.validate().agreeToTerms)) {
-                    this.isSubmitting = false;
-                    return false;
-                } 
+                    if (nonStoreCreditTotal > 0 && this.validate() && ( !this.isNonMozuCheckout() || this.validate().agreeToTerms)) {
+                        this.isSubmitting = false;
+                        return false;
+                    } 
                 } else if(radioVal === 'PurchaseOrder') { 
                     var errorsPO = {"items":[]};
                     var val = this.validate();
@@ -2430,8 +2430,7 @@
                        this.isSubmitting = false;
                         return false;
                     } 
-                }
-                
+                }                
                 
                 this.isLoading(true);
 
