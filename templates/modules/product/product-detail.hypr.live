@@ -56,37 +56,16 @@
               <a class="mz-button login-for-lowprice" href="javascript:void(0);" data-toggle="modal" data-target="#loginPopup" data-productcode="{{model.productCode}}">{{ labels.viewOnLogin }}</a> 
             {% endif %}
           {% else %}
-            {{ model.variationTotalStock }}
-            {% if model.productUsage == 'Configurable' && model.variationTotalStock > 0  %}
-              {% if not user.isAnonymous %}
-                <button id="add-to-cart" class="mz-productdetail-addtocart mz-button mz-button-large" data-mz-action="addToCart" {% if model.checkItem === true %} {% else %} disabled="disabled" {% endif %}>
-                  {{ labels.addToCart }}
-                </button>
-              {% else %}
-                <a class="mz-button login-for-lowprice" href="javascript:void(0);" data-toggle="modal" data-target="#loginPopup" data-productcode="{{model.productCode}}">{{ labels.viewOnLogin }}</a> 
-              {% endif %}
-            {% else %}
-              <a class="mz-button email-me-btn" href="javascript:void(0);" data-toggle="modal" data-target="#emailWhenBackInstock" data-productcode="{{model.productCode}}">{{ labels.backInStockEmail }}</a>  
-            {% endif %}    
+            <a class="mz-button email-me-btn" href="javascript:void(0);" data-toggle="modal" data-target="#emailWhenBackInstock" data-productcode="{{model.productCode}}">{{ labels.backInStockEmail }}</a>     
           {% endif %} 
         {% else %}
-           
           {% if model.inventoryInfo && model.inventoryInfo.onlineStockAvailable!=0 %}
             <button id="add-to-cart" class="mz-productdetail-addtocart mz-button mz-button-large" data-mz-action="addToCart" {% if model.compatibilityCheck === true %} data-target="#compatibilityModal" data-toggle="modal" {% endif %} {% if model.checkItem === true %} {% else %} disabled="disabled" {% endif %}>
               {{ labels.addToCart }}  
             </button>
           {% else %}
-            {% if model.productUsage == 'Configurable' && model.variationTotalStock > 0 %}
-
-              <button id="add-to-cart" class="mz-productdetail-addtocart mz-button mz-button-large" data-mz-action="addToCart" {% if model.compatibilityCheck === true %} data-target="#compatibilityModal" data-toggle="modal" {% endif %} {% if model.checkItem === true %} {% else %} disabled="disabled" {% endif %}>
-                {{ labels.addToCart }}  
-              </button>
-            
-            {% else %}
-              <a class="mz-button email-me-btn" href="javascript:void(0);" data-toggle="modal" data-target="#emailWhenBackInstock">{{ labels.backInStockEmail }}</a>   
-            {% endif %}            
+            <a class="mz-button email-me-btn" href="javascript:void(0);" data-toggle="modal" data-target="#emailWhenBackInstock">{{ labels.backInStockEmail }}</a>    
           {% endif %} 
-          
         {% endif %}  
       {% endwith %}
 
@@ -176,7 +155,7 @@
   {% endfor %}
   </dl>
 </div>
-{% endif %}
+{% endif %} 
 
 {% if model.measurements and themeSettings.showProductDetailMeasurements and not model.bundledProducts %}
 <div class="mz-productdetail-measurements mz-l-stack-section hide"> 
@@ -203,5 +182,3 @@
   </dl>
 </div>
 {% endif %}
-
-
