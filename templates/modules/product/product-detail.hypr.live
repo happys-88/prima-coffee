@@ -46,7 +46,7 @@
   <div class="col-md-7 col-xs-8">
     <div class="mz-productdetail-conversion-buttons">
       {% with model|get_product_attribute("tenant~login-for-price") as loginForPrice %}
-          {% if loginForPrice.values|first|prop("value") === true %}
+          {% if loginForPrice.values|first|prop("value") === true && not user.isAnonymous %}
               {% if model.inventoryInfo && model.inventoryInfo.onlineStockAvailable!=0 %}
                   {% if not user.isAnonymous %}
                       <button id="add-to-cart" class="mz-productdetail-addtocart mz-button mz-button-large" data-mz-action="addToCart" {% if model.checkItem === true %} {% else %} disabled="disabled" {% endif %}>
@@ -66,7 +66,7 @@
                   {{ labels.addToCart }}  
                 </button>
               {% else %}
-                  {% if model.inventoryInfo.outOfStockBehavior == "AllowBackOrder" %}
+                  {% if model.inventoryInfo.outOfStockBehavior == "AllowBackOrder" || model.productUsage && model.productUsage == 'Bundle' %}
                         <button id="add-to-cart" class="mz-productdetail-addtocart mz-button mz-button-large" data-mz-action="addToCart" {% if model.compatibilityCheck === true %} data-target="#compatibilityModal" data-toggle="modal" {% endif %} {% if model.checkItem === true %} {% else %} disabled="disabled" {% endif %}>
                           {{ labels.addToCart }}  
                         </button>
