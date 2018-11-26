@@ -27,7 +27,7 @@ define(['modules/jquery-mozu', 'hyprlive', 'underscore', "modules/api", "modules
                 render: function() {
                     Backbone.MozuView.prototype.render.apply(this, arguments);
                     var inventoryInfo = this.model.get('inventoryInfo');
-                    this.$el.css('display', (inventoryInfo && ("onlineStockAvailable" in inventoryInfo) && inventoryInfo.onlineStockAvailable === 0) || $('body').hasClass('mz-cms-editing') ? 'inherit' : 'none');
+                    // this.$el.css('display', (inventoryInfo && ("onlineStockAvailable" in inventoryInfo) && inventoryInfo.onlineStockAvailable === 0) || $('body').hasClass('mz-cms-editing') ? 'inherit' : 'none');
                 },
                 widgetNotifyUserAction: function () {
                     var self = this;

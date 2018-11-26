@@ -27,7 +27,7 @@
 				{% endif %}
 				{% if model.options %}
 				<div class="mz-productdetail-options mz-l-stack-section">
-				  {% include "modules/product/product-options" %}
+				  {% include "modules/product/product-options-ebis" %}
 				</div>
 				{% endif %}
 				{{model.productCode}}
