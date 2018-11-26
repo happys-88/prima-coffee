@@ -10,35 +10,45 @@
 
 	{{ labels.inStockBlob1|string_format(siteContext.generalSettings.websiteName)|safe }}
 
-	<table class="mz-ordersummary">
-    <thead>
-        <tr>
-            <th class="mz-ordersummary-header-product">{{ labels.item }}</th>
-            <th class="mz-ordersummary-header-price">{{ labels.price }}</th>
-        </tr>
-    </thead>
-	<tbody>
-		<tr>
-			<td>
-				{% if model.content.productShortDescription and themeSettings.showProductDetailShortDesc %}
-				<div class="mz-productdetail-shortdesc mz-l-stack-section">
-				  <span itemscope="description">{{ model.content.productShortDescription|safe }}</span>
-				</div>
-				{% endif %}
-				{% if model.options %}
-				<div class="mz-productdetail-options mz-l-stack-section">
-				  {% include "modules/product/product-options-ebis" %}
-				</div>
-				{% endif %}
-				{{model.productCode}}
-			</td>
-			<td>
-				<div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="mz-productdetail-price mz-l-stack-section">
-				{% include "modules/product/price-stack" %}
-				</div>
-			</td>
-		</tr>
-	</tbody>
+	<table class="mz-item-title-ebis" width="600" cellspacing="0" cellpadding="0" border="0">
+		<thead>
+	        <tr>
+	        	<th align="left">{{ model.content.productName}}</th> 
+	        </tr>
+	        <tr>
+	        	<th height="10"></th>    
+	        </tr>
+	    </thead> 
+	</table>
+	<table class="mz-ordersummary" width="600" cellspacing="0" cellpadding="0" border="0">  
+	    <thead>
+	        <tr>
+	            <th class="mz-ordersummary-header-product" align="left" width="40%">{{ labels.item }}</th>    
+	            <th class="mz-ordersummary-header-price" align="left">{{ labels.price }}</th> 
+	        </tr>
+	    </thead>
+		<tbody>
+			<tr>
+				<td>
+					{% if model.content.productShortDescription and themeSettings.showProductDetailShortDesc %}
+						<div class="mz-productdetail-shortdesc mz-l-stack-section">
+						  <span itemscope="description">{{ model.content.productShortDescription|safe }}</span>
+						</div>
+					{% endif %}
+					{% if model.options %}
+						<div class="mz-productdetail-options mz-l-stack-section">
+						  {% include "modules/product/product-options-ebis" %}
+						</div>
+					{% endif %}
+					{{model.productCode}}
+				</td>
+				<td>
+					<div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="mz-productdetail-price mz-l-stack-section">
+					{% include "modules/product/price-stack" %}
+					</div>
+				</td>
+			</tr>
+		</tbody>
 	</table>
 
 	{{ labels.inStockBlob2|string_format(domainName, model.productCode)|safe }}
