@@ -13,87 +13,18 @@
 {% endblock breadcrumbs %}
 {% block body-content %}
 
-	<div id="bottom-navigation">
+    <div id="bottom-navigation">
         <div class="navbar navbar-inverse">
-           	<a href="/" class="brand-logo pull-left">
+            <a href="/" class="brand-logo pull-left">
                <img src='{% make_url "cdn" "/cms/files/logo-prima-coffee.png" %}' alt="Prima Coffee">
             </a>
             <a href="#start" class="mz-signup pull-right">Sign up now</a>
         </div>
     </div>
-	<div class="content">
-        <div class="field field-name-body field-type-text-with-summary field-label-hidden">
-            <div class="field-items">
-                <div class="field-item even">
-                    <div class="main-header">
-                        <div class="col-xs-9">
-                            <h1 class="header">Send the coffee shop experience
-                                <span class="blue">home.</span>
-                            </h1>
-                            <h6 class="title">Get the gear you need for your retail space at wholesale prices. </h6>
-                            <div>
-                              <a class="center-content btn btn-primary start mz-button" href="#start">GET STARTED NOW</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="clearfix">
-                        <div class="content_masthead_wrapper">
-                            <h1 class="content_masthead_why">Why Prima?</h1>
-                        </div>
-                        <div class="spacer-mheader"></div> 
-                    </div>
-                    <div id="learning_content">
-                        <div class="content_masthead_wrapper">
-                            <h2 class="content_masthead_text content_text span6">Get Started Now
-                            </h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 why-prima">
-                <ul>
-                    <li>
-                       <img  src='{% make_url "cdn" "/cms/files/checklist.png" %}'>
-                        <h6 class="why-header">Easy Ordering</h6>
-                    </li>
-                    <li>
-                       <img  src='{% make_url "cdn" "/cms/files/cost.png" %}'>
-                        <h6 class="why-header">Competitive Pricing</h6>
-                    </li>
-                    <li>
-                       <img  src='{% make_url "cdn" "/cms/files/coffee_brain.png" %}'>
-                        <h6 class="why-header">Knowledgeable Staff</h6>
-                    </li>
-                    <li>
-                       <img  src='{% make_url "cdn" "/cms/files/pourover.png" %}'>
-                        <h6 class="why-header">Expansive Lineup</h6>
-                    </li>
-                    <li>
-                       <img  src='{% make_url "cdn" "/cms/files/shipping2.png" %}'>
-                        <h6 class="why-header">Fast &amp; Accurate Shipping</h6>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div id="learning_content">
-        <div class="content_masthead_wrapper">
-            <h2 class="content_masthead_text content_text col-xs-6">Get Started Now
-            </h2>
-        </div>
-    </div>
-    <div class="mz-blue-bg">
-        <div class="container">
-            <div class="row">
-                <h6>We're pleased to offer discounted pricing to customers who buy with the intention of stocking and reselling the items they purchase. With competitive pricing and access to the highest quality, most relevant manual brewing gear in the specialty coffee industry, the Prima Coffee wholesale program is designed with your small business in mind.</h6>
-            </div>
-        </div>
-    </div>
+    {% dropzone "get-started" scope="page" %}
+    {% dropzone "why-prima" scope="page" %}
+    {% dropzone "coffee-banner" scope="page" %}
+    
         <div class="mz-wholesale-form" id="start">
             <div class="mz-contact-form">
                  {% include "modules/page-footer/footer-forms/wholesale-form" %}

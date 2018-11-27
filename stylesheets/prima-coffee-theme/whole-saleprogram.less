@@ -8,7 +8,7 @@
         }
     }
     .mz-wholesale-form {
-        background: url(https://static.prima-coffee.com/pages//Prima-Catalog-2016-Cold-Brew.jpg) no-repeat center center;
+        background: url('../cms/files/Prima-Catalog-2016-Cold-Brew.jpg') no-repeat center center;
         background-size: cover; 
         float: left;
         width: 100%;
@@ -65,58 +65,45 @@
         top: 0px;
         z-index: 10;
         left:0;
+        .navbar {
+            padding: 10px 15px;
+        }
+        .brand-logo {
+            width: 126px;
+            height: 40px;
+        }
+        .mz-signup {
+            color: #fff;
+            margin-top: 10px;
+        }
     }
-    #bottom-navigation .navbar {
-        padding: 10px 15px;
-    }
-    #bottom-navigation .brand-logo {
-        width: 126px;
-        height: 40px;
-    }
-    #bottom-navigation .mz-signup {
-        color: #fff;
-        margin-top: 10px;
-    }
-    /*\Header*/
-
 
     .main-header {
         padding-top: 100px;
-        height: 850px;
-        background: url('https://static.prima-coffee.com/pages//Prima-Catalog-2016-Chemex-Cover.jpg') no-repeat center;
+        min-height: 635px;
+        background: url('../cms/files/Prima-Catalog-2016-Chemex-Cover.jpg') no-repeat center;
         background-size: cover;
-        margin-bottom: -3em;
-        margin-top: -1em;
+        margin-top: 0px;
+        h1{
+            color: #000;
+            margin-top: 2em;
+            font-size: 3.5em;
+            font-weight: 700;
+            line-height: 50px;
+        }
+        h2{
+            font-size: 2rem;
+            font-weight: 500;
+            color: #000;
+        }
     }
-
-    .header,
-    .title,
-    .center-content {
-        margin-left: 20%;
-
-    }
-
-   .header {
-        color: #000;
-        margin-top: 4em;
-        font-size: 3.76em;
-        font-weight: 700;
-        line-height: 58px;
-    }
-
     .blue {
         color: #47adca;
     }
-
-    .title {
-        font-size: 1.925rem;
-        font-weight: 500;
-        color: #000;
-    }
-
     .center-content {
         font-weight: 600;
         padding: .9em;
+        margin-left: 20%;
     }
 
     .content_masthead_wrapper {
@@ -156,17 +143,7 @@
         font-size: 1.5em;
         font-weight: 500;
         line-height: 1.2em;
-    }
-
-    // .marg-btm {
-    //     margin-bottom: -3.09em;
-    // }
-    #block-webform-client-block-32464 {
-        height: 850px;
-        background: url('https://static.prima-coffee.com/pages//Prima-Catalog-2016-Cold-Brew.jpg') no-repeat center;
-        background-size: cover;
-  
-    }    
+    }  
     .ul-footer {
         width: 100%;
         display: inline-flex;
@@ -201,16 +178,53 @@
                 font-size: 16px;
             }
 
+
             .mz-blue-bg {
                 background: #47adca;
+                padding: 60px 0;
+                text-align: center;
+                h3{
+                font-size: 50px;
+                text-align: center;
+                color: #fff;
+                margin-top: 0;
+                margin-bottom: 20px;
+                display: inline-block;
+                width: 100%;
+                }
             }
 
             .mz-blue-bg h6 {
                 color: #fff;
                 font-weight: 500;
                 font-size: 2.5em;
-                line-height: initial;
-                margin-top: 1em;
-                margin-bottom: 1em;
-                padding: 3em;
+                line-height: initial; 
             }
+            .why-prima{
+                
+                h3{
+                    font-size: 50px;
+                    text-align: center;
+                    margin: 0 0 10px;
+                }
+                ul {
+                    display: inline-block;
+                    width: 100%;
+                    margin-top: 30px;
+                }
+            }
+            .why-us-sec {
+                padding: 60px 0;
+                h2{
+                    color: #283653;
+                    font-weight: bold;
+                    font-size: 72px;
+                    text-align: center;
+                    margin: 0 0 55px;
+                }
+            }
+
+      
+
+
+    
