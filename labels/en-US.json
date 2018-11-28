@@ -227,7 +227,7 @@
   "orderShipmentBlob1"                    : "<p>Thank you for shopping at {0}.  Your order has shipped. Once an order has shipped, it can no longer be updated. If you must return an item from this order or check on other orders,  please visit <a href=\"http://{1}/myaccount\">My Account</a>.</p>",
   "orderShipmentBlob2"                    : "<p>Data on tracking may not show up in your account for at least 24 hours from ship date.</p>",
   "returnApprovedBlob1"                   : "<p>Thank you for shopping at {0}. Your request to return the following item(s) has been accepted.</p>",
-  "returnApprovedBlob2"                   : "<p>To return your online purchase:</p><ol><li>Pack your return in the original shipping package, if possible.</li><li>Include the attached packing slip and return label, and indicate the reason for the return.</li><li>Include all original packing materials and accessories.</li><li>Send your return to:</li></ol>",
+  "returnApprovedBlob2"                   : "<p>To return your online purchase:</p><ol><li>Pack your return in the original shipment packaging.</li><li>Include all original packing materials and accessories.</li><li>Please include your RMA number on your shipping label.</li><li>Send your return to:</li></ol>",
   "returnApprovedBlob3"                   : "<p>You will receive another email when we receive the returned item(s).</p>",
   "returnRejectedBlob1"                   : "<p>Thank you for shopping at {0}. We regret to inform you that your request to return the following item(s) has been rejected:</p>",
   "returnRejectedBlob2"                   : "<p>If you would like more information about our return and exchange policy, please visit our Return & Exchange Policy page.</p>",
