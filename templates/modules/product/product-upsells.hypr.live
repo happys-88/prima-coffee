@@ -1,6 +1,6 @@
 {% if model.items %}
     <div class="mz-product-slider">
-        <h2 class="heading-2"><span>Product Upsells</span></h2>    
+        <h2 class="heading-2"><span>{{ themeSettings.productUpsellsHeading }}</span></h2>      
         <ul id="UpSellSlider">               
             {% for productData in model.items %}
                 {% include "modules/product/product-list-slider" with model=productData %}        

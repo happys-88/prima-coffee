@@ -10,7 +10,7 @@
     "allowProduction": true,
     "baseTheme": "https://github.com/happys-88/prima-coffee",
     "baseThemeVersion": {
-      "commit": "57eff169be01b18faf9543bbc547980a67f4cd38"
+      "commit": "737862fa7072509e15ce2dcd4c042423c06c946e"
     },
     "baseThemeChannel": "stable"
   },
@@ -534,6 +534,7 @@
     }
   ],
   "settings": {
+    "productUpsellsHeading": "You May Also Like", 
     "ogSiteNameTwitter": "@primacoffee",
     "ogSiteNameFb": "Prima Coffee",
     "ogImageWidth": "500",
