@@ -171,10 +171,13 @@
                         <script type="text/javascript">
                             (function e() { var e = document.createElement("script"); e.type = "text/javascript"; e.async = true; e.src = "//staticw2.yotpo.com/{{ themeSettings.yotpoApiKey }}/widget.js"; var t = document.getElementsByTagName("script")[0]; t.parentNode.insertBefore(e, t) })();
                         </script>   
-                         {% dropzone "feature-product" scope="site" %}
-                        <div class="yotpo yotpo-pictures-widget"
-                            data-gallery-id="{{ themeSettings.yotpoGalleryId }}">
-                        </div>
+                        {% dropzone "feature-product" scope="site" %}
+                        
+                        <div class="yotpo-gallery clearfix">
+                            {% if pageContext.isEditMode %}Yotpo Gallery Widget - HTML Dropzone {% endif %} 
+                            {% dropzone "yotpo-gallery-widget" scope="site" %}  
+                        </div>   
+                        
                         <div class="yotpo-recent-reviews">
                             {% dropzone "yotpo-reviews-carousel" scope="page" %}
                         </div> 
