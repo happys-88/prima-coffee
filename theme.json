@@ -666,6 +666,7 @@
     "sendGridKey": "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",
     "merchantEmail": "sales@prima-coffee.com",
     "zipCodeRanges": "90001-96162, 40003-42788",
+    "yotpoGalleryId": "5be468124dafbd49f4f38eee",
     "usStates": [
       {
         "abbreviation": "AL",

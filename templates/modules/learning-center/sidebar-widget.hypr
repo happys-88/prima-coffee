@@ -2,17 +2,8 @@
     <div class="mz-sidebar-content-widget"> 
         <div class="yotpo-gallery">  
             <h2 class="heading-2"><span>Prima Coffee</span></h2>    
-            <div class="yotpo yotpo-pictures-gallery"
-                data-layout="full_page"
-                data-layout-scroll="0"
-                data-spacing="0"
-                data-source="instagram"
-                data-title="0"
-                data-hover-color="#ffffff"
-                data-hover-opacity="0.8"
-                data-hover-icon="true"
-                data-cta-text="Shop Now"
-                data-cta-color="#ff7a00">
+            <div class="yotpo yotpo-pictures-widget"
+                data-gallery-id="{{ themeSettings.yotpoGalleryId }}">
             </div>
             <a href="{{ themeSettings.instagramFollowUsLink }}" target="_blank" class="mz-button">Follow Us</a>       
         </div> 

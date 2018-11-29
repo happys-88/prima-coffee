@@ -13,7 +13,7 @@ function ($, _, Hypr, Backbone, HyprLiveContext, ProductModel, api, yotpo) {
 	$(document).ready(function(){
 		var singleImgContainer = $(".yotpo-single-image-container");
 	    var size_li = $(singleImgContainer).size();
-	    var galleryThumbnails = 8;
+	    /*var galleryThumbnails = 8;
 	    $(".yotpo-single-image-container").addClass("hidden-thumbnails");
 	    $('.yotpo-single-image-container:lt('+galleryThumbnails+')').removeClass("hidden-thumbnails"); 
 	    $('.yotpo-load-more-button').click(function () {
@@ -23,7 +23,7 @@ function ($, _, Hypr, Backbone, HyprLiveContext, ProductModel, api, yotpo) {
 	   	// Learning Center Gallery
 	   	var singleThumbHeight = $(singleImgContainer).outerHeight(true);
 	   	var totalHeight = singleThumbHeight*2;
-	   	var parentDiv = $(".mz-sidebar-content-widget .yotpo-pictures-gallery").css("height", totalHeight); 
+	   	var parentDiv = $(".mz-sidebar-content-widget .yotpo-pictures-gallery").css("height", totalHeight); */
 
 	    var product = ProductModel.Product.fromCurrent();
 	    var prodType = product.attributes.productType;
