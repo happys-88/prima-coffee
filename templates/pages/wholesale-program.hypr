@@ -13,7 +13,7 @@
 {% endblock breadcrumbs %}
 {% block body-content %}
 
-    <div id="bottom-navigation">
+    <div id="bottom-navigation" {% if pageContext.isEditMode %}style="position:relative; margin-top:-25px;"{% endif %}>  
         <div class="navbar navbar-inverse">
             <a href="/" class="brand-logo pull-left">
                <img src='{% make_url "cdn" "/cms/files/logo-prima-coffee.png" %}' alt="Prima Coffee">
@@ -21,7 +21,7 @@
             <a href="#start" class="mz-signup pull-right">Sign up now</a>
         </div>
     </div>
-    {% dropzone "get-started" scope="page" %}
+    {% dropzone "get-started" scope="page" %} 
     {% dropzone "why-prima" scope="page" %}
     {% dropzone "coffee-banner" scope="page" %}
     

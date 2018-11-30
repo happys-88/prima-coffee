@@ -10,7 +10,7 @@
     "allowProduction": true,
     "baseTheme": "https://github.com/happys-88/prima-coffee",
     "baseThemeVersion": {
-      "commit": "d2c4b462c683c9d2f72940d58748eeaccdf5a44c"
+      "commit": "737862fa7072509e15ce2dcd4c042423c06c946e"
     },
     "baseThemeChannel": "stable"
   },
@@ -24,7 +24,7 @@
         "web_page@mozu"
       ],
       "id": "web_page@mozu",
-      "path": "web_page.js",
+      "path": "web_page.js", 
       "priority": 0.2
     },
     {
@@ -937,6 +937,8 @@
     "tryBeforeYouBuyTooltip": "\"Wonder if this product is exactly what you need? Try it out risk free for 14 days from the date of shipment! If you don't like it we will pay to ship it back.<br /><a href=\"/try-before-you-buy\">Read about it here</a>.\"",
     "priceMatchGuaranteeTooltip": "\"Found a better price somewhere else? We'll beat it! Call us at <b>[(888) 837-7892]</b> or <a href=\"/price-match-request\">fill out our price match form</a>.\"",
     "freeShippingTooltip": "\"Lucky you! This product qualifies for free shipping (contiguous United States only).<br /><a href=\"/prima-advantage\">Click here to see why</a>.\" (PC uses /prima-edge as the link currently.)",
+    "liftgateTooltip": "Remember, unless you have a loading dock, forklift, a bunch of strong folks, or are Hercules reincarnated you should make sure to select the \"Add Lift gate delivery\" option.",
+    "freightShipmentTooltip": "Remember when you sign for your shipment you assume ownership of the equipment as is. So…<br>1. Don’t sign until you inspect<br>2. If you see damage then don’t sign for it<br>3. Give us a call so we can help",  
     "defaultStoreImage": "/cms/files/prima-supply-store-image.jpg"
   },
   "layoutWidgets": [

@@ -410,7 +410,24 @@
                     "name": "freeShippingTooltip"    
                 }
             ]
-        }, 
+        },
+        {
+            "xtype": "panel",
+            "title": "Liftgate Popup Tooltips",        
+            "collapsed": false,
+            "items": [
+                {
+                    "fieldLabel": "Liftgate Tooltip",   
+                    "xtype": "mz-input-textarea",
+                    "name": "liftgateTooltip"   
+                }, 
+                {
+                    "fieldLabel": "Freight Shipment Tooltip",  
+                    "xtype": "mz-input-textarea",
+                    "name": "freightShipmentTooltip"   
+                }
+            ]
+        },   
         {
             "xtype": "panel",
             "title": "Yotpo Reviews, Questions & Gallery",     
