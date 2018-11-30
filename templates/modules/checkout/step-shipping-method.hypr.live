@@ -19,14 +19,6 @@
     {% else %}
         {{ labels.noFulfillmentInfoRequired }}
     {% endif %}
-    
-    {% if model.liftGateProduct == true %}
-        {% include "modules/checkout/step-lift-gate-info" with model=model.orderAttributes
-        liftGatePrice=model.liftGatePrice 
-        liftGateVal=model.liftGateVal
-        items=model.liftGateProducts
-        modelItems=model.modelItems %}
-    {% endif %}
     <div class="mz-formstep-next">
         <button type="button" class="mz-button" data-mz-action="next">{{ labels.next }}</button>
     </div>

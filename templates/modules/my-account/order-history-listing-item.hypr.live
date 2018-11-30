@@ -1,5 +1,6 @@
 ﻿{% extends "modules/common/item-listing" %}  
 {% block item-details %}
+
     <div class="mz-itemlisting-description">
       <p><strong>{{ model.product.variationProductCode|default(model.product.productCode) }}</strong></p> 
       {% for option in model.product.options %}

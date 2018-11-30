@@ -269,34 +269,18 @@
                 var liftGateProducts = [];
                 var items = require.mozuData('checkout').items;
                 var i = 0;
-                var j = 0;
-                i = parseInt(i,10);
-                j = parseInt(j,10);
+                i = parseInt(i, 10);
                 for(var index in items){
                     var item = items[index];
-                    var properties = item.product.properties;
                     var itemWeight = item.product.measurements.weight.value;
-                    // if(itemWeight > 149) {
-                    if(i > 0) {
+                    if(itemWeight > 149) {
                         this.set('liftGateProduct',true);
                         this.set('liftGatePrice', HyprLiveContext.locals.themeSettings.liftGatePrice);
                         liftGateProducts[i] = item;
                         i++;
                     }
-                    /*for(var propindex in properties){
-                        var property = properties[propindex];
-                        if(property.name === 'Free Liftgate' && property.values[0].value === true ){
-                            this.set('liftGateProduct',true);
-                            this.set('liftGatePrice', HyprLiveContext.locals.themeSettings.liftGatePrice);
-                            liftGateProducts[i] = item;
-                            i++;
-                            break;
-                        }
-                    }*/
-                    
                 }
                 this.set('liftGateProducts',liftGateProducts);
-                
             },
             relations: {
                 fulfillmentContact: FulfillmentContact
@@ -307,7 +291,7 @@
                     msg: Hypr.getLabel('chooseShippingMethod')
                 }
             },
-            helpers: ['modelItems', 'liftGateSelected', 'freightShipmentSelected'],
+            helpers: ['modelItems', 'liftGateSelected', 'freightShipmentSelected', 'getLiftGateValues', 'showLiftGatePopup'],
             modelItems: function() {
                 var items = this.getOrder().get('items');
                 
@@ -371,6 +355,67 @@
                 });
                 return freightShipmentSelected;
             },
+            getLiftGateValues: function() {
+                var order = this.getOrder();
+                var liftGateSelected = false;
+                var liftGateNotSelected = false;
+                var freightShipmentSelected = false;
+                var freightShipmentNotSelected = false;
+                _.each(order.attributes.attributes, function(attributes) {
+                    if (attributes.fullyQualifiedName === 'tenant~freight-shipment') {
+                        if (attributes.values[0] === 'True') {
+                            freightShipmentSelected = true; 
+                        } else {
+                            freightShipmentNotSelected = true;
+                        }
+                    } else if(attributes.fullyQualifiedName === 'tenant~liftgate') {
+                        if (attributes.values[0] === 'True') {
+                            liftGateSelected = true; 
+                        } else {
+                            liftGateNotSelected = true;
+                        }
+                    }
+                });
+                var liftGateValues = {liftGateSelected: liftGateSelected, liftGateNotSelected: liftGateNotSelected, freightShipmentSelected: freightShipmentSelected, freightShipmentNotSelected: freightShipmentNotSelected};
+                return liftGateValues;
+            },
+            showLiftGatePopup: function() {
+                var showLiftGatePopup = true;
+                var liftGateProduct = this.get('liftGateProduct');
+                var liftGateModalShown = this.get('liftGateModalShown');
+                if (!liftGateModalShown && liftGateProduct === true) {
+                    showLiftGatePopup = false;
+                    this.set("liftGateModalShown", true);
+                    $("#liftGateModal").modal("show");
+                } else if(!liftGateProduct) {
+                    if (this.liftGateSelected() === true && !(this.get('liftGateRemovedModalShown'))) {
+                        this.set("liftGateRemovedModalShown", true);
+                        $("#liftGateRemovedModal").modal("show");
+                    }
+                    /*var me = this;
+                    var order = this.getOrder(),
+                        process = [function() {
+                            return order.update({
+                                ipAddress: order.get('ipAddress'),
+                                shopperNotes: order.get('shopperNotes').toJSON()
+                            });
+                        }];
+                    var updateAttrs = [];
+                    var liftGateVal = false;
+                    var freightShipmentVal = false;
+                    updateAttrs.push({
+                        'fullyQualifiedName': 'tenant~freight-shipment',
+                        'values': [ freightShipmentVal ]
+                    }, {
+                        'fullyQualifiedName': 'tenant~liftgate',
+                        'values': [ liftGateVal ]
+                    });
+                    if(updateAttrs.length > 0){
+                        order.apiUpdateAttributes(updateAttrs);
+                    }*/
+                }
+                return showLiftGatePopup;
+            },
             refreshShippingMethods: function (methods) {
                 this.set({
                     availableShippingMethods: methods
@@ -414,44 +459,9 @@
                     this.set(newMethod);
                     this.applyShipping(resetMessage);
                 }
-                var order = this.getOrder();
-                var dutyAmount = 0;
-                if(this.liftGateSelected() === true){
-                    dutyAmount = parseFloat(HyprLiveContext.locals.themeSettings.liftGatePrice);
-                }
-                // order.apiModel.update(_.extend(order.toJSON(), {dutyAmount: dutyAmount }));
-                /* order.apiModel.update(_.extend(order.toJSON(), {dutyAmount: dutyAmount }))
-                        .ensure(function(err) {
-                            if(resetMessage) {
-                                me.parent.messages.reset(me.parent.get('messages'));
-                            }
-                        });*/
             },
-            updateLiftGateOption: function (liftGateVal) {
-              var order = this.getOrder(),
-                    process = [function() {
-                        return order.update({
-                            ipAddress: order.get('ipAddress'),
-                            shopperNotes: order.get('shopperNotes').toJSON()
-                        });
-                    }];
-                
-                var dutyAmount = 0;
-                if(liftGateVal == 'true'){
-                    dutyAmount = parseFloat(HyprLiveContext.locals.themeSettings.liftGatePrice);
-                }
-                var updateAttrs = [];
-                updateAttrs.push({
-                    'fullyQualifiedName': 'tenant~liftgate',
-                    'values': [ liftGateVal ]
-                });
-                if(updateAttrs.length > 0){
-                    order.apiUpdateAttributes(updateAttrs);
-                }
-                // order.apiModel.update(_.extend(order.toJSON(), {dutyAmount: dutyAmount }));
-               
-            },
-            updateFreightShipment: function (freightShipmentVal) {
+            updateOrder: function(liftGateVal, freightShipmentVal) {
+                var me = this;
                 var order = this.getOrder(),
                     process = [function() {
                         return order.update({
@@ -463,10 +473,24 @@
                 updateAttrs.push({
                     'fullyQualifiedName': 'tenant~freight-shipment',
                     'values': [ freightShipmentVal ]
+                }, {
+                    'fullyQualifiedName': 'tenant~liftgate',
+                    'values': [ liftGateVal ]
                 });
                 if(updateAttrs.length > 0){
                     order.apiUpdateAttributes(updateAttrs);
                 }
+                $(".mz-summary-edit").trigger("click");
+                this.stepStatus('new');
+                this.parent.get("billingInfo").stepStatus('new');
+                $("#liftGateModal").modal("hide");
+                $("#liftGateRemovedModal").modal("hide");
+            },
+            closePopup: function() {
+                $(".mz-summary-edit").trigger("click");
+                this.stepStatus('new');
+                this.parent.get("billingInfo").stepStatus('new');
+                $("#liftGateModal").modal("hide");
             },
             applyShipping: function(resetMessage) {
                 if (this.validate()) return false;

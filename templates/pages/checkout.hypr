@@ -38,6 +38,8 @@
 
     <div class="mz-l-container">
         <h1 class="mz-pagetitle">{{ labels.checkout }}</h1>
+        <div id="liftGateModal" role="dialog" class="modal fade" data-backdrop="static" data-keyboard="false"></div>
+        <div id="liftGateRemovedModal" role="dialog" class="modal fade" data-backdrop="static" data-keyboard="false"></div>
         <form id="checkout-form" class="mz-checkoutform mz-checkout-section mz-l-2column mz-l-2column-right fades-in" method="post" onsubmit="return false;">
             {% include "modules/common/message-bar" with model=model.messages %}
 

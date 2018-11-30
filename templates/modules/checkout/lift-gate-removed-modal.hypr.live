@@ -1,0 +1,13 @@
+<div class="modal-dialog modal-dialog-liftgate" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" data-mz-action="closePopup" class="close">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div> {{ labels.liftGateRemoved }} </div>
+            <div>
+                <button type="button" data-mz-action="closePopup" class="mz-button">{{ labels.continue }}</button>
+            </div>
+        </div>
+    </div>
+</div>
