@@ -10,6 +10,7 @@
     var bottomline = HyprLiveContext.locals.themeSettings.bottomline;
     var yotpoBaseUrl = HyprLiveContext.locals.themeSettings.yotpoBaseUrl; 
     var url = ""+yotpoBaseUrl+"/"+yotpoApiKey+"/products/promoted_products";
+    console.log("PROMOTED : "+url);
 		var slider;
 		$.get(url, function(data, status){ 
 		_.defer( function() {	

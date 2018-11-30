@@ -30,7 +30,9 @@
         (function e() { var e = document.createElement("script"); e.type = "text/javascript"; e.async = true; e.src = "//staticw2.yotpo.com/{{ themeSettings.yotpoApiKey }}/widget.js"; var t = document.getElementsByTagName("script")[0]; t.parentNode.insertBefore(e, t) })();
     </script>
     <div class="container">
-        <div id="promotedProds"></div>
+        <div id="promotedProds"></div>      
+
+        {% dropzone "promoted-prods" scope="site" %}
 
         {% dropzone "shop-by-brand" scope="page" %}
         
@@ -45,7 +47,7 @@
     </div>
       
     {% require_script "pages/yotpo-review" %}
-    {% require_script "modules/promoted-products" %} 
+    
 
     <script>
         addthis.sharecounters.getShareCounts({service: ['twitter','facebook','reddit'], countUrl: '{{ pageContext.url }}{{ model.url }}'}, function(response) {  
