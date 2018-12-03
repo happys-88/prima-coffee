@@ -103,4 +103,5 @@
             </div>
         </div>
     </div>
+    <div class="mz-track-loader" id="loader"></div>
 {% endblock body-content %}

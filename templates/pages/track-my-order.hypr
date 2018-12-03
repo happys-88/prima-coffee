@@ -57,12 +57,4 @@
     </div>
 </div>
 <div class="mz-track-loader" id="loader"></div>
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-<script>
-   
-    $(function() {
-     $("#loader").removeClass("mz-track-loader");
-  });
-
-</script>
 {% endblock body-content %}

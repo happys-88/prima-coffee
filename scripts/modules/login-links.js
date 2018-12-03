@@ -418,6 +418,7 @@
             }
             
         });
+        $("#loader").removeClass("mz-track-loader");
     });
 
 });
