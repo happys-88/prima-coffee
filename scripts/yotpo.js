@@ -168,7 +168,7 @@ function ($, _, Hypr, Backbone, HyprLiveContext, api, blockUiLoader) {
             var currentProduct = $(this);
             var shippingMessage = $(currentProduct).find(".shipping-messages");
             var prodCode = $(this).find(".mz-productlisting").data("mz-product");
-            var prod = findElement(productData, prodCode);
+            var prod = YotPo.findElement(productData, prodCode);
             var button = $(this).find('[data-mz-productcode="'+prodCode+'"]');
             
             if (prod.fieldDisplayOOSProp && prod.fieldDisplayOOSPropVal.value == '4') {
@@ -217,6 +217,12 @@ function ($, _, Hypr, Backbone, HyprLiveContext, api, blockUiLoader) {
                 button.attr("data-target", "#addonModal");
             }
         });
+    },
+    findElement: function(arr, element) {
+        var product = arr.filter(function(el) {
+          return el.productCode == element;
+        })[0];
+        return product;
     },
     showYotpoRatingStars: function(listClassName){
         if ((listClassName === ".mz-productlist-item") || (listClassName === ".mz-product-quick-view") || (listClassName === ".mz-recentproductlist-item")){  
@@ -273,10 +279,3 @@ function ($, _, Hypr, Backbone, HyprLiveContext, api, blockUiLoader) {
   return YotPo;
 
 });
-
-function findElement(arr, element) {
-    var product = arr.find(function(el) {
-      return el.productCode == element;
-    });
-    return product;
-}
