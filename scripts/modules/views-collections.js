@@ -11,9 +11,10 @@ define([
     'modules/facet-clear',
     'modules/block-ui',
     'yotpo',
+    'modules/formatBlogDate',
     //'modules/category/infinite-scroller',
     "lazyload"
-], function(Backbone, $, _, UrlDispatcher, IntentEmitter, getPartialView, makeClearUrl, blockUiLoader, yotpo, InfiniteScroller, lazyload) {  
+], function(Backbone, $, _, UrlDispatcher, IntentEmitter, getPartialView, makeClearUrl, blockUiLoader, yotpo, blogDateFormat, InfiniteScroller, lazyload) {  
    
     //lazy load
     $("img.lazy").lazyload(); 
@@ -34,6 +35,7 @@ define([
             $("img.lazy").lazyload();
             blockUiLoader.unblockUi();
             yotpo.update();
+            blogDateFormat.showDate();
         } 
 
         function showError(error) {
