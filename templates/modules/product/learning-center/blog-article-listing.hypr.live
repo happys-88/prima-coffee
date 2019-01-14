@@ -13,7 +13,7 @@
     <div class="mz-productlisting-info"> 
         <h4><a class="mz-productlisting-title" href="{% make_url "product" model %}">{{model.content.productName}}</a></h4>
         <div class="mz-blog-metadata">
-            <span class="post-date">{{ model.dateFirstAvailableInCatalog|date("M jS, Y" }}</span> 
+            <span class="post-date" id="{{ model.productCode }}" date="{{ model.dateFirstAvailableInCatalog }}"></span> 
             {% for property in model.properties %}   
                 {% if property.attributeFQN == "tenant~author" %}
                     {% for propValue in property.values %} 
@@ -23,6 +23,6 @@
             {% endfor %} 
         </div> 
     </div> 
-
 </div>  
+{% require_script "modules/formatBlogDate" %}
 
