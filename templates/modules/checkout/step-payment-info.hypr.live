@@ -263,7 +263,7 @@
 
                     <div class="col-sm-4 label-padding"> 
                         <label for="billing-email">
-                        {{ labels.digitalCredits }}<span class="is-required"> *</span>:
+                        {{ labels.digitalCredits }} :
                     </label>
                     </div>
                     <div class="col-sm-8"> 
