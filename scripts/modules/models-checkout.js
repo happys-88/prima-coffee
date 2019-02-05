@@ -2336,6 +2336,20 @@
                 if (activePayments && activePayments.length === 0) return false;
                 return (activePayments && (_.findWhere(activePayments, { paymentType: 'PayPalExpress2' })));
             },
+            updateLiftGate: function(liftGateVal) {
+                var order = this;
+                var updateAttrs = [];
+                updateAttrs.push({
+                    'fullyQualifiedName': 'tenant~liftgate',
+                    'values': [ liftGateVal ]
+                });
+                if(updateAttrs.length > 0){
+                    order.apiUpdateAttributes(updateAttrs);
+                }
+                order.update();
+                console.log("Order : "+JSON.stringify(order));
+                order.set("removeLiftgate", true);
+            },
             submit: function () {
                 var order = this,
                     billingInfo = this.get('billingInfo'),

@@ -543,6 +543,9 @@ require(["modules/jquery-mozu", "underscore", "hyprlive", "modules/backbone-mozu
                 self.model.submit();
             });
         },
+        updateLiftGate: function() {
+            this.model.updateLiftGate(false);
+        },
         handleEnterKey: function () {
             this.submit();
         }
