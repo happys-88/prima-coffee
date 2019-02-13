@@ -584,6 +584,10 @@ require(["modules/jquery-mozu", "underscore", "hyprlive", "modules/backbone-mozu
         },
         validateLiftGate: function(e) {
             e.stopImmediatePropagation();
+            var liftgateVal = e.target.value;
+            if(liftgateVal === 'false') {
+                $('.lift-gate-msg').hide();
+            }
             var enableContinue = true;
             var liftGateValue = this.$('[data-mz-lift-gate-option]:checked').val();
             var freightShipmentValue = this.$('[data-mz-freight-shipment]:checked').val();
@@ -614,6 +618,10 @@ require(["modules/jquery-mozu", "underscore", "hyprlive", "modules/backbone-mozu
     });
 
     $(document).ready(function () {
+
+        $('.lift-gate-msg').click(function() {
+            window.location.reload();                        
+        });
 
         var $checkoutView = $('#checkout-form'),
             checkoutData = require.mozuData('checkout');

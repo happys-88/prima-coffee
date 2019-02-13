@@ -48,7 +48,9 @@
                             {% endcomment %}
                             {% if item.product.measurements.weight.value > 149 %}
                                 {% if liftGateMsgShow == 'True' %}
-                                <div class="lift-gate-msg"><i class="fa fa-exclamation-triangle"></i>{{ labels.liftGateMsg }}</div>
+                                <div class="lift-gate-msg"><i class="fa fa-exclamation-triangle"></i>{{ labels.liftGateMsg }}
+                                   <span> <a href="javascript:void()" onclick="window.location.reload();">Edit</a></span>
+                                </div>
                                 {% endif %}
                             {% endif %}
                             {% with item.product.variationProductCode|default(item.product.productCode) as prodCode %}

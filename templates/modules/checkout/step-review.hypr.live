@@ -5,21 +5,7 @@
         <div class="mz-orderattributes">
             {% include "modules/checkout/checkout-attributes" with model=model.orderAttributes %}
         </div>        
-        {% for attribute in model.attributes %}
-            {% if attribute.fullyQualifiedName === 'tenant~liftgate' %}
-               {% if attribute.values[0] === 'True' %}
-                    <label class='inline'>
-                        <input type="radio" name="removeLiftGate" id="removeLiftGate" data-mz-value="removeLiftGate" data-mz-lift-gate {% if model.removeLiftgate %} checked="checked"{% endif %} data-mz-action="updateLiftGate"> Remove LiftGate 
-                    </label>
-                {% endif %}
-            {% endif %}
-        {% endfor %}
         
-        {% if model.removeLiftgate %}
-            <label class='inline'>
-                <input type="radio" name="removeLiftGate" data-mz-value="removeLiftGate" data-mz-lift-gate {% if model.removeLiftgate %} checked="checked"{% endif %} data-mz-action="updateLiftGate"> Remove LiftGate 
-            </label>
-        {% endif %}
         {% if themeSettings.requireCheckoutAgreeToTerms %}
             <div class="mz-l-formfieldgroup mz-l-formfieldgroup-norows">
                 <label class='inline'>
